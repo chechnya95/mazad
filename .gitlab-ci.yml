@@ -1,7 +1,7 @@
 stages:
   - build
   - deploy
-  - analyze
+  #- analyze
 
 sonarqube-check:
   stage: analyze
