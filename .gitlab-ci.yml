@@ -3,28 +3,28 @@ stages:
   - deploy
   #- analyze
 
-sonarqube-check:
-  stage: analyze
-  image:
-    name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
-  needs: []
-  dependencies: []
-  variables:
-    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
-    #SONAR_PROJECT_BASE_DIR: "${CI_PROJECT_DIR}"
-    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .sonar/cache
-  script:
-    - sonar-scanner -Dsonar.qualitygate.wait=true
-  allow_failure: true
-  only:
- #   - merge_requests
-    - master
-#    - develop
+#sonarqube-check:
+#  stage: analyze
+#  image:
+#    name: sonarsource/sonar-scanner-cli:latest
+#    entrypoint: [""]
+#  needs: []
+#  dependencies: []
+#  variables:
+#    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+#    #SONAR_PROJECT_BASE_DIR: "${CI_PROJECT_DIR}"
+#    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+#  cache:
+#    key: "${CI_JOB_NAME}"
+#    paths:
+#      - .sonar/cache
+#  script:
+#    - sonar-scanner -Dsonar.qualitygate.wait=true
+#  allow_failure: true
+#  only:
+# #   - merge_requests
+#    - master
+##    - develop
 
 build:
   stage: build
