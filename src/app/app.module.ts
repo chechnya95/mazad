@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { UsersComponent } from './users/users.component';
+import { RolesComponent } from './roles/roles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { UsersComponent } from './users/users.component';
       { path: 'login', component: LoginComponent },
       { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
-      { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] }
+      { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
+      { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] }
     ])
   ],
   providers: [],
