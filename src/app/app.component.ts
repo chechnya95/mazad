@@ -10,12 +10,18 @@ import { UtilitiesService } from './services/utilities.service';
 })
 export class AppComponent {
   title = 'mazad-oman-dashboard';
+  email: any;
+  name: any;
+  avatar: any;
 
   constructor(
     public utility: UtilitiesService,
     private router: Router,
     private api: ApiService) {
     utility.url = '/';
+    this.email = localStorage.getItem('email');
+    this.name = localStorage.getItem('name');
+    this.avatar = this.name.charAt(0);
   }
 
   ngOnInit(): void {

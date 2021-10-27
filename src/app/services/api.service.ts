@@ -8,8 +8,8 @@ import jwt_decode from "jwt-decode";
 })
 export class ApiService {
 
-  //api: string = "https://mazad-api.smartlaboman.com/mazad/api/v1/";
-  api: string = "http://127.0.0.1:5000/mazad/api/v1/";
+  api: string = "https://mazad-api.smartlaboman.com/mazad/api/v1/";
+  //api: string = "http://127.0.0.1:5000/mazad/api/v1/";
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
@@ -74,11 +74,13 @@ export class ApiService {
   }
 
   setToken(data: any) {
+    let user_details = JSON.parse(data['user_details']);
+
     localStorage.setItem("access_token", data['token']);
     localStorage.setItem("is_valid", 'true');
     localStorage.setItem("id", data['id']);
-    localStorage.setItem("name", data['name']);
-    //localStorage.setItem("role", data['role']);
+    localStorage.setItem("name", user_details.name_ar);
+    localStorage.setItem("email", data['email']);
 
     this.router.navigate(['login']);
   }

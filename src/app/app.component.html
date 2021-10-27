@@ -982,7 +982,9 @@
                   <!--begin::Menu wrapper-->
                   <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                     data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-                    <img src="assets/media/avatars/150-2.jpg" alt="metronic" />
+                    <div class="symbol-label fs-3 bg-light-danger text-danger">{{ avatar }}
+                    </div>
+                    <!-- <img src="assets/media/avatars/150-2.jpg" alt="metronic" /> -->
                   </div>
                   <!--begin::Menu-->
                   <div
@@ -993,15 +995,19 @@
                       <div class="menu-content d-flex align-items-center px-3">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-50px me-5">
-                          <img alt="Logo" src="assets/media/avatars/150-2.jpg" />
+                          <div class="symbol-label fs-3 bg-light-danger text-danger">{{ avatar }}
+                          </div>
                         </div>
+                        <!-- <div class="symbol symbol-50px me-5">
+                          <img alt="Logo" src="assets/media/avatars/150-2.jpg" />
+                        </div> -->
                         <!--end::Avatar-->
                         <!--begin::Username-->
                         <div class="d-flex flex-column">
-                          <div class="fw-bolder d-flex align-items-center fs-5">Khamis Alwaili
-                            <span class="badge badge-light-warning fw-bolder fs-8 px-2 py-1 ms-2">Gold</span>
+                          <div class="fw-bolder d-flex align-items-center fs-5">{{ name }}
+                            <!-- <span class="badge badge-light-warning fw-bolder fs-8 px-2 py-1 ms-2">Gold</span> -->
                           </div>
-                          <a href="#" class="fw-bold text-muted text-hover-primary fs-7">khamis@mazad.om</a>
+                          <a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ email }}</a>
                         </div>
                         <!--end::Username-->
                       </div>
@@ -1099,31 +1105,7 @@
         <div *ngIf="this.utility.show" class="toolbar" id="kt_toolbar">
           <!--begin::Container-->
           <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-            <!--begin::Page title-->
-            <div data-kt-place="true" data-kt-place-mode="prepend"
-              data-kt-place-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-              class="page-title d-flex align-items-center me-3">
-              <!--begin::Title-->
-              <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Dashboard
-                <!--begin::Separator-->
-                <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
-                <!--end::Separator-->
-                <!--begin::Description-->
-                <small class="text-muted fs-7 fw-bold my-1 ms-1">Welcome</small>
-                <!--end::Description-->
-              </h1>
-              <!--end::Title-->
-            </div>
-            <!--end::Page title-->
-            <!--begin::Actions-->
-            <div class="d-flex align-items-center py-1">
-              <!--begin::Wrapper-->
 
-              <!--end::Wrapper-->
-              <!--begin::Button-->
-              <!--end::Button-->
-            </div>
-            <!--end::Actions-->
           </div>
           <!--end::Container-->
         </div>
