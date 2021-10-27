@@ -21,7 +21,8 @@ export class AppComponent {
     utility.url = '/';
     this.email = localStorage.getItem('email');
     this.name = localStorage.getItem('name');
-    this.avatar = this.name.charAt(0);
+    if (this.name)
+      this.avatar = this.name.charAt(0);
   }
 
   ngOnInit(): void {
