@@ -2,7 +2,8 @@ stages:
   - build
   - deploy
   #- analyze
-
+variables:
+  NODE_OPTIONS: --openssl-legacy-provider
 #sonarqube-check:
 #  stage: analyze
 #  image:
