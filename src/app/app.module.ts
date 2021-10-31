@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { UsersComponent } from './users/users.component';
 import { RolesComponent } from './roles/roles.component';
+import { AuctionsComponent } from './auctions/auctions.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RolesComponent } from './roles/roles.component';
     LoginComponent,
     HomeComponent,
     UsersComponent,
-    RolesComponent
+    RolesComponent,
+    AuctionsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { RolesComponent } from './roles/roles.component';
       { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
-      { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] }
+      { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] },
+      { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard] }
     ])
   ],
   providers: [],
