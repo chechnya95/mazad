@@ -22,6 +22,8 @@ export class RolesComponent implements OnInit {
   permissions_checked: any[] = [];
   role_permissons: any[] = [];
 
+  add_role_permission: any[] = [];
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.token = localStorage.getItem('access_token');
@@ -94,6 +96,19 @@ export class RolesComponent implements OnInit {
     if (this.role_name != '') {
       this.api.post("users/roles", body, this.token).subscribe(
         async data => {
+          let response = JSON.parse(JSON.stringify(data));
+          for (let i = 0; i < this.add_role_permission.length; i++) {
+            let body = { role_id: response['role_id'], permission_id: this.add_role_permission[i].id }
+            console.log(body);
+            this.api.post("users/add-permission", body, this.token).subscribe(
+              async data => {
+                //console.log('ok');
+              },
+              async error => {
+                console.log(error);
+              }
+            );
+          }
           this.getRoles();
         },
         async error => {
@@ -101,6 +116,18 @@ export class RolesComponent implements OnInit {
           console.log(error);
         }
       );
+    }
+  }
+
+  addCheckBoxChecked(permision: any) {
+    if (permision.checked) {
+      this.add_role_permission.push(permision);
+    }
+    else {
+      const index = this.add_role_permission.indexOf(permision, 0);
+      if (index > -1) {
+        this.add_role_permission.splice(index, 1);
+      }
     }
   }
 
@@ -122,9 +149,19 @@ export class RolesComponent implements OnInit {
     }
   }
 
+  addRoleClicked() {
+    this.permissions.forEach(function (permission) {
+      permission.checked = false;
+    });
+  }
+  
   editRoleClicked(id: number, name: string) {
     this.edit_role_name = name;
     this.edit_role_id = id;
+
+    this.permissions.forEach(function (permission) {
+      permission.checked = false;
+    });
 
     for (let x = 0; x < this.permissions.length; x++) {
       for (let y = 0; y < this.role_permissons.length; y++) {
@@ -145,7 +182,7 @@ export class RolesComponent implements OnInit {
           //console.log('ok');
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          alert("ERROR");
           console.log(error);
         }
       );
