@@ -14,6 +14,7 @@ export class AuctionsComponent implements OnInit {
   groups: any[] = [];
   owners: any[] = [];
   templates: any[] = [];
+  auction_status: any[] = [];
 
   auction = {
     auction_type: null,
@@ -32,6 +33,11 @@ export class AuctionsComponent implements OnInit {
     group_id: null
   }
 
+  auction_s = {
+    name: null,
+    order: null
+  }
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.token = localStorage.getItem('access_token');
@@ -44,10 +50,8 @@ export class AuctionsComponent implements OnInit {
   async getAuctions() {
     this.api.get('auctions/', this.token).subscribe(
       async data => {
-        let objects: any = { auctions: [] }
-        objects = data;
-
-        this.auctions = objects.auctions;
+        let objects = JSON.parse(JSON.stringify(data));
+        this.auctions = objects['auctions']['auctions'];
         this.getOwners();
       },
       async error => {
@@ -57,7 +61,19 @@ export class AuctionsComponent implements OnInit {
   }
 
   async getOwners() {
+    this.getAuctionStatus();
+  }
 
+  async getAuctionStatus() {
+    this.api.get('auctions/auction_status', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.auction_status = objects.auction_status;
+      },
+      async error => {
+        alert(error);
+      }
+    );
   }
 
   OnSubmit() {
@@ -75,12 +91,58 @@ export class AuctionsComponent implements OnInit {
       template_id: this.auction.template_id,
       owner_id: this.auction.owner_id,
       payement_id: this.auction.payement_id,
-      group_id: this.auction.group_id
+      group_id: this.auction.group_id,
+      title: { 'en': 'auction', 'ar': 'المزاد' },
+      description: { 'en': 'auction ' + this.auction.auction_type, 'ar': 'مزاد ' + this.auction.auction_type },
+      terms: { 'en': null, 'ar': null }
     }
 
     this.api.post("auctions/", body, this.token).subscribe(
       async data => {
         this.getAuctions();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
+
+  deleteAuction(id: number) {
+    if (confirm("Delete this auction?")) {
+      this.api.delete("auctions/" + id, this.token).subscribe(
+        async data => {
+          this.getAuctions();
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  addAuctionStatus() {
+    let body = {
+      name: this.auction_s.name,
+      order: this.auction_s.order
+    }
+
+    this.api.post("auctions/auction_status", body, this.token).subscribe(
+      async data => {
+        this.getAuctionStatus();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
+
+  deleteStatus(name: string) {
+    this.api.delete("auctions/auction_status/" + name, this.token).subscribe(
+      async data => {
+        this.getAuctionStatus();
       },
       async error => {
         alert("ERROR: cannot connect!");
