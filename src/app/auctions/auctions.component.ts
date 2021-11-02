@@ -69,6 +69,20 @@ export class AuctionsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
+
+        this.getTemplates();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getTemplates() {
+    this.api.get('templates_contents/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.templates = objects['templates_contents'];
       },
       async error => {
         alert(error);
