@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
 import { UtilitiesService } from '../services/utilities.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-slider',
@@ -10,44 +8,36 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-  page = 1;
-  pageSize = 10;
-
-  list_length = 0;
+  
   sliders: any[] = [];
   token: any;
 
   slider = {
     photo_number: null,
     photo__path: '',
-    status:'',
+    status: '',
   }
 
-  
-  new_slider = { 
+  new_slider = {
     photo_number: null,
     photo__path: '',
-    status:'',
-}
+    status: '',
+  }
 
-new_slider_id: number = 0;
-type: string = 'slider';
-files: any;
+  new_slider_id: number = 0;
+  files: any;
 
-  constructor(public utility: UtilitiesService, private modalService: NgbModal, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.token = localStorage.getItem('access_token');
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.type = params['type'] != null ? params['type'] : 'slider';
-      this.getSliders();
-    });
+    this.getSliders();
   }
 
   getSliders() {
-    this.api.get('media/' + this.type, this.token).subscribe(
+    this.api.get('media/', this.token).subscribe(
       async data => {
         let objects: any = {
           sliders: []
@@ -55,7 +45,6 @@ files: any;
         objects = data;
 
         this.sliders = objects.sliders;
-        this.list_length = this.sliders.length;
       },
       async error => {
         alert(error);
@@ -92,7 +81,7 @@ files: any;
   submitSlider(path: any) {
     const body = {
       photo_number: this.slider.photo_number,
-      slider_type: this.type,
+      slider_type: null,
       photo__path: path
     }
     this.api.post("slider/", body, this.token).subscribe(
@@ -104,14 +93,13 @@ files: any;
         console.log(error);
       }
     );
-
-    this.modalService.dismissAll();
   }
 
   fileChange(event: any) {
     let fileList: FileList = event.target.files;
     this.files = fileList;
   }
+
   isAdmin() {
     let role = localStorage.getItem('role');
 
@@ -119,6 +107,4 @@ files: any;
       return true;
     return false;
   }
-
-
 }
