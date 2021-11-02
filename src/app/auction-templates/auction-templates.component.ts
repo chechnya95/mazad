@@ -1,0 +1,158 @@
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { UtilitiesService } from '../services/utilities.service';
+
+@Component({
+  selector: 'app-auction-templates',
+  templateUrl: './auction-templates.component.html',
+  styleUrls: ['./auction-templates.component.css']
+})
+export class AuctionTemplatesComponent implements OnInit {
+
+  token: any;
+  templates: any[] = [];
+  auctions: any[] = [];
+  categories: any[] = [];
+  owners: any[] = [];
+
+  auction_template = {
+    code: null,
+    details: null,
+    images: null,
+    owner_code: null,
+    attachments: null,
+    deposit: null,
+    start_date: null,
+    end_date: null,
+    latitude: null,
+    longtitude: null,
+    current_price: null,
+    min_bid: null,
+    start_price: null,
+    acceptable_price: null,
+    buy_price: null,
+    governorate: null,
+    address: null,
+    extension_period: null,
+    finale_period: null,
+    item_status: null,
+    category_id: null,
+    owner_id: null,
+    auction_id: null,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null,
+    terms_en: null,
+    terms_ar: null
+  }
+
+  constructor(public utility: UtilitiesService, private api: ApiService) {
+    this.utility.show = true;
+    this.token = localStorage.getItem('access_token');
+  }
+
+  ngOnInit(): void {
+    this.getTemplates();
+  }
+
+  async getTemplates() {
+    this.api.get('auction_templates/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.templates = objects['auction_templates'];
+
+        this.getAuctions();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getAuctions() {
+    this.api.get('auctions/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.auctions = objects['auctions']['auctions'];
+
+        this.getOwners();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getOwners() {
+    this.api.get('users/role/Owner', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.owners = objects['users'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getCategories() {
+    
+  }
+
+  OnSubmit() {
+    let body = {
+      code: this.auction_template.code,
+      details: this.auction_template.details,
+      images: this.auction_template.images,
+      owner_code: this.auction_template.owner_code,
+      attachments: this.auction_template.attachments,
+      deposit: this.auction_template.deposit,
+      start_date: this.auction_template.start_date,
+      end_date: this.auction_template.end_date,
+      latitude: this.auction_template.latitude,
+      longtitude: this.auction_template.longtitude,
+      current_price: this.auction_template.current_price,
+      min_bid: this.auction_template.min_bid,
+      start_price: this.auction_template.start_price,
+      acceptable_price: this.auction_template.acceptable_price,
+      buy_price: this.auction_template.buy_price,
+      governorate: this.auction_template.governorate,
+      address: this.auction_template.address,
+      extension_period: this.auction_template.extension_period,
+      finale_period: this.auction_template.finale_period,
+      item_status: this.auction_template.item_status,
+      category_id: this.auction_template.category_id,
+      owner_id: this.auction_template.owner_id,
+      auction_id: this.auction_template.auction_id,
+      title: { 'en': this.auction_template.title_en, 'ar': this.auction_template.title_ar },
+      description: { 'en': this.auction_template.description_en, 'ar': this.auction_template.description_ar },
+      terms: { 'en': this.auction_template.terms_en, 'ar': this.auction_template.terms_ar }
+    }
+
+    this.api.post("auction_templates/", body, this.token).subscribe(
+      async data => {
+        this.getTemplates();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
+
+  deleteTemplate(id: number) {
+    if (confirm("Delete this template?")) {
+      this.api.delete("auction_templates/" + id, this.token).subscribe(
+        async data => {
+          this.getTemplates();
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
+  }
+
+}

@@ -8,43 +8,35 @@ import { UtilitiesService } from '../services/utilities.service';
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-  
-  sliders: any[] = [];
+
+  medias: any[] = [];
   token: any;
 
-  slider = {
-    photo_number: null,
-    photo__path: '',
-    status: '',
-  }
-
-  new_slider = {
-    photo_number: null,
-    photo__path: '',
-    status: '',
+  media = {
+    media_type: null
   }
 
   new_slider_id: number = 0;
   files: any;
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, public api: ApiService) {
     this.utility.show = true;
     this.token = localStorage.getItem('access_token');
   }
 
   ngOnInit(): void {
-    this.getSliders();
+    this.getMedias();
   }
 
-  getSliders() {
-    this.api.get('media/', this.token).subscribe(
+  getMedias() {
+    this.api.get('medias/', this.token).subscribe(
       async data => {
-        let objects: any = {
-          sliders: []
-        }
-        objects = data;
+        let objects = JSON.parse(JSON.stringify(data));
+        this.medias = objects['medias'];
 
-        this.sliders = objects.sliders;
+        for (let i = 0; i < this.medias.length; i++) {
+          this.medias[i].path = this.api.server + "uploads/media/" + this.medias[i].upload_file;
+        }
       },
       async error => {
         alert(error);
@@ -60,51 +52,20 @@ export class SliderComponent implements OnInit {
         formData.append('files', file, file.name);
       }
 
-      this.api.upload("medias/files-upload/slider/1", formData).subscribe(
+      this.api.upload("medias/files-upload/media/" + this.media.media_type, formData).subscribe(
         async data => {
           let response = JSON.parse(JSON.stringify(data));
-          let contract_file = response.medias[0];
-
-          this.slider.photo__path = this.api + "uploads/media/" + contract_file['upload_file'];
-          this.submitSlider(this.slider.photo__path);
+          console.log(response)
         },
         async error => {
           console.log("POST medias: " + error);
         }
       );
     }
-    else {
-      this.submitSlider(null);
-    }
-  }
-
-  submitSlider(path: any) {
-    const body = {
-      photo_number: this.slider.photo_number,
-      slider_type: null,
-      photo__path: path
-    }
-    this.api.post("slider/", body, this.token).subscribe(
-      async data => {
-        this.getSliders();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
   }
 
   fileChange(event: any) {
     let fileList: FileList = event.target.files;
     this.files = fileList;
-  }
-
-  isAdmin() {
-    let role = localStorage.getItem('role');
-
-    if (role === 'admin')
-      return true;
-    return false;
   }
 }

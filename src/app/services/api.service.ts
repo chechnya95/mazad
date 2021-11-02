@@ -8,6 +8,8 @@ import jwt_decode from "jwt-decode";
 })
 export class ApiService {
 
+  //public server: string = "http://127.0.0.1:5000/";
+  server: string = "https://mazad-api.smartlaboman.com/";
   api: string = "https://mazad-api.smartlaboman.com/mazad/api/v1/";
   //api: string = "http://127.0.0.1:5000/mazad/api/v1/";
 

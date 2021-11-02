@@ -79,10 +79,10 @@ export class AuctionsComponent implements OnInit {
   }
 
   async getTemplates() {
-    this.api.get('templates_contents/', this.token).subscribe(
+    this.api.get('auction_templates/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.templates = objects['templates_contents'];
+        this.templates = objects['auction_templates'];
       },
       async error => {
         alert(error);
