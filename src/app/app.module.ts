@@ -15,6 +15,7 @@ import { RolesComponent } from './roles/roles.component';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { ItemsComponent } from './items/items.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ItemsComponent } from './items/items.component';
     RolesComponent,
     AuctionsComponent,
     TemplatesComponent,
-    ItemsComponent
+    ItemsComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { ItemsComponent } from './items/items.component';
       { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
+      { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard] },
       { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] },
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard] },
       { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard] },
