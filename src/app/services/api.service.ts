@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode";
 })
 export class ApiService {
 
-  //public server: string = "http://127.0.0.1:5000/";
+  //server: string = "http://127.0.0.1:5000/";
   server: string = "https://mazad-api.smartlaboman.com/";
   api: string = "https://mazad-api.smartlaboman.com/mazad/api/v1/";
   //api: string = "http://127.0.0.1:5000/mazad/api/v1/";
@@ -81,7 +81,7 @@ export class ApiService {
     localStorage.setItem("access_token", data['token']);
     localStorage.setItem("is_valid", 'true');
     localStorage.setItem("id", data['id']);
-    localStorage.setItem("name", user_details.name_ar);
+    localStorage.setItem("name", user_details.name_en);
     localStorage.setItem("email", data['email']);
 
     this.router.navigate(['login']);
