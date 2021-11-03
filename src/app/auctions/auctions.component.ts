@@ -30,7 +30,13 @@ export class AuctionsComponent implements OnInit {
     template_id: null,
     owner_id: null,
     payement_id: null,
-    group_id: null
+    group_id: null,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null,
+    terms_en: null,
+    terms_ar: null
   }
 
   auction_s = {
@@ -61,7 +67,17 @@ export class AuctionsComponent implements OnInit {
   }
 
   async getOwners() {
-    this.getAuctionStatus();
+    this.api.get('users/role/Owner', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.owners = objects['users'];
+
+        this.getAuctionStatus();
+      },
+      async error => {
+        alert(error);
+      }
+    );
   }
 
   async getAuctionStatus() {
@@ -70,7 +86,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
 
-        this.getTemplates();
+        //this.getTemplates();
       },
       async error => {
         alert(error);
@@ -106,9 +122,9 @@ export class AuctionsComponent implements OnInit {
       owner_id: this.auction.owner_id,
       payement_id: this.auction.payement_id,
       group_id: this.auction.group_id,
-      title: { 'en': 'auction', 'ar': 'المزاد' },
-      description: { 'en': 'auction ' + this.auction.auction_type, 'ar': 'مزاد ' + this.auction.auction_type },
-      terms: { 'en': null, 'ar': null }
+      title: { 'en': this.auction.title_en, 'ar': this.auction.title_ar },
+      description: { 'en': this.auction.description_en, 'ar': this.auction.description_en },
+      terms: { 'en': this.auction.terms_en, 'ar': this.auction.terms_ar }
     }
 
     this.api.post("auctions/", body, this.token).subscribe(

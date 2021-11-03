@@ -504,7 +504,7 @@
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="item.owner_id">
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
-                                                        owner.name
+                                                        owner.email
                                                         }}</option>
                                                 </select>
                                                 <!--end::Input-->
@@ -536,7 +536,7 @@
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="item.category_id">
                                                     <option *ngFor="let category of categories" [ngValue]='category.id'>{{
-                                                        group.name
+                                                        category.name.en
                                                         }}</option>
                                                 </select>
                                                 <!--end::Input-->

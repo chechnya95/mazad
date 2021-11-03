@@ -24,9 +24,9 @@ export class AuctionTemplatesComponent implements OnInit {
     deposit: null,
     start_date: null,
     end_date: null,
+    time_between_items: null,
     latitude: null,
     longtitude: null,
-    current_price: null,
     min_bid: null,
     start_price: null,
     acceptable_price: null,
@@ -35,7 +35,6 @@ export class AuctionTemplatesComponent implements OnInit {
     address: null,
     extension_period: null,
     finale_period: null,
-    item_status: null,
     category_id: null,
     owner_id: null,
     auction_id: null,
@@ -45,6 +44,15 @@ export class AuctionTemplatesComponent implements OnInit {
     description_ar: null,
     terms_en: null,
     terms_ar: null
+  }
+
+  category = {
+    name_en: null,
+    name_ar: null,
+    content_en: null,
+    content_ar: null,
+    order: null,
+    enable: 1
   }
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
@@ -89,6 +97,8 @@ export class AuctionTemplatesComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'];
+
+        this.getCategories();
       },
       async error => {
         alert(error);
@@ -97,7 +107,15 @@ export class AuctionTemplatesComponent implements OnInit {
   }
 
   async getCategories() {
-    
+    this.api.get('categories/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.categories = objects['categories'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
   }
 
   OnSubmit() {
@@ -112,7 +130,7 @@ export class AuctionTemplatesComponent implements OnInit {
       end_date: this.auction_template.end_date,
       latitude: this.auction_template.latitude,
       longtitude: this.auction_template.longtitude,
-      current_price: this.auction_template.current_price,
+      time_between_items: this.auction_template.time_between_items,
       min_bid: this.auction_template.min_bid,
       start_price: this.auction_template.start_price,
       acceptable_price: this.auction_template.acceptable_price,
@@ -121,7 +139,6 @@ export class AuctionTemplatesComponent implements OnInit {
       address: this.auction_template.address,
       extension_period: this.auction_template.extension_period,
       finale_period: this.auction_template.finale_period,
-      item_status: this.auction_template.item_status,
       category_id: this.auction_template.category_id,
       owner_id: this.auction_template.owner_id,
       auction_id: this.auction_template.auction_id,
@@ -141,7 +158,7 @@ export class AuctionTemplatesComponent implements OnInit {
     );
   }
 
-  deleteTemplate(id: number) {
+  deleteTemplate(id: any) {
     if (confirm("Delete this template?")) {
       this.api.delete("auction_templates/" + id, this.token).subscribe(
         async data => {
@@ -155,4 +172,34 @@ export class AuctionTemplatesComponent implements OnInit {
     }
   }
 
+  addCategory() {
+    let body = {
+      order: this.category.order,
+      enable: this.category.enable,
+      name: { 'en': this.category.name_en, 'ar': this.category.name_ar },
+      content: { 'en': this.category.content_en, 'ar': this.category.content_ar },
+    }
+
+    this.api.post("categories/", body, this.token).subscribe(
+      async data => {
+        this.getCategories();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
+
+  deleteCategory(id: number) {
+    this.api.delete("categories/" + id, this.token).subscribe(
+      async data => {
+        this.getCategories();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
 }

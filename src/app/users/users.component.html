@@ -476,7 +476,7 @@
                                 <!--begin::User details-->
                                 <div class="d-flex flex-column">
                                     <a href="apps/user-management/users/view.html"
-                                        class="text-gray-800 text-hover-primary mb-1">{{ user.username }}</a>
+                                        class="text-gray-800 text-hover-primary mb-1">{{ user.name }}</a>
                                     <span>{{ user.email }}</span>
                                     <span>{{ user.phone }}</span>
                                 </div>
@@ -513,7 +513,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <a (click)="deleteUser(user.id)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

@@ -47,7 +47,10 @@ export class UsersComponent implements OnInit {
         this.users = objects.users;
 
         this.users.forEach(function (user) {
-          user.avatar = user['username'].charAt(0);
+          let user_details = JSON.parse(user['user_details']);
+
+          user.avatar = user_details ? user_details['name_en'].charAt(0) : user['username'].charAt(0);
+          user.name = user_details ? user_details['name_en'] : '';
         });
         //this.list_length = this.users.length;
         this.getRoles();
@@ -78,7 +81,7 @@ export class UsersComponent implements OnInit {
     let body = {
       email: this.user.email,
       password: this.user.password,
-      username: this.user_details.name_en.substr(0, this.user_details.name_en.indexOf(' ')),
+      username: this.user.phone, //this.user_details.name_en.substr(0, this.user_details.name_en.indexOf(' ')),
       phone: this.user.phone,
       role: role.name,
       user_details: JSON.stringify(this.user_details),
@@ -95,6 +98,19 @@ export class UsersComponent implements OnInit {
     }
     else {
       this.api.post("users/admin", body, this.token).subscribe(
+        async data => {
+          this.getUsers();
+        },
+        async error => {
+          alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
+        }
+      );
+    }
+  }
+
+  deleteUser(id: number) {
+    if (confirm("Delete this User?")) {
+      this.api.delete("users/" + id, this.token).subscribe(
         async data => {
           this.getUsers();
         },

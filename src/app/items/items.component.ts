@@ -93,6 +93,34 @@ export class ItemsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
+
+        this.getOwners();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getOwners() {
+    this.api.get('users/role/Owner', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.owners = objects['users'];
+
+        this.getCategories();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getCategories() {
+    this.api.get('categories/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.categories = objects['categories'];
       },
       async error => {
         alert(error);
