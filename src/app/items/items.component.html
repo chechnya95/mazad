@@ -131,7 +131,7 @@
                         <!--end::Export-->
                         <!--begin::Add item-->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_add_item">
+                            data-bs-target="#kt_modal_add_new_item_wizard">
                             <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -153,8 +153,7 @@
                         <div class="fw-bolder me-5">
                             <span class="me-2" data-kt-item-table-select="selected_count"></span>Selected
                         </div>
-                        <button type="button" class="btn btn-danger"
-                            data-kt-item-table-select="delete_selected">Delete
+                        <button type="button" class="btn btn-danger" data-kt-item-table-select="delete_selected">Delete
                             Selected</button>
                     </div>
                     <!--end::Group actions-->
@@ -266,8 +265,7 @@
                                     <h2 class="fw-bolder">Add Item</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
-                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                        data-kt-items-modal-action="close">
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                         <span class="svg-icon svg-icon-1">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -299,6 +297,22 @@
                                             data-kt-scroll-dependencies="#kt_modal_add_item_header"
                                             data-kt-scroll-wrappers="#kt_modal_add_item_scroll"
                                             data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="title_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="English" [(ngModel)]="item.title_en" />
+                                                <br>
+                                                <input type="text" name="title_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Arabic" [(ngModel)]="item.title_ar" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
@@ -353,7 +367,7 @@
                                                 <label class="required fw-bold fs-6 mb-2">Start Date</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="date" name="start_date"
+                                                <input type="datetime-local" name="start_date"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                                     [(ngModel)]="item.start_date" />
                                                 <!--end::Input-->
@@ -365,7 +379,7 @@
                                                 <label class="required fw-bold fs-6 mb-2">End Date</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="date" name="end_date"
+                                                <input type="datetime-local" name="end_date"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                                     [(ngModel)]="item.end_date" />
                                                 <!--end::Input-->
@@ -477,8 +491,8 @@
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="extension_period"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="1" [(ngModel)]="item.extension_period" />
+                                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="1"
+                                                    [(ngModel)]="item.extension_period" />
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -489,8 +503,8 @@
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="finale_period"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="1" [(ngModel)]="item.finale_period" />
+                                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="1"
+                                                    [(ngModel)]="item.finale_period" />
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -535,19 +549,56 @@
                                                 <select name="category_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="item.category_id">
-                                                    <option *ngFor="let category of categories" [ngValue]='category.id'>{{
+                                                    <option *ngFor="let category of categories" [ngValue]='category.id'>
+                                                        {{
                                                         category.name.en
                                                         }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="description_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description English"
+                                                    [(ngModel)]="item.description_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="description_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description Arabic"
+                                                    [(ngModel)]="item.description_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="terms_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Terms English"
+                                                    [(ngModel)]="item.terms_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="terms_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Terms Arabic"
+                                                    [(ngModel)]="item.terms_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
                                             <!--end::Input group-->
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-items-modal-action="cancel">Discard</button>
+                                                data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-items-modal-action="submit">
                                                 <span class="indicator-label">Submit</span>
@@ -579,8 +630,7 @@
                                     <h2 class="fw-bolder">Add Item Status</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
-                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                        data-kt-items-modal-action="close">
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                         <span class="svg-icon svg-icon-1">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -646,19 +696,30 @@
                                                     <tr *ngFor="let item of item_status">
                                                         <td>{{ item.name }}</td>
                                                         <td>{{ item.order }}</td>
-                                                        <td><a (click)="deleteStatus(item.name)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                            <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
-                                                            <span class="svg-icon svg-icon-3">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                        <rect x="0" y="0" width="24" height="24"></rect>
-                                                                        <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                                        <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
-                                                                    </g>
-                                                                </svg>
-                                                            </span>
-                                                            <!--end::Svg Icon-->
-                                                        </a></td>
+                                                        <td><a (click)="deleteStatus(item.name)"
+                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                                <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                                                <span class="svg-icon svg-icon-3">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                        width="24px" height="24px" viewBox="0 0 24 24"
+                                                                        version="1.1">
+                                                                        <g stroke="none" stroke-width="1" fill="none"
+                                                                            fill-rule="evenodd">
+                                                                            <rect x="0" y="0" width="24" height="24">
+                                                                            </rect>
+                                                                            <path
+                                                                                d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
+                                                                                fill="#000000" fill-rule="nonzero">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                                                                fill="#000000" opacity="0.3"></path>
+                                                                        </g>
+                                                                    </svg>
+                                                                </span>
+                                                                <!--end::Svg Icon-->
+                                                            </a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -668,13 +729,318 @@
                                     <!--begin::Actions-->
                                     <div class="text-center pt-15">
                                         <button type="reset" class="btn btn-white me-3"
-                                            data-kt-items-modal-action="cancel">Discard</button>
+                                            data-bs-dismiss="modal">Discard</button>
                                         <button type="submit" class="btn btn-primary" (click)="addItemStatus()"
                                             data-kt-items-modal-action="submit">
                                             <span class="indicator-label">Submit</span>
                                             <span class="indicator-progress">Please wait...
                                                 <span
                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button>
+                                    </div>
+                                    <!--end::Actions-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
+                    <!--end::Modal - Add task-->
+                    <!--begin::Modal - Add task-->
+                    <div class="modal fade" id="kt_modal_add_new_item_wizard" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header" id="kt_modal_add_item_header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Add New Item</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Scroll-->
+                                    <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_item_scroll"
+                                        data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                                        data-kt-scroll-max-height="auto"
+                                        data-kt-scroll-dependencies="#kt_modal_add_item_header"
+                                        data-kt-scroll-wrappers="#kt_modal_add_item_scroll"
+                                        data-kt-scroll-offset="300px">
+                                        <!--begin::Input group-->
+                                        <!--begin::Step 1-->
+                                        <div class="current" data-kt-stepper-element="content">
+                                            <!--begin::Wrapper-->
+                                            <div class="w-100">
+                                                <!--begin::Heading-->
+                                                <div class="pb-10 pb-lg-15">
+                                                    <!--begin::Title-->
+                                                    <h2 class="fw-bolder d-flex align-items-center text-dark">Choose
+                                                        Item Type
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="Billing is issued based on your selected account type"></i>
+                                                    </h2>
+                                                    <!--end::Title-->
+                                                    <!--begin::Notice-->
+                                                    <div class="text-gray-400 fw-bold fs-6">If you need more info,
+                                                        please check out
+                                                        <a href="#" class="link-primary fw-bolder">with the
+                                                            Administrator</a>.
+                                                    </div>
+                                                    <!--end::Notice-->
+                                                </div>
+                                                <!--end::Heading-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row">
+                                                    <!--begin::Row-->
+                                                    <div class="row">
+                                                        <!--begin::Col-->
+                                                        <div class="col-lg-6">
+                                                            <!--begin::Option-->
+                                                            <input type="radio" class="btn-check" name="account_type"
+                                                                value="personal" checked="checked"
+                                                                id="kt_create_account_form_account_type_personal" />
+                                                            <label (click)="continue('empty')"
+                                                                class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
+                                                                for="kt_create_account_form_account_type_personal">
+                                                                <!--begin::Svg Icon | path: icons/duotone/Interface/User.svg-->
+                                                                <span class="svg-icon svg-icon-3x me-5">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none">
+                                                                        <path
+                                                                            d="M17 6C17 8.76142 14.7614 11 12 11C9.23858 11 7 8.76142 7 6C7 3.23858 9.23858 1 12 1C14.7614 1 17 3.23858 17 6Z"
+                                                                            fill="#121319" />
+                                                                        <path opacity="0.25" fill-rule="evenodd"
+                                                                            clip-rule="evenodd"
+                                                                            d="M18.818 14.1248C18.2016 13.4101 17.1428 13.4469 16.3149 13.9001C15.0338 14.6013 13.5635 15 12 15C10.4365 15 8.96618 14.6013 7.68505 13.9001C6.85717 13.4469 5.79841 13.4101 5.182 14.1248C3.82222 15.7014 3 17.7547 3 20V21C3 22.1045 3.89543 23 5 23H19C20.1046 23 21 22.1045 21 21V20C21 17.7547 20.1778 15.7014 18.818 14.1248Z"
+                                                                            fill="#191213" />
+                                                                    </svg>
+                                                                </span>
+                                                                <!--end::Svg Icon-->
+                                                                <!--begin::Info-->
+                                                                <span class="d-block fw-bold text-start">
+                                                                    <span
+                                                                        class="text-dark fw-bolder d-block fs-4 mb-2">Empty
+                                                                        Item</span>
+                                                                    <span class="text-gray-400 fw-bold fs-6">Create new
+                                                                        item from scratch without data</span>
+                                                                </span>
+                                                                <!--end::Info-->
+                                                            </label>
+                                                            <!--end::Option-->
+                                                        </div>
+                                                        <!--end::Col-->
+                                                        <!--begin::Col-->
+                                                        <div class="col-lg-6">
+                                                            <!--begin::Option-->
+                                                            <input type="radio" class="btn-check" name="account_type"
+                                                                value="corporate"
+                                                                id="kt_create_account_form_account_type_corporate" />
+                                                            <label (click)="continue('template')"
+                                                                class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
+                                                                for="kt_create_account_form_account_type_corporate">
+                                                                <!--begin::Svg Icon | path: icons/duotone/Interface/Briefcase.svg-->
+                                                                <span class="svg-icon svg-icon-3x me-5">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none">
+                                                                        <path opacity="0.25"
+                                                                            d="M2 10C2 8.34315 3.34315 7 5 7H19C20.6569 7 22 8.34315 22 10V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V10Z"
+                                                                            fill="#12131A" />
+                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                            d="M9 4C8.44772 4 8 4.44772 8 5V8C8 8.55228 7.55228 9 7 9C6.44772 9 6 8.55228 6 8V5C6 3.34315 7.34315 2 9 2H15C16.6569 2 18 3.34315 18 5V8C18 8.55228 17.5523 9 17 9C16.4477 9 16 8.55228 16 8V5C16 4.44772 15.5523 4 15 4H9Z"
+                                                                            fill="#12131A" />
+                                                                    </svg>
+                                                                </span>
+                                                                <!--end::Svg Icon-->
+                                                                <!--begin::Info-->
+                                                                <span class="d-block fw-bold text-start">
+                                                                    <span
+                                                                        class="text-dark fw-bolder d-block fs-4 mb-2">Chosse
+                                                                        from Template</span>
+                                                                    <span class="text-gray-400 fw-bold fs-6">Create
+                                                                        Item form defined template</span>
+                                                                </span>
+                                                                <!--end::Info-->
+                                                            </label>
+                                                            <!--end::Option-->
+                                                        </div>
+                                                        <!--end::Col-->
+                                                    </div>
+                                                    <!--end::Row-->
+                                                </div>
+                                                <!--end::Input group-->
+                                            </div>
+                                            <!--end::Wrapper-->
+                                        </div>
+                                        <!--end::Step 1-->
+                                    </div>
+                                    <!--end::Scroll-->
+                                    <!--begin::Actions-->
+                                    <div class="text-center pt-15" *ngIf="type=='empty'">
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_item">
+                                            Continue
+                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
+                                            <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                    height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                        <rect fill="#000000" opacity="0.5"
+                                                            transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000)"
+                                                            x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                        <path
+                                                            d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                            fill="#000000" fill-rule="nonzero"
+                                                            transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                    </div>
+                                    <div class="text-center pt-15" *ngIf="type=='template'">
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_auction_templates">
+                                            Continue
+                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
+                                            <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                    height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                        <rect fill="#000000" opacity="0.5"
+                                                            transform="translate(8.500000, 12.000000) rotate(-90.000000) translate(-8.500000, -12.000000)"
+                                                            x="7.5" y="7.5" width="2" height="9" rx="1" />
+                                                        <path
+                                                            d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
+                                                            fill="#000000" fill-rule="nonzero"
+                                                            transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                    </div>
+                                    <!--end::Actions-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
+                    <!--end::Modal - Add task-->
+                    <!--begin::Modal - Add task-->
+                    <div class="modal fade" id="kt_modal_add_auction_templates" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header" id="kt_modal_add_item_header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Chosse Item Template</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Scroll-->
+                                    <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_item_scroll"
+                                        data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                                        data-kt-scroll-max-height="auto"
+                                        data-kt-scroll-dependencies="#kt_modal_add_item_header"
+                                        data-kt-scroll-wrappers="#kt_modal_add_item_scroll"
+                                        data-kt-scroll-offset="300px">
+                                        <!--begin::Input group-->
+                                        <div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid"
+                                            id="kt_modal_create_app_stepper" *ngFor="let item of templates; let i = index">
+                                            <!--begin::Aside-->
+                                            <div
+                                                class="d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px">
+                                                <div class="stepper-nav ps-lg-10">
+                                                    <div class="stepper-item" data-kt-stepper-element="nav">
+                                                        <!--begin::Line-->
+                                                        <div class="stepper-line w-40px"></div>
+                                                        <!--end::Line-->
+                                                        <!--begin::Icon-->
+                                                        <div class="stepper-icon w-40px h-40px">
+                                                            <i class="stepper-check fas fa-check"></i>
+                                                            <span class="stepper-number">{{ i + 1 }}</span>
+                                                        </div>
+                                                        <!--begin::Icon-->
+                                                        <!--begin::Label-->
+                                                        <div class="stepper-label">
+                                                            <h3 class="stepper-title">{{ item.code }}</h3>
+                                                            <div class="stepper-desc">{{ item.id | uppercase }}</div>
+                                                        </div>
+                                                        <!--begin::Label-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <!--begin:Input-->
+                                                <span class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" type="radio" name="category"
+                                                    value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked" (click)="teplateChecked(item)" />
+                                                </span>
+                                                <!--end:Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Scroll-->
+                                    <!--begin::Actions-->
+                                    <div class="text-center pt-15">
+                                        <button type="reset" class="btn btn-white me-3"
+                                            data-bs-dismiss="modal">Discard</button>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                        data-bs-toggle="modal" data-bs-target="#kt_modal_add_item"
+                                            data-kt-items-modal-action="submit">
+                                            <span class="indicator-label">Next ..</span>
                                         </button>
                                     </div>
                                     <!--end::Actions-->
@@ -709,9 +1075,6 @@
                             <th class="min-w-125px">End Date</th>
                             <th class="min-w-125px">Status</th>
                             <th class="min-w-125px">buy price</th>
-                            <th class="min-w-125px">Owner</th>
-                            <th class="min-w-125px">Category</th>
-                            <th class="min-w-125px">Auction</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -730,7 +1093,8 @@
                             <!--end::Checkbox-->
                             <!--begin::item=-->
                             <td>
-                                <div class="badge badge-light fw-bolder">{{ item.code }}</div></td>
+                                <div class="badge badge-light fw-bolder">{{ item.code }}</div>
+                            </td>
                             <!--end::item=-->
                             <!--begin::start_date-->
                             <td>{{ item.start_date | date: "dd MMM yyyy" }}</td>
@@ -748,41 +1112,40 @@
                             <!--begin::end_date-->
                             <td>{{ item.buy_price | currency:'OMR':'symbol':'4.2-2'}}</td>
                             <!--end::end_date-->
-                            <!--begin::owner_id=-->
-                            <td>
-                                <div class="badge badge-light fw-bolder">{{ item.owner_id }}</div>
-                            </td>
-                            <!--end::owner_id=-->
-                            <!--begin::group_id=-->
-                            <td>
-                                <div class="badge badge-light fw-bolder">{{ item.category_id }}</div>
-                            </td>
-                            <!--end::group_id=-->
-                            <!--begin::group_id=-->
-                            <td>
-                                <div class="badge badge-light fw-bolder">{{ item.auction_id }}</div>
-                            </td>
-                            <!--end::group_id=-->
                             <!--begin::Action=-->
                             <td class="text-end">
                                 <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)"></path>
-                                            <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <path
+                                                d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z"
+                                                fill="#000000" fill-rule="nonzero"
+                                                transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)">
+                                            </path>
+                                            <path
+                                                d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z"
+                                                fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a (click)="deleteItem(item.id)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <a (click)="deleteItem(item.id)"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <rect x="0" y="0" width="24" height="24"></rect>
-                                                <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
+                                                <path
+                                                    d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
+                                                    fill="#000000" fill-rule="nonzero"></path>
+                                                <path
+                                                    d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                                    fill="#000000" opacity="0.3"></path>
                                             </g>
                                         </svg>
                                     </span>

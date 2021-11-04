@@ -80,8 +80,7 @@
                                         class="btn btn-white btn-active-light-primary fw-bold me-2 px-6"
                                         data-kt-menu-dismiss="true" data-kt-item-table-filter="reset">Reset</button>
                                     <button type="submit" class="btn btn-primary fw-bold px-6"
-                                        data-kt-menu-dismiss="true"
-                                        data-kt-item-table-filter="filter">Apply</button>
+                                        data-kt-menu-dismiss="true" data-kt-item-table-filter="filter">Apply</button>
                                 </div>
                                 <!--end::Actions-->
                             </div>
@@ -154,8 +153,7 @@
                         <div class="fw-bolder me-5">
                             <span class="me-2" data-kt-item-table-select="selected_count"></span>Selected
                         </div>
-                        <button type="button" class="btn btn-danger"
-                            data-kt-item-table-select="delete_selected">Delete
+                        <button type="button" class="btn btn-danger" data-kt-item-table-select="delete_selected">Delete
                             Selected</button>
                     </div>
                     <!--end::Group actions-->
@@ -267,8 +265,7 @@
                                     <h2 class="fw-bolder">Add Template</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
-                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                        data-kt-items-modal-action="close">
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal"> 
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                         <span class="svg-icon svg-icon-1">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -300,6 +297,22 @@
                                             data-kt-scroll-dependencies="#kt_modal_add_template_header"
                                             data-kt-scroll-wrappers="#kt_modal_add_template_scroll"
                                             data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="title_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="English" [(ngModel)]="auction_template.title_en" />
+                                                <br>
+                                                <input type="text" name="title_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Arabic" [(ngModel)]="auction_template.title_ar" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
@@ -530,13 +543,48 @@
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="description_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description English"
+                                                    [(ngModel)]="auction_template.description_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="description_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description Arabic"
+                                                    [(ngModel)]="auction_template.description_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="terms_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Terms English"
+                                                    [(ngModel)]="auction_template.terms_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="terms_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Terms Arabic"
+                                                    [(ngModel)]="auction_template.terms_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
                                             <!--end::Input group-->
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-items-modal-action="cancel">Discard</button>
+                                                data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-items-modal-action="submit">
                                                 <span class="indicator-label">Submit</span>
@@ -568,8 +616,7 @@
                                     <h2 class="fw-bolder">Add Category</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
-                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                        data-kt-items-modal-action="close">
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                         <span class="svg-icon svg-icon-1">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -648,9 +695,8 @@
                                             <label class="form-label required">Enabled</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input class="form-check-input" type="checkbox"
-                                                                value="{{category.enable}}"
-                                                                [(ngModel)]="category.enable" id="enable"/>
+                                            <input class="form-check-input" type="checkbox" value="{{category.enable}}"
+                                                [(ngModel)]="category.enable" id="enable" />
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -704,7 +750,7 @@
                                     <!--begin::Actions-->
                                     <div class="text-center pt-15">
                                         <button type="reset" class="btn btn-white me-3"
-                                            data-kt-items-modal-action="cancel">Discard</button>
+                                            data-bs-dismiss="modal">Discard</button>
                                         <button type="submit" class="btn btn-primary" (click)="addCategory()"
                                             data-kt-items-modal-action="submit">
                                             <span class="indicator-label">Submit</span>
@@ -740,8 +786,10 @@
                                         data-kt-check-target="#kt_table_templates .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">ID</th>
                             <th class="min-w-125px">Code</th>
+                            <th class="min-w-125px">Start Date</th>
+                            <th class="min-w-125px">End Date</th>
+                            <th class="min-w-125px">buy price</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -760,14 +808,18 @@
                             <!--end::Checkbox-->
                             <!--begin::template=-->
                             <td>
-                                <div class="badge badge-light fw-bolder">{{ template.id }}</div>
+                                <div class="badge badge-light fw-bolder">{{ template.code }}</div>
                             </td>
                             <!--end::template=-->
-                            <!--begin::template=-->
-                            <td>
-                                <div class="badge badge-success fw-bolder">{{ template.code }}</div>
-                            </td>
-                            <!--end::template=-->
+                            <!--begin::start_date-->
+                            <td>{{ template.start_date | date: "dd MMM yyyy" }}</td>
+                            <!--end::start_date-->
+                            <!--begin::end_date-->
+                            <td>{{ template.end_date | date: "dd MMM yyyy" }}</td>
+                            <!--end::end_date-->
+                            <!--begin::end_date-->
+                            <td>{{ template.buy_price | currency:'OMR':'symbol':'4.2-2'}}</td>
+                            <!--end::end_date-->
                             <!--begin::Action=-->
                             <td class="text-end">
                                 <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
