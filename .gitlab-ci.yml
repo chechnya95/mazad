@@ -34,7 +34,7 @@ build:
       - apt update
       - npm install -g @angular/cli
       - npm install
-      - ng build --prod
+      - ng build --prod --env=prod
       - echo "BUILD SUCCESSFUL"
   artifacts:
     expire_in: 1 day
