@@ -2,16 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  //server: string = "http://127.0.0.1:5000/";
-  server: string = "https://mazad-api.smartlaboman.com/";
-  api: string = "https://mazad-api.smartlaboman.com/mazad/api/v1/";
-  //api: string = "http://127.0.0.1:5000/mazad/api/v1/";
+  server: string = environment.server;
+  api: string = environment.API_URL;
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
