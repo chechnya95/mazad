@@ -18,7 +18,6 @@ export class AppComponent {
     public utility: UtilitiesService,
     private router: Router,
     private api: ApiService) {
-    utility.url = '/';
     this.email = localStorage.getItem('email');
     this.name = localStorage.getItem('name');
     if (this.name)

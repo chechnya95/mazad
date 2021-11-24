@@ -40,7 +40,8 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
+      //{ path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
       { path: 'files', component: SliderComponent, canActivate: [AuthGuardGuard] },

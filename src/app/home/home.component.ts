@@ -32,15 +32,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.getRoles();
-
     if (!localStorage.getItem('foo')) {
       localStorage.setItem('foo', 'no reload');
       window.location.reload();
-    } else {
-      localStorage.removeItem('foo');
     }
+
+    this.getRoles();
   }
 
   async getRoles() {

@@ -46,6 +46,7 @@ export class AuctionsComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
   }
 
@@ -54,6 +55,7 @@ export class AuctionsComponent implements OnInit {
   }
 
   async getAuctions() {
+    this.utility.loader = true;
     this.api.get('auctions/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -86,6 +88,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
 
+        this.utility.loader = false;
         //this.getTemplates();
       },
       async error => {

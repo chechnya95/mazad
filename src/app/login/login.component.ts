@@ -19,7 +19,11 @@ export class LoginComponent implements OnInit {
     this.utility.show = false;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (!localStorage.getItem('foo')) {
+      localStorage.removeItem('foo');
+    }
+  }
 
   login() {
     let email = '';

@@ -24,6 +24,7 @@ export class TemplatesComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
   }
 
@@ -32,10 +33,13 @@ export class TemplatesComponent implements OnInit {
   }
 
   async getTemplates() {
+    this.utility.loader = true;
     this.api.get('templates_contents/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['templates_contents'];
+
+        this.utility.loader = false;
       },
       async error => {
         alert(error);

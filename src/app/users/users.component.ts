@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
   }
 
@@ -37,6 +38,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getUsers() {
+    this.utility.loader = true;
     this.api.get('users/', this.token).subscribe(
       async data => {
         let objects: any = {
@@ -52,7 +54,9 @@ export class UsersComponent implements OnInit {
           user.avatar = user_details ? user_details['name_en'].charAt(0) : user['username'].charAt(0);
           user.name = user_details ? user_details['name_en'] : '';
         });
-        //this.list_length = this.users.length;
+
+        this.utility.loader = false;
+
         this.getRoles();
       },
       async error => {

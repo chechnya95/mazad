@@ -7,6 +7,7 @@ export class UtilitiesService {
 
   public url: any = '';
   public show: boolean = true;
+  public loader: boolean = false;
   
   constructor() { }
 }

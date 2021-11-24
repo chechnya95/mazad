@@ -26,6 +26,7 @@ export class RolesComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
   }
 
@@ -34,6 +35,7 @@ export class RolesComponent implements OnInit {
   }
 
   async getRoles() {
+    this.utility.loader = true;
     this.api.get('users/roles', this.token).subscribe(
       async data => {
         let objects: any = {
@@ -81,6 +83,8 @@ export class RolesComponent implements OnInit {
         }
         objects = data;
         this.role_permissons = objects.roles_permissions;
+
+        this.utility.loader = false;
       },
       async error => {
         alert(error);
@@ -154,7 +158,7 @@ export class RolesComponent implements OnInit {
       permission.checked = false;
     });
   }
-  
+
   editRoleClicked(id: number, name: string) {
     this.edit_role_name = name;
     this.edit_role_id = id;
