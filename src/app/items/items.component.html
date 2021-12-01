@@ -591,7 +591,28 @@
                                                     [(ngModel)]="item.terms_ar"></textarea>
                                                 <!--end::Input-->
                                             </div>
+                                            <!--end::group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
+                                                <label class="form-label">Images</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="file" class="form-control" id="images" multiple
+                                                    accept="image/*" (change)="imageChange($event)"/>
+                                                <!--end::Input-->
+                                            </div>
                                             <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
+                                                <label class="form-label">Attachments</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="file" class="form-control" id="attachments" multiple
+                                                    (change)="fileChange($event)" />
+                                                <!--end::Input-->
+                                            </div>
                                             <!--end::Input group-->
                                         </div>
                                         <!--end::Scroll-->

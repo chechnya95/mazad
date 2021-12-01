@@ -57,6 +57,9 @@ export class ItemsComponent implements OnInit {
     order: null
   }
 
+  attachemetns: any;
+  images: any;
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -150,8 +153,19 @@ export class ItemsComponent implements OnInit {
     );
   }
 
+  
+  imageChange(event) {
+    let imageList: FileList = event.target.files;
+    this.images = imageList;
+  }
+
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    this.attachemetns = fileList;
+  }
+
   OnSubmit() {
-    let body = {
+    const body = JSON.stringify({
       code: this.item.code,
       details: this.item.details,
       images: this.item.images,
@@ -178,10 +192,26 @@ export class ItemsComponent implements OnInit {
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
+    })
+
+    let formData: FormData = new FormData();
+
+    if (this.images && this.images.length > 0) {
+      for (let file of this.images) {
+        formData.append('images', file, file.name);
+      }
     }
 
+    if (this.attachemetns && this.attachemetns.length > 0) {
+      for (let file of this.attachemetns) {
+        formData.append('attachments', file, file.name);
+      }
+    }
+
+    formData.append('form', body);
+    
     if (this.item.current_price && this.item.item_status) {
-      this.api.post("items/", body, this.token).subscribe(
+      this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
           this.getItems();
         },

@@ -32,6 +32,14 @@ export class ApiService {
     return this.httpClient.post(this.api + method, JSON.stringify(body), requestOptions);
   }
 
+  post_form(method: any, body: any, token: any) {
+    const requestOptions = {
+      headers: { 'Content-Type': 'multipart/form-data', 'Accept': 'application/json', 'x-access-tokens': token }
+    };
+
+    return this.httpClient.post(this.api + method, body, {});
+  }
+
   delete(method: string, token: any) {
     const requestOptions = {
       headers: { 'Content-Type': 'application/json', 'x-access-tokens': token }
