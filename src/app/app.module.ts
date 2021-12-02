@@ -44,7 +44,7 @@ import { SettingsComponent } from './settings/settings.component';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
-      { path: 'files', component: SliderComponent, canActivate: [AuthGuardGuard] },
+      { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard] },
       { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] },
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard] },
       { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard] },
