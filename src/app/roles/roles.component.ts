@@ -64,7 +64,7 @@ export class RolesComponent implements OnInit {
         this.permissions.forEach(function (permission) {
           let split: string[] = permission.name.split(".");
           permission.obj = split[0];
-          permission.action = split[1];
+          permission.action = permission.name.replace(permission.obj+'.', '');
         });
 
         this.getRolePermissions();
