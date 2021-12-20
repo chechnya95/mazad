@@ -18,6 +18,7 @@ import { ItemsComponent } from './items/items.component';
 import { SliderComponent } from './slider/slider.component';
 import { AuctionTemplatesComponent } from './auction-templates/auction-templates.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SettingsComponent } from './settings/settings.component';
     ItemsComponent,
     SliderComponent,
     AuctionTemplatesComponent,
-    SettingsComponent
+    SettingsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { SettingsComponent } from './settings/settings.component';
       { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard] },
       { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard] }, 
       { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard] },
-      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard] }
+      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard] },
+      { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard] }
     ])
   ],
   providers: [],

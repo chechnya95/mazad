@@ -1,0 +1,76 @@
+<div class="container" dir="auto">
+    <div class="row">
+        <h1>Messages</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 table-responsive" dir="auto">
+            <table class="table table-striped"
+                [class]="">
+                <thead>
+                    <tr class="table-secondary">
+                        <th>id</th>
+                        <th>Title</th>
+                        <th>message</th>
+                        <th>type</th>
+                        <th>date</th>
+                        <th>reviewed</th>
+                        <th>User</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>notes</th>
+                        <th>review</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="messages.length == 0">
+                        <td colspan="11">no items</td>
+                    </tr>
+                    <tr *ngFor="let message of messages | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td>{{ message.id }}</td>
+                        <td>{{ message.title }}</td>
+                        <td>{{ message.message }}</td>
+                        <td>
+                            <span *ngIf="message.message_type =='payment'">Payment</span>
+                            <span *ngIf="message.message_type =='auction'">Auction</span>
+                            <span *ngIf="message.message_type =='general'">General_message</span>
+                            <span *ngIf="message.message_type =='Complain'">Complain</span>
+                            <span *ngIf="message.message_type =='account'">Account</span>
+                        </td>
+                        <td>{{ message.message_date | date:"dd/MM/yyyy hh:mm a":"+0000" }}</td>
+                        <td>
+                            <span class="badge rounded-pill bg-success" *ngIf="message.reviewed == 1">Yes</span>
+                            <span class="badge rounded-pill btn-danger" *ngIf="message.reviewed == 0">No</span>
+                        </td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.mobile }}</td>
+                        <td>{{ message.email }}</td>
+                        <td style="color: darkgreen; font-weight: bold;">{{ message.note }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="open(messageContent)">review</button>
+                        </td>
+                        <ng-template #messageContent let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">review</h4>
+                                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <label for="note">notes</label>
+                                    <textarea class="form-control" [(ngModel)]="note" id="note" cols="30"
+                                    rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark" (click)="OnReview(message.id)">Submit</button>
+                            </div>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+<!--             <ngb-pagination [collectionSize]="messages.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                [ellipses]="false" [boundaryLinks]="false"></ngb-pagination> -->
+        </div>
+    </div>
+</div>
