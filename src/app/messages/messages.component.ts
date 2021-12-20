@@ -29,7 +29,7 @@ export class MessagesComponent implements OnInit {
     this.getMessages();
   }
   getMessages() {
-    this.api.get('messages/', this.token).subscribe(
+    this.api.get('contactus/', this.token).subscribe(
       async data => {
       this.messages = JSON.parse(JSON.stringify(data)).messages;
     }, async error => {
@@ -46,7 +46,7 @@ export class MessagesComponent implements OnInit {
       note: this.note
     }
 
-    this.api.update('messages/' + id, body, this.token).subscribe(
+    this.api.update('contactus/' + id, body, this.token).subscribe(
       async data => {
       this.getMessages();
       this.modalService.dismissAll();
