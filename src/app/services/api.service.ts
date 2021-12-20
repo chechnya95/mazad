@@ -88,7 +88,7 @@ export class ApiService {
     localStorage.setItem("access_token", data['token']);
     localStorage.setItem("is_valid", 'true');
     localStorage.setItem("id", data['id']);
-    localStorage.setItem("name", user_details.name_en);
+    localStorage.setItem("name", user_details? user_details.name_en : data['email'].substr(0, data['email'].indexOf('@')));
     localStorage.setItem("email", data['email']);
 
     this.router.navigate(['login']);
