@@ -183,7 +183,7 @@ export class RolesComponent implements OnInit {
       let body = { role_id: this.edit_role_id, permission_id: permision.id }
       this.api.post("users/add-permission", body, this.token).subscribe(
         async data => {
-          //console.log('ok');
+          this.getRolePermissions();
         },
         async error => {
           alert("ERROR");
