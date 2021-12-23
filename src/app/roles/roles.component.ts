@@ -16,7 +16,7 @@ export class RolesComponent implements OnInit {
   permission_name: string = '';
   role_name: string = '';
 
-  edit_role_id: number = 0;
+  edit_role_id: string = '';
   edit_role_name: string = '';
 
   permissions_checked: any[] = [];
@@ -159,7 +159,7 @@ export class RolesComponent implements OnInit {
     });
   }
 
-  editRoleClicked(id: number, name: string) {
+  editRoleClicked(id: string, name: string) {
     this.edit_role_name = name;
     this.edit_role_id = id;
 
@@ -183,7 +183,7 @@ export class RolesComponent implements OnInit {
       let body = { role_id: this.edit_role_id, permission_id: permision.id }
       this.api.post("users/add-permission", body, this.token).subscribe(
         async data => {
-          //console.log('ok');
+          this.getRolePermissions();
         },
         async error => {
           alert("ERROR");
@@ -204,11 +204,10 @@ export class RolesComponent implements OnInit {
     }
   }
 
-  updateRole(id: number) {
+  updateRole(id: string) {
     let role_name = this.roles.find(i => i.id == id).name;
 
     if (role_name != this.edit_role_name) {
-      alert('hi')
       let body = { name: this.edit_role_name }
 
       this.api.update("users/roles/" + this.edit_role_id, body, this.token).subscribe(
