@@ -5,7 +5,7 @@
         <!--begin::Row-->
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-9">
             <!--begin::Col-->
-            <div class="col-md-4" *ngFor="let role of roles">
+            <div class="col-ms-12 col-md-6 col-md-4" *ngFor="let role of roles">
                 <!--begin::Card-->
                 <div class="card card-flush h-md-100">
                     <!--begin::Card header-->
@@ -49,8 +49,7 @@
                     <!--end::Card body-->
                     <!--begin::Card footer-->
                     <div class="card-footer flex-wrap pt-0">
-                        <a href="apps/user-management/roles/view.html"
-                            class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+                        <a class="btn btn-light btn-active-primary my-1 me-2" disabled>View Role</a>
                         <button type="button" class="btn btn-white btn-active-light-primary my-1" data-bs-toggle="modal"
                             data-bs-target="#kt_modal_update_role" (click)="editRoleClicked(role.id, role.name)">Edit
                             Role</button>
