@@ -40,7 +40,6 @@ export class FieldsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.fields = objects['fields'];
 
-        console.log(objects)
         this.utility.loader = false;
         this.get_field_types();
       },

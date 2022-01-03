@@ -1,0 +1,195 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Navbar-->
+        <app-setting-header></app-setting-header>
+        <!--end::Navbar-->
+        <!--begin::Basic info-->
+        <div class="card mb-5 mb-xl-10">
+            <!--begin::Card header-->
+            <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+                data-bs-target="#kt_account_profile_details" aria-expanded="true"
+                aria-controls="kt_account_profile_details">
+                <!--begin::Card title-->
+                <div class="card-title m-0">
+                    <h3 class="fw-bolder m-0">Forms Builder Management </h3>
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--begin::Card header-->
+            <!--begin::Content-->
+            <div id="kt_account_profile_details" class="collapse show">
+                <div class="post d-flex flex-column-fluid" id="kt_post">
+                    <!--begin::Container-->
+                    <div id="kt_content_container" class="container">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-9">
+                            <!--begin::Col-->
+                            <div class="ol-md-4" *ngFor="let form of forms">
+                                <!--begin::Card-->
+                                <div class="card h-md-100"  style="border: 1px solid #ebf0e9;">
+                                    <!--begin::Card body-->
+                                    <div class="card-body d-flex flex-center">
+                                        <!--begin::Button-->
+                                        <button type="button" class="btn btn-clear d-flex flex-column flex-center"
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_form_edit">
+                                            <!--begin::Label-->
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{ form.title.en }} <br> {{ form.title.ar }}
+                                            </div>
+                                            <!--end::Label-->
+                                        </button>
+                                        <!--begin::Button-->
+                                    </div>
+                                    <!--begin::Card body-->
+                                </div>
+                                <!--begin::Card-->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Add new card-->
+                            <div class="ol-md-4">
+                                <!--begin::Card-->
+                                <div class="card h-md-100">
+                                    <!--begin::Card body-->
+                                    <div class="card-body d-flex flex-center">
+                                        <!--begin::Button-->
+                                        <button type="button" class="btn btn-clear d-flex flex-column flex-center"
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_form">
+                                            <!--begin::Illustration-->
+                                            <img src="assets/media/illustrations/user-role.png" alt=""
+                                                class="mw-100 mh-150px mb-7" />
+                                            <!--end::Illustration-->
+                                            <!--begin::Label-->
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">Create New Form
+                                            </div>
+                                            <!--end::Label-->
+                                        </button>
+                                        <!--begin::Button-->
+                                    </div>
+                                    <!--begin::Card body-->
+                                </div>
+                                <!--begin::Card-->
+                            </div>
+                            <!--end::Add new card-->
+                        </div>
+                        <!--begin::Modal - Add role-->
+                        <div class="modal fade" id="kt_modal_add_form" tabindex="-1" aria-hidden="true">
+                            <!--begin::Modal dialog-->
+                            <div class="modal-dialog modal-dialog-centered mw-750px">
+                                <!--begin::Modal content-->
+                                <div class="modal-content">
+                                    <!--begin::Modal header-->
+                                    <div class="modal-header">
+                                        <!--begin::Modal title-->
+                                        <h2 class="fw-bolder">New Form</h2>
+                                        <!--end::Modal title-->
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                            data-bs-dismiss="modal">
+                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                    height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                        fill="#000000">
+                                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                        <rect fill="#000000" opacity="0.5"
+                                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                            x="0" y="7" width="16" height="2" rx="1" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+                                    <!--end::Modal header-->
+                                    <!--begin::Modal body-->
+                                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                            id="kt_modal_add_form_scroll" data-kt-scroll="true"
+                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                            data-kt-scroll-max-height="auto"
+                                            data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll"
+                                            data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
+                                                <label class="fs-5 fw-bolder form-label mb-2">
+                                                    <span class="required">Key</span>
+                                                </label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input class="form-control form-control-solid" name="key"
+                                                    [(ngModel)]="form.key" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Title</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="title_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Title" [(ngModel)]="form.title_en" />
+                                                <br>
+                                                <input type="text" name="title_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="العنوان" [(ngModel)]="form.title_ar" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Description</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="descr_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    [(ngModel)]="form.descr_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="descr_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    [(ngModel)]="form.descr_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                        </div>
+                                        <!--end::Scroll-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-bs-dismiss="modal">Discard</button>
+                                            <button type="submit" class="btn btn-primary" (click)="create_form()"
+                                                data-kt-roles-modal-action="submit">
+                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </div>
+                                    <!--end::Modal body-->
+                                </div>
+                                <!--end::Modal content-->
+                            </div>
+                            <!--end::Modal dialog-->
+                        </div>
+                        <!--end::Modal - Add role-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Content-->
+            <br>
+        </div>
+        <!--end::Basic info-->
+    </div>
+    <!--end::Container-->
+</div>
+<!-- spinnner element is defined with id loading -->
+<div *ngIf="this.utility.loader" class="loading"></div>
