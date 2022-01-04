@@ -13,6 +13,7 @@ export class FormFieldsComponent implements OnInit {
   fields: any[] = [];
   forms: any[] = [];
   form_fields: any[] = [];
+  form_name: any;
 
   form = {
     key: null,
@@ -21,6 +22,8 @@ export class FormFieldsComponent implements OnInit {
     descr_ar: null,
     descr_en: null
   }
+
+  form_id: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -48,10 +51,28 @@ export class FormFieldsComponent implements OnInit {
   }
 
   get_fields() {
-    this.api.get('fields/', this.token).subscribe(
+    const sub = this.api.get('fields/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.fields = objects['fields'];
+
+        this.fields.forEach(function (field) {
+          field.checked = false;
+        });
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { this.getFormFields(); });
+  }
+
+  getFormFields() {
+    this.api.get('form_fields/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.form_fields = objects['form_fields'];
       },
       async error => {
         alert(error);
@@ -75,5 +96,58 @@ export class FormFieldsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  formClicked(id: any, name: any) {
+    this.form_name = name;
+    this.form_id = id;
+
+    this.fields.forEach(function (field) {
+      field.checked = false;
+    });
+
+    for (let x = 0; x < this.fields.length; x++) {
+      for (let y = 0; y < this.form_fields.length; y++) {
+        if (this.form_fields[y].form_id == this.form_id) {
+          if (this.fields[x].id == this.form_fields[y].field_id) {
+            this.fields[x].checked = true;
+            this.fields[x].form_field_id = this.form_fields[y].id;
+          }
+        }
+      }
+    }
+  }
+
+  checkBoxChecked(field: any) {
+    if (field.checked) {
+      let body = {
+        form_id: this.form_id,
+        field_id: field.id,
+        mandatory: 0,
+        enable: 1,
+        order: 1
+      }
+
+      this.api.post("form_fields/", body, this.token).subscribe(
+        async data => {
+          this.getFormFields();
+        },
+        async error => {
+          alert("ERROR");
+          console.log(error);
+        }
+      );
+    }
+    else {
+      this.api.delete("form_fields/" + field.form_field_id, this.token).subscribe(
+        async data => {
+          // ...
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
   }
 }

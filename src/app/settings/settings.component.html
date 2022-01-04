@@ -33,7 +33,7 @@
                             <div class="col-lg-8 fv-row">
                                 <input type="number" name="duration"
                                     class="form-control form-control-lg form-control-solid" placeholder="Days"
-                                    value="5" />
+                                    [(ngModel)]="company.duraction" />
                             </div>
                             <!--end::Col-->
                         </div>
@@ -48,8 +48,8 @@
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
                                 <input type="text" name="company"
-                                    class="form-control form-control-lg form-control-solid" placeholder="Company name"
-                                    value="Mazad Oman" />
+                                    class="form-control form-control-lg form-control-solid" placeholder="SmartLab"
+                                    [(ngModel)]="company.name" />
                             </div>
                             <!--end::Col-->
                         </div>
@@ -66,7 +66,7 @@
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
                                 <input type="tel" name="phone" class="form-control form-control-lg form-control-solid"
-                                    placeholder="Phone number" value="00968 94 19 27 92" />
+                                    placeholder="00968" [(ngModel)]="company.contact" />
                             </div>
                             <!--end::Col-->
                         </div>
@@ -80,7 +80,7 @@
                             <div class="col-lg-8 fv-row">
                                 <input type="text" name="website"
                                     class="form-control form-control-lg form-control-solid"
-                                    placeholder="Company website" value="www.mazad.om" />
+                                    placeholder="info@smartlaboman.com" [(ngModel)]="company.site" />
                             </div>
                             <!--end::Col-->
                         </div>
@@ -96,10 +96,8 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <select name="country" aria-label="Select a Country" data-control="select2"
-                                    data-placeholder="Select a country..."
+                                <select name="country" [(ngModel)]="company.country"
                                     class="form-select form-select-solid form-select-lg fw-bold">
-                                    <option value="OM">Oman</option>
                                     <option data-kt-flag="flags/oman.svg" value="OM">Oman</option>
                                     <option data-kt-flag="flags/afghanistan.svg" value="AF">Afghanistan</option>
                                     <option data-kt-flag="flags/aland-islands.svg" value="AX">Aland Islands</option>
@@ -399,10 +397,8 @@
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
                                 <!--begin::Input-->
-                                <select name="language" aria-label="Select a Language" data-control="select2"
-                                    data-placeholder="Select a language..."
+                                <select name="language" [(ngModel)]="company.language"
                                     class="form-select form-select-solid form-select-lg">
-                                    <option value="ar">العربية - Arabic</option>
                                     <option data-kt-flag="flags/argentina.svg" value="ar">العربية - Arabic</option>
                                     <option data-kt-flag="flags/indonesia.svg" value="id">Bahasa Indonesia - Indonesian
                                     </option>
@@ -476,10 +472,8 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <select name="timezone" aria-label="Select a Timezone" data-control="select2"
-                                    data-placeholder="Select a timezone.."
+                                <select name="timezone" [(ngModel)]="company.zone"
                                     class="form-select form-select-solid form-select-lg">
-                                    <option value="Muscat">(GMT+04:00) Muscat</option>
                                     <option data-bs-offset="14400" value="Muscat">(GMT+04:00) Muscat</option>
                                     <option data-bs-offset="-39600" value="International Date Line West">(GMT-11:00)
                                         International Date Line West</option>
@@ -658,10 +652,8 @@
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8 fv-row">
-                                <select name="currnecy" aria-label="Select a Timezone" data-control="select2"
-                                    data-placeholder="Select a currency.."
+                                <select name="currnecy" [(ngModel)]="company.currency"
                                     class="form-select form-select-solid form-select-lg">
-                                    <option value="OMR">OMR - Omani Rial</option>
                                     <option data-kt-flag="flags/oman.svg" value="OMR">
                                         <b>OMR</b>&#160;-&#160;Omani Rial
                                     </option>
@@ -691,44 +683,12 @@
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="row mb-6">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Communication Channels</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
-                                <!--begin::Options-->
-                                <div class="d-flex align-items-center mt-3">
-                                    <!--begin::Option-->
-                                    <label class="form-check form-check-inline form-check-solid me-5">
-                                        <input class="form-check-input" name="communication[]" type="checkbox"
-                                            value="1" />
-                                        <span class="fw-bold ps-2 fs-6">Email</span>
-                                    </label>
-                                    <!--end::Option-->
-                                    <!--begin::Option-->
-                                    <label class="form-check form-check-inline form-check-solid">
-                                        <input class="form-check-input" name="communication[]" type="checkbox"
-                                            value="2" />
-                                        <span class="fw-bold ps-2 fs-6">Phone</span>
-                                    </label>
-                                    <!--end::Option-->
-                                </div>
-                                <!--end::Options-->
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-
-                        <!--end::Input group-->
                     </div>
                     <!--end::Card body-->
                     <!--begin::Actions-->
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
                         <button type="reset" class="btn btn-white btn-active-light-primary me-2">Discard</button>
-                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save
+                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit" (click)="save_settings()">Save
                             Changes</button>
                     </div>
                     <!--end::Actions-->

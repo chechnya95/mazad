@@ -27,14 +27,16 @@
                             <!--begin::Col-->
                             <div class="ol-md-4" *ngFor="let form of forms">
                                 <!--begin::Card-->
-                                <div class="card h-md-100"  style="border: 1px solid #ebf0e9;">
+                                <div class="card h-md-100" style="border: 1px solid #ebf0e9;">
                                     <!--begin::Card body-->
                                     <div class="card-body d-flex flex-center">
                                         <!--begin::Button-->
                                         <button type="button" class="btn btn-clear d-flex flex-column flex-center"
-                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_form_edit">
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_fileds_form"
+                                            (click)="formClicked(form.id, form.title.en)">
                                             <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{ form.title.en }} <br> {{ form.title.ar }}
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{
+                                                form.title.en }} <br> {{ form.title.ar }}
                                             </div>
                                             <!--end::Label-->
                                         </button>
@@ -71,7 +73,7 @@
                             </div>
                             <!--end::Add new card-->
                         </div>
-                        <!--begin::Modal - Add role-->
+                        <!--begin::Modal - Add form-->
                         <div class="modal fade" id="kt_modal_add_form" tabindex="-1" aria-hidden="true">
                             <!--begin::Modal dialog-->
                             <div class="modal-dialog modal-dialog-centered mw-750px">
@@ -180,7 +182,121 @@
                             </div>
                             <!--end::Modal dialog-->
                         </div>
-                        <!--end::Modal - Add role-->
+                        <!--end::Modal - Add form-->
+                        <!--begin::Modal - Add fields-->
+                        <div class="modal fade" id="kt_modal_fileds_form" tabindex="-1" aria-hidden="true">
+                            <!--begin::Modal dialog-->
+                            <div class="modal-dialog modal-dialog-centered mw-750px">
+                                <!--begin::Modal content-->
+                                <div class="modal-content">
+                                    <!--begin::Modal header-->
+                                    <div class="modal-header">
+                                        <!--begin::Modal title-->
+                                        <h2 class="fw-bolder">Select Fields for {{ form_name }} </h2>
+                                        <!--end::Modal title-->
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                            data-bs-dismiss="modal">
+                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                            <span class="svg-icon svg-icon-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                    height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                        fill="#000000">
+                                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                        <rect fill="#000000" opacity="0.5"
+                                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                            x="0" y="7" width="16" height="2" rx="1" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+                                    <!--end::Modal header-->
+                                    <!--begin::Modal body-->
+                                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                            id="kt_modal_add_form_scroll" data-kt-scroll="true"
+                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                            data-kt-scroll-max-height="auto"
+                                            data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll"
+                                            data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <!--begin::Permissions-->
+                                            <div class="fv-row">
+                                                <!--begin::Label-->
+                                                <label class="fs-5 fw-bolder form-label mb-2">Form Fields</label>
+                                                <!--end::Label-->
+                                                <!--begin::Table wrapper-->
+                                                <div class="table-responsive">
+                                                    <!--begin::Table-->
+                                                    <table class="table align-middle table-row-dashed fs-6 gy-5">
+                                                        <!--begin::Table body-->
+                                                        <tbody class="text-gray-600 fw-bold">
+                                                            <!--begin::Table row-->
+                                                            <tr *ngFor="let field of fields">
+                                                                <!--begin::Options-->
+                                                                <td>
+                                                                    <!--begin::Wrapper-->
+                                                                    <div class="d-flex">
+                                                                        <!--begin::Checkbox-->
+                                                                        <label
+                                                                            class="form-check form-check-custom form-check-solid me-9">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox"
+                                                                                value="{{field.id}}"
+                                                                                [(ngModel)]="field.checked"
+                                                                                id="field_id"
+                                                                                (change)="checkBoxChecked(field)" />
+                                                                        </label>
+                                                                        <!--end::Checkbox-->
+                                                                    </div>
+                                                                    <!--end::Wrapper-->
+                                                                </td>
+                                                                <!--end::Options-->
+                                                                <!--begin::Label-->
+                                                                <td class="text-gray-800">{{ field.field_type }}</td>
+                                                                <td class="text-gray-800">{{ field.title.ar}}</td>
+                                                                <td class="text-gray-800">{{ field.title.en}}</td>
+                                                                <!--end::Label-->
+                                                            </tr>
+                                                            <!--end::Table row-->
+                                                        </tbody>
+                                                        <!--end::Table body-->
+                                                    </table>
+                                                    <!--end::Table-->
+                                                </div>
+                                                <!--end::Table wrapper-->
+                                            </div>
+                                            <!--end::Permissions-->
+                                        </div>
+                                        <!--end::Scroll-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-bs-dismiss="modal">Discard</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                data-kt-roles-modal-action="submit">
+                                                <span class="indicator-label">Ok</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </div>
+                                    <!--end::Modal body-->
+                                </div>
+                                <!--end::Modal content-->
+                            </div>
+                            <!--end::Modal dialog-->
+                        </div>
+                        <!--end::Modal - Add fields-->
                     </div>
                 </div>
             </div>
