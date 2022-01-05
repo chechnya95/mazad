@@ -10,48 +10,66 @@ import { UtilitiesService } from '../services/utilities.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  
-  token: any;
-  page = 1;
-  pageSize = 10;
 
-  sent: boolean = false;
+  token: any;
   messages: any[] = [];
 
   note: string = '';
+  message_id: any;
 
   constructor(private api: ApiService,
-    public utlity: UtilitiesService,
+    public utility: UtilitiesService,
     private router: Router,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) {
+    this.utility.show = true;
+    this.utility.loader = false;
+    this.token = localStorage.getItem('access_token');
+  }
 
   ngOnInit(): void {
     this.getMessages();
   }
   getMessages() {
-    this.api.get('contactus/', this.token).subscribe(
+    this.utility.loader = true;
+    const sub = this.api.get('contactus/', this.token).subscribe(
       async data => {
-      this.messages = JSON.parse(JSON.stringify(data)).messages;
-    }, async error => {
-      console.log(error);
-    })
+        let objects = JSON.parse(JSON.stringify(data));
+        this.messages = objects['contactus'];
+      },
+      async error => {
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.utility.loader = false; });
   }
 
-  open(content: any) {
-    this.modalService.open(content);
-  }
-
-  OnReview(id: number) {
-    let body = {
-      note: this.note
+  on_delete(id: any) {
+    if (confirm("Delete this Message?")) {
+      this.api.delete("contactus/" + id, this.token).subscribe(
+        async data => {
+          this.getMessages();
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
     }
+  }
 
-    this.api.update('contactus/' + id, body, this.token).subscribe(
-      async data => {
-      this.getMessages();
-      this.modalService.dismissAll();
-    }, async error => {
-      console.log(error);
-    })
+  on_edit_clicked(id: any) {
+    this.message_id = id;
+  }
+
+  on_review(id: any) {
+    let body = { note: this.note };
+
+    const sub = this.api.update('contactus/' + id, body, this.token).subscribe(
+      async data => { },
+      async errr => { console.log(errr); }
+    );
+
+    sub.add(() => { this.getMessages(); });
   }
 }
