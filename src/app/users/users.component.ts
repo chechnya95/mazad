@@ -21,7 +21,23 @@ export class UsersComponent implements OnInit {
     status: 0
   }
 
+  edit_user_id: any;
+  edit_user = {
+    email: null,
+    password: null,
+    phone: null,
+    role: null,
+    role_id: null,
+    status: 0
+  }
+
   user_details = {
+    name_ar: null,
+    name_en: null,
+    id_card_number: null
+  }
+
+  edit_user_details = {
     name_ar: null,
     name_en: null,
     id_card_number: null
@@ -115,6 +131,50 @@ export class UsersComponent implements OnInit {
   deleteUser(id: number) {
     if (confirm("Delete this User?")) {
       this.api.delete("users/" + id, this.token).subscribe(
+        async data => {
+          this.getUsers();
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  editUserClicked(user: any) {
+    this.edit_user = user;
+    this.edit_user_id = user.id;
+
+    if (this.edit_user['user_details'])
+      this.edit_user_details = JSON.parse(this.edit_user['user_details']);
+
+    this.edit_user.status = user.is_active == true ? 1 : 0;
+    this.edit_user.role_id = this.roles.find(i => i.name === user.role).id;
+  }
+
+  OnUpdate(id: any) {
+    let role = this.roles.find(i => i.id == this.edit_user.role_id);
+    let body = {
+      role: role.name,
+      user_details: JSON.stringify(this.edit_user_details),
+      status: this.edit_user.status
+    }
+
+    const sub = this.api.update('users/admin/' + id, body, this.token).subscribe(
+      async data => { },
+      async errr => { console.log(errr); }
+    );
+
+    sub.add(() => { this.getUsers(); });
+  }
+
+  disableUser(id: any, is_active: any) {
+    let body = { active: (is_active - 1) * (-1) }
+    let status = is_active == 0 ? 'Enable' : 'Disable';
+
+    if (confirm(status + " this User?")) {
+      this.api.update("users/disable/" + id, body, this.token).subscribe(
         async data => {
           this.getUsers();
         },

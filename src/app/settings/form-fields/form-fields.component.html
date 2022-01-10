@@ -36,7 +36,7 @@
                                             (click)="formClicked(form.id, form.title.en)">
                                             <!--begin::Label-->
                                             <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{
-                                                form.title.en }} <br> {{ form.title.ar }}
+                                                form.key }} <br>{{ form.title.en }} <br> {{ form.title.ar }}
                                             </div>
                                             <!--end::Label-->
                                         </button>
@@ -248,8 +248,7 @@
                                                                         <label
                                                                             class="form-check form-check-custom form-check-solid me-9">
                                                                             <input class="form-check-input"
-                                                                                type="checkbox"
-                                                                                value="{{field.id}}"
+                                                                                type="checkbox" value="{{field.id}}"
                                                                                 [(ngModel)]="field.checked"
                                                                                 id="field_id"
                                                                                 (change)="checkBoxChecked(field)" />

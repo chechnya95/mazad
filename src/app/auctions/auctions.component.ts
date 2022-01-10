@@ -39,11 +39,6 @@ export class AuctionsComponent implements OnInit {
     terms_ar: null
   }
 
-  auction_s = {
-    name: null,
-    order: null
-  }
-
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -153,34 +148,5 @@ export class AuctionsComponent implements OnInit {
         }
       );
     }
-  }
-
-  addAuctionStatus() {
-    let body = {
-      name: this.auction_s.name,
-      order: this.auction_s.order
-    }
-
-    this.api.post("auctions/auction_status", body, this.token).subscribe(
-      async data => {
-        this.getAuctionStatus();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
-  }
-
-  deleteStatus(name: string) {
-    this.api.delete("auctions/auction_status/" + name, this.token).subscribe(
-      async data => {
-        this.getAuctionStatus();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
   }
 }

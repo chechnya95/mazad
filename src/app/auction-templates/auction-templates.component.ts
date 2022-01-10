@@ -171,35 +171,4 @@ export class AuctionTemplatesComponent implements OnInit {
       );
     }
   }
-
-  addCategory() {
-    let body = {
-      order: this.category.order,
-      enable: this.category.enable,
-      name: { 'en': this.category.name_en, 'ar': this.category.name_ar },
-      content: { 'en': this.category.content_en, 'ar': this.category.content_ar },
-    }
-
-    this.api.post("categories/", body, this.token).subscribe(
-      async data => {
-        this.getCategories();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
-  }
-
-  deleteCategory(id: number) {
-    this.api.delete("categories/" + id, this.token).subscribe(
-      async data => {
-        this.getCategories();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
-  }
 }

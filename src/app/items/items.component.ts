@@ -240,35 +240,6 @@ export class ItemsComponent implements OnInit {
     }
   }
 
-  addItemStatus() {
-    let body = {
-      name: this.item_s.name,
-      order: this.item_s.order
-    }
-
-    this.api.post("items/item_status", body, this.token).subscribe(
-      async data => {
-        this.getItemstatus();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
-  }
-
-  deleteStatus(name: string) {
-    this.api.delete("items/item_status/" + name, this.token).subscribe(
-      async data => {
-        this.getItemstatus();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
-  }
-
   continue(type: string) {
     this.type = type;
   }

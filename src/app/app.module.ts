@@ -23,6 +23,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { FieldsComponent } from './settings/fields/fields.component';
 import { SettingHeaderComponent } from './settings/setting-header/setting-header.component';
 import { FormFieldsComponent } from './settings/form-fields/form-fields.component';
+import { AuctionSettingsComponent } from './settings/auction-settings/auction-settings.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormFieldsComponent } from './settings/form-fields/form-fields.componen
     MessagesComponent,
     FieldsComponent,
     SettingHeaderComponent,
-    FormFieldsComponent
+    FormFieldsComponent,
+    AuctionSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { FormFieldsComponent } from './settings/form-fields/form-fields.componen
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard] },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard] },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard] }
+      { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard] },
+      { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard] }
     ])
   ],
   providers: [],
