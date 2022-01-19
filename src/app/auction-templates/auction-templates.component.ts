@@ -14,6 +14,7 @@ export class AuctionTemplatesComponent implements OnInit {
   auctions: any[] = [];
   categories: any[] = [];
   owners: any[] = [];
+  fields: any[] = [];
 
   auction_template = {
     code: null,
@@ -54,6 +55,9 @@ export class AuctionTemplatesComponent implements OnInit {
     order: null,
     enable: 1
   }
+
+  item_details = {};
+  items = [];
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -119,9 +123,10 @@ export class AuctionTemplatesComponent implements OnInit {
   }
 
   OnSubmit() {
+    //console.log(this.item_details);
     let body = {
       code: this.auction_template.code,
-      details: this.auction_template.details,
+      details: this.item_details,
       images: this.auction_template.images,
       owner_code: this.auction_template.owner_code,
       attachments: this.auction_template.attachments,
@@ -156,6 +161,29 @@ export class AuctionTemplatesComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  getForm() {
+    let cat_id = this.auction_template.category_id;
+    let form_id = null;
+    if (cat_id)
+      form_id = this.categories.find(i => i.id === cat_id).form_id;
+
+    if (form_id) {
+      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
+        async data => {
+          let objects = JSON.parse(JSON.stringify(data))
+          this.fields = objects['form_field'];
+          
+          this.fields.forEach( field => {
+            this.items.push({name: field.title.en});
+          });
+        },
+        async error => {
+          alert(error);
+        }
+      );
+    }
   }
 
   deleteTemplate(id: any) {

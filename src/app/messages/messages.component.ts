@@ -18,9 +18,7 @@ export class MessagesComponent implements OnInit {
   message_id: any;
 
   constructor(private api: ApiService,
-    public utility: UtilitiesService,
-    private router: Router,
-    private modalService: NgbModal) {
+    public utility: UtilitiesService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
@@ -35,6 +33,8 @@ export class MessagesComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.messages = objects['contactus'];
+
+        console.log(objects)
       },
       async error => {
         console.log(error);

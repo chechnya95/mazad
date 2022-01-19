@@ -951,6 +951,9 @@
                             <th class="min-w-125px">End Date</th>
                             <th class="min-w-125px">Status</th>
                             <th class="min-w-125px">buy price</th>
+                            <th class="min-w-125px">minimum bid</th>
+                            <th class="min-w-125px">acceptable price</th>
+                            <th class="min-w-125px">current price</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -987,6 +990,15 @@
                             <!--end::item_status=-->
                             <!--begin::end_date-->
                             <td>{{ item.buy_price | currency:'OMR':'symbol':'4.2-2'}}</td>
+                            <!--end::end_date-->
+                            <!--begin::end_date-->
+                            <td>{{ item.min_bid | currency:'OMR':'symbol':'4.2-2'}}</td>
+                            <!--end::end_date-->
+                            <!--begin::end_date-->
+                            <td>{{ item.acceptable_price | currency:'OMR':'symbol':'4.2-2'}}</td>
+                            <!--end::end_date-->
+                            <!--begin::end_date-->
+                            <td>{{ item.current_price | currency:'OMR':'symbol':'4.2-2'}}</td>
                             <!--end::end_date-->
                             <!--begin::Action=-->
                             <td class="text-end">

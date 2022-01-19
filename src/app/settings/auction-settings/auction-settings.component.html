@@ -471,6 +471,7 @@
                                                             <th>Content</th>
                                                             <th>Order</th>
                                                             <th>Enabled</th>
+                                                            <th>Form</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -480,6 +481,7 @@
                                                             <td>{{ category.content.ar }} {{ category.content.en }}</td>
                                                             <td>{{ category.order }}</td>
                                                             <td>{{ category.enable }}</td>
+                                                            <td>{{ category.form_key }}</td>
                                                             <td><a (click)="deleteCategory(category.id)"
                                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
