@@ -199,4 +199,8 @@ export class AuctionTemplatesComponent implements OnInit {
       );
     }
   }
+
+  fileChange(event: any) {
+
+  }
 }

@@ -636,27 +636,75 @@
                                             data-kt-scroll-offset="300px">
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7" *ngFor="let field of fields; let i = index;">
-                                                <!--begin::Label--> 
-                                                <label class="fw-bold fs-6 mb-2" [class]="field.mandatory? 'required' : ''">{{ field.title.en }}</label>
+                                                <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2"
+                                                    [class]="field.mandatory? 'required' : ''">{{ field.title.en
+                                                    }}</label>
                                                 <div *ngIf="field.field_type=='Text'">
-                                                    <input type="text" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="{{ field.value.en }}" [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]" /> <br>
-                                                    <input type="text" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="{{ field.value.ar }}" [(ngModel)]="item_details[field.title.ar]" name="item_details[{{field.title.ar}}]" />
-                                                </div> 
+                                                    <input type="text"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" /> <br>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.ar }}"
+                                                        [(ngModel)]="item_details[field.title.ar]"
+                                                        name="item_details[{{field.title.ar}}]" />
+                                                </div>
                                                 <div *ngIf="field.field_type=='TextArea'">
                                                     <textarea cols="20" rows="5"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="{{ field.value.en }}" [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]"></textarea>
-                                                <br>
-                                                <textarea cols="20" rows="5"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="{{ field.value.ar }}" [(ngModel)]="item_details[field.title.ar]" name="item_details[{{field.title.ar}}]"></textarea>
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]"></textarea>
+                                                    <br>
+                                                    <textarea cols="20" rows="5"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.ar }}"
+                                                        [(ngModel)]="item_details[field.title.ar]"
+                                                        name="item_details[{{field.title.ar}}]"></textarea>
                                                 </div>
                                                 <div *ngIf="field.field_type=='Number'">
-                                                    <input type="number" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="{{ field.value.en }}" [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]" /> <br>
-                                                </div>  
+                                                    <input type="number"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" />
+                                                </div>
                                                 <div *ngIf="field.field_type=='Date'">
-                                                    <input type="date" class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]"/> <br>
-                                                </div>                                               
+                                                    <input type="date"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Radio'">
+                                                    <input type="radio"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]"
+                                                        value="{{ field.value.en }}" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Checkbox'">
+                                                    <input type="checkbox"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]"
+                                                        value="{{ field.value.en }}" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Select'">
+                                                    <select class="form-select form-select-lg form-select-solid"
+                                                        [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]">
+                                                        <option value="values">Values</option>
+                                                    </select>
+                                                </div>
+                                                <div *ngIf="field.field_type=='File'">
+                                                    <input type="file" class="form-control" id="files" multiple
+                                                    (change)="fileChange($event)" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Html'">
+                                                    Html content ..
+                                                </div>
                                                 <!--end::Label-->
                                             </div>
                                             <!--end::Input group-->
