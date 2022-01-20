@@ -56,8 +56,7 @@ export class AuctionTemplatesComponent implements OnInit {
     enable: 1
   }
 
-  item_details = {};
-  items = [];
+  item_details: any = {};
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -122,8 +121,45 @@ export class AuctionTemplatesComponent implements OnInit {
     );
   }
 
+  getForm() {
+    let cat_id = this.auction_template.category_id;
+    let form_id = null;
+    if (cat_id)
+      form_id = this.categories.find(i => i.id === cat_id).form_id;
+
+    if (form_id) {
+      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
+        async data => {
+          let objects = JSON.parse(JSON.stringify(data))
+          this.fields = objects['form_field'];
+
+          for (let i = 0; i < this.fields.length; i++) {
+            if (['radio', 'Checkbox', 'Select'].includes(this.fields[i].field_type)) {
+              this.fields[i].values = this.fields[i].value.en.split(';');
+            }
+          }
+        },
+        async error => {
+          alert(error);
+        }
+      );
+    }
+  }
+
+  onCheckBoxClicked(title: any, value: any) {
+    if (!this.item_details[title]) {
+      let values = [];
+      values.push(value);
+      this.item_details[title] = values;
+    }
+    else {
+      let name: any[] = this.item_details[title];
+      name.push(value);
+      this.item_details[title] = name;
+    }
+  }
+
   OnSubmit() {
-    //console.log(this.item_details);
     let body = {
       code: this.auction_template.code,
       details: this.item_details,
@@ -154,6 +190,7 @@ export class AuctionTemplatesComponent implements OnInit {
 
     this.api.post("auction_templates/", body, this.token).subscribe(
       async data => {
+        this.item_details = [];
         this.getTemplates();
       },
       async error => {
@@ -161,29 +198,6 @@ export class AuctionTemplatesComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  getForm() {
-    let cat_id = this.auction_template.category_id;
-    let form_id = null;
-    if (cat_id)
-      form_id = this.categories.find(i => i.id === cat_id).form_id;
-
-    if (form_id) {
-      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
-        async data => {
-          let objects = JSON.parse(JSON.stringify(data))
-          this.fields = objects['form_field'];
-          
-          this.fields.forEach( field => {
-            this.items.push({name: field.title.en});
-          });
-        },
-        async error => {
-          alert(error);
-        }
-      );
-    }
   }
 
   deleteTemplate(id: any) {

@@ -678,24 +678,28 @@
                                                         [(ngModel)]="item_details[field.title.en]"
                                                         name="item_details[{{field.title.en}}]" />
                                                 </div>
-                                                <div *ngIf="field.field_type=='Radio'">
-                                                    <input type="radio"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                <div *ngIf="field.field_type=='radio'">
+                                                    <div *ngFor="let value of field.values" class="form-check form-check-inline">
+                                                        <input type="radio"
+                                                        class="form-check-input"
                                                         [(ngModel)]="item_details[field.title.en]"
                                                         name="item_details[{{field.title.en}}]"
-                                                        value="{{ field.value.en }}" />
+                                                        value="{{ value }}" />
+                                                        <label class="form-label px-6">{{ value }}</label>
+                                                    </div>
                                                 </div>
                                                 <div *ngIf="field.field_type=='Checkbox'">
-                                                    <input type="checkbox"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="item_details[field.title.en]"
-                                                        name="item_details[{{field.title.en}}]"
-                                                        value="{{ field.value.en }}" />
+                                                    <div *ngFor="let value of field.values" class="form-check form-check-inline">
+                                                        <input type="checkbox"
+                                                        class="form-check-input"
+                                                        value="" (click)="onCheckBoxClicked(field.title.en, value)" />
+                                                        <label class="form-label px-6">{{ value }}</label>
+                                                    </div>
                                                 </div>
                                                 <div *ngIf="field.field_type=='Select'">
                                                     <select class="form-select form-select-lg form-select-solid"
                                                         [(ngModel)]="item_details[field.title.en]" name="item_details[{{field.title.en}}]">
-                                                        <option value="values">Values</option>
+                                                        <option *ngFor="let value of field.values" (value)="value">{{ value }}</option>
                                                     </select>
                                                 </div>
                                                 <div *ngIf="field.field_type=='File'">

@@ -15,6 +15,7 @@ export class ItemsComponent implements OnInit {
   categories: any[] = [];
   owners: any[] = [];
   item_status: any[] = [];
+  fields: any[] = [];
 
   templates: any[] = [];
 
@@ -59,6 +60,7 @@ export class ItemsComponent implements OnInit {
 
   attachemetns: any;
   images: any;
+  item_details: any = {};
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -152,7 +154,6 @@ export class ItemsComponent implements OnInit {
       }
     );
   }
-
   
   imageChange(event) {
     let imageList: FileList = event.target.files;
@@ -164,10 +165,48 @@ export class ItemsComponent implements OnInit {
     this.attachemetns = fileList;
   }
 
+  getForm() {
+    let cat_id = this.item.category_id;
+    let form_id = null;
+    if (cat_id)
+      form_id = this.categories.find(i => i.id === cat_id).form_id;
+
+    if (form_id) {
+      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
+        async data => {
+          let objects = JSON.parse(JSON.stringify(data))
+          this.fields = objects['form_field'];
+
+          for (let i = 0; i < this.fields.length; i++) {
+            if (['radio', 'Checkbox', 'Select'].includes(this.fields[i].field_type)) {
+              this.fields[i].values = this.fields[i].value.en.split(';');
+            }
+          }
+        },
+        async error => {
+          alert(error);
+        }
+      );
+    }
+  }
+
+  onCheckBoxClicked(title: any, value: any) {
+    if (!this.item_details[title]) {
+      let values = [];
+      values.push(value);
+      this.item_details[title] = values;
+    }
+    else {
+      let name: any[] = this.item_details[title];
+      name.push(value);
+      this.item_details[title] = name;
+    }
+  }
+
   OnSubmit() {
     const body = JSON.stringify({
       code: this.item.code,
-      details: this.item.details,
+      details: this.item_details,
       images: this.item.images,
       owner_code: this.item.owner_code,
       attachments: this.item.attachments,
@@ -213,6 +252,7 @@ export class ItemsComponent implements OnInit {
     if (this.item.current_price && this.item.item_status) {
       this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
+          this.item_details = [];
           this.getItems();
         },
         async error => {
@@ -295,5 +335,7 @@ export class ItemsComponent implements OnInit {
       mins_2 = '0' + mins_2;
 
     this.item.end_date = end_date.getFullYear() + '-' + month_2 + '-' + day_2 + 'T' + hour_2 + ':' + mins_2;
+
+    this.item_details = template.details;
   }
 }

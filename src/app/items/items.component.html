@@ -566,13 +566,11 @@
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="terms_en"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Terms English"
-                                                    [(ngModel)]="item.terms_en"></textarea>
+                                                    placeholder="Terms English" [(ngModel)]="item.terms_en"></textarea>
                                                 <br>
                                                 <textarea cols="20" rows="5" name="terms_ar"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Terms Arabic"
-                                                    [(ngModel)]="item.terms_ar"></textarea>
+                                                    placeholder="Terms Arabic" [(ngModel)]="item.terms_ar"></textarea>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::group-->
@@ -583,7 +581,7 @@
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="file" class="form-control" id="images" multiple
-                                                    accept="image/*" (change)="imageChange($event)"/>
+                                                    accept="image/*" (change)="imageChange($event)" />
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -604,8 +602,159 @@
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">Discard</button>
-                                            <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
+                                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#kt_modal_add_template_details" (click)="getForm()"
                                                 data-kt-items-modal-action="submit">
+                                                <span class="indicator-label">Next</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
+                    <!--end::Modal - Add task-->
+
+                    <!--begin::Modal - Add Item Details-->
+                    <div class="modal fade" id="kt_modal_add_template_details" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header" id="kt_modal_add_template_header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Item Details</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Form-->
+                                    <form id="kt_modal_add_template_form" class="form" action="#">
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                            id="kt_modal_add_template_scroll" data-kt-scroll="true"
+                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                            data-kt-scroll-max-height="auto"
+                                            data-kt-scroll-dependencies="#kt_modal_add_template_header"
+                                            data-kt-scroll-wrappers="#kt_modal_add_template_scroll"
+                                            data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7" *ngFor="let field of fields; let i = index;">
+                                                <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2"
+                                                    [class]="field.mandatory? 'required' : ''">{{ field.title.en
+                                                    }}</label>
+                                                <div *ngIf="field.field_type=='Text'">
+                                                    <input type="text"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" /> <br>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.ar }}"
+                                                        [(ngModel)]="item_details[field.title.ar]"
+                                                        name="item_details[{{field.title.ar}}]" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='TextArea'">
+                                                    <textarea cols="20" rows="5"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]"></textarea>
+                                                    <br>
+                                                    <textarea cols="20" rows="5"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.ar }}"
+                                                        [(ngModel)]="item_details[field.title.ar]"
+                                                        name="item_details[{{field.title.ar}}]"></textarea>
+                                                </div>
+                                                <div *ngIf="field.field_type=='Number'">
+                                                    <input type="number"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="{{ field.value.en }}"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Date'">
+                                                    <input type="date"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='radio'">
+                                                    <div *ngFor="let value of field.values"
+                                                        class="form-check form-check-inline">
+                                                        <input type="radio" class="form-check-input"
+                                                            [(ngModel)]="item_details[field.title.en]"
+                                                            name="item_details[{{field.title.en}}]"
+                                                            value="{{ value }}" />
+                                                        <label class="form-label px-6">{{ value }}</label>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="field.field_type=='Checkbox'">
+                                                    <div *ngFor="let value of field.values"
+                                                        class="form-check form-check-inline">
+                                                        <input type="checkbox" class="form-check-input" value=""
+                                                            (click)="onCheckBoxClicked(field.title.en, value)" />
+                                                        <label class="form-label px-6">{{ value }}</label>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="field.field_type=='Select'">
+                                                    <select class="form-select form-select-lg form-select-solid"
+                                                        [(ngModel)]="item_details[field.title.en]"
+                                                        name="item_details[{{field.title.en}}]">
+                                                        <option *ngFor="let value of field.values" (value)="value">{{
+                                                            value }}</option>
+                                                    </select>
+                                                </div>
+                                                <div *ngIf="field.field_type=='File'">
+                                                    <input type="file" class="form-control" id="files" multiple
+                                                        (change)="fileChange($event)" />
+                                                </div>
+                                                <div *ngIf="field.field_type=='Html'">
+                                                    Html content ..
+                                                </div>
+                                                <!--end::Label-->
+                                            </div>
+                                            <!--end::Input group-->
+                                        </div>
+                                        <!--end::Scroll-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-bs-dismiss="modal">Back</button>
+                                            <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
+                                                data-bs-dismiss="modal" data-kt-items-modal-action="submit">
                                                 <span class="indicator-label">Submit</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
@@ -623,6 +772,7 @@
                         <!--end::Modal dialog-->
                     </div>
                     <!--end::Modal - Add task-->
+
                     <!--begin::Modal - Add task-->
                     <div class="modal fade" id="kt_modal_add_new_item_wizard" tabindex="-1" aria-hidden="true">
                         <!--begin::Modal dialog-->
@@ -874,7 +1024,8 @@
                                         data-kt-scroll-offset="300px">
                                         <!--begin::Input group-->
                                         <div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid"
-                                            id="kt_modal_create_app_stepper" *ngFor="let item of templates; let i = index">
+                                            id="kt_modal_create_app_stepper"
+                                            *ngFor="let item of templates; let i = index">
                                             <!--begin::Aside-->
                                             <div
                                                 class="d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px">
@@ -902,7 +1053,8 @@
                                                 <!--begin:Input-->
                                                 <span class="form-check form-check-custom form-check-solid">
                                                     <input class="form-check-input" type="radio" name="category"
-                                                    value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked" (click)="teplateChecked(item)" />
+                                                        value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked"
+                                                        (click)="teplateChecked(item)" />
                                                 </span>
                                                 <!--end:Input-->
                                             </div>
@@ -914,7 +1066,7 @@
                                         <button type="reset" class="btn btn-white me-3"
                                             data-bs-dismiss="modal">Discard</button>
                                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
-                                        data-bs-toggle="modal" data-bs-target="#kt_modal_add_item"
+                                            data-bs-toggle="modal" data-bs-target="#kt_modal_add_item"
                                             data-kt-items-modal-action="submit">
                                             <span class="indicator-label">Next ..</span>
                                         </button>
