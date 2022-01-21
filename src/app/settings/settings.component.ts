@@ -12,6 +12,26 @@ export class SettingsComponent implements OnInit {
   token: any;
   category: string = 'company';
 
+  paymet_types: any[] = [];
+  gateways: any[] = [];
+
+  payment_config = {
+    name: null,
+    payment_gateway: null,
+    fee: null,
+    fee_cap: null,
+    limit: null,
+    is_default: true,
+    url: null,
+    access_key: null,
+    secret_key: null,
+    merchant_key1: null,
+    merchant_key2: null,
+    merchant_key3: null,
+    merchant_key4: null,
+    merchant_key5: null
+  }
+
   update: boolean = false;
   company = {
     duraction: null,
@@ -42,6 +62,22 @@ export class SettingsComponent implements OnInit {
 
         if (setting) { this.company = setting; this.update = true; }
         else { this.update = false; }
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { this.getGateways(); })
+  }
+
+  getGateways() {
+    const sub = this.api.get('payments/payment_gateway/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.gateways = objects['gateways'];
+
+        console.log(this.gateways)
       },
       async error => {
         alert(error);

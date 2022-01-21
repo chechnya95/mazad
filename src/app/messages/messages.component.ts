@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 
