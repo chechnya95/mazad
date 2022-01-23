@@ -72,7 +72,7 @@ export class SettingsComponent implements OnInit {
   }
 
   getGateways() {
-    const sub = this.api.get('payments/payment_gateway/', this.token).subscribe(
+    const sub = this.api.get('payments/payment_gateway', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.gateways = objects['gateways'];
