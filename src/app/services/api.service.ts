@@ -85,10 +85,14 @@ export class ApiService {
   setToken(data: any) {
     let user_details = JSON.parse(data['user_details']);
 
+    /* encrpt the role */
+    let role = 'bd55474ed5d44d1e81268b5be089b51sq17f' + data['role'].toLowerCase() + 'u0pgbd55474ed5d44d1e81268b5be089b51';
+
+    localStorage.setItem("user_key", role);
     localStorage.setItem("access_token", data['token']);
     localStorage.setItem("is_valid", 'true');
     localStorage.setItem("id", data['id']);
-    localStorage.setItem("name", user_details? user_details.name_en : data['email'].substr(0, data['email'].indexOf('@')));
+    localStorage.setItem("name", user_details ? user_details.name_en : data['email'].substr(0, data['email'].indexOf('@')));
     localStorage.setItem("email", data['email']);
 
     this.router.navigate(['login']);
@@ -138,5 +142,16 @@ export class ApiService {
         return true;
 
     return false;
+  }
+
+  canEnter(user: any) {
+    let user_key = localStorage.getItem("user_key");
+    let role = user_key.split('f').pop().split('u')[0];
+
+    if (user.toLowerCase() === role.toLowerCase())
+      return true;
+
+    else
+      return false;
   }
 }

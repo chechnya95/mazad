@@ -31,12 +31,10 @@
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
-                                            <th>Name</th>
-                                            <th>Auction</th>
                                             <th>Item</th>
+                                            <th>User</th>
                                             <th>Date</th>
-                                            <th>Price</th>
-                                            <th>Reviewed?</th>
+                                            <th>Amount</th>
                                             <th class="text-end">Actions</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -47,12 +45,10 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let winner of winners; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td>{{ winner.name}} <br> {{ message.mobile}} <br> {{ message.email}}</td>
-                                            <td>{{ winner.auction_id}}</td>
-                                            <td>{{ winner.item_id}}</td>
-                                            <td>{{ winner.date | date:"short"}}</td>
-                                            <td>{{ winner.price}}</td>
-                                            <td>{{ winner.reviewd }}</td>
+                                            <td>{{ winner.item_id | uppercase}}</td>
+                                            <td>{{ winner.mobile}} <br> {{ winner.email}}</td>
+                                            <td>{{ winner.create_date | date:"short"}}</td>
+                                            <td>{{ winner.amount}} OMR</td>
                                             <!--begin::Action=-->
                                             <td class="text-end">
                                                 <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
@@ -114,7 +110,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Review Bill </h2>
+                                        <h2 class="fw-bolder">Create Invoice </h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"

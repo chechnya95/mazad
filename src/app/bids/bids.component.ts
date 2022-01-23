@@ -3,14 +3,14 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 
 @Component({
-  selector: 'app-winners',
-  templateUrl: './winners.component.html',
-  styleUrls: ['./winners.component.css']
+  selector: 'app-bids',
+  templateUrl: './bids.component.html',
+  styleUrls: ['./bids.component.css']
 })
-export class WinnersComponent implements OnInit {
+export class BidsComponent implements OnInit {
 
   token: any;
-  winners: any[] = [];
+  bids: any[] = [];
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -20,15 +20,15 @@ export class WinnersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getWinners();
+    this.getBids();
   }
 
-  getWinners() {
+  getBids() {
     this.utility.loader = true;
-    const sub = this.api.get('bids/winners', this.token).subscribe(
+    const sub = this.api.get('bids/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.winners = objects['winners'];
+        this.bids = objects['bids'];
       },
       async error => {
         alert(error);

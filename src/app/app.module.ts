@@ -25,6 +25,7 @@ import { SettingHeaderComponent } from './settings/setting-header/setting-header
 import { FormFieldsComponent } from './settings/form-fields/form-fields.component';
 import { AuctionSettingsComponent } from './settings/auction-settings/auction-settings.component';
 import { WinnersComponent } from './winners/winners.component';
+import { BidsComponent } from './bids/bids.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { WinnersComponent } from './winners/winners.component';
     SettingHeaderComponent,
     FormFieldsComponent,
     AuctionSettingsComponent,
-    WinnersComponent
+    WinnersComponent,
+    BidsComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import { WinnersComponent } from './winners/winners.component';
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard] },
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard] },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard] }
+      { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard] },
+      { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard] }
     ])
   ],
   providers: [],
