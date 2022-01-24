@@ -26,6 +26,7 @@ import { FormFieldsComponent } from './settings/form-fields/form-fields.componen
 import { AuctionSettingsComponent } from './settings/auction-settings/auction-settings.component';
 import { WinnersComponent } from './winners/winners.component';
 import { BidsComponent } from './bids/bids.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -64,21 +65,22 @@ import { BidsComponent } from './bids/bids.component';
       { path: 'login', component: LoginComponent },
       //{ path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard] },
-      { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard] },
-      { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard] },
-      { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard] },
-      { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard] },
-      { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard] }, 
-      { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard] },
-      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard] },
-      { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard] },
-      { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard] },
-      { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard] }
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  },
+      { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
+      { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  },
+      { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] }  },
+      { path: 'welcome', component: WelcomeComponent  }
     ])
   ],
   providers: [],

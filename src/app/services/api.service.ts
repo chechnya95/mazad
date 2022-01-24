@@ -133,25 +133,28 @@ export class ApiService {
     return !!localStorage.getItem("access_token");
   }
 
-  isAllowed() {
+  isAllowed(roles: any) {
     let token = localStorage.getItem("access_token");
     let valid = localStorage.getItem("is_valid");
 
     if (token && valid)
       if (valid == 'true')
-        return true;
+        if (this.canEnter(roles))
+          return true;
 
     return false;
   }
 
-  canEnter(user: any) {
+  canEnter(roles: any) {
     let user_key = localStorage.getItem("user_key");
-    let role = user_key.split('f').pop().split('u')[0];
+    let role = null;
 
-    if (user.toLowerCase() === role.toLowerCase())
+    if (user_key)
+      role = user_key.split('f').pop().split('u')[0];
+
+    if (role && roles.includes(role.toLowerCase()))
       return true;
 
-    else
-      return false;
+    return false;
   }
 }
