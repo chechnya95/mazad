@@ -1,3 +1,4 @@
+<div dir="{{translate.currentLang=='ar' || !translate.currentLang ?'rtl':'ltr'}}">
 <div class="d-flex flex-column flex-root">
   <div class="page d-flex flex-row flex-column-fluid">
     <!--begin::Aside-->
@@ -61,7 +62,7 @@
                   </span>
                   <!--end::Svg Icon-->
                 </span>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">{{ 'Dashboard' | translate }}</span>
               </a>
             </div>
             <div class="menu-item">
@@ -402,6 +403,8 @@
           <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
             <!--begin::Navbar-->
             <div class="d-flex align-items-stretch" id="kt_header_nav">
+              <button class="button button2" *ngIf="translate.currentLang==='ar' || !translate.currentLang" (click)="switchLang('en')">En <i class="fas fa-globe text-white"></i></button>
+              <button class="button button2" *ngIf="translate.currentLang==='en'" (click)="switchLang('ar')"><i class="fas fa-globe text-white"></i> عربي</button>
               <!--begin::Menu wrapper-->
               <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu"
                 data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
@@ -1194,4 +1197,5 @@
       <!--end::Footer-->
     </div>
   </div>
+</div>
 </div>

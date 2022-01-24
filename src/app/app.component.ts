@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from './services/api.service';
 import { UtilitiesService } from './services/utilities.service';
 
@@ -17,6 +18,7 @@ export class AppComponent {
   constructor(
     public utility: UtilitiesService,
     private router: Router,
+    public translate: TranslateService,
     private api: ApiService) {
     this.email = localStorage.getItem('email');
     this.name = localStorage.getItem('name');
@@ -28,6 +30,11 @@ export class AppComponent {
     this.api.isExpiredWorker();
   }
 
+  switchLang(lang: string) {
+    localStorage.setItem('lang', lang);
+    this.translate.use(lang);
+  }
+  
   onLogout() {
     localStorage.clear();
     this.router.navigate(['/login']);
