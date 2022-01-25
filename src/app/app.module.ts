@@ -27,6 +27,8 @@ import { AuctionSettingsComponent } from './settings/auction-settings/auction-se
 import { WinnersComponent } from './winners/winners.component';
 import { BidsComponent } from './bids/bids.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { SmsNotificationsComponent } from './sms-notifications/sms-notifications.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FormFieldsComponent,
     AuctionSettingsComponent,
     WinnersComponent,
-    BidsComponent
+    BidsComponent,
+    SmsNotificationsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -78,9 +82,11 @@ import { WelcomeComponent } from './welcome/welcome.component';
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] }  },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] }  },
       { path: 'welcome', component: WelcomeComponent  }
     ])
   ],

@@ -1,0 +1,75 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Basic info-->
+        <div class="card mb-5 mb-xl-10">
+            <!--begin::Card header-->
+            <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+                data-bs-target="#kt_account_profile_details" aria-expanded="true"
+                aria-controls="kt_account_profile_details">
+                <!--begin::Card title-->
+                <div class="card-title m-0">
+                    <h3 class="fw-bolder m-0">SMS Notifications</h3>
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--begin::Card header-->
+            <!--begin::Content-->
+            <div id="kt_account_profile_details" class="collapse show">
+                <div class="post d-flex flex-column-fluid" id="kt_post">
+                    <!--begin::Container-->
+                    <div id="kt_content_container" class="container">
+                        <!--begin::Card-->
+                        <div class="card">
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th>id</th>
+                                            <th>Mobile</th>
+                                            <th>User Id</th>
+                                            <th>SID</th>
+                                            <th>Status</th>
+                                            <th>Message</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="text-gray-600 fw-bold">
+                                        <!--begin::Table row-->
+                                        <tr *ngFor="let sms of messages; let i = index;">
+                                            <td> {{ (i+1) }} </td>
+                                            <td>{{ sms.mobile}}</td>
+                                            <td>{{ sms.user_id | uppercase}}</td>
+                                            <td>{{ sms.sid}}</td>
+                                            <td><div class="badge badge-light fw-bolder">{{ sms.status }}</div></td>
+                                            <td>{{ sms.message}}</td>
+                                            <td>{{ sms.timestamp | date:"medium"}}</td>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Basic info-->
+    </div>
+    <!--end::Container-->
+</div>
+<!-- spinnner element is defined with id loading -->
+<div *ngIf="this.utility.loader" class="loading"></div>

@@ -1,4 +1,4 @@
-<div dir="{{translate.currentLang=='ar' || !translate.currentLang ?'rtl':'ltr'}}">
+<div dir="{{translate.currentLang=='en' || !translate.currentLang ? 'ltr' : 'rtl'}}">
 <div class="d-flex flex-column flex-root">
   <div class="page d-flex flex-row flex-column-fluid">
     <!--begin::Aside-->
@@ -250,7 +250,7 @@
               </a>
             </div>
             <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-              <a class="menu-link">
+              <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['sms-notification']">
                 <span class="menu-icon">
                   <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                   <span class="svg-icon svg-icon-2">
@@ -266,7 +266,7 @@
                   </span>
                   <!--end::Svg Icon-->
                 </span>
-                <span class="menu-title">Send Messages</span>
+                <span class="menu-title">SMS Notifications</span>
               </a>
             </div>
             <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -403,8 +403,6 @@
           <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
             <!--begin::Navbar-->
             <div class="d-flex align-items-stretch" id="kt_header_nav">
-              <button class="button button2" *ngIf="translate.currentLang==='ar' || !translate.currentLang" (click)="switchLang('en')">En <i class="fas fa-globe text-white"></i></button>
-              <button class="button button2" *ngIf="translate.currentLang==='en'" (click)="switchLang('ar')"><i class="fas fa-globe text-white"></i> عربي</button>
               <!--begin::Menu wrapper-->
               <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu"
                 data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
@@ -1090,7 +1088,7 @@
                     <!--end::Menu separator-->
                     <!--begin::Menu item-->
                     <div class="menu-item px-5">
-                      <a href="account/overview.html" class="menu-link px-5">My Profile</a>
+                      <a [routerLinkActive]="['active']" [routerLink]="['profile']" class="menu-link px-5">My Profile</a>
                     </div>
                     <!--end::Menu item-->
                     <!--begin::Menu item-->
@@ -1115,18 +1113,25 @@
                     <!--begin::Menu item-->
                     <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start"
                       data-kt-menu-flip="bottom">
-                      <a href="#" class="menu-link px-5">
+                      <a class="menu-link px-5" *ngIf="translate.currentLang==='ar'" (click)="switchLang('en')">
                         <span class="menu-title position-relative">Language
                           <span
                             class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
                             <img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/united-states.svg"
                               alt="metronic" /></span></span>
                       </a>
+                      <a class="menu-link px-5" *ngIf="translate.currentLang==='en' || !translate.currentLang" (click)="switchLang('ar')">
+                        <span class="menu-title position-relative">Language
+                          <span
+                            class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">عربي
+                            <img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/oman.svg"
+                              alt="metronic" /></span></span>
+                      </a>
                     </div>
                     <!--end::Menu item-->
                     <!--begin::Menu item-->
                     <div class="menu-item px-5 my-1">
-                      <a href="account/settings.html" class="menu-link px-5">Account Settings</a>
+                      <a [routerLinkActive]="['active']" [routerLink]="['settings']" class="menu-link px-5">Settings</a>
                     </div>
                     <!--end::Menu item-->
                     <!--begin::Menu item-->

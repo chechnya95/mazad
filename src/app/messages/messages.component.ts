@@ -31,8 +31,6 @@ export class MessagesComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.messages = objects['contactus'];
-
-        console.log(objects)
       },
       async error => {
         console.log(error);
