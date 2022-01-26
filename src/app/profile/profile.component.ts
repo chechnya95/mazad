@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.title = 'My Profile';
     this.token = localStorage.getItem('access_token');
     this.id = localStorage.getItem('id');
   }

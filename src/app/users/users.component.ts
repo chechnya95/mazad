@@ -46,6 +46,7 @@ export class UsersComponent implements OnInit {
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'Users';
     this.token = localStorage.getItem('access_token');
   }
 

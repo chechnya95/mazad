@@ -47,6 +47,7 @@ export class SettingsComponent implements OnInit {
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'Admin Settings';
     this.token = localStorage.getItem('access_token');
   }
 

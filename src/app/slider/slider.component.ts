@@ -31,6 +31,7 @@ export class SliderComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, public api: ApiService) {
     this.utility.show = true;
+    this.utility.title = 'Silder';
     this.token = localStorage.getItem('access_token');
   }
 

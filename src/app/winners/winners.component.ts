@@ -24,6 +24,7 @@ export class WinnersComponent implements OnInit {
     public utility: UtilitiesService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'Winners Page';
     this.token = localStorage.getItem('access_token');
   }
 

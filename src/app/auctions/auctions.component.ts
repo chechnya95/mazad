@@ -42,6 +42,7 @@ export class AuctionsComponent implements OnInit {
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'Auctions';
     this.token = localStorage.getItem('access_token');
   }
 

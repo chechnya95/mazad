@@ -16,6 +16,7 @@ export class SmsNotificationsComponent implements OnInit {
     public utility: UtilitiesService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'SMS';
     this.token = localStorage.getItem('access_token');
   }
 

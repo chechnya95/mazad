@@ -60,6 +60,7 @@ export class AuctionTemplatesComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.title = 'Auction Templates';
     this.token = localStorage.getItem('access_token');
   }
 

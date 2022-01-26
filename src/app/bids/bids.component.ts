@@ -16,6 +16,7 @@ export class BidsComponent implements OnInit {
     public utility: UtilitiesService) {
     this.utility.show = true;
     this.utility.loader = false;
+    this.utility.title = 'Items Biddings';
     this.token = localStorage.getItem('access_token');
   }
 

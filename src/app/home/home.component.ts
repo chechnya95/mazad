@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
+    this.utility.title = 'Dashboard';
     this.token = localStorage.getItem('access_token');
   }
 
