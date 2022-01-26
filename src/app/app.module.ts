@@ -29,6 +29,8 @@ import { BidsComponent } from './bids/bids.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SmsNotificationsComponent } from './sms-notifications/sms-notifications.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ItemDetailsComponent } from './items/item-details/item-details.component';
+import { NewItemComponent } from './items/new-item/new-item.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ProfileComponent } from './profile/profile.component';
     WinnersComponent,
     BidsComponent,
     SmsNotificationsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ItemDetailsComponent,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { ProfileComponent } from './profile/profile.component';
       { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  },
       { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
-      { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
+      { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  },
+      { path: 'item-details', component: ItemDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
+      { path: 'new-item', component: NewItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
       { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },

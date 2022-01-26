@@ -147,7 +147,7 @@ export class ItemsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
-        
+
         this.utility.loader = false;
       },
       async error => {
@@ -155,7 +155,7 @@ export class ItemsComponent implements OnInit {
       }
     );
   }
-  
+
   imageChange(event) {
     let imageList: FileList = event.target.files;
     this.images = imageList;
@@ -249,7 +249,7 @@ export class ItemsComponent implements OnInit {
     }
 
     formData.append('form', body);
-    
+
     if (this.item.current_price && this.item.item_status) {
       this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
@@ -338,5 +338,19 @@ export class ItemsComponent implements OnInit {
     this.item.end_date = end_date.getFullYear() + '-' + month_2 + '-' + day_2 + 'T' + hour_2 + ':' + mins_2;
 
     this.item_details = template.details;
+  }
+
+  updateItem(item_id: any) {
+    let body = { }
+
+    this.api.update('items/' + item_id, body, this.token).subscribe(
+      async data => {
+        this.getItems();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
   }
 }
