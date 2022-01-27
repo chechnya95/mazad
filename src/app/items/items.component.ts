@@ -53,6 +53,9 @@ export class ItemsComponent implements OnInit {
     terms_ar: null
   }
 
+  new_item_status: any;
+  new_item_id: any;
+
   item_s = {
     name: null,
     order: null
@@ -79,6 +82,9 @@ export class ItemsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items'];
+
+        localStorage.setItem('items', JSON.stringify(this.items));
+        
         this.getItemstatus();
       },
       async error => {
@@ -340,8 +346,26 @@ export class ItemsComponent implements OnInit {
     this.item_details = template.details;
   }
 
+  update_item_status_clicked(id: any) {
+    this.new_item_id = id;
+  }
+
+  updateItemStatus(item_id: any) {
+    let body = { item_status: this.new_item_status }
+
+    this.api.update('items/change_item_status/' + item_id, body, this.token).subscribe(
+      async data => {
+        this.getItems();
+      },
+      async error => {
+        alert("ERROR: cannot connect!");
+        console.log(error);
+      }
+    );
+  }
+
   updateItem(item_id: any) {
-    let body = { }
+    let body = {}
 
     this.api.update('items/' + item_id, body, this.token).subscribe(
       async data => {

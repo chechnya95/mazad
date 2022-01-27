@@ -15,7 +15,7 @@ export class BidsComponent implements OnInit {
 
   constructor(private api: ApiService,
     public utility: UtilitiesService,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Items Biddings';

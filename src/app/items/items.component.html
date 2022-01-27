@@ -1080,6 +1080,80 @@
                         <!--end::Modal dialog-->
                     </div>
                     <!--end::Modal - Add task-->
+                    <div class="modal fade" id="kt_modal_change_item_status" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Change Item Status</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                        data-kt-items-modal-action="close">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Form-->
+                                    <form id="kt_modal_export_items_form" class="form" action="#">
+                                        <!--begin::Input group-->
+                                        <div class="fv-row mb-10">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mb-2">Select Status:</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <select name="new_item_status"
+                                                class="form-select form-select-lg form-select-solid"
+                                                [(ngModel)]="new_item_status">
+                                                <option *ngFor="let item of item_status" [value]='item.name'>{{
+                                                    item.name }}</option>
+                                            </select>
+                                            <!--end::Input-->
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-kt-items-modal-action="cancel">Discard</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                (click)="updateItemStatus(new_item_id)"
+                                                data-kt-items-modal-action="submit">
+                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
                 </div>
                 <!--end::Card toolbar-->
             </div>
@@ -1098,15 +1172,15 @@
                                         data-kt-check-target="#kt_table_items .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">Code</th>
-                            <th class="min-w-125px">Start Date</th>
-                            <th class="min-w-125px">End Date</th>
-                            <th class="min-w-125px">Status</th>
-                            <th class="min-w-125px">buy price</th>
-                            <th class="min-w-125px">minimum bid</th>
-                            <th class="min-w-125px">acceptable price</th>
-                            <th class="min-w-125px">current price</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th>Code</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>buy price</th>
+                            <th>minimum bid</th>
+                            <th>acceptable price</th>
+                            <th>current price</th>
+                            <th class="text-end">Actions</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -1124,7 +1198,8 @@
                             <!--end::Checkbox-->
                             <!--begin::item=-->
                             <td>
-                                <div class="badge badge-light fw-bolder"><a [routerLink]="['/item-details']" [queryParams]="{ id: item.id }">{{ item.code }}</a></div>
+                                <div class="badge badge-light fw-bolder"><a [routerLink]="['/item-details']"
+                                        [queryParams]="{ id: item.id }">{{ item.code }}</a></div>
                             </td>
                             <!--end::item=-->
                             <!--begin::start_date-->
@@ -1154,18 +1229,48 @@
                             <!--end::end_date-->
                             <!--begin::Action=-->
                             <td class="text-end">
-                                <a alt="show bids" [routerLink]="['/bids']" [queryParams]="{ id: item.id }" 
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <a title="show this item bids" [routerLink]="['/bids']" [queryParams]="{ id: item.id }"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"/>
-                                                <path d="M22,17 L22,21 C22,22.1045695 21.1045695,23 20,23 L4,23 C2.8954305,23 2,22.1045695 2,21 L2,17 L6.27924078,17 L6.82339262,18.6324555 C7.09562072,19.4491398 7.8598984,20 8.72075922,20 L15.381966,20 C16.1395101,20 16.8320364,19.5719952 17.1708204,18.8944272 L18.118034,17 L22,17 Z" fill="#000000"/>
-                                                <path d="M2.5625,15 L5.92654389,9.01947752 C6.2807805,8.38972356 6.94714834,8 7.66969497,8 L16.330305,8 C17.0528517,8 17.7192195,8.38972356 18.0734561,9.01947752 L21.4375,15 L18.118034,15 C17.3604899,15 16.6679636,15.4280048 16.3291796,16.1055728 L15.381966,18 L8.72075922,18 L8.17660738,16.3675445 C7.90437928,15.5508602 7.1401016,15 6.27924078,15 L2.5625,15 Z" fill="#000000" opacity="0.3"/>
-                                                <path d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.959697, 3.661508) rotate(-270.000000) translate(-11.959697, -3.661508) "/>
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path
+                                                    d="M22,17 L22,21 C22,22.1045695 21.1045695,23 20,23 L4,23 C2.8954305,23 2,22.1045695 2,21 L2,17 L6.27924078,17 L6.82339262,18.6324555 C7.09562072,19.4491398 7.8598984,20 8.72075922,20 L15.381966,20 C16.1395101,20 16.8320364,19.5719952 17.1708204,18.8944272 L18.118034,17 L22,17 Z"
+                                                    fill="#000000" />
+                                                <path
+                                                    d="M2.5625,15 L5.92654389,9.01947752 C6.2807805,8.38972356 6.94714834,8 7.66969497,8 L16.330305,8 C17.0528517,8 17.7192195,8.38972356 18.0734561,9.01947752 L21.4375,15 L18.118034,15 C17.3604899,15 16.6679636,15.4280048 16.3291796,16.1055728 L15.381966,18 L8.72075922,18 L8.17660738,16.3675445 C7.90437928,15.5508602 7.1401016,15 6.27924078,15 L2.5625,15 Z"
+                                                    fill="#000000" opacity="0.3" />
+                                                <path
+                                                    d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z"
+                                                    fill="#000000" fill-rule="nonzero"
+                                                    transform="translate(11.959697, 3.661508) rotate(-270.000000) translate(-11.959697, -3.661508) " />
                                             </g>
-                                        </svg><!--end::Svg Icon-->
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </a>
+                                <a title="update status" (click)="update_item_status_clicked(item.id)"
+                                    data-bs-toggle="modal" data-bs-target="#kt_modal_change_item_status"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <path
+                                                    d="M8.43296491,7.17429118 L9.40782327,7.85689436 C9.49616631,7.91875282 9.56214077,8.00751728 9.5959027,8.10994332 C9.68235021,8.37220548 9.53982427,8.65489052 9.27756211,8.74133803 L5.89079566,9.85769242 C5.84469033,9.87288977 5.79661753,9.8812917 5.74809064,9.88263369 C5.4720538,9.8902674 5.24209339,9.67268366 5.23445968,9.39664682 L5.13610134,5.83998177 C5.13313425,5.73269078 5.16477113,5.62729274 5.22633424,5.53937151 C5.384723,5.31316892 5.69649589,5.25819495 5.92269848,5.4165837 L6.72910242,5.98123382 C8.16546398,4.72182424 10.0239806,4 12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 L6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,8.6862915 15.3137085,6 12,6 C10.6885336,6 9.44767246,6.42282109 8.43296491,7.17429118 Z"
+                                                    fill="#000000" fill-rule="nonzero" />
+                                            </g>
+                                        </svg>
+                                        <!--end::Svg Icon-->
+                                        <!--end::Svg Icon-->
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
