@@ -256,7 +256,7 @@ export class ItemsComponent implements OnInit {
 
     formData.append('form', body);
 
-    if (this.item.current_price && this.item.item_status) {
+    if (this.item.current_price && this.item.item_status && this.item.auction_id && this.item.owner_id) {
       this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
           this.item_details = [];

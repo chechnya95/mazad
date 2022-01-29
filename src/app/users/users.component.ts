@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 
@@ -43,7 +44,7 @@ export class UsersComponent implements OnInit {
     id_card_number: null
   }
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Users';
@@ -51,10 +52,16 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.route.queryParams.subscribe(params => {
+      let id = params['id'] != null ? params['id'] : null;
+      if (id) {
+        this.getUsers(id);
+      }
+      else { this.getUsers(null); }
+    })
   }
 
-  async getUsers() {
+  async getUsers(id: any) {
     this.utility.loader = true;
     this.api.get('users/', this.token).subscribe(
       async data => {
@@ -64,6 +71,9 @@ export class UsersComponent implements OnInit {
         objects = data;
 
         this.users = objects.users;
+
+        if (id)
+          this.users = this.users.filter(i => i.id === id);
 
         this.users.forEach(function (user) {
           let user_details = JSON.parse(user['user_details']);
@@ -120,7 +130,7 @@ export class UsersComponent implements OnInit {
     else {
       this.api.post("users/admin", body, this.token).subscribe(
         async data => {
-          this.getUsers();
+          this.getUsers(null);
         },
         async error => {
           alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
@@ -133,7 +143,7 @@ export class UsersComponent implements OnInit {
     if (confirm("Delete this User?")) {
       this.api.delete("users/" + id, this.token).subscribe(
         async data => {
-          this.getUsers();
+          this.getUsers(null);
         },
         async error => {
           alert("ERROR: cannot connect!");
@@ -167,7 +177,7 @@ export class UsersComponent implements OnInit {
       async errr => { console.log(errr); }
     );
 
-    sub.add(() => { this.getUsers(); });
+    sub.add(() => { this.getUsers(null); });
   }
 
   disableUser(id: any, is_active: any) {
@@ -177,7 +187,7 @@ export class UsersComponent implements OnInit {
     if (confirm(status + " this User?")) {
       this.api.update("users/disable/" + id, body, this.token).subscribe(
         async data => {
-          this.getUsers();
+          this.getUsers(null);
         },
         async error => {
           alert("ERROR: cannot connect!");

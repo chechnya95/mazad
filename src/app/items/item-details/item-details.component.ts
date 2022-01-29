@@ -16,6 +16,7 @@ export class ItemDetailsComponent implements OnInit {
   bids: any[] = [];
   total_bids: any;
   total_bidders: any;
+  invoices: any[] = [];
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -54,5 +55,11 @@ export class ItemDetailsComponent implements OnInit {
         alert(error);
       }
     );
+
+    sub.add(() => { this.getInvoices(); });
+  }
+
+  getInvoices() {
+
   }
 }
