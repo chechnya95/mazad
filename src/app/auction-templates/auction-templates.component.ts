@@ -97,7 +97,7 @@ export class AuctionTemplatesComponent implements OnInit {
   }
 
   async getOwners() {
-    this.api.get('users/role/Owner', this.token).subscribe(
+    this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'];
