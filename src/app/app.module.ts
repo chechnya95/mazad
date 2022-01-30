@@ -31,6 +31,7 @@ import { SmsNotificationsComponent } from './sms-notifications/sms-notifications
 import { ProfileComponent } from './profile/profile.component';
 import { ItemDetailsComponent } from './items/item-details/item-details.component';
 import { NewItemComponent } from './items/new-item/new-item.component';
+import { NewTemplateComponent } from './auction-templates/new-template/new-template.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NewItemComponent } from './items/new-item/new-item.component';
     SmsNotificationsComponent,
     ProfileComponent,
     ItemDetailsComponent,
-    NewItemComponent
+    NewItemComponent,
+    NewTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,7 @@ import { NewItemComponent } from './items/new-item/new-item.component';
       { path: 'item-details', component: ItemDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
       { path: 'new-item', component: NewItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
       { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
+      { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] }  }, 
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] }  },

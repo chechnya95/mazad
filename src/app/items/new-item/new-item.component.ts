@@ -320,4 +320,8 @@ export class NewItemComponent implements OnInit {
     if (this.item.category_id)
       this.getForm();
   }
+
+  reload() {
+    window.location.reload();
+  }
 }
