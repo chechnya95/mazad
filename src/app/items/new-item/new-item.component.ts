@@ -73,6 +73,11 @@ export class NewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('item-foo')) {
+      localStorage.setItem('item-foo', 'no reload');
+      window.location.reload();
+    }
+
     this.getItemstatus();
   }
 

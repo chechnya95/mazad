@@ -65,6 +65,10 @@ export class NewTemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('temp-foo')) {
+      localStorage.setItem('temp-foo', 'no reload');
+      window.location.reload();
+    }
     this.getAuctions();
   }
 
