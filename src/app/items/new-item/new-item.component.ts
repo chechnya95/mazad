@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
@@ -65,7 +66,7 @@ export class NewItemComponent implements OnInit {
   images: any;
   item_details: any = {};
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
@@ -73,12 +74,14 @@ export class NewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('item-foo')) {
-      localStorage.setItem('item-foo', 'no reload');
-      window.location.reload();
-    }
-
-    this.getItemstatus();
+    this.route.queryParams.subscribe(params => {
+      let id = params['id'] != null ? params['id'] : null;
+      if (id) {
+        this.item.auction_id = id;
+      }
+      
+      this.getItemstatus();
+    })
   }
 
   async getItemstatus() {

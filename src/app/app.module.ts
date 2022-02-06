@@ -32,6 +32,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ItemDetailsComponent } from './items/item-details/item-details.component';
 import { NewItemComponent } from './items/new-item/new-item.component';
 import { NewTemplateComponent } from './auction-templates/new-template/new-template.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { NewTemplateComponent } from './auction-templates/new-template/new-templ
     ProfileComponent,
     ItemDetailsComponent,
     NewItemComponent,
-    NewTemplateComponent
+    NewTemplateComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,8 @@ import { NewTemplateComponent } from './auction-templates/new-template/new-templ
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
-      { path: 'welcome', component: WelcomeComponent }
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '**', component: PageNotFoundComponent }
     ], { scrollPositionRestoration: 'enabled' })
   ],
   providers: [],
