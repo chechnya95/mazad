@@ -11,7 +11,7 @@ export class AuctionTemplatesComponent implements OnInit {
 
   token: any;
   templates: any[] = [];
-  
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
@@ -46,5 +46,10 @@ export class AuctionTemplatesComponent implements OnInit {
         }
       );
     }
+  }
+
+  saveTemplate(item: any) {
+    localStorage.removeItem('item-template');
+    localStorage.setItem('item-template', JSON.stringify(item));
   }
 }

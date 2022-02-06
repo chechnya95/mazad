@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
@@ -58,27 +59,31 @@ export class NewTemplateComponent implements OnInit {
 
   item_details: any = {};
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  update: boolean = false;
+  edit_item_id: any;
+
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
     this.token = localStorage.getItem('access_token');
+
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('temp-foo')) {
-      localStorage.setItem('temp-foo', 'no reload');
-      window.location.reload();
-    }
-    this.getAuctions();
+    this.route.queryParams.subscribe(params => {
+      let id = params['id'] != null ? params['id'] : null;
+
+      this.getAuctions(id);
+    });
   }
 
-  async getAuctions() {
+  async getAuctions(item_id: any) {
     this.api.get('auctions/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
 
-        this.getOwners();
+        this.getOwners(item_id);
       },
       async error => {
         alert(error);
@@ -86,13 +91,13 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  async getOwners() {
+  async getOwners(item_id: any) {
     this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
 
-        this.getCategories();
+        this.getCategories(item_id);
       },
       async error => {
         alert(error);
@@ -100,11 +105,69 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  async getCategories() {
+  async getCategories(item_id: any) {
     this.api.get('categories/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
+
+        if (item_id) {
+          this.edit_item_id = item_id;
+          this.update = true;
+
+          let object = localStorage.getItem('item-template') ? JSON.parse(localStorage.getItem('item-template')) : null;
+          if (object) {
+            this.auction_template = object;
+
+            this.auction_template.title_ar = object.title['ar'];
+            this.auction_template.title_en = object.title['en'];
+            this.auction_template.terms_ar = object.terms['ar'];
+            this.auction_template.terms_en = object.terms['en'];
+            this.auction_template.description_ar = object.description['ar'];
+            this.auction_template.description_en = object.description['en'];
+
+            var date_start = new Date(object.start_date);
+            var month_start = (date_start.getMonth() + 1).toString();
+            var day_start = (date_start.getDate()).toString();
+            var hour_start = (date_start.getHours()).toString();
+            var mins_start = (date_start.getMinutes()).toString();
+
+            if (+month_start < 10)
+              month_start = '0' + month_start;
+
+            if (+day_start < 10)
+              day_start = '0' + day_start;
+
+            if (+hour_start < 10)
+              hour_start = '0' + hour_start;
+
+            if (+mins_start < 10)
+              mins_start = '0' + mins_start;
+
+            this.auction_template.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start + 'T' + hour_start + ':' + mins_start;
+
+            var end_date = new Date(object.end_date);
+            var month_end = (end_date.getMonth() + 1).toString();
+            var day_end = (end_date.getDate()).toString();
+            var hour_end = (end_date.getHours()).toString();
+            var mins_end = (end_date.getMinutes()).toString();
+
+            if (+month_end < 10)
+              month_end = '0' + month_end;
+
+            if (+day_end < 10)
+              day_end = '0' + day_end;
+            if (+hour_end < 10)
+              hour_end = '0' + hour_end;
+
+            if (+mins_end < 10)
+              mins_end = '0' + mins_end;
+
+            this.auction_template.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
+
+            this.getForm();
+          }
+        }
       },
       async error => {
         alert(error);
@@ -115,6 +178,7 @@ export class NewTemplateComponent implements OnInit {
   getForm() {
     let cat_id = this.auction_template.category_id;
     let form_id = null;
+
     if (cat_id)
       form_id = this.categories.find(i => i.id === cat_id).form_id;
 
@@ -179,17 +243,25 @@ export class NewTemplateComponent implements OnInit {
       terms: { 'en': this.auction_template.terms_en, 'ar': this.auction_template.terms_ar }
     }
 
-    this.api.post("auction_templates/", body, this.token).subscribe(
-      async data => {
-        this.item_details = [];
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
-    );
+    if (this.update) {
+      this.api.update("auction_templates/" + this.edit_item_id, body, this.token).subscribe(
+        async data => { },
+        async error => { alert("ERROR: cannot connect!"); }
+      );
+    }
+    else {
+      this.api.post("auction_templates/", body, this.token).subscribe(
+        async data => {
+          this.item_details = [];
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
   }
-  
+
   reload() {
     window.location.reload();
   }

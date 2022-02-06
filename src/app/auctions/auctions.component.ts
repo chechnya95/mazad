@@ -39,6 +39,30 @@ export class AuctionsComponent implements OnInit {
     terms_ar: null
   }
 
+  edit_auction_id: any;
+  edit_auction = {
+    auction_type: null,
+    auction_method: null,
+    code: null,
+    owner_code: null,
+    details: null,
+    images: null,
+    deposit: null,
+    start_date: null,
+    end_date: null,
+    auction_status: null,
+    template_id: null,
+    owner_id: null,
+    payment_id: null,
+    group_id: null,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null,
+    terms_en: null,
+    terms_ar: null
+  }
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -135,6 +159,71 @@ export class AuctionsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  editItemClicked(item: any) {
+    this.edit_auction = item;
+    this.edit_auction_id = item.id;
+
+    this.edit_auction.title_ar = item.title['ar'];
+    this.edit_auction.title_en = item.title['en'];
+    this.edit_auction.terms_ar = item.terms['ar'];
+    this.edit_auction.terms_en = item.terms['en'];
+    this.edit_auction.description_ar = item.description['ar'];
+    this.edit_auction.description_en = item.description['en'];
+
+    var date_start = new Date(item.start_date);
+    var month_start = (date_start.getMonth() + 1).toString();
+    var day_start = (date_start.getDate()).toString();
+
+    if (+month_start < 10)
+      month_start = '0' + month_start;
+
+    if (+day_start < 10)
+      day_start = '0' + day_start;
+
+    this.edit_auction.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start;
+
+    var end_date = new Date(item.end_date);
+    var month_end = (end_date.getMonth() + 1).toString();
+    var day_end = (end_date.getDate()).toString();
+
+    if (+month_end < 10)
+    month_end = '0' + month_end;
+
+    if (+day_end < 10)
+    day_end = '0' + day_end;
+
+    this.edit_auction.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end;
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      auction_type: this.edit_auction.auction_type,
+      auction_method: this.edit_auction.auction_method,
+      code: this.edit_auction.code,
+      owner_code: this.edit_auction.owner_code,
+      details: this.edit_auction.details,
+      images: this.edit_auction.images,
+      deposit: this.edit_auction.deposit,
+      start_date: this.edit_auction.start_date,
+      end_date: this.edit_auction.end_date,
+      auction_status: this.edit_auction.auction_status,
+      template_id: this.edit_auction.template_id,
+      owner_id: this.edit_auction.owner_id,
+      payment_id: this.edit_auction.payment_id,
+      group_id: this.edit_auction.group_id,
+      title: { 'en': this.edit_auction.title_en, 'ar': this.edit_auction.title_ar },
+      description: { 'en': this.edit_auction.description_en, 'ar': this.edit_auction.description_en },
+      terms: { 'en': this.edit_auction.terms_en, 'ar': this.edit_auction.terms_ar }
+    }
+
+    const sub = this.api.update('auctions/' + id, body, this.token).subscribe(
+      async data => { },
+      async errr => { console.log(errr); }
+    );
+
+    sub.add(() => { this.getAuctions(); });
   }
 
   deleteAuction(id: number) {

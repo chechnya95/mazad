@@ -56,6 +56,14 @@ export class ApiService {
     return this.httpClient.patch(this.api + method, JSON.stringify(body), requestOptions);
   }
 
+  update_form(method: any, body: any, token: any) {
+    const requestOptions = {
+      headers: { 'x-access-tokens': token }
+    };
+
+    return this.httpClient.patch(this.api + method, body, requestOptions);
+  }
+
   upload(method: any, formData: FormData) {
     let type = 'multipart/form-data';
     let accept = 'application/json';
