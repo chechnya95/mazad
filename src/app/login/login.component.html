@@ -1,5 +1,24 @@
 <!--begin::Authentication - Sign-in -->
-<div id="kt_body" class="bg-white">
+<link href='https://fonts.googleapis.com/css?family=Almarai' rel='stylesheet'>
+<div id="kt_body" class="bg-white font">
+    <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start"
+            data-kt-menu-flip="bottom">
+            <a class="menu-link px-5" *ngIf="translate.currentLang==='ar'" (click)="switchLang('en')">
+              <span class="menu-title position-relative">
+                <span
+                  class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
+                  <img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/united-states.svg"
+                    alt="metronic" /></span></span>
+            </a>
+            <a class="menu-link px-5" *ngIf="translate.currentLang==='en' || !translate.currentLang"
+              (click)="switchLang('ar')">
+              <span class="menu-title position-relative">
+                <span
+                  class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">عربي
+                  <img class="w-15px h-15px rounded-1 ms-2" src="assets/media/flags/oman.svg"
+                    alt="metronic" /></span></span>
+            </a>
+          </div>
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
         style="background-image: url(assets/media/illustrations/progress-hd1.png)">
@@ -17,14 +36,16 @@
                     <!--begin::Heading-->
                     <div class="text-center mb-10">
                         <!--begin::Title-->
-                        <h1 class="text-dark mb-3">Welcome Back</h1>
+                        <h1 class="text-dark mb-3">
+                            {{ "WelcomeBack" | translate }}
+                        </h1>
                         <!--end::Title-->
                     </div>
                     <!--begin::Heading-->
                     <!--begin::Input group-->
                     <div class="fv-row mb-10">
                         <!--begin::Label-->
-                        <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                        <label class="form-label fs-6 fw-bolder text-dark">{{ "Email" | translate }}</label>
                         <!--end::Label-->
                         <!--begin::Input-->
                         <input class="form-control form-control-lg form-control-solid" type="email" name="email"
@@ -37,7 +58,7 @@
                         <!--begin::Wrapper-->
                         <div class="d-flex flex-stack mb-2">
                             <!--begin::Label-->
-                            <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+                            <label class="form-label fw-bolder text-dark fs-6 mb-0">{{ "Password" | translate }}</label>
                             <!--end::Label-->
                         </div>
                         <!--end::Wrapper-->
@@ -51,8 +72,8 @@
                     <div class="text-center" style="margin-bottom: 50px;">
                         <!--begin::Submit button-->
                         <button (click)="login()" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-                            <span class="indicator-label">Continue</span>
-                            <span class="indicator-progress">Please wait...
+                            <span class="indicator-label">{{ "Continue" | translate }}</span>
+                            <span class="indicator-progress">{{ "Pleasewait" | translate }}
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
                         <!--end::Submit button-->

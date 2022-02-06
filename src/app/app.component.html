@@ -1,5 +1,5 @@
 <div dir="{{translate.currentLang=='en' || !translate.currentLang ? 'ltr' : 'rtl'}}">
-  <div class="d-flex flex-column flex-root">
+  <div class="d-flex flex-column flex-root font">
     <div class="page d-flex flex-row flex-column-fluid">
       <!--begin::Aside-->
       <div *ngIf="this.utility.show" id="kt_aside" class="aside aside-dark aside-hoverable" data-kt-drawer="true"
@@ -72,7 +72,7 @@
               </div>
               <div class="menu-item">
                 <div class="menu-content pt-8 pb-2">
-                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">Users & Roles</span>
+                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'Users & Roles' | translate }}</span>
                 </div>
               </div>
               <div class="menu-item">
@@ -92,7 +92,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Users Management</span>
+                  <span class="menu-title">{{ 'Users Management' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -115,7 +115,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Roles & Permissions</span>
+                  <span class="menu-title">{{ 'Roles & Permissions' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item">
