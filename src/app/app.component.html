@@ -72,7 +72,7 @@
               </div>
               <div class="menu-item">
                 <div class="menu-content pt-8 pb-2">
-                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'Users & Roles' | translate }}</span>
+                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'UsersRoles' | translate }}</span>
                 </div>
               </div>
               <div class="menu-item">
@@ -92,7 +92,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'Users Management' | translate }}</span>
+                  <span class="menu-title">{{ 'UsersManagement' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -115,12 +115,12 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'Roles & Permissions' | translate }}</span>
+                  <span class="menu-title">{{ 'RolesPermissions' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item">
                 <div class="menu-content pt-8 pb-2">
-                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">Auctions</span>
+                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'AUCTIONS' | translate }}</span>
                 </div>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
@@ -139,7 +139,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Auctions Management</span>
+                  <span class="menu-title">{{ 'AuctionsManagement' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -164,7 +164,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Auction Templates</span>
+                  <span class="menu-title">{{ 'AuctionTemplates' | translate }}</span>
                 </a>
               </div>
               <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
@@ -185,7 +185,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Items</span>
+                  <span class="menu-title">{{ 'Items' | translate }}</span>
                   <span class="menu-arrow"></span>
                 </span>
                 <div class="menu-sub menu-sub-accordion">
@@ -194,7 +194,7 @@
                       <span class="menu-bullet">
                         <span class="bullet bullet-dot"></span>
                       </span>
-                      <span class="menu-title">Create Item</span>
+                      <span class="menu-title">{{ 'CreateItem' | translate }}</span>
                     </a>
                   </div>
                   <div class="menu-item">
@@ -202,7 +202,7 @@
                       <span class="menu-bullet">
                         <span class="bullet bullet-dot"></span>
                       </span>
-                      <span class="menu-title">Items List</span>
+                      <span class="menu-title">{{ 'ItemsList' | translate }}</span>
                     </a>
                   </div>
                   <div class="menu-item">
@@ -210,7 +210,7 @@
                       <span class="menu-bullet">
                         <span class="bullet bullet-dot"></span>
                       </span>
-                      <span class="menu-title">Bids</span>
+                      <span class="menu-title">{{ 'Bids' | translate }}</span>
                     </a>
                   </div>
                 </div>
@@ -232,12 +232,12 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Winners</span>
+                  <span class="menu-title">{{ 'Winners' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
                 <div class="menu-content pt-8 pb-0">
-                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">Admin & Settings</span>
+                  <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'AdminSettings' | translate }}</span>
                 </div>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -263,7 +263,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Slider Management</span>
+                  <span class="menu-title">{{ 'SliderManagement' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -283,7 +283,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">SMS Notifications</span>
+                  <span class="menu-title">{{ 'SMSNotifications' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -304,7 +304,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Reports</span>
+                  <span class="menu-title">{{ 'Reports' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -324,7 +324,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Comments and Reviews</span>
+                  <span class="menu-title">{{ 'CommentsandReviews' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -346,7 +346,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Messages</span>
+                  <span class="menu-title">{{ 'Messages' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -375,7 +375,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">Settings</span>
+                  <span class="menu-title">{{ 'Settings' | translate }}</span>
                 </a>
               </div>
             </div>
@@ -431,12 +431,21 @@
                   data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav'}">
                   <!--begin::Menu-->
                   <!--begin::Title-->
-                  <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">{{ utility.title }}
+                  <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">
+                    
+                    <div *ngIf="translate.currentLang==='en'">
+                      {{ utility.title }}
+                    </div>
+
+                    <div *ngIf="translate.currentLang==='ar'">
+                      {{ 'Dashboard' | translate }}
+                    </div>
+                    
                     <!--begin::Separator-->
                     <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
                     <!--end::Separator-->
                     <!--begin::Description-->
-                    <small class="text-muted fs-7 fw-bold my-1 ms-1">Welcome</small>
+                    <small class="text-muted fs-7 fw-bold my-1 ms-1">{{ 'Welcome' | translate }}</small>
                     <!--end::Description-->
                   </h1>
                   <!--end::Title-->
@@ -599,7 +608,7 @@
                       <!--begin::Menu item-->
                       <div class="menu-item px-5 my-1">
                         <a [routerLinkActive]="['active']" [routerLink]="['settings']"
-                          class="menu-link px-5">Settings</a>
+                          class="menu-link px-5">{{ 'Settings' | translate }}</a>
                       </div>
                       <!--end::Menu item-->
                       <!--begin::Menu item-->
