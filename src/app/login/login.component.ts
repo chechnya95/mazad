@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public utility: UtilitiesService,
+    public translate: TranslateService,
     private router: Router, private api: ApiService) {
     this.utility.show = false;
   }
@@ -31,6 +33,12 @@ export class LoginComponent implements OnInit {
     if (!localStorage.getItem('item-foo')) {
       localStorage.removeItem('item-foo');
     }
+  }
+  
+  
+  switchLang(lang: string) {
+    localStorage.setItem('lang', lang);
+    this.translate.use(lang);
   }
 
   login() {
