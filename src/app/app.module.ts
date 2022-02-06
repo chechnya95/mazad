@@ -33,6 +33,7 @@ import { ItemDetailsComponent } from './items/item-details/item-details.componen
 import { NewItemComponent } from './items/new-item/new-item.component';
 import { NewTemplateComponent } from './auction-templates/new-template/new-template.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditItemComponent } from './items/edit-item/edit-item.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ItemDetailsComponent,
     NewItemComponent,
     NewTemplateComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'item-details', component: ItemDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'new-item', component: NewItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
+      { path: 'edit-item', component: EditItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

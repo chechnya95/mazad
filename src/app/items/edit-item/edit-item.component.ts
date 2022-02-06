@@ -4,20 +4,21 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
-  selector: 'app-new-template',
-  templateUrl: './new-template.component.html',
-  styleUrls: ['./new-template.component.css']
+  selector: 'app-edit-item',
+  templateUrl: './edit-item.component.html',
+  styleUrls: ['./edit-item.component.css']
 })
-export class NewTemplateComponent implements OnInit {
+export class EditItemComponent implements OnInit {
 
   token: any;
-  templates: any[] = [];
+  items: any[] = [];
   auctions: any[] = [];
   categories: any[] = [];
   owners: any[] = [];
+  item_status: any[] = [];
   fields: any[] = [];
 
-  auction_template = {
+  item = {
     code: null,
     details: null,
     images: null,
@@ -26,9 +27,9 @@ export class NewTemplateComponent implements OnInit {
     deposit: null,
     start_date: null,
     end_date: null,
-    time_between_items: null,
     latitude: null,
     longtitude: null,
+    current_price: null,
     min_bid: null,
     start_price: null,
     acceptable_price: null,
@@ -37,6 +38,7 @@ export class NewTemplateComponent implements OnInit {
     address: null,
     extension_period: null,
     finale_period: null,
+    item_status: null,
     category_id: null,
     owner_id: null,
     auction_id: null,
@@ -48,42 +50,57 @@ export class NewTemplateComponent implements OnInit {
     terms_ar: null
   }
 
-  category = {
-    name_en: null,
-    name_ar: null,
-    content_en: null,
-    content_ar: null,
-    order: null,
-    enable: 1
+  new_item_status: any;
+  new_item_id: any;
+
+  item_s = {
+    name: null,
+    order: null
   }
 
+  attachemetns: any;
+  images: any;
   item_details: any = {};
 
-  update: boolean = false;
   edit_item_id: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
-    this.utility.title = 'Auction Templates';
+    this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
-
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
 
-      this.getAuctions(id);
-    });
+      if (id)
+        this.edit_item_id = id;
+
+      this.getItemstatus();
+    })
   }
 
-  async getAuctions(item_id: any) {
+  async getItemstatus() {
+    this.api.get('items/item_status', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.item_status = objects.item_status;
+        this.getAuctions();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getAuctions() {
     this.api.get('auctions/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
 
-        this.getOwners(item_id);
+        this.getOwners();
       },
       async error => {
         alert(error);
@@ -91,13 +108,12 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  async getOwners(item_id: any) {
+  async getOwners() {
     this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
-
-        this.getCategories(item_id);
+        this.getCategories();
       },
       async error => {
         alert(error);
@@ -105,26 +121,23 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  async getCategories(item_id: any) {
+  async getCategories() {
     this.api.get('categories/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
 
-        if (item_id) {
-          this.edit_item_id = item_id;
-          this.update = true;
-
-          let object = localStorage.getItem('item-template') ? JSON.parse(localStorage.getItem('item-template')) : null;
+        if (this.edit_item_id) {
+          let object = localStorage.getItem('item-edit') ? JSON.parse(localStorage.getItem('item-edit')) : null;
           if (object) {
-            this.auction_template = object;
+            this.item = object;
 
-            this.auction_template.title_ar = object.title['ar'];
-            this.auction_template.title_en = object.title['en'];
-            this.auction_template.terms_ar = object.terms['ar'];
-            this.auction_template.terms_en = object.terms['en'];
-            this.auction_template.description_ar = object.description['ar'];
-            this.auction_template.description_en = object.description['en'];
+            this.item.title_ar = object.title['ar'];
+            this.item.title_en = object.title['en'];
+            this.item.terms_ar = object.terms['ar'];
+            this.item.terms_en = object.terms['en'];
+            this.item.description_ar = object.description['ar'];
+            this.item.description_en = object.description['en'];
 
             var date_start = new Date(object.start_date);
             var month_start = (date_start.getMonth() + 1).toString();
@@ -144,7 +157,7 @@ export class NewTemplateComponent implements OnInit {
             if (+mins_start < 10)
               mins_start = '0' + mins_start;
 
-            this.auction_template.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start + 'T' + hour_start + ':' + mins_start;
+            this.item.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start + 'T' + hour_start + ':' + mins_start;
 
             var end_date = new Date(object.end_date);
             var month_end = (end_date.getMonth() + 1).toString();
@@ -163,8 +176,9 @@ export class NewTemplateComponent implements OnInit {
             if (+mins_end < 10)
               mins_end = '0' + mins_end;
 
-            this.auction_template.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
+            this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
 
+            console.log(this.item.images)
             this.getForm();
           }
         }
@@ -175,10 +189,19 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  getForm() {
-    let cat_id = this.auction_template.category_id;
-    let form_id = null;
+  imageChange(event) {
+    let imageList: FileList = event.target.files;
+    this.images = imageList;
+  }
 
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    this.attachemetns = fileList;
+  }
+
+  getForm() {
+    let cat_id = this.item.category_id;
+    let form_id = null;
     if (cat_id)
       form_id = this.categories.find(i => i.id === cat_id).form_id;
 
@@ -215,51 +238,55 @@ export class NewTemplateComponent implements OnInit {
   }
 
   OnSubmit() {
-    let body = {
-      code: this.auction_template.code,
+    const body = JSON.stringify({
+      code: this.item.code,
       details: this.item_details,
-      images: this.auction_template.images,
-      owner_code: this.auction_template.owner_code,
-      attachments: this.auction_template.attachments,
-      deposit: this.auction_template.deposit,
-      start_date: this.auction_template.start_date,
-      end_date: this.auction_template.end_date,
-      latitude: this.auction_template.latitude,
-      longtitude: this.auction_template.longtitude,
-      time_between_items: this.auction_template.time_between_items,
-      min_bid: this.auction_template.min_bid,
-      start_price: this.auction_template.start_price,
-      acceptable_price: this.auction_template.acceptable_price,
-      buy_price: this.auction_template.buy_price,
-      governorate: this.auction_template.governorate,
-      address: this.auction_template.address,
-      extension_period: this.auction_template.extension_period,
-      finale_period: this.auction_template.finale_period,
-      category_id: this.auction_template.category_id,
-      owner_id: this.auction_template.owner_id,
-      auction_id: this.auction_template.auction_id,
-      title: { 'en': this.auction_template.title_en, 'ar': this.auction_template.title_ar },
-      description: { 'en': this.auction_template.description_en, 'ar': this.auction_template.description_ar },
-      terms: { 'en': this.auction_template.terms_en, 'ar': this.auction_template.terms_ar }
+      images: this.item.images,
+      owner_code: this.item.owner_code,
+      attachments: this.item.attachments,
+      deposit: this.item.deposit,
+      start_date: this.item.start_date,
+      end_date: this.item.end_date,
+      latitude: this.item.latitude,
+      longtitude: this.item.longtitude,
+      current_price: this.item.current_price,
+      min_bid: this.item.min_bid,
+      start_price: this.item.start_price,
+      acceptable_price: this.item.acceptable_price,
+      buy_price: this.item.buy_price,
+      governorate: this.item.governorate,
+      address: this.item.address,
+      extension_period: this.item.extension_period,
+      finale_period: this.item.finale_period,
+      item_status: this.item.item_status,
+      category_id: this.item.category_id,
+      owner_id: this.item.owner_id,
+      auction_id: this.item.auction_id,
+      title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
+      description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
+      terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
+    })
+
+    let formData: FormData = new FormData();
+
+    if (this.images && this.images.length > 0) {
+      for (let file of this.images) {
+        formData.append('images', file, file.name);
+      }
     }
 
-    if (this.update) {
-      this.api.update("auction_templates/" + this.edit_item_id, body, this.token).subscribe(
-        async data => { localStorage.removeItem('item-template'); },
-        async eror => { alert("ERROR: cannot connect!"); }
-      );
+    if (this.attachemetns && this.attachemetns.length > 0) {
+      for (let file of this.attachemetns) {
+        formData.append('attachments', file, file.name);
+      }
     }
-    else {
-      this.api.post("auction_templates/", body, this.token).subscribe(
-        async data => {
-          this.item_details = [];
-        },
-        async error => {
-          alert("ERROR: cannot connect!");
-          console.log(error);
-        }
-      );
-    }
+
+    formData.append('form', body);
+
+    this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
+      async data => { localStorage.removeItem('item-edit'); },
+      async eror => { alert("ERROR: cannot connect!"); }
+    );
   }
 
   reload() {

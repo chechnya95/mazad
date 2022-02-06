@@ -76,6 +76,7 @@ export class NewItemComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
+      
       if (id) {
         this.item.auction_id = id;
       }
@@ -116,8 +117,6 @@ export class NewItemComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
-
-        console.log(this.owners);
         this.getCategories();
       },
       async error => {

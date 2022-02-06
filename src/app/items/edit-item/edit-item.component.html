@@ -12,34 +12,24 @@
                     <div class="stepper-nav mb-5">
                         <!--begin::Step 1-->
                         <div class="stepper-item current" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Type</h3>
+                            <h3 class="stepper-title">Item Description</h3>
                         </div>
                         <!--end::Step 1-->
                         <!--begin::Step 2-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Template</h3>
+                            <h3 class="stepper-title">Item Details</h3>
                         </div>
                         <!--end::Step 2-->
                         <!--begin::Step 3-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Description</h3>
-                        </div>
-                        <!--end::Step 3-->
-                        <!--begin::Step 3-a-->
-                        <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Destails</h3>
-                        </div>
-                        <!--end::Step 3-a-->
-                        <!--begin::Step 4-->
-                        <div class="stepper-item" data-kt-stepper-element="nav">
                             <h3 class="stepper-title">Fields Details</h3>
                         </div>
-                        <!--end::Step 4-->
-                        <!--begin::Step 5-->
+                        <!--end::Step 3-->
+                        <!--begin::Step 4-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
                             <h3 class="stepper-title">Completed</h3>
                         </div>
-                        <!--end::Step 5-->
+                        <!--end::Step 4-->
                     </div>
                     <!--end::Nav-->
                     <!--begin::Form-->
@@ -47,177 +37,6 @@
                         id="kt_create_account_form">
                         <!--begin::Step 1-->
                         <div class="current" data-kt-stepper-element="content">
-                            <!--begin::Wrapper-->
-                            <div class="w-100">
-                                <!--begin::Heading-->
-                                <div class="pb-10 pb-lg-15">
-                                    <!--begin::Title-->
-                                    <h2 class="fw-bolder d-flex align-items-center text-dark">Choose Item Type
-                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                            title="Item is created based on empty item or item from created template."></i>
-                                    </h2>
-                                    <!--end::Title-->
-                                    <!--begin::Notice-->
-                                    <div class="text-gray-400 fw-bold fs-6">If you need more info, please check out
-                                        <a class="link-primary fw-bolder">System Administrator</a>.
-                                    </div>
-                                    <!--end::Notice-->
-                                </div>
-                                <!--end::Heading-->
-                                <!--begin::Input group-->
-                                <div class="fv-row">
-                                    <!--begin::Row-->
-                                    <div class="row">
-                                        <!--begin::Col-->
-                                        <div class="col-lg-6">
-                                            <!--begin::Option-->
-                                            <input type="radio" class="btn-check" name="account_type" value="personal"
-                                                checked="checked" id="kt_create_account_form_account_type_personal" />
-                                            <label (click)="continue('empty')"
-                                                class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
-                                                for="kt_create_account_form_account_type_personal">
-                                                <!--begin::Svg Icon | path: icons/duotone/Interface/User.svg-->
-                                                <span class="svg-icon svg-icon-3x me-5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M17 6C17 8.76142 14.7614 11 12 11C9.23858 11 7 8.76142 7 6C7 3.23858 9.23858 1 12 1C14.7614 1 17 3.23858 17 6Z"
-                                                            fill="#121319" />
-                                                        <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M18.818 14.1248C18.2016 13.4101 17.1428 13.4469 16.3149 13.9001C15.0338 14.6013 13.5635 15 12 15C10.4365 15 8.96618 14.6013 7.68505 13.9001C6.85717 13.4469 5.79841 13.4101 5.182 14.1248C3.82222 15.7014 3 17.7547 3 20V21C3 22.1045 3.89543 23 5 23H19C20.1046 23 21 22.1045 21 21V20C21 17.7547 20.1778 15.7014 18.818 14.1248Z"
-                                                            fill="#191213" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                                <!--begin::Info-->
-                                                <span class="d-block fw-bold text-start">
-                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">New Item</span>
-                                                    <span class="text-gray-400 fw-bold fs-6">Create new
-                                                        item from scratch without data</span>
-                                                </span>
-                                                <!--end::Info-->
-                                            </label>
-                                            <!--end::Option-->
-                                        </div>
-                                        <!--end::Col-->
-                                        <!--begin::Col-->
-                                        <div class="col-lg-6">
-                                            <!--begin::Option-->
-                                            <input type="radio" class="btn-check" name="account_type" value="corporate"
-                                                id="kt_create_account_form_account_type_corporate" />
-                                            <label (click)="continue('template')"
-                                                class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
-                                                for="kt_create_account_form_account_type_corporate">
-                                                <!--begin::Svg Icon | path: icons/duotone/Interface/Briefcase.svg-->
-                                                <span class="svg-icon svg-icon-3x me-5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path opacity="0.25"
-                                                            d="M2 10C2 8.34315 3.34315 7 5 7H19C20.6569 7 22 8.34315 22 10V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V10Z"
-                                                            fill="#12131A" />
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                            d="M9 4C8.44772 4 8 4.44772 8 5V8C8 8.55228 7.55228 9 7 9C6.44772 9 6 8.55228 6 8V5C6 3.34315 7.34315 2 9 2H15C16.6569 2 18 3.34315 18 5V8C18 8.55228 17.5523 9 17 9C16.4477 9 16 8.55228 16 8V5C16 4.44772 15.5523 4 15 4H9Z"
-                                                            fill="#12131A" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                                <!--begin::Info-->
-                                                <span class="d-block fw-bold text-start">
-                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">Create
-                                                        from Template</span>
-                                                    <span class="text-gray-400 fw-bold fs-6">Create
-                                                        Item form defined template</span>
-                                                </span>
-                                                <!--end::Info-->
-                                            </label>
-                                            <!--end::Option-->
-                                        </div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Row-->
-                                </div>
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Step 1-->
-                        <!--begin::Step 2-->
-                        <div data-kt-stepper-element="content">
-                            <!--begin::Wrapper-->
-                            <div class="w-100" *ngIf="type=='empty'">
-                                <!--begin::Title-->
-                                <h2 class="fw-bolder text-dark">Click Continue to Fill item details..</h2>
-                                <!--end::Title-->
-                            </div>
-                            <div class="w-100" *ngIf="type=='template'">
-                                <!--begin::Heading-->
-                                <div class="pb-10 pb-lg-15">
-                                    <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Choose Item Template</h2>
-                                    <!--end::Title-->
-                                </div>
-                                <!--end::Heading-->
-                                <!--begin::Input group-->
-                                <div class="mb-0 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="d-flex align-items-center form-label mb-5">
-                                        <!--end::Label-->
-                                        <!--begin::Options-->
-                                        <div class="mb-0">
-                                            <!--begin:Option-->
-                                            <label class="d-flex flex-stack mb-5 cursor-pointer"
-                                                *ngFor="let item of templates; let i = index">
-                                                <!--begin:Label-->
-                                                <span class="d-flex align-items-center me-2">
-                                                    <!--begin::Icon-->
-                                                    <span class="symbol symbol-50px me-6">
-                                                        <span class="symbol-label">
-                                                            <!--begin::Svg Icon | path: icons/duotone/Interface/Bank.svg-->
-                                                            <span class="svg-icon svg-icon-1 svg-icon-gray-600">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                    height="24" viewBox="0 0 24 24" fill="none">
-                                                                    <path opacity="0.25"
-                                                                        d="M4 10H8V17H10V10H14V17H16V10H20V17C21.1046 17 22 17.8954 22 19V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V19C2 17.8954 2.89543 17 4 17V10Z"
-                                                                        fill="#12131A" />
-                                                                    <path
-                                                                        d="M2 7.35405C2 6.53624 2.4979 5.80083 3.25722 5.4971L11.2572 2.2971C11.734 2.10637 12.266 2.10637 12.7428 2.2971L20.7428 5.4971C21.5021 5.80083 22 6.53624 22 7.35405V7.99999C22 9.10456 21.1046 9.99999 20 9.99999H4C2.89543 9.99999 2 9.10456 2 7.99999V7.35405Z"
-                                                                        fill="#12131A" />
-                                                                </svg>
-                                                            </span>
-                                                            <!--end::Svg Icon-->
-                                                        </span>
-                                                    </span>
-                                                    <!--end::Icon-->
-                                                    <!--begin::Description-->
-                                                    <span class="d-flex flex-column">
-                                                        <span class="fw-bolder text-gray-800 text-hover-primary fs-5">{{
-                                                            item.code }}</span>
-                                                        <span class="fs-6 fw-bold text-gray-400">{{ item.id | uppercase
-                                                            }}</span>
-                                                    </span>
-                                                    <!--end:Description-->
-                                                </span>
-                                                <!--end:Label-->
-                                                <!--begin:Input-->
-                                                <span class="form-check form-check-custom form-check-solid">
-                                                    <input class="form-check-input" type="radio" name="account_plan"
-                                                        value="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.checked"
-                                                        (click)="teplateChecked(item)" />
-                                                </span>
-                                                <!--end:Input-->
-                                            </label>
-                                            <!--end::Option-->
-                                        </div>
-                                        <!--end::Options-->
-                                    </label>
-                                </div>
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Step 2-->
-                        <!--begin::Step 3-->
-                        <div data-kt-stepper-element="content">
                             <!--begin::Wrapper-->
                             <div class="w-100">
                                 <!--begin::Heading-->
@@ -399,8 +218,8 @@
                             </div>
                             <!--end::Wrapper-->
                         </div>
-                        <!--end::Step 3-->
-                        <!--begin::Step 3-a-->
+                        <!--end::Step 1-->
+                        <!--begin::Step 2-->
                         <div data-kt-stepper-element="content">
                             <!--begin::Wrapper-->
                             <div class="w-100">
@@ -552,8 +371,8 @@
                             </div>
                             <!--end::Wrapper-->
                         </div>
-                        <!--end::Step 3-a-->
-                        <!--begin::Step 4-->
+                        <!--end::Step 2-->
+                        <!--begin::Step 3-->
                         <div data-kt-stepper-element="content">
                             <!--begin::Wrapper-->
                             <div class="w-100">
@@ -640,8 +459,8 @@
                             </div>
                             <!--end::Wrapper-->
                         </div>
-                        <!--end::Step 4-->
-                        <!--begin::Step 5-->
+                        <!--end::Step 3-->
+                        <!--begin::Step 4-->
                         <div data-kt-stepper-element="content">
                             <!--begin::Wrapper-->
                             <div class="w-100">
@@ -685,8 +504,10 @@
                                             <!--begin::Content-->
                                             <div class="fw-bold">
                                                 <h4 class="text-gray-800 fw-bolder">We need your attention!</h4>
-                                                <div class="fs-6 text-gray-600">By Clicking Submit your item will be created. To create new item, 
-                                                    <a (click)="reload();" style="cursor: pointer;" class="fw-bolder">Please Click here.</a>
+                                                <div class="fs-6 text-gray-600">By Clicking Submit your item will be
+                                                    created. To create new item,
+                                                    <a (click)="reload();" style="cursor: pointer;"
+                                                        class="fw-bolder">Please Click here.</a>
                                                 </div>
                                             </div>
                                             <!--end::Content-->
@@ -700,7 +521,7 @@
                             </div>
                             <!--end::Wrapper-->
                         </div>
-                        <!--end::Step 5-->
+                        <!--end::Step 4-->
                         <!--begin::Actions-->
                         <div class="d-flex flex-stack pt-15">
                             <!--begin::Wrapper-->

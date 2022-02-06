@@ -108,4 +108,9 @@ export class ItemsComponent implements OnInit {
       }
     );
   }
+
+  saveItem(item: any) {
+    localStorage.removeItem('item-edit');
+    localStorage.setItem('item-edit', JSON.stringify(item));
+  }
 }
