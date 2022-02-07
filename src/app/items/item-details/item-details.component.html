@@ -72,8 +72,7 @@
                                 </span>
                             </div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit item details">
-                                <a class="btn btn-sm btn-light-primary" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_update_customer">Edit</a>
+                                <a (click)="saveItem(item)" href="edit-item?id={{item.id}}" class="btn btn-sm btn-light-primary">Edit</a>
                             </span>
                         </div>
                         <!--end::Details toggle-->
@@ -162,19 +161,19 @@
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Owner</div>
-                                <div class="text-gray-600">{{ item?.owner_id | uppercase}}</div>
+                                <div class="text-gray-600"><a [routerLink]="['/users']" [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Category</div>
-                                <div class="text-gray-600">{{ item?.category_id | uppercase}}</div>
+                                <div class="text-gray-600">{{ category?.name.en }} - {{ category?.name.ar }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Auction</div>
-                                <div class="text-gray-600">{{ item?.auction_id | uppercase }}</div>
+                                <div class="text-gray-600"><a [routerLink]="['/auctions']" [queryParams]="{ id: item?.auction_id }">{{ auction?.code | uppercase }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Higher Bidder</div>
-                                <div class="text-gray-600">{{ item?.higher_bidder | uppercase }}</div>
+                                <div class="text-gray-600"><a [routerLink]="['/users']" [queryParams]="{ id: item?.higher_bidder }">{{ item?.higher_bidder | uppercase }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Payer</div>
@@ -361,7 +360,86 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Card-->
-                        <!--begin::Card-->
+                        <!--begin::winner-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2 class="fw-bolder mb-0">Winner Details</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div id="kt_winner_details_view" class="card-body pt-0">
+                                <!--begin::Option-->
+                                <div class="py-0" data-kt-customer-payment-method="row">
+                                    <!--begin::Body-->
+                                    <div id="kt_winner_details_view_1" class="collapse show fs-6 ps-10"
+                                        data-bs-parent="#kt_winner_details_view">
+                                        <!--begin::Row-->
+                                        <div class="row py-5">
+                                            <!--begin::Row-->
+                                            <div class="col-md-6">
+                                                <!--begin::Item-->
+                                                <div class="d-flex mb-3">
+                                                    <!--begin::Label-->
+                                                    <div class="text-gray-400 fw-bold w-125px">Name</div>
+                                                    <!--end::Label-->
+                                                    <!--begin::Value-->
+                                                    <div class="text-gray-800 fw-bold">{{ winner?.details.name_en | titlecase }}</div>
+                                                    <!--end::Value-->
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex mb-3">
+                                                    <!--begin::Label-->
+                                                    <div class="text-gray-400 fw-bold w-125px">Phone</div>
+                                                    <!--end::Label-->
+                                                    <!--begin::Value-->
+                                                    <div class="text-gray-800 fw-bold">{{ winner?.phone }}</div>
+                                                    <!--end::Value-->
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Row-->
+                                            <!--begin::Row-->
+                                            <div class="col-md-6">
+                                                <!--begin::Item-->
+                                                <div class="d-flex mb-3">
+                                                    <!--begin::Label-->
+                                                    <div class="text-gray-400 fw-bold w-125px">ID Card Number</div>
+                                                    <!--end::Label-->
+                                                    <!--begin::Value-->
+                                                    <div class="text-gray-800 fw-bold">{{ winner?.details.id_card_number }}</div>
+                                                    <!--end::Value-->
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex mb-3">
+                                                    <!--begin::Label-->
+                                                    <div class="text-gray-400 fw-bold w-125px">Email</div>
+                                                    <!--end::Label-->
+                                                    <!--begin::Value-->
+                                                    <div class="text-gray-800 fw-bold">
+                                                        <a class="text-gray-900 text-hover-primary">{{ winner?.email }}</a>
+                                                    </div>
+                                                    <!--end::Value-->
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Row-->
+                                    </div>
+                                    <!--end::Body-->
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::winner-->
+                        <!--begin::files-->
                         <div class="card pt-4 mb-6 mb-xl-9">
                             <!--begin::Card header-->
                             <div class="card-header border-0">
@@ -705,88 +783,8 @@
                             </div>
                             <!--end::Card body-->
                         </div>
-                        <!--end::Card-->
+                        <!--end::files-->
                         
-                        <!--begin::Card-->
-                        <div class="card pt-4 mb-6 mb-xl-9">
-                            <!--begin::Card header-->
-                            <div class="card-header border-0">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <h2 class="fw-bolder mb-0">Winner Details</h2>
-                                </div>
-                                <!--end::Card title-->
-                            </div>
-                            <!--end::Card header-->
-                            <!--begin::Card body-->
-                            <div id="kt_customer_view_payment_method" class="card-body pt-0">
-                                <!--begin::Option-->
-                                <div class="py-0" data-kt-customer-payment-method="row">
-                                    <!--begin::Body-->
-                                    <div id="kt_customer_view_payment_method_1" class="collapse show fs-6 ps-10"
-                                        data-bs-parent="#kt_customer_view_payment_method">
-                                        <!--begin::Row-->
-                                        <div class="row py-5">
-                                            <!--begin::Row-->
-                                            <div class="col-md-6">
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Name</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Emma Smith</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Phone</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">12/2024</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                            </div>
-                                            <!--end::Row-->
-                                            <!--begin::Row-->
-                                            <div class="col-md-6">
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">ID Card Number</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">**** 4296</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Email</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">
-                                                        <a href="#"
-                                                            class="text-gray-900 text-hover-primary">e.smith@kpmg.com.au</a>
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                            </div>
-                                            <!--end::Row-->
-                                        </div>
-                                        <!--end::Row-->
-                                    </div>
-                                    <!--end::Body-->
-                                </div>
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Card-->
                     </div>
                     <!--end:::Tab pane-->
                     <!--begin:::Tab pane-->
@@ -962,201 +960,6 @@
                                                             class="btn btn-sm btn-light btn-active-light-primary">Download</button>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sep 15, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Iphone 12 Pro Mockup Mega Bundle</td>
-                                                    <td class="text-success">$5.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>May 30, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">523445943</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-1.30</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Apr 22, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">231445943</a>
-                                                    </td>
-                                                    <td>Parcel Shipping / Delivery Service App</td>
-                                                    <td class="text-success">$204.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Feb 09, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sep 15, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Iphone 12 Pro Mockup Mega Bundle</td>
-                                                    <td class="text-success">$5.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                             <!--end::Table body-->
                                         </table>
@@ -1183,227 +986,7 @@
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody>
-                                                <tr>
-                                                    <td>Feb 09, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sep 15, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Iphone 12 Pro Mockup Mega Bundle</td>
-                                                    <td class="text-success">$5.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>May 30, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">523445943</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-1.30</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Apr 22, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">231445943</a>
-                                                    </td>
-                                                    <td>Parcel Shipping / Delivery Service App</td>
-                                                    <td class="text-success">$204.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Feb 09, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sep 15, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Iphone 12 Pro Mockup Mega Bundle</td>
-                                                    <td class="text-success">$5.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>May 30, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">523445943</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-1.30</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td>Apr 22, 2019</td>
                                                     <td>
@@ -1443,227 +1026,7 @@
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody>
-                                                <tr>
-                                                    <td>Nov 01, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Feb 09, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2018</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Feb 09, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">984445943</a>
-                                                    </td>
-                                                    <td>Abstract Vusial Pack</td>
-                                                    <td class="text-success">$52.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jan 04, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">324442313</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-0.80</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sep 15, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Iphone 12 Pro Mockup Mega Bundle</td>
-                                                    <td class="text-success">$5.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 01, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
-                                                    </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 24, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">423445721</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-2.60</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Oct 08, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">312445984</a>
-                                                    </td>
-                                                    <td>Cartoon Mobile Emoji Phone Pack</td>
-                                                    <td class="text-success">$76.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>May 30, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">523445943</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-1.30</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td>Apr 22, 2019</td>
                                                     <td>

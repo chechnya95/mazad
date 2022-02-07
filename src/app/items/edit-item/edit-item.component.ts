@@ -113,6 +113,7 @@ export class EditItemComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
+        
         this.getCategories();
       },
       async error => {
@@ -138,7 +139,7 @@ export class EditItemComponent implements OnInit {
             this.item.terms_en = object.terms['en'];
             this.item.description_ar = object.description['ar'];
             this.item.description_en = object.description['en'];
-
+            
             var date_start = new Date(object.start_date);
             var month_start = (date_start.getMonth() + 1).toString();
             var day_start = (date_start.getDate()).toString();
@@ -178,7 +179,6 @@ export class EditItemComponent implements OnInit {
 
             this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
 
-            console.log(this.item.images)
             this.getForm();
           }
         }

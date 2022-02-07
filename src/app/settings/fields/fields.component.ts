@@ -23,6 +23,17 @@ export class FieldsComponent implements OnInit {
     value_en: null
   }
 
+  edit_field_id: any;
+  edit_field = {
+    field_type: null,
+    enable: null,
+    note: null,
+    title_ar: null,
+    title_en: null,
+    value_ar: null,
+    value_en: null
+  }
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -93,5 +104,33 @@ export class FieldsComponent implements OnInit {
         }
       );
     }
+  }
+
+  editItemClicked(item: any) {
+    this.edit_field = item;
+    this.edit_field_id = item.id;
+
+    this.edit_field.enable = item.enable;
+    this.edit_field.title_ar = item.title.ar;
+    this.edit_field.title_en = item.title.en;
+    this.edit_field.value_ar = item.value.ar;
+    this.edit_field.value_en = item.value.ar;
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      field_type: this.edit_field.field_type,
+      enable: this.edit_field.enable,
+      note: this.edit_field.note,
+      title: { 'en': this.edit_field.title_en, 'ar': this.edit_field.title_ar },
+      value: { 'en': this.edit_field.value_en, 'ar': this.edit_field.value_ar }
+    }
+
+    const sub = this.api.update('fields/' + id, body, this.token).subscribe(
+      async data => { },
+      async errr => { console.log(errr); }
+    );
+
+    sub.add(() => { this.get_fields(); });
   }
 }

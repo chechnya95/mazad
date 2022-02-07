@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 
@@ -63,7 +64,9 @@ export class AuctionsComponent implements OnInit {
     terms_ar: null
   }
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  auction_id: any;
+
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Auctions';
@@ -71,7 +74,11 @@ export class AuctionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAuctions();
+    this.route.queryParams.subscribe(params => {
+      this.auction_id = params['id'] != null ? params['id'] : null;
+
+      this.getAuctions();
+    })
   }
 
   async getAuctions() {
@@ -80,6 +87,10 @@ export class AuctionsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
+
+        if (this.auction_id)
+          this.auctions = this.auctions.filter(i => i.id === this.auction_id);
+
         this.getOwners();
       },
       async error => {
@@ -189,10 +200,10 @@ export class AuctionsComponent implements OnInit {
     var day_end = (end_date.getDate()).toString();
 
     if (+month_end < 10)
-    month_end = '0' + month_end;
+      month_end = '0' + month_end;
 
     if (+day_end < 10)
-    day_end = '0' + day_end;
+      day_end = '0' + day_end;
 
     this.edit_auction.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end;
   }
