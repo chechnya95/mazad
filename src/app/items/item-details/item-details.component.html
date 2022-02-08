@@ -50,7 +50,7 @@
                         <!--end::Summary-->
                         <!--begin::Details toggle-->
                         <div class="d-flex flex-stack fs-4 py-3">
-                            <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse"
+                            <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_customer_view_details" role="button" aria-expanded="false"
                                 aria-controls="kt_customer_view_details">Details
                                 <span class="ms-2 rotate-180">
@@ -78,7 +78,7 @@
                         <!--end::Details toggle-->
                         <div class="separator separator-dashed my-3"></div>
                         <!--begin::Details content-->
-                        <div id="kt_customer_view_details" class="collapse show">
+                        <div id="kt_customer_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Badge-->
                                 <div class="badge badge-light-info d-inline">{{ item?.item_status }}</div>
@@ -132,7 +132,7 @@
                         <!--end::Details content-->
                         <!--begin::Details toggle-->
                         <div class="d-flex flex-stack fs-4 py-3">
-                            <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse"
+                            <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_item_view_details" role="button" aria-expanded="false"
                                 aria-controls="kt_item_view_details">Other Related Details
                                 <span class="ms-2 rotate-180">
@@ -157,7 +157,7 @@
                         <!--end::Details toggle-->
                         <div class="separator separator-dashed my-3"></div>
                         <!--begin::Details content-->
-                        <div id="kt_item_view_details" class="collapse show">
+                        <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Owner</div>
@@ -457,7 +457,7 @@
                                     <!--begin::Header-->
                                     <div class="py-3 d-flex flex-stack flex-wrap">
                                         <!--begin::Toggle-->
-                                        <div class="d-flex align-items-center collapsible rotate"
+                                        <div class="d-flex align-items-center collapsible collapsed rotate"
                                             data-bs-toggle="collapse" href="#kt_customer_view_payment_method_1"
                                             role="button" aria-expanded="false"
                                             aria-controls="kt_customer_view_payment_method_1">
@@ -493,152 +493,15 @@
                                     </div>
                                     <!--end::Header-->
                                     <!--begin::Body-->
-                                    <div id="kt_customer_view_payment_method_1" class="collapse show fs-6 ps-10"
+                                    <div id="kt_customer_view_payment_method_1" class="collapse fs-6 ps-10"
                                         data-bs-parent="#kt_customer_view_payment_method">
                                         <!--begin::Row-->
                                         <div class="row py-5">
                                             <!--begin::Row-->
-                                            <div class="col-md-6">
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Name</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Emma Smith</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Number</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">**** 4296</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Expires</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">12/2024</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Type</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Mastercard credit card</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Issuer</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">VICBANK</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
+                                            <div class="col-md">
                                                 <!--begin::Item-->
                                                 <div class="d-flex">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">ID</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">id_4325df90sdf8</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                            </div>
-                                            <!--end::Row-->
-                                            <!--begin::Row-->
-                                            <div class="col-md-6">
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Billing address</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">AU</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Phone</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">No phone provided</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Email</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">
-                                                        <a href="#"
-                                                            class="text-gray-900 text-hover-primary">e.smith@kpmg.com.au</a>
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Origin</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Australia
-                                                        <div class="symbol symbol-20px symbol-circle ms-2">
-                                                            <img src="assets/media/flags/australia.svg" />
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">CVC check</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Passed
-                                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Double-check.svg-->
-                                                        <span class="svg-icon svg-icon-2 svg-icon-success">
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                                height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                <g stroke="none" stroke-width="1" fill="none"
-                                                                    fill-rule="evenodd">
-                                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                                    <path
-                                                                        d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z"
-                                                                        fill="#000000" fill-rule="nonzero" opacity="0.5"
-                                                                        transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002)" />
-                                                                    <path
-                                                                        d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z"
-                                                                        fill="#000000" fill-rule="nonzero"
-                                                                        transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002)" />
-                                                                </g>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </div>
-                                                    <!--end::Value-->
+                                                    <img *ngFor="let image of item?.images" src="{{image.file.file}}" style="width:60px;height:40px;">
                                                 </div>
                                                 <!--end::Item-->
                                             </div>
@@ -653,7 +516,7 @@
                                     <!--begin::Header-->
                                     <div class="py-3 d-flex flex-stack flex-wrap">
                                         <!--begin::Toggle-->
-                                        <div class="d-flex align-items-center collapsible rotate"
+                                        <div class="d-flex align-items-center collapsible collapsed rotate"
                                             data-bs-toggle="collapse" href="#kt_customer_view_payment_method_2"
                                             role="button" aria-expanded="false"
                                             aria-controls="kt_customer_view_payment_method_2">
@@ -688,91 +551,20 @@
                                         <!--end::Toggle-->
                                     </div>
                                     <!--end::Header-->
-                                    <!--begin::Body-->
-                                    <div id="kt_customer_view_payment_method_2" class="collapse show fs-6 ps-10"
+                                    <!--begin::Body--> 
+                                    <!-- to show by default just add the class show after collapse -->
+                                    <div id="kt_customer_view_payment_method_2" class="collapse fs-6 ps-10"
                                         data-bs-parent="#kt_customer_view_payment_method">
                                         <!--begin::Row-->
                                         <div class="row py-5">
                                             <!--begin::Row-->
-                                            <div class="col-md-6">
+                                            <div class="col-md">
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Billing address</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">AU</div>
-                                                    <!--end::Value-->
+                                                    <a *ngFor="let attach of item?.attachments" href="{{attach.file.file}}" target="_blank"><img src="../../../assets/media/icons/duotone/Files/Selected-file.svg" style="width:60px;height:40px;"/>
+                                                    </a>
                                                 </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Phone</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">No phone provided</div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Email</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">
-                                                        <a href="#"
-                                                            class="text-gray-900 text-hover-primary">e.smith@kpmg.com.au</a>
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex mb-3">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Origin</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Australia
-                                                        <div class="symbol symbol-20px symbol-circle ms-2">
-                                                            <img src="assets/media/flags/australia.svg" />
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex">
-                                                    <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">CVC check</div>
-                                                    <!--end::Label-->
-                                                    <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">Passed
-                                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Double-check.svg-->
-                                                        <span class="svg-icon svg-icon-2 svg-icon-success">
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                                height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                <g stroke="none" stroke-width="1" fill="none"
-                                                                    fill-rule="evenodd">
-                                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                                    <path
-                                                                        d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z"
-                                                                        fill="#000000" fill-rule="nonzero" opacity="0.5"
-                                                                        transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002)" />
-                                                                    <path
-                                                                        d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z"
-                                                                        fill="#000000" fill-rule="nonzero"
-                                                                        transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002)" />
-                                                                </g>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </div>
-                                                    <!--end::Value-->
-                                                </div>
-                                                <!--end::Item-->
+                                                <!--end::Item-->                                                
                                             </div>
                                             <!--end::Row-->
                                         </div>

@@ -32,7 +32,14 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getRoles();
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload');
+      window.location.reload();
+      this.getRoles();
+    } else {
+      localStorage.removeItem('foo');
+      this.getRoles();
+    }
   }
 
   async getRoles() {
@@ -65,7 +72,7 @@ export class RolesComponent implements OnInit {
         this.permissions.forEach(function (permission) {
           let split: string[] = permission.name.split(".");
           permission.obj = split[0];
-          permission.action = permission.name.replace(permission.obj+'.', '');
+          permission.action = permission.name.replace(permission.obj + '.', '');
         });
 
         this.getRolePermissions();

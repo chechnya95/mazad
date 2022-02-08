@@ -442,6 +442,21 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
+                                                <label class="form-label required">Form</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="form_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="category.form_id">
+                                                    <option *ngFor="let form of forms" [ngValue]='form.id'>
+                                                        {{ form.key }} - {{ form.title.en }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
                                                 <label class="form-label required">Order</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -477,8 +492,8 @@
                                                     </thead>
                                                     <tbody class="text-gray-600 fw-bold">
                                                         <tr *ngFor="let category of categories">
-                                                            <td>{{ category.name.ar }} {{ category.name.en }}</td>
-                                                            <td>{{ category.content.ar }} {{ category.content.en }}</td>
+                                                            <td>{{ category.name.ar }} <br> {{ category.name.en }}</td>
+                                                            <td>{{ category.content.ar }} <br> {{ category.content.en }}</td>
                                                             <td>{{ category.order }}</td>
                                                             <td>{{ category.enable }}</td>
                                                             <td>{{ category.form_key }}</td>

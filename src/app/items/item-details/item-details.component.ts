@@ -38,6 +38,7 @@ export class ItemDetailsComponent implements OnInit {
         if (objects) {
           this.item = objects.find(i => i.id === id);
           this.keys = Object.keys(this.item.details);
+
           this.getBidds(id);
         }
       }
@@ -113,8 +114,8 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.winner = objects['winners'][0];
 
-        this.winner.details = JSON.parse(this.winner.details)
-        console.log(this.winner)
+        if (this.winner)
+          this.winner.details = JSON.parse(this.winner.details)
       },
       async error => {
         alert(error);

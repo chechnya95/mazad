@@ -13,6 +13,7 @@ export class AuctionSettingsComponent implements OnInit {
   auction_status: any[] = [];
   item_status: any[] = [];
   categories: any[] = [];
+  forms: any[] = [];
 
   new_auction_status = {
     name: null,
@@ -25,6 +26,7 @@ export class AuctionSettingsComponent implements OnInit {
     content_en: null,
     content_ar: null,
     order: null,
+    form_id: null,
     enable: 1
   }
 
@@ -40,7 +42,14 @@ export class AuctionSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAuctionStatus();
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload');
+      window.location.reload();
+      this.getAuctionStatus();
+    } else {
+      localStorage.removeItem('foo');
+      this.getAuctionStatus();
+    }
   }
 
   async getAuctionStatus() {
@@ -54,7 +63,7 @@ export class AuctionSettingsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.getCategories(); });
+    sub.add(() => { this.get_forms(); });
   }
 
   addAuctionStatus() {
@@ -86,6 +95,20 @@ export class AuctionSettingsComponent implements OnInit {
     );
   }
 
+  get_forms() {
+    const sub = this.api.get('forms/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.forms = objects['forms'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { this.getCategories(); });
+  }
+
   async getCategories() {
     const sub = this.api.get('categories/', this.token).subscribe(
       async data => {
@@ -104,6 +127,7 @@ export class AuctionSettingsComponent implements OnInit {
     let body = {
       order: this.category.order,
       enable: this.category.enable,
+      form_id: this.category.form_id,
       name: { 'en': this.category.name_en, 'ar': this.category.name_ar },
       content: { 'en': this.category.content_en, 'ar': this.category.content_ar },
     }
