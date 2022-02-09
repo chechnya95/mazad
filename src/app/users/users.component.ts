@@ -65,7 +65,7 @@ export class UsersComponent implements OnInit {
 
   async getUsers(id: any) {
     this.utility.loader = true;
-    this.api.get('users/', this.token).subscribe(
+    const sub = this.api.get('users/', this.token).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -83,15 +83,13 @@ export class UsersComponent implements OnInit {
           user.avatar = user_details ? user_details['name_en'] ? user_details['name_en'].charAt(0) : user['username'].charAt(0) : user['username'].charAt(0);
           user.name = user_details ? user_details['name_en'] : '';
         });
-
-        this.utility.loader = false;
-
-        this.getRoles();
       },
       async error => {
         alert(error);
       }
     );
+
+    sub.add(() => { this.utility.loader = false; this.getRoles(); });
   }
 
   async getRoles() {
