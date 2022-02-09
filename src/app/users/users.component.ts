@@ -80,7 +80,7 @@ export class UsersComponent implements OnInit {
         this.users.forEach(function (user) {
           let user_details = JSON.parse(user['user_details']);
 
-          user.avatar = user_details ? user_details['name_en'].charAt(0) : user['username'].charAt(0);
+          user.avatar = user_details ? user_details['name_en'] ? user_details['name_en'].charAt(0) : user['username'].charAt(0) : user['username'].charAt(0);
           user.name = user_details ? user_details['name_en'] : '';
         });
 
