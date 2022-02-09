@@ -1,0 +1,185 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Invoice 2 main-->
+        <div class="card">
+            <!--begin::Body-->
+            <div class="card-body p-lg-20">
+                <!--begin::Layout-->
+                <div class="d-flex flex-column flex-xl-row">
+                    <!--begin::Content-->
+                    <div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
+                        <!--begin::Invoice 2 content-->
+                        <div class="mt-n1">
+                            <!--begin::Wrapper-->
+                            <div class="m-0">
+                                <!--begin::Label-->
+                                <div class="fw-bolder fs-3 text-gray-800 mb-8">{{ auction?.code }}</div>
+                                <!--end::Label-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-11">
+                                    <!--end::Col-->
+                                    <div class="col-sm-6">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Start Date:</div>
+                                        <!--end::Label-->
+                                        <!--end::Col-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ auction?.start_date | date }}</div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--end::Col-->
+                                    <div class="col-sm-6">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">End Date:</div>
+                                        <!--end::Label-->
+                                        <!--end::Info-->
+                                        <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+                                            <span class="pe-2">{{ auction?.end_date | date }}</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-12">
+                                    <!--end::Col-->
+                                    <div class="col-sm-6">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Type:</div>
+                                        <!--end::Label-->
+                                        <!--end::Text-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ auction?.auction_type | titlecase
+                                            }}</div>
+                                        <!--end::Text-->
+                                        <!--end::Description-->
+                                        <div class="fw-bold fs-7 text-gray-600">Deposit:
+                                            <br /><b>{{ auction?.deposit | currency:'OMR' }}</b>
+                                        </div>
+                                        <!--end::Description-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--end::Col-->
+                                    <div class="col-sm-6">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Method:</div>
+                                        <!--end::Label-->
+                                        <!--end::Text-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ auction?.auction_method | titlecase
+                                            }}</div>
+                                        <!--end::Text-->
+                                        <!--end::Description-->
+                                        <div class="fw-bold fs-7 text-gray-600">Owner Code:
+                                            <br /><b>{{ auction?.owner_code }}</b>
+                                        </div>
+                                        <!--end::Description-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Content-->
+                                <div class="flex-grow-1">
+                                    <!--begin::Table-->
+                                    <div class="table-responsive border-bottom mb-9">
+                                        <table class="table mb-3">
+                                            <tbody>
+                                                <tr class="fw-bolder text-gray-700 fs-5 text-start">
+                                                    <td class="d-flex align-items-center">
+                                                        <i class="fa fa-genderless text-success fs-2 me-2"></i>Description
+                                                    </td>
+                                                    <td>{{ auction?.description.en }} <br> {{ auction?.description.ar }}</td>
+                                                </tr>
+                                                <tr class="fw-bolder text-gray-700 fs-5 text-start">
+                                                    <td class="d-flex align-items-center">
+                                                        <i class="fa fa-genderless text-danger fs-2 me-2"></i>Terms
+                                                    </td>
+                                                    <td>{{ auction?.terms.en }} <br> {{ auction?.terms.ar }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Content-->
+                            </div>
+                            <!--end::Wrapper-->
+                        </div>
+                        <!--end::Invoice 2 content-->
+                    </div>
+                    <!--end::Content-->
+                    <!--begin::Sidebar-->
+                    <div class="m-0">
+                        <!--begin::Invoice 2 sidebar-->
+                        <div
+                            class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
+                            <!--begin::Labels-->
+                            <div class="mb-8">
+                                <span class="badge badge-light-success me-2">{{ auction?.auction_status }}</span>
+                                <!-- <span class="badge badge-light-warning">Pending Payment</span> -->
+                            </div>
+                            <!--end::Labels-->
+                            <!--begin::Title-->
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">AUCTION OVERVIEW</h6>
+                            <!--end::Title-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Auction Title</div>
+                                <div class="fw-bolder fs-6 text-gray-800">{{ auction?.title.en }}
+                                    <br> {{ auction?.title.ar }}
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Split Payment:</div>
+                                <div class="fw-bolder text-gray-800 fs-6">
+                                    <span *ngIf="auction?.split_payment" class="badge badge-primary me-2">Ture</span>
+                                    <span *ngIf="!auction?.split_payment" class="badge badge-info me-2">False</span>
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Title-->
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">GENERAL REFRENCES</h6>
+                            <!--end::Title-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Owner:</div>
+                                <div class="fw-bolder text-gray-800 fs-6">{{ auction?.owner_id | uppercase}}</div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Payment ID:</div>
+                                <div class="fw-bolder text-gray-800 fs-6">{{ auction?.payment_id | uppercase }}</div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Template ID:</div>
+                                <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center">{{
+                                    auction?.template_id | uppercase }}</div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Group ID:</div>
+                                <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center">{{ auction?.group_id
+                                    | uppercase }}</div>
+                            </div>
+                            <!--end::Item-->
+                        </div>
+                        <!--end::Invoice 2 sidebar-->
+                    </div>
+                    <!--end::Sidebar-->
+                </div>
+                <!--end::Layout-->
+            </div>
+            <!--end::Body-->
+        </div>
+        <!--end::Invoice 2 main-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Post-->

@@ -250,4 +250,9 @@ export class AuctionsComponent implements OnInit {
       );
     }
   }
+
+  saveAuction(item: any) {
+    localStorage.removeItem('auction');
+    localStorage.setItem('auction', JSON.stringify(item));
+  }
 }

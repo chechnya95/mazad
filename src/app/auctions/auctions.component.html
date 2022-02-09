@@ -795,7 +795,7 @@
                             </td>
                             <!--end::Checkbox-->
                             <!--begin::code=-->
-                            <td>{{ auction.title.en }}</td>
+                            <td><a (click)="saveAuction(auction)" [routerLink]="['/auction-details']" [queryParams]="{ id: auction.id }">{{ auction.title.en | titlecase }}</a></td>
                             <!--end::code=-->
                             <!--begin::auction=-->
                             <td>{{ auction.auction_type }}</td>
