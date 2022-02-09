@@ -49,9 +49,9 @@
                                             <td>{{ winner.phone}} <br> {{ winner.email}}</td>
                                             <td>{{ winner.create_date | date:"short"}}</td>
                                             <td>{{ winner.amount}} OMR</td>
-                                            <!--begin::Action=-->
+                                            <!--begin::Action=--> 
                                             <td class="text-end">
-                                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" (click)="getUser(winner.user_id, winner.phone)"
+                                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" (click)="getUser(winner.user_id, winner.phone, winner.amount)"
                                                     data-bs-toggle="modal" data-bs-target="#kt_modal_note_form">
                                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                                     <span class="svg-icon svg-icon-3">

@@ -12,12 +12,14 @@ export class WinnersComponent implements OnInit {
   token: any;
   winners: any[] = [];
 
+  template: any;
+
   sms = {
     mobile: null,
     user_id: null,
     local: 'AR',
     status: 'pending',
-    message: 'لقد فزت في المزاد. يرجى دفع قيمة الغرض من بوابة مزاد عمان. '
+    message: null
   }
 
   constructor(private api: ApiService,
@@ -44,20 +46,36 @@ export class WinnersComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.utility.loader = false; });
+    sub.add(() => { this.getSMSTempalte(); this.utility.loader = false; });
   }
 
-  getUser(user_id: any, mobile: any) {
+  getSMSTempalte() {
+    this.api.get('templates_contents/key/auction_win', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.template = objects['templates_contents'];
+
+        this.sms.message = this.template.content.ar;
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  getUser(user_id: any, mobile: any, amount: any) {
+    this.sms.message = this.sms.message.replace('{{total}}', amount);
+
     this.sms.mobile = '968' + mobile;
     this.sms.user_id = user_id;
   }
 
   getMessage() {
     if (this.sms.local == 'EN') {
-      this.sms.message = "You have win the auction in Mazad Oman. Please Pay Auction fees from Mazad Oman Website. Mazad Oman"
+      this.sms.message =this.template.content.en;
     }
     else {
-      this.sms.message = "لقد فزت في المزاد. يرجى دفع قيمة الغرض من بوابة مزاد عمان. "
+      this.sms.message = this.template.content.ar;
     }
   }
 
