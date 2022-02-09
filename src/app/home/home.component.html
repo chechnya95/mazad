@@ -1232,6 +1232,24 @@
                         <!--begin::Input group-->
                         <div class="fv-row mb-10">
                             <!--begin::Label-->
+                            <label class="form-label required">User Tpe</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="user_type"
+                                class="form-select form-select-lg form-select-solid"
+                                [(ngModel)]="user.user_type">
+                                <option value='ADMIN'>ADMIN</option>
+                                <option value='USER'>USER</option>
+                                <option value='OWNER'>OWNER</option>
+                                <option value='GOVERNMENT'>GOVERNMENT</option>
+                                <option value='CORPORATE'>CORPORATE</option>
+                            </select>
+                            <!--end::Input-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row mb-10">
+                            <!--begin::Label-->
                             <label class="form-label required">Status</label>
                             <!--end::Label-->
                             <!--begin::Input-->

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     password: null,
     phone: null,
     role: null,
+    user_type: 'USER',
     status: 0
   }
 
@@ -64,6 +65,7 @@ export class HomeComponent implements OnInit {
       username: this.user.phone, //this.user_details.name_en.substr(0, this.user_details.name_en.indexOf(' ')),
       phone: this.user.phone,
       role: role.name,
+      user_type: this.user.user_type,
       user_details: JSON.stringify(this.user_details),
       status: this.user.status
     }

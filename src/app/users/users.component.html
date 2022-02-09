@@ -374,6 +374,24 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
+                                                <label class="form-label required">User Tpe</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="user_type"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="user.user_type">
+                                                    <option value='ADMIN'>ADMIN</option>
+                                                    <option value='USER'>USER</option>
+                                                    <option value='OWNER'>OWNER</option>
+                                                    <option value='GOVERNMENT'>GOVERNMENT</option>
+                                                    <option value='CORPORATE'>CORPORATE</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
                                                 <label class="form-label required">Status</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -547,6 +565,24 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
+                                                <label class="form-label required">User Tpe</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="user_type"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_user.user_type">
+                                                    <option value='ADMIN'>ADMIN</option>
+                                                    <option value='USER'>USER</option>
+                                                    <option value='OWNER'>OWNER</option>
+                                                    <option value='GOVERNMENT'>GOVERNMENT</option>
+                                                    <option value='CORPORATE'>CORPORATE</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
                                                 <label class="form-label required">Status</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -604,7 +640,7 @@
                             </th>
                             <th class="min-w-125px">User</th>
                             <th class="min-w-125px">Role</th>
-                            <th class="min-w-125px">Last login</th>
+                            <th class="min-w-125px">Type</th>
                             <th class="min-w-125px">Active</th>
                             <th class="min-w-125px">Confirmd Date</th>
                             <th class="text-end min-w-100px">Actions</th>
@@ -648,7 +684,7 @@
                             <!--end::Role=-->
                             <!--begin::Last login=-->
                             <td>
-                                <div class="badge badge-light fw-bolder">20 mins ago</div>
+                                <div class="badge badge-light fw-bolder">{{ user.user_type |  titlecase }}</div>
                             </td>
                             <!--end::Last login=-->
                             <!--begin::Two step=-->
