@@ -45,8 +45,8 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let bid of bids; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td>{{ bid.item_id | uppercase}}</td>
-                                            <td>{{ bid.user_id | uppercase }}</td>
+                                            <td><a [routerLink]="['/item-details']" [queryParams]="{ id: bid.item_id }">{{ bid.item_id | uppercase}}</a></td>
+                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user_id }">{{ bid.user_id | uppercase }}</a></td>
                                             <td>{{ bid.create_date | date:"short"}}</td>
                                             <td>{{ bid.amount }} OMR</td>
                                             <td>

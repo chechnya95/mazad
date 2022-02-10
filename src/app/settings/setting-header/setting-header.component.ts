@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingHeaderComponent implements OnInit {
 
+  email: any;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.email = localStorage.getItem('email');
   }
 
 }

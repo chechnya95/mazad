@@ -30,6 +30,17 @@ export class AuctionSettingsComponent implements OnInit {
     enable: 1
   }
 
+  edit_category_id: any;
+  edit_category = {
+    name_en: null,
+    name_ar: null,
+    content_en: null,
+    content_ar: null,
+    order: null,
+    form_id: null,
+    enable: 1
+  }
+
   new_item_status = {
     name: null,
     order: null
@@ -194,5 +205,33 @@ export class AuctionSettingsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  editItemClicked(item: any) {
+    this.edit_category = item;
+    this.edit_category_id = item.id;
+
+    this.edit_category.enable = item.enable;
+    this.edit_category.name_ar = item.name.ar;
+    this.edit_category.name_en = item.name.en;
+    this.edit_category.content_ar = item.content.ar;
+    this.edit_category.content_en = item.content.ar;
+  }
+
+  updateCategory(id: any) {
+    let body = {
+      order: this.edit_category.order,
+      enable: this.edit_category.enable,
+      form_id: this.edit_category.form_id,
+      name: { 'en': this.edit_category.name_en, 'ar': this.edit_category.name_ar },
+      content: { 'en': this.edit_category.content_en, 'ar': this.edit_category.content_ar }
+    }
+
+    const sub = this.api.update('categories/' + id, body, this.token).subscribe(
+      async data => { },
+      async errr => { console.log(errr); }
+    );
+
+    sub.add(() => { this.getCategories(); });
   }
 }
