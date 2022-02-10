@@ -46,6 +46,8 @@ export class UsersComponent implements OnInit {
     id_card_number: null
   }
 
+  userFilter = '';
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;

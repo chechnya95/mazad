@@ -21,6 +21,8 @@ export class ItemsComponent implements OnInit {
     order: null
   }
 
+  itemFilter = '';
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;

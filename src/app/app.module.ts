@@ -35,6 +35,9 @@ import { NewTemplateComponent } from './auction-templates/new-template/new-templ
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditItemComponent } from './items/edit-item/edit-item.component';
 import { AuctionDetailsComponent } from './auctions/auction-details/auction-details.component';
+import { UserPipePipe } from './pipes/user-pipe.pipe';
+import { AuctionPipePipe } from './pipes/auction-pipe.pipe';
+import { ItemPipePipe } from './pipes/item-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { AuctionDetailsComponent } from './auctions/auction-details/auction-deta
     NewTemplateComponent,
     PageNotFoundComponent,
     EditItemComponent,
-    AuctionDetailsComponent
+    AuctionDetailsComponent,
+    UserPipePipe,
+    AuctionPipePipe,
+    ItemPipePipe
   ],
   imports: [
     BrowserModule,

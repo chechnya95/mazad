@@ -65,6 +65,7 @@ export class AuctionsComponent implements OnInit {
   }
 
   auction_id: any;
+  auctionFilter = '';
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;

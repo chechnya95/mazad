@@ -27,7 +27,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-item-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item" [(ngModel)]="itemFilter" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -344,7 +344,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let item of items">
+                        <tr *ngFor="let item of items | itemPipe: itemFilter ">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">

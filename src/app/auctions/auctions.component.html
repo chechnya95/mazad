@@ -27,7 +27,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-auction-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search auction" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search auction"  [(ngModel)]="auctionFilter" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -786,7 +786,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let auction of auctions">
+                        <tr *ngFor="let auction of auctions | auctionPipe: auctionFilter ">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">

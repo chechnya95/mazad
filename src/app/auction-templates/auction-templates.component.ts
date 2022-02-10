@@ -12,6 +12,8 @@ export class AuctionTemplatesComponent implements OnInit {
   token: any;
   templates: any[] = [];
 
+  itemFilter = '';
+  
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
