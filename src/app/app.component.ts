@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from './services/api.service';
+import { MazadService } from './services/mazad.service';
 import { UtilitiesService } from './services/utilities.service';
 
 @Component({
@@ -15,13 +16,21 @@ export class AppComponent {
   name: any;
   avatar: any;
 
+  myAuctions: any;
+
   constructor(
     public utility: UtilitiesService,
     private router: Router,
     public translate: TranslateService,
+    private mazad: MazadService,
     private api: ApiService) {
     this.email = localStorage.getItem('email');
     this.name = localStorage.getItem('name');
+    
+    this.myAuctions = localStorage.getItem('myAuctions')
+    if (!this.myAuctions)
+      this.mazad.getAuctions();
+
     if (this.name)
       this.avatar = this.name.charAt(0);
   }
@@ -34,7 +43,7 @@ export class AppComponent {
     localStorage.setItem('lang', lang);
     this.translate.use(lang);
   }
-  
+
   onLogout() {
     localStorage.clear();
     this.router.navigate(['/login']);
