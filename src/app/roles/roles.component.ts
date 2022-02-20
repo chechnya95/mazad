@@ -32,12 +32,12 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload');
+    if (!localStorage.getItem('foo_login')) {
+      localStorage.setItem('foo_login', 'no reload');
       window.location.reload();
       this.getRoles();
     } else {
-      localStorage.removeItem('foo');
+      localStorage.removeItem('foo_login');
       this.getRoles();
     }
   }

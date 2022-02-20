@@ -53,12 +53,12 @@ export class AuctionSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem('foo')) {
-      localStorage.setItem('foo', 'no reload');
+    if (!localStorage.getItem('foo_auction')) {
+      localStorage.setItem('foo_auction', 'no reload');
       window.location.reload();
       this.getAuctionStatus();
     } else {
-      localStorage.removeItem('foo');
+      localStorage.removeItem('foo_auction');
       this.getAuctionStatus();
     }
   }
