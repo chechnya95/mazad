@@ -25,6 +25,10 @@
     "SMSNotifications": "SMS Notifiction",
     "Reports": "Reports",
     "CommentsandReviews": "Comments and Reviews",
-    "Messages": "Users Messages"
-
+    "Messages": "Users Messages",
+    "deposits": "Deposits",
+    "wallets": "Wallets",
+    "payment_transactions": "Payment Transactions",
+    "invoices": "Invoices",
+    "user_payment_options": "User Payment Options"
 }

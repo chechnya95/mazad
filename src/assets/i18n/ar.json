@@ -25,5 +25,10 @@
     "SMSNotifications": "الرسائل النصية",
     "Reports": "التقارير",
     "CommentsandReviews": "تعليقات المستخدمين",
-    "Messages": "الرسائل الواردة"
+    "Messages": "الرسائل الواردة",
+    "deposits": "الإيداعات",
+    "wallets": "المَحافظ",
+    "payment_transactions": "عمليات الدفع",
+    "invoices": "الفواتير",
+    "user_payment_options": "خيارات الدفع للمستخدم"
 }

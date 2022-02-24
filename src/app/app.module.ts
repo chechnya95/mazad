@@ -99,7 +99,7 @@ import { ItemPipePipe } from './pipes/item-pipe.pipe';
       { path: 'item-details', component: ItemDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'new-item', component: NewItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'edit-item', component: EditItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
-      { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
@@ -108,7 +108,7 @@ import { ItemPipePipe } from './pipes/item-pipe.pipe';
       { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
-      { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
+      { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'welcome', component: WelcomeComponent },
       { path: '**', component: PageNotFoundComponent }
