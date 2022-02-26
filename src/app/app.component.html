@@ -216,7 +216,7 @@
                 </div>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['deposits']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
@@ -238,7 +238,7 @@
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['wallets']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
@@ -394,7 +394,7 @@
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['payment-transactions']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
@@ -416,7 +416,7 @@
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['invoices']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
