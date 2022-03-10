@@ -34,6 +34,7 @@
                                             <th>User</th>
                                             <th>Auction</th>
                                             <th>Amount</th>
+                                            <th>Is Active</th>
                                             <th>Create Date</th>
                                             <th class="text-end">Actions</th>
                                         </tr>
@@ -48,6 +49,14 @@
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: wallet.user_id }">{{ wallet.user_id | uppercase}}</a></td>
                                             <td><a [routerLink]="['/auctions']" [queryParams]="{ id: wallet.auction_id }">{{ wallet.auction_id | uppercase}}</a></td>
                                             <td>{{ wallet.amount | currency:'OMR'}}</td>
+                                            <td>
+                                                <div *ngIf="wallet.active==1"
+                                                    class="badge badge-light-success fw-bolder">Active
+                                                </div>
+                                                <div *ngIf="wallet.active==0"
+                                                    class="badge badge-light-danger fw-bolder">Not Active
+                                                </div>
+                                            </td>
                                             <td>{{ wallet.create_date | date:"short"}}</td>
                                             
                                             <!--begin::Action=--> 
