@@ -81,6 +81,7 @@ export class ItemsComponent implements OnInit {
 
   update_item_status_clicked(id: any) {
     this.new_item_id = id;
+    this.new_item_status = this.items.find(i => i.id === id).item_status;
   }
 
   updateItemStatus(item_id: any) {

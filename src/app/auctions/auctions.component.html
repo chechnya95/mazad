@@ -290,7 +290,7 @@
                                                 <!--begin::Input-->
                                                 <select name="auction_type"
                                                     class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="auction.auction_type">
+                                                    [(ngModel)]="auction.auction_type" disabled>
                                                     <option value="private">Private</option>
                                                     <option value="public">Public</option>
                                                 </select>
@@ -305,7 +305,7 @@
                                                 <!--begin::Input-->
                                                 <select name="auction_method"
                                                     class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="auction.auction_method">
+                                                    [(ngModel)]="auction.auction_method" disabled>
                                                     <option value="increasing">Increasing</option>
                                                     <option value="decreasing">Decreasing</option>
                                                 </select>
@@ -396,7 +396,7 @@
                                                 <!--begin::Input-->
                                                 <select name="auction_status"
                                                     class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="auction.auction_status">
+                                                    [(ngModel)]="auction.auction_status" disabled>
                                                     <option *ngFor="let item of auction_status" [value]='item.name'>{{
                                                         item.name }}</option>
                                                 </select>
@@ -422,7 +422,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Group</label>
+                                                <label class="form-label">Group</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_id"
@@ -680,7 +680,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Group</label>
+                                                <label class="form-label">Group</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_id"

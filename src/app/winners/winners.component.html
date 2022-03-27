@@ -45,7 +45,7 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let winner of winners; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td><a [routerLink]="['/item-details']" [queryParams]="{ id: winner.item_id }">{{ winner.item_id | uppercase}}</a></td>
+                                            <td><a [routerLink]="['/item-details']" [queryParams]="{ id: winner.item_id }">{{ winner.item.title.en | uppercase}}</a></td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: winner.user_id }">{{ winner.phone}} <br> {{ winner.email}}</a></td>
                                             <td>{{ winner.create_date | date:"short"}}</td>
                                             <td>{{ winner.amount}} OMR</td>

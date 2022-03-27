@@ -33,7 +33,6 @@ export class NewItemComponent implements OnInit {
     end_date: null,
     latitude: null,
     longtitude: null,
-    current_price: null,
     min_bid: null,
     start_price: null,
     acceptable_price: null,
@@ -41,7 +40,7 @@ export class NewItemComponent implements OnInit {
     governorate: null,
     address: null,
     extension_period: null,
-    item_status: null,
+    item_status: 'Draft',
     category_id: null,
     owner_id: null,
     auction_id: null,
@@ -212,7 +211,6 @@ export class NewItemComponent implements OnInit {
       end_date: this.item.end_date,
       latitude: this.item.latitude,
       longtitude: this.item.longtitude,
-      current_price: this.item.current_price,
       min_bid: this.item.min_bid,
       start_price: this.item.start_price,
       acceptable_price: this.item.acceptable_price,
@@ -245,7 +243,7 @@ export class NewItemComponent implements OnInit {
 
     formData.append('form', body);
 
-    if (this.item.current_price && this.item.item_status && this.item.auction_id && this.item.owner_id) {
+    if (this.item.item_status && this.item.auction_id && this.item.owner_id) {
       this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
           this.item_details = [];
@@ -277,6 +275,7 @@ export class NewItemComponent implements OnInit {
     this.item.description_en = template.description['en'];
     this.item.terms_ar = template.terms['ar'];
     this.item.terms_en = template.terms['en'];
+    this.item.item_status = 'Draft';
 
     // get start date
     var start_date = new Date(template.start_date);

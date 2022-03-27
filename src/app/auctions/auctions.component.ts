@@ -18,8 +18,8 @@ export class AuctionsComponent implements OnInit {
   auction_status: any[] = [];
 
   auction = {
-    auction_type: null,
-    auction_method: null,
+    auction_type: "public",
+    auction_method: "increasing",
     code: null,
     owner_code: null,
     details: null,
@@ -27,7 +27,7 @@ export class AuctionsComponent implements OnInit {
     deposit: null,
     start_date: null,
     end_date: null,
-    auction_status: null,
+    auction_status: "Draft",
     template_id: null,
     owner_id: null,
     payment_id: null,
@@ -106,6 +106,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'];
 
+        console.log(this.owners)
         this.getAuctionStatus();
       },
       async error => {
