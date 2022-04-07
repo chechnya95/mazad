@@ -13,6 +13,8 @@ export class BidsComponent implements OnInit {
   token: any;
   bids: any[] = [];
 
+  bidFilter = '';
+  
   constructor(private api: ApiService,
     public utility: UtilitiesService,
     private route: ActivatedRoute) {

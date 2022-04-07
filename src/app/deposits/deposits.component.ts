@@ -12,6 +12,8 @@ export class DepositsComponent implements OnInit {
   token: any;
   deposits: any[] = [];
 
+  depositFilter = '';
+
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
     this.utility.show = true;

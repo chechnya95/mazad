@@ -43,6 +43,8 @@ import { DepositsComponent } from './deposits/deposits.component';
 import { WalletsComponent } from './wallets/wallets.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { UserPaymentOptionsComponent } from './user-payment-options/user-payment-options.component';
+import { BidsPipePipe } from './pipes/bids-pipe.pipe';
+import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { UserPaymentOptionsComponent } from './user-payment-options/user-payment
     DepositsComponent,
     WalletsComponent,
     InvoicesComponent,
-    UserPaymentOptionsComponent
+    UserPaymentOptionsComponent,
+    BidsPipePipe,
+    DepositPipePipe
   ],
   imports: [
     BrowserModule,
