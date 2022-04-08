@@ -45,6 +45,8 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { UserPaymentOptionsComponent } from './user-payment-options/user-payment-options.component';
 import { BidsPipePipe } from './pipes/bids-pipe.pipe';
 import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
+import { OwnersComponent } from './owners/owners.component';
+import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
     InvoicesComponent,
     UserPaymentOptionsComponent,
     BidsPipePipe,
-    DepositPipePipe
+    DepositPipePipe,
+    OwnersComponent,
+    OwnerPipePipe
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'owners', component: OwnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
