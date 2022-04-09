@@ -92,6 +92,7 @@ export class OwnersComponent implements OnInit {
       email: this.owner.email,
       password: this.owner.code,
       phone: this.owner.phone,
+      code: this.owner.code,
       owner_details: JSON.stringify(this.owner_details)
     }
 
