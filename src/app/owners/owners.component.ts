@@ -17,6 +17,10 @@ export class OwnersComponent implements OnInit {
     email: null,
     phone: null,
     code: null,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null
   }
 
   edit_owner_id: any;
@@ -24,7 +28,11 @@ export class OwnersComponent implements OnInit {
     email: null,
     code: null,
     phone: null,
-    active: 0
+    active: 0,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null
   }
 
   owner_details = {
@@ -93,7 +101,9 @@ export class OwnersComponent implements OnInit {
       password: this.owner.code,
       phone: this.owner.phone,
       code: this.owner.code,
-      owner_details: JSON.stringify(this.owner_details)
+      owner_details: JSON.stringify(this.owner_details),
+      title: { 'en': this.owner.title_en, 'ar': this.owner.title_ar },
+      description: { 'en': this.owner.description_en, 'ar': this.owner.description_en }
     }
 
     const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -134,6 +144,11 @@ export class OwnersComponent implements OnInit {
     this.edit_owner = owner;
     this.edit_owner_id = owner.id;
 
+    this.edit_owner.title_ar = owner.title['ar'];
+    this.edit_owner.title_en = owner.title['en'];
+    this.edit_owner.description_ar = owner.description['ar'];
+    this.edit_owner.description_en = owner.description['en'];
+
     if (this.edit_owner['owner_details'])
       this.edit_owner_details = JSON.parse(this.edit_owner['owner_details']);
 
@@ -146,7 +161,9 @@ export class OwnersComponent implements OnInit {
       code: this.edit_owner.code,
       active: this.edit_owner.active,
       email: this.edit_owner.email,
-      phone: this.edit_owner.phone
+      phone: this.edit_owner.phone,
+      title: { 'en': this.edit_owner.title_en, 'ar': this.edit_owner.title_ar },
+      description: { 'en': this.edit_owner.description_en, 'ar': this.edit_owner.description_en }
     }
 
     const sub = this.api.update('owners/' + id, body, this.token).subscribe(
