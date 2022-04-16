@@ -44,6 +44,7 @@ export class NewItemComponent implements OnInit {
     category_id: null,
     owner_id: null,
     auction_id: null,
+    template_id: null,
     title_en: null,
     title_ar: null,
     description_en: null,
@@ -222,6 +223,7 @@ export class NewItemComponent implements OnInit {
       category_id: this.item.category_id,
       owner_id: this.item.owner_id,
       auction_id: this.item.auction_id,
+      template_id: this.item.template_id,
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
@@ -269,6 +271,7 @@ export class NewItemComponent implements OnInit {
   teplateChecked(template: any) {
     this.item = template;
 
+    this.item.template_id = template.id;
     this.item.title_ar = template.title['ar'];
     this.item.title_en = template.title['en'];
     this.item.description_ar = template.description['ar'];
@@ -279,6 +282,9 @@ export class NewItemComponent implements OnInit {
 
     // get start date
     var start_date = new Date(template.start_date);
+    if (template.next_start_date) {
+      start_date = new Date(template.start_date);
+    }
     var month_1 = (start_date.getMonth() + 1).toString();
     var day_1 = (start_date.getDate()).toString();
     var hour_1 = (start_date.getHours()).toString();
