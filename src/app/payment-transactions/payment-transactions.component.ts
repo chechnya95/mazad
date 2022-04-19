@@ -12,6 +12,8 @@ export class PaymentTransactionsComponent implements OnInit {
   token: any;
   transactions: any[] = [];
 
+  transFilter = '';
+
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
     this.utility.show = true;

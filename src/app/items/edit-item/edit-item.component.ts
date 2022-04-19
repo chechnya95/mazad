@@ -107,7 +107,7 @@ export class EditItemComponent implements OnInit {
     );
   }
 
-  async getOwners() {
+  /* async getOwners() {
     this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -119,8 +119,23 @@ export class EditItemComponent implements OnInit {
         alert(error);
       }
     );
-  }
+  } */
 
+  async getOwners() {
+    this.api.get('owners/', this.token).subscribe(
+      async data => {
+        let objects: any = { owners: [] }
+        objects = data;
+        this.owners = objects.owners;
+
+        this.getCategories();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+  
   async getCategories() {
     this.api.get('categories/', this.token).subscribe(
       async data => {

@@ -111,11 +111,26 @@ export class NewItemComponent implements OnInit {
     );
   }
 
-  async getOwners() {
+  /* async getOwners() {
     this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
+        this.getCategories();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  } */
+
+  async getOwners() {
+    this.api.get('owners/', this.token).subscribe(
+      async data => {
+        let objects: any = { owners: [] }
+        objects = data;
+        this.owners = objects.owners;
+
         this.getCategories();
       },
       async error => {

@@ -47,6 +47,7 @@ import { BidsPipePipe } from './pipes/bids-pipe.pipe';
 import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
 import { OwnersComponent } from './owners/owners.component';
 import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
+import { TransactionsPipePipe } from './pipes/transactions-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
     BidsPipePipe,
     DepositPipePipe,
     OwnersComponent,
-    OwnerPipePipe
+    OwnerPipePipe,
+    TransactionsPipePipe
   ],
   imports: [
     BrowserModule,

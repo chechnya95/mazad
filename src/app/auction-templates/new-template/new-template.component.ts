@@ -90,11 +90,26 @@ export class NewTemplateComponent implements OnInit {
     );
   }
 
-  async getOwners(item_id: any) {
+  /* async getOwners(item_id: any) {
     this.api.get('users/type/OWNER', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owners = objects['users'][0];
+
+        this.getCategories(item_id);
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  } */
+
+  async getOwners(item_id: any) {
+    this.api.get('owners/', this.token).subscribe(
+      async data => {
+        let objects: any = { owners: [] }
+        objects = data;
+        this.owners = objects.owners;
 
         this.getCategories(item_id);
       },
