@@ -479,6 +479,18 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
+                                                <label class="form-label">css_class</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="css_class"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="CSS class" [(ngModel)]="category.css_class" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
 
                                         </div>
                                         <!--end::Scroll-->
@@ -540,6 +552,7 @@
                                             <th>Order</th>
                                             <th>Enabled</th>
                                             <th>Form</th>
+                                            <th>CSS Class</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -550,6 +563,7 @@
                                             <td>{{ category.order }}</td>
                                             <td>{{ category.enable }}</td>
                                             <td>{{ category.form_key }}</td>
+                                            <td>{{ category.css_class }}</td>
                                             <td>
                                                 <a (click)="editItemClicked(category)" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_edit_category"

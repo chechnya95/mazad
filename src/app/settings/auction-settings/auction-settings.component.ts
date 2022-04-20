@@ -25,6 +25,7 @@ export class AuctionSettingsComponent implements OnInit {
     name_ar: null,
     content_en: null,
     content_ar: null,
+    css_class: null,
     order: null,
     form_id: null,
     enable: 1
@@ -36,6 +37,7 @@ export class AuctionSettingsComponent implements OnInit {
     name_ar: null,
     content_en: null,
     content_ar: null,
+    css_class: null,
     order: null,
     form_id: null,
     enable: 1
@@ -138,6 +140,7 @@ export class AuctionSettingsComponent implements OnInit {
     let body = {
       order: this.category.order,
       enable: this.category.enable,
+      css_class: this.category.css_class,
       form_id: this.category.form_id,
       name: { 'en': this.category.name_en, 'ar': this.category.name_ar },
       content: { 'en': this.category.content_en, 'ar': this.category.content_ar },
@@ -211,6 +214,7 @@ export class AuctionSettingsComponent implements OnInit {
     this.edit_category = item;
     this.edit_category_id = item.id;
 
+    this.edit_category.css_class = item.css_class;
     this.edit_category.enable = item.enable;
     this.edit_category.name_ar = item.name.ar;
     this.edit_category.name_en = item.name.en;
@@ -220,6 +224,7 @@ export class AuctionSettingsComponent implements OnInit {
 
   updateCategory(id: any) {
     let body = {
+      css_class: this.edit_category.css_class,
       order: this.edit_category.order,
       enable: this.edit_category.enable,
       form_id: this.edit_category.form_id,
