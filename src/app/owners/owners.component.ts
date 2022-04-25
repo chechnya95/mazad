@@ -79,7 +79,7 @@ export class OwnersComponent implements OnInit {
         this.owners.forEach(function (owner) {
           //let owner_details = JSON.parse(owner['owner_details']);
 
-          owner.avatar = owner.title_en ? owner.title_en.charAt(0) : owner['code'].charAt(0);
+          owner.avatar = owner.title.en ? owner.title.en.charAt(0) : owner['code'].charAt(0);
           //owner.name = owner ? owner.title_en : '';
         });
       },
