@@ -36,14 +36,10 @@ export class OwnersComponent implements OnInit {
   }
 
   owner_details = {
-    name_ar: null,
-    name_en: null,
     id_card_number: null
   }
 
   edit_owner_details = {
-    name_ar: null,
-    name_en: null,
     id_card_number: null
   }
 
@@ -81,10 +77,10 @@ export class OwnersComponent implements OnInit {
           this.owners = this.owners.filter(i => i.id === id);
 
         this.owners.forEach(function (owner) {
-          let owner_details = JSON.parse(owner['owner_details']);
+          //let owner_details = JSON.parse(owner['owner_details']);
 
-          owner.avatar = owner_details ? owner_details['name_en'] ? owner_details['name_en'].charAt(0) : owner['ownername'].charAt(0) : owner['ownername'].charAt(0);
-          owner.name = owner_details ? owner_details['name_en'] : '';
+          owner.avatar = owner.title_en ? owner.title_en.charAt(0) : owner['code'].charAt(0);
+          //owner.name = owner ? owner.title_en : '';
         });
       },
       async error => {

@@ -285,30 +285,6 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="name_ar"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Full name AR" [(ngModel)]="owner_details.name_ar" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row mb-7">
-                                                <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="name_en"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Full name EN" [(ngModel)]="owner_details.name_en" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row mb-7">
-                                                <!--begin::Label-->
                                                 <label class="required fw-bold fs-6 mb-2">Title</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -325,7 +301,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="fw-bold fs-6 mb-2">Email</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -337,7 +313,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="fw-bold fs-6 mb-2">Phone</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="phone" name="phone"
@@ -362,7 +338,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="fw-bold fs-6 mb-2">ID Card Number</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -461,31 +437,6 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="name_ar"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Full name AR"
-                                                    [(ngModel)]="edit_owner_details.name_ar" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="fv-row mb-7">
-                                                <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="name_en"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Full name EN"
-                                                    [(ngModel)]="edit_owner_details.name_en" />
-                                                <!--end::Input-->
-                                            </div>
-                                            <!--end::Input group--><!--begin::Input group-->
-                                            <div class="fv-row mb-7">
-                                                <!--begin::Label-->
                                                 <label class="required fw-bold fs-6 mb-2">Title</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -502,7 +453,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="fw-bold fs-6 mb-2">Email</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -514,7 +465,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="fw-bold fs-6 mb-2">Phone</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="phone" name="phone"
@@ -538,7 +489,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="fw-bold fs-6 mb-2">ID Card Number</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -624,7 +575,7 @@
                                         data-kt-check-target="#kt_table_owners .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">Name</th>
+                            <th class="min-w-125px">Code</th>
                             <th class="min-w-125px">Title</th>
                             <th class="min-w-125px">Email</th>
                             <th class="min-w-125px">Phone</th>
@@ -657,8 +608,7 @@
                                 <!--end::Avatar-->
                                 <!--begin::Owner details-->
                                 <div class="d-flex flex-column">
-                                    <a class="text-gray-800 text-hover-primary mb-1">{{ owner.name }}</a>
-                                    <span>{{ owner.code }}</span>
+                                    <a class="text-gray-800 text-hover-primary mb-1">{{ owner.code }}</a>
                                 </div>
                                 <!--begin::Owner details-->
                             </td>

@@ -167,7 +167,7 @@
                                         class="form-select form-select-lg form-select-solid"
                                         [(ngModel)]="auction_template.owner_id">
                                         <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
-                                            owner.email
+                                            owner.code +': '+ owner.title.en +' - '+ owner.title.ar
                                             }}</option>
                                     </select>
                                     <!--end::Input-->
