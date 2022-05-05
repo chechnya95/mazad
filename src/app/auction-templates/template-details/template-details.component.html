@@ -1,0 +1,303 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Layout-->
+        <div class="d-flex flex-column flex-xl-row">
+            <!--begin::Sidebar-->
+            <div class="flex-column flex-lg-row-auto w-100 w-xl-400px mb-10">
+                <!--begin::Card-->
+                <div class="card mb-5 mb-xl-8">
+                    <!--begin::Card body-->
+                    <div class="card-body pt-15">
+                        <!--begin::Summary-->
+                        <div class="d-flex flex-center flex-column mb-5">
+                            <!--begin::Name-->
+                            <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ item?.code | uppercase}}</a>
+                            <!--end::Name-->
+                            <!--begin::Position-->
+                            <div class="fs-5 fw-bold text-gray-400 mb-6">{{ item?.id | uppercase}}</div>
+                            <!--end::Position-->
+                        </div>
+                        <!--end::Summary-->
+                        <!--begin::Details toggle-->
+                        <div class="d-flex flex-stack fs-4 py-3">
+                            <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
+                                href="#kt_customer_view_details" role="button" aria-expanded="false"
+                                aria-controls="kt_customer_view_details">Details
+                                <span class="ms-2 rotate-180">
+                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                <path
+                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                    fill="#000000" fill-rule="nonzero"
+                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit Template details">
+                                <a (click)="saveTemplate(item)" href="new-template?id={{item.id}}" class="btn btn-sm btn-light-primary">Edit</a>
+                            </span>
+                        </div>
+                        <!--end::Details toggle-->
+                        <div class="separator separator-dashed my-3"></div>
+                        <!--begin::Details content-->
+                        <div id="kt_customer_view_details" class="collapse">
+                            <div class="py-5 fs-6">
+                                <!--begin::Badge-->
+                                <div class="badge badge-light-info d-inline">{{ item?.item_status }}</div>
+                                <!--begin::Badge-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Start Date</div>
+                                <div class="text-gray-600">{{ item?.start_date | date:'medium'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">End Date</div>
+                                <div class="text-gray-600">{{ item?.end_date | date:'medium' }}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Location</div>
+                                <div class="text-gray-600">{{ item?.governorate }}, {{ item?.address }}
+                                    <br />{{ item?.latitude }}
+                                    <br />{{ item?.longtitude }}
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Deposit Amount</div>
+                                <div class="text-gray-600">{{ item?.deposit | currency:'OMR'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Start Price</div>
+                                <div class="text-gray-600">{{ item?.start_price | currency:'OMR'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Minimum Bid</div>
+                                <div class="text-gray-600">{{ item?.min_bid | currency:'OMR'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Acceptable Price</div>
+                                <div class="text-gray-600">{{ item?.acceptable_price | currency:'OMR'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Buy Price</div>
+                                <div class="text-gray-600">{{ item?.buy_price | currency:'OMR'}}</div>
+                                <!--begin::Details item-->
+                                <hr>
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Item Created Date</div>
+                                <div class="text-gray-600">{{ item?.create_date | date:'medium'}}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Item Modified Date</div>
+                                <div class="text-gray-600">{{ item?.modified_date | date:'medium' }}</div>
+                                <!--begin::Details item-->
+                            </div>
+                        </div>
+                        <!--end::Details content-->
+                        <!--begin::Details toggle-->
+                        <div class="d-flex flex-stack fs-4 py-3">
+                            <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
+                                href="#kt_item_view_details" role="button" aria-expanded="false"
+                                aria-controls="kt_item_view_details">Other Related Details
+                                <span class="ms-2 rotate-180">
+                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                <path
+                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                    fill="#000000" fill-rule="nonzero"
+                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                        </div>
+                        <!--end::Details toggle-->
+                        <div class="separator separator-dashed my-3"></div>
+                        <!--begin::Details content-->
+                        <div id="kt_item_view_details" class="collapse">
+                            <div class="py-5 fs-6">
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Owner</div>
+                                <div class="text-gray-600"><a [routerLink]="['/users']" [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Category</div>
+                                <div class="text-gray-600">{{ category?.name.en }} - {{ category?.name.ar }}</div>
+                                <!--begin::Details item-->
+                            </div>
+                        </div>
+                        <!--end::Details content-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
+                <!--begin::Connected Accounts-->
+                <div class="card mb-5 mb-xl-8">
+                    <!--begin::Card header-->
+                    <div class="card-header border-0">
+                        <div class="card-title">
+                            <h3 class="fw-bolder m-0">Item Description</h3>
+                        </div>
+                    </div>
+                    <!--end::Card header-->
+                    <!--begin::Card body-->
+                    <div class="card-body pt-2">
+                        <!--begin::Items-->
+                        <div class="py-2">
+                            <!--begin::Item-->
+                            <div class="d-flex flex-stack">
+                                <div class="d-flex">
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder mt-5">Title</div>
+                                        <div class="text-gray-600">{{ item?.title.en }} <br> {{ item?.title.ar }} </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="d-flex flex-stack">
+                                <div class="d-flex">
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder mt-5">Description</div>
+                                        <div class="text-gray-600">{{ item?.description.en }} <br> {{ item?.description.ar }} </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="d-flex flex-stack">
+                                <div class="d-flex">
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder mt-5">Terms</div>
+                                        <div class="text-gray-600">{{ item?.terms.en }} <br> {{ item?.terms.ar }} </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                            <div class="separator separator-dashed my-5"></div>
+                            <!--begin::Item-->
+                            <div class="d-flex flex-stack" *ngFor="let key of keys">
+                                <div class="d-flex">
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder mt-5">{{ key }}</div>
+                                        <div class="text-gray-600">{{ item?.details[key] }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Item-->
+                        </div>
+                        <!--end::Items-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Connected Accounts-->
+            </div>
+            <!--end::Sidebar-->
+            <!--begin::Content-->
+            <div class="flex-lg-row-fluid ms-lg-15">
+                <!--begin:::Tabs-->
+                <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
+                    <!--begin:::Tab item-->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_tab">Overview</a>
+                    </li> -->
+                    <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_events_and_logs_tab">Items List</a>
+                    </li>
+                    <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_statements">Billing</a>
+                    </li> -->
+                    <!--end:::Tab item-->
+                </ul>
+                <!--end:::Tabs-->
+                <!--begin:::Tab content-->
+                <div class="tab-content" id="myTabContent">
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_customer_view_overview_events_and_logs_tab" role="tabpanel">
+                        <!--begin::Card-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>Items Used by Template</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body py-0">
+                                <!--begin::Table wrapper-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_customers_payment">
+                                    <!--begin::Table head-->
+                                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                            <th>Code</th>
+                                            <th>Status</th>
+                                            <th class="min-w-125px">Create Date</th>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="fs-6 fw-bold text-gray-600">
+                                        <!--begin::Table row-->
+                                        <tr *ngFor="let item of items; let i = index;">
+                                            <!--begin::Invoice=-->
+                                            <td><a [routerLink]="['/items']" [queryParams]="{ id: item.id }">{{ item.code | uppercase }}</a></td>
+                                            <!--end::Invoice=-->
+                                            <!--begin::Amount=-->
+                                            <td>{{ item.item_status }}</td>
+                                            <!--end::Amount=-->
+                                            <!--begin::Date=-->
+                                            <td>{{item.create_date | date:'medium'}}</td>
+                                            <!--end::Date=-->
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                                </div>
+                                <!--end::Table wrapper-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end:::Tab pane-->
+                </div>
+                <!--end:::Tab content-->
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Layout-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Post-->

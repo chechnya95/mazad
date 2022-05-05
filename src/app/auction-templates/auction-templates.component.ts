@@ -29,6 +29,8 @@ export class AuctionTemplatesComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
+
+        localStorage.setItem('templates', JSON.stringify(this.templates));
       },
       async error => {
         alert(error);

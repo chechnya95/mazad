@@ -278,7 +278,8 @@
                             <!--end::Checkbox-->
                             <!--begin::template=-->
                             <td>
-                                <div class="badge badge-light fw-bolder">{{ template.code }}</div>
+                                <div class="badge badge-light fw-bolder"><a [routerLink]="['/template-details']"
+                                    [queryParams]="{ id: template.id }">{{ template.code }}</a></div>
                             </td>
                             <!--end::template=-->
                             <!--begin::start_date-->

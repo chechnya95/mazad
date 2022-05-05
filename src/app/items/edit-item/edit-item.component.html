@@ -293,7 +293,8 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Extension Period <small>(Seconds)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">Extension Period
+                                        <small>(Seconds)</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="extension_period"
@@ -305,7 +306,8 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Payment Period <small>(Days)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">Payment Period
+                                        <small>(Days)</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="payment_period"
@@ -317,7 +319,8 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Collecting Period <small>(Days)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">Collecting Period
+                                        <small>(Days)</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="collecting_period"
@@ -409,7 +412,13 @@
                                                 <div class="col-md">
                                                     <!--begin::Item-->
                                                     <div class="d-flex">
-                                                        <img *ngFor="let image of item?.images" src="{{image.file.file}}" style="width:60px;height:40px;">
+                                                        <div *ngFor="let image of item?.images">
+                                                            <button type="button" class="close" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <img src="{{image.file.file}}"
+                                                                style="width:60px;height:40px; padding-right: 10px;">
+                                                        </div>
                                                     </div>
                                                     <!--end::Item-->
                                                 </div>
@@ -467,7 +476,7 @@
                                             <!--end::Toggle-->
                                         </div>
                                         <!--end::Header-->
-                                        <!--begin::Body--> 
+                                        <!--begin::Body-->
                                         <!-- to show by default just add the class show after collapse -->
                                         <div id="kt_customer_view_payment_method_2" class="collapse fs-6 ps-10"
                                             data-bs-parent="#kt_customer_view_payment_method">
@@ -477,10 +486,13 @@
                                                 <div class="col-md">
                                                     <!--begin::Item-->
                                                     <div class="d-flex mb-3">
-                                                        <a *ngFor="let attach of item?.attachments" href="{{attach.file.file}}" target="_blank"><img src="../../../assets/media/icons/duotone/Files/Selected-file.svg" style="width:60px;height:40px;"/>
+                                                        <a *ngFor="let attach of item?.attachments"
+                                                            href="{{attach.file.file}}" target="_blank"><img
+                                                                src="../../../assets/media/icons/duotone/Files/Selected-file.svg"
+                                                                style="width:60px;height:40px;" />
                                                         </a>
                                                     </div>
-                                                    <!--end::Item-->                                                
+                                                    <!--end::Item-->
                                                 </div>
                                                 <!--end::Row-->
                                             </div>
@@ -605,7 +617,9 @@
                                 <!--begin::Body-->
                                 <div class="mb-0">
                                     <!--begin::Text-->
-                                    <div class="fs-6 text-gray-600 mb-5">Item has more details and description, you can view biddings, invocies and other options in <a [routerLink]="['/item-details']" [queryParams]="{id: edit_item_id}">item details page</a>.</div>
+                                    <div class="fs-6 text-gray-600 mb-5">Item has more details and description, you can
+                                        view biddings, invocies and other options in <a [routerLink]="['/item-details']"
+                                            [queryParams]="{id: edit_item_id}">item details page</a>.</div>
                                     <!--end::Text-->
                                     <!--begin::Alert-->
                                     <!--begin::Notice-->
