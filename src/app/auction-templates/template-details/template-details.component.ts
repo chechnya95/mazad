@@ -46,7 +46,7 @@ export class TemplateDetailsComponent implements OnInit {
     const sub = this.api.get('items/template/' + id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.items = objects['items'];
+        this.items = objects['items']['items'];
       },
       async error => {
         console.log(error);
@@ -60,7 +60,10 @@ export class TemplateDetailsComponent implements OnInit {
     const sub = this.api.get('owners/' + this.item.owner_id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.owner = objects['owners'][0];
+        let owners: any[] = objects['owners'];
+
+        if (owners.length > 0)
+          this.owner = objects['owners'][0];
       },
       async error => {
         console.log(error);

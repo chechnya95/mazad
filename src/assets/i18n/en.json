@@ -16,6 +16,8 @@
     "AuctionsManagement": "Auctions Management",
     "AuctionTemplates": "Auction Templates",
     "Items": "Items",
+    "CreateTemplate": "Create Template",
+    "TemplatesList": "Templates List",
     "CreateItem": "Create Item",
     "ItemsList": "Items List",
     "Bids": "Bids",
