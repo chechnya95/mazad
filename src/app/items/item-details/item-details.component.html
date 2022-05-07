@@ -698,7 +698,7 @@
                                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                     <th class="w-125px">Date</th>
                                                     <th class="w-100px">Order ID</th>
-                                                    <th class="w-300px">Details</th>
+                                                    <!-- <th class="w-300px">Details</th> -->
                                                     <th class="w-100px">Amount</th>
                                                     <th class="w-100px text-end pe-7">Invoice</th>
                                                 </tr>
@@ -707,14 +707,14 @@
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody>
-                                                <tr>
-                                                    <td>Nov 01, 2021</td>
+                                                <tr *ngFor="let bill of invoices; let i=index;">
+                                                    <td>{{ bill.date | date:'short' }}</td>
                                                     <td>
                                                         <a href="#"
-                                                            class="text-gray-600 text-hover-primary">102445788</a>
+                                                            class="text-gray-600 text-hover-primary">{{ bill.number }}</a>
                                                     </td>
-                                                    <td>Darknight transparency 36 Icons Pack</td>
-                                                    <td class="text-success">$38.00</td>
+                                                    <!-- <td>Darknight transparency 36 Icons Pack</td> -->
+                                                    <td class="text-success">{{ bill.total_amount | currency:'OMR' }}</td>
                                                     <td class="text-end">
                                                         <button
                                                             class="btn btn-sm btn-light btn-active-light-primary">Download</button>

@@ -133,7 +133,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getInvoices() {
-    this.api.get('invoices/item/' + this.item.id, this.token).subscribe(
+    this.api.get('invoices/model/item/' + this.item.id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.invoices = objects['invoices']['invoices'];

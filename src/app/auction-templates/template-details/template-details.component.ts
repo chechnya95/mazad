@@ -19,10 +19,15 @@ export class TemplateDetailsComponent implements OnInit {
   owner: any;
   category: any;
 
+  start_date: any;
+  end_date: any;
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
-    this.utility.title = 'Item Details';
+    this.utility.title = 'Template Details';
     this.token = localStorage.getItem('access_token');
   }
 
@@ -88,5 +93,22 @@ export class TemplateDetailsComponent implements OnInit {
   saveTemplate(item: any) {
     localStorage.removeItem('item-template');
     localStorage.setItem('item-template', JSON.stringify(item));
+  }
+
+  update_dates(id: any) {
+    let body = {
+      start_date: this.start_date,
+      end_date: this.end_date
+    }
+
+    this.api.update('auction_templates/changetime/' + id, body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        alert('success')
+      },
+      async error => {
+        console.log(error); alert('error'); this.errorMessage = true; 
+      }
+    );
   }
 }

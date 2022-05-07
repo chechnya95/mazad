@@ -13,7 +13,8 @@
                         <!--begin::Summary-->
                         <div class="d-flex flex-center flex-column mb-5">
                             <!--begin::Name-->
-                            <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ item?.code | uppercase}}</a>
+                            <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ item?.code |
+                                uppercase}}</a>
                             <!--end::Name-->
                             <!--begin::Position-->
                             <div class="fs-5 fw-bold text-gray-400 mb-6">{{ item?.id | uppercase}}</div>
@@ -44,7 +45,8 @@
                                 </span>
                             </div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit Template details">
-                                <a (click)="saveTemplate(item)" href="new-template?id={{item.id}}" class="btn btn-sm btn-light-primary">Edit</a>
+                                <a (click)="saveTemplate(item)" href="new-template?id={{item.id}}"
+                                    class="btn btn-sm btn-light-primary">Edit</a>
                             </span>
                         </div>
                         <!--end::Details toggle-->
@@ -133,7 +135,8 @@
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Owner</div>
-                                <div class="text-gray-600"><a [routerLink]="['/users']" [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
+                                <div class="text-gray-600"><a [routerLink]="['/users']"
+                                        [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Category</div>
@@ -174,7 +177,8 @@
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
                                         <div class="fw-bolder mt-5">Description</div>
-                                        <div class="text-gray-600">{{ item?.description.en }} <br> {{ item?.description.ar }} </div>
+                                        <div class="text-gray-600">{{ item?.description.en }} <br> {{
+                                            item?.description.ar }} </div>
                                     </div>
                                 </div>
                             </div>
@@ -213,14 +217,14 @@
                 <!--begin:::Tabs-->
                 <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
                     <!--begin:::Tab item-->
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
                             href="#kt_customer_view_overview_tab">Overview</a>
-                    </li> -->
+                    </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
-                        <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                        <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
                             href="#kt_customer_view_overview_events_and_logs_tab">Items List</a>
                     </li>
                     <!--end:::Tab item-->
@@ -234,8 +238,36 @@
                 <!--end:::Tabs-->
                 <!--begin:::Tab content-->
                 <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="kt_customer_view_overview_tab" role="tabpanel">
+                        <!--begin::Card-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>Template Overview</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-5">
+                                <div class="row py-5">
+                                    <!--begin::Table wrapper-->
+                                    <div class="col-md">
+                                        <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
+                                            type="button" class="btn btn-info">Update Start/End Date</button>
+                                    </div>
+                                    <!--end::Table wrapper-->
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end:::Tab pane-->
                     <!--begin:::Tab pane-->
-                    <div class="tab-pane fade show active" id="kt_customer_view_overview_events_and_logs_tab" role="tabpanel">
+                    <div class="tab-pane fade" id="kt_customer_view_overview_events_and_logs_tab" role="tabpanel">
                         <!--begin::Card-->
                         <div class="card pt-4 mb-6 mb-xl-9">
                             <!--begin::Card header-->
@@ -252,37 +284,39 @@
                                 <!--begin::Table wrapper-->
                                 <div class="table-responsive">
                                     <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_customers_payment">
-                                    <!--begin::Table head-->
-                                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
-                                        <!--begin::Table row-->
-                                        <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                            <th>Code</th>
-                                            <th>Status</th>
-                                            <th class="min-w-125px">Create Date</th>
-                                        </tr>
-                                        <!--end::Table row-->
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody class="fs-6 fw-bold text-gray-600">
-                                        <!--begin::Table row-->
-                                        <tr *ngFor="let item of items; let i = index;">
-                                            <!--begin::Invoice=-->
-                                            <td><a [routerLink]="['/items']" [queryParams]="{ id: item.id }">{{ item.code | uppercase }}</a></td>
-                                            <!--end::Invoice=-->
-                                            <!--begin::Amount=-->
-                                            <td>{{ item.item_status }}</td>
-                                            <!--end::Amount=-->
-                                            <!--begin::Date=-->
-                                            <td>{{item.create_date | date:'medium'}}</td>
-                                            <!--end::Date=-->
-                                        </tr>
-                                        <!--end::Table row-->
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
+                                    <table class="table align-middle table-row-dashed gy-5"
+                                        id="kt_table_customers_payment">
+                                        <!--begin::Table head-->
+                                        <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                                <th>Code</th>
+                                                <th>Status</th>
+                                                <th class="min-w-125px">Create Date</th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fs-6 fw-bold text-gray-600">
+                                            <!--begin::Table row-->
+                                            <tr *ngFor="let item of items; let i = index;">
+                                                <!--begin::Invoice=-->
+                                                <td><a [routerLink]="['/items']" [queryParams]="{ id: item.id }">{{
+                                                        item.code | uppercase }}</a></td>
+                                                <!--end::Invoice=-->
+                                                <!--begin::Amount=-->
+                                                <td>{{ item.item_status }}</td>
+                                                <!--end::Amount=-->
+                                                <!--begin::Date=-->
+                                                <td>{{item.create_date | date:'medium'}}</td>
+                                                <!--end::Date=-->
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
                                 </div>
                                 <!--end::Table wrapper-->
                             </div>
@@ -297,6 +331,125 @@
             <!--end::Content-->
         </div>
         <!--end::Layout-->
+        <div class="modal fade" id="kt_modal_extend_form" tabindex="-1" aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-750px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Modal header-->
+                    <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bolder">Update Start and End Dates</h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                            <span class="svg-icon svg-icon-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                        fill="#000000">
+                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                        <rect fill="#000000" opacity="0.5"
+                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                            x="0" y="7" width="16" height="2" rx="1" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                        <!--begin::Scroll-->
+                        <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_form_scroll"
+                            data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                            data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
+                            <div class="fv-row mb-10">
+                                <label class="form-label fs-6 fw-bold">Start Date</label>
+                                <input type="datetime-local" name="start_date"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="start_date" />
+                            </div>
+                            <div class="fv-row mb-10">
+                                <label class="form-label fs-6 fw-bold">End Date</label>
+                                <input type="datetime-local" name="end_date"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="end_date" />
+                            </div>
+                        </div>
+                        <!--end::Scroll-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="submit" class="btn btn-primary" (click)="update_dates(item?.id)"
+                                data-bs-dismiss="modal">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+                        <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                            class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                            aria-live="assertive" aria-modal="true" style="display: flex;">
+                            <div class="swal2-header">
+                                <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                                        class="swal2-x-mark">
+                                        <span class="swal2-x-mark-line-left"></span>
+                                        <span class="swal2-x-mark-line-right"></span>
+                                    </span>
+                                </div><img class="swal2-image" style="display: none;">
+                                <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                                    class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                            </div>
+                            <div class="swal2-content">
+                                <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
+                                    are some errors detected, please try again.</div>
+                            </div>
+                            <div class="swal2-actions">
+                                <div class="swal2-loader"></div>
+                                <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
+                                    (click)="errorMessage=false">Ok, got it!</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+                        <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                            class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
+                            aria-live="assertive" aria-modal="true" style="display: flex;">
+                            <div class="swal2-header">
+                                <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
+                                    </div>
+                                    <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                                    <div class="swal2-success-ring"></div>
+                                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);">
+                                    </div>
+                                </div><img class="swal2-image" style="display: none;">
+                                <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                                    class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                            </div>
+                            <div class="swal2-content">
+                                <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
+                                    successfully submitted!</div>
+                            </div>
+                            <div class="swal2-actions">
+                                <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
+                                (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal content-->
+            </div>
+            <!--end::Modal dialog-->
+        </div>
     </div>
     <!--end::Container-->
 </div>
