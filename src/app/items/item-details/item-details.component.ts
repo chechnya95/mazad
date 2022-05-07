@@ -10,6 +10,9 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 })
 export class ItemDetailsComponent implements OnInit {
 
+  extend_status: any[] = ['Open', 'Bid', 'Approval', 'Payment', 'Payment Overdue'];
+  close_status: any[] = ['Shipping', 'Transferred'];
+
   token: any;
   item: any;
   keys: any;
@@ -22,6 +25,10 @@ export class ItemDetailsComponent implements OnInit {
   category: any;
   auction: any;
   winner: any;
+
+  extend_date: any;
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -133,4 +140,48 @@ export class ItemDetailsComponent implements OnInit {
     localStorage.removeItem('item-edit');
     localStorage.setItem('item-edit', JSON.stringify(item));
   }
+
+  extend(id: any) {
+    let body = {
+      date: this.extend_date
+    }
+    this.api.post('items/extendtime/' + id, body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  approve(id: any) {
+    this.api.get('items/to_status/approval/' + id, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  announrce(id: any) {
+
+  }
+
+  reject(id: any) {
+    this.api.get('items/to_status/reject/' + id, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  close(id: any) {
+    this.api.get('items/to_status/closed/' + id, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
 }
+
