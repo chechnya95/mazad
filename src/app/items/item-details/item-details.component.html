@@ -19,6 +19,7 @@
                             <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ item?.code |
                                 uppercase}}</a>
                             <!--end::Name-->
+                            <div class="fs-5 fw-bold text-gray-600">{{ item?.title.en }} - {{ item?.title.ar }} </div>
                             <!--begin::Position-->
                             <div class="fs-5 fw-bold text-gray-400 mb-6">{{ item?.id | uppercase}}</div>
                             <!--end::Position-->
@@ -165,8 +166,8 @@
                         <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Owner</div>
-                                <div class="text-gray-600"><a [routerLink]="['/users']"
+                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">Owner</div>
+                                <div class="text-gray-600"  *ngIf="this.api.canEnter(['admin'])"><a [routerLink]="['/users']"
                                         [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
@@ -366,13 +367,16 @@
                                             <button *ngIf="item?.item_status=='Approval'" (click)="approve(item?.id)"
                                                 type="button" class="btn btn-primary">Approve</button>
                                             <button *ngIf="item?.item_status=='Payment Overdue'"
-                                                (click)="announrce(item?.id)" type="button"
+                                                (click)="announce(item?.id)" type="button"
                                                 class="btn btn-success">Announce Winner</button>
                                             <button *ngIf="item?.item_status=='Approval'" (click)="reject(item?.id)"
                                                 type="button" class="btn btn-warning">Reject</button>
                                             <button *ngIf="close_status.includes(item?.item_status)"
                                                 (click)="close(item?.id)" type="button"
                                                 class="btn btn-danger">Close</button>
+                                            <button
+                                                (click)="addPayment(item?.id)" type="button"
+                                                class="btn btn-danger">Add Payment</button>
                                         </div>
                                     </div>
                                 </div>

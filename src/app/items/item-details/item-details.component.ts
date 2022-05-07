@@ -30,7 +30,7 @@ export class ItemDetailsComponent implements OnInit {
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Item Details';
@@ -133,7 +133,15 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getInvoices() {
-
+    this.api.get('invoices/item/' + this.item.id, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.invoices = objects['invoices']['invoices'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
   }
 
   saveItem(item: any) {
@@ -162,7 +170,7 @@ export class ItemDetailsComponent implements OnInit {
     );
   }
 
-  announrce(id: any) {
+  announce(id: any) {
 
   }
 
@@ -182,6 +190,10 @@ export class ItemDetailsComponent implements OnInit {
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
+  }
+
+  addPayment(id: any) {
+
   }
 }
 
