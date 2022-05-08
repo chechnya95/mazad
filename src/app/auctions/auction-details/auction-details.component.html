@@ -83,26 +83,79 @@
                                 <div class="flex-grow-1">
                                     <!--begin::Table-->
                                     <div class="table-responsive border-bottom mb-9">
-                                        <table class="table mb-3">
-                                            <tbody>
-                                                <tr class="fw-bolder text-gray-700 fs-5 text-start">
-                                                    <td class="d-flex align-items-center">
-                                                        <i class="fa fa-genderless text-success fs-2 me-2"></i>Description
-                                                    </td>
-                                                    <td>{{ auction?.description.en }} <br> {{ auction?.description.ar }}</td>
-                                                </tr>
-                                                <tr class="fw-bolder text-gray-700 fs-5 text-start">
-                                                    <td class="d-flex align-items-center">
-                                                        <i class="fa fa-genderless text-danger fs-2 me-2"></i>Terms
-                                                    </td>
-                                                    <td>{{ auction?.terms.en }} <br> {{ auction?.terms.ar }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div *ngIf="items.length > 0">
+                                            <h3>Auction Items</h3>
+                                            <table class="table mb-3">
+                                                <thead class="border-bottom border-gray-200">
+                                                    <!--begin::Table row-->
+                                                    <tr
+                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                        <th class="w-125px">Code</th>
+                                                        <th class="w-100px">Status</th>
+                                                        <th class="w-300px">Create Date</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--begin::Table body-->
+                                                <tbody class="fs-6 fw-bold text-gray-600">
+                                                    <!--begin::Table row-->
+                                                    <tr *ngFor="let item of items; let i = index;">
+                                                        <!--begin::Invoice=-->
+                                                        <td><a [routerLink]="['/item-details']"
+                                                                [queryParams]="{ id: item.id }">{{
+                                                                item.code | uppercase }}</a></td>
+                                                        <!--end::Invoice=-->
+                                                        <!--begin::Amount=-->
+                                                        <td>{{ item.item_status }}</td>
+                                                        <!--end::Amount=-->
+                                                        <!--begin::Date=-->
+                                                        <td>{{item.create_date | date:'medium'}}</td>
+                                                        <!--end::Date=-->
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </tbody>
+                                                <!--end::Table body-->
+                                            </table>
+                                        </div>
+                                        <div *ngIf="templates.length > 0">
+                                            <h3>Auction Templates</h3>
+                                            <table class="table mb-3">
+                                                <thead class="border-bottom border-gray-200">
+                                                    <!--begin::Table row-->
+                                                    <tr
+                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                        <th class="w-125px">Code</th>
+                                                        <th class="w-100px">Status</th>
+                                                        <th class="w-300px">Create Date</th>
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </thead>
+                                                <!--begin::Table body-->
+                                                <tbody class="fs-6 fw-bold text-gray-600">
+                                                    <!--begin::Table row-->
+                                                    <tr *ngFor="let item of templates; let i = index;">
+                                                        <!--begin::Invoice=-->
+                                                        <td><a [routerLink]="['/template-details']"
+                                                                [queryParams]="{ id: item.id }">{{
+                                                                item.code | uppercase }}</a></td>
+                                                        <!--end::Invoice=-->
+                                                        <!--begin::Amount=-->
+                                                        <td>{{ item.item_status }}</td>
+                                                        <!--end::Amount=-->
+                                                        <!--begin::Date=-->
+                                                        <td>{{item.create_date | date:'medium'}}</td>
+                                                        <!--end::Date=-->
+                                                    </tr>
+                                                    <!--end::Table row-->
+                                                </tbody>
+                                                <!--end::Table body-->
+                                            </table>
+                                        </div>
                                     </div>
                                     <!--end::Table-->
                                 </div>
                                 <!--end::Content-->
+
                             </div>
                             <!--end::Wrapper-->
                         </div>
@@ -128,6 +181,18 @@
                                 <div class="fw-bold text-gray-600 fs-7">Auction Title</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ auction?.title.en }}
                                     <br> {{ auction?.title.ar }}
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Description</div>
+                                <div class="fw-bolder fs-6 text-gray-800">{{ auction?.description.en }}
+                                    <br> {{ auction?.description.ar }}
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="fw-bold text-gray-600 fs-7">Auction Terms</div>
+                                <div class="fw-bolder fs-6 text-gray-800">{{ auction?.terms.en }}
+                                    <br> {{ auction?.terms.ar }}
                                 </div>
                             </div>
                             <!--end::Item-->
