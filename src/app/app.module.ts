@@ -50,6 +50,8 @@ import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
 import { TransactionsPipePipe } from './pipes/transactions-pipe.pipe';
 import { TemplateDetailsComponent } from './auction-templates/template-details/template-details.component';
 import { OwnerDetailsComponent } from './owners/owner-details/owner-details.component';
+import { InvoiceDetailsComponent } from './invoices/invoice-details/invoice-details.component';
+import { PaymentDetailsComponent } from './payment-transactions/payment-details/payment-details.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,9 @@ import { OwnerDetailsComponent } from './owners/owner-details/owner-details.comp
     OwnerPipePipe,
     TransactionsPipePipe,
     TemplateDetailsComponent,
-    OwnerDetailsComponent
+    OwnerDetailsComponent,
+    InvoiceDetailsComponent,
+    PaymentDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -131,9 +135,11 @@ import { OwnerDetailsComponent } from './owners/owner-details/owner-details.comp
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'payment-details', component: PaymentDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'wallets', component: WalletsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'deposits', component: DepositsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'invoice-details', component: InvoiceDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

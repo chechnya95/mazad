@@ -39,4 +39,8 @@ export class InvoicesComponent implements OnInit {
     sub.add(() => { this.utility.loader = false; });
   }
 
+  saveInvoice(invoice: any) {
+    localStorage.removeItem('invoice');
+    localStorage.setItem('invoice', JSON.stringify(invoice));
+  }
 }

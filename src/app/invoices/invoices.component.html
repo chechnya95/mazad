@@ -32,7 +32,6 @@
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
                                             <th>Transaction</th>
-                                            <th>VAT</th>
                                             <th>Number</th>
                                             <th>Date</th>
                                             <th>Total Amount</th>
@@ -46,8 +45,7 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let invoice of invoices; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td>{{ invoice.transaction_id | uppercase}}</td>
-                                            <td>{{ invoice.vat_number | uppercase}}</td>
+                                            <td><a (click)="saveInvoice(invoice)" [routerLink]="['/invoice-details']" [queryParams]="{ id: invoice.id }">{{ invoice.transaction_id | uppercase}}</a></td>
                                             <td>{{ invoice.number}}</td>
                                             <td>{{ invoice.date | date:"short"}}</td>
                                             <td>{{ invoice.total_amount | currency:'OMR'}}</td>
