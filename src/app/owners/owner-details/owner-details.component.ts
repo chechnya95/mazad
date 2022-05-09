@@ -38,7 +38,7 @@ export class OwnerDetailsComponent implements OnInit {
           this.owner = objects.find(i => i.id === id);
 
           this.owner.details = JSON.parse(this.owner.owner_details);
-          this.getUsers();
+          this.getOwnerUsers();
         }
       }
       else { this.router.navigate(['items']); }
@@ -46,8 +46,7 @@ export class OwnerDetailsComponent implements OnInit {
   }
 
   async getUsers() {
-    this.utility.loader = true;
-    const sub = this.api.get('users/', this.token).subscribe(
+    this.api.get('users/', this.token).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -63,7 +62,47 @@ export class OwnerDetailsComponent implements OnInit {
         alert(error);
       }
     );
+  }
 
-    sub.add(() => { this.utility.loader = false; });
+  getOwnerUsers() {
+    this.utility.loader = true;
+    const sub = this.api.get('owners/owner_user/' + this.owner.id, this.token).subscribe(
+      async data => {
+        let objects: any = {
+          owner_user: []
+        }
+        objects = data;
+        this.owner_users = objects.owner_user;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+
+    sub.add(() => { this.utility.loader = false; this.getUsers(); });
+  }
+
+  linkUser(id: any) {
+    let body = {
+      user_id: this.user_id,
+      owner_id: id
+    }
+    this.api.post('owners/owner_user', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        this.getOwnerUsers();
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  deleteOwnerUser(id: any) {
+    this.api.delete("owners/owner_user/" + id, this.token).subscribe(
+      async data => {
+        this.getOwnerUsers();
+      },
+      async error => {
+        this.errorMessage = true;
+        console.log(error);
+      }
+    );
   }
 }
