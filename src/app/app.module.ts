@@ -49,6 +49,7 @@ import { OwnersComponent } from './owners/owners.component';
 import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
 import { TransactionsPipePipe } from './pipes/transactions-pipe.pipe';
 import { TemplateDetailsComponent } from './auction-templates/template-details/template-details.component';
+import { OwnerDetailsComponent } from './owners/owner-details/owner-details.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { TemplateDetailsComponent } from './auction-templates/template-details/t
     OwnersComponent,
     OwnerPipePipe,
     TransactionsPipePipe,
-    TemplateDetailsComponent
+    TemplateDetailsComponent,
+    OwnerDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +115,7 @@ import { TemplateDetailsComponent } from './auction-templates/template-details/t
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'owners', component: OwnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'owner-details', component: OwnerDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'roles', component: RolesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },

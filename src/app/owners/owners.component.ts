@@ -72,6 +72,7 @@ export class OwnersComponent implements OnInit {
         objects = data;
 
         this.owners = objects.owners;
+        localStorage.setItem('owners', JSON.stringify(this.owners));
 
         if (id)
           this.owners = this.owners.filter(i => i.id === id);

@@ -600,7 +600,7 @@
                             <td class="d-flex align-items-center">
                                 <!--begin:: Avatar -->
                                 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                    <a>
+                                    <a [routerLink]="['/owner-details']" [queryParams]="{ id: owner.id }">
                                         <div class="symbol-label fs-3 bg-light-danger text-danger">{{ owner.avatar }}
                                         </div>
                                     </a>
@@ -608,7 +608,7 @@
                                 <!--end::Avatar-->
                                 <!--begin::Owner details-->
                                 <div class="d-flex flex-column">
-                                    <a class="text-gray-800 text-hover-primary mb-1">{{ owner.code }}</a>
+                                    <a [routerLink]="['/owner-details']" [queryParams]="{ id: owner.id }" class="text-gray-800 text-hover-primary mb-1">{{ owner.code }}</a>
                                 </div>
                                 <!--begin::Owner details-->
                             </td>
