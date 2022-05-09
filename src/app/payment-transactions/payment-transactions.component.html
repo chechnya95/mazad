@@ -50,7 +50,6 @@
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
-                                            <th>Requester</th>
                                             <th>Reference</th>
                                             <th>Status</th>
                                             <th>Amount</th>
@@ -70,11 +69,7 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let transaction of transactions  | transactionsPipe: transFilter; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td><a class="d-inline-block text-truncate" style="max-width: 70px;"
-                                                    [routerLink]="['/users']"
-                                                    [queryParams]="{ id: transaction.requester }">{{
-                                                    transaction.requester}}</a></td>
-                                            <td>{{ transaction.reference_id }}</td>
+                                            <td><a (click)="savePayment(transaction)" [routerLink]="['/payment-details']" [queryParams]="{ id: transaction.id }">{{ transaction.reference_id }}</a></td>
                                             <td><span *ngIf="transaction.payment_status==success"
                                                     class="badge badge-light-success fw-bolder">{{
                                                     transaction.payment_status}}</span>

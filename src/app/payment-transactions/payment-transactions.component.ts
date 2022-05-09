@@ -41,4 +41,8 @@ export class PaymentTransactionsComponent implements OnInit {
     sub.add(() => { this.utility.loader = false; });
   }
 
+  savePayment(payment: any) {
+    localStorage.removeItem('payment');
+    localStorage.setItem('payment', JSON.stringify(payment));
+  }
 }
