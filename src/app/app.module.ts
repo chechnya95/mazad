@@ -52,6 +52,7 @@ import { TemplateDetailsComponent } from './auction-templates/template-details/t
 import { OwnerDetailsComponent } from './owners/owner-details/owner-details.component';
 import { InvoiceDetailsComponent } from './invoices/invoice-details/invoice-details.component';
 import { PaymentDetailsComponent } from './payment-transactions/payment-details/payment-details.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { PaymentDetailsComponent } from './payment-transactions/payment-details/
     TemplateDetailsComponent,
     OwnerDetailsComponent,
     InvoiceDetailsComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +120,7 @@ import { PaymentDetailsComponent } from './payment-transactions/payment-details/
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'user-details', component: UserDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'owners', component: OwnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'owner-details', component: OwnerDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'slider', component: SliderComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

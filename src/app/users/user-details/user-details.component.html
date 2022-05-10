@@ -1,0 +1,542 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Layout-->
+        <div class="d-flex flex-column flex-xl-row">
+            <!--begin::Sidebar-->
+            <div class="flex-column flex-lg-row-auto w-100 w-xl-400px mb-10">
+                <!--begin::Card-->
+                <div class="card mb-5 mb-xl-8">
+                    <!--begin::Card body-->
+                    <div class="card-body pt-15">
+                        <!--begin::Summary-->
+                        <div class="d-flex flex-center flex-column mb-5">
+                            <!--begin::Name-->
+                            <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ user?.username |
+                                uppercase}}</a>
+                            <!--end::Name-->
+                            <div class="fs-5 fw-bold text-gray-600">{{ user?.details.name_en }} {{ user?.details.name_ar }} </div>
+                            <!--begin::Position-->
+                            <div class="fs-5 fw-bold text-gray-400 mb-6">{{ user?.id | uppercase}}</div>
+                            <!--end::Position-->
+                        </div>
+                        <!--end::Summary-->
+                        <!--begin::Details toggle-->
+                        <div class="d-flex flex-stack fs-4 py-3">
+                            <div class="fw-bolder">User Details
+                                <span class="ms-2 rotate-180">
+                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                <path
+                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                    fill="#000000" fill-rule="nonzero"
+                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)" />
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit this user">
+                                <a href="users?id={{user.id}}" class="btn btn-sm btn-light-primary">Edit</a>
+                            </span>
+                        </div>
+                        <!--end::Details toggle-->
+                        <div class="separator separator-dashed my-3"></div>
+                        <!--begin::Details content-->
+                        <div id="kt_customer_view_details">
+                            <div class="py-5 fs-6">
+                                <!--begin::Badge-->
+                                <!-- <div class="badge badge-light-info d-inline">{{ user?.item_status }}</div> -->
+                                <!--begin::Badge-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Status</div>
+                                <div class="badge badge-light-info d-inline"><span
+                                        *ngIf="user?.is_active">Active</span><span *ngIf="!user?.is_active">Not
+                                        Active</span></div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Phone</div>
+                                <div class="text-gray-600">{{ user?.phone }}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Email</div>
+                                <div class="text-gray-600">{{ user?.email }}</div>
+                                <div class="text-gray-600" *ngIf=" !user?.email">Not Set</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Id Number</div>
+                                <div class="text-gray-600">{{ user?.details.id_card_number }}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Mobile Confirmation Date</div>
+                                <div class="text-gray-600">{{ user?.mobile_confirmed_at | date:'medium' }}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Email Confirmation Date</div>
+                                <div class="text-gray-600">{{ user?.email_confirmed_at | date:'medium' }}</div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">User Role</div>
+                                <div class="text-gray-600">{{ user?.role }}
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">User Type</div>
+                                <div class="text-gray-600">{{ user?.user_type }}
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Language</div>
+                                <div class="text-gray-600">{{ user?.language }}
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">User Deposit</div>
+                                <div class="text-gray-600">{{ user?.deposit | currency:' OMR' }}
+                                </div>
+                                <!--begin::Details item-->
+                            </div>
+                        </div>
+                        <!--end::Details content-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Sidebar-->
+            <!--begin::Content-->
+            <div class="flex-lg-row-fluid ms-lg-15">
+                <!--begin:::Tabs-->
+                <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_tab">Overview</a>
+                    </li>
+                    <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_events_and_logs_tab">Auctions</a>
+                    </li>
+                    <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_statements">Statistics</a>
+                    </li>
+                    <!--end:::Tab item-->
+                </ul>
+                <!--end:::Tabs-->
+                <!--begin:::Tab content-->
+                <div class="tab-content" id="myTabContent">
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade show active" id="kt_customer_view_overview_tab" role="tabpanel">
+                        <!--begin::Card-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>User Actions</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-5">
+                                <!--begin::Row-->
+                                <div class="row py-5">
+                                    <div class="col-md">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
+                                                type="button" class="btn btn-secondary" disabled>Some Action</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row py-5">
+                                    <!--begin::Row-->
+                                    <div class="col-md-6">
+                                        <!--begin::Table-->
+                                        
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Row-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end:::Tab pane-->
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade" id="kt_customer_view_overview_events_and_logs_tab" role="tabpanel">
+                        <!--begin::Card-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>User's Auctions</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body py-0">
+                                <!--begin::Table wrapper-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Table wrapper-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end:::Tab pane-->
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade" id="kt_customer_view_overview_statements" role="tabpanel">
+                        <!--begin::Statements-->
+                        <div class="card mb-6 mb-xl-9">
+                            <!--begin::Header-->
+                            <div class="card-header">
+                                <!--begin::Title-->
+                                <div class="card-title">
+                                    <h2>Statistics</h2>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pb-5">
+                                <!--begin::Tab Content-->
+                                <div id="kt_customer_view_statement_tab_content" class="tab-content">
+                                    <!--begin::Tab panel-->
+                                    <div id="kt_customer_view_statement_1" class="py-0 tab-pane fade show active"
+                                        role="tabpanel">
+                                        <!--begin::Table-->
+                                        <table id="kt_customer_view_statement_table_1" style="display: none"
+                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
+                                            <!--begin::Table head-->
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Date</th>
+                                                    <th class="w-100px">Order ID</th>
+                                                    <!-- <th class="w-300px">Details</th> -->
+                                                    <th class="w-100px">Amount</th>
+                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <a href="#" class="text-gray-600 text-hover-primary">aaa</a>
+                                                    </td>
+                                                    <!-- <td>Darknight transparency 36 Icons Pack</td> -->
+                                                    <td class="text-success">bbb</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tab panel-->
+                                    <!--begin::Tab panel-->
+                                    <div id="kt_customer_view_statement_2" class="py-0 tab-pane fade" role="tabpanel">
+                                        <!--begin::Table-->
+                                        <table id="kt_customer_view_statement_table_2"
+                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
+                                            <!--begin::Table head-->
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Date</th>
+                                                    <th class="w-100px">Order ID</th>
+                                                    <th class="w-300px">Details</th>
+                                                    <th class="w-100px">Amount</th>
+                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                                <tr>
+                                                    <td>May 30, 2020</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="text-gray-600 text-hover-primary">523445943</a>
+                                                    </td>
+                                                    <td>Seller Fee</td>
+                                                    <td class="text-danger">$-1.30</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apr 22, 2020</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="text-gray-600 text-hover-primary">231445943</a>
+                                                    </td>
+                                                    <td>Parcel Shipping / Delivery Service App</td>
+                                                    <td class="text-success">$204.00</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Feb 09, 2020</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="text-gray-600 text-hover-primary">426445943</a>
+                                                    </td>
+                                                    <td>Visual Design Illustration</td>
+                                                    <td class="text-success">$31.00</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tab panel-->
+                                    <!--begin::Tab panel-->
+                                    <div id="kt_customer_view_statement_3" class="py-0 tab-pane fade" role="tabpanel">
+                                        <!--begin::Table-->
+                                        <table id="kt_customer_view_statement_table_3"
+                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
+                                            <!--begin::Table head-->
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Date</th>
+                                                    <th class="w-100px">Order ID</th>
+                                                    <th class="w-300px">Details</th>
+                                                    <th class="w-100px">Amount</th>
+                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>Apr 22, 2019</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="text-gray-600 text-hover-primary">231445943</a>
+                                                    </td>
+                                                    <td>Parcel Shipping / Delivery Service App</td>
+                                                    <td class="text-success">$204.00</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tab panel-->
+                                    <!--begin::Tab panel-->
+                                    <div id="kt_customer_view_statement_4" class="py-0 tab-pane fade" role="tabpanel">
+                                        <!--begin::Table-->
+                                        <table id="kt_customer_view_statement_table_4"
+                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
+                                            <!--begin::Table head-->
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Date</th>
+                                                    <th class="w-100px">Order ID</th>
+                                                    <th class="w-300px">Details</th>
+                                                    <th class="w-100px">Amount</th>
+                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>Apr 22, 2019</td>
+                                                    <td>
+                                                        <a href="#"
+                                                            class="text-gray-600 text-hover-primary">231445943</a>
+                                                    </td>
+                                                    <td>Parcel Shipping / Delivery Service App</td>
+                                                    <td class="text-success">$204.00</td>
+                                                    <td class="text-end">
+                                                        <button
+                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tab panel-->
+                                </div>
+                                <!--end::Tab Content-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Statements-->
+                    </div>
+                    <!--end:::Tab pane-->
+                </div>
+                <!--end:::Tab content-->
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Layout-->
+        <!--end::Modal - New Card-->
+        <div class="modal fade" id="kt_modal_extend_form" tabindex="-1" aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-750px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Modal header-->
+                    <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bolder">Link User</h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                            <span class="svg-icon svg-icon-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                        fill="#000000">
+                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                        <rect fill="#000000" opacity="0.5"
+                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                            x="0" y="7" width="16" height="2" rx="1" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                        <!--begin::Scroll-->
+                        <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_form_scroll"
+                            data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                            data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
+                            <div class="fv-row mb-10">
+                                <label class="form-label fs-6 fw-bold">User</label>
+                                <select name="owner_id" class="form-select form-select-lg form-select-solid">
+                                    <option>test</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--end::Scroll-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal content-->
+            </div>
+            <!--end::Modal dialog-->
+        </div>
+        <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                            class="swal2-x-mark">
+                            <span class="swal2-x-mark-line-left"></span>
+                            <span class="swal2-x-mark-line-right"></span>
+                        </span>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
+                        are some errors detected, please try again.</div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div>
+                    <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
+                        (click)="errorMessage=false">Ok, got it!</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                        <div class="swal2-success-ring"></div>
+                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
+                        successfully submitted!</div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
+                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                </div>
+            </div>
+        </div>
+        <!--end::Modals-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Post-->

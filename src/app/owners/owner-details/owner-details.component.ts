@@ -41,7 +41,7 @@ export class OwnerDetailsComponent implements OnInit {
           this.getOwnerUsers();
         }
       }
-      else { this.router.navigate(['items']); }
+      else { this.router.navigate(['owners']); }
     })
   }
 

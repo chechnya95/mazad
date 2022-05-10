@@ -75,6 +75,7 @@ export class UsersComponent implements OnInit {
         objects = data;
 
         this.users = objects.users;
+        localStorage.setItem('users', JSON.stringify(this.users));
 
         if (id)
           this.users = this.users.filter(i => i.id === id);
