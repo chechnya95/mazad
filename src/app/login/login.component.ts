@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   email: any;
   password: any;
 
+  loading: boolean = false;
+
   constructor(
     public utility: UtilitiesService,
     public translate: TranslateService,
@@ -40,13 +42,14 @@ export class LoginComponent implements OnInit {
     password = this.password;
 
     if (email && password) {
+      this.loading = true;
 
       let body = {
         'email': this.email,
         'password': this.password
       }
 
-      this.api.login(body, 'login/admin').subscribe(
+      const sub = this.api.login(body, 'login/admin').subscribe(
         async data => {
           let dd = JSON.parse(JSON.stringify(data));
           if (data) {
@@ -58,9 +61,11 @@ export class LoginComponent implements OnInit {
           }
         },
         async error => {
-          alert(error.error);
+          alert('Error: cannot login');
         }
       );
+
+      sub.add(() => { this.loading = false; })
     }
     else {
       alert('Please Try Again');
