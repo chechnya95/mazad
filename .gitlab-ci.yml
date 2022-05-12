@@ -6,12 +6,15 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
+- test
 - build
 - deploy
-- test
+
 build:
   stage: build
   image: node:lts
+  only:
+    - master
   script:
   - apt update
   - npm install -g @angular/cli
@@ -38,14 +41,17 @@ deploy:
   - chmod 600 ~/.ssh/id_dsa
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   only:
-  - master
+    - master
   environment:
     name: production
     url: https://mazad-dashboard.smartlaboman.com
   script:
   - current_dir=$(pwd)
   - rsync -rav --rsh='ssh -v -p7822' $current_dir/dist/mazad-oman-dashboard/ $A2_SSH_USERNAME@$A2_HOST_NAME:$PROJECT_PATH
+
 sast:
   stage: test
+  only:
+    - merge_requests
 include:
 - template: Security/SAST.gitlab-ci.yml
