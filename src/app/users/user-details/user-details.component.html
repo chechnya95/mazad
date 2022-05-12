@@ -156,8 +156,9 @@
                                 <div class="row py-5">
                                     <div class="col-md">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
-                                                type="button" class="btn btn-secondary" disabled>Some Action</button>
+                                            <!-- <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form" type="button" class="btn btn-secondary" disabled>Block User</button> -->
+                                            <button *ngIf="!userBlocked" (click)="blockUser(user?.id)" type="button" class="btn btn-warning" >Block User</button>
+                                            <button *ngIf="userBlocked" disabled type="button" class="btn btn-danger" >This user is blocked</button>
                                         </div>
                                     </div>
                                 </div>

@@ -54,11 +54,9 @@
                                             <th>Status</th>
                                             <th>Amount</th>
                                             <th>VAT</th>
-                                            <th>Model</th>
-                                            <th>Model ID</th>
                                             <th>Create Date</th>
-                                            <th>Payment Gateway</th>
-                                            <th>Payment Type</th>
+                                            <th>Gateway</th>
+                                            <th>Type</th>
                                             <!-- <th class="text-end">Actions</th> -->
                                         </tr>
                                         <!--end::Table row-->
@@ -79,10 +77,6 @@
                                             </td>
                                             <td>{{ transaction.amount}} OMR</td>
                                             <td>{{ transaction.vat}} OMR</td>
-                                            <td colspan="2">{{ transaction.model_type}}
-                                                <span class="d-inline-block text-truncate" style="max-width: 120px;">{{
-                                                    transaction.model_id}}</span>
-                                            </td>
                                             <td>{{ transaction.create_date | date:"short"}}</td>
                                             <td>{{ transaction.payment_gateway}} </td>
                                             <td>{{ transaction.payment_type}} </td>
