@@ -68,7 +68,8 @@
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">Requester:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.requester | uppercase }}
+                                        <div class="fw-bolder fs-6 text-gray-800"><a [routerLink]="['/users']"
+                                            [queryParams]="{ id: payment?.requester }">{{ payment?.requester | uppercase }}</a>
                                         </div>
                                         <!--end::Col-->
                                     </div>
