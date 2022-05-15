@@ -17,6 +17,8 @@ export class UserDetailsComponent implements OnInit {
   successMessage: boolean = false;
   userBlocked: boolean = false;
 
+  block_id: any;
+
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -45,9 +47,8 @@ export class UserDetailsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         let blocked = objects['blacklists']['blacklists']
-        
-        if (blocked.length > 0)
-          this.userBlocked = true;
+
+        if (blocked.length > 0) { this.userBlocked = true; this.block_id = blocked[0].id; }
       },
       async error => { console.log(error); }
     );
@@ -58,6 +59,15 @@ export class UserDetailsComponent implements OnInit {
       user_id: id
     }
     this.api.post('blacklists/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  unblock(id: any) {
+    this.api.delete('blacklists/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
       },

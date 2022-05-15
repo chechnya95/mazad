@@ -16,7 +16,8 @@
                             <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ user?.username |
                                 uppercase}}</a>
                             <!--end::Name-->
-                            <div class="fs-5 fw-bold text-gray-600">{{ user?.details.name_en }} {{ user?.details.name_ar }} </div>
+                            <div class="fs-5 fw-bold text-gray-600">{{ user?.details.name_en }} {{ user?.details.name_ar
+                                }} </div>
                             <!--begin::Position-->
                             <div class="fs-5 fw-bold text-gray-400 mb-6">{{ user?.id | uppercase}}</div>
                             <!--end::Position-->
@@ -155,10 +156,15 @@
                                 <!--begin::Row-->
                                 <div class="row py-5">
                                     <div class="col-md">
+                                        <div *ngIf="userBlocked" class="alert alert-warning" role="alert">
+                                            This user has been added to blacklist!
+                                        </div>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <!-- <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form" type="button" class="btn btn-secondary" disabled>Block User</button> -->
-                                            <button *ngIf="!userBlocked" (click)="blockUser(user?.id)" type="button" class="btn btn-warning" >Block User</button>
-                                            <button *ngIf="userBlocked" disabled type="button" class="btn btn-danger" >This user is blocked</button>
+                                            <button *ngIf="!userBlocked" (click)="blockUser(user?.id)" type="button"
+                                                class="btn btn-warning">Block User</button>
+                                            <button *ngIf="userBlocked" (click)="unblock(block_id)" type="button"
+                                                class="btn btn-danger">Unblock</button>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +172,7 @@
                                     <!--begin::Row-->
                                     <div class="col-md-6">
                                         <!--begin::Table-->
-                                        
+
                                         <!--end::Table-->
                                     </div>
                                     <!--end::Row-->
@@ -196,7 +202,7 @@
                                 <!--begin::Table wrapper-->
                                 <div class="table-responsive">
                                     <!--begin::Table-->
-                                    
+
                                     <!--end::Table-->
                                 </div>
                                 <!--end::Table wrapper-->
