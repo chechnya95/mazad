@@ -78,7 +78,10 @@
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice Details:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.details.id | uppercase }} <br> {{ invoice?.details.description }} <br> Amount: {{ invoice?.details.amount | currency:'OMR'}}, Fee: {{ invoice?.details.fee | currency:'OMR'}} </div>
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.details.id | uppercase }}
+                                            <br> {{ invoice?.details.description }} <br> Amount: {{
+                                            invoice?.details.amount | currency:'OMR'}}, Fee: {{ invoice?.details.fee |
+                                            currency:'OMR'}} </div>
                                         <!--end::Text-->
                                     </div>
                                     <!--end::Col-->
@@ -88,7 +91,8 @@
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice Date:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.date | date:'medium' }}</div>
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.date | date:'medium' }}
+                                        </div>
                                         <!--end::Text-->
                                     </div>
                                     <!--end::Col-->
@@ -111,7 +115,8 @@
                             <!--begin::Item-->
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Invoice Total Amount</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.total_amount | currency:'OMR' }}</div>
+                                <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.total_amount | currency:'OMR' }}
+                                </div>
                             </div>
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Model</div>
@@ -138,13 +143,17 @@
                             <!--begin::Item-->
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">User:</div>
-                                <div class="fw-bolder text-gray-800 fs-6"><a [routerLink]="['/users']" [queryParams]="{ id: invoice?.user_id }">{{ invoice?.user_details.email }} | {{ invoice?.user_details.phone }}</a></div>
+                                <div class="fw-bolder text-gray-800 fs-6"><a [routerLink]="['/users']"
+                                        [queryParams]="{ id: invoice?.user_id }">{{ invoice?.user_details.email }} | {{
+                                        invoice?.user_details.phone }}</a></div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">User Details:</div>
-                                <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.user_details.details.name_en }} - {{ invoice?.user_details.details.name_ar }} <br> {{ invoice?.user_details.details.id_card_number }}</div>
+                                <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.user_details.details.name_en }} -
+                                    {{ invoice?.user_details.details.name_ar }} <br> {{
+                                    invoice?.user_details.details.id_card_number }}</div>
                             </div>
                             <!--end::Item-->
                         </div>
