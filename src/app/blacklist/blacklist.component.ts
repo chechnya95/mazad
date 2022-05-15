@@ -62,12 +62,13 @@ export class BlacklistComponent implements OnInit {
 
   OnSubmit() {
     let body = {
-      user_id: this.blacklist.user_id,
-      owner_id: this.blacklist.owner_id
+      user_id: this.blacklist.user_id == 0 ? null : this.blacklist.user_id,
+      owner_id: this.blacklist.owner_id == 0 ? null : this.blacklist.owner_id
     }
     this.api.post('blacklists/', body, this.token).subscribe(
       async data => {
         this.successMessage = true;
+        this.getBlackLists(null);
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
@@ -82,6 +83,9 @@ export class BlacklistComponent implements OnInit {
         objects = data;
 
         this.users = objects.users;
+        this.users.forEach(function (user) {
+          user.contact = user.email ? user.email : user.phone;
+        });
       },
       async error => {
         alert(error);
@@ -100,6 +104,9 @@ export class BlacklistComponent implements OnInit {
         objects = data;
 
         this.owners = objects.owners;
+        this.owners.forEach(function (owner) {
+          owner.contact = owner.email ? owner.email : owner.phone;
+        });
       },
       async error => {
         alert(error);
@@ -107,5 +114,15 @@ export class BlacklistComponent implements OnInit {
     );
 
     sub.add(() => { });
+  }
+
+  removeBlock(id: any) {
+    this.api.delete('blacklists/' + id, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        this.getBlackLists(null);
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
   }
 }

@@ -47,8 +47,8 @@
   height: 0;
   margin: 8px;
   box-sizing: border-box;
-  border: 32px solid orange;
-  border-color: orange transparent orange transparent;
+  border: 32px solid rgb(1, 123, 165);
+  border-color: rgb(223, 166, 64) transparent rgb(1, 123, 165) transparent;
   animation: loading 1.2s infinite;
 }
 
