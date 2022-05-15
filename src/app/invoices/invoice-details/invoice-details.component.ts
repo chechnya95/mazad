@@ -21,7 +21,7 @@ export class InvoiceDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.invoice = localStorage.getItem('invoice') ? JSON.parse(localStorage.getItem('invoice')) : null;
 
-    if (this.invoice) { this.invoice.details = this.invoice.details ? JSON.parse(this.invoice.details) : ''; }
+    if (this.invoice) { this.invoice.user_details.details = this.invoice.user_details.details ? JSON.parse(this.invoice.user_details.details) : ''; }
     else { this.router.navigate(['auctions']); }
   }
 }

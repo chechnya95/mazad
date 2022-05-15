@@ -367,20 +367,12 @@
                             </td>
                             <!--end::Checkbox-->
                             <!--begin::Owner=-->
-                            <td class="d-flex align-items-center">
-                                <!--begin::Owner details-->
-                                <div class="d-flex flex-column">
-                                    <a class="text-gray-800 text-hover-primary mb-1">{{ blacklist.user_id }}</a>
-                                </div>
-                                <!--begin::Owner details-->
+                            <td>
+                                {{ blacklist.user_id }}
                             </td>
                             <!--end::Owner=-->
-                            <td class="d-flex align-items-center">
-                                <!--begin::Owner details-->
-                                <div class="d-flex flex-column">
-                                    <a class="text-gray-800 text-hover-primary mb-1">{{ blacklist.owner_id }}</a>
-                                </div>
-                                <!--begin::Owner details-->
+                            <td>
+                                {{ blacklist.owner_id }}
                             </td>
                             <td>
                                 {{ blacklist.type }}
