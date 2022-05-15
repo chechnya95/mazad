@@ -5,247 +5,249 @@
         <!--begin::Invoice 2 main-->
         <div class="card">
             <!--begin::Body-->
-            </div>
-            <div class="card-body p-lg-20">
-                <!--begin::Layout-->
-                <div class="d-flex flex-column flex-xl-row">
-                    <!--begin::Content-->
-                    <div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
-                        <!--begin::Invoice 2 content-->
-                        <div class="mt-n1">
-                            <!--begin::Wrapper-->
-                            <div class="m-0">
-                                <!--begin::Label-->
-                                <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Id</div>
-                                <div class="fw-bolder fs-3 text-gray-800 mb-8">{{ payment?.id | uppercase}}</div>
-                                <!--end::Label-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-11">
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Create Date:</div>
-                                        <!--end::Label-->
-                                        <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.create_date | date }}</div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Modified Date:</div>
-                                        <!--end::Label-->
-                                        <!--end::Info-->
-                                        <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
-                                            <span class="pe-2">{{ payment?.last_modified | date }}</span>
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-11">
-                                    <!--end::Col-->
-                                    <div class="col-sm-12">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Reference ID:</div>
-                                        <!--end::Label-->
-                                        <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.reference_id | uppercase }}</div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-11">
-                                    <!--end::Col-->
-                                    <div class="col-sm-12">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Requester:</div>
-                                        <!--end::Label-->
-                                        <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.requester | uppercase }}</div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-12">
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Gateway:</div>
-                                        <!--end::Label-->
-                                        <!--end::Text-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_gateway }}</div>
-                                        <!--end::Text-->
-                                        <!--end::Description-->
-                                        <div class="fw-bold fs-7 text-gray-600">Status:
-                                            <br /><b><span class="badge badge-light-info me-2">{{ payment?.gateway_status }}</span></b>
-                                        </div>
-                                        <div class="fw-bold fs-7 text-gray-600">ID:
-                                            <br /><b>{{ payment?.gateway_transaction_id }}</b>
-                                        </div>
-                                        <!--end::Description-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Type:</div>
-                                        <!--end::Label-->
-                                        <!--end::Text-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_type }}</div>
-                                        <!--end::Text-->
-                                        <!--end::Description-->
-                                        <div class="fw-bold fs-7 text-gray-600">Payment Status:
-                                            <br /><b><span class="badge badge-light-info me-2">{{ payment?.payment_status }}</span></b>
-                                        </div>
-                                        <!--end::Description-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-11">
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Note:</div>
-                                        <!--end::Label-->
-                                        <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.note }}</div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Retry:</div>
-                                        <!--end::Label-->
-                                        <!--end::Info-->
-                                        <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
-                                            <span class="pe-2">{{ payment?.retry }}</span>
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Row-->
-                                <div class="row g-5 mb-11">
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Custom Properties:</div>
-                                        <!--end::Label-->
-                                        <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.custom_properties }}</div>
-                                        <!--end::Col-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--end::Col-->
-                                    <div class="col-sm-6">
-                                        <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Config Id:</div>
-                                        <!--end::Label-->
-                                        <!--end::Info-->
-                                        <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
-                                            <span class="pe-2">{{ payment?.config_id | uppercase }}</span>
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Row-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Invoice 2 content-->
-                    </div>
-                    <!--end::Content-->
-                    <!--begin::Sidebar-->
-                    <div class="m-0">
-                        <!--begin::Invoice 2 sidebar-->
-                        <div
-                            class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
-                            <!--begin::Labels-->
-                            <div class="mb-8">
-                                <span class="badge badge-light-success me-2" *ngIf="payment?.active">Active</span>
-                                <span class="badge badge-light-warning" *ngIf="!payment?.active">Not Active</span>
-                            </div>
-                            <!--end::Labels-->
-                            <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">PAYMENT OVERVIEW</h6>
-                            <!--end::Title-->
-                            <!--begin::Item-->
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Amount</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.amount | currency:' OMR ' }}</div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">VAT</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.vat | currency:' OMR '}} </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Card Number</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_number }} </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Card Name</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_name }} </div>
-                            </div>
-                            <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Card Expiry</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_expiry_date | date }} </div>
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">PAYMENT MODEL</h6>
-                            <!--end::Title-->
-                            <!--begin::Item-->
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">TYPE</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_type }}</div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Action</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_action }} </div>
-                            </div>
-                            <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">ID</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_id | uppercase }} </div>
-                            </div>
-                            <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary" *ngIf="payment?.response_code || payment?.response_decision">PAYMENT RESPONSE</h6>
-                            <!--end::Title-->
-                            <!--begin::Item-->
-                            <div class="mb-3" *ngIf="payment?.response_code">
-                                <div class="fw-bold text-gray-600 fs-7">Response Code:</div>
-                                <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_code }}</div>
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <div class="mb-3" *ngIf="payment?.response_decision">
-                                <div class="fw-bold text-gray-600 fs-7">Response Decision:</div>
-                                <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_decision }}</div>
-                            </div>
-                            <!--end::Item-->
-                        </div>
-                        <!--end::Invoice 2 sidebar-->
-                    </div>
-                    <!--end::Sidebar-->
-                </div>
-                <!--end::Layout-->
-            </div>
-            <!--end::Body-->
         </div>
-        <!--end::Invoice 2 main-->
+        <div class="card-body p-lg-20">
+            <!--begin::Layout-->
+            <div class="d-flex flex-column flex-xl-row">
+                <!--begin::Content-->
+                <div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
+                    <!--begin::Invoice 2 content-->
+                    <div class="mt-n1">
+                        <!--begin::Wrapper-->
+                        <div class="m-0">
+                            <!--begin::Label-->
+                            <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Id</div>
+                            <div class="fw-bolder fs-3 text-gray-800 mb-8">{{ payment?.id | uppercase}}</div>
+                            <!--end::Label-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-11">
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Create Date:</div>
+                                    <!--end::Label-->
+                                    <!--end::Col-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.create_date | date }}</div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Col-->
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Modified Date:</div>
+                                    <!--end::Label-->
+                                    <!--end::Info-->
+                                    <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+                                        <span class="pe-2">{{ payment?.last_modified | date }}</span>
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-11">
+                                <!--end::Col-->
+                                <div class="col-sm-12">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Reference ID:</div>
+                                    <!--end::Label-->
+                                    <!--end::Col-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.reference_id | uppercase }}
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-11">
+                                <!--end::Col-->
+                                <div class="col-sm-12">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Requester:</div>
+                                    <!--end::Label-->
+                                    <!--end::Col-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.requester | uppercase }}</div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-12">
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Gateway:</div>
+                                    <!--end::Label-->
+                                    <!--end::Text-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_gateway }}</div>
+                                    <!--end::Text-->
+                                    <!--end::Description-->
+                                    <div class="fw-bold fs-7 text-gray-600">Status:
+                                        <br /><b><span class="badge badge-light-info me-2">{{ payment?.gateway_status
+                                                }}</span></b>
+                                    </div>
+                                    <div class="fw-bold fs-7 text-gray-600">ID:
+                                        <br /><b>{{ payment?.gateway_transaction_id }}</b>
+                                    </div>
+                                    <!--end::Description-->
+                                </div>
+                                <!--end::Col-->
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Type:</div>
+                                    <!--end::Label-->
+                                    <!--end::Text-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_type }}</div>
+                                    <!--end::Text-->
+                                    <!--end::Description-->
+                                    <div class="fw-bold fs-7 text-gray-600">Payment Status:
+                                        <br /><b><span class="badge badge-light-info me-2">{{ payment?.payment_status
+                                                }}</span></b>
+                                    </div>
+                                    <!--end::Description-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-11">
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Note:</div>
+                                    <!--end::Label-->
+                                    <!--end::Col-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.note }}</div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Col-->
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Retry:</div>
+                                    <!--end::Label-->
+                                    <!--end::Info-->
+                                    <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+                                        <span class="pe-2">{{ payment?.retry }}</span>
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Row-->
+                            <div class="row g-5 mb-11">
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Custom Properties:</div>
+                                    <!--end::Label-->
+                                    <!--end::Col-->
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ payment?.custom_properties }}</div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Col-->
+                                <!--end::Col-->
+                                <div class="col-sm-6">
+                                    <!--end::Label-->
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Config Id:</div>
+                                    <!--end::Label-->
+                                    <!--end::Info-->
+                                    <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+                                        <span class="pe-2">{{ payment?.config_id | uppercase }}</span>
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </div>
+                    <!--end::Invoice 2 content-->
+                </div>
+                <!--end::Content-->
+                <!--begin::Sidebar-->
+                <div class="m-0">
+                    <!--begin::Invoice 2 sidebar-->
+                    <div
+                        class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
+                        <!--begin::Labels-->
+                        <div class="mb-8">
+                            <span class="badge badge-light-success me-2" *ngIf="payment?.active">Active</span>
+                            <span class="badge badge-light-warning" *ngIf="!payment?.active">Not Active</span>
+                        </div>
+                        <!--end::Labels-->
+                        <!--begin::Title-->
+                        <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">PAYMENT OVERVIEW</h6>
+                        <!--end::Title-->
+                        <!--begin::Item-->
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">Amount</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.amount | currency:' OMR ' }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">VAT</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.vat | currency:' OMR '}} </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">Card Number</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_number }} </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">Card Name</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_name }} </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="fw-bold text-gray-600 fs-7">Card Expiry</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_expiry_date | date }} </div>
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Title-->
+                        <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">PAYMENT MODEL</h6>
+                        <!--end::Title-->
+                        <!--begin::Item-->
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">TYPE</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_type }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold text-gray-600 fs-7">Action</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_action }} </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="fw-bold text-gray-600 fs-7">ID</div>
+                            <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_id | uppercase }} </div>
+                        </div>
+                        <!--begin::Title-->
+                        <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary"
+                            *ngIf="payment?.response_code || payment?.response_decision">PAYMENT RESPONSE</h6>
+                        <!--end::Title-->
+                        <!--begin::Item-->
+                        <div class="mb-3" *ngIf="payment?.response_code">
+                            <div class="fw-bold text-gray-600 fs-7">Response Code:</div>
+                            <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_code }}</div>
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="mb-3" *ngIf="payment?.response_decision">
+                            <div class="fw-bold text-gray-600 fs-7">Response Decision:</div>
+                            <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_decision }}</div>
+                        </div>
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Invoice 2 sidebar-->
+                </div>
+                <!--end::Sidebar-->
+            </div>
+            <!--end::Layout-->
+        </div>
+        <!--end::Body-->
     </div>
-    <!--end::Container-->
+    <!--end::Invoice 2 main-->
 </div>
-<!--end::Post-->
+<!--end::Container-->
