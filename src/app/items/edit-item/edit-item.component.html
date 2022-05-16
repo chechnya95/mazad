@@ -412,13 +412,22 @@
                                                 <div class="col-md">
                                                     <!--begin::Item-->
                                                     <div class="d-flex">
-                                                        <div *ngFor="let image of item?.images">
+                                                        <div *ngFor="let image of item?.images"
+                                                            style="padding-right:20px;">
+                                                            <div class="icon-button">
+                                                                <img src="{{image.file.file}}" style="width: 100%;
+                                                                    height: 100%;">
+                                                            </div>
+                                                            <span style="cursor: pointer;"
+                                                                (click)="removeImage(image)">remove</span>
+                                                        </div>
+                                                        <!-- <div *ngFor="let image of item?.images">
                                                             <button type="button" class="close" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                             <img src="{{image.file.file}}"
                                                                 style="width:60px;height:40px; padding-right: 10px;">
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <!--end::Item-->
                                                 </div>
@@ -486,11 +495,14 @@
                                                 <div class="col-md">
                                                     <!--begin::Item-->
                                                     <div class="d-flex mb-3">
-                                                        <a *ngFor="let attach of item?.attachments"
-                                                            href="{{attach.file.file}}" target="_blank"><img
-                                                                src="../../../assets/media/icons/duotone/Files/Selected-file.svg"
-                                                                style="width:60px;height:40px;" />
-                                                        </a>
+                                                        <div *ngFor="let attach of item?.attachments">
+                                                            <a href="{{attach.file.file}}" target="_blank"><img
+                                                                    src="../../../assets/media/icons/duotone/Files/Selected-file.svg"
+                                                                    style="width:60px;height:40px;" />
+                                                            </a>
+                                                            <span style="cursor: pointer;"
+                                                                (click)="removeFile(attach)">remove</span>
+                                                        </div>
                                                     </div>
                                                     <!--end::Item-->
                                                 </div>

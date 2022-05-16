@@ -306,6 +306,16 @@ export class EditItemComponent implements OnInit {
     );
   }
 
+  removeImage(image: any) {
+    let index = this.item.images.indexOf(image, 0);
+    this.item.images.splice(index, 1);
+  }
+
+  removeFile(file: any) {
+    let index = this.item.attachments.indexOf(file, 0);
+    this.item.attachments.splice(index, 1);
+  }
+
   reload() {
     window.location.reload();
   }
