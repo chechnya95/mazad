@@ -381,11 +381,14 @@
                             <!--end::Checkbox-->
                             <!--begin::Owner=-->
                             <td>
-                                {{ blacklist.user_id }}
+                                <a [routerLink]="['/users']"
+                                            [queryParams]="{ id: blacklist?.user?.id }">{{ blacklist?.user?.phone }}</a>
                             </td>
                             <!--end::Owner=-->
                             <td>
-                                {{ blacklist.owner_id }}
+                                <span *ngIf="!blacklist?.owner">-</span>
+                                <a *ngIf="blacklist?.owner" [routerLink]="['/owners']"
+                                        [queryParams]="{ id: blacklist?.owner?.id }">{{ blacklist?.owner?.title.en }}</a>
                             </td>
                             <td>
                                 {{ blacklist.type }}

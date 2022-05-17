@@ -167,7 +167,7 @@
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">Owner</div>
-                                <div class="text-gray-600"  *ngIf="this.api.canEnter(['admin'])"><a [routerLink]="['/users']"
+                                <div class="text-gray-600"  *ngIf="this.api.canEnter(['admin'])"><a [routerLink]="['/owners']"
                                         [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
