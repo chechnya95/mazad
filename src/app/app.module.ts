@@ -147,6 +147,7 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
       { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoice-details', component: InvoiceDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'user-payment-options', component: UserPaymentOptionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
