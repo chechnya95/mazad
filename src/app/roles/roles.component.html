@@ -12,7 +12,8 @@
                     <div class="card-body d-flex flex-center">
                         <!--begin::Button-->
                         <button type="button" class="btn btn-clear d-flex flex-column flex-center"
-                        data-bs-toggle="modal" data-bs-target="#kt_modal_update_role" (click)="editRoleClicked(role.id, role.name)">
+                            data-bs-toggle="modal" data-bs-target="#kt_modal_update_role"
+                            (click)="editRoleClicked(role.id, role.name)">
                             <!--begin::Illustration-->
                             <img src="assets/media/illustrations/defence.png" alt="" class="mw-100 mh-150px mb-7" />
                             <!--end::Illustration-->
@@ -377,15 +378,22 @@
                             data-kt-scroll-wrappers="#kt_modal_update_role_scroll" data-kt-scroll-offset="300px">
                             <!--begin::Input group-->
                             <div class="fv-row mb-10">
-                                <!--begin::Label-->
                                 <label class="fs-5 fw-bolder form-label mb-2">
                                     <span class="required">Role name</span>
                                 </label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input class="form-control form-control-solid" placeholder="Enter a role name"
-                                    name="role_name" [(ngModel)]="edit_role_name" />
-                                <!--end::Input-->
+                                <div class="input-group mb-3">
+                                    <input class="form-control form-control-solid" placeholder="Enter a role name"
+                                        name="role_name" [(ngModel)]="edit_role_name" />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary"
+                                            data-kt-roles-modal-action="submit" (click)="updateRole(edit_role_id)">
+                                            <span class="indicator-label">Update Role Name</span>
+                                            <span class="indicator-progress">Please wait...
+                                                <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Permissions-->
@@ -458,12 +466,7 @@
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
                             <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
-                            <button type="submit" class="btn btn-primary" data-kt-roles-modal-action="submit"
-                                (click)="updateRole(edit_role_id)">
-                                <span class="indicator-label">Submit</span>
-                                <span class="indicator-progress">Please wait...
-                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
+                            <label *ngIf="role_success_message" class="label label-success" disabled>{{ role_success_message }}</label>
                         </div>
                         <!--end::Actions-->
                         <!-- </form> -->

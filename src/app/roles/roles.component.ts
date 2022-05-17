@@ -24,6 +24,8 @@ export class RolesComponent implements OnInit {
 
   add_role_permission: any[] = [];
 
+  role_success_message: any;
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -111,7 +113,7 @@ export class RolesComponent implements OnInit {
           let response = JSON.parse(JSON.stringify(data));
           for (let i = 0; i < this.add_role_permission.length; i++) {
             let body = { role_id: response['role_id'], permission_id: this.add_role_permission[i].id }
-            console.log(body);
+            
             this.api.post("users/add-permission", body, this.token).subscribe(
               async data => {
                 //console.log('ok');
@@ -191,6 +193,7 @@ export class RolesComponent implements OnInit {
       let body = { role_id: this.edit_role_id, permission_id: permision.id }
       this.api.post("users/add-permission", body, this.token).subscribe(
         async data => {
+          this.role_success_message = permision.action + ' premission added';
           this.getRolePermissions();
         },
         async error => {
@@ -202,6 +205,7 @@ export class RolesComponent implements OnInit {
     else {
       this.api.delete("users/delete-role-permission/" + this.edit_role_id + "/" + permision.id, this.token).subscribe(
         async data => {
+          this.role_success_message = permision.action + ' premission removed';
           //console.log('deleted');
         },
         async error => {
