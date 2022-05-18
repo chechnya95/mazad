@@ -27,7 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-payment-options-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search payment options" />
+                            class="form-control form-control-solid w-250px ps-14"
+                            placeholder="Search payment options" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -287,12 +288,14 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">User</label>
+                                                <label class="required fw-bold fs-6 mb-2">Option</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="user_id"
-                                                    class="form-select form-select-lg form-select-solid">
-                                                    <option value="0">-- SELECT --</option>
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="payment_options.option">
+                                                    <option *ngFor="let option of options" [ngValue]='option.value'>{{
+                                                        option.value }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -300,14 +303,144 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <label class="required fw-bold fs-6 mb-2">User</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
-                                                    class="form-select form-select-lg form-select-solid">
-                                                    <option value="0">-- SELECT --</option>
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="payment_options.user_id">
+                                                    <option *ngFor="let user of users" [ngValue]='user.id'>{{
+                                                        user.contact }}</option>
                                                 </select>
                                                 <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Configuration</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="payment_options.config_id">
+                                                    <option *ngFor="let config of configs" [ngValue]='config.id'>{{
+                                                        config.name }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="row mb-10">
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>auction_fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee percentage"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input type="number" class="form-control form-control-solid"
+                                                            name="auction_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>mazad_auction_fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee cap"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input type="number" class="form-control form-control-solid"
+                                                            name="mazad_auction_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>mazad_service_fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="Specify the payment limit"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input type="number" class="form-control form-control-solid"
+                                                            name="mazad_service_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="row mb-10">
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>vat_for_item</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee percentage"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input type="number" class="form-control form-control-solid"
+                                                            name="vat_for_item" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>vat_for_mazad</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee cap"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input type="number" class="form-control form-control-solid"
+                                                            name="vat_for_mazad" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
                                             </div>
                                             <!--end::Input group-->
                                         </div>
@@ -353,10 +486,9 @@
                                         data-kt-check-target="#kt_table_payment-optionss .form-check-input" value="1" />
                                 </div>
                             </th>
+                            <th class="min-w-125px">Option</th>
                             <th class="min-w-125px">User</th>
-                            <th class="min-w-125px">Owner</th>
-                            <th class="min-w-125px">Type</th>
-                            <th class="min-w-125px">Create Date</th>
+                            <th class="min-w-125px">Configuration</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -375,18 +507,15 @@
                             <!--end::Checkbox-->
                             <!--begin::Owner=-->
                             <td>
-                                <a [routerLink]="['/users']"
-                                            [queryParams]="{ id: option?.user_id }">{{ option?.user_id }}</a>
+                                <a [routerLink]="['/users']" [queryParams]="{ id: option?.user_id }">{{ option?.user_id
+                                    }}</a>
                             </td>
                             <!--end::Owner=-->
                             <td>
-                                
+
                             </td>
                             <td>
                                 {{ option.type }}
-                            </td>
-                            <td>
-                                {{ option.create_date | date }}
                             </td>
                             <!--begin::Action=-->
                             <td class="text-end">
@@ -408,7 +537,8 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a (click)="removeBlock(option.id)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <a (click)="removeBlock(option.id)"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

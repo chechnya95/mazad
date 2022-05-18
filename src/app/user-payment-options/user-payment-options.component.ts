@@ -12,9 +12,20 @@ export class UserPaymentOptionsComponent implements OnInit {
 
   token: any;
   paymnet_options: any[] = [];
+  options: any[] = [];
+  users: any[] = [];
+  configs: any[] = [];
 
   payment_options = {
+    option: null,
+    user_id: null,
+    config_id: null,
 
+    auction_fee: null,
+    mazad_auction_fee: null,
+    mazad_service_fee: null,
+    vat_for_item: null,
+    vat_for_mazad: null
   }
 
   errorMessage: boolean = false;
@@ -32,12 +43,85 @@ export class UserPaymentOptionsComponent implements OnInit {
   }
 
   getPaymentOptions() {
+    this.utility.loader = true;
+    const sub = this.api.get('user_payment_options/', this.token).subscribe(
+      async data => {
+        let objects: any = { user_payment_options: [] }
+        objects = data;
+        this.payment_options = objects.user_payment_options;
+      },
+      async error => { console.log(error); }
+    );
 
+    sub.add(() => { this.utility.loader = false; this.getOptions(); });
+  }
+
+  getOptions() {
+    const sub = this.api.get('user_payment_options/options', this.token).subscribe(
+      async data => {
+        let objects: any = { options: [] }
+        objects = data;
+        this.options = objects.options;
+      },
+      async error => { console.log(error); }
+    );
+
+    sub.add(() => { this.getConfigs(); });
+  }
+
+  getConfigs() {
+    const sub = this.api.get('user_payment_options/configs', this.token).subscribe(
+      async data => {
+        let objects: any = { configs: [] }
+        objects = data;
+        this.configs = objects.configs;
+      },
+      async error => { console.log(error); }
+    );
+
+    sub.add(() => {  });
+  }
+
+  async getUsers() {
+    this.api.get('users/', this.token).subscribe(
+      async data => {
+        let objects: any = {
+          users: []
+        }
+        objects = data;
+
+        this.users = objects.users;
+        this.users.forEach(function (user) {
+          user.contact = user.email ? user.email : user.phone;
+        });
+      },
+      async error => {
+        alert(error);
+      }
+    );
   }
 
   OnSubmit() {
     let body = {
-      
+      option: this.payment_options.option,
+      user_id: this.payment_options.user_id,
+      config_id: this.payment_options.config_id,
+      auction_fee: this.payment_options.auction_fee,
+      mazad_auction_fee: this.payment_options.mazad_auction_fee,
+      mazad_service_fee: this.payment_options.mazad_service_fee,
+      vat_for_item: this.payment_options.vat_for_item,
+      vat_for_mazad: this.payment_options.vat_for_mazad
     }
+
+    this.api.post("user_payment_options/", body, this.token).subscribe(
+      async data => {
+        this.getPaymentOptions();
+        this.successMessage = true;
+      },
+      async error => {
+        console.log(error);
+        this.errorMessage = true;
+      }
+    );
   }
 }
