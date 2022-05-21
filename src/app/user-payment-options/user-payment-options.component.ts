@@ -46,9 +46,8 @@ export class UserPaymentOptionsComponent implements OnInit {
     this.utility.loader = true;
     const sub = this.api.get('user_payment_options/', this.token).subscribe(
       async data => {
-        let objects: any = { user_payment_options: [] }
-        objects = data;
-        this.payment_options = objects.user_payment_options;
+        this.payment_options = data['user_payment_options'];
+        console.log(data['user_payment_options']);
       },
       async error => { console.log(error); }
     );
@@ -57,11 +56,12 @@ export class UserPaymentOptionsComponent implements OnInit {
   }
 
   getOptions() {
-    const sub = this.api.get('user_payment_options/options', this.token).subscribe(
+    const sub = this.api.get('user_payment_options/payment_option', this.token).subscribe(
       async data => {
-        let objects: any = { options: [] }
+        let objects: any = { user_payment_options: [] }
         objects = data;
-        this.options = objects.options;
+        
+        this.options = objects;
       },
       async error => { console.log(error); }
     );
@@ -70,16 +70,16 @@ export class UserPaymentOptionsComponent implements OnInit {
   }
 
   getConfigs() {
-    const sub = this.api.get('user_payment_options/configs', this.token).subscribe(
+    const sub = this.api.get('payments/payment_config', this.token).subscribe(
       async data => {
-        let objects: any = { configs: [] }
+        let objects: any = { payment_config: [] }
         objects = data;
-        this.configs = objects.configs;
+        this.configs = objects.payment_config;
       },
       async error => { console.log(error); }
     );
 
-    sub.add(() => {  });
+    sub.add(() => { this.getUsers(); });
   }
 
   async getUsers() {

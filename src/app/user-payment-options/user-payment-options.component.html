@@ -129,7 +129,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Blacklist
+                            <!--end::Svg Icon-->Add User Payment Option
                         </button>
                         <!--end::Add payment-options-->
                     </div>
@@ -294,8 +294,9 @@
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.option">
-                                                    <option *ngFor="let option of options" [ngValue]='option.value'>{{
-                                                        option.value }}</option>
+                                                    <option value="0">-- SELECT --</option>
+                                                    <option *ngFor="let option of options" [ngValue]='option'>{{
+                                                        option }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -306,9 +307,10 @@
                                                 <label class="required fw-bold fs-6 mb-2">User</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="owner_id"
+                                                <select name="user_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.user_id">
+                                                    <option value="0">-- SELECT --</option>
                                                     <option *ngFor="let user of users" [ngValue]='user.id'>{{
                                                         user.contact }}</option>
                                                 </select>
@@ -324,6 +326,7 @@
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.config_id">
+                                                    <option value="0">-- SELECT --</option>
                                                     <option *ngFor="let config of configs" [ngValue]='config.id'>{{
                                                         config.name }}</option>
                                                 </select>
@@ -337,7 +340,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>auction_fee</span>
+                                                        <span>Auction Fee</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee percentage"></i>
@@ -358,7 +361,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>mazad_auction_fee</span>
+                                                        <span>Mazad Auction Fee</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -379,7 +382,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>mazad_service_fee</span>
+                                                        <span>Mazad Service Fee</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="Specify the payment limit"></i>
@@ -404,7 +407,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>vat_for_item</span>
+                                                        <span>Vat For Item</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee percentage"></i>
@@ -425,7 +428,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>vat_for_mazad</span>
+                                                        <span>Vat For Mazad</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -497,7 +500,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let option of paymnet_options">
+                        <tr *ngFor="let option of payment_options">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -505,17 +508,17 @@
                                 </div>
                             </td>
                             <!--end::Checkbox-->
+                            <td>
+                                {{ option.option }}
+                            </td>
                             <!--begin::Owner=-->
                             <td>
-                                <a [routerLink]="['/users']" [queryParams]="{ id: option?.user_id }">{{ option?.user_id
+                                <a [routerLink]="['/users']" [queryParams]="{ id: option?.user_id }">{{ option?.user_id | uppercase
                                     }}</a>
                             </td>
                             <!--end::Owner=-->
                             <td>
-
-                            </td>
-                            <td>
-                                {{ option.type }}
+                                {{ option?.config.name }}
                             </td>
                             <!--begin::Action=-->
                             <td class="text-end">
