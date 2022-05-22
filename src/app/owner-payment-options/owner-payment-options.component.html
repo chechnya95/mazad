@@ -513,7 +513,7 @@
                             </td>
                             <!--begin::Owner=-->
                             <td>
-                                <a [routerLink]="['/owners']" [queryParams]="{ id: option?.owner_id }">{{ option?.owner_id | uppercase
+                                <a [routerLink]="['/owners']" [queryParams]="{ id: option?.owner.id }">{{ option?.owner.title.en | uppercase
                                     }}</a>
                             </td>
                             <!--end::Owner=-->
