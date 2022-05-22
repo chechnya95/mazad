@@ -32,5 +32,5 @@
     "wallets": "Wallets",
     "payment_transactions": "Payment Transactions",
     "invoices": "Invoices",
-    "user_payment_options": "User Payment Options"
+    "owner_payment_options": "Owner Payment Options"
 }

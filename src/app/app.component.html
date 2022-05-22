@@ -517,7 +517,7 @@
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['user-payment-options']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['owner-payment-options']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
@@ -535,7 +535,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'user_payment_options' | translate }}</span>
+                  <span class="menu-title">{{ 'owner_payment_options' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">

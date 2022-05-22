@@ -4,21 +4,21 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 
 @Component({
-  selector: 'app-user-payment-options',
-  templateUrl: './user-payment-options.component.html',
-  styleUrls: ['./user-payment-options.component.css']
+  selector: 'app-owner-payment-options',
+  templateUrl: './owner-payment-options.component.html',
+  styleUrls: ['./owner-payment-options.component.css']
 })
-export class UserPaymentOptionsComponent implements OnInit {
+export class OwnerPaymentOptionsComponent implements OnInit {
 
   token: any;
   paymnet_options: any[] = [];
   options: any[] = [];
-  users: any[] = [];
+  owners: any[] = [];
   configs: any[] = [];
 
   payment_options = {
     option: null,
-    user_id: null,
+    owner_id: null,
     config_id: null,
 
     auction_fee: null,
@@ -34,7 +34,7 @@ export class UserPaymentOptionsComponent implements OnInit {
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
-    this.utility.title = 'User Payment Options';
+    this.utility.title = 'Owner Payment Options';
     this.token = localStorage.getItem('access_token');
   }
 
@@ -44,10 +44,10 @@ export class UserPaymentOptionsComponent implements OnInit {
 
   getPaymentOptions() {
     this.utility.loader = true;
-    const sub = this.api.get('user_payment_options/', this.token).subscribe(
+    const sub = this.api.get('owner_payment_options/', this.token).subscribe(
       async data => {
-        this.payment_options = data['user_payment_options'];
-        console.log(data['user_payment_options']);
+        this.payment_options = data['owner_payment_options'];
+        console.log(data['owner_payment_options']);
       },
       async error => { console.log(error); }
     );
@@ -56,9 +56,9 @@ export class UserPaymentOptionsComponent implements OnInit {
   }
 
   getOptions() {
-    const sub = this.api.get('user_payment_options/payment_option', this.token).subscribe(
+    const sub = this.api.get('owner_payment_options/payment_option', this.token).subscribe(
       async data => {
-        let objects: any = { user_payment_options: [] }
+        let objects: any = { owner_payment_options: [] }
         objects = data;
         
         this.options = objects;
@@ -79,20 +79,20 @@ export class UserPaymentOptionsComponent implements OnInit {
       async error => { console.log(error); }
     );
 
-    sub.add(() => { this.getUsers(); });
+    sub.add(() => { this.getOwners(); });
   }
 
-  async getUsers() {
-    this.api.get('users/', this.token).subscribe(
+  async getOwners() {
+    this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = {
-          users: []
+          owners: []
         }
         objects = data;
 
-        this.users = objects.users;
-        this.users.forEach(function (user) {
-          user.contact = user.email ? user.email : user.phone;
+        this.owners = objects.owners;
+        this.owners.forEach(function (owner) {
+          owner.contact = owner.email ? owner.email : owner.phone;
         });
       },
       async error => {
@@ -104,7 +104,7 @@ export class UserPaymentOptionsComponent implements OnInit {
   OnSubmit() {
     let body = {
       option: this.payment_options.option,
-      user_id: this.payment_options.user_id,
+      owner_id: this.payment_options.owner_id,
       config_id: this.payment_options.config_id,
       auction_fee: this.payment_options.auction_fee,
       mazad_auction_fee: this.payment_options.mazad_auction_fee,
@@ -113,7 +113,7 @@ export class UserPaymentOptionsComponent implements OnInit {
       vat_for_mazad: this.payment_options.vat_for_mazad
     }
 
-    this.api.post("user_payment_options/", body, this.token).subscribe(
+    this.api.post("owner_payment_options/", body, this.token).subscribe(
       async data => {
         this.getPaymentOptions();
         this.successMessage = true;

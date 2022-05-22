@@ -129,7 +129,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add User Payment Option
+                            <!--end::Svg Icon-->Add Owner Payment Option
                         </button>
                         <!--end::Add payment-options-->
                     </div>
@@ -250,7 +250,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_payment-options_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">New User Payment Option</h2>
+                                    <h2 class="fw-bolder">New Owner Payment Option</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -304,15 +304,15 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">User</label>
+                                                <label class="required fw-bold fs-6 mb-2">Owner</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="user_id"
+                                                <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="payment_options.user_id">
+                                                    [(ngModel)]="payment_options.owner_id">
                                                     <option value="0">-- SELECT --</option>
-                                                    <option *ngFor="let user of users" [ngValue]='user.id'>{{
-                                                        user.contact }}</option>
+                                                    <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
+                                                        owner.contact }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -513,7 +513,7 @@
                             </td>
                             <!--begin::Owner=-->
                             <td>
-                                <a [routerLink]="['/users']" [queryParams]="{ id: option?.user_id }">{{ option?.user_id | uppercase
+                                <a [routerLink]="['/owners']" [queryParams]="{ id: option?.owner_id }">{{ option?.owner_id | uppercase
                                     }}</a>
                             </td>
                             <!--end::Owner=-->

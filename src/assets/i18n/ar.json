@@ -32,5 +32,5 @@
     "wallets": "المَحافظ",
     "payment_transactions": "عمليات الدفع",
     "invoices": "الفواتير",
-    "user_payment_options": "خيارات الدفع للمستخدم"
+    "owner_payment_options": "خيارات الدفع للمستخدم"
 }
