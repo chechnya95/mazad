@@ -54,6 +54,7 @@ import { InvoiceDetailsComponent } from './invoices/invoice-details/invoice-deta
 import { PaymentDetailsComponent } from './payment-transactions/payment-details/payment-details.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { BlacklistComponent } from './blacklist/blacklist.component';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
     InvoiceDetailsComponent,
     PaymentDetailsComponent,
     UserDetailsComponent,
-    BlacklistComponent
+    BlacklistComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,
@@ -131,6 +133,7 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
       { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'auction-details', component: AuctionDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'templates', component: TemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'groups', component: GroupsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'items', component: ItemsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'item-details', component: ItemDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'template-details', component: TemplateDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
