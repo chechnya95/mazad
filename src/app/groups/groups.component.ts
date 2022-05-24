@@ -12,6 +12,7 @@ export class GroupsComponent implements OnInit {
 
   token: any;
   groups: any[] = [];
+  users: any[] = [];
   owners: any[] = [];
   types: any[] = [];
 
@@ -26,6 +27,8 @@ export class GroupsComponent implements OnInit {
     terms_en: null,
     terms_ar: null
   }
+
+  user_id: any = null;
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -67,6 +70,27 @@ export class GroupsComponent implements OnInit {
     sub.add(() => { this.utility.loader = false; this.getOwners() });
   }
 
+  async getUsers() {
+    const sub = this.api.get('users/', this.token).subscribe(
+      async data => {
+        let objects: any = {
+          users: []
+        }
+        objects = data;
+
+        this.users = objects.users;
+        this.users.forEach(function (user) {
+          user.contact = user.email ? user.email : user.phone;
+        });
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { });
+  }
+
   async getOwners() {
     const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
@@ -91,9 +115,9 @@ export class GroupsComponent implements OnInit {
   async getGroupTypes() {
     const sub = this.api.get('groups/group_type', this.token).subscribe(
       async data => {
-        let objects: any = { }
+        let objects: any = {}
         objects = data;
-        
+
         this.types = objects;
       },
       async error => {
@@ -101,7 +125,7 @@ export class GroupsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { });
+    sub.add(() => { this.getUsers(); });
   }
 
   OnSubmit() {
@@ -115,6 +139,31 @@ export class GroupsComponent implements OnInit {
     }
 
     this.api.post('groups/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        this.getGroups(null);
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  addUserToGroup(group_id: any) {
+    let body = {
+      user_id: this.user_id,
+      group_id: group_id
+    }
+
+    this.api.post('group_users/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        this.getGroups(null);
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  removeGroup(id) {
+    this.api.delete('groups/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
         this.getGroups(null);
