@@ -79,7 +79,7 @@ export class NewTemplateComponent implements OnInit {
   }
 
   async getAuctions(item_id: any) {
-    this.api.get('auctions/', this.token).subscribe(
+    this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];

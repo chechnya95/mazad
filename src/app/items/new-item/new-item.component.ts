@@ -100,7 +100,7 @@ export class NewItemComponent implements OnInit {
   }
 
   async getAuctions() {
-    this.api.get('auctions/', this.token).subscribe(
+    this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
@@ -156,7 +156,7 @@ export class NewItemComponent implements OnInit {
   }
 
   async getTemplates() {
-    this.api.get('auction_templates/', this.token).subscribe(
+    this.api.get('auction_templates/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
