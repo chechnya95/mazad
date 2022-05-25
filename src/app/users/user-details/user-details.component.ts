@@ -12,6 +12,9 @@ export class UserDetailsComponent implements OnInit {
 
   token: any;
   user: any;
+  bids: any[] = [];
+  deposits: any[] = [];
+  wallets: any[] = [];
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -43,7 +46,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   checkUserBlock(id) {
-    this.api.get('blacklists/user/' + id, this.token).subscribe(
+    const sub = this.api.get('blacklists/user/' + id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         let blocked = objects['blacklists']['blacklists']
@@ -52,6 +55,8 @@ export class UserDetailsComponent implements OnInit {
       },
       async error => { console.log(error); }
     );
+
+    sub.add(() => { this.getUserWiningAuctions(this.user.id); });
   }
 
   blockUser(id: any) {
@@ -73,5 +78,54 @@ export class UserDetailsComponent implements OnInit {
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
+  }
+
+  getUserWiningAuctions(id: any) {
+    const sub = this.api.get('bids/winners', this.token).subscribe(
+      res => {
+        let object = JSON.parse(JSON.stringify(res));
+        this.bids = object.winners;
+
+        this.bids = this.bids.filter(i => i.user_id === id);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    sub.add(() => { this.getUserDeposit(id); });
+  }
+
+  getUserDeposit(id: any) {
+    const sub = this.api.get('deposits/', this.token).subscribe(
+      res => {
+        let object = JSON.parse(JSON.stringify(res));
+        this.deposits = object['deposits'];
+
+        console.log(this.deposits);
+        this.deposits = this.deposits.filter(i => i.user.id === id);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    sub.add(() => { this.getUserWallets(id); });
+  }
+
+  getUserWallets(id: any) {
+    const sub = this.api.get('wallets/', this.token).subscribe(
+      res => {
+        let objects = JSON.parse(JSON.stringify(res));
+        this.wallets = objects['wallets'];
+
+        this.wallets = this.wallets.filter(i => i.user.id === id);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    sub.add(() => { });
   }
 }
