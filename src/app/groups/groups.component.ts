@@ -52,7 +52,7 @@ export class GroupsComponent implements OnInit {
 
   getGroups(id: any) {
     this.utility.loader = true;
-    const sub = this.api.get('blacklists/', this.token).subscribe(
+    const sub = this.api.get('groups/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.groups = objects['groups'];
