@@ -156,7 +156,7 @@ export class GroupsComponent implements OnInit {
     this.api.post('group_users/', body, this.token).subscribe(
       async data => {
         this.successMessage = true;
-        this.getGroups(null);
+        //this.getGroups(null);
       },
       async error => { console.log(error); this.errorMessage = true; }
     );

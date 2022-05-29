@@ -20,6 +20,7 @@ export class ItemDetailsComponent implements OnInit {
   total_bids: any;
   total_bidders: any;
   invoices: any[] = [];
+  types: any[] = [];
 
   owner: any;
   category: any;
@@ -192,8 +193,47 @@ export class ItemDetailsComponent implements OnInit {
     );
   }
 
-  addPayment(id: any) {
+  offline_payment = {
+    description: null,
+    note: null,
+    name: null,
+    payfor: null,
+    payment_type: null
+  }
 
+  addPayment(id: any) {
+    let body = {
+      description: this.offline_payment.description,
+      note: this.offline_payment.note,
+      name: this.offline_payment.name,
+      payfor: this.offline_payment.payfor,
+      payment_type: this.offline_payment.payment_type
+    }
+
+    this.api.post('items/offline_payment/' + id, body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  approvePayment(transaction_id: any) {
+    this.api.post('items/offline_payment/approve/' + transaction_id, {}, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  rejectayment(transaction_id: any) {
+    this.api.post('items/offline_payment/reject/' + transaction_id, {}, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
   }
 }
 

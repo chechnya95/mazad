@@ -167,8 +167,9 @@
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">Owner</div>
-                                <div class="text-gray-600"  *ngIf="this.api.canEnter(['admin'])"><a [routerLink]="['/owners']"
-                                        [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
+                                <div class="text-gray-600" *ngIf="this.api.canEnter(['admin'])"><a
+                                        [routerLink]="['/owners']" [queryParams]="{ id: item?.owner_id }">{{
+                                        owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Category</div>
@@ -374,9 +375,9 @@
                                             <button *ngIf="close_status.includes(item?.item_status)"
                                                 (click)="close(item?.id)" type="button"
                                                 class="btn btn-danger">Close</button>
-                                            <button
-                                                (click)="addPayment(item?.id)" type="button"
-                                                class="btn btn-danger">Add Payment</button>
+                                            <button data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
+                                                type="button" class="btn btn-danger">Add
+                                                Payment</button>
                                         </div>
                                     </div>
                                 </div>
@@ -710,11 +711,12 @@
                                                 <tr *ngFor="let bill of invoices; let i=index;">
                                                     <td>{{ bill.date | date:'short' }}</td>
                                                     <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">{{ bill.number }}</a>
+                                                        <a href="#" class="text-gray-600 text-hover-primary">{{
+                                                            bill.number }}</a>
                                                     </td>
                                                     <!-- <td>Darknight transparency 36 Icons Pack</td> -->
-                                                    <td class="text-success">{{ bill.total_amount | currency:'OMR' }}</td>
+                                                    <td class="text-success">{{ bill.total_amount | currency:'OMR' }}
+                                                    </td>
                                                     <td class="text-end">
                                                         <button
                                                             class="btn btn-sm btn-light btn-active-light-primary">Download</button>
@@ -1109,9 +1111,130 @@
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                    (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
                 </div>
             </div>
+        </div>
+        <div class="modal fade" id="kt_modal_offline_form" tabindex="-1" aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-750px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Modal header-->
+                    <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bolder">Add Offline Payment </h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                            <span class="svg-icon svg-icon-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                        fill="#000000">
+                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                        <rect fill="#000000" opacity="0.5"
+                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                            x="0" y="7" width="16" height="2" rx="1" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                        <!--begin::Scroll-->
+                        <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_form_scroll"
+                            data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                            data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" name="name"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.name" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Note</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <textarea cols="20" rows="3" name="note"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.note"></textarea>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <textarea cols="20" rows="5" name="description"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.description"></textarea>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Payfor</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select name="payfor"
+                                    class="form-select form-select-lg form-select-solid"
+                                    [(ngModel)]="offline_payment.payfor">
+                                    <option value="mazad">Mazad</option>
+                                    <option value="owner">Owner</option>
+                                </select>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Payment Type</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select name="payment_type"
+                                    class="form-select form-select-lg form-select-solid"
+                                    [(ngModel)]="offline_payment.payment_type">
+                                    <option value="0">-- SELECT --</option>
+                                    <option *ngFor="let type of types" [ngValue]='type'>{{
+                                        type }}</option>
+                                </select>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Scroll-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="submit" class="btn btn-primary" (click)="addPayment(item?.id)"
+                                data-bs-dismiss="modal">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal content-->
+            </div>
+            <!--end::Modal dialog-->
         </div>
         <!--end::Modals-->
     </div>
