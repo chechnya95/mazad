@@ -21,6 +21,7 @@ export class ItemDetailsComponent implements OnInit {
   total_bidders: any;
   invoices: any[] = [];
   types: any[] = [];
+  pendings: any[] = [];
 
   owner: any;
   category: any;
@@ -55,6 +56,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getBidds(id: any) {
+    this.utility.loader = true;
     const sub = this.api.get('bids/item/' + id + '/1', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -116,7 +118,6 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getWinner() {
-    this.utility.loader = true;
     const sub = this.api.get('bids/winners/' + this.item.id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -130,11 +131,11 @@ export class ItemDetailsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.utility.loader = false; });
+    sub.add(() => { this.getInvoices(); });
   }
 
   getInvoices() {
-    this.api.get('invoices/model/item/' + this.item.id, this.token).subscribe(
+    const sub = this.api.get('invoices/model/item/' + this.item.id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.invoices = objects['invoices']['invoices'];
@@ -143,6 +144,36 @@ export class ItemDetailsComponent implements OnInit {
         alert(error);
       }
     );
+
+    sub.add(() => { this.getPaymentTypes(); });
+  }
+
+  getPaymentTypes() {
+    const sub = this.api.get('items/payment_type', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.types = objects;
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { this.getPendingPayments(); });
+  }
+
+  getPendingPayments() {
+    const sub = this.api.get('items/offline_payment/' + this.item.id, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.pendings = objects['payments'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
+
+    sub.add(() => { this.utility.loader = false; });
   }
 
   saveItem(item: any) {
@@ -210,8 +241,10 @@ export class ItemDetailsComponent implements OnInit {
       payment_type: this.offline_payment.payment_type
     }
 
+    console.log(body);
     this.api.post('items/offline_payment/' + id, body, this.token).subscribe(
       async data => {
+        this.getPendingPayments();
         this.successMessage = true;
       },
       async error => { console.log(error); this.errorMessage = true; }

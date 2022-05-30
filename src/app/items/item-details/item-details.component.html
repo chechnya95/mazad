@@ -287,6 +287,12 @@
                             href="#kt_customer_view_overview_statements">Billing</a>
                     </li>
                     <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_pendings">Pending Payments</a>
+                    </li>
+                    <!--end:::Tab item-->
                 </ul>
                 <!--end:::Tabs-->
                 <!--begin:::Tab content-->
@@ -673,9 +679,9 @@
                     <!--begin:::Tab pane-->
                     <div class="tab-pane fade" id="kt_customer_view_overview_statements" role="tabpanel">
                         <!--begin::Statements-->
-                        <div class="card mb-6 mb-xl-9">
+                        <div class="card pt-4 mb-6 mb-xl-9">
                             <!--begin::Header-->
-                            <div class="card-header">
+                            <div class="card-header border-0">
                                 <!--begin::Title-->
                                 <div class="card-title">
                                     <h2>Statement</h2>
@@ -684,197 +690,115 @@
                             </div>
                             <!--end::Header-->
                             <!--begin::Card body-->
-                            <div class="card-body pb-5">
-                                <!--begin::Tab Content-->
-                                <div id="kt_customer_view_statement_tab_content" class="tab-content">
-                                    <!--begin::Tab panel-->
-                                    <div id="kt_customer_view_statement_1" class="py-0 tab-pane fade show active"
-                                        role="tabpanel">
-                                        <!--begin::Table-->
-                                        <table id="kt_customer_view_statement_table_1"
-                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
-                                            <!--begin::Table head-->
-                                            <thead class="border-bottom border-gray-200">
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
-                                                    <!-- <th class="w-300px">Details</th> -->
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                                <tr *ngFor="let bill of invoices; let i=index;">
-                                                    <td>{{ bill.date | date:'short' }}</td>
-                                                    <td>
-                                                        <a href="#" class="text-gray-600 text-hover-primary">{{
-                                                            bill.number }}</a>
-                                                    </td>
-                                                    <!-- <td>Darknight transparency 36 Icons Pack</td> -->
-                                                    <td class="text-success">{{ bill.total_amount | currency:'OMR' }}
-                                                    </td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Tab panel-->
-                                    <!--begin::Tab panel-->
-                                    <div id="kt_customer_view_statement_2" class="py-0 tab-pane fade" role="tabpanel">
-                                        <!--begin::Table-->
-                                        <table id="kt_customer_view_statement_table_2"
-                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
-                                            <!--begin::Table head-->
-                                            <thead class="border-bottom border-gray-200">
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
-                                                    <th class="w-300px">Details</th>
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                                <tr>
-                                                    <td>May 30, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">523445943</a>
-                                                    </td>
-                                                    <td>Seller Fee</td>
-                                                    <td class="text-danger">$-1.30</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Apr 22, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">231445943</a>
-                                                    </td>
-                                                    <td>Parcel Shipping / Delivery Service App</td>
-                                                    <td class="text-success">$204.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Feb 09, 2020</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">426445943</a>
-                                                    </td>
-                                                    <td>Visual Design Illustration</td>
-                                                    <td class="text-success">$31.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Tab panel-->
-                                    <!--begin::Tab panel-->
-                                    <div id="kt_customer_view_statement_3" class="py-0 tab-pane fade" role="tabpanel">
-                                        <!--begin::Table-->
-                                        <table id="kt_customer_view_statement_table_3"
-                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
-                                            <!--begin::Table head-->
-                                            <thead class="border-bottom border-gray-200">
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
-                                                    <th class="w-300px">Details</th>
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-
-                                                <tr>
-                                                    <td>Apr 22, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">231445943</a>
-                                                    </td>
-                                                    <td>Parcel Shipping / Delivery Service App</td>
-                                                    <td class="text-success">$204.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Tab panel-->
-                                    <!--begin::Tab panel-->
-                                    <div id="kt_customer_view_statement_4" class="py-0 tab-pane fade" role="tabpanel">
-                                        <!--begin::Table-->
-                                        <table id="kt_customer_view_statement_table_4"
-                                            class="table align-middle table-row-dashed fs-6 text-gray-600 fw-bold gy-4">
-                                            <!--begin::Table head-->
-                                            <thead class="border-bottom border-gray-200">
-                                                <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
-                                                    <th class="w-300px">Details</th>
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
-                                                </tr>
-                                                <!--end::Table row-->
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-
-                                                <tr>
-                                                    <td>Apr 22, 2019</td>
-                                                    <td>
-                                                        <a href="#"
-                                                            class="text-gray-600 text-hover-primary">231445943</a>
-                                                    </td>
-                                                    <td>Parcel Shipping / Delivery Service App</td>
-                                                    <td class="text-success">$204.00</td>
-                                                    <td class="text-end">
-                                                        <button
-                                                            class="btn btn-sm btn-light btn-active-light-primary">Download</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Tab panel-->
+                            <div class="card-body py-0">
+                                <!--begin::Table wrapper-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed gy-5"
+                                        id="kt_table_customers_payment">
+                                        <!--begin::Table head-->
+                                        <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                                <th>No.</th>
+                                                <th>Amount</th>
+                                                <th class="min-w-125px">Date</th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fs-6 fw-bold text-gray-600">
+                                            <!--begin::Table row-->
+                                            <tr *ngFor="let invoice of invoices; let i = index;">
+                                                <!--begin::Invoice=-->
+                                                <td><a [routerLink]="['/invoices']"
+                                                        [queryParams]="{ id: invoice.id }">{{
+                                                        invoice.number | uppercase }}</a></td>
+                                                <!--end::Invoice=-->
+                                                <!--begin::Amount=-->
+                                                <td>{{ invoice.total_amount | currency:'OMR'}}</td>
+                                                <!--end::Amount=-->
+                                                <!--begin::Date=-->
+                                                <td>{{invoice.date | date:'medium'}}</td>
+                                                <!--end::Date=-->
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
                                 </div>
-                                <!--end::Tab Content-->
+                                <!--end::Table wrapper-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Statements-->
+                    </div>
+                    <!--end:::Tab pane-->
+
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade" id="kt_customer_view_overview_pendings" role="tabpanel">
+                        <!--begin::Statements-->
+                        <div class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Header-->
+                            <div class="card-header border-0">
+                                <!--begin::Title-->
+                                <div class="card-title">
+                                    <h2>Pending Payments</h2>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Card body-->
+                            <div class="card-body py-0">
+                                <!--begin::Table wrapper-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed gy-5"
+                                        id="kt_table_customers_payment">
+                                        <!--begin::Table head-->
+                                        <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                                <th>No.</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
+                                                <th class="min-w-50px"></th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fs-6 fw-bold text-gray-600">
+                                            <!--begin::Table row-->
+                                            <tr *ngFor="let pending of pendings; let i = index;">
+                                                <!--begin::Invoice=-->
+                                                <td><a [routerLink]="['/payment-transactions']"
+                                                        [queryParams]="{ id: pending.id }">{{
+                                                        pending.id | uppercase }}</a></td>
+                                                <!--end::Invoice=-->
+                                                <!--begin::Amount=-->
+                                                <td>{{ pending.amount | currency:'OMR'}}</td>
+                                                <!--end::Amount=-->
+                                                <!--begin::Date=-->
+                                                <td>{{pending.create_date | date:'medium'}}</td>
+                                                <!--end::Date=-->
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm" (click)="rejectayment(pending.id)">Reject</button>
+                                                    <button type="button" class="btn btn-warning btn-sm" (click)="approvePayment(pending.id)">Approve</button>
+                                                </td>
+                                            </tr>
+                                            <tr *ngIf="pendings.length==0">
+                                                <td colspan="4">No Pending Payments.</td>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Table wrapper-->
                             </div>
                             <!--end::Card body-->
                         </div>
@@ -1158,30 +1082,8 @@
                                 <label class="fw-bold fs-6 mb-2">Name</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="name"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.name" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Note</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <textarea cols="20" rows="3" name="note"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.note"></textarea>
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Description</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <textarea cols="20" rows="5" name="description"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="offline_payment.description"></textarea>
+                                <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
+                                    [(ngModel)]="offline_payment.name" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -1191,9 +1093,9 @@
                                 <label class="required fw-bold fs-6 mb-2">Payfor</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="payfor"
-                                    class="form-select form-select-lg form-select-solid"
+                                <select name="payfor" class="form-select form-select-lg form-select-solid"
                                     [(ngModel)]="offline_payment.payfor">
+                                    <option value="">-- SELECT --</option>
                                     <option value="mazad">Mazad</option>
                                     <option value="owner">Owner</option>
                                 </select>
@@ -1206,13 +1108,36 @@
                                 <label class="required fw-bold fs-6 mb-2">Payment Type</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="payment_type"
-                                    class="form-select form-select-lg form-select-solid"
+                                <select name="payment_type" class="form-select form-select-lg form-select-solid"
                                     [(ngModel)]="offline_payment.payment_type">
                                     <option value="0">-- SELECT --</option>
                                     <option *ngFor="let type of types" [ngValue]='type'>{{
                                         type }}</option>
                                 </select>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Note</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <textarea cols="20" rows="3" name="note"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    [(ngModel)]="offline_payment.note"></textarea>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <textarea cols="20" rows="5" name="description"
+                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                    [(ngModel)]="offline_payment.description"></textarea>
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->

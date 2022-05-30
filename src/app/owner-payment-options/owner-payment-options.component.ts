@@ -47,7 +47,6 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     const sub = this.api.get('owner_payment_options/', this.token).subscribe(
       async data => {
         this.payment_options = data['owner_payment_options'];
-        console.log(data['owner_payment_options']);
       },
       async error => { console.log(error); }
     );
