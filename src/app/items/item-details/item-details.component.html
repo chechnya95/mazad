@@ -1095,9 +1095,8 @@
                                 <!--begin::Input-->
                                 <select name="payfor" class="form-select form-select-lg form-select-solid"
                                     [(ngModel)]="offline_payment.payfor">
-                                    <option value="">-- SELECT --</option>
-                                    <option value="mazad">Mazad</option>
-                                    <option value="owner">Owner</option>
+                                    <option *ngFor="let payfor of payfors" [ngValue]='payfor'>{{
+                                        payfor }}</option>
                                 </select>
                                 <!--end::Input-->
                             </div>
@@ -1108,11 +1107,11 @@
                                 <label class="required fw-bold fs-6 mb-2">Payment Type</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="payment_type" class="form-select form-select-lg form-select-solid"
-                                    [(ngModel)]="offline_payment.payment_type">
+                                <select name="payment_transaction_type" class="form-select form-select-lg form-select-solid"
+                                    [(ngModel)]="offline_payment.payment_transaction_type">
                                     <option value="0">-- SELECT --</option>
-                                    <option *ngFor="let type of types" [ngValue]='type'>{{
-                                        type }}</option>
+                                    <option *ngFor="let payment_transaction_type of payment_transaction_types" [ngValue]='payment_transaction_type'>{{
+                                        payment_transaction_type }}</option>
                                 </select>
                                 <!--end::Input-->
                             </div>

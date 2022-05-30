@@ -20,7 +20,8 @@ export class ItemDetailsComponent implements OnInit {
   total_bids: any;
   total_bidders: any;
   invoices: any[] = [];
-  types: any[] = [];
+  payfor: any[] = [];
+  payment_transaction_types: any[] = [];
   pendings: any[] = [];
 
   owner: any;
@@ -152,7 +153,7 @@ export class ItemDetailsComponent implements OnInit {
     const sub = this.api.get('items/payment_type', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.types = objects;
+        this.payfors = objects;
       },
       async error => {
         alert(error);
@@ -172,7 +173,20 @@ export class ItemDetailsComponent implements OnInit {
         alert(error);
       }
     );
+    sub.add(() => { this.getTransactionPaymentTypes(); });
+    
+  }
 
+  getTransactionPaymentTypes() {
+    const sub = this.api.get('payments/payment_type', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.payment_transaction_types = objects;
+      },
+      async error => {
+        alert(error);
+      }
+    );
     sub.add(() => { this.utility.loader = false; });
   }
 
@@ -229,7 +243,7 @@ export class ItemDetailsComponent implements OnInit {
     note: null,
     name: null,
     payfor: null,
-    payment_type: null
+    payment_transaction_type: null
   }
 
   addPayment(id: any) {
@@ -238,7 +252,7 @@ export class ItemDetailsComponent implements OnInit {
       note: this.offline_payment.note,
       name: this.offline_payment.name,
       payfor: this.offline_payment.payfor,
-      payment_type: this.offline_payment.payment_type
+      payment_transaction_type: this.offline_payment.payment_transaction_type
     }
 
     console.log(body);
