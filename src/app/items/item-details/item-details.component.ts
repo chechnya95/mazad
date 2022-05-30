@@ -20,7 +20,7 @@ export class ItemDetailsComponent implements OnInit {
   total_bids: any;
   total_bidders: any;
   invoices: any[] = [];
-  payfor: any[] = [];
+  payfors: any[] = [];
   payment_transaction_types: any[] = [];
   pendings: any[] = [];
 
