@@ -181,7 +181,7 @@ export class ItemDetailsComponent implements OnInit {
     const sub = this.api.get('payments/payment_type', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.payment_transaction_types = objects;
+        this.payment_transaction_types = objects['payment_type'];
       },
       async error => {
         alert(error);
