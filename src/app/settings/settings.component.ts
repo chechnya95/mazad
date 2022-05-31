@@ -21,7 +21,8 @@ export class SettingsComponent implements OnInit {
     fee: null,
     fee_cap: null,
     limit: null,
-    is_default: true,
+    is_default: false,
+    online_status: null,
     url: null,
     access_key: null,
     secret_key: null,
@@ -69,7 +70,7 @@ export class SettingsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.getGateways(); })
+    sub.add(() => { this.getPaymentConfigs(); })
   }
 
   getGateways() {
@@ -77,12 +78,66 @@ export class SettingsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.gateways = objects['gateways'];
-
-        console.log(this.gateways)
       },
       async error => {
         alert(error);
       }
+    );
+  }
+
+  getPaymentConfigs() {
+    const sub = this.api.get('payments/payment_config', this.token).subscribe(
+      async data => {
+        let objects: any = { payment_config: [] }
+        objects = data;
+        this.paymet_types = objects.payment_config;
+
+        for (let i = 0; i < this.paymet_types.length; i++) {
+          this.paymet_types[i].key = this.paymet_types[i].access_key.substr(this.paymet_types[i].access_key.length - 7);
+        }
+      },
+      async error => { console.log(error); }
+    );
+
+    sub.add(() => { this.getGateways(); });
+  }
+
+
+  deletePayment(id: any) {
+    if (confirm("Delete this payment cofiguration?")) {
+      this.api.delete("payments/payment_config" + id, this.token).subscribe(
+        async data => {
+          this.getPaymentConfigs();
+        },
+        async error => {
+          alert("ERROR: cannot connect!");
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  addPaymentConfig() {
+    let body = {
+      name: this.payment_config.name,
+      payment_gateway: this.payment_config.payment_gateway,
+      fee: this.payment_config.fee,
+      fee_cap: this.payment_config.fee_cap,
+      limit: this.payment_config.limit,
+      is_default: this.payment_config.is_default,
+      url: this.payment_config.url,
+      access_key: this.payment_config.access_key,
+      secret_key: this.payment_config.secret_key,
+      merchant_key1: this.payment_config.merchant_key1,
+      merchant_key2: this.payment_config.merchant_key2,
+      merchant_key3: this.payment_config.merchant_key3,
+      merchant_key4: this.payment_config.merchant_key4,
+      merchant_key5: this.payment_config.merchant_key5,
+    }
+
+    this.api.post("payments/payment_config", body, this.token).subscribe(
+      async data => { this.getPaymentConfigs(); },
+      async error => { console.log(error); }
     );
   }
 
