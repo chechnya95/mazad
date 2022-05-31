@@ -268,6 +268,7 @@ export class ItemDetailsComponent implements OnInit {
   approvePayment(transaction_id: any) {
     this.api.post('items/offline_payment/approve/' + transaction_id, {}, this.token).subscribe(
       async data => {
+        this.getPendingPayments();
         this.successMessage = true;
       },
       async error => { console.log(error); this.errorMessage = true; }
@@ -277,6 +278,7 @@ export class ItemDetailsComponent implements OnInit {
   rejectayment(transaction_id: any) {
     this.api.post('items/offline_payment/reject/' + transaction_id, {}, this.token).subscribe(
       async data => {
+        this.getPendingPayments();
         this.successMessage = true;
       },
       async error => { console.log(error); this.errorMessage = true; }
