@@ -42,6 +42,7 @@ export class ClassificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getClassifications();
   }
 
   getClassifications() {
