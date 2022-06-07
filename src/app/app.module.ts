@@ -55,6 +55,7 @@ import { PaymentDetailsComponent } from './payment-transactions/payment-details/
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { BlacklistComponent } from './blacklist/blacklist.component';
 import { GroupsComponent } from './groups/groups.component';
+import { ClassificationComponent } from './settings/classification/classification.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { GroupsComponent } from './groups/groups.component';
     PaymentDetailsComponent,
     UserDetailsComponent,
     BlacklistComponent,
-    GroupsComponent
+    GroupsComponent,
+    ClassificationComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +156,7 @@ import { GroupsComponent } from './groups/groups.component';
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'classifications', component: ClassificationComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
