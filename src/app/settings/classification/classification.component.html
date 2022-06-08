@@ -164,8 +164,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
-                                                                <label
-                                                                    class="fw-bold fs-6 mb-2">Content</label>
+                                                                <label class="fw-bold fs-6 mb-2">Content</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <textarea name="content_en" cols="20" rows="5"
@@ -311,24 +310,26 @@
                                                                 <!--begin::Input-->
                                                                 <input class="form-check-input" type="checkbox"
                                                                     name="enable" value="{{edit_classification.enable}}"
-                                                                    [(ngModel)]="edit_classification.enable" id="enable" />
+                                                                    [(ngModel)]="edit_classification.enable"
+                                                                    id="enable" />
                                                                 <!--end::Input-->
                                                             </div>
                                                             <!--end::Input group-->
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
-                                                                <label
-                                                                    class="fw-bold fs-6 mb-2">Content</label>
+                                                                <label class="fw-bold fs-6 mb-2">Content</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <textarea name="content_en" cols="20" rows="5"
                                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    [(ngModel)]="edit_classification.content_en" placeholder="Content english"></textarea>
+                                                                    [(ngModel)]="edit_classification.content_en"
+                                                                    placeholder="Content english"></textarea>
                                                                 <br>
                                                                 <textarea name="content_ar" cols="20" rows="5"
                                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                                    [(ngModel)]="edit_classification.content_ar" placeholder="Content arabic"></textarea>
+                                                                    [(ngModel)]="edit_classification.content_ar"
+                                                                    placeholder="Content arabic"></textarea>
                                                                 <!--end::Input-->
                                                             </div>
                                                             <!--end::Input group-->
@@ -382,12 +383,13 @@
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th class="min-w-25px">id</th>
-                                            <th class="min-w-125px">Classification Type</th>
-                                            <th class="min-w-125px">Enabled?</th>
-                                            <th class="min-w-125px">Notes</th>
-                                            <th class="min-w-125px" colspan="2">Title</th>
-                                            <th class="min-w-125px" colspan="2">Value</th>
+                                            <th></th>
+                                            <th class="min-w-100px" colspan="2">Name</th>
+                                            <th>Parent</th>
+                                            <th>enabled</th>
+                                            <th class="min-w-100px" colspan="2">Content</th>
+                                            <th>Timestamp</th>
+                                            <th>Order</th>
                                             <th class="text-end min-w-100px">Actions</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -401,21 +403,22 @@
                                             <td> {{ (i+1) }} </td>
                                             <!--end::template=-->
                                             <!--begin::code=-->
-                                            <td>{{ classification?.classification_type}}</td>
+                                            <td>{{ classification?.name.ar}}</td>
+                                            <td>{{ classification?.name.en}}</td>
+                                            <!--end::code=-->
+                                            <!--begin::code=-->
+                                            <td>{{ classification?.parent_id | uppercase}}</td>
                                             <!--end::code=-->
                                             <!--begin::code=-->
                                             <td>{{ classification?.enable}}</td>
                                             <!--end::code=-->
                                             <!--begin::code=-->
-                                            <td>{{ classification?.note}}</td>
+                                            <td>{{ classification?.content.ar}}</td>
+                                            <td>{{ classification?.content.en}}</td>
                                             <!--end::code=-->
                                             <!--begin::code=-->
-                                            <td>{{ classification?.title.ar}}</td>
-                                            <td>{{ classification?.title.en}}</td>
-                                            <!--end::code=-->
-                                            <!--begin::code=-->
-                                            <td>{{ classification?.value.ar}}</td>
-                                            <td>{{ classification?.value.en}}</td>
+                                            <td>{{ classification?.timestamp}}</td>
+                                            <td>{{ classification?.order}}</td>
                                             <!--end::code=-->
                                             <!--begin::Action=-->
                                             <td class="text-end">
@@ -477,6 +480,58 @@
             <!--end::Content-->
         </div>
         <!--end::Basic info-->
+        <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                            class="swal2-x-mark">
+                            <span class="swal2-x-mark-line-left"></span>
+                            <span class="swal2-x-mark-line-right"></span>
+                        </span>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
+                        are some errors detected, please try again.</div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div>
+                    <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
+                        (click)="errorMessage=false">Ok, got it!</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                        <div class="swal2-success-ring"></div>
+                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
+                        successfully submitted!</div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
+                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!--end::Container-->
 </div>

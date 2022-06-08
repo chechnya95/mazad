@@ -35,6 +35,10 @@ export class ClassificationComponent implements OnInit {
     order: 0
   }
 
+
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -57,8 +61,43 @@ export class ClassificationComponent implements OnInit {
     );
   }
 
-  on_delete(id: any) { }
-  OnUpdate(id: any) { }
+  editItemClicked(item: any) {
+    this.edit_classification = item;
+    this.edit_classification_id = item.id;
+
+    this.edit_classification.enable = item.enable;
+    this.edit_classification.name_ar = item.name.ar;
+    this.edit_classification.name_en = item.name.en;
+    this.edit_classification.content_ar = item.content.ar;
+    this.edit_classification.content_en = item.content.ar;
+  }
+
+  on_delete(id: any) {
+    if (confirm("Delete this field?")) {
+      const sub = this.api.delete("fields/" + id, this.token).subscribe(
+        async data => { this.successMessage = true; },
+        async error => { console.log(error); this.errorMessage = true; }
+      );
+      sub.add(() => { this.getClassifications(); });
+    }
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      parent_id: this.edit_classification.parent_id,
+      enable: this.edit_classification.enable,
+      name: { 'en': this.edit_classification.name_en, 'ar': this.edit_classification.name_ar },
+      content: { 'en': this.edit_classification.content_en, 'ar': this.edit_classification.content_ar },
+      order: this.edit_classification.order
+    }
+
+    const sub = this.api.update('classifications/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+
+    sub.add(() => { this.getClassifications(); });
+  }
 
   create_classification() {
     let body = {
@@ -69,14 +108,11 @@ export class ClassificationComponent implements OnInit {
       order: this.classification.order
     }
 
-    this.api.post("classifications/", body, this.token).subscribe(
-      async data => {
-        this.getClassifications();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
+    const sub = this.api.post("classifications/", body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async error => { this.errorMessage = true; console.log(error); }
     );
+
+    sub.add(() => { this.getClassifications(); });
   }
 }
