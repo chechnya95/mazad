@@ -56,6 +56,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { BlacklistComponent } from './blacklist/blacklist.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ClassificationComponent } from './settings/classification/classification.component';
+import { ChildernComponent } from './settings/classification/childern/childern.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { ClassificationComponent } from './settings/classification/classificatio
     UserDetailsComponent,
     BlacklistComponent,
     GroupsComponent,
-    ClassificationComponent
+    ClassificationComponent,
+    ChildernComponent
   ],
   imports: [
     BrowserModule,
@@ -157,6 +159,7 @@ import { ClassificationComponent } from './settings/classification/classificatio
       { path: 'sms-notification', component: SmsNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'auction-settings', component: AuctionSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'classifications', component: ClassificationComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'children', component: ChildernComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
