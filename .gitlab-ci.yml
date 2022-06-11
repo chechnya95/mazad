@@ -17,7 +17,7 @@ build:
     - master
   script:
   - apt update
-  - npm install -g @angular/cli
+  - npm install --location=global @angular/cli
   - npm install
   - ng build --prod
   - echo "BUILD SUCCESSFUL"
