@@ -65,7 +65,7 @@
                                         <tr *ngFor="let deposit of deposits | depositPipe: depositFilter; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: deposit.user.id }">{{ deposit.user.phone }}</a></td>
-                                            <td>{{ deposit.transaction_id | uppercase}}</td>
+                                            <td><a [routerLink]="['/payment-details']" [queryParams]="{ id: deposit.transaction_id }">{{ deposit.transaction_id | uppercase}}</a></td>
                                             <td>{{ deposit.amount | currency:'OMR'}}</td>
                                             <td>{{ deposit.fee | currency:'OMR'}}</td>
                                             <td>{{ deposit.refund}}</td>

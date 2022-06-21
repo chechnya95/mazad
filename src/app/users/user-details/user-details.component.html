@@ -214,7 +214,7 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Id</th>
+                                                <th>Status</th>
                                                 <th>Title</th>
                                                 <th class="min-w-125px">Amount</th>
                                             </tr>
@@ -226,7 +226,7 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let bid of bids; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/items']" [queryParams]="{ id: bid.item_id }">{{ bid.item_id | uppercase }}</a></td>
+                                                <td><a [routerLink]="['/item-details']" [queryParams]="{ id: bid.item_id }">{{ bid.item.item_status | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Invoice=-->
                                                 <td>{{ bid.item.title.en }}</td>
@@ -274,7 +274,8 @@
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
                                                 <th>Transaction</th>
                                                 <th>Deposit Date</th>
-                                                <th class="min-w-125px">Amount</th>
+                                                <th>Amount</th>
+                                                <th>Refund</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -284,13 +285,14 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let deposit of deposits; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/deposits']" [queryParams]="{ id: deposit.id }">{{ deposit.transaction_id | uppercase }}</a></td>
+                                                <td><a [routerLink]="['/payment-details']" [queryParams]="{ id: deposit.transaction_id }">{{ deposit.transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Invoice=-->
                                                 <td>{{ deposit.create_date | date }}</td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->
                                                 <td>{{ deposit.amount | currency:' OMR '}}</td>
+                                                <td>{{ deposit.refund }}</td>
                                                 <!--end::Amount=-->
                                             </tr>
                                             <!--end::Table row-->
@@ -331,7 +333,7 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Id</th>
+                                                <th>Status</th>
                                                 <th>Auction</th>
                                                 <th>Date</th>
                                                 <th class="min-w-125px">Amount</th>
@@ -344,7 +346,7 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let wallet of wallets; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/wallets']" [queryParams]="{ id: wallet.id }">{{ wallet.id | uppercase }}</a></td>
+                                                <td><a [routerLink]="['/wallets']" [queryParams]="{ id: wallet.id }">{{ wallet.status | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Invoice=-->
                                                 <td>{{ wallet.auction.title.en }}</td>

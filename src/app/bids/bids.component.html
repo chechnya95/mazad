@@ -49,6 +49,7 @@
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
                                             <th>Item</th>
+                                            <th>Status</th>
                                             <th>User</th>
                                             <th>Date</th>
                                             <th>Amount</th>
@@ -63,6 +64,7 @@
                                         <tr *ngFor="let bid of bids | bidsPipe: bidFilter; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/item-details']" [queryParams]="{ id: bid.item.id }">{{ bid.item.title.en }}</a></td>
+                                            <td><div class="badge badge-info">{{ bid.item.item_status }}</div></td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user.id }">{{ bid.user.phone }}</a></td>
                                             <td>{{ bid.create_date | date:"short"}}</td>
                                             <td>{{ bid.amount }} OMR</td>
