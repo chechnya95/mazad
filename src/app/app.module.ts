@@ -57,6 +57,7 @@ import { BlacklistComponent } from './blacklist/blacklist.component';
 import { GroupsComponent } from './groups/groups.component';
 import { ClassificationComponent } from './settings/classification/classification.component';
 import { ChildernComponent } from './settings/classification/childern/childern.component';
+import { Nl2brPipe } from './pipes/nl2br.pipe';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { ChildernComponent } from './settings/classification/childern/childern.c
     BlacklistComponent,
     GroupsComponent,
     ClassificationComponent,
-    ChildernComponent
+    ChildernComponent,
+    Nl2brPipe
   ],
   imports: [
     BrowserModule,

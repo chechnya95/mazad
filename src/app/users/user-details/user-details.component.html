@@ -276,6 +276,7 @@
                                                 <th>Deposit Date</th>
                                                 <th>Amount</th>
                                                 <th>Refund</th>
+                                                <th>Note</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -284,16 +285,17 @@
                                         <tbody class="fs-6 fw-bold text-gray-600">
                                             <!--begin::Table row-->
                                             <tr *ngFor="let deposit of deposits; let i = index;">
-                                                <!--begin::Invoice=-->
+                                                <!--begin::transaction_id=-->
                                                 <td><a [routerLink]="['/payment-details']" [queryParams]="{ id: deposit.transaction_id }">{{ deposit.transaction_id | uppercase }}</a></td>
-                                                <!--end::Invoice=-->
-                                                <!--begin::Invoice=-->
+                                                <!--end::transaction_id=-->
+                                                <!--begin::create_date=-->
                                                 <td>{{ deposit.create_date | date }}</td>
-                                                <!--end::Invoice=-->
-                                                <!--begin::Amount=-->
+                                                <!--end::create_date=-->
+                                                <!--begin::amount=-->
                                                 <td>{{ deposit.amount | currency:' OMR '}}</td>
+                                                <!--end::amount=-->
                                                 <td>{{ deposit.refund }}</td>
-                                                <!--end::Amount=-->
+                                                <td [innerHTML]="deposit.note | nl2br"></td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
@@ -337,6 +339,7 @@
                                                 <th>Auction</th>
                                                 <th>Date</th>
                                                 <th class="min-w-125px">Amount</th>
+                                                <th>Note</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -345,18 +348,21 @@
                                         <tbody class="fs-6 fw-bold text-gray-600">
                                             <!--begin::Table row-->
                                             <tr *ngFor="let wallet of wallets; let i = index;">
-                                                <!--begin::Invoice=-->
+                                                <!--begin::status=-->
                                                 <td><a [routerLink]="['/wallets']" [queryParams]="{ id: wallet.id }">{{ wallet.status | uppercase }}</a></td>
-                                                <!--end::Invoice=-->
-                                                <!--begin::Invoice=-->
+                                                <!--end::status=-->
+                                                <!--begin::title=-->
                                                 <td>{{ wallet.auction.title.en }}</td>
-                                                <!--end::Invoice=-->
-                                                <!--begin::Invoice=-->
+                                                <!--end::title=-->
+                                                <!--begin::create_date=-->
                                                 <td>{{ wallet.create_date | date }}</td>
-                                                <!--end::Invoice=-->
+                                                <!--end::create_date=-->
                                                 <!--begin::Amount=-->
                                                 <td>{{ wallet.amount | currency:' OMR '}}</td>
                                                 <!--end::Amount=-->
+                                                <!--begin::Note=-->
+                                                <td [innerHTML]="wallet.note | nl2br"></td>
+                                                <!--end::Note=-->
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>

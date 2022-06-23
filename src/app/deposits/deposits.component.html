@@ -53,6 +53,7 @@
                                             <th>Amount</th>
                                             <th>Fee</th>
                                             <th>Refund</th>
+                                            <th>Note</th>
                                             <th>Create Date</th>
                                             <!-- <th class="text-end">Actions</th> -->
                                         </tr>
@@ -69,6 +70,7 @@
                                             <td>{{ deposit.amount | currency:'OMR'}}</td>
                                             <td>{{ deposit.fee | currency:'OMR'}}</td>
                                             <td>{{ deposit.refund}}</td>
+                                            <td [innerHTML]="deposit.note | nl2br"></td>
                                             <td>{{ deposit.create_date | date:"short"}}</td>
                                             
                                             <!--begin::Action=--> 
