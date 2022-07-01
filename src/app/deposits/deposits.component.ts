@@ -14,6 +14,9 @@ export class DepositsComponent implements OnInit {
 
   depositFilter = '';
 
+  note: any;
+  deposit_id: any;
+
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
     this.utility.show = true;
@@ -41,4 +44,15 @@ export class DepositsComponent implements OnInit {
     sub.add(() => { this.utility.loader = false; });
   }
 
+  itemId(id: any, note: any) {
+    this.deposit_id = id;
+    this.note = note;
+  }
+
+  adddNote(id: any) {
+    const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
+      async data => { this.getDeposits(); },
+      async errr => { console.log(errr); }
+    );
+  }
 }
