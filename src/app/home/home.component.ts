@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       window.location.reload();
     }
 
-    this.getRoles();
+    //this.getRoles();
   }
 
   async getRoles() {

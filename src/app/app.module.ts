@@ -58,6 +58,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { ClassificationComponent } from './settings/classification/classification.component';
 import { ChildernComponent } from './settings/classification/childern/childern.component';
 import { Nl2brPipe } from './pipes/nl2br.pipe';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { Nl2brPipe } from './pipes/nl2br.pipe';
     GroupsComponent,
     ClassificationComponent,
     ChildernComponent,
-    Nl2brPipe
+    Nl2brPipe,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -164,6 +166,7 @@ import { Nl2brPipe } from './pipes/nl2br.pipe';
       { path: 'children', component: ChildernComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'welcome', component: WelcomeComponent },
       { path: '**', component: PageNotFoundComponent }
