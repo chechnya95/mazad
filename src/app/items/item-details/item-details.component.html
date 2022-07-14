@@ -643,7 +643,8 @@
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
                                                 <th>User</th>
                                                 <th>Amount</th>
-                                                <th class="min-w-125px">Date</th>
+                                                <th class="min-w-80px">Date</th>
+                                                <th></th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -654,7 +655,7 @@
                                             <tr *ngFor="let bid of bids; let i = index;">
                                                 <!--begin::Invoice=-->
                                                 <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user_id }">{{
-                                                        bid.user_id | uppercase }}</a></td>
+                                                        bid.user.phone }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->
                                                 <td>{{ bid.amount | currency:'OMR'}}</td>
@@ -662,6 +663,13 @@
                                                 <!--begin::Date=-->
                                                 <td>{{bid.create_date | date:'medium'}}</td>
                                                 <!--end::Date=-->
+                                                <td>
+                                                    <div *ngIf="bid.active==1"
+                                                    class="badge badge-light-success fw-bolder">Active</div>
+                                                    <div *ngIf="bid.active==0"
+                                                        class="badge badge-light-danger fw-bolder">Not Active
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
