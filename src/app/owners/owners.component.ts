@@ -28,7 +28,7 @@ export class OwnersComponent implements OnInit {
     email: null,
     code: null,
     phone: null,
-    active: 0,
+    active: null,
     title_en: null,
     title_ar: null,
     description_en: null,

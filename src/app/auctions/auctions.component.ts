@@ -101,12 +101,12 @@ export class AuctionsComponent implements OnInit {
   }
 
   async getOwners() {
-    this.api.get('users/role/Owner', this.token).subscribe(
+    this.api.get('owners/', this.token).subscribe(
       async data => {
-        let objects = JSON.parse(JSON.stringify(data));
-        this.owners = objects['users'];
+        let objects: any = { owners: [] }
+        objects = data;
+        this.owners = objects.owners;
 
-        console.log(this.owners)
         this.getAuctionStatus();
       },
       async error => {
@@ -122,7 +122,19 @@ export class AuctionsComponent implements OnInit {
         this.auction_status = objects.auction_status;
 
         this.utility.loader = false;
-        //this.getTemplates();
+        this.getGroups();
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
+
+  async getGroups() {
+    this.api.get('groups/', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.groups = objects['groups'];
       },
       async error => {
         alert(error);
