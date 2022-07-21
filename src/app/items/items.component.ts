@@ -23,6 +23,10 @@ export class ItemsComponent implements OnInit {
 
   itemFilter = '';
 
+  errorText: any;
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -90,10 +94,11 @@ export class ItemsComponent implements OnInit {
     this.api.update('items/change_item_status/' + item_id, body, this.token).subscribe(
       async data => {
         this.getItems();
+        this.successMessage = true;
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
+        this.errorText = error.status + ': ' + error.error.msg;
+        this.errorMessage = true; 
       }
     );
   }

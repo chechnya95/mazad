@@ -27,7 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-item-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item" [(ngModel)]="itemFilter" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item"
+                            [(ngModel)]="itemFilter" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -114,7 +115,7 @@
                         </button>
                         <!--end::Export-->
                         <!--begin::Add item-->
-                        <a type="button" class="btn btn-primary" href="new-item">
+                        <a class="btn btn-primary" href="new-item">
                             <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -236,7 +237,8 @@
                         <!--end::Modal dialog-->
                     </div>
                     <!--end::Modal - New Card-->
-                    <div class="modal fade" id="kt_modal_change_item_status" tabindex="-1" aria-hidden="true" data-bs-dismiss="modal">
+                    <div class="modal fade" id="kt_modal_change_item_status" tabindex="-1" aria-hidden="true"
+                        data-bs-dismiss="modal">
                         <!--begin::Modal dialog-->
                         <div class="modal-dialog modal-dialog-centered mw-650px">
                             <!--begin::Modal content-->
@@ -290,7 +292,8 @@
                                         <!--begin::Actions-->
                                         <div class="text-center">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-items-modal-action="cancel" data-bs-dismiss="modal">Discard</button>
+                                                data-kt-items-modal-action="cancel"
+                                                data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary"
                                                 (click)="updateItemStatus(new_item_id)"
                                                 data-kt-items-modal-action="submit">
@@ -430,7 +433,8 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a (click)="saveItem(item)" href="edit-item?id={{item.id}}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <a (click)="saveItem(item)" href="edit-item?id={{item.id}}"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -479,6 +483,60 @@
             <!--end::Card body-->
         </div>
         <!--end::Card-->
+        <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                            class="swal2-x-mark">
+                            <span class="swal2-x-mark-line-left"></span>
+                            <span class="swal2-x-mark-line-right"></span>
+                        </span>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">
+                        <p style="font-weight: bold;">{{errorText}}</p>
+                        Sorry, looks like there are some errors detected, please try again.
+                    </div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div>
+                    <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
+                        (click)="errorMessage=false">Ok, got it!</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
+                aria-live="assertive" aria-modal="true" style="display: flex;">
+                <div class="swal2-header">
+                    <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                        <div class="swal2-success-ring"></div>
+                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);">
+                        </div>
+                    </div><img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                </div>
+                <div class="swal2-content">
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
+                        successfully submitted!</div>
+                </div>
+                <div class="swal2-actions">
+                    <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
+                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
