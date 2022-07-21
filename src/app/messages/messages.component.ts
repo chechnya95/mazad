@@ -69,4 +69,9 @@ export class MessagesComponent implements OnInit {
 
     sub.add(() => { this.getMessages(); });
   }
+
+  saveMessage(message: any) {
+    localStorage.removeItem('message');
+    localStorage.setItem('message', JSON.stringify(message));
+  }
 }

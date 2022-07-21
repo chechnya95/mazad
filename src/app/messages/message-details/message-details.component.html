@@ -1,0 +1,108 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Invoice 2 main-->
+        <div class="card">
+            <div class="card-body p-lg-20">
+                <!--begin::Layout-->
+                <div class="d-flex flex-column flex-xl-row">
+                    <!--begin::Content-->
+                    <div class="flex-lg-row-fluid me-xl-18 mb-10 mb-xl-0">
+                        <!--begin::Invoice 2 content-->
+                        <div class="mt-n1">
+                            <!--begin::Wrapper-->
+                            <div class="m-0">
+                                <!--begin::Label-->
+                                <div class="fw-bold fs-7 text-gray-600 mb-1">Message</div>
+                                <div class="fw-bold fs-7 text-gray-600 mb-1">{{ message?.id | uppercase}}</div>
+                                <div class="fw-bolder fs-3 text-gray-800 mb-8">({{ message?.c_type }}) {{ message?.title }}</div>
+                                <!--end::Label-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-11">
+                                    <!--end::Col-->
+                                    <div class="col-sm-6">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Sent Date:</div>
+                                        <!--end::Label-->
+                                        <!--end::Col-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.create_date | date }}
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--end::Col-->
+                                    <div class="col-sm-6" *ngIf="message?.reviewed">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Reviewed Date:</div>
+                                        <!--end::Label-->
+                                        <!--end::Info-->
+                                        <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
+                                            <span class="pe-2">{{ message?.modified_date | date }}</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-11">
+                                    <!--end::Col-->
+                                    <div class="col-sm-12">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Message Text:</div>
+                                        <!--end::Label-->
+                                        <!--end::Col-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.message }}
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-11">
+                                    <!--end::Col-->
+                                    <div class="col-sm-12">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Admin Notes:</div>
+                                        <!--end::Label-->
+                                        <!--end::Col-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.note }}
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                                <!--begin::Row-->
+                                <div class="row g-5 mb-11">
+                                    <!--end::Col-->
+                                    <div class="col-sm-12">
+                                        <!--end::Label-->
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Sender Details:</div>
+                                        <!--end::Label-->
+                                        <!--end::Col-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.name }}</div>
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.mobile }}</div>
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ message?.email }}</div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Wrapper-->
+                        </div>
+                        <!--end::Invoice 2 content-->
+                    </div>
+                    <!--end::Content-->
+                </div>
+                <!--end::Layout-->
+            </div>
+            <!--end::Body-->
+        </div>
+        <!--end::Invoice 2 main-->
+    </div>
+    <!--end::Container-->
+</div>

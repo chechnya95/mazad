@@ -59,6 +59,7 @@ import { ClassificationComponent } from './settings/classification/classificatio
 import { ChildernComponent } from './settings/classification/childern/childern.component';
 import { Nl2brPipe } from './pipes/nl2br.pipe';
 import { ReportsComponent } from './reports/reports.component';
+import { MessageDetailsComponent } from './messages/message-details/message-details.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { ReportsComponent } from './reports/reports.component';
     ClassificationComponent,
     ChildernComponent,
     Nl2brPipe,
-    ReportsComponent
+    ReportsComponent,
+    MessageDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -151,6 +153,7 @@ import { ReportsComponent } from './reports/reports.component';
       { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'message-details', component: MessageDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-details', component: PaymentDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'wallets', component: WalletsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
