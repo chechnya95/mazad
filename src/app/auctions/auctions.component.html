@@ -291,6 +291,7 @@
                                                 <select name="auction_type"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.auction_type" disabled>
+                                                    <option>-- SELECT --</option>
                                                     <option value="private">Private</option>
                                                     <option value="public">Public</option>
                                                 </select>
@@ -306,6 +307,7 @@
                                                 <select name="auction_method"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.auction_method" disabled>
+                                                    <option>-- SELECT --</option>
                                                     <option value="increasing">Increasing</option>
                                                     <option value="decreasing">Decreasing</option>
                                                 </select>
@@ -397,6 +399,7 @@
                                                 <select name="auction_status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.auction_status" disabled>
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let item of auction_status" [value]='item.name'>{{
                                                         item.name }}</option>
                                                 </select>
@@ -412,6 +415,7 @@
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.owner_id">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                                         owner.code +': '+ owner.title.en +' - '+ owner.title.ar
                                                         }}</option>
@@ -428,6 +432,7 @@
                                                 <select name="group_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.group_id">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let group of groups" [ngValue]='group.id'>{{ group.title.en }} - {{ group.title.ar }}</option>
                                                 </select>
                                                 <!--end::Input-->
@@ -547,6 +552,7 @@
                                                 <select name="auction_type"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.auction_type">
+                                                    <option>-- SELECT --</option>
                                                     <option value="private">Private</option>
                                                     <option value="public">Public</option>
                                                 </select>
@@ -562,6 +568,7 @@
                                                 <select name="auction_method"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.auction_method">
+                                                    <option>-- SELECT --</option>
                                                     <option value="increasing">Increasing</option>
                                                     <option value="decreasing">Decreasing</option>
                                                 </select>
@@ -653,6 +660,7 @@
                                                 <select name="auction_status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.auction_status">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let item of auction_status" [value]='item.name'>{{
                                                         item.name }}</option>
                                                 </select>
@@ -668,6 +676,7 @@
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.owner_id">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                                         owner.code +': '+ owner.title.en +' - '+ owner.title.ar
                                                         }}</option>
@@ -684,6 +693,7 @@
                                                 <select name="group_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.group_id">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let group of groups" [ngValue]='group.id'>{{
                                                         group.name
                                                         }}</option>

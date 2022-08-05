@@ -8,7 +8,7 @@
             <div class="card-header border-0 pt-6">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    
+
                 </div>
                 <!--begin::Card title-->
                 <!--begin::Card toolbar-->
@@ -16,7 +16,7 @@
                     <!--begin::Toolbar-->
                     <div class="d-flex justify-content-end" data-kt-item-table-toolbar="base">
                         <!--begin::Add item-->
-                        <a type="button" class="btn btn-primary" href="new-item?id={{auction?.id}}">
+                        <a class="btn btn-primary" href="new-item?id={{auction?.id}}">
                             <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -158,85 +158,37 @@
                                         <!--end::Description-->
                                     </div>
                                     <!--end::Col-->
+                                    <div class="row g-5 mb-12">
+                                        <div class="col">
+                                            <!--end::Label-->
+                                            <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Terms:</div>
+                                            <!--end::Label-->
+                                            <!--end::Text-->
+                                            <div class="fw-bolder fs-6 text-gray-800"><p class="text-justify">{{ auction?.terms.en }}
+                                                <br> {{ auction?.terms.ar }}</p>
+                                            </div>
+                                            <!--end::Text-->
+                                            <!--end::Description-->
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <div class="row g-5 mb-12">
+                                        <!--end::Col-->
+                                        <div class="col">
+                                            <!--end::Label-->
+                                            <div class="fw-bold fs-7 text-gray-600 mb-1">Description:</div>
+                                            <!--end::Label-->
+                                            <!--end::Text-->
+                                            <div class="fw-bolder fs-6 text-gray-800"><p class="text-justify">{{ auction?.description.en }}
+                                                <br> {{ auction?.description.ar }}</p>
+                                            </div>
+                                            <!--end::Text-->
+                                            <!--end::Description-->
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
                                 </div>
                                 <!--end::Row-->
-                                <!--begin::Content-->
-                                <div class="flex-grow-1">
-                                    <!--begin::Table-->
-                                    <div class="table-responsive border-bottom mb-9">
-                                        <div *ngIf="items.length > 0">
-                                            <h3>Auction Items</h3>
-                                            <table class="table mb-3">
-                                                <thead class="border-bottom border-gray-200">
-                                                    <!--begin::Table row-->
-                                                    <tr
-                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                        <th class="w-125px">Code</th>
-                                                        <th class="w-100px">Status</th>
-                                                        <th class="w-300px">Create Date</th>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--begin::Table body-->
-                                                <tbody class="fs-6 fw-bold text-gray-600">
-                                                    <!--begin::Table row-->
-                                                    <tr *ngFor="let item of items; let i = index;">
-                                                        <!--begin::Invoice=-->
-                                                        <td><a [routerLink]="['/item-details']"
-                                                                [queryParams]="{ id: item.id }">{{
-                                                                item.code | uppercase }}</a></td>
-                                                        <!--end::Invoice=-->
-                                                        <!--begin::Amount=-->
-                                                        <td>{{ item.item_status }}</td>
-                                                        <!--end::Amount=-->
-                                                        <!--begin::Date=-->
-                                                        <td>{{item.create_date | date:'medium'}}</td>
-                                                        <!--end::Date=-->
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                        </div>
-                                        <div *ngIf="templates.length > 0">
-                                            <h3>Auction Templates</h3>
-                                            <table class="table mb-3">
-                                                <thead class="border-bottom border-gray-200">
-                                                    <!--begin::Table row-->
-                                                    <tr
-                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                        <th class="w-125px">Code</th>
-                                                        <th class="w-100px">Status</th>
-                                                        <th class="w-300px">Create Date</th>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--begin::Table body-->
-                                                <tbody class="fs-6 fw-bold text-gray-600">
-                                                    <!--begin::Table row-->
-                                                    <tr *ngFor="let item of templates; let i = index;">
-                                                        <!--begin::Invoice=-->
-                                                        <td><a [routerLink]="['/template-details']"
-                                                                [queryParams]="{ id: item.id }">{{
-                                                                item.code | uppercase }}</a></td>
-                                                        <!--end::Invoice=-->
-                                                        <!--begin::Amount=-->
-                                                        <td>{{ item.item_status }}</td>
-                                                        <!--end::Amount=-->
-                                                        <!--begin::Date=-->
-                                                        <td>{{item.create_date | date:'medium'}}</td>
-                                                        <!--end::Date=-->
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Content-->
-
                             </div>
                             <!--end::Wrapper-->
                         </div>
@@ -264,18 +216,18 @@
                                     <br> {{ auction?.title.ar }}
                                 </div>
                             </div>
-                            <div class="mb-6">
+                            <!-- <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Description</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ auction?.description.en }}
                                     <br> {{ auction?.description.ar }}
                                 </div>
-                            </div>
-                            <div class="mb-6">
+                            </div> -->
+                            <!-- <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Auction Terms</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ auction?.terms.en }}
                                     <br> {{ auction?.terms.ar }}
                                 </div>
-                            </div>
+                            </div> -->
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6">
@@ -315,6 +267,81 @@
                                     | uppercase }}</div>
                             </div>
                             <!--end::Item-->
+
+                            <!--begin::Content-->
+                            <div class="flex-grow-1">
+                                <!--begin::Table-->
+                                <div class="table-responsive border-bottom mb-9">
+                                    <div *ngIf="items.length > 0">
+                                        <h3>Auction Items</h3>
+                                        <table class="table mb-3">
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Code</th>
+                                                    <th class="w-100px">Status</th>
+                                                    <th class="w-300px">Create Date</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--begin::Table body-->
+                                            <tbody class="fs-6 fw-bold text-gray-600">
+                                                <!--begin::Table row-->
+                                                <tr *ngFor="let item of items; let i = index;">
+                                                    <!--begin::Invoice=-->
+                                                    <td><a [routerLink]="['/item-details']"
+                                                            [queryParams]="{ id: item.id }">{{
+                                                            item.code | uppercase }}</a></td>
+                                                    <!--end::Invoice=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>{{ item.item_status }}</td>
+                                                    <!--end::Amount=-->
+                                                    <!--begin::Date=-->
+                                                    <td>{{item.create_date | date:'medium'}}</td>
+                                                    <!--end::Date=-->
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                    </div>
+                                    <div *ngIf="templates.length > 0">
+                                        <h3>Auction Templates</h3>
+                                        <table class="table mb-3">
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Code</th>
+                                                    <th class="w-100px">Status</th>
+                                                    <th class="w-300px">Create Date</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--begin::Table body-->
+                                            <tbody class="fs-6 fw-bold text-gray-600">
+                                                <!--begin::Table row-->
+                                                <tr *ngFor="let item of templates; let i = index;">
+                                                    <!--begin::Invoice=-->
+                                                    <td><a [routerLink]="['/template-details']"
+                                                            [queryParams]="{ id: item.id }">{{
+                                                            item.code | uppercase }}</a></td>
+                                                    <!--end::Invoice=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>{{ item.item_status }}</td>
+                                                    <!--end::Amount=-->
+                                                    <!--begin::Date=-->
+                                                    <td>{{item.create_date | date:'medium'}}</td>
+                                                    <!--end::Date=-->
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--end::Table-->
+                            </div>
+                            <!--end::Content-->
                         </div>
                         <!--end::Invoice 2 sidebar-->
                     </div>
