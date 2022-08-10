@@ -15,7 +15,7 @@ export class MessageDetailsComponent implements OnInit {
 
   constructor(private router: Router, private api: ApiService, public utility: UtilitiesService) {
     this.token = localStorage.getItem('access_token');
-    this.utility.title = 'Payment Details';
+    this.utility.title = 'Message Details';
   }
 
   ngOnInit(): void {
