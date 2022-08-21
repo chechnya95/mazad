@@ -120,6 +120,7 @@ export class SettingsComponent implements OnInit {
   addPaymentConfig() {
     let body = {
       name: this.payment_config.name,
+      online_status: this.payment_config.online_status,
       payment_gateway: this.payment_config.payment_gateway,
       fee: this.payment_config.fee,
       fee_cap: this.payment_config.fee_cap,
