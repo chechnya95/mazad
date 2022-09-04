@@ -77,9 +77,14 @@ export class NewItemComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
+      let ow = params['owner'] != null ? params['owner'] : null;
       
       if (id) {
         this.item.auction_id = id;
+      }
+
+      if (ow) {
+        this.item.owner_id = ow;
       }
       
       this.getItemstatus();
