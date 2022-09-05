@@ -751,7 +751,7 @@
                                 <div class="d-flex align-items-center py-2">
                                     <button type="reset"
                                         class="btn btn-sm btn-white btn-active-light-primary me-3" (click)="deletePayment(payment.id)">Delete</button>
-                                    <button class="btn btn-sm btn-light btn-active-light-primary" data-bs-toggle="modal"
+                                    <button (click)="editPayment(payment.id)" class="btn btn-sm btn-light btn-active-light-primary" data-bs-toggle="modal"
                                         data-bs-target="#kt_modal_new_card">Edit</button>
                                 </div>
                                 <!--end::Actions-->
@@ -869,23 +869,37 @@
                                 </label>
                                 <!--end::Label-->
                                 <input type="text" class="form-control form-control-solid" placeholder="Smart Pay"
-                                    name="card_name" value="" />
+                                    name="card_name" [(ngModel)]="payment_config.name" />
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
-                            <div class="d-flex flex-column mb-7 fv-row">
-                                <!--begin::Label-->
-                                <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                    <span class="required">Payment Gateway</span>
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                        title="Select the Bank Payment Gateway"></i>
-                                </label>
-                                <!--end::Label-->
-                                <select name="card_expiry_year" class="form-select form-select-solid"
-                                    data-control="select2" data-hide-search="true" data-placeholder="Method">
-                                    <option></option>
-                                    <option *ngFor="let gateway of gateways" (value)="gateway.name">{{ gateway.name }}</option>
-                                </select>
+                            <div class="row mb-10">
+                                <div class="col-md-6 fv-row">
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span class="required">Payment Gateway</span>
+                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                            title="Select the Bank Payment Gateway"></i>
+                                    </label>
+                                    <!--end::Label-->
+                                    <select name="gateway_name" class="form-select form-select-solid" [(ngModel)]="payment_config.payment_gateway" 
+                                        data-control="select2" data-hide-search="true" data-placeholder="Method">
+                                        <option></option>
+                                        <option *ngFor="let gateway of gateways" (value)="gateway.name">{{ gateway.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 fv-row">
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span class="required">Online Status</span>
+                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                            title="Select the Transaction Online Status"></i>
+                                    </label>
+                                    <!--end::Label-->
+                                    <select name="online_status" class="form-select form-select-solid" [(ngModel)]="payment_config.online_status" 
+                                        data-control="select2" data-hide-search="true" data-placeholder="Method">
+                                        <option></option>
+                                        <option *ngFor="let status of online_statuses" (value)="status.name">{{ status.name }}</option>
+                                    </select>
+                                </div>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
@@ -902,7 +916,7 @@
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative">
                                         <!--begin::Input-->
-                                        <input type="number" class="form-control form-control-solid" placeholder="10%"
+                                        <input type="number" class="form-control form-control-solid" placeholder="10%" [(ngModel)]="payment_config.fee" 
                                             name="fee" />
                                         <!--end::Input-->
                                     </div>
@@ -921,7 +935,7 @@
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative">
                                         <!--begin::Input-->
-                                        <input type="number" class="form-control form-control-solid" placeholder="1000"
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" [(ngModel)]="payment_config.fee_cap" 
                                             name="fee_cap" />
                                         <!--end::Input-->
                                     </div>
@@ -940,7 +954,7 @@
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative">
                                         <!--begin::Input-->
-                                        <input type="number" class="form-control form-control-solid" placeholder="1000"
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" [(ngModel)]="payment_config.limit" 
                                             name="limit" />
                                         <!--end::Input-->
                                     </div>
@@ -959,7 +973,7 @@
                                 <!--end::Label-->
                                 <!--begin::Switch-->
                                 <label class="form-check form-switch form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="1" checked="checked" />
+                                    <input class="form-check-input" type="checkbox" [(ngModel)]="payment_config.is_default"  />
                                     <span class="form-check-label fw-bold text-gray-400">Set as default</span>
                                 </label>
                                 <!--end::Switch-->
@@ -975,7 +989,7 @@
                                 </label>
                                 <!--end::Label-->
                                 <input type="text" class="form-control form-control-solid" placeholder="url" name="url"
-                                    value="" />
+                                [(ngModel)]="payment_config.url" />
                             </div>
                             <!--end::Input group-->
 
@@ -994,7 +1008,7 @@
                                     <div class="position-relative">
                                         <!--begin::Input-->
                                         <input type="text" class="form-control form-control-solid" placeholder=""
-                                            name="access_key" value="" />
+                                            name="access_key" [(ngModel)]="payment_config.access_key"  />
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input wrapper-->
@@ -1013,7 +1027,7 @@
                                     <div class="position-relative">
                                         <!--begin::Input-->
                                         <input type="text" class="form-control form-control-solid" placeholder=""
-                                            name="secret_key" value="" />
+                                            name="secret_key" [(ngModel)]="payment_config.secret_key" />
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input wrapper-->
@@ -1023,9 +1037,9 @@
                             <!--end::Input group-->
                             <!--begin::Actions-->
                             <div class="text-center pt-15">
-                                <button type="reset" id="kt_modal_new_card_cancel"
+                                <button data-bs-dismiss="modal" type="reset" id="kt_modal_new_card_cancel"
                                     class="btn btn-white me-3">Discard</button>
-                                <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary" (click)="addPaymentConfig()">
+                                <button data-bs-dismiss="modal" type="submit" id="kt_modal_new_card_submit" class="btn btn-primary" (click)="addPaymentConfig()">
                                     <span class="indicator-label">Submit</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

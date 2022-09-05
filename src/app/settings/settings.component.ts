@@ -13,6 +13,7 @@ export class SettingsComponent implements OnInit {
   category: string = 'company';
 
   paymet_types: any[] = [];
+  online_statuses: any[] = [];
   gateways: any[] = [];
 
   payment_config = {
@@ -34,6 +35,9 @@ export class SettingsComponent implements OnInit {
   }
 
   update: boolean = false;
+  update_payment_type: boolean = false;
+  update_payment_id: any = null;
+
   company = {
     duraction: null,
     name: null,
@@ -83,6 +87,8 @@ export class SettingsComponent implements OnInit {
         alert(error);
       }
     );
+
+    sub.add(() => { this.getOnlineStatus(); });
   }
 
   getPaymentConfigs() {
@@ -102,10 +108,21 @@ export class SettingsComponent implements OnInit {
     sub.add(() => { this.getGateways(); });
   }
 
+  getOnlineStatus() {
+    const sub = this.api.get('payments/online_status', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.online_statuses = objects['online_status'];
+      },
+      async error => {
+        alert(error);
+      }
+    );
+  }
 
   deletePayment(id: any) {
     if (confirm("Delete this payment cofiguration?")) {
-      this.api.delete("payments/payment_config" + id, this.token).subscribe(
+      this.api.delete("payments/payment_config/" + id, this.token).subscribe(
         async data => {
           this.getPaymentConfigs();
         },
@@ -136,10 +153,24 @@ export class SettingsComponent implements OnInit {
       merchant_key5: this.payment_config.merchant_key5,
     }
 
-    this.api.post("payments/payment_config", body, this.token).subscribe(
-      async data => { this.getPaymentConfigs(); },
-      async error => { console.log(error); }
-    );
+    if (!this.update_payment_type) {
+      this.api.post("payments/payment_config", body, this.token).subscribe(
+        async data => { this.getPaymentConfigs(); },
+        async error => { console.log(error); }
+      );
+    } 
+    else {
+      this.api.update("payments/payment_config/" + this.update_payment_id, body, this.token).subscribe(
+        async data => { this.getPaymentConfigs(); },
+        async error => { console.log(error); }
+      );
+    }
+  }
+
+  editPayment(id: any) {
+    this.payment_config = this.paymet_types.find(i => i.id === id);
+    this.update_payment_type = true;
+    this.update_payment_id = id;
   }
 
   save_settings() {
