@@ -15,11 +15,6 @@ export class ItemsComponent implements OnInit {
   item_status: any[] = [];
   item_p_config: any;
 
-  public maxSize: number = 7;
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = false;
-
 
   new_item_status: any;
   new_item_id: any;

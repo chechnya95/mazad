@@ -482,11 +482,10 @@
                 <div class="has-text-centered">
                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
                     <pagination-controls
-                        [maxSize]="maxSize"
-                        [directionLinks]="directionLinks"
-                        [autoHide]="autoHide"
-                        [responsive]="responsive"
-                        
+                        maxSize="7"
+                        directionLinks="true"
+                        autoHide="true"
+                        responsive="true"
                         (pageChange)="pageChangeEvent($event)"
                     ></pagination-controls>
             </div>
