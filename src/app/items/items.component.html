@@ -347,7 +347,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let item of items | itemPipe: itemFilter ">
+                        <tr *ngFor="let item of items | itemPipe: itemFilter | paginate : item_p_config">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -479,6 +479,17 @@
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
+                <div class="has-text-centered">
+                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                    <pagination-controls
+                        [maxSize]="maxSize"
+                        [directionLinks]="directionLinks"
+                        [autoHide]="autoHide"
+                        [responsive]="responsive"
+                        
+                        (pageChange)="pageChangeEvent($event)"
+                    ></pagination-controls>
+            </div>
             </div>
             <!--end::Card body-->
         </div>
