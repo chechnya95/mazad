@@ -19,7 +19,7 @@ build:
   - apt update
   - npm install --location=global @angular/cli
   - npm install
-  - ng build --prod
+  - ng build --configuration production
   - echo "BUILD SUCCESSFUL"
   artifacts:
     expire_in: 1 day

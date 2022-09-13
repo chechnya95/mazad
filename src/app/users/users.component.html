@@ -628,7 +628,7 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -639,11 +639,11 @@
                                         data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">User</th>
+                            <th mat-sort-header="phone" class="min-w-125px">User</th>
                             <!-- <th class="min-w-125px">Role</th> -->
-                            <th class="min-w-125px">Type</th>
-                            <th class="min-w-125px">Active</th>
-                            <th class="min-w-125px">Confirmd Date</th>
+                            <th mat-sort-header="user_type" class="min-w-125px">Type</th>
+                            <th mat-sort-header="status" class="min-w-125px">Active</th>
+                            <th mat-sort-header="mobile_confirmed_at" class="min-w-125px">Confirmd Date</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -652,7 +652,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let user of users | userPipe: userFilter ">
+                        <tr *ngFor="let user of users | userPipe: userFilter | paginate : filter_config">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -772,6 +772,17 @@
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
+                <div class="has-text-centered">
+                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                    <pagination-controls
+                        maxSize="7"
+                        directionLinks="true"
+                        autoHide="false"
+                        responsive="true"
+                        (pageChange)="pageChangeEvent($event)"
+                        class="d-flex justify-content-center"
+                    ></pagination-controls>
+                </div>
             </div>
             <!--end::Card body-->
         </div>

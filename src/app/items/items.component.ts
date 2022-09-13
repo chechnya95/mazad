@@ -2,7 +2,6 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {MatSortModule} from '@angular/material/sort';
 import {Sort} from '@angular/material/sort';
 
 @Component({
