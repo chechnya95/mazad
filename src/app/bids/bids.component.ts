@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import {Sort} from '@angular/material/sort';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-bids',
@@ -12,6 +14,7 @@ export class BidsComponent implements OnInit {
 
   token: any;
   bids: any[] = [];
+  filter_config: any;
 
   bidFilter = '';
   
@@ -22,6 +25,13 @@ export class BidsComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Items Biddings';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc'
+    };
   }
 
   ngOnInit(): void {
@@ -34,12 +44,34 @@ export class BidsComponent implements OnInit {
     })
   }
 
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
+  }
+  pageChangeEvent(event: any) {
+    this.filter_config.currentPage = event;
+    this.getBids(null);
+  }
+  
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getBids(null);
+  }
+
   getBids(id: any) {
     this.utility.loader = true;
-    const sub = this.api.get('bids/', this.token).subscribe(
+    const sub = this.api.get('bids/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.bids = objects['bids'];
+        this.filter_config.totalItems = objects['filters']['total_results'];
 
         if (id)
           this.bids = this.bids.filter(i => i.item_id === id);
