@@ -60,6 +60,7 @@ import { ChildernComponent } from './settings/classification/childern/childern.c
 import { Nl2brPipe } from './pipes/nl2br.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { MessageDetailsComponent } from './messages/message-details/message-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { MessageDetailsComponent } from './messages/message-details/message-deta
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     FormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',

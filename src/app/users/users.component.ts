@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -48,11 +49,18 @@ export class UsersComponent implements OnInit {
 
   userFilter = '';
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  item_p_config: any;
+
+  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Users';
     this.token = localStorage.getItem('access_token');
+    this.item_p_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0
+    };
   }
 
   ngOnInit(): void {
@@ -61,13 +69,23 @@ export class UsersComponent implements OnInit {
       if (id) {
         this.getUsers(id);
       }
-      else { this.getUsers(null); }
+      else { this.getUsers(); }
     })
   }
 
-  async getUsers(id: any) {
+  pageChangeEvent(event: any) {
+    this.item_p_config.currentPage = event;
+    this.getUsers();
+  }
+
+  async getUsers(id?: any) {
     this.utility.loader = true;
-    const sub = this.api.get('users/', this.token).subscribe(
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("page",this.item_p_config.currentPage.toString());
+    queryParams = queryParams.append("per_page",this.item_p_config.itemsPerPage.toString());
+
+    const sub = this.api.get('users/', this.token, queryParams).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -75,6 +93,8 @@ export class UsersComponent implements OnInit {
         objects = data;
 
         this.users = objects.users;
+        this.item_p_config.totalItems = objects['filters']['total_results'];
+
         localStorage.setItem('users', JSON.stringify(this.users));
 
         if (id)
@@ -134,7 +154,7 @@ export class UsersComponent implements OnInit {
     else {
       this.api.post("users/admin", body, this.token).subscribe(
         async data => {
-          this.getUsers(null);
+          this.getUsers();
         },
         async error => {
           alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
@@ -147,7 +167,7 @@ export class UsersComponent implements OnInit {
     if (confirm("Delete this User?")) {
       this.api.delete("users/" + id, this.token).subscribe(
         async data => {
-          this.getUsers(null);
+          this.getUsers();
         },
         async error => {
           alert("ERROR: cannot connect!");
@@ -182,7 +202,7 @@ export class UsersComponent implements OnInit {
       async errr => { console.log(errr); }
     );
 
-    sub.add(() => { this.getUsers(null); });
+    sub.add(() => { this.getUsers(); });
   }
 
   disableUser(id: any, is_active: any) {
@@ -192,7 +212,7 @@ export class UsersComponent implements OnInit {
     if (confirm(status + " this User?")) {
       this.api.update("users/disable/" + id, body, this.token).subscribe(
         async data => {
-          this.getUsers(null);
+          this.getUsers();
         },
         async error => {
           alert("ERROR: cannot connect!");

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import { environment } from '../../environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,12 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
-  get(method: string, token: any) {
+  get(method: string, token: any, queryParams?: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'x-access-tokens': token
-      })
+      }),
+      params: queryParams ? queryParams : null
     };
 
     return this.httpClient.get(this.api + method, httpOptions);
