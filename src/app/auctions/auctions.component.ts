@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import {Sort} from '@angular/material/sort';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-auctions',
@@ -16,6 +18,7 @@ export class AuctionsComponent implements OnInit {
   owners: any[] = [];
   templates: any[] = [];
   auction_status: any[] = [];
+  filter_config: any;
 
   auction = {
     auction_type: "public",
@@ -72,6 +75,13 @@ export class AuctionsComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Auctions';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc'
+    };
   }
 
   ngOnInit(): void {
@@ -81,13 +91,36 @@ export class AuctionsComponent implements OnInit {
       this.getAuctions();
     })
   }
+  
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
+  }
+  pageChangeEvent(event: any) {
+    this.filter_config.currentPage = event;
+    this.getAuctions();
+  }
+  
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getAuctions();
+  }
 
   async getAuctions() {
     this.utility.loader = true;
-    this.api.get('auctions/', this.token).subscribe(
+    this.api.get('auctions/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
+        this.filter_config.totalItems = objects['auctions']['filters']['total_results'];
+        
 
         if (this.auction_id)
           this.auctions = this.auctions.filter(i => i.id === this.auction_id);

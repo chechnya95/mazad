@@ -42,7 +42,7 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                <table mat-table  matSort (matSortChange)="sortData($event)"  class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
@@ -61,7 +61,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr *ngFor="let bid of bids | bidsPipe: bidFilter; let i = index;">
+                                        <tr *ngFor="let bid of bids | bidsPipe: bidFilter | paginate : filter_config ; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/item-details']" [queryParams]="{ id: bid.item.id }">{{ bid.item.title.en }}</a></td>
                                             <td><div class="badge badge-info">{{ bid.item.item_status }}</div></td>
@@ -81,6 +81,16 @@
                                     <!--end::Table body-->
                                 </table>
                                 <!--end::Table-->
+                                <div class="has-text-centered">
+                                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                                    <pagination-controls
+                                        maxSize="7"
+                                        directionLinks="true"
+                                        autoHide="false"
+                                        responsive="true"
+                                        (pageChange)="pageChangeEvent($event)"
+                                        class="d-flex justify-content-center"
+                                    ></pagination-controls>
                             </div>
                             <!--end::Card body-->
                         </div>

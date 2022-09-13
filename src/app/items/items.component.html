@@ -320,7 +320,7 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_items">
+                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_items">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -331,10 +331,10 @@
                                         data-kt-check-target="#kt_table_items .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th>Code</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Status</th>
+                            <th mat-sort-header="code" >Code</th>
+                            <th mat-sort-header="start_date" >Start Date</th>
+                            <th mat-sort-header="end_date" >End Date</th>
+                            <th mat-sort-header="item_status" >Status</th>
                             <th>buy price</th>
                             <th>minimum bid</th>
                             <th>acceptable price</th>
@@ -347,7 +347,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let item of items | itemPipe: itemFilter ">
+                        <tr *ngFor="let item of items | itemPipe: itemFilter | paginate : filter_config">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -479,6 +479,17 @@
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
+                <div class="has-text-centered">
+                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                    <pagination-controls
+                        maxSize="7"
+                        directionLinks="true"
+                        autoHide="false"
+                        responsive="true"
+                        (pageChange)="pageChangeEvent($event)"
+                        class="d-flex justify-content-center"
+                    ></pagination-controls>
+                </div>
             </div>
             <!--end::Card body-->
         </div>

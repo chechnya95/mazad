@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import {Sort} from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -14,6 +15,7 @@ export class UsersComponent implements OnInit {
   token: any;
   users: any[] = [];
   roles: any[] = [];
+  filter_config: any;
 
   user = {
     email: null,
@@ -56,10 +58,12 @@ export class UsersComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Users';
     this.token = localStorage.getItem('access_token');
-    this.item_p_config = {
+    this.filter_config = {
       itemsPerPage: 10,
       currentPage: 1,
-      totalItems: 0
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc'
     };
   }
 
@@ -72,6 +76,16 @@ export class UsersComponent implements OnInit {
       else { this.getUsers(); }
     })
   }
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
+  }
 
   pageChangeEvent(event: any) {
     this.item_p_config.currentPage = event;
@@ -80,12 +94,7 @@ export class UsersComponent implements OnInit {
 
   async getUsers(id?: any) {
     this.utility.loader = true;
-
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("page",this.item_p_config.currentPage.toString());
-    queryParams = queryParams.append("per_page",this.item_p_config.itemsPerPage.toString());
-
-    const sub = this.api.get('users/', this.token, queryParams).subscribe(
+    const sub = this.api.get('users/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -93,8 +102,7 @@ export class UsersComponent implements OnInit {
         objects = data;
 
         this.users = objects.users;
-        this.item_p_config.totalItems = objects['filters']['total_results'];
-
+        this.filter_config.totalItems = objects['filters']['total_results'];
         localStorage.setItem('users', JSON.stringify(this.users));
 
         if (id)
@@ -128,6 +136,12 @@ export class UsersComponent implements OnInit {
         alert(error);
       }
     );
+  }
+  
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getUsers(null);
   }
 
   OnSubmit() {
