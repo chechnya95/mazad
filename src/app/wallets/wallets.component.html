@@ -25,18 +25,18 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
-                                            <th>User</th>
-                                            <th>Auction</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Note</th>
-                                            <th>Create Date</th>
+                                            <th mat-sort-header="user_id">User</th>
+                                            <th mat-sort-header="auction_id">Auction</th>
+                                            <th mat-sort-header="amount">Amount</th>
+                                            <th mat-sort-header="status">Status</th>
+                                            <th mat-sort-header="note">Note</th>
+                                            <th mat-sort-header="create_date">Create Date</th>
                                             <!-- <th class="text-end">Actions</th> -->
                                         </tr>
                                         <!--end::Table row-->
@@ -176,6 +176,17 @@
                                     <!--end::Table body-->
                                 </table>
                                 <!--end::Table-->
+                                <div class="has-text-centered">
+                                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                                    <pagination-controls
+                                        maxSize="7"
+                                        directionLinks="true"
+                                        autoHide="false"
+                                        responsive="true"
+                                        (pageChange)="pageChangeEvent($event)"
+                                        class="d-flex justify-content-center"
+                                    ></pagination-controls>
+                                </div>
                             </div>
                             <!--end::Card body-->
                         </div>

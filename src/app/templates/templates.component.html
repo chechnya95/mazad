@@ -305,7 +305,7 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
@@ -318,9 +318,9 @@
                                                         value="1" />
                                                 </div>
                                             </th>
-                                            <th class="min-w-125px">Key</th>
-                                            <th class="min-w-125px">Model Type</th>
-                                            <th class="min-w-125px">Model OP</th>
+                                            <th mat-sort-header="key" class="min-w-125px">Key</th>
+                                            <th mat-sort-header="model_type" class="min-w-125px">Model Type</th>
+                                            <th mat-sort-header="model_op" class="min-w-125px">Model OP</th>
                                             <th class="min-w-125px">Subject</th>
                                             <th class="min-w-125px">Content</th>
                                             <th class="text-end min-w-100px">Actions</th>
@@ -331,7 +331,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr *ngFor="let template of templates">
+                                        <tr *ngFor="let template of templates | paginate : filter_config ">
                                             <!--begin::Checkbox-->
                                             <td>
                                                 <div
@@ -517,6 +517,17 @@
                                     <!--end::Table body-->
                                 </table>
                                 <!--end::Table-->
+                                <div class="has-text-centered">
+                                    <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                                    <pagination-controls
+                                        maxSize="7"
+                                        directionLinks="true"
+                                        autoHide="false"
+                                        responsive="true"
+                                        (pageChange)="pageChangeEvent($event)"
+                                        class="d-flex justify-content-center"
+                                    ></pagination-controls>
+                                </div>
                             </div>
                             <!--end::Card body-->
                         </div>

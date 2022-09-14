@@ -91,7 +91,7 @@ export class AuctionsComponent implements OnInit {
       this.getAuctions();
     })
   }
-  
+
   getHttpParams() {
     let params = new HttpParams();
     params = params.append('page', this.filter_config.currentPage.toString());
@@ -120,7 +120,6 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
         this.filter_config.totalItems = objects['auctions']['filters']['total_results'];
-        
 
         if (this.auction_id)
           this.auctions = this.auctions.filter(i => i.id === this.auction_id);

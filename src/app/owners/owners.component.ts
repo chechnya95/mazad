@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import {Sort} from '@angular/material/sort';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-owners',
@@ -12,6 +14,7 @@ export class OwnersComponent implements OnInit {
 
   token: any;
   owners: any[] = [];
+  filter_config: any;
 
   owner = {
     email: null,
@@ -50,6 +53,13 @@ export class OwnersComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Owners';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc'
+    };
   }
 
   ngOnInit(): void {
@@ -58,13 +68,34 @@ export class OwnersComponent implements OnInit {
       if (id) {
         this.getOwners(id);
       }
-      else { this.getOwners(null); }
+      else { this.getOwners(); }
     })
   }
 
-  async getOwners(id: any) {
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
+  }
+  pageChangeEvent(event: any) {
+    this.filter_config.currentPage = event;
+    this.getOwners();
+  }
+  
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getOwners();
+  }
+
+  async getOwners(id?: any) {
     this.utility.loader = true;
-    const sub = this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects: any = {
           owners: []
@@ -114,7 +145,7 @@ export class OwnersComponent implements OnInit {
     else {
       this.api.post("owners/", body, this.token).subscribe(
         async data => {
-          this.getOwners(null);
+          this.getOwners();
         },
         async error => {
           alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
@@ -127,7 +158,7 @@ export class OwnersComponent implements OnInit {
     if (confirm("Delete this Owner?")) {
       this.api.delete("owners/" + id, this.token).subscribe(
         async data => {
-          this.getOwners(null);
+          this.getOwners();
         },
         async error => {
           alert("ERROR: cannot connect!");
@@ -168,6 +199,6 @@ export class OwnersComponent implements OnInit {
       async errr => { console.log(errr); }
     );
 
-    sub.add(() => { this.getOwners(null); });
+    sub.add(() => { this.getOwners(); });
   }
 }

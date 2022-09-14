@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import {Sort} from '@angular/material/sort';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-groups',
@@ -15,6 +17,7 @@ export class GroupsComponent implements OnInit {
   users: any[] = [];
   owners: any[] = [];
   types: any[] = [];
+  filter_config: any;
 
   group = {
     group_type: null,
@@ -38,6 +41,13 @@ export class GroupsComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Groups';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc'
+    };
   }
 
   ngOnInit(): void {
@@ -46,16 +56,38 @@ export class GroupsComponent implements OnInit {
       if (id) {
         this.getGroups(id);
       }
-      else { this.getGroups(null); }
+      else { this.getGroups(); }
     })
   }
 
-  getGroups(id: any) {
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
+  }
+  pageChangeEvent(event: any) {
+    this.filter_config.currentPage = event;
+    this.getGroups();
+  }
+  
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getGroups();
+  }
+
+  getGroups(id?: any) {
     this.utility.loader = true;
-    const sub = this.api.get('groups/', this.token).subscribe(
+    const sub = this.api.get('groups/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.groups = objects['groups'];
+        this.filter_config.totalItems = objects['filters']['total_results'];
 
         localStorage.setItem('groups', JSON.stringify(this.groups));
 
@@ -141,7 +173,7 @@ export class GroupsComponent implements OnInit {
     this.api.post('groups/', body, this.token).subscribe(
       async data => {
         this.successMessage = true;
-        this.getGroups(null);
+        this.getGroups();
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
@@ -166,7 +198,7 @@ export class GroupsComponent implements OnInit {
     this.api.delete('groups/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
-        this.getGroups(null);
+        this.getGroups();
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
