@@ -51,8 +51,6 @@ export class UsersComponent implements OnInit {
 
   userFilter = '';
 
-  item_p_config: any;
-
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -88,7 +86,7 @@ export class UsersComponent implements OnInit {
   }
 
   pageChangeEvent(event: any) {
-    this.item_p_config.currentPage = event;
+    this.filter_config.currentPage = event;
     this.getUsers();
   }
 
