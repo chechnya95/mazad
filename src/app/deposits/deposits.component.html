@@ -52,7 +52,7 @@
                                             <th mat-sort-header="transaction_id">Transaction</th>
                                             <th mat-sort-header="amount">Amount</th>
                                             <th mat-sort-header="fee">Fee</th>
-                                            <th mat-sort-header="refund">Refund</th>
+                                            <th mat-sort-header="refund">Refunded</th>
                                             <th>Note</th>
                                             <th mat-sort-header="create_date">Create Date</th>
                                             <th class="text-end">Actions</th>
@@ -69,7 +69,10 @@
                                             <td><a [routerLink]="['/payment-details']" [queryParams]="{ id: deposit.transaction_id }">{{ deposit.transaction_id | uppercase}}</a></td>
                                             <td>{{ deposit.amount | currency:'OMR'}}</td>
                                             <td>{{ deposit.fee | currency:'OMR'}}</td>
-                                            <td>{{ deposit.refund}}</td>
+                                            <td>
+                                                <div *ngIf="deposit.refund" class="badge badge-light-success fw-bolder">Yes</div>
+                                                <div *ngIf="!deposit.refund" class="badge badge-light-info fw-bolder">No</div>
+                                            </td>
                                             <td [innerHTML]="deposit.note | nl2br"></td>
                                             <td>{{ deposit.create_date | date:"short"}}</td>
                                             
