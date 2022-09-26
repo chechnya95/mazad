@@ -31,7 +31,20 @@ export class GroupsComponent implements OnInit {
     terms_ar: null
   }
 
+  edit_group = {
+    group_type: null,
+    owner_id: null,
+    enable: false,
+    title_en: null,
+    title_ar: null,
+    description_en: null,
+    description_ar: null,
+    terms_en: null,
+    terms_ar: null
+  }
+
   user_id: any = null;
+  edit_group_id: any;
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -177,6 +190,36 @@ export class GroupsComponent implements OnInit {
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
+  }
+
+  editGroupClicked(group: any) {
+    this.edit_group = group;
+    this.edit_group_id = group.id;
+
+    this.edit_group.description_ar = group.description.ar;
+    this.edit_group.description_en = group.description.en;
+    this.edit_group.title_ar = group.title.ar;
+    this.edit_group.title_en = group.title.en;
+    this.edit_group.terms_ar = group.terms.ar;
+    this.edit_group.terms_en = group.terms.en;
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      group_type: this.edit_group.group_type,
+      owner_id: this.edit_group.owner_id,
+      enable: this.edit_group.enable,
+      title: { 'en': this.edit_group.title_en, 'ar': this.edit_group.title_ar },
+      description: { 'en': this.edit_group.description_en, 'ar': this.edit_group.description_ar },
+      terms: { 'en': this.edit_group.terms_en, 'ar': this.edit_group.terms_ar }
+    }
+
+    const sub = this.api.update('groups/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true;}
+    );
+
+    sub.add(() => { this.getGroups(); });
   }
 
   addUserToGroup(group_id: any) {

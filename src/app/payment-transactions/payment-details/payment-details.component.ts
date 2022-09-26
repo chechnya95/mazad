@@ -13,6 +13,9 @@ export class PaymentDetailsComponent implements OnInit {
   payment: any;
   token: any;
 
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(private router: Router, private api: ApiService, public utility: UtilitiesService, private route: ActivatedRoute) {
     this.token = localStorage.getItem('access_token');
     this.utility.title = 'Payment Details';
@@ -43,5 +46,9 @@ export class PaymentDetailsComponent implements OnInit {
     sub.add(() => {
       if (!this.payment) { this.router.navigate(['payment-transactions']); }
     });
+  }
+
+  retry() {
+    this.successMessage = true;
   }
 }

@@ -396,6 +396,165 @@
                         <!--end::Modal dialog-->
                     </div>
                     <!--end::Modal - Add task-->
+                    <!--begin::Modal - Add task-->
+                    <div class="modal fade" id="kt_modal_edit_group" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header" id="kt_modal_edit_group_header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Update Group</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Form-->
+                                    <form id="kt_modal_edit_group_form" class="form" action="#">
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                            id="kt_modal_edit_group_scroll" data-kt-scroll="true"
+                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                            data-kt-scroll-max-height="auto"
+                                            data-kt-scroll-dependencies="#kt_modal_edit_group_header"
+                                            data-kt-scroll-wrappers="#kt_modal_edit_group_scroll"
+                                            data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Group Type</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="group_type"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_group.group_type">
+                                                    <option value="0">-- SELECT --</option>
+                                                    <option *ngFor="let type of types" [ngValue]='type'>{{
+                                                        type }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Owner</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_group.owner_id">
+                                                    <option value="0">-- SELECT --</option>
+                                                    <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
+                                                        owner.contact }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                    [(ngModel)]="edit_group.enable" id="enable">
+                                                <label class="form-check-label" for="enable">Enable</label>
+                                            </div>
+                                            <br>
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="title_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="English" [(ngModel)]="edit_group.title_en" />
+                                                <br>
+                                                <input type="text" name="title_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Arabic" [(ngModel)]="edit_group.title_ar" />
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="description_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description English"
+                                                    [(ngModel)]="edit_group.description_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="description_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description Arabic"
+                                                    [(ngModel)]="edit_group.description_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <textarea cols="20" rows="5" name="description_en"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description English"
+                                                    [(ngModel)]="edit_group.terms_en"></textarea>
+                                                <br>
+                                                <textarea cols="20" rows="5" name="description_ar"
+                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    placeholder="Description Arabic"
+                                                    [(ngModel)]="edit_group.terms_ar"></textarea>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                        </div>
+                                        <!--end::Scroll-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-bs-dismiss="modal">Discard</button>
+                                            <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_group_id)"
+                                                data-kt-groups-modal-action="submit">
+                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
+                    <!--end::Modal - Add task-->
                 </div>
                 <!--end::Card toolbar-->
             </div>
@@ -473,7 +632,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a data-bs-toggle="modal" data-bs-target="#kt_modal_edit_group"
+                                <a (click)="editGroupClicked(group)" data-bs-toggle="modal" data-bs-target="#kt_modal_edit_group"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
