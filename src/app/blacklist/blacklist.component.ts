@@ -23,6 +23,11 @@ export class BlacklistComponent implements OnInit {
     owner_id: null
   }
 
+  edit_blacklist = {
+    user_id: null,
+    owner_id: null
+  }
+
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
@@ -71,7 +76,7 @@ export class BlacklistComponent implements OnInit {
     this.getBlackLists(null);
   }
 
-  getBlackLists(id: any) {
+  getBlackLists(id?: any) {
     this.utility.loader = true;
     const sub = this.api.get('blacklists/', this.token, this.getHttpParams()).subscribe(
       async data => {
@@ -100,7 +105,7 @@ export class BlacklistComponent implements OnInit {
     this.api.post('blacklists/', body, this.token).subscribe(
       async data => {
         this.successMessage = true;
-        this.getBlackLists(null);
+        this.getBlackLists();
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
@@ -156,5 +161,45 @@ export class BlacklistComponent implements OnInit {
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
+  }
+
+  user_contact: any;
+  onChange() {
+    let user = this.users.find(i => i.contact === this.user_contact);
+    this.blacklist.user_id = user.id;
+    this.edit_blacklist.user_id = user.id;
+  }
+
+  owner_contact: any;
+  onChangeOwner() {
+    let owner = this.owners.find(i => i.contact === this.owner_contact);
+    this.blacklist.owner_id = owner.id;
+    this.edit_blacklist.owner_id = owner.id;
+  }
+
+  edit_list_id: any;
+  editListClicked(blacklist: any) {
+    this.edit_blacklist = blacklist;
+    this.edit_list_id = blacklist.id;
+
+    let user = this.users.find(i => i.user_id === blacklist.user_id);
+    let owner = this.owners.find(i => i.owner_id === blacklist.owner_id);
+
+    this.user_contact = user.contact;
+    this.owner_contact = owner.contact;
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      user_id: this.edit_blacklist.user_id == 0 ? null : this.edit_blacklist.user_id,
+      owner_id: this.edit_blacklist.owner_id == 0 ? null : this.edit_blacklist.owner_id
+    }
+
+    const sub = this.api.update('blacklists/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true;}
+    );
+
+    sub.add(() => { this.getBlackLists(); });
   }
 }
