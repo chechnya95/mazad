@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -69,7 +69,7 @@ export class BlacklistComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getBlackLists(null);
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -121,7 +121,13 @@ export class BlacklistComponent implements OnInit {
 
         this.users = objects.users;
         this.users.forEach(function (user) {
-          user.contact = user.email ? user.email : user.phone;
+          if (user.user_details) {
+            let user_details = JSON.parse(user.user_details);
+            user.contact = user_details.name_en ? user_details.name_en : user_details.name_ar ? user_details.name_ar : user.phone;
+          }
+          else {
+            user.contact = user.email ? user.email : user.phone;
+          }
         });
       },
       async error => {
@@ -142,7 +148,13 @@ export class BlacklistComponent implements OnInit {
 
         this.owners = objects.owners;
         this.owners.forEach(function (owner) {
-          owner.contact = owner.email ? owner.email : owner.phone;
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
         });
       },
       async error => {
@@ -179,14 +191,13 @@ export class BlacklistComponent implements OnInit {
 
   edit_list_id: any;
   editListClicked(blacklist: any) {
-    this.edit_blacklist = blacklist;
     this.edit_list_id = blacklist.id;
 
-    let user = this.users.find(i => i.user_id === blacklist.user_id);
-    let owner = this.owners.find(i => i.owner_id === blacklist.owner_id);
+    let user = this.users.find(i => i.id === blacklist.user.id);
+    let owner = this.owners.find(i => i.id === blacklist.owner.id);
 
-    this.user_contact = user.contact;
-    this.owner_contact = owner.contact;
+    this.user_contact = user.contact? user.contact : null;
+    this.owner_contact = owner.contact? owner.contact : null;
   }
 
   OnUpdate(id: any) {
@@ -197,7 +208,7 @@ export class BlacklistComponent implements OnInit {
 
     const sub = this.api.update('blacklists/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true;}
+      async errr => { console.log(errr); this.errorMessage = true; }
     );
 
     sub.add(() => { this.getBlackLists(); });

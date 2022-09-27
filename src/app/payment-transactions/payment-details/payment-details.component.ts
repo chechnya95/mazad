@@ -48,7 +48,17 @@ export class PaymentDetailsComponent implements OnInit {
     });
   }
 
-  retry() {
-    this.successMessage = true;
+  response: any;
+  retry(id: any) {
+    const sub = this.api.get('payments/check/' + id, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.successMessage = true;
+        this.response = 'Payment status is ' + objects['payments'];
+      },
+      async error => { this.errorMessage == true; }
+    );
+
+    sub.add(() => { });
   }
 }

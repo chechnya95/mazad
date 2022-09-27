@@ -161,7 +161,7 @@
                                                     <!--end::Modal title-->
                                                     <!--begin::Close-->
                                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                                    data-bs-dismiss="modal">
+                                                        data-bs-dismiss="modal">
                                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                                                         <span class="svg-icon svg-icon-1">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -277,9 +277,161 @@
                                                         <!--begin::Actions-->
                                                         <div class="text-center pt-15">
                                                             <button type="reset" class="btn btn-white me-3"
-                                                            data-bs-dismiss="modal">Discard</button>
+                                                                data-bs-dismiss="modal">Discard</button>
                                                             <button type="submit" class="btn btn-primary"
                                                                 (click)="OnSubmit()"
+                                                                data-kt-templates-modal-action="submit">
+                                                                <span class="indicator-label">Submit</span>
+                                                                <span class="indicator-progress">Please wait...
+                                                                    <span
+                                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                            </button>
+                                                        </div>
+                                                        <!--end::Actions-->
+                                                    </form>
+                                                    <!--end::Form-->
+                                                </div>
+                                                <!--end::Modal body-->
+                                            </div>
+                                            <!--end::Modal content-->
+                                        </div>
+                                        <!--end::Modal dialog-->
+                                    </div>
+                                    <!--end::Modal - Add task-->
+
+                                    <!--begin::Modal - Add task-->
+                                    <div class="modal fade" id="kt_modal_edit_template" tabindex="-1"
+                                        aria-hidden="true">
+                                        <!--begin::Modal dialog-->
+                                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                                            <!--begin::Modal content-->
+                                            <div class="modal-content">
+                                                <!--begin::Modal header-->
+                                                <div class="modal-header" id="kt_modal_edit_template_header">
+                                                    <!--begin::Modal title-->
+                                                    <h2 class="fw-bolder">Update Template</h2>
+                                                    <!--end::Modal title-->
+                                                    <!--begin::Close-->
+                                                    <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                        data-bs-dismiss="modal">
+                                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                                        <span class="svg-icon svg-icon-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                                height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                    fill="#000000">
+                                                                    <rect fill="#000000" x="0" y="7" width="16"
+                                                                        height="2" rx="1" />
+                                                                    <rect fill="#000000" opacity="0.5"
+                                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                                </g>
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </div>
+                                                    <!--end::Close-->
+                                                </div>
+                                                <!--end::Modal header-->
+                                                <!--begin::Modal body-->
+                                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                    <!--begin::Form-->
+                                                    <form id="kt_modal_edit_template_form" class="form" action="#">
+                                                        <!--begin::Scroll-->
+                                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                                            id="kt_modal_edit_template_scroll" data-kt-scroll="true"
+                                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                                            data-kt-scroll-max-height="auto"
+                                                            data-kt-scroll-dependencies="#kt_modal_edit_template_header"
+                                                            data-kt-scroll-wrappers="#kt_modal_edit_template_scroll"
+                                                            data-kt-scroll-offset="300px">
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label required">Template Key</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input type="text" name="key"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Unique Key"
+                                                                    [(ngModel)]="edit_template.key" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label required">Model Type</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input type="text" name="model_type"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Template model type"
+                                                                    [(ngModel)]="edit_template.model_type" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-7">
+                                                                <!--begin::Label-->
+                                                                <label class="required fw-bold fs-6 mb-2">Model
+                                                                    OP</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input type="text" name="model_op"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Template model OP"
+                                                                    [(ngModel)]="edit_template.model_op" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-7">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="required fw-bold fs-6 mb-2">Subject</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input type="text" name="subject_en"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Subject English"
+                                                                    [(ngModel)]="edit_template.subject_en" />
+                                                                <br>
+                                                                <input type="text" name="subject_ar"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Subject Arabic"
+                                                                    [(ngModel)]="edit_template.subject_ar" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-7">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="required fw-bold fs-6 mb-2">Content</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <textarea name="content_en" cols="20" rows="5"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Content English"
+                                                                    [(ngModel)]="edit_template.content_en"></textarea>
+                                                                <br>
+                                                                <textarea name="content_ar" cols="20" rows="5"
+                                                                    class="form-control form-control-solid mb-3 mb-lg-0"
+                                                                    placeholder="Content Arabic"
+                                                                    [(ngModel)]="edit_template.content_ar"></textarea>
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                        </div>
+                                                        <!--end::Scroll-->
+                                                        <!--begin::Actions-->
+                                                        <div class="text-center pt-15">
+                                                            <button type="reset" class="btn btn-white me-3"
+                                                                data-bs-dismiss="modal">Discard</button>
+                                                            <button type="submit" class="btn btn-primary"
+                                                                (click)="OnUpdate(edit_template_id)"
                                                                 data-kt-templates-modal-action="submit">
                                                                 <span class="indicator-label">Submit</span>
                                                                 <span class="indicator-progress">Please wait...
@@ -305,7 +457,8 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                <table mat-table matSort (matSortChange)="sortData($event)"
+                                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
@@ -470,7 +623,8 @@
                                             <!--end::end_date-->
                                             <!--begin::Action=-->
                                             <td class="text-end">
-                                                <a
+                                                <a (click)="editTemplateClicked(template)" data-bs-toggle="modal"
+                                                    data-bs-target="#kt_modal_edit_template"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                                     <span class="svg-icon svg-icon-3">
@@ -519,19 +673,78 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <pagination-controls
-                                        maxSize="7"
-                                        directionLinks="true"
-                                        autoHide="false"
-                                        responsive="true"
-                                        (pageChange)="pageChangeEvent($event)"
-                                        class="d-flex justify-content-center"
-                                    ></pagination-controls>
+                                    <pagination-controls maxSize="7" directionLinks="true" autoHide="false"
+                                        responsive="true" (pageChange)="pageChangeEvent($event)"
+                                        class="d-flex justify-content-center"></pagination-controls>
                                 </div>
                             </div>
                             <!--end::Card body-->
                         </div>
                         <!--end::Card-->
+
+                        <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                            style="overflow-y: auto;">
+                            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                                class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                                aria-live="assertive" aria-modal="true" style="display: flex;">
+                                <div class="swal2-header">
+                                    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                                            class="swal2-x-mark">
+                                            <span class="swal2-x-mark-line-left"></span>
+                                            <span class="swal2-x-mark-line-right"></span>
+                                        </span>
+                                    </div><img class="swal2-image" style="display: none;">
+                                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                                        type="button" class="swal2-close" aria-label="Close this dialog"
+                                        style="display: none;">×</button>
+                                </div>
+                                <div class="swal2-content">
+                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry,
+                                        looks like there
+                                        are some errors detected, please try again.</div>
+                                </div>
+                                <div class="swal2-actions">
+                                    <div class="swal2-loader"></div>
+                                    <button type="button" class="swal2-confirm btn btn-light"
+                                        style="display: inline-block;" (click)="errorMessage=false">Ok, got it!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                            style="overflow-y: auto;">
+                            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                                class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1"
+                                role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                                <div class="swal2-header">
+                                    <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                                        <div class="swal2-success-circular-line-left"
+                                            style="background-color: rgb(255, 255, 255);">
+                                        </div>
+                                        <span class="swal2-success-line-tip"></span> <span
+                                            class="swal2-success-line-long"></span>
+                                        <div class="swal2-success-ring"></div>
+                                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);">
+                                        </div>
+                                        <div class="swal2-success-circular-line-right"
+                                            style="background-color: rgb(255, 255, 255);">
+                                        </div>
+                                    </div><img class="swal2-image" style="display: none;">
+                                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                                        type="button" class="swal2-close" aria-label="Close this dialog"
+                                        style="display: none;">×</button>
+                                </div>
+                                <div class="swal2-content">
+                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request
+                                        has been
+                                        successfully submitted!</div>
+                                </div>
+                                <div class="swal2-actions">
+                                    <div class="swal2-loader"></div><button type="button"
+                                        class="swal2-confirm btn btn-primary" (click)="successMessage=false"
+                                        style="display: inline-block;">Ok</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

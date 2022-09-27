@@ -87,12 +87,12 @@
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_gateway }}</div>
                                         <!--end::Text-->
                                         <!--end::Description-->
-                                        <div class="fw-bold fs-7 text-gray-600">Gateway Status:
+                                        <div class="fw-bold fs-7 text-gray-600" *ngIf="payment?.gateway_status">Gateway Status:
                                                 <b><span class="badge badge-light-info me-2">{{
                                                     payment?.gateway_status
                                                     }}</span></b>
                                         </div>
-                                        <div class="fw-bold fs-7 text-gray-600">Gateway Id:
+                                        <div class="fw-bold fs-7 text-gray-600" *ngIf="payment?.gateway_transaction_id">Gateway Id:
                                             <b>{{ payment?.gateway_transaction_id }}</b>
                                         </div>
                                         <!--end::Description-->
@@ -246,7 +246,7 @@
                             <div class="mb-3" *ngIf="payment?.payment_status=='pending' && payment?.payment_type=='Online'">
                                 <div class="fw-bolder text-gray-800 fs-6">
                                     <span class="badge badge-light-info me-2">This Payment is Pending </span>
-                                    <button type="button" class="btn btn-danger" (click)="retry()">Retry</button>
+                                    <button type="button" class="btn btn-danger" (click)="retry(payment?.reference_id)">Retry</button>
                                 </div>
                             </div>
                         </div>
@@ -307,7 +307,9 @@
         </div>
         <div class="swal2-content">
             <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                successfully submitted!</div>
+                successfully submitted!
+           <h4>{{ response }}</h4>
+            </div>
         </div>
         <div class="swal2-actions">
             <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"

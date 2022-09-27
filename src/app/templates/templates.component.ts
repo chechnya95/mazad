@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -15,6 +15,9 @@ export class TemplatesComponent implements OnInit {
   templates: any[] = [];
   filter_config: any;
 
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   template = {
     key: null,
     model_type: null,
@@ -24,6 +27,18 @@ export class TemplatesComponent implements OnInit {
     content_en: null,
     content_ar: null
   }
+
+  edit_template = {
+    key: null,
+    model_type: null,
+    model_op: null,
+    subject_en: null,
+    subject_ar: null,
+    content_en: null,
+    content_ar: null
+  }
+
+  edit_template_id: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -56,7 +71,7 @@ export class TemplatesComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getTemplates();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -88,28 +103,50 @@ export class TemplatesComponent implements OnInit {
       content: { 'en': this.template.content_en, 'ar': this.template.content_ar }
     }
 
-    this.api.post("templates_contents/", body, this.token).subscribe(
-      async data => {
-        this.getTemplates();
-      },
-      async error => {
-        alert("ERROR: cannot connect!");
-        console.log(error);
-      }
+    const sub = this.api.post("templates_contents/", body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async error => { this.errorMessage = true; console.log(error); }
     );
+
+    sub.add(() => { this.getTemplates(); });
   }
 
   deleteTemplate(id: number) {
     if (confirm("Delete this template?")) {
-      this.api.delete("templates_contents/" + id, this.token).subscribe(
-        async data => {
-          this.getTemplates();
-        },
-        async error => {
-          alert("ERROR: cannot connect!");
-          console.log(error);
-        }
+      const sub = this.api.delete("templates_contents/" + id, this.token).subscribe(
+        async data => { this.successMessage = true; },
+        async error => { this.errorMessage = true; console.log(error); }
       );
+
+      sub.add(() => { this.getTemplates(); });
     }
+  }
+
+  editTemplateClicked(template: any) {
+    this.edit_template = template;
+    this.edit_template_id = template.id;
+
+    this.edit_template.subject_ar = template.subject['ar'];
+    this.edit_template.subject_en = template.subject['en'];
+    this.edit_template.content_ar = template.content['ar'];
+    this.edit_template.content_en = template.content['en'];
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      key: this.edit_template.key,
+      model_type: this.edit_template.model_type,
+      model_op: this.edit_template.model_op,
+      owner_id: null,
+      subject: { 'en': this.edit_template.subject_en, 'ar': this.edit_template.subject_ar },
+      content: { 'en': this.edit_template.content_en, 'ar': this.edit_template.content_ar }
+    }
+
+    const sub = this.api.update('templates_contents/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
+
+    sub.add(() => { this.getTemplates(); });
   }
 }
