@@ -99,6 +99,8 @@ export class TemplatesComponent implements OnInit {
       key: this.template.key,
       model_type: this.template.model_type,
       model_op: this.template.model_op,
+      //owner_id: null,
+      //model_id: null,
       subject: { 'en': this.template.subject_en, 'ar': this.template.subject_ar },
       content: { 'en': this.template.content_en, 'ar': this.template.content_ar }
     }
@@ -138,6 +140,7 @@ export class TemplatesComponent implements OnInit {
       model_type: this.edit_template.model_type,
       model_op: this.edit_template.model_op,
       owner_id: null,
+      model_id: null,
       subject: { 'en': this.edit_template.subject_en, 'ar': this.edit_template.subject_ar },
       content: { 'en': this.edit_template.content_en, 'ar': this.edit_template.content_ar }
     }
