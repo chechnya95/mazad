@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -13,12 +13,24 @@ export class DepositsComponent implements OnInit {
 
   token: any;
   deposits: any[] = [];
+  users: any[] = [];
   filter_config: any;
 
   depositFilter = '';
 
   note: any;
   deposit_id: any;
+
+  deposit = {
+    user_id: null,
+    transaction_id: null,
+    amount: null,
+    fee: null,
+    note: null,
+  }
+
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -53,7 +65,7 @@ export class DepositsComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getDeposits();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -73,7 +85,7 @@ export class DepositsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.utility.loader = false; });
+    sub.add(() => { this.utility.loader = false; this.getUsers(); });
   }
 
   itemId(id: any, note: any) {
@@ -85,6 +97,54 @@ export class DepositsComponent implements OnInit {
     const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.getDeposits(); },
       async errr => { console.log(errr); }
+    );
+  }
+
+  user_contact: any;
+  onChange() {
+    let user = this.users.find(i => i.contact === this.user_contact);
+    this.deposit.user_id = user.id;
+  }
+
+  onSubmit() {
+    let body = {
+      user_id: this.deposit.user_id,
+      transaction_id: this.deposit.user_id,
+      amount: this.deposit.amount,
+      fee: this.deposit.fee,
+      note: this.deposit.note
+    }
+    const sub = this.api.post('deposits/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+    sub.add(() => { this.getDeposits(); });
+  }
+
+  async getUsers() {
+    const sub = this.api.get('users/', this.token).subscribe(
+      async data => {
+        let objects: any = {
+          users: []
+        }
+        objects = data;
+
+        this.users = objects.users;
+        this.users.forEach(function (user) {
+          if (user.user_details) {
+            let user_details = JSON.parse(user.user_details);
+            user.contact = user_details.name_en ? user_details.name_en : user_details.name_ar ? user_details.name_ar : user.phone;
+          }
+          else {
+            user.contact = user.email ? user.email : user.phone;
+          }
+        });
+      },
+      async error => {
+        console.log(error);
+      }
     );
   }
 }
