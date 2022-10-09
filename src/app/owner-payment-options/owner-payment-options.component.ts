@@ -28,6 +28,19 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     vat_for_mazad: null
   }
 
+  edit_payment_options = {
+    option: null,
+    owner_id: null,
+    config_id: null,
+
+    auction_fee: null,
+    mazad_auction_fee: null,
+    mazad_service_fee: null,
+    vat_for_item: null,
+    vat_for_mazad: null
+  }
+
+  edit_option_id: any;
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
@@ -91,7 +104,13 @@ export class OwnerPaymentOptionsComponent implements OnInit {
 
         this.owners = objects.owners;
         this.owners.forEach(function (owner) {
-          owner.contact = owner.email ? owner.email : owner.phone;
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
         });
       },
       async error => {
@@ -122,5 +141,38 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         this.errorMessage = true;
       }
     );
+  }
+
+  editOptionClicked(option: any) {
+    this.edit_payment_options = option;
+    this.edit_option_id = option.id;
+
+    this.edit_payment_options.option = option.option;
+  }
+
+  OnUpdate(id: any) {
+    let body = {
+      option: this.edit_payment_options.option,
+      owner_id: this.edit_payment_options.owner_id,
+      config_id: this.edit_payment_options.config_id,
+      auction_fee: this.edit_payment_options.auction_fee,
+      mazad_auction_fee: this.edit_payment_options.mazad_auction_fee,
+      mazad_service_fee: this.edit_payment_options.mazad_service_fee,
+      vat_for_item: this.edit_payment_options.vat_for_item,
+      vat_for_mazad: this.edit_payment_options.vat_for_mazad
+    }
+
+    const sub = this.api.update('owner_payment_options/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
+
+    sub.add(() => { this.getPaymentOptions(); });
+  }
+
+  onChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.payment_options.owner_id = owner.id;
+    this.edit_payment_options.owner_id = owner.id;
   }
 }

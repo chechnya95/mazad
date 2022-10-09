@@ -300,9 +300,21 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <!--end::Label-->
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
+                                                    list="ownersList" id="ownersList_id"
+                                                    placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
+                                            </div>
+                                            <!-- <div class="fv-row mb-7">
+                                                <!--begin::Label--
                                                 <label class="required fw-bold fs-6 mb-2">Owner</label>
                                                 <!--end::Label-->
-                                                <!--begin::Input-->
+                                            <!--begin::Input--
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="group.owner_id">
@@ -310,15 +322,9 @@
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                                         owner.contact }}</option>
                                                 </select>
-                                                <!--end::Input-->
-                                            </div>
+                                                <!--end::Input--
+                                            </div> -->
                                             <!--end::Input group-->
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox"
-                                                    [(ngModel)]="group.enable" id="enable">
-                                                <label class="form-check-label" for="enable">Enable</label>
-                                            </div>
-                                            <br>
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
@@ -371,6 +377,13 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        [(ngModel)]="group.enable" id="enable">
+                                                    <label class="form-check-label" for="enable">Enable Group</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
@@ -456,12 +469,24 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
-                                            <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <!--end::Label-->
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
+                                                    list="ownersList" id="ownersList_id"
+                                                    placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
+                                            </div>
+                                            <!--begin::Input group-->
+                                            <!-- <div class="fv-row mb-7">
+                                                <!--begin::Label--
                                                 <label class="required fw-bold fs-6 mb-2">Owner</label>
                                                 <!--end::Label-->
-                                                <!--begin::Input-->
+                                            <!--begin::Input--
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_group.owner_id">
@@ -469,15 +494,9 @@
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                                         owner.contact }}</option>
                                                 </select>
-                                                <!--end::Input-->
-                                            </div>
+                                                <!--end::Input--
+                                            </div> -->
                                             <!--end::Input group-->
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox"
-                                                    [(ngModel)]="edit_group.enable" id="enable">
-                                                <label class="form-check-label" for="enable">Enable</label>
-                                            </div>
-                                            <br>
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
@@ -530,14 +549,21 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        [(ngModel)]="edit_group.enable" id="enable">
+                                                    <label class="form-check-label" for="enable">Enable Group</label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">Discard</button>
-                                            <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_group_id)"
-                                                data-kt-groups-modal-action="submit">
+                                            <button type="submit" class="btn btn-primary"
+                                                (click)="OnUpdate(edit_group_id)" data-kt-groups-modal-action="submit">
                                                 <span class="indicator-label">Submit</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
@@ -562,7 +588,8 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_groups">
+                <table mat-table matSort (matSortChange)="sortData($event)"
+                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_groups">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -599,8 +626,7 @@
                             </td>
                             <!--end::Owner=-->
                             <td>
-                                <a [routerLink]="['/owners']" [queryParams]="{ id: group?.owner?.id }">{{
-                                    group?.owner?.title.en }}</a>
+                                <a [routerLink]="['/owners']" [queryParams]="{ id: group?.owner_id }">{{getOwnerName(group?.owner_id)}}</a>
                             </td>
                             <td>
                                 {{ group.title.en }} - {{ group.title.ar }}
@@ -632,7 +658,8 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <a (click)="editGroupClicked(group)" data-bs-toggle="modal" data-bs-target="#kt_modal_edit_group"
+                                <a (click)="editGroupClicked(group)" data-bs-toggle="modal"
+                                    data-bs-target="#kt_modal_edit_group"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -671,7 +698,8 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <!--begin::Modal - Add task-->
-                                <div class="modal fade" id="kt_modal_add_user_to_group" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="kt_modal_add_user_to_group" tabindex="-1"
+                                    aria-hidden="true">
                                     <!--begin::Modal dialog-->
                                     <div class="modal-dialog modal-dialog-centered mw-650px">
                                         <!--begin::Modal content-->
@@ -769,72 +797,71 @@
                 <!--end::Table-->
                 <div class="has-text-centered">
                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                    <pagination-controls
-                        maxSize="7"
-                        directionLinks="true"
-                        autoHide="false"
-                        responsive="true"
-                        (pageChange)="pageChangeEvent($event)"
-                        class="d-flex justify-content-center"
-                    ></pagination-controls>
+                    <pagination-controls maxSize="7" directionLinks="true" autoHide="false" responsive="true"
+                        (pageChange)="pageChangeEvent($event)" class="d-flex justify-content-center">
+                    </pagination-controls>
+                </div>
+                <!--end::Card body-->
             </div>
-            <!--end::Card body-->
-        </div>
-        <!--end::Card-->
-        <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
-            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
-                class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
-                aria-live="assertive" aria-modal="true" style="display: flex;">
-                <div class="swal2-header">
-                    <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
-                            class="swal2-x-mark">
-                            <span class="swal2-x-mark-line-left"></span>
-                            <span class="swal2-x-mark-line-right"></span>
-                        </span>
-                    </div><img class="swal2-image" style="display: none;">
-                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
-                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
-                </div>
-                <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
-                        are some errors detected, please try again.</div>
-                </div>
-                <div class="swal2-actions">
-                    <div class="swal2-loader"></div>
-                    <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                        (click)="errorMessage=false">Ok, got it!</button>
+            <!--end::Card-->
+            <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1" role="dialog"
+                    aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                                class="swal2-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                            </span>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                            class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like
+                            there
+                            are some errors detected, please try again.</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div>
+                        <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
+                            (click)="errorMessage=false">Ok, got it!</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
-            <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
-                class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
-                aria-live="assertive" aria-modal="true" style="display: flex;">
-                <div class="swal2-header">
-                    <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
-                        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
-                        </div>
-                        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
-                        <div class="swal2-success-ring"></div>
-                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-                        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);">
-                        </div>
-                    </div><img class="swal2-image" style="display: none;">
-                    <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
-                        class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
-                </div>
-                <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                        successfully submitted!</div>
-                </div>
-                <div class="swal2-actions">
-                    <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+            <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1" role="dialog"
+                    aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                            <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                            <div class="swal2-success-ring"></div>
+                            <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                            <div class="swal2-success-circular-line-right"
+                                style="background-color: rgb(255, 255, 255);">
+                            </div>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button type="button"
+                            class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
+                            successfully submitted!</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
+                            (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- spinnner element is defined with id loading -->
-<div *ngIf="this.utility.loader" class="loading"></div>
+    <!-- spinnner element is defined with id loading -->
+    <div *ngIf="this.utility.loader" class="loading"></div>

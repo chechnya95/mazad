@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -87,7 +87,7 @@ export class GroupsComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getGroups();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -106,6 +106,8 @@ export class GroupsComponent implements OnInit {
 
         if (id)
           this.groups = this.groups.filter(i => i.id === id);
+
+        console.log(this.groups);
       },
       async error => {
         alert(error);
@@ -146,7 +148,13 @@ export class GroupsComponent implements OnInit {
 
         this.owners = objects.owners;
         this.owners.forEach(function (owner) {
-          owner.contact = owner.email ? owner.email : owner.phone;
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
         });
       },
       async error => {
@@ -216,7 +224,7 @@ export class GroupsComponent implements OnInit {
 
     const sub = this.api.update('groups/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true;}
+      async errr => { console.log(errr); this.errorMessage = true; }
     );
 
     sub.add(() => { this.getGroups(); });
@@ -245,5 +253,17 @@ export class GroupsComponent implements OnInit {
       },
       async error => { console.log(error); this.errorMessage = true; }
     );
+  }
+
+  onChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.group.owner_id = owner.id;
+    this.edit_group.owner_id = owner.id;
+  }
+
+  getOwnerName(id?: any) {
+    let owner = this.owners.find(i => i.id === id);
+
+    return owner.contact;
   }
 }

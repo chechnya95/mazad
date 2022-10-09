@@ -138,6 +138,16 @@ export class NewItemComponent implements OnInit {
         objects = data;
         this.owners = objects.owners;
 
+        this.owners.forEach(function (owner) {
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
+        });
+        
         this.getCategories();
       },
       async error => {
@@ -357,5 +367,10 @@ export class NewItemComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  onChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.item.owner_id = owner.id;
   }
 }

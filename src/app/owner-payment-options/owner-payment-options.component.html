@@ -301,12 +301,24 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
-                                            <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <!--end::Label-->
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
+                                                    list="ownersList" id="ownersList_id"
+                                                    placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
+                                            </div>
+                                            <!--begin::Input group-->
+                                            <!-- <div class="fv-row mb-7">
+                                                <!--begin::Label--
                                                 <label class="required fw-bold fs-6 mb-2">Owner</label>
                                                 <!--end::Label-->
-                                                <!--begin::Input-->
+                                                <!--begin::Input--
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.owner_id">
@@ -314,8 +326,8 @@
                                                     <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                                         owner.contact }}</option>
                                                 </select>
-                                                <!--end::Input-->
-                                            </div>
+                                                <!--end::Input--
+                                            </div> -->
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
@@ -349,7 +361,7 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.auction_fee" type="number" class="form-control form-control-solid"
                                                             name="auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -370,7 +382,7 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.mazad_auction_fee" type="number" class="form-control form-control-solid"
                                                             name="mazad_auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -391,7 +403,7 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.mazad_service_fee" type="number" class="form-control form-control-solid"
                                                             name="mazad_service_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -416,7 +428,7 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.vat_for_item" type="number" class="form-control form-control-solid"
                                                             name="vat_for_item" />
                                                         <!--end::Input-->
                                                     </div>
@@ -437,7 +449,7 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.vat_for_mazad" type="number" class="form-control form-control-solid"
                                                             name="vat_for_mazad" />
                                                         <!--end::Input-->
                                                     </div>
@@ -453,6 +465,233 @@
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
+                                                data-kt-payment-optionss-modal-action="submit">
+                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-progress">Please wait...
+                                                    <span
+                                                        class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                        </div>
+                                        <!--end::Actions-->
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                                <!--end::Modal body-->
+                            </div>
+                            <!--end::Modal content-->
+                        </div>
+                        <!--end::Modal dialog-->
+                    </div>
+                    <!--end::Modal - Add task-->
+                    <!--begin::Modal - Add task-->
+                    <div class="modal fade" id="kt_modal_edit_payment-options" tabindex="-1" aria-hidden="true">
+                        <!--begin::Modal dialog-->
+                        <div class="modal-dialog modal-dialog-centered mw-650px">
+                            <!--begin::Modal content-->
+                            <div class="modal-content">
+                                <!--begin::Modal header-->
+                                <div class="modal-header" id="kt_modal_edit_payment-options_header">
+                                    <!--begin::Modal title-->
+                                    <h2 class="fw-bolder">Edit Owner Payment Option</h2>
+                                    <!--end::Modal title-->
+                                    <!--begin::Close-->
+                                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                    fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5"
+                                                        transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                        x="0" y="7" width="16" height="2" rx="1" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </div>
+                                    <!--end::Close-->
+                                </div>
+                                <!--end::Modal header-->
+                                <!--begin::Modal body-->
+                                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                    <!--begin::Form-->
+                                    <form id="kt_modal_edit_payment-options_form" class="form" action="#">
+                                        <!--begin::Scroll-->
+                                        <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                            id="kt_modal_edit_payment-options_scroll" data-kt-scroll="true"
+                                            data-kt-scroll-activate="{default: false, lg: true}"
+                                            data-kt-scroll-max-height="auto"
+                                            data-kt-scroll-dependencies="#kt_modal_edit_payment-options_header"
+                                            data-kt-scroll-wrappers="#kt_modal_edit_payment-options_scroll"
+                                            data-kt-scroll-offset="300px">
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Option</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_payment_options.option">
+                                                    <option value="0">-- SELECT --</option>
+                                                    <option *ngFor="let option of options" [ngValue]='option'>{{
+                                                        option }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <!--end::Label-->
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
+                                                    list="ownersList" id="ownersList_id"
+                                                    placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
+                                            </div>
+                                            <!--begin::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="required fw-bold fs-6 mb-2">Configuration</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_payment_options.config_id">
+                                                    <option value="0">-- SELECT --</option>
+                                                    <option *ngFor="let config of configs" [ngValue]='config.id'>{{
+                                                        config.name }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="row mb-10">
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>Auction Fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee percentage"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input [(ngModel)]="edit_payment_options.auction_fee" type="number" class="form-control form-control-solid"
+                                                            name="auction_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>Mazad Auction Fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee cap"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input [(ngModel)]="edit_payment_options.mazad_auction_fee" type="number" class="form-control form-control-solid"
+                                                            name="mazad_auction_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>Mazad Service Fee</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="Specify the payment limit"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input [(ngModel)]="edit_payment_options.mazad_service_fee" type="number" class="form-control form-control-solid"
+                                                            name="mazad_service_fee" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="row mb-10">
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>Vat For Item</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee percentage"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input [(ngModel)]="edit_payment_options.vat_for_item" type="number" class="form-control form-control-solid"
+                                                            name="vat_for_item" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-md-4 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label
+                                                        class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                        <span>Vat For Mazad</span>
+                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                            data-bs-toggle="tooltip"
+                                                            title="What is the bank fee cap"></i>
+                                                    </label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input wrapper-->
+                                                    <div class="position-relative">
+                                                        <!--begin::Input-->
+                                                        <input [(ngModel)]="edit_payment_options.vat_for_mazad" type="number" class="form-control form-control-solid"
+                                                            name="vat_for_mazad" />
+                                                        <!--end::Input-->
+                                                    </div>
+                                                    <!--end::Input wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Input group-->
+                                        </div>
+                                        <!--end::Scroll-->
+                                        <!--begin::Actions-->
+                                        <div class="text-center pt-15">
+                                            <button type="reset" class="btn btn-white me-3"
+                                                data-bs-dismiss="modal">Discard</button>
+                                            <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_option_id)"
                                                 data-kt-payment-optionss-modal-action="submit">
                                                 <span class="indicator-label">Submit</span>
                                                 <span class="indicator-progress">Please wait...
@@ -522,7 +761,8 @@
                             </td>
                             <!--begin::Action=-->
                             <td class="text-end">
-                                <a data-bs-toggle="modal" data-bs-target="#kt_modal_edit_payment-options"
+                                <a (click)="editOptionClicked(option)"
+                                data-bs-toggle="modal" data-bs-target="#kt_modal_edit_payment-options"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
