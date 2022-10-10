@@ -13,6 +13,25 @@
                     <h3 class="fw-bolder m-0">Wallets</h3>
                 </div>
                 <!--end::Card title-->
+                <!--begin::Card Toolbar-->
+                <div class="card-toolbar">
+                    <div class="d-flex justify-content-end" data-kt-blacklist-table-toolbar="base">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#kt_modal_add_wallet">
+                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.5"
+                                        transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)"
+                                        x="4" y="11" width="16" height="2" rx="1" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->Add Wallet
+                        </button>
+                    </div>
+                </div>
             </div>
             <!--begin::Card header-->
             <!--begin::Content-->
@@ -191,6 +210,166 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="kt_modal_add_wallet" tabindex="-1" aria-hidden="true">
+                <!--begin::Modal dialog-->
+                <div class="modal-dialog modal-dialog-centered mw-750px">
+                    <!--begin::Modal content-->
+                    <div class="modal-content">
+                        <!--begin::Modal header-->
+                        <div class="modal-header">
+                            <!--begin::Modal title-->
+                            <h2 class="fw-bolder">Add Wallet</h2>
+                            <!--end::Modal title-->
+                            <!--begin::Close-->
+                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                data-bs-dismiss="modal">
+                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                            fill="#000000">
+                                            <rect fill="#000000" x="0" y="7" width="16" height="2"
+                                                rx="1" />
+                                            <rect fill="#000000" opacity="0.5"
+                                                transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                x="0" y="7" width="16" height="2" rx="1" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Modal header-->
+                        <!--begin::Modal body-->
+                        <div class="modal-body scroll-y mx-lg-5 my-7">
+                            <!--begin::Scroll-->
+                            <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                id="kt_modal_add_wallet_scroll" data-kt-scroll="true"
+                                data-kt-scroll-activate="{default: false, lg: true}"
+                                data-kt-scroll-max-height="auto"
+                                data-kt-scroll-dependencies="#kt_modal_add_wallet_header"
+                                data-kt-scroll-wrappers="#kt_modal_add_wallet_scroll"
+                                data-kt-scroll-offset="300px">
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">User</label>
+                                    <!--end::Label-->
+                                    <input class="form-control header-color" [(ngModel)]="user_contact" (keyup.enter)="onChange()"
+                                        (change)="onChange()" list="usersList" id="usersList_id"
+                                        placeholder="type user's contact ..." />
+                                    <datalist id="usersList">
+                                        <option *ngFor="let user of users" [value]="user.contact">
+                                    </datalist>
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="fs-5 fw-bolder form-label mb-2">
+                                        <span>Auction</span>
+                                    </label>
+                                    <select name="auction_id" class="form-select form-select-lg form-select-solid"
+                                        [(ngModel)]="wallet.auction_id">
+                                        <option *ngFor="let auction of auctions" [ngValue]='auction.id'>
+                                            {{ auction.code
+                                            }}</option>
+                                    </select>
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="fs-5 fw-bolder form-label mb-2">
+                                        <span class="required">Amount</span>
+                                    </label>
+                                    <input type="number" name="amount"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="wallet.amount" />
+                                </div>
+                            </div>
+                            <!--end::Scroll-->
+                            <!--begin::Actions-->
+                            <div class="text-center pt-15">
+                                <button type="reset" class="btn btn-white me-3"
+                                    data-bs-dismiss="modal">Discard</button>
+                                <button type="submit" class="btn btn-primary"
+                                    (click)="onSubmit()" data-kt-roles-modal-action="submit">
+                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span
+                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Modal body-->
+                    </div>
+                    <!--end::Modal content-->
+                </div>
+                <!--end::Modal dialog-->
+            </div>
+            <!--end::Modal - Add fields-->
+            <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1"
+                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                                class="swal2-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                            </span>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                            type="button" class="swal2-close" aria-label="Close this dialog"
+                            style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
+                            Sorry, looks like there
+                            are some errors detected, please try again.</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div>
+                        <button type="button" class="swal2-confirm btn btn-light"
+                            style="display: inline-block;" (click)="errorMessage=false">Ok, got
+                            it!</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1"
+                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                            <div class="swal2-success-circular-line-left"
+                                style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            <span class="swal2-success-line-tip"></span> <span
+                                class="swal2-success-line-long"></span>
+                            <div class="swal2-success-ring"></div>
+                            <div class="swal2-success-fix"
+                                style="background-color: rgb(255, 255, 255);"></div>
+                            <div class="swal2-success-circular-line-right"
+                                style="background-color: rgb(255, 255, 255);">
+                            </div>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                            type="button" class="swal2-close" aria-label="Close this dialog"
+                            style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
+                            Request has been
+                            successfully submitted!</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div><button type="button"
+                            class="swal2-confirm btn btn-primary" (click)="successMessage=false"
+                            style="display: inline-block;">Ok</button>
                     </div>
                 </div>
             </div>

@@ -63,6 +63,7 @@ import { MessageDetailsComponent } from './messages/message-details/message-deta
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSortModule} from '@angular/material/sort';
 import { GeneralSettingsComponent } from './settings/general-settings/general-settings.component';
+import { PrintComponent } from './invoices/print/print.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { GeneralSettingsComponent } from './settings/general-settings/general-se
     Nl2brPipe,
     ReportsComponent,
     MessageDetailsComponent,
-    GeneralSettingsComponent
+    GeneralSettingsComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,
@@ -166,6 +168,7 @@ import { GeneralSettingsComponent } from './settings/general-settings/general-se
       { path: 'wallets', component: WalletsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'deposits', component: DepositsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'print_invoice', component: PrintComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoice-details', component: InvoiceDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'owner-payment-options', component: OwnerPaymentOptionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

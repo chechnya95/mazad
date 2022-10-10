@@ -1,0 +1,160 @@
+<div id="kt_account_profile_details" class="collapse show">
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container">
+            <div class="post d-flex flex-column-fluid" id="kt_post">
+                <!--begin::Container-->
+                <div id="kt_content_container" class="container">
+                    <!--begin::Invoice 2 main-->
+                    <div class="card">
+                        <!--begin::Body-->
+                        <div class="card-body p-lg-10">
+                            <!--begin::Layout-->
+                            <div class="d-flex flex-column flex-xl-row">
+                                <!--begin::Content-->
+                                <div class="flex-lg-row-fluid mx-8 mb-10 mb-xl-0" dir="auto">
+                                    <!--begin::Invoice 2 content-->
+                                    <div class="mt-n1">
+                                        <!--begin::Wrapper-->
+                                        <div class="m-0">
+                                            <!--begin::Label-->
+                                            <div class="fw-bolder fs-3 text-gray-800 mb-8">رقم
+                                                الإيصال {{ this.invoice?.number }}</div>
+                                            <!--end::Label-->
+                                            <!--begin::Row-->
+                                            <div class="row g-5 mb-11">
+                                                <!--end::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--end::Label-->
+                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
+                                                        Issue Date:</div>
+                                                    <!--end::Label-->
+                                                    <!--end::Col-->
+                                                    <div class="fw-bolder fs-6 text-gray-800">
+                                                        {{this.invoice?.date | date:'mediumDate'}}
+                                                    </div>
+                                                    <!--end::Col-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--end::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--end::Label-->
+                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
+                                                        Payment Model:</div>
+                                                    <!--end::Label-->
+                                                    <!--end::Info-->
+                                                    <div class="fw-bolder fs-6 text-gray-800">
+                                                        {{this.invoice?.model_type | titlecase }}
+                                                    </div>
+                                                    <!--end::Info-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                            <!--begin::Row-->
+                                            <div class="row g-5 mb-12">
+                                                <!--end::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--end::Label-->
+                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
+                                                        Issue For:</div>
+                                                    <!--end::Label-->
+                                                    <!--end::Text-->
+                                                    <div class="fw-bolder fs-6 text-gray-800">
+                                                        {{this.invoice?.user_details.email}}</div>
+                                                    <!--end::Text-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">
+                                                        {{this.invoice?.user_details.phone}}
+                                                        <!-- <br />Livonia, MI 48150 -->
+                                                    </div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--end::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--end::Label-->
+                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
+                                                        Issued By:</div>
+                                                    <!--end::Label-->
+                                                    <!--end::Text-->
+                                                    <div class="fw-bolder fs-6 text-gray-800">
+                                                        Mazad Oman</div>
+                                                    <!--end::Text-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">Mazad
+                                                        Oman.
+                                                        <!-- <br />Matthews, NC 28104 -->
+                                                    </div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Table-->
+                                        <div class="table-responsive border-bottom mb-9">
+                                            <table class="table mb-3">
+                                                <thead>
+                                                    <tr class="fs-6 fw-bolder text-gray-400">
+                                                        <th class="min-w-70px text-end pb-2">
+                                                            Description</th>
+                                                        <th class="min-w-80px text-end pb-2">
+                                                            Fee</th>
+                                                        <th class="min-w-100px text-end pb-2">
+                                                            Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr
+                                                        class="fw-bolder text-gray-700 fs-5 text-end">
+                                                        <td>{{this.invoice?.details.description}}
+                                                        </td>
+                                                        <td>{{this.invoice?.details.fee}}
+                                                        </td>
+                                                        <td class="fs-5 text-dark fw-boldest">
+                                                            {{this.invoice?.details.amount |
+                                                            currency:' OMR '}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--end::Table-->
+                                        <!--begin::Container-->
+                                        <div class="d-flex justify-content-end">
+                                            <!--begin::Section-->
+                                            <div class="mw-300px">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack">
+                                                    <!--begin::Code-->
+                                                    <div class="fw-bold pe-10 text-gray-600 fs-7">
+                                                        المجموع الكلي</div>
+                                                    <!--end::Code-->
+                                                    <!--begin::Label-->
+                                                    <div
+                                                        class="text-end fw-bolder fs-6 text-gray-800">
+                                                        {{this.invoice?.total_amount |
+                                                        currency:' OMR ' }}</div>
+                                                    <!--end::Label-->
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Section-->
+                                        </div>
+                                        <!--end::Container-->
+                                    </div>
+                                    <!--end::Invoice 2 content-->
+                                </div>
+                                <!--end::Content-->
+                            </div>
+                            <!--end::Layout-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Invoice 2 main-->
+                </div>
+                <!--end::Container-->
+            </div>
+        </div>
+    </div>
+</div>

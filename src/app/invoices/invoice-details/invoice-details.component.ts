@@ -24,4 +24,8 @@ export class InvoiceDetailsComponent implements OnInit {
     if (this.invoice) { this.invoice.user_details.details = this.invoice.user_details.details ? JSON.parse(this.invoice.user_details.details) : ''; }
     else { this.router.navigate(['auctions']); }
   }
+
+  printInv() {
+    localStorage.setItem('invoice', JSON.stringify(this.invoice));
+  }
 }
