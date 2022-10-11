@@ -3,7 +3,7 @@
         <div id="kt_content_container" class="container">
             <div class="post d-flex flex-column-fluid" id="kt_post">
                 <!--begin::Container-->
-                <div id="kt_content_container" class="container">
+                <div id="kt_content_container" class="container" style="width: 70%;">
                     <!--begin::Invoice 2 main-->
                     <div class="card">
                         <!--begin::Body-->
@@ -20,6 +20,9 @@
                                             <div class="fw-bolder fs-3 text-gray-800 mb-8">رقم
                                                 الإيصال {{ this.invoice?.number }}</div>
                                             <!--end::Label-->
+                                            <div class="row"
+                                                style="height: 5px; background-color: #51689c; margin-bottom: 15px; margin-top: 10px;">
+                                            </div>
                                             <!--begin::Row-->
                                             <div class="row g-5 mb-11">
                                                 <!--end::Col-->
@@ -51,15 +54,19 @@
                                             </div>
                                             <!--end::Row-->
                                             <!--begin::Row-->
-                                            <div class="row g-5 mb-12">
+                                            <div class="row g-5 mb-5">
                                                 <!--end::Col-->
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6" style="margin: 0;">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
                                                         Issue For:</div>
                                                     <!--end::Label-->
                                                     <!--end::Text-->
-                                                    <div class="fw-bolder fs-6 text-gray-800">
+                                                    <div class="fw-bolder fs-6 text-gray-800" *ngIf="this.invoice?.user_details.details.name_en">
+                                                        {{this.invoice?.user_details.details.name_en}}</div>
+                                                    <!--end::Text-->
+                                                    <!--end::Text-->
+                                                    <div class="fw-bolder fs-7 text-gray-600">
                                                         {{this.invoice?.user_details.email}}</div>
                                                     <!--end::Text-->
                                                     <!--end::Description-->
@@ -71,7 +78,7 @@
                                                 </div>
                                                 <!--end::Col-->
                                                 <!--end::Col-->
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6" style="margin: 0;">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
                                                         Issued By:</div>
@@ -81,8 +88,12 @@
                                                         Mazad Oman</div>
                                                     <!--end::Text-->
                                                     <!--end::Description-->
-                                                    <div class="fw-bold fs-7 text-gray-600">Mazad
-                                                        Oman.
+                                                    <div class="fw-bold fs-7 text-gray-600">Digital Leadership LLC
+                                                        <!-- <br />Matthews, NC 28104 -->
+                                                    </div>
+                                                    <!--end::Description-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">91900950 | 99871109 | 90125442
                                                         <!-- <br />Matthews, NC 28104 -->
                                                     </div>
                                                     <!--end::Description-->
@@ -93,10 +104,11 @@
                                         </div>
                                         <!--end::Wrapper-->
                                         <!--begin::Table-->
-                                        <div class="table-responsive border-bottom mb-9">
-                                            <table class="table mb-3">
+                                        <hr style="margin-top: 15px; height:2px;border:none;color:#51689c;background-color:#51689c;">
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
                                                 <thead>
-                                                    <tr class="fs-6 fw-bolder text-gray-400">
+                                                    <tr class="fs-8 fw-bolder text-gray-400">
                                                         <th class="min-w-70px text-end pb-2">
                                                             Description</th>
                                                         <th class="min-w-80px text-end pb-2">
@@ -106,13 +118,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr
-                                                        class="fw-bolder text-gray-700 fs-5 text-end">
+                                                    <tr class="fw-bolder text-gray-700 fs-8 text-end">
                                                         <td>{{this.invoice?.details.description}}
                                                         </td>
                                                         <td>{{this.invoice?.details.fee}}
                                                         </td>
-                                                        <td class="fs-5 text-dark fw-boldest">
+                                                        <td class="text-dark fw-boldest">
                                                             {{this.invoice?.details.amount |
                                                             currency:' OMR '}}</td>
                                                     </tr>
@@ -120,6 +131,7 @@
                                             </table>
                                         </div>
                                         <!--end::Table-->
+                                        <div class="row" style="height: 5px; background-color: #51689c; margin-bottom: 5px;"></div>
                                         <!--begin::Container-->
                                         <div class="d-flex justify-content-end">
                                             <!--begin::Section-->
@@ -131,8 +143,7 @@
                                                         المجموع الكلي</div>
                                                     <!--end::Code-->
                                                     <!--begin::Label-->
-                                                    <div
-                                                        class="text-end fw-bolder fs-6 text-gray-800">
+                                                    <div class="text-end fw-bolder fs-6 text-gray-800">
                                                         {{this.invoice?.total_amount |
                                                         currency:' OMR ' }}</div>
                                                     <!--end::Label-->
