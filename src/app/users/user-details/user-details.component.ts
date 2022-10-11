@@ -20,7 +20,9 @@ export class UserDetailsComponent implements OnInit {
   successMessage: boolean = false;
   userBlocked: boolean = false;
 
+  deposit_id: any;
   block_id: any;
+  note: any;
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -102,7 +104,6 @@ export class UserDetailsComponent implements OnInit {
         let object = JSON.parse(JSON.stringify(res));
         this.deposits = object['deposits'];
 
-        console.log(this.deposits);
         this.deposits = this.deposits.filter(i => i.user.id === id);
       },
       err => {
@@ -127,5 +128,28 @@ export class UserDetailsComponent implements OnInit {
     );
 
     sub.add(() => { });
+  }
+
+  requestRefund(id: any) {
+    this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
+  }
+
+  insuranceConfiscation(id: any) {
+
+  }
+
+  itemId(id: any, note: any) {
+    this.deposit_id = id;
+    this.note = note;
+  }
+
+  adddNote(id: any) {
+    const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
   }
 }
