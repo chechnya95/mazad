@@ -147,4 +147,11 @@ export class DepositsComponent implements OnInit {
       }
     );
   }
+
+  requestRefund(id: any) {
+    this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
+  }
 }

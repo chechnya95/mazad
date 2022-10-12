@@ -14,6 +14,10 @@ export class AuctionDetailsComponent implements OnInit {
   items: any[] = [];
   templates: any[] = [];
 
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+  approvalModal: boolean = false;
+
   constructor(private router: Router, private api: ApiService) {
     this.token = localStorage.getItem('access_token');
   }
@@ -49,5 +53,9 @@ export class AuctionDetailsComponent implements OnInit {
         alert(error);
       }
     );
+  }
+
+  onApproveClicked(id: any) {
+
   }
 }
