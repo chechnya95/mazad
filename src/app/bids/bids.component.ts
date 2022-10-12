@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -17,7 +17,10 @@ export class BidsComponent implements OnInit {
   filter_config: any;
 
   bidFilter = '';
-  
+
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(private api: ApiService,
     public utility: UtilitiesService,
     private route: ActivatedRoute) {
@@ -58,7 +61,7 @@ export class BidsComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getBids(null);
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -82,5 +85,12 @@ export class BidsComponent implements OnInit {
     );
 
     sub.add(() => { this.utility.loader = false; });
+  }
+
+  disableBid(id: any) {
+    this.api.update('bids/disable/' + id, this.token, {}).subscribe(
+      async data => { this.successMessage = true; },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
   }
 }

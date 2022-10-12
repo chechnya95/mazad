@@ -138,7 +138,17 @@ export class UserDetailsComponent implements OnInit {
   }
 
   insuranceConfiscation(id: any) {
+    const sub = this.api.update('wallets/confiscate/' + id, {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
+  }
 
+  withdraw(id: any) {
+    const sub = this.api.update('wallets/withdraw/' + id, {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { console.log(errr); this.errorMessage = true; }
+    );
   }
 
   itemId(id: any, note: any) {
