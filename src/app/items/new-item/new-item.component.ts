@@ -67,6 +67,9 @@ export class NewItemComponent implements OnInit {
   images: any;
   item_details: any = {};
 
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -283,9 +286,10 @@ export class NewItemComponent implements OnInit {
       this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
           this.item_details = [];
+          this.successMessage = true;
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          this.errorMessage = true;
           console.log(error);
         }
       );

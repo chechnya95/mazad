@@ -17,6 +17,8 @@ export class AuctionDetailsComponent implements OnInit {
   errorMessage: boolean = false;
   successMessage: boolean = false;
   approvalModal: boolean = false;
+  clicked: boolean = false;
+  emptyModal: boolean = false;
 
   constructor(private router: Router, private api: ApiService) {
     this.token = localStorage.getItem('access_token');
@@ -34,6 +36,10 @@ export class AuctionDetailsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items']['items'];
+
+        this.items.forEach((item) => {
+          item.selected = false;
+        })
       },
       async error => {
         alert(error);
@@ -55,7 +61,54 @@ export class AuctionDetailsComponent implements OnInit {
     );
   }
 
-  onApproveClicked(id: any) {
+  checkUncheckAll() {
+    if (!this.clicked) {
+      this.items.forEach(item => {
+        if (item.item_status == 'draft' || item.item_status == 'publish' || item.item_status == 'open')
+          item.selected = true;
+      });
+      this.clicked = true;
+      this.approvalModal = true;
+    }
+    else {
+      this.items.forEach(item => {
+        if (item.item_status == 'draft' || item.item_status == 'publish' || item.item_status == 'open')
+          item.selected = false;
+      });
+      this.clicked = false;
+      this.approvalModal = false;
+    }
+  }
 
+  onApproveClicked() {
+    let approvalList: any[] = this.items.filter(i => i.selected == true);
+    this.approveMultipleItems(approvalList);
+  }
+
+  approveItem(id: any) {
+    this.api.get('items/to_status/payment/' + id, this.token).subscribe(
+      async data => { this.getItems(); this.successMessage = true; },
+      async error => { console.log(error); this.errorMessage = true; }
+    );
+  }
+
+  approveMultipleItems(list: any[]) {
+    let status = false;
+
+    list.forEach((item) => {
+      this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
+        async data => { status = true; },
+        async error => { console.log(error); status = true; }
+      );
+    });
+
+    if (list.length == 0)
+      this.emptyModal = true;
+    else {
+      if (status)
+        this.successMessage = true;
+      else
+        this.errorMessage = true;
+    }
   }
 }
