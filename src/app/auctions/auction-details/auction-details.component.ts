@@ -19,6 +19,7 @@ export class AuctionDetailsComponent implements OnInit {
   approvalModal: boolean = false;
   clicked: boolean = false;
   emptyModal: boolean = false;
+  approvalBtn: boolean = false;
 
   constructor(private router: Router, private api: ApiService) {
     this.token = localStorage.getItem('access_token');
@@ -64,19 +65,19 @@ export class AuctionDetailsComponent implements OnInit {
   checkUncheckAll() {
     if (!this.clicked) {
       this.items.forEach(item => {
-        if (item.item_status == 'draft' || item.item_status == 'publish' || item.item_status == 'open')
+        if (item.item_status.toLowerCase() == 'approval')
           item.selected = true;
       });
       this.clicked = true;
-      this.approvalModal = true;
+      this.approvalBtn = true;
     }
     else {
       this.items.forEach(item => {
-        if (item.item_status == 'draft' || item.item_status == 'publish' || item.item_status == 'open')
+        if (item.item_status.toLowerCase() == 'approval')
           item.selected = false;
       });
       this.clicked = false;
-      this.approvalModal = false;
+      this.approvalBtn = false;
     }
   }
 

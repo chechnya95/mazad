@@ -130,137 +130,138 @@
                                 <!--begin::Content-->
                                 <div class="row g-5 mb-6" *ngIf="items">
                                     <!--begin::Table-->
-                                    <div class="table-responsive border-bottom mb-9">
-                                        <div *ngIf="items.length > 0">
-                                            <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Items</div>
-                                            <table class="table mb-3" id="kt_table_items">
-                                                <thead class="border-bottom border-gray-200">
-                                                    <!--begin::Table row-->
-                                                    <tr
-                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                        <th class="w-10px pe-2">
-                                                            <div
-                                                                class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    (click)="checkUncheckAll();" data-kt-check="true"
-                                                                    data-kt-check-target="#kt_table_items .form-check-input"
-                                                                    value="1" />
-                                                            </div>
-                                                        </th>
-                                                        <th class="w-100px">Code</th>
-                                                        <th>Title</th>
-                                                        <th>Current Price</th>
-                                                        <th>Buy Price</th>
-                                                        <th>Status</th>
-                                                        <th></th>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--begin::Table body-->
-                                                <tbody class="fs-6 fw-bold text-gray-600">
-                                                    <!--begin::Table row-->
-                                                    <tr *ngFor="let item of items; let i = index;">
-                                                        <!--begin::Checkbox-->
-                                                        <td>
-                                                            <div
-                                                                class="form-check form-check-sm form-check-custom form-check-solid">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    [(ngModel)]="item.selected" value="item.id" />
-                                                            </div>
-                                                        </td>
-                                                        <!--end::Checkbox-->
-                                                        <!--begin::Invoice=-->
-                                                        <td><a [routerLink]="['/item-details']"
-                                                                [queryParams]="{ id: item.id }">{{
-                                                                item.code | uppercase }}</a></td>
-                                                        <!--end::Invoice=-->
-                                                        <!--begin::Amount=-->
-                                                        <td>{{ item.title.en }} <br> {{ item.title.ar }}</td>
-                                                        <!--end::Amount=-->
-                                                        <!--begin::Date=-->
-                                                        <td>{{item.current_price | currency:'OMR' }}</td>
-                                                        <!--end::Date=-->
-                                                        <!--begin::Date=-->
-                                                        <td>{{item.buy_price | currency:'OMR' }}</td>
-                                                        <!--end::Date=-->
-                                                        <!--begin::Amount=-->
-                                                        <td>
-                                                            <div class="badge badge-light-info fw-bolder">{{
-                                                                item.item_status }}</div>
-                                                        </td>
-                                                        <!--end::Amount=-->
-                                                        <td>
-                                                            <a *ngIf="item.item_status=='draft' || item.item_status=='publish' || item.item_status=='open'"
-                                                                title="Approve Item" (click)="onApproveClicked(item.id)"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#kt_modal_note_form"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                                <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
-                                                                <span class="svg-icon svg-icon-3 svg-icon-success"><svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                        width="24px" height="24px" viewBox="0 0 24 24"
-                                                                        version="1.1">
-                                                                        <g stroke="none" stroke-width="1" fill="none"
-                                                                            fill-rule="evenodd">
-                                                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                                                            <path
-                                                                                d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z"
-                                                                                fill="#000000" fill-rule="nonzero"
-                                                                                opacity="0.3"
-                                                                                transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) " />
-                                                                            <path
-                                                                                d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z"
-                                                                                fill="#000000" fill-rule="nonzero"
-                                                                                transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) " />
-                                                                        </g>
-                                                                    </svg>
-                                                                </span>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                        </div>
-                                        <div *ngIf="templates">
-                                            <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Templates</div>
-                                            <table class="table mb-3">
-                                                <thead class="border-bottom border-gray-200">
-                                                    <!--begin::Table row-->
-                                                    <tr
-                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                        <th class="w-125px">Code</th>
-                                                        <th class="w-100px">Status</th>
-                                                        <th class="w-300px">Create Date</th>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </thead>
-                                                <!--begin::Table body-->
-                                                <tbody class="fs-6 fw-bold text-gray-600">
-                                                    <!--begin::Table row-->
-                                                    <tr *ngFor="let item of templates; let i = index;">
-                                                        <!--begin::Invoice=-->
-                                                        <td><a [routerLink]="['/template-details']"
-                                                                [queryParams]="{ id: item.id }">{{
-                                                                item.code | uppercase }}</a></td>
-                                                        <!--end::Invoice=-->
-                                                        <!--begin::Amount=-->
-                                                        <td>
-                                                            <div class="badge badge-light-info fw-bolder">{{
-                                                                item.item_status }}</div>
-                                                        </td>
-                                                        <!--end::Amount=-->
-                                                        <td>{{item.create_date | date:'medium'}}</td>
-                                                    </tr>
-                                                    <!--end::Table row-->
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                        </div>
+                                    <div class="table-responsive border-bottom mb-3">
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Items</div>
+                                        <table class="table mb-3" id="kt_table_items">
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-10px pe-2">
+                                                        <div
+                                                            class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                (click)="checkUncheckAll()" data-kt-check="true"
+                                                                data-kt-check-target="#kt_table_items .form-check-input"
+                                                                value="1" />
+                                                        </div>
+                                                    </th>
+                                                    <th class="w-100px">Code</th>
+                                                    <th>Title</th>
+                                                    <th>Current Price</th>
+                                                    <th>Buy Price</th>
+                                                    <th>Status</th>
+                                                    <th></th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--begin::Table body-->
+                                            <tbody class="fs-6 fw-bold text-gray-600">
+                                                <!--begin::Table row-->
+                                                <tr *ngFor="let item of items; let i = index;">
+                                                    <!--begin::Checkbox-->
+                                                    <td>
+                                                        <div
+                                                            class="form-check form-check-sm form-check-custom form-check-solid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                [(ngModel)]="item.selected" value="item.id" />
+                                                        </div>
+                                                    </td>
+                                                    <!--end::Checkbox-->
+                                                    <!--begin::Invoice=-->
+                                                    <td><a [routerLink]="['/item-details']"
+                                                            [queryParams]="{ id: item.id }">{{
+                                                            item.code | uppercase }}</a></td>
+                                                    <!--end::Invoice=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>{{ item.title.en }} <br> {{ item.title.ar }}</td>
+                                                    <!--end::Amount=-->
+                                                    <!--begin::Date=-->
+                                                    <td>{{item.current_price | currency:'OMR' }}</td>
+                                                    <!--end::Date=-->
+                                                    <!--begin::Date=-->
+                                                    <td>{{item.buy_price | currency:'OMR' }}</td>
+                                                    <!--end::Date=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>
+                                                        <div class="badge badge-light-info fw-bolder">{{
+                                                            item.item_status }}</div>
+                                                    </td>
+                                                    <!--end::Amount=-->
+                                                    <td>
+                                                        <a *ngIf="item.item_status.toLowerCase()=='approval'"
+                                                            title="Approve Item" (click)="onApproveClicked(item.id)"
+                                                            data-bs-toggle="modal" data-bs-target="#kt_modal_note_form"
+                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                            <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                                            <span class="svg-icon svg-icon-3 svg-icon-success"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    width="24px" height="24px" viewBox="0 0 24 24"
+                                                                    version="1.1">
+                                                                    <g stroke="none" stroke-width="1" fill="none"
+                                                                        fill-rule="evenodd">
+                                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                                        <path
+                                                                            d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z"
+                                                                            fill="#000000" fill-rule="nonzero"
+                                                                            opacity="0.3"
+                                                                            transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) " />
+                                                                        <path
+                                                                            d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z"
+                                                                            fill="#000000" fill-rule="nonzero"
+                                                                            transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) " />
+                                                                    </g>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                    </div>
+                                    <div class="col">
+                                        <button *ngIf="approvalBtn" (click)="approvalModal=true;" type="button" class="btn btn-primary">Approve Selected</button>
                                     </div>
                                     <!--end::Table-->
+                                </div>
+                                <div class="row g-5 mb-6" *ngIf="templates">
+                                    <!--begin::Table-->
+                                    <div class="table-responsive border-bottom mb-9">
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Templates</div>
+                                        <table class="table mb-3">
+                                            <thead class="border-bottom border-gray-200">
+                                                <!--begin::Table row-->
+                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                    <th class="w-125px">Code</th>
+                                                    <th class="w-100px">Status</th>
+                                                    <th class="w-300px">Create Date</th>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </thead>
+                                            <!--begin::Table body-->
+                                            <tbody class="fs-6 fw-bold text-gray-600">
+                                                <!--begin::Table row-->
+                                                <tr *ngFor="let item of templates; let i = index;">
+                                                    <!--begin::Invoice=-->
+                                                    <td><a [routerLink]="['/template-details']"
+                                                            [queryParams]="{ id: item.id }">{{
+                                                            item.code | uppercase }}</a></td>
+                                                    <!--end::Invoice=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>
+                                                        <div class="badge badge-light-info fw-bolder">{{
+                                                            item.item_status }}</div>
+                                                    </td>
+                                                    <!--end::Amount=-->
+                                                    <td>{{item.create_date | date:'medium'}}</td>
+                                                </tr>
+                                                <!--end::Table row-->
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                    </div>
                                 </div>
                                 <!--end::Content-->
                                 <div class="row g-5 mb-5" *ngIf="auction?.terms.en || auction?.terms.ar">
