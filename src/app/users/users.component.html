@@ -366,6 +366,7 @@
                                                 <!--begin::Input-->
                                                 <select name="role" class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.role">
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let role of roles" [ngValue]='role.id'>{{ role.name
                                                         }}</option>
                                                 </select>

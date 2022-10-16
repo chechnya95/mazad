@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-auctions',
@@ -70,6 +71,8 @@ export class AuctionsComponent implements OnInit {
   auction_id: any;
   auctionFilter = '';
 
+  Swal = require('sweetalert2')
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -106,7 +109,7 @@ export class AuctionsComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getAuctions();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -127,7 +130,11 @@ export class AuctionsComponent implements OnInit {
         this.getOwners();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -142,7 +149,11 @@ export class AuctionsComponent implements OnInit {
         this.getAuctionStatus();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -157,7 +168,11 @@ export class AuctionsComponent implements OnInit {
         this.getGroups();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -169,7 +184,11 @@ export class AuctionsComponent implements OnInit {
         this.groups = objects['groups'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -181,7 +200,11 @@ export class AuctionsComponent implements OnInit {
         this.templates = objects['auction_templates'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -212,7 +235,10 @@ export class AuctionsComponent implements OnInit {
         this.getAuctions();
       },
       async error => {
-        alert("ERROR: cannot connect!");
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
         console.log(error);
       }
     );
@@ -290,7 +316,10 @@ export class AuctionsComponent implements OnInit {
           this.getAuctions();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );

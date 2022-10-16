@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { TranslateService } from '@ngx-translate/core';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   email: any;
   password: any;
+
+  Swal = require('sweetalert2')
 
   loading: boolean = false;
 
@@ -53,22 +56,50 @@ export class LoginComponent implements OnInit {
         async data => {
           let dd = JSON.parse(JSON.stringify(data));
           if (data) {
-            this.api.setToken(dd);
-            this.router.navigate(['home']);
+            let timerInterval
+            Swal.fire({
+              title: 'Login Successful!',
+              html: 'You will be redirected in <b></b> milliseconds.',
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                  b.textContent = Swal.getTimerLeft().toString()
+                }, 100)
+              },
+              willClose: () => {
+                clearInterval(timerInterval)
+              }
+            }).then((result) => {
+              this.api.setToken(dd);
+              this.router.navigate(['home']);
+            })
           }
           else {
-            alert("Access Denied");
+            Swal.fire({
+              title: 'Oops...',
+              text: 'Access Denied!'
+            })
           }
         },
         async error => {
-          alert('Error: cannot login');
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+          console.log(error);
         }
       );
 
       sub.add(() => { this.loading = false; })
     }
     else {
-      alert('Please Try Again');
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Please Check input data!'
+      })
     }
   }
 }

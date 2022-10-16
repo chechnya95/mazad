@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import {Sort} from '@angular/material/sort';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-items',
@@ -30,6 +31,8 @@ export class ItemsComponent implements OnInit {
   errorText: any;
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -72,7 +75,11 @@ export class ItemsComponent implements OnInit {
         this.getItemstatus();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -95,7 +102,11 @@ export class ItemsComponent implements OnInit {
         this.item_status = objects.item_status;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -109,7 +120,10 @@ export class ItemsComponent implements OnInit {
           this.getItems();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -144,7 +158,10 @@ export class ItemsComponent implements OnInit {
         this.getItems();
       },
       async error => {
-        alert("ERROR: cannot connect!");
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
         console.log(error);
       }
     );

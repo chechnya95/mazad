@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-edit-item',
@@ -64,6 +65,7 @@ export class EditItemComponent implements OnInit {
   item_details: any = {};
 
   edit_item_id: any;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -90,7 +92,11 @@ export class EditItemComponent implements OnInit {
         this.getAuctions();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -104,7 +110,11 @@ export class EditItemComponent implements OnInit {
         this.getOwners();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -133,11 +143,15 @@ export class EditItemComponent implements OnInit {
         this.getCategories();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
-  
+
   async getCategories() {
     this.api.get('categories/', this.token).subscribe(
       async data => {
@@ -155,7 +169,7 @@ export class EditItemComponent implements OnInit {
             this.item.terms_en = object.terms['en'];
             this.item.description_ar = object.description['ar'];
             this.item.description_en = object.description['en'];
-            
+
             var date_start = new Date(object.start_date);
             var month_start = (date_start.getMonth() + 1).toString();
             var day_start = (date_start.getDate()).toString();
@@ -200,7 +214,11 @@ export class EditItemComponent implements OnInit {
         }
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -234,7 +252,11 @@ export class EditItemComponent implements OnInit {
           }
         },
         async error => {
-          alert(error);
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+          console.log(error);
         }
       );
     }
@@ -302,7 +324,13 @@ export class EditItemComponent implements OnInit {
 
     this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
       async data => { localStorage.removeItem('item-edit'); },
-      async eror => { alert("ERROR: cannot connect!"); }
+      async eror => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(eror);
+      }
     );
   }
 

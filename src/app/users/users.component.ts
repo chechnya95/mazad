@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-users',
@@ -50,6 +51,7 @@ export class UsersComponent implements OnInit {
   }
 
   userFilter = '';
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -114,7 +116,11 @@ export class UsersComponent implements OnInit {
         });
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -131,11 +137,15 @@ export class UsersComponent implements OnInit {
         this.roles = objects.roles;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);;
       }
     );
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -158,10 +168,16 @@ export class UsersComponent implements OnInit {
     const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (this.user.email == '' || this.user.password == '') {
-      alert('No enough data');
+      Swal.fire({
+        title: 'Note...',
+        text: 'No enough data!'
+      });
     }
     else if (emailPattern.test(String(this.user.email).toLowerCase()) != true) {
-      alert('email is not correct!');
+      Swal.fire({
+        title: 'Note...',
+        text: 'email format is not correct!'
+      });
     }
     else {
       this.api.post("users/admin", body, this.token).subscribe(
@@ -169,24 +185,42 @@ export class UsersComponent implements OnInit {
           this.getUsers();
         },
         async error => {
-          alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
+          Swal.fire({
+            title: 'Error...',
+            text: 'ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!'
+          });
         }
       );
     }
   }
 
   deleteUser(id: number) {
-    if (confirm("Delete this User?")) {
-      this.api.delete("users/" + id, this.token).subscribe(
-        async data => {
-          this.getUsers();
-        },
-        async error => {
-          alert("ERROR: cannot connect!");
-          console.log(error);
-        }
-      );
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete user!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete("users/" + id, this.token).subscribe(
+          res => {
+            Swal.fire(
+              'Success!',
+              'Request Sent Successflly!'
+            );
+            this.getUsers();
+          },
+          err => {
+            Swal.fire(
+              'Error!',
+              'Could not send your request!'
+            );
+            console.log(err);
+          });
+      }
+    });
   }
 
   editUserClicked(user: any) {
@@ -227,7 +261,10 @@ export class UsersComponent implements OnInit {
           this.getUsers();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );

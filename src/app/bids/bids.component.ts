@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-bids',
@@ -20,6 +21,8 @@ export class BidsComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService,
@@ -80,7 +83,11 @@ export class BidsComponent implements OnInit {
           this.bids = this.bids.filter(i => i.item_id === id);
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 

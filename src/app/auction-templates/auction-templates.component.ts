@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import {Sort} from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-auction-templates',
@@ -16,6 +17,8 @@ export class AuctionTemplatesComponent implements OnInit {
   filter_config: any;
 
   itemFilter = '';
+
+  Swal = require('sweetalert2')
   
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -55,7 +58,11 @@ export class AuctionTemplatesComponent implements OnInit {
         localStorage.setItem('templates', JSON.stringify(this.templates));
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -67,7 +74,10 @@ export class AuctionTemplatesComponent implements OnInit {
           this.getTemplates();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );

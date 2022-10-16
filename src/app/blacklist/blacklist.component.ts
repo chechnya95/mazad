@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-blacklist',
@@ -30,6 +31,8 @@ export class BlacklistComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -90,7 +93,11 @@ export class BlacklistComponent implements OnInit {
           this.blacklists = this.blacklists.filter(i => i.id === id);
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -131,7 +138,11 @@ export class BlacklistComponent implements OnInit {
         });
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -158,7 +169,11 @@ export class BlacklistComponent implements OnInit {
         });
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 

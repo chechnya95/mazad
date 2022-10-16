@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-deposits',
@@ -31,6 +32,8 @@ export class DepositsComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -81,7 +84,11 @@ export class DepositsComponent implements OnInit {
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 

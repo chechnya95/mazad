@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-auction-details',
@@ -20,6 +21,8 @@ export class AuctionDetailsComponent implements OnInit {
   clicked: boolean = false;
   emptyModal: boolean = false;
   approvalBtn: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(private router: Router, private api: ApiService) {
     this.token = localStorage.getItem('access_token');
@@ -43,7 +46,11 @@ export class AuctionDetailsComponent implements OnInit {
         })
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -57,7 +64,11 @@ export class AuctionDetailsComponent implements OnInit {
         this.templates = objects['auction_templates']['auction_templates'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }

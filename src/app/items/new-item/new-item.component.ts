@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-new-item',
@@ -69,6 +70,7 @@ export class NewItemComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -102,7 +104,11 @@ export class NewItemComponent implements OnInit {
         this.getAuctions();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -116,7 +122,11 @@ export class NewItemComponent implements OnInit {
         this.getOwners();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -154,7 +164,11 @@ export class NewItemComponent implements OnInit {
         this.getCategories();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -168,7 +182,11 @@ export class NewItemComponent implements OnInit {
         //this.getTemplates();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -182,7 +200,11 @@ export class NewItemComponent implements OnInit {
         this.utility.loader = false;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -216,7 +238,11 @@ export class NewItemComponent implements OnInit {
           }
         },
         async error => {
-          alert(error);
+          Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
         }
       );
     }
@@ -295,7 +321,10 @@ export class NewItemComponent implements OnInit {
       );
     }
     else {
-      alert('Please check all fields!')
+      Swal.fire({
+        title: 'Info...',
+        text: 'Please check all fields!'
+      })
     }
   }
 

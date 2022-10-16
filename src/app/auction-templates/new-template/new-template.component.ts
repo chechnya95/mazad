@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-new-template',
@@ -63,6 +64,8 @@ export class NewTemplateComponent implements OnInit {
   update: boolean = false;
   edit_item_id: any;
 
+  Swal = require('sweetalert2')
+  
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
@@ -116,7 +119,11 @@ export class NewTemplateComponent implements OnInit {
         this.getCategories(item_id);
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -186,7 +193,11 @@ export class NewTemplateComponent implements OnInit {
         }
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-invoices',
@@ -14,6 +15,8 @@ export class InvoicesComponent implements OnInit {
   token: any;
   invoices: any[] = [];
   filter_config: any;
+
+  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -48,7 +51,7 @@ export class InvoicesComponent implements OnInit {
     this.filter_config.currentPage = event;
     this.getInvoices();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -64,7 +67,11 @@ export class InvoicesComponent implements OnInit {
         this.filter_config.totalItems = objects['invoices']['filters']['total_results'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 

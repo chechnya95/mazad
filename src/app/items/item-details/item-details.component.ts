@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-item-details',
@@ -32,6 +33,7 @@ export class ItemDetailsComponent implements OnInit {
   extend_date: any;
   errorMessage: boolean = false;
   successMessage: boolean = false;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -69,7 +71,11 @@ export class ItemDetailsComponent implements OnInit {
         this.total_bidders = bidders.length;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -83,7 +89,11 @@ export class ItemDetailsComponent implements OnInit {
         this.owner = objects['owners'][0];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -97,7 +107,11 @@ export class ItemDetailsComponent implements OnInit {
         this.category = objects['categories'][0];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -111,7 +125,11 @@ export class ItemDetailsComponent implements OnInit {
         this.auction = objects['auctions'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -128,7 +146,11 @@ export class ItemDetailsComponent implements OnInit {
           this.winner.details = JSON.parse(this.winner.details)
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -142,7 +164,11 @@ export class ItemDetailsComponent implements OnInit {
         this.invoices = objects['invoices']['invoices'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -156,7 +182,11 @@ export class ItemDetailsComponent implements OnInit {
         this.payfors = objects;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -170,7 +200,11 @@ export class ItemDetailsComponent implements OnInit {
         this.pendings = objects['payments'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
     sub.add(() => { this.getTransactionPaymentTypes(); });
@@ -184,7 +218,11 @@ export class ItemDetailsComponent implements OnInit {
         this.payment_transaction_types = objects['payment_type'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
     sub.add(() => { this.utility.loader = false; });
