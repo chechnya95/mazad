@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-roles',
@@ -25,6 +26,7 @@ export class RolesComponent implements OnInit {
   add_role_permission: any[] = [];
 
   role_success_message: any;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -57,7 +59,11 @@ export class RolesComponent implements OnInit {
         this.getPermissions();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -80,7 +86,11 @@ export class RolesComponent implements OnInit {
         this.getRolePermissions();
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -97,7 +107,11 @@ export class RolesComponent implements OnInit {
         this.utility.loader = false;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -113,11 +127,9 @@ export class RolesComponent implements OnInit {
           let response = JSON.parse(JSON.stringify(data));
           for (let i = 0; i < this.add_role_permission.length; i++) {
             let body = { role_id: response['role_id'], permission_id: this.add_role_permission[i].id }
-            
+
             this.api.post("users/add-permission", body, this.token).subscribe(
-              async data => {
-                //console.log('ok');
-              },
+              async data => { },
               async error => {
                 console.log(error);
               }
@@ -126,7 +138,10 @@ export class RolesComponent implements OnInit {
           this.getRoles();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -156,7 +171,10 @@ export class RolesComponent implements OnInit {
           this.getPermissions();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -197,7 +215,10 @@ export class RolesComponent implements OnInit {
           this.getRolePermissions();
         },
         async error => {
-          alert("ERROR");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -228,7 +249,10 @@ export class RolesComponent implements OnInit {
           this.getRoles();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -245,7 +269,10 @@ export class RolesComponent implements OnInit {
           console.log('ok');
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );

@@ -128,7 +128,7 @@
                                 <!--end::Row-->
                                 <!--begin::Row-->
                                 <!--begin::Content-->
-                                <div class="row g-5 mb-6" *ngIf="items">
+                                <div class="row g-5 mb-6" *ngIf="items && items.length > 0">
                                     <!--begin::Table-->
                                     <div class="table-responsive border-bottom mb-3">
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Items</div>
@@ -226,7 +226,7 @@
                                     </div>
                                     <!--end::Table-->
                                 </div>
-                                <div class="row g-5 mb-6" *ngIf="templates">
+                                <div class="row g-5 mb-6" *ngIf="templates && templates.length > 0">
                                     <!--begin::Table-->
                                     <div class="table-responsive border-bottom mb-9">
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Templates</div>
