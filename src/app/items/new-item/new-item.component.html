@@ -553,6 +553,10 @@
                                     <input type="file" class="form-control" id="images" multiple accept="image/*"
                                         (change)="imageChange($event)" />
                                     <!--end::Input-->
+
+                                    <!-- Try dropzone -->
+                                    <uppy-dashboard [uppy]='uppy'>
+                                    </uppy-dashboard>
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->

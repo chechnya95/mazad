@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/plugins/global/plugins.bundle.css";
 @import "./assets/css/style.bundle.css";
+@import "https://releases.transloadit.com/uppy/v3.2.1/uppy.min.css";
 
 /* #loading {
   position: absolute;

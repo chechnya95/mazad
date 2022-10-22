@@ -4,6 +4,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 
+import { Uppy } from '@uppy/core'
+
 @Component({
   selector: 'app-new-item',
   templateUrl: './new-item.component.html',
@@ -72,6 +74,8 @@ export class NewItemComponent implements OnInit {
   successMessage: boolean = false;
   Swal = require('sweetalert2')
 
+  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -83,7 +87,7 @@ export class NewItemComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
       let ow = params['owner'] != null ? params['owner'] : null;
-      
+
       if (id) {
         this.item.auction_id = id;
       }
@@ -91,7 +95,7 @@ export class NewItemComponent implements OnInit {
       if (ow) {
         this.item.owner_id = ow;
       }
-      
+
       this.getItemstatus();
     })
   }
@@ -160,7 +164,7 @@ export class NewItemComponent implements OnInit {
             owner.contact = owner.email ? owner.email : owner.phone;
           }
         });
-        
+
         this.getCategories();
       },
       async error => {
@@ -239,10 +243,10 @@ export class NewItemComponent implements OnInit {
         },
         async error => {
           Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+          console.log(error);
         }
       );
     }
