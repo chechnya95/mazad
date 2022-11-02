@@ -65,7 +65,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr *ngFor="let transaction of transactions  | transactionsPipe: transFilter | paginate : filter_config ; let i = index;">
+                                        <tr *ngFor="let transaction of transactions  | transactionsPipe: transFilter; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a (click)="savePayment(transaction)" [routerLink]="['/payment-details']" [queryParams]="{ id: transaction.id }">{{ transaction.reference_id }}</a></td>
                                             <td><span *ngIf="transaction.payment_status==success"
@@ -134,14 +134,14 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <pagination-controls
-                                        maxSize="7"
-                                        directionLinks="true"
-                                        autoHide="false"
-                                        responsive="true"
-                                        (pageChange)="pageChangeEvent($event)"
-                                        class="d-flex justify-content-center"
-                                    ></pagination-controls>
+                                    <mat-paginator #paginator
+                                        [length]="filter_config.totalItems"
+                                        [pageSize]="filter_config.itemsPerPage"
+                                        [pageSizeOptions]="filter_config.pageSizeOptions"
+                                        (page)="pageChangeEvent($event)"
+                                        showFirstLastButtons
+                                    >
+                                    </mat-paginator>
                                 </div>
                             </div>
                             <!--end::Card body-->

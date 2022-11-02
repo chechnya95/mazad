@@ -61,7 +61,8 @@ import { Nl2brPipe } from './pipes/nl2br.pipe';
 import { ReportsComponent } from './reports/reports.component';
 import { MessageDetailsComponent } from './messages/message-details/message-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { GeneralSettingsComponent } from './settings/general-settings/general-settings.component';
 import { PrintComponent } from './invoices/print/print.component';
 
@@ -127,6 +128,7 @@ import { PrintComponent } from './invoices/print/print.component';
     HttpClientModule,
     NgxPaginationModule,
     MatSortModule,
+    MatPaginatorModule,
     FormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
