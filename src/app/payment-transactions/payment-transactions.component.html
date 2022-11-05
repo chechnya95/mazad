@@ -134,12 +134,11 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <mat-paginator #paginator
+                                    <mat-paginator #paginator showFirstLastButtons
                                         [length]="filter_config.totalItems"
                                         [pageSize]="filter_config.itemsPerPage"
                                         [pageSizeOptions]="filter_config.pageSizeOptions"
                                         (page)="pageChangeEvent($event)"
-                                        showFirstLastButtons
                                     >
                                     </mat-paginator>
                                 </div>

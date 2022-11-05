@@ -65,6 +65,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { GeneralSettingsComponent } from './settings/general-settings/general-settings.component';
 import { PrintComponent } from './invoices/print/print.component';
+import { StylePaginatorDirective } from './common/style-paginator.directive';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { PrintComponent } from './invoices/print/print.component';
     ReportsComponent,
     MessageDetailsComponent,
     GeneralSettingsComponent,
-    PrintComponent
+    PrintComponent,
+    StylePaginatorDirective
   ],
   imports: [
     BrowserModule,
