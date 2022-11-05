@@ -14,6 +14,7 @@ export class PrintComponent implements OnInit {
 
   ngOnInit(): void {
     this.invoice = JSON.parse(localStorage.getItem('invoice'));
+    this.invoice.user_details.details = JSON.parse(this.invoice?.user_details.details);
   }
 
   ngAfterViewInit(): void {
