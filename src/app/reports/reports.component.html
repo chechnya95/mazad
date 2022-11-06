@@ -23,7 +23,20 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                Under Development ... 
+                                <div class="row mb-7">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                            (keyup.enter)="onChangeAuction($event.target.value)"
+                                            (change)="onChangeAuction($event.target.value)" list="auctionList"
+                                            id="auctionsList_id" placeholder="type auction's name ...">
+                                        <datalist id="auctionList">
+                                            <option *ngFor="let auction of auctions" [value]="auction?.code">
+                                        </datalist>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-light-primary mx-3" (click)="getReport(auction_id)">Get Report</button>
+                                    </div>
+                                </div>
                                 <!--end::Table-->
                             </div>
                             <!--end::Card body-->

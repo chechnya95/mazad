@@ -99,10 +99,7 @@ export class UsersComponent implements OnInit {
     this.utility.loader = true;
     const sub = this.api.get('users/', this.token, this.getHttpParams()).subscribe(
       async data => {
-        let objects: any = {
-          users: []
-        }
-        objects = data;
+        let objects = JSON.parse(JSON.stringify(data));
 
         this.users = objects.users;
         this.filter_config.totalItems = objects['filters']['total_results'];

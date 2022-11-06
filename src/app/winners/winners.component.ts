@@ -88,7 +88,7 @@ export class WinnersComponent implements OnInit {
     this.api.get('templates_contents/key/auction_win', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.template = objects['templates_contents'];
+        this.template = objects['templates_contents'][0];
 
         this.sms.message = this.template.content.ar;
       },
