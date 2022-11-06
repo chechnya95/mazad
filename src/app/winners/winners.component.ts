@@ -70,8 +70,8 @@ export class WinnersComponent implements OnInit {
     const sub = this.api.get('bids/winners', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.winners = objects['winners'];
-        this.filter_config.totalItems = objects['filters']['total_results'];
+        this.winners = objects['winners']['bids'];
+        this.filter_config.totalItems = objects['winners']['filters']['total_results'];
       },
       async error => {
         alert(error);
@@ -85,7 +85,7 @@ export class WinnersComponent implements OnInit {
     this.api.get('templates_contents/key/auction_win', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.template = objects['templates_contents'];
+        this.template = objects['templates_contents'][0];
 
         this.sms.message = this.template.content.ar;
       },
