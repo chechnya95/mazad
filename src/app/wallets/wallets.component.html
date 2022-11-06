@@ -197,14 +197,13 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <pagination-controls
-                                        maxSize="7"
-                                        directionLinks="true"
-                                        autoHide="false"
-                                        responsive="true"
-                                        (pageChange)="pageChangeEvent($event)"
-                                        class="d-flex justify-content-center"
-                                    ></pagination-controls>
+                                    <mat-paginator #paginator showFirstLastButtons
+                                        [length]="filter_config.totalItems"
+                                        [pageSize]="filter_config.itemsPerPage"
+                                        [pageSizeOptions]="filter_config.pageSizeOptions"
+                                        (page)="pageChangeEvent($event)"
+                                    >
+                                    </mat-paginator>
                                 </div>
                             </div>
                             <!--end::Card body-->

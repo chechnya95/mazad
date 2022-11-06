@@ -4,6 +4,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import {Sort} from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-auction-templates',
@@ -29,7 +30,8 @@ export class AuctionTemplatesComponent implements OnInit {
       currentPage: 1,
       totalItems: 0,
       sort: null,
-      sort_order: 'asc'
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
     };
   }
 
@@ -89,8 +91,9 @@ export class AuctionTemplatesComponent implements OnInit {
     localStorage.setItem('item-template', JSON.stringify(item));
   }
 
-  pageChangeEvent(event: any) {
-    this.filter_config.currentPage = event;
+  pageChangeEvent(event: PageEvent) {
+    this.filter_config.currentPage = event.pageIndex + 1;
+    this.filter_config.itemsPerPage = event.pageSize;
     this.getTemplates();
   }
   

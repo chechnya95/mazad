@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
+import { PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -46,7 +47,8 @@ export class DepositsComponent implements OnInit {
       currentPage: 1,
       totalItems: 0,
       sort: null,
-      sort_order: 'asc'
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
     };
   }
 
@@ -64,8 +66,9 @@ export class DepositsComponent implements OnInit {
     }
     return params;
   }
-  pageChangeEvent(event: any) {
-    this.filter_config.currentPage = event;
+  pageChangeEvent(event: PageEvent) {
+    this.filter_config.currentPage = event.pageIndex + 1;
+    this.filter_config.itemsPerPage = event.pageSize;
     this.getDeposits();
   }
 
