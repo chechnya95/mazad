@@ -44,7 +44,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr *ngFor="let sms of messages | paginate : filter_config ; let i = index;">
+                                        <tr *ngFor="let sms of messages  ; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td>{{ sms.mobile}}</td>
                                             <td>{{ sms.user_id | uppercase}}</td>
@@ -60,14 +60,13 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <pagination-controls
-                                        maxSize="7"
-                                        directionLinks="true"
-                                        autoHide="false"
-                                        responsive="true"
-                                        (pageChange)="pageChangeEvent($event)"
-                                        class="d-flex justify-content-center"
-                                    ></pagination-controls>
+                                    <mat-paginator #paginator showFirstLastButtons
+                                        [length]="filter_config.totalItems"
+                                        [pageSize]="filter_config.itemsPerPage"
+                                        [pageSizeOptions]="filter_config.pageSizeOptions"
+                                        (page)="pageChangeEvent($event)"
+                                    >
+                                    </mat-paginator>
                                 </div>
                             </div>
                             <!--end::Card body-->

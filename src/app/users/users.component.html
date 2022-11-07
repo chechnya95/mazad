@@ -653,7 +653,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let user of users | userPipe: userFilter | paginate : filter_config">
+                        <tr *ngFor="let user of users | userPipe: userFilter ">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -775,14 +775,13 @@
                 <!--end::Table-->
                 <div class="has-text-centered">
                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                    <pagination-controls
-                        maxSize="7"
-                        directionLinks="true"
-                        autoHide="false"
-                        responsive="true"
-                        (pageChange)="pageChangeEvent($event)"
-                        class="d-flex justify-content-center"
-                    ></pagination-controls>
+                    <mat-paginator #paginator showFirstLastButtons
+                                        [length]="filter_config.totalItems"
+                                        [pageSize]="filter_config.itemsPerPage"
+                                        [pageSizeOptions]="filter_config.pageSizeOptions"
+                                        (page)="pageChangeEvent($event)"
+                                    >
+                                    </mat-paginator>
                 </div>
             </div>
             <!--end::Card body-->
