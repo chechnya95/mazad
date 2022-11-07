@@ -12,9 +12,12 @@ export class ReportsComponent implements OnInit {
 
   token: any;
   auctions: any[] = [];
+  auctionList: any[] = [];
+
   report: any;
 
   auction_id: any;
+  showList: boolean = false;
 
   Swal = require('sweetalert2')
 
@@ -35,8 +38,6 @@ export class ReportsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
-
-        console.log(this.auctions)
       },
       async error => {
         Swal.fire({
@@ -54,7 +55,6 @@ export class ReportsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.report = objects['auction_report'];
-        console.log(this.report);
       },
       async error => {
         Swal.fire({
@@ -71,5 +71,17 @@ export class ReportsComponent implements OnInit {
   onChangeAuction(value?: any) {
     let auction = this.auctions.find(i => i.code === value);
     this.auction_id = auction.id;
+
+    this.showList = false
+  }
+
+  onChangeOwner(value?: any) {
+    let auction: any[] = this.auctions.filter(i => i.owner_code === value);
+
+    this.auctionList = auction;
+    if (this.auctionList.length > 1)
+      this.showList = true
+    else
+      this.auction_id = this.auctionList[0].id;
   }
 }
