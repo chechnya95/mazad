@@ -24,17 +24,27 @@
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
                                 <div class="row mb-7">
-                                    <div class="col-9">
+                                    <div class="col-4">
                                         <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                             (keyup.enter)="onChangeAuction($event.target.value)"
                                             (change)="onChangeAuction($event.target.value)" list="auctionList"
-                                            id="auctionsList_id" placeholder="type auction's name ...">
+                                            id="auctionsList_id" placeholder="type auction's code ...">
                                         <datalist id="auctionList">
                                             <option *ngFor="let auction of auctions" [value]="auction?.code">
                                         </datalist>
                                     </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                            (keyup.enter)="onChangeAuction($event.target.value)"
+                                            (change)="onChangeAuction($event.target.value)" list="auctionList2"
+                                            id="auctionsList_id2" placeholder="type auction's owner code ...">
+                                        <datalist id="auctionList2">
+                                            <option *ngFor="let auction of auctions" [value]="auction?.owner_code">
+                                        </datalist>
+                                    </div>
                                     <div class="col-3">
-                                        <button type="button" class="btn btn-light-primary mx-3" (click)="getReport(auction_id)">Get Report</button>
+                                        <button type="button" class="btn btn-light-primary mx-3"
+                                            (click)="getReport(auction_id)">Get Report</button>
                                     </div>
                                 </div>
                                 <!--end::Table-->
@@ -42,6 +52,67 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <div id="kt_account_profile_details" class="collapse show" *ngIf="report">
+                <div class="post d-flex flex-column-fluid" id="kt_post">
+                    <!--begin::Container-->
+                    <div id="kt_content_container" class="container">
+                        <!--begin::Card-->
+                        <div class="card">
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Table-->
+                                <div class="row">
+                                    <div class="col-2">Auction:</div>
+                                    <div class="col-6 fw-bold">
+                                        {{ report?.auction.title.ar }}
+                                    </div>
+                                    <div class="col-2">Number of Items:</div>
+                                    <div class="col-2 fw-bold">{{ report?.items.length }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2"></div>
+                                    <div class="col-6 fw-bold">
+                                        {{ report?.auction.title.en }}
+                                    </div>
+                                    <div class="col-2">Code:</div>
+                                    <div class="col-2 fw-bold">{{ report?.auction.code }}</div>
+                                </div>
+                                <div class="row pt-5">
+                                    <table mat-table matSort (matSortChange)="sortData($event)"
+                                        class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                        <!--begin::Table head-->
+                                        <thead>
+                                            <!--begin::Table row-->
+                                            <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                <th></th>
+                                                <th mat-sort-header="code">Code</th>
+                                                <th mat-sort-header="title" class="w-50">Title</th>
+                                                <th mat-sort-header="count_of_bids">Number of Bids</th>
+                                                <th mat-sort-header="count_of_bidders">Number of Bidders</th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="text-gray-600 fw-bold">
+                                            <!--begin::Table row-->
+                                            <tr *ngFor="let item of report?.items; let i = index;">
+                                                <td>{{ (i+1) }} </td>
+                                                <td>{{ item.item.code }}</td>
+                                                <td>{{ item.item.title.ar }} | {{ item.item.title.en }}</td>
+                                                <td>{{ item.count_of_bids}}</td>
+                                                <td>{{ item.count_of_bidders}}</td>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

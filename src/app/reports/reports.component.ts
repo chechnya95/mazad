@@ -12,7 +12,7 @@ export class ReportsComponent implements OnInit {
 
   token: any;
   auctions: any[] = [];
-  report: any[] = [];
+  report: any;
 
   auction_id: any;
 
@@ -35,6 +35,8 @@ export class ReportsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
+
+        console.log(this.auctions)
       },
       async error => {
         Swal.fire({
@@ -47,11 +49,12 @@ export class ReportsComponent implements OnInit {
   }
 
   async getReport(id: any) {
-    this.api.get(`auctions/report/${id}`, this.token).subscribe(
+    this.utility.loader = true;
+    const sub = this.api.get(`auctions/report/${id}`, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        console.log(objects);
-        //this.report = objects['auctions'];
+        this.report = objects['auction_report'];
+        console.log(this.report);
       },
       async error => {
         Swal.fire({
@@ -61,7 +64,9 @@ export class ReportsComponent implements OnInit {
         console.log(error);
       }
     );
-  } 
+
+    sub.add(() => { this.utility.loader = false; });
+  }
 
   onChangeAuction(value?: any) {
     let auction = this.auctions.find(i => i.code === value);
