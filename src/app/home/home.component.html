@@ -5,19 +5,13 @@
         <!--begin::Row-->
         <div class="row gy-5 g-xl-8">
             <!--begin::Col-->
-            <div class="col-xxl-4">
+            <div class="col-6">
                 <!--begin::Mixed Widget 2-->
                 <div class="card card-xxl-stretch">
                     <!--begin::Header-->
                     <div class="card-header border-0 bg-danger py-5">
                         <h3 class="card-title fw-bolder text-white">Mazad Oman Statistics</h3>
                         <div class="card-toolbar">
-                            <!--begin::Menu-->
-
-                            <!--begin::Menu 3-->
-
-                            <!--end::Menu 3-->
-                            <!--end::Menu-->
                         </div>
                     </div>
                     <!--end::Header-->
@@ -89,7 +83,7 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <a href="#" class="text-danger fw-bold fs-6 mt-2">50 Auctions Owners</a>
+                                    <a href="#" class="text-danger fw-bold fs-6 mt-2">50 Auction Owners</a>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
@@ -121,93 +115,7 @@
             </div>
             <!--end::Col-->
             <!--begin::Col-->
-            <div class="col-xxl-4">
-                <!--begin::List Widget 5-->
-                <div class="card card-xxl-stretch">
-                    <!--begin::Header-->
-                    <div class="card-header align-items-center border-0 mt-4">
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="fw-bolder mb-2 text-dark">Categories</span>
-                            <span class="text-muted fw-bold fs-7">3,000 items</span>
-                        </h3>
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body pt-5">
-                        <!--begin::Timeline-->
-                        <div class="timeline-label">
-                            <!--begin::Item-->
-                            <div class="timeline-item">
-                                <!--begin::Label-->
-                                <div class="timeline-label fw-bolder text-gray-800 fs-6">30</div>
-                                <!--end::Label-->
-                                <!--begin::Badge-->
-                                <div class="timeline-badge">
-                                    <i class="fa fa-genderless text-warning fs-1"></i>
-                                </div>
-                                <!--end::Badge-->
-                                <!--begin::Text-->
-                                <div class="fw-bolder text-gray-800 ps-3">Cars</div>
-                                <!--end::Text-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <div class="timeline-item">
-                                <!--begin::Label-->
-                                <div class="timeline-label fw-bolder text-gray-800 fs-6">15</div>
-                                <!--end::Label-->
-                                <!--begin::Badge-->
-                                <div class="timeline-badge">
-                                    <i class="fa fa-genderless text-success fs-1"></i>
-                                </div>
-                                <!--end::Badge-->
-                                <!--begin::Content-->
-                                <div class="timeline-content d-flex">
-                                    <span class="fw-bolder text-gray-800 ps-3">Furneture</span>
-                                </div>
-                                <!--end::Content-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <div class="timeline-item">
-                                <!--begin::Label-->
-                                <div class="timeline-label fw-bolder text-gray-800 fs-6">1000</div>
-                                <!--end::Label-->
-                                <!--begin::Badge-->
-                                <div class="timeline-badge">
-                                    <i class="fa fa-genderless text-danger fs-1"></i>
-                                </div>
-                                <!--end::Badge-->
-                                <!--begin::Desc-->
-                                <div class="fw-bolder text-gray-800 ps-3">Others</div>
-                                <!--end::Desc-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <div class="timeline-item">
-                                <!--begin::Label-->
-                                <div class="timeline-label fw-bolder text-gray-800 fs-6">19</div>
-                                <!--end::Label-->
-                                <!--begin::Badge-->
-                                <div class="timeline-badge">
-                                    <i class="fa fa-genderless text-primary fs-1"></i>
-                                </div>
-                                <!--end::Badge-->
-                                <!--begin::Text-->
-                                <div class="timeline-content fw-mormal text-muted ps-3">Scraps</div>
-                                <!--end::Text-->
-                            </div>
-                            <!--end::Item-->
-                        </div>
-                        <!--end::Timeline-->
-                    </div>
-                    <!--end: Card Body-->
-                </div>
-                <!--end: List Widget 5-->
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-4">
+            <div class="col-6">
                 <!--begin::List Widget 6-->
                 <div class="card card-xl-stretch mb-xl-8">
                     <!--begin::Header-->
@@ -316,9 +224,67 @@
                             <!--end::Lable-->
                         </div>
                         <!--end::Item-->
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::List Widget 6-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-6">
+                <!--begin::List Widget 5-->
+                <div class="card card-xxl-stretch">
+                    <!--begin::Header-->
+                    <div class="card-header align-items-center border-0 mt-4">
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="fw-bolder mb-2 text-dark">Categories</span>
+                            <span class="text-muted fw-bold fs-7">{{ categories_total_items }} items</span>
+                        </h3>
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body pt-5">
+                        <!--begin::Timeline-->
+                        <div class="timeline-label">
+                            <!--begin::Item-->
+                            <div class="timeline-item" *ngFor="let cat of categories; let i = index;">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bolder text-gray-800 fs-6">{{ cat.count }}</div>
+                                <!--end::Label-->
+                                <!--begin::Badge success danger primary-->
+                                <div class="timeline-badge">
+                                    <i class="fa fa-genderless fs-1" [ngClass]="getClassColor(i)"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-bolder text-gray-800 ps-3">{{ cat.category_name.name.en }}</div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                    <!--end: Card Body-->
+                </div>
+                <!--end: List Widget 5-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-6">
+                <!--begin::List Widget 6-->
+                <div class="card card-xl-stretch mb-xl-8">
+                    <!--begin::Header-->
+                    <div class="card-header border-0">
+                        <h3 class="card-title fw-bolder text-dark">Items Status</h3>
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body pt-0">
                         <!--begin::Item-->
-                        <!-- <div class="d-flex align-items-center bg-light-info rounded p-5">
-                            <span class="svg-icon svg-icon-info me-5">
+                        <div class="d-flex align-items-center rounded p-5 mb-7" *ngFor="let status of statuses; let i = index;" [ngClass]="getStatusClassColor(i)">
+                            <!--begin::Icon-->
+                            <span class="svg-icon me-5" [ngClass]="getIconClassColor(i)">
+                                <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
                                 <span class="svg-icon svg-icon-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -333,14 +299,18 @@
                                         </g>
                                     </svg>
                                 </span>
+                                <!--end::Svg Icon-->
                             </span>
+                            <!--end::Icon-->
+                            <!--begin::Title-->
                             <div class="flex-grow-1 me-2">
-                                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">Product goals
-                                    strategy</a>
-                                <span class="text-muted fw-bold d-block">Due in 7 Days</span>
+                                <a class="fw-bolder text-gray-800 text-hover-primary fs-6">{{ status.item_status | titlecase }}</a>
                             </div>
-                            <span class="fw-bolder text-info py-1">+8%</span>
-                        </div> -->
+                            <!--end::Title-->
+                            <!--begin::Lable-->
+                            <span class="fw-bolder py-1" [ngClass]="getClassColor(i)">{{ status.count }}</span>
+                            <!--end::Lable-->
+                        </div>
                         <!--end::Item-->
                     </div>
                     <!--end::Body-->
@@ -354,3 +324,4 @@
     <!--end::Container-->
 </div>
 <!--end::Post-->
+<div *ngIf="this.utility.loader" class="loading"></div>

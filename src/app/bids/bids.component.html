@@ -64,8 +64,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr
-                                            *ngFor="let bid of bids | bidsPipe: bidFilter  ; let i = index;">
+                                        <tr *ngFor="let bid of bids | bidsPipe: bidFilter  ; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/item-details']"
                                                     [queryParams]="{ id: bid.item.id }">{{ bid.item.title.en }}</a></td>
@@ -113,12 +112,10 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <mat-paginator #paginator showFirstLastButtons
-                                        [length]="filter_config.totalItems"
+                                    <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
                                         [pageSize]="filter_config.itemsPerPage"
                                         [pageSizeOptions]="filter_config.pageSizeOptions"
-                                        (page)="pageChangeEvent($event)"
-                                    >
+                                        (page)="pageChangeEvent($event)">
                                     </mat-paginator>
                                 </div>
                                 <!--end::Card body-->
@@ -197,3 +194,4 @@
     </div>
     <!-- spinnner element is defined with id loading -->
     <div *ngIf="this.utility.loader" class="loading"></div>
+</div>
