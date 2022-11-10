@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   token: any;
   categories: any[] = [];
   statuses: any[] = [];
+  total_items = 0;
   categories_total_items = 0;
 
   Swal = require('sweetalert2')
@@ -29,12 +30,30 @@ export class HomeComponent implements OnInit {
       window.location.reload();
     }
 
-    this.getCategories();
+    this.getTotalNoItems();
+  }
+
+  getTotalNoItems() {
+    this.utility.loader = true;
+
+    const sub = this.api.get('dashboards/items/total', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.total_items = objects['item_count'];
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getCategories(); });
   }
 
   getCategories() {
-    this.utility.loader = true;
-
     const sub = this.api.get('dashboards/items/category', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
