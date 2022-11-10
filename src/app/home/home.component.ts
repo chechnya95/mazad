@@ -11,9 +11,15 @@ import Swal from 'sweetalert2'
 export class HomeComponent implements OnInit {
 
   token: any;
+
+  role: any;
   categories: any[] = [];
   statuses: any[] = [];
   total_items = 0;
+  total_users = 0;
+  total_owners = 0;
+  total_income = 0;
+  total_insurance: any;
   categories_total_items = 0;
 
   Swal = require('sweetalert2')
@@ -22,6 +28,7 @@ export class HomeComponent implements OnInit {
     this.utility.show = true;
     this.utility.title = 'Dashboard';
     this.token = localStorage.getItem('access_token');
+    this.role = localStorage.getItem('type');
   }
 
   ngOnInit(): void {
@@ -40,6 +47,78 @@ export class HomeComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.total_items = objects['item_count'];
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getTotalUsers(); });
+  }
+
+  getTotalUsers() {
+    const sub = this.api.get('dashboards/users', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.total_users = objects['user_statistics']['total'];
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getTotalOwners(); });
+  }
+
+  getTotalOwners() {
+    const sub = this.api.get('dashboards/owners', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.total_owners = objects['owners_statistics']['total_owner'];
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getTotalIncome(); });
+  }
+
+  getTotalIncome() {
+    const sub = this.api.get('dashboards/invoices/total', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.total_income = objects['invoices_count'];
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getTotalInsurance(); });
+  }
+
+  getTotalInsurance() {
+    const sub = this.api.get('dashboards/deposits', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.total_insurance = objects['deposits_statistics'];
       },
       async error => {
         Swal.fire({
