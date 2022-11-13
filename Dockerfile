@@ -3,7 +3,7 @@ FROM node:16 as build
 WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
-RUN npm run build --configuration production
+RUN npm run build
 
 # Stage 2
 FROM nginx:1.22-alpine

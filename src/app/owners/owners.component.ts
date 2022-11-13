@@ -100,10 +100,10 @@ export class OwnersComponent implements OnInit {
     this.utility.loader = true;
     const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
       async data => {
-        let objects: any = {
-          owners: []
-        }
-        objects = data;
+        let objects = JSON.parse(JSON.stringify(data));
+
+        this.owners = objects.owners;
+        this.filter_config.totalItems = objects['filters']['total_results'];
 
         this.owners = objects.owners;
         localStorage.setItem('owners', JSON.stringify(this.owners));
