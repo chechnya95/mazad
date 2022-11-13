@@ -1,0 +1,6 @@
+version: "3"
+services: 
+    mazad-oman-dashboard:
+        build: .
+        ports: 
+            - 8080:80
