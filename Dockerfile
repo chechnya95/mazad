@@ -7,6 +7,6 @@ RUN npm run build
 
 # Stage 2
 FROM nginx:1.22-alpine
-#COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist/mazad-oman-dashboard /usr/share/nginx/html
 EXPOSE 80
