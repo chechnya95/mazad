@@ -2,7 +2,8 @@
 FROM node:16 as build
 WORKDIR /app
 COPY . .
-RUN npm install -g @angular/cli
+RUN npm install
+#RUN npm install -g @angular/cli
 RUN npm run build
 
 # Stage 2
