@@ -71,6 +71,7 @@ export class AuctionsComponent implements OnInit {
 
   auction_id: any;
   auctionFilter = '';
+  owner_name = null;
 
   Swal = require('sweetalert2')
 
@@ -148,6 +149,16 @@ export class AuctionsComponent implements OnInit {
         let objects: any = { owners: [] }
         objects = data;
         this.owners = objects.owners;
+
+        this.owners.forEach(function (owner) {
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
+        });
 
         this.getAuctionStatus();
       },
@@ -281,6 +292,7 @@ export class AuctionsComponent implements OnInit {
       day_end = '0' + day_end;
 
     this.edit_auction.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end;
+    this.owner_name = this.owners.find(i => i.id === item.owner_id).title.ar;
   }
 
   OnUpdate(id: any) {
@@ -332,5 +344,17 @@ export class AuctionsComponent implements OnInit {
   saveAuction(item: any) {
     localStorage.removeItem('auction');
     localStorage.setItem('auction', JSON.stringify(item));
+  }
+
+  onChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.auction.owner_id = owner.id;
+    this.owner_name = this.owners.find(i => i.id === this.auction.owner_id).title.ar;
+  }
+
+  onEditChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.edit_auction.owner_id = owner.id;
+    this.owner_name = this.owners.find(i => i.id === this.edit_auction.owner_id).title.ar;
   }
 }

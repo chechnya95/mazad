@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-owners',
@@ -12,6 +13,9 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./owners.component.css']
 })
 export class OwnersComponent implements OnInit {
+
+
+  Swal = require('sweetalert2')
 
   token: any;
   owners: any[] = [];
@@ -40,11 +44,13 @@ export class OwnersComponent implements OnInit {
   }
 
   owner_details = {
-    id_card_number: null
+    cr_number: null,
+    vat_number: null
   }
 
   edit_owner_details = {
-    id_card_number: null
+    cr_number: null,
+    vat_number: null
   }
 
   ownerFilter = '';
@@ -89,7 +95,7 @@ export class OwnersComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getOwners();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -112,14 +118,16 @@ export class OwnersComponent implements OnInit {
           this.owners = this.owners.filter(i => i.id === id);
 
         this.owners.forEach(function (owner) {
-          //let owner_details = JSON.parse(owner['owner_details']);
-
+          owner.owner_details = JSON.parse(owner.owner_details)
           owner.avatar = owner.title.en ? owner.title.en.charAt(0) : owner['code'].charAt(0);
-          //owner.name = owner ? owner.title_en : '';
         });
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -151,7 +159,11 @@ export class OwnersComponent implements OnInit {
           this.getOwners();
         },
         async error => {
-          alert("ERROR: cannot connect!\nPlease Note: (email) and (phone) cannot be duplicated!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong! Please Note: (email) and (phone) cannot be duplicated!'
+          })
+          console.log(error);
         }
       );
     }
@@ -164,7 +176,10 @@ export class OwnersComponent implements OnInit {
           this.getOwners();
         },
         async error => {
-          alert("ERROR: cannot connect!");
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
           console.log(error);
         }
       );
@@ -199,7 +214,13 @@ export class OwnersComponent implements OnInit {
 
     const sub = this.api.update('owners/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(errr);
+      }
     );
 
     sub.add(() => { this.getOwners(); });

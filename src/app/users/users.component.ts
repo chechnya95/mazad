@@ -51,6 +51,8 @@ export class UsersComponent implements OnInit {
     id_card_number: null
   }
 
+  user_types: any[] = ['ADMIN', 'USER', 'OWNER', 'GOVERNMENT', 'CORPORATE'];
+
   userFilter = '';
   Swal = require('sweetalert2')
 
@@ -231,7 +233,8 @@ export class UsersComponent implements OnInit {
       this.edit_user_details = JSON.parse(this.edit_user['user_details']);
 
     this.edit_user.status = user.is_active == true ? 1 : 0;
-    this.edit_user.role_id = this.roles.find(i => i.name === user.role).id;
+    this.edit_user.role_id = this.roles.find(i => i.name === user.roles[0]).id;
+    this.edit_user.user_type = user.user_type.toUpperCase();
   }
 
   OnUpdate(id: any) {

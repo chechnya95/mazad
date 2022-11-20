@@ -27,7 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-auction-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search auction"  [(ngModel)]="auctionFilter" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search auction"
+                            [(ngModel)]="auctionFilter" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -411,16 +412,15 @@
                                                 <!--begin::Label-->
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <select name="owner_id"
-                                                    class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="auction.owner_id">
-                                                    <option>-- SELECT --</option>
-                                                    <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
-                                                        owner.code +': '+ owner.title.en +' - '+ owner.title.ar
-                                                        }}</option>
-                                                </select>
-                                                <!--end::Input-->
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
+                                                    [(ngModel)]="owner_name" disabled>
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onChangeOwner($event.target.value)"
+                                                    (change)="onChangeOwner($event.target.value)" list="ownersList"
+                                                    id="ownersList_id" placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
@@ -433,7 +433,8 @@
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.group_id">
                                                     <option>-- SELECT --</option>
-                                                    <option *ngFor="let group of groups" [ngValue]='group.id'>{{ group.title.en }} - {{ group.title.ar }}</option>
+                                                    <option *ngFor="let group of groups" [ngValue]='group.id'>{{
+                                                        group.title.en }} - {{ group.title.ar }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -481,7 +482,7 @@
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
-                                                data-kt-auctions-modal-action="submit">
+                                                data-kt-auctions-modal-action="submit" data-bs-dismiss="modal">
                                                 <span class="indicator-label">Submit</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
@@ -673,14 +674,15 @@
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="owner_id"
-                                                    class="form-select form-select-lg form-select-solid"
-                                                    [(ngModel)]="edit_auction.owner_id">
-                                                    <option>-- SELECT --</option>
-                                                    <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
-                                                        owner.code +': '+ owner.title.en +' - '+ owner.title.ar
-                                                        }}</option>
-                                                </select>
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
+                                                    [(ngModel)]="owner_name" disabled>
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                    (keyup.enter)="onEditChangeOwner($event.target.value)"
+                                                    (change)="onEditChangeOwner($event.target.value)" list="ownersList"
+                                                    id="ownersList_id" placeholder="type owner's contact ...">
+                                                <datalist id="ownersList">
+                                                    <option *ngFor="let owner of owners" [value]="owner.contact">
+                                                </datalist>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -743,8 +745,9 @@
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">Discard</button>
-                                            <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_auction_id)"
-                                                data-kt-auctions-modal-action="submit">
+                                            <button type="submit" class="btn btn-primary"
+                                                (click)="OnUpdate(edit_auction_id)"
+                                                data-kt-auctions-modal-action="submit" data-bs-dismiss="modal">
                                                 <span class="indicator-label">Submit</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
@@ -769,7 +772,8 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_auctions">
+                <table mat-table matSort (matSortChange)="sortData($event)"
+                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_auctions">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -803,7 +807,8 @@
                             </td>
                             <!--end::Checkbox-->
                             <!--begin::code=-->
-                            <td><a (click)="saveAuction(auction)" [routerLink]="['/auction-details']" [queryParams]="{ id: auction.id }">{{ auction.title.en | titlecase }}</a></td>
+                            <td><a (click)="saveAuction(auction)" [routerLink]="['/auction-details']"
+                                    [queryParams]="{ id: auction.id }">{{ auction.title.en | titlecase }}</a></td>
                             <!--end::code=-->
                             <!--begin::auction=-->
                             <td>{{ auction.auction_type }}</td>
@@ -828,7 +833,7 @@
                             <td class="text-end">
                                 <a data-toggle="tooltip" data-placement="left" title="Add New Item"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                    href="new-item?id={{auction.id}}">
+                                    href="new-item?id={{auction.id}}&owner={{auction?.owner_id}}">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -898,13 +903,10 @@
                 <!--end::Table-->
                 <div class="has-text-centered">
                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                    <mat-paginator #paginator showFirstLastButtons
-                                        [length]="filter_config.totalItems"
-                                        [pageSize]="filter_config.itemsPerPage"
-                                        [pageSizeOptions]="filter_config.pageSizeOptions"
-                                        (page)="pageChangeEvent($event)"
-                                    >
-                                    </mat-paginator>
+                    <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
+                        [pageSize]="filter_config.itemsPerPage" [pageSizeOptions]="filter_config.pageSizeOptions"
+                        (page)="pageChangeEvent($event)">
+                    </mat-paginator>
                 </div>
             </div>
             <!--end::Card body-->

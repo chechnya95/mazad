@@ -86,7 +86,7 @@ export class UserDetailsComponent implements OnInit {
     const sub = this.api.get('bids/winners', this.token).subscribe(
       res => {
         let object = JSON.parse(JSON.stringify(res));
-        this.bids = object.winners;
+        this.bids = object.winners.bids;
 
         this.bids = this.bids.filter(i => i.user_id === id);
       },

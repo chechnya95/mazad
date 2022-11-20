@@ -22,6 +22,7 @@ export class NewItemComponent implements OnInit {
   templates: any[] = [];
 
   type: string = 'empty';
+  owner_name: string = null;
 
   item = {
     code: null,
@@ -70,6 +71,7 @@ export class NewItemComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
   Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
@@ -83,7 +85,7 @@ export class NewItemComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
       let ow = params['owner'] != null ? params['owner'] : null;
-      
+
       if (id) {
         this.item.auction_id = id;
       }
@@ -91,7 +93,7 @@ export class NewItemComponent implements OnInit {
       if (ow) {
         this.item.owner_id = ow;
       }
-      
+
       this.getItemstatus();
     })
   }
@@ -131,19 +133,6 @@ export class NewItemComponent implements OnInit {
     );
   }
 
-  /* async getOwners() {
-    this.api.get('users/type/OWNER', this.token).subscribe(
-      async data => {
-        let objects = JSON.parse(JSON.stringify(data));
-        this.owners = objects['users'][0];
-        this.getCategories();
-      },
-      async error => {
-        alert(error);
-      }
-    );
-  } */
-
   async getOwners() {
     this.api.get('owners/', this.token).subscribe(
       async data => {
@@ -160,6 +149,8 @@ export class NewItemComponent implements OnInit {
             owner.contact = owner.email ? owner.email : owner.phone;
           }
         });
+
+        if (this.item.owner_id) this.owner_name = this.owners.find(i => i.id === this.item.owner_id).title.ar;
         
         this.getCategories();
       },
@@ -239,10 +230,10 @@ export class NewItemComponent implements OnInit {
         },
         async error => {
           Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+          console.log(error);
         }
       );
     }
@@ -405,5 +396,6 @@ export class NewItemComponent implements OnInit {
   onChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.item.owner_id = owner.id;
+    this.owner_name = owner.title.ar;
   }
 }

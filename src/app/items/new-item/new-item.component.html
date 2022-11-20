@@ -355,6 +355,9 @@
                                     <!--begin::Label-->
                                     <label class="fw-bold fs-6 mb-2">Owner</label>
                                     <!--end::Label-->
+                                    <input type="text"
+                                        class="form-control form-control-solid mb-3 mb-lg-3" [(ngModel)]="owner_name"
+                                        disabled>
                                     <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                         (keyup.enter)="onChangeOwner($event.target.value)"
                                         (change)="onChangeOwner($event.target.value)" list="ownersList"
