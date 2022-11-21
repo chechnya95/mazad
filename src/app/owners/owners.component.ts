@@ -118,7 +118,7 @@ export class OwnersComponent implements OnInit {
           this.owners = this.owners.filter(i => i.id === id);
 
         this.owners.forEach(function (owner) {
-          owner.owner_details = JSON.parse(owner.owner_details)
+          // owner.owner_details = JSON.parse(owner.owner_details)
           owner.avatar = owner.title.en ? owner.title.en.charAt(0) : owner['code'].charAt(0);
         });
       },
@@ -140,7 +140,7 @@ export class OwnersComponent implements OnInit {
       password: this.owner.code,
       phone: this.owner.phone,
       code: this.owner.code,
-      owner_details: JSON.stringify(this.owner_details),
+      owner_details: this.owner_details,
       title: { 'en': this.owner.title_en, 'ar': this.owner.title_ar },
       description: { 'en': this.owner.description_en, 'ar': this.owner.description_en }
     }
@@ -195,15 +195,15 @@ export class OwnersComponent implements OnInit {
     this.edit_owner.description_ar = owner.description['ar'];
     this.edit_owner.description_en = owner.description['en'];
 
-    if (this.edit_owner['owner_details'])
-      this.edit_owner_details = JSON.parse(this.edit_owner['owner_details']);
+    this.edit_owner_details = this.edit_owner['owner_details'];
 
     this.edit_owner.active = owner.active == true ? 1 : 0;
   }
 
   OnUpdate(id: any) {
+    console.log(this.edit_owner_details)
     let body = {
-      owner_details: JSON.stringify(this.edit_owner_details),
+      owner_details: this.edit_owner_details,
       code: this.edit_owner.code,
       active: this.edit_owner.active,
       email: this.edit_owner.email,

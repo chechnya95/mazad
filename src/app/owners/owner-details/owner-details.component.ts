@@ -37,7 +37,7 @@ export class OwnerDetailsComponent implements OnInit {
         if (objects) {
           this.owner = objects.find(i => i.id === id);
 
-          this.owner.details = JSON.parse(this.owner.owner_details);
+          this.owner.details = this.owner.owner_details;
           this.getOwnerUsers();
         }
       }
