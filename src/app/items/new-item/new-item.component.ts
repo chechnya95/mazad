@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
@@ -74,7 +74,7 @@ export class NewItemComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
@@ -304,6 +304,7 @@ export class NewItemComponent implements OnInit {
         async data => {
           this.item_details = [];
           this.successMessage = true;
+          this.router.navigate(['items']);
         },
         async error => {
           this.errorMessage = true;
