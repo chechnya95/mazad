@@ -65,7 +65,8 @@ import {MatSortModule} from '@angular/material/sort';
 import { GeneralSettingsComponent } from './settings/general-settings/general-settings.component';
 import { PrintComponent } from './invoices/print/print.component';
 
-import { UppyAngularDashboardModule } from '@uppy/angular'
+import { UppyAngularDashboardModule } from '@uppy/angular';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { UppyAngularDashboardModule } from '@uppy/angular'
   ],
   imports: [
     UppyAngularDashboardModule,
+    LMarkdownEditorModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

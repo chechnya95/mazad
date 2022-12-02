@@ -531,17 +531,26 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                    <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <textarea cols="20" rows="5" name="terms_en"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Terms English"
-                                        [(ngModel)]="item.terms_en"></textarea>
+                                    <md-editor name="terms_ar" [preRender]="preRenderFunc" [postRender]="postRenderFunc"
+                                        [(ngModel)]="item.terms_ar" [height]="'300px'" [mode]="mode" [options]="options"
+                                        (onEditorLoaded)="onEditorLoaded($event)"
+                                        (onPreviewDomChanged)="onPreviewDomChangedar($event)" required maxlength="500">
+                                        <slot custom-btns></slot>
+                                    </md-editor>
                                     <br>
-                                    <textarea cols="20" rows="5" name="terms_ar"
-                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Terms Arabic"
-                                        [(ngModel)]="item.terms_ar"></textarea>
-                                    <!--end::Input-->
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">Terms English</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <md-editor name="terms_en" [preRender]="preRenderFunc" [postRender]="postRenderFunc"
+                                        [(ngModel)]="item.terms_en" [height]="'300px'" [mode]="mode" [options]="options"
+                                        (onEditorLoaded)="onEditorLoaded($event)"
+                                        (onPreviewDomChanged)="onPreviewDomChangeden($event)" required maxlength="500">
+                                        <slot custom-btns></slot>
+                                    </md-editor>
                                 </div>
                                 <!--end::group-->
                                 <!--begin::Input group-->
@@ -550,8 +559,8 @@
                                     <label class="form-label">Images</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="file" class="form-control" id="images" multiple accept="image/*"
-                                        (change)="imageChange($event)" />
+                                    <!-- <input type="file" class="form-control" id="images" multiple accept="image/*"
+                                        (change)="imageChange($event)" /> -->
                                     <!--end::Input-->
 
                                     <!-- Try dropzone -->
@@ -565,8 +574,10 @@
                                     <label class="form-label">Attachments</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="file" class="form-control" id="attachments" multiple
-                                        (change)="fileChange($event)" />
+                                    <!-- <input type="file" class="form-control" id="attachments" multiple
+                                        (change)="fileChange($event)" /> -->
+                                    <uppy-dashboard [uppy]='uppy2'>
+                                    </uppy-dashboard>
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
