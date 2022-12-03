@@ -90,6 +90,8 @@ export class NewItemComponent implements OnInit {
   public options: MdEditorOption = {
     showPreviewPanel: true,
     enablePreviewContentClick: false,
+    usingFontAwesome5: true,
+    fontAwesomeVersion: '5',
     resizable: true,
     customRender: {
       image: function (href: string, title: string, text: string) {
