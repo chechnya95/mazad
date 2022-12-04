@@ -5,10 +5,33 @@
 # Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+
+image: docker:latest
+
+services:
+- docker:dind
+variables:
+  DOCKER_DRIVER: overlay
+
 stages:
 - build
 - deploy
-- test
+#- test
+before_script:
+  # Login to Google Container Registry
+  - base64 -d $GCP_SA_KEY | docker login -u _json_key --password-stdin https://gcr.io
+  # Login to Gitlab container Registry
+  #- echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token $CI_REGISTRY --password-stdin
+  
+build-image:
+  stage: build
+  script:
+    # Build and tag image for both GCR and Gitlab registries
+    - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest .
+    # Push image to GCR
+    - docker push gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest
+    # Push image to Gitlab registry
+    #- docker push $CI_REGISTRY_IMAGE:latest
 
 build:
   stage: build
@@ -49,9 +72,9 @@ deploy:
   - current_dir=$(pwd)
   - rsync -rav --rsh='ssh -v -p7822' $current_dir/dist/mazad-oman-dashboard/ $A2_SSH_USERNAME@$A2_HOST_NAME:$PROJECT_PATH
 
-sast:
-  stage: test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-include:
-- template: Security/SAST.gitlab-ci.yml
+#sast:
+#  stage: test
+#  rules:
+#    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+#include:
+#- template: Security/SAST.gitlab-ci.yml
