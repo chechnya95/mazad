@@ -6,25 +6,27 @@
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 
-image: docker:latest
-
-services:
-- docker:dind
-variables:
-  DOCKER_DRIVER: overlay
-
 stages:
 - build
 - deploy
 #- test
-before_script:
-  # Login to Google Container Registry
-  - base64 -d $GCP_SA_KEY | docker login -u _json_key --password-stdin https://gcr.io
-  # Login to Gitlab container Registry
-  #- echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token $CI_REGISTRY --password-stdin
-  
+
 build-image:
   stage: build
+  image: docker:latest
+  only:
+    - master
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay
+  
+  before_script:
+    # Login to Google Container Registry
+    - base64 -d $GCP_SA_KEY | docker login -u _json_key --password-stdin https://gcr.io
+    # Login to Gitlab container Registry
+    #- echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token $CI_REGISTRY --password-stdin
+
   script:
     # Build and tag image for both GCR and Gitlab registries
     - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest .
