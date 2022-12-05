@@ -26,6 +26,9 @@ build-image:
     - if: '$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH'
       variables:
         ENV_VARIABLE: "staging"
+    - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH'
+      variables:
+        ENV_VARIABLE: "production"
   
   before_script:
     # Login to Google Container Registry
