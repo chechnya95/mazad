@@ -20,6 +20,12 @@ build-image:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
+    ENV_VARIABLE: "production"
+  
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+      variables:
+        ENV_VARIABLE: "staging"
   
   before_script:
     # Login to Google Container Registry
@@ -29,7 +35,7 @@ build-image:
 
   script:
     # Build and tag image for both GCR and Gitlab registries
-    - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest .
+    - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest --build-arg CONFIG_ENV=$ENV_VARIABLE .
     # Push image to GCR
     - docker push gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest
     # Push image to Gitlab registry
