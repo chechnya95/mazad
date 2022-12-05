@@ -14,8 +14,8 @@ stages:
 build-image:
   stage: build
   image: docker:latest
-  only:
-    - master
+  #only:
+  #  - master
   services:
     - docker:dind
   variables:
