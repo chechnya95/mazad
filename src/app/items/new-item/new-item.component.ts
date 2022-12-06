@@ -339,15 +339,13 @@ export class NewItemComponent implements OnInit {
 
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
-        const image: File = new File([file], file.name, { type: file.type });
-        formData.append('images', image, image.name);
+        formData.append('images', file.data, file.data.name);
       }
     }
 
     if (this.attachemetns && this.attachemetns.length > 0) {
       for (let file of this.attachemetns) {
-        const attachement: File = new File([file], file.name, { type: file.type });
-        formData.append('attachments', attachement, attachement.name);
+        formData.append('attachments', file.data, file.data.name);
       }
     }
 
