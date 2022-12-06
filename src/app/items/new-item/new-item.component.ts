@@ -121,7 +121,7 @@ export class NewItemComponent implements OnInit {
     this.postRenderFunc = this.postRenderFunc.bind(this);
 
     this.uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      console.log('Upload complete! We’ve uploaded these files:', result.successful) 
       this.images = result.successful;
     })
 
@@ -339,13 +339,15 @@ export class NewItemComponent implements OnInit {
 
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
-        formData.append('images', file, file.name);
+        const image: File = new File([file], file.name, { type: file.type });
+        formData.append('images', image, image.name);
       }
     }
 
     if (this.attachemetns && this.attachemetns.length > 0) {
       for (let file of this.attachemetns) {
-        formData.append('attachments', file, file.name);
+        const attachement: File = new File([file], file.name, { type: file.type });
+        formData.append('attachments', attachement, attachement.name);
       }
     }
 
