@@ -5,9 +5,6 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 
 import { Uppy } from '@uppy/core'
-import DragDrop from '@uppy/drag-drop'
-import ProgressBar from '@uppy/progress-bar'
-
 import { MdEditorOption } from 'ngx-markdown-editor';
 
 interface UploadResult {

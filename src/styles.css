@@ -2,6 +2,8 @@
 @import "./assets/plugins/global/plugins.bundle.css";
 @import "./assets/css/style.bundle.css";
 @import "https://releases.transloadit.com/uppy/v3.2.1/uppy.min.css";
+@import "https://fonts.googleapis.com/css?family=Almarai";
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 /* #loading {
   position: absolute;
