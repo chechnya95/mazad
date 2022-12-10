@@ -80,6 +80,7 @@ export class NewItemComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
   Swal = require('sweetalert2')
 
   uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
@@ -108,7 +109,7 @@ export class NewItemComponent implements OnInit {
   public content_ar: any;
   public content_en: any;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
@@ -198,6 +199,8 @@ export class NewItemComponent implements OnInit {
           }
         });
 
+        if (this.item.owner_id) this.owner_name = this.owners.find(i => i.id === this.item.owner_id).title.ar;
+        
         this.getCategories();
       },
       async error => {
@@ -354,6 +357,7 @@ export class NewItemComponent implements OnInit {
         async data => {
           this.item_details = [];
           this.successMessage = true;
+          this.router.navigate(['items']);
         },
         async error => {
           this.errorMessage = true;
