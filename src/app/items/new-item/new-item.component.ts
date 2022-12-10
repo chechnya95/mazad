@@ -31,6 +31,7 @@ export class NewItemComponent implements OnInit {
   templates: any[] = [];
 
   type: string = 'empty';
+  owner_name: string = null;
 
   item = {
     code: null,
@@ -445,6 +446,7 @@ export class NewItemComponent implements OnInit {
   onChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.item.owner_id = owner.id;
+    this.owner_name = owner.title.ar;
   }
 
   onEditorLoaded(editor: any) {
