@@ -4,6 +4,16 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 
+import { Uppy } from '@uppy/core'
+import { MdEditorOption } from 'ngx-markdown-editor';
+import { HttpClient } from '@angular/common/http';
+
+interface UploadResult {
+  isImg: boolean
+  name: string
+  url: string
+}
+
 @Component({
   selector: 'app-edit-item',
   templateUrl: './edit-item.component.html',
@@ -67,10 +77,50 @@ export class EditItemComponent implements OnInit {
   edit_item_id: any;
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  public options: MdEditorOption = {
+    showPreviewPanel: true,
+    enablePreviewContentClick: false,
+    usingFontAwesome5: true,
+    fontAwesomeVersion: '5',
+    resizable: true,
+    customRender: {
+      image: function (href: string, title: string, text: string) {
+        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        if (title) {
+          out += ` title="${title}"`;
+        }
+        console.log(this);
+        // out += (<any>this.options).xhtml ? '/>' : '>';
+        return out;
+      },
+    },
+  };
+  public mode: string = 'editor';
+  public markdownText: any;
+  public content_ar: any;
+  public content_en: any;
+
+  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
+  uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
+
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private http: HttpClient) {
     this.utility.show = true;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
+
+    this.doUpload = this.doUpload.bind(this);
+    this.preRenderFunc = this.preRenderFunc.bind(this);
+    this.postRenderFunc = this.postRenderFunc.bind(this);
+
+    this.uppy.on('complete', (result) => {
+      console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      this.images = result.successful;
+    })
+
+    this.uppy2.on('complete', (result) => {
+      console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      this.attachemetns = result.successful;
+    })
   }
 
   ngOnInit(): void {
@@ -209,6 +259,36 @@ export class EditItemComponent implements OnInit {
 
             this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
 
+            // add files to images dropzone
+            this.item.images.forEach((image) => {
+              let url = image.file.file;
+              var pattern = url.lastIndexOf('/');
+              var file_name = url.substring(pattern + 1);
+              this.http.get(image.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+                this.uppy.addFile({
+                  id: image.id,
+                  name: file_name,
+                  type: blob.type,
+                  data: blob,
+                });
+              });
+            });
+
+            // add files to attachments dropzone
+            this.item.attachments.forEach((attachment) => {
+              let url = attachment.file.file;
+              var pattern = url.lastIndexOf('/');
+              var file_name = url.substring(pattern + 1);
+              this.http.get(attachment.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+                this.uppy2.addFile({
+                  id: attachment.id,
+                  name: file_name,
+                  type: blob.type,
+                  data: blob,
+                });
+              });
+            });
+
             this.getForm();
           }
         }
@@ -310,13 +390,13 @@ export class EditItemComponent implements OnInit {
 
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
-        formData.append('images', file, file.name);
+        formData.append('images', file.data, file.data.name);
       }
     }
 
     if (this.attachemetns && this.attachemetns.length > 0) {
       for (let file of this.attachemetns) {
-        formData.append('attachments', file, file.name);
+        formData.append('attachments', file.data, file.data.name);
       }
     }
 
@@ -346,5 +426,30 @@ export class EditItemComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  onEditorLoaded(editor: any) {
+    //console.log(`ACE Editor Ins: `, editor);
+  }
+
+  onPreviewDomChangedar(e: any) {
+    this.content_ar = e.innerHTML;
+  }
+
+  onPreviewDomChangeden(e: any) {
+    this.content_en = e.innerHTML;
+  }
+
+  doUpload(files: Array<File>): Promise<Array<UploadResult>> {
+    // do upload file by yourself
+    return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
+  }
+  preRenderFunc(content: string) {
+    return content;
+    //return content.replace('', this.item.terms_ar);
+  }
+  postRenderFunc(content: string) {
+    return content;
+    //return content.replace(/something/g, 'new value');
   }
 }

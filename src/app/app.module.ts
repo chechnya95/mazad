@@ -66,6 +66,9 @@ import { GeneralSettingsComponent } from './settings/general-settings/general-se
 import { PrintComponent } from './invoices/print/print.component';
 import { StylePaginatorDirective } from './common/style-paginator.directive';
 
+import { UppyAngularDashboardModule } from '@uppy/angular';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +127,8 @@ import { StylePaginatorDirective } from './common/style-paginator.directive';
     StylePaginatorDirective
   ],
   imports: [
+    UppyAngularDashboardModule,
+    LMarkdownEditorModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

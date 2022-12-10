@@ -51,6 +51,9 @@ export class ItemDetailsComponent implements OnInit {
           this.item = objects.find(i => i.id === id);
           this.keys = Object.keys(this.item.details);
 
+          document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
+          document.getElementById('terms_en').innerHTML = this.item.terms.en;
+
           this.getBidds(id);
         }
       }

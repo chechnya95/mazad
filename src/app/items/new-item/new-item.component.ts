@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
+
+import { Uppy } from '@uppy/core'
+import { MdEditorOption } from 'ngx-markdown-editor';
+
+interface UploadResult {
+  isImg: boolean
+  name: string
+  url: string
+}
 
 @Component({
   selector: 'app-new-item',
@@ -22,7 +31,6 @@ export class NewItemComponent implements OnInit {
   templates: any[] = [];
 
   type: string = 'empty';
-  owner_name: string = null;
 
   item = {
     code: null,
@@ -71,14 +79,53 @@ export class NewItemComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
-
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
+  uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
+
+  public options: MdEditorOption = {
+    showPreviewPanel: true,
+    enablePreviewContentClick: false,
+    usingFontAwesome5: true,
+    fontAwesomeVersion: '5',
+    resizable: true,
+    customRender: {
+      image: function (href: string, title: string, text: string) {
+        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        if (title) {
+          out += ` title="${title}"`;
+        }
+        console.log(this);
+        // out += (<any>this.options).xhtml ? '/>' : '>';
+        return out;
+      },
+    },
+  };
+  public mode: string = 'editor';
+  public markdownText: any;
+  public content_ar: any;
+  public content_en: any;
+
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
+
+    this.doUpload = this.doUpload.bind(this);
+    this.preRenderFunc = this.preRenderFunc.bind(this);
+    this.postRenderFunc = this.postRenderFunc.bind(this);
+
+    this.uppy.on('complete', (result) => {
+      console.log('Upload complete! We’ve uploaded these files:', result.successful) 
+      this.images = result.successful;
+    })
+
+    this.uppy2.on('complete', (result) => {
+      console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      this.attachemetns = result.successful;
+    })
   }
 
   ngOnInit(): void {
@@ -150,8 +197,6 @@ export class NewItemComponent implements OnInit {
           }
         });
 
-        if (this.item.owner_id) this.owner_name = this.owners.find(i => i.id === this.item.owner_id).title.ar;
-        
         this.getCategories();
       },
       async error => {
@@ -253,6 +298,10 @@ export class NewItemComponent implements OnInit {
   }
 
   OnSubmit() {
+
+    this.item.terms_ar = this.content_ar;
+    this.item.terms_en = this.content_en;
+
     const body = JSON.stringify({
       code: this.item.code,
       details: this.item_details,
@@ -287,13 +336,13 @@ export class NewItemComponent implements OnInit {
 
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
-        formData.append('images', file, file.name);
+        formData.append('images', file.data, file.data.name);
       }
     }
 
     if (this.attachemetns && this.attachemetns.length > 0) {
       for (let file of this.attachemetns) {
-        formData.append('attachments', file, file.name);
+        formData.append('attachments', file.data, file.data.name);
       }
     }
 
@@ -304,7 +353,6 @@ export class NewItemComponent implements OnInit {
         async data => {
           this.item_details = [];
           this.successMessage = true;
-          this.router.navigate(['items']);
         },
         async error => {
           this.errorMessage = true;
@@ -397,6 +445,30 @@ export class NewItemComponent implements OnInit {
   onChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.item.owner_id = owner.id;
-    this.owner_name = owner.title.ar;
+  }
+
+  onEditorLoaded(editor: any) {
+    //console.log(`ACE Editor Ins: `, editor);
+  }
+
+  onPreviewDomChangedar(e: any) {
+    this.content_ar = e.innerHTML;
+  }
+
+  onPreviewDomChangeden(e: any) {
+    this.content_en = e.innerHTML;
+  }
+
+  doUpload(files: Array<File>): Promise<Array<UploadResult>> {
+    // do upload file by yourself
+    return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
+  }
+  preRenderFunc(content: string) {
+    return content;
+    //return content.replace(/something/g, 'new value');
+  }
+  postRenderFunc(content: string) {
+    return content;
+    //return content.replace(/something/g, 'new value');
   }
 }

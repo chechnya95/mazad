@@ -240,8 +240,12 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Terms</div>
-                                        <div class="text-gray-600">{{ item?.terms.en }} <br> {{ item?.terms.ar }} </div>
+                                        <div class="fw-bolder mt-5">Terms Arabic</div>
+                                        <div class="text-gray-600" id="terms_ar">
+                                        </div>
+                                        <div class="fw-bolder mt-5">Terms English</div>
+                                        <div class="text-gray-600" id="terms_en">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -665,7 +669,7 @@
                                                 <!--end::Date=-->
                                                 <td>
                                                     <div *ngIf="bid.active==1"
-                                                    class="badge badge-light-success fw-bolder">Active</div>
+                                                        class="badge badge-light-success fw-bolder">Active</div>
                                                     <div *ngIf="bid.active==0"
                                                         class="badge badge-light-danger fw-bolder">Not Active
                                                     </div>
@@ -793,10 +797,9 @@
                                                 <td>{{pending.create_date | date:'short'}}</td>
                                                 <!--end::Date=-->
                                                 <td>
-                                                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Reject Payment"
-                                                        (click)="rejectayment(pending.id)">
-                                                        <span
-                                                            class="svg-icon svg-icon-primary svg-icon-2x">
+                                                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        title="Reject Payment" (click)="rejectayment(pending.id)">
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
                                                             <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Close.svg--><svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -816,7 +819,8 @@
                                                             <!--end::Svg Icon-->
                                                         </span>
                                                     </a>
-                                                    <s class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" title="Approve Payment"
+                                                    <s class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                                                        title="Approve Payment"
                                                         (click)="approvePayment(pending.id)"><span
                                                             class="svg-icon svg-icon-primary svg-icon-2x">
                                                             <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Check.svg--><svg
