@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
               timer: 2000,
               timerProgressBar: true,
               didOpen: () => {
-                Swal.showLoading()
+                Swal.showLoading(null);
                 const b = Swal.getHtmlContainer().querySelector('b')
                 timerInterval = setInterval(() => {
                   b.textContent = Swal.getTimerLeft().toString()
