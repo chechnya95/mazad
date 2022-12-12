@@ -177,7 +177,7 @@
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select name="owner_id" class="form-select form-select-lg form-select-solid"
-                                        [(ngModel)]="item.owner_id">
+                                        [(ngModel)]="item.owner_id" (change)="onChangeOwner()">
                                         <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                             owner.code +': '+ owner.title.en +' - '+ owner.title.ar
                                             }}</option>

@@ -24,6 +24,7 @@ export class EditItemComponent implements OnInit {
   token: any;
   items: any[] = [];
   auctions: any[] = [];
+  auctions_filter: any[] = [];
   categories: any[] = [];
   owners: any[] = [];
   item_status: any[] = [];
@@ -155,7 +156,7 @@ export class EditItemComponent implements OnInit {
     this.api.get('auctions/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.auctions = objects['auctions']['auctions'];
+        this.auctions_filter = this.auctions = objects['auctions']['auctions'];
 
         this.getOwners();
       },
@@ -258,6 +259,7 @@ export class EditItemComponent implements OnInit {
               mins_end = '0' + mins_end;
 
             this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
+            this.auctions = this.auctions_filter.filter(i => i.owner_id === this.item.owner_id);
 
             // add files to images dropzone
             this.item.images.forEach((image) => {
@@ -422,6 +424,11 @@ export class EditItemComponent implements OnInit {
   removeFile(file: any) {
     let index = this.item.attachments.indexOf(file, 0);
     this.item.attachments.splice(index, 1);
+  }
+
+  onChangeOwner() {
+    this.auctions = this.auctions_filter;
+    this.auctions = this.auctions_filter.filter(i => i.owner_id === this.item.owner_id);
   }
 
   reload() {

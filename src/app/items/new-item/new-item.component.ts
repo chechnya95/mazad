@@ -23,6 +23,7 @@ export class NewItemComponent implements OnInit {
   token: any;
   items: any[] = [];
   auctions: any[] = [];
+  auctions_filter: any[] = [];
   categories: any[] = [];
   owners: any[] = [];
   item_status: any[] = [];
@@ -166,7 +167,7 @@ export class NewItemComponent implements OnInit {
     this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.auctions = objects['auctions'];
+        this.auctions_filter = this.auctions = objects['auctions'];
 
         this.getOwners();
       },
@@ -445,6 +446,8 @@ export class NewItemComponent implements OnInit {
   onChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.item.owner_id = owner.id;
+    this.auctions = this.auctions_filter;
+    this.auctions = this.auctions_filter.filter(i => i.owner_id === this.item.owner_id);
   }
 
   onEditorLoaded(editor: any) {
