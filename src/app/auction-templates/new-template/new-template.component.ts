@@ -14,6 +14,7 @@ export class NewTemplateComponent implements OnInit {
   token: any;
   templates: any[] = [];
   auctions: any[] = [];
+  auctions_filter: any[] = [];
   categories: any[] = [];
   owners: any[] = [];
   fields: any[] = [];
@@ -65,7 +66,7 @@ export class NewTemplateComponent implements OnInit {
   edit_item_id: any;
 
   Swal = require('sweetalert2')
-  
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
@@ -76,47 +77,35 @@ export class NewTemplateComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
-
-      this.getAuctions(id);
+      this.getOwners(id);
     });
   }
 
   async getAuctions(item_id: any) {
-    this.api.get('auctions/active', this.token).subscribe(
+    const sub = this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.auctions = objects['auctions'];
-
-        this.getOwners(item_id);
+        this.auctions_filter = this.auctions = objects['auctions'];
       },
       async error => {
         alert(error);
       }
     );
+
+    sub.add(() => { this.getCategories(item_id); });
   }
 
-  /* async getOwners(item_id: any) {
-    this.api.get('users/type/OWNER', this.token).subscribe(
-      async data => {
-        let objects = JSON.parse(JSON.stringify(data));
-        this.owners = objects['users'][0];
-
-        this.getCategories(item_id);
-      },
-      async error => {
-        alert(error);
-      }
-    );
-  } */
+  onChangeOwner() {
+    this.auctions = this.auctions_filter;
+    this.auctions = this.auctions_filter.filter(i => i.owner_id === this.auction_template.owner_id);
+  }
 
   async getOwners(item_id: any) {
-    this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
         this.owners = objects.owners;
-
-        this.getCategories(item_id);
       },
       async error => {
         Swal.fire({
@@ -126,6 +115,8 @@ export class NewTemplateComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.getAuctions(item_id); });
   }
 
   async getCategories(item_id: any) {

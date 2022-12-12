@@ -264,7 +264,7 @@ export class EditItemComponent implements OnInit {
               let url = image.file.file;
               var pattern = url.lastIndexOf('/');
               var file_name = url.substring(pattern + 1);
-              this.http.get(image.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+              this.http.get(image.file.file, { responseType: 'blob' }).subscribe(blob => {
                 this.uppy.addFile({
                   id: image.id,
                   name: file_name,
@@ -279,7 +279,7 @@ export class EditItemComponent implements OnInit {
               let url = attachment.file.file;
               var pattern = url.lastIndexOf('/');
               var file_name = url.substring(pattern + 1);
-              this.http.get(attachment.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+              this.http.get(attachment.file.file, { responseType: 'blob' }).subscribe(blob => {
                 this.uppy2.addFile({
                   id: attachment.id,
                   name: file_name,
