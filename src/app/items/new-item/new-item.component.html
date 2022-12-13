@@ -355,9 +355,6 @@
                                     <!--begin::Label-->
                                     <label class="fw-bold fs-6 mb-2">Owner</label>
                                     <!--end::Label-->
-                                    <input type="text"
-                                        class="form-control form-control-solid mb-3 mb-lg-3" [(ngModel)]="owner_name"
-                                        disabled>
                                     <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                         (keyup.enter)="onChangeOwner($event.target.value)"
                                         (change)="onChangeOwner($event.target.value)" list="ownersList"
@@ -365,6 +362,8 @@
                                     <datalist id="ownersList">
                                         <option *ngFor="let owner of owners" [value]="owner.contact">
                                     </datalist>
+                                    <input type="text" class="form-control form-control-solid mb-3 mt-3 mb-lg-3"
+                                        [(ngModel)]="owner_name" disabled>
                                 </div>
                                 <!--begin::Input group-->
                                 <!-- <div class="fv-row mb-10">
@@ -455,7 +454,7 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Acceptable Price</label>
+                                    <label class="fw-bold fs-6 mb-2">Acceptable Price</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="acceptable_price"
@@ -467,7 +466,7 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Buy Price</label>
+                                    <label class="fw-bold fs-6 mb-2">Buy Price</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="buy_price"
@@ -695,7 +694,9 @@
                                 <!--begin::Body-->
                                 <div class="mb-0">
                                     <!--begin::Text-->
-                                    <div class="fs-6 text-gray-600 mb-5">After submiting the form the item will be created and found in items lists, if there is an issue you will be informed on same page.</div>
+                                    <div class="fs-6 text-gray-600 mb-5">After submiting the form the item will be
+                                        created and found in items lists, if there is an issue you will be informed on
+                                        same page.</div>
                                     <!--end::Text-->
                                     <!--begin::Alert-->
                                     <!--begin::Notice-->
@@ -719,7 +720,8 @@
                                             <div class="fw-bold">
                                                 <h4 class="text-gray-800 fw-bolder">We need your attention!</h4>
                                                 <div class="fs-6 text-gray-600">By Clicking Submit your item will be
-                                                    created &amp; you will be redirected to items list. To start new item,
+                                                    created &amp; you will be redirected to items list. To start new
+                                                    item,
                                                     <a (click)="reload();" style="cursor: pointer;"
                                                         class="fw-bolder">Please Click here.</a>
                                                 </div>

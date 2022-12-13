@@ -195,8 +195,7 @@ export class OwnersComponent implements OnInit {
     this.edit_owner.description_ar = owner.description['ar'];
     this.edit_owner.description_en = owner.description['en'];
 
-    this.edit_owner_details = this.edit_owner['owner_details'];
-
+    this.edit_owner_details = JSON.parse(this.edit_owner['owner_details']);
     this.edit_owner.active = owner.active == true ? 1 : 0;
   }
 
