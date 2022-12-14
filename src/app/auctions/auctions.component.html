@@ -412,8 +412,6 @@
                                                 <!--begin::Label-->
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
-                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
-                                                    [(ngModel)]="owner_name" disabled>
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onChangeOwner($event.target.value)"
                                                     (change)="onChangeOwner($event.target.value)" list="ownersList"
@@ -421,6 +419,8 @@
                                                 <datalist id="ownersList">
                                                     <option *ngFor="let owner of owners" [value]="owner.contact">
                                                 </datalist>
+                                                <input type="text" class="form-control form-control-solid mb-3 mt-3 mb-lg-3"
+                                                    [(ngModel)]="owner_name" disabled>
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
@@ -681,7 +681,7 @@
                                                 <datalist id="ownersList">
                                                     <option *ngFor="let owner of owners" [value]="owner.contact">
                                                 </datalist>
-                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
+                                                <input type="text" class="form-control form-control-solid mb-3 mt-3 mb-lg-3"
                                                     [(ngModel)]="owner_name" disabled>
                                                 <!--end::Input-->
                                             </div>
