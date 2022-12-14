@@ -674,8 +674,6 @@
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
-                                                    [(ngModel)]="owner_name" disabled>
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onEditChangeOwner($event.target.value)"
                                                     (change)="onEditChangeOwner($event.target.value)" list="ownersList"
@@ -683,6 +681,8 @@
                                                 <datalist id="ownersList">
                                                     <option *ngFor="let owner of owners" [value]="owner.contact">
                                                 </datalist>
+                                                <input type="text" class="form-control form-control-solid mb-3 mb-lg-3"
+                                                    [(ngModel)]="owner_name" disabled>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
