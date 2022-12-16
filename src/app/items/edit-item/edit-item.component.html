@@ -380,22 +380,20 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label">Images</label>
+                                    <!-- <label class="form-label">Images</label> -->
                                     <!--end::Label-->
                                     <!-- Try dropzone -->
-                                    <uppy-dashboard [uppy]='uppy'>
-                                    </uppy-dashboard>
-                                    <!-- <div class="py-0" data-kt-customer-payment-method="row">
-                                        <!--begin::Header--
+                                    <div class="py-0" data-kt-customer-payment-method="row">
+                                        <!--begin::Header-->
                                         <div class="py-3 d-flex flex-stack flex-wrap">
-                                            <!--begin::Toggle--
-                                            <div class="d-flex align-items-center collapsible collapsed rotate"
+                                            <!--begin::Toggle collapsed -->
+                                            <div class="d-flex align-items-center collapsible rotate"
                                                 data-bs-toggle="collapse" href="#kt_customer_view_payment_method_1"
                                                 role="button" aria-expanded="false"
                                                 aria-controls="kt_customer_view_payment_method_1">
-                                                <!--begin::Arrow--
+                                                <!--begin::Arrow-->
                                                 <div class="me-3 rotate-90">
-                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-right.svg--
+                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-right.svg-->
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -410,28 +408,28 @@
                                                             </g>
                                                         </svg>
                                                     </span>
-                                                    <!--end::Svg Icon--
+                                                    <!--end::Svg Icon-->
                                                 </div>
                                                 <!--end::Arrow-->
-                                    <!--begin::Summary--
+                                                <!--begin::Summary-->
                                                 <div class="me-3">
                                                     <div class="d-flex align-items-center">
                                                         <div class="text-gray-800 fw-bolder">Images</div>
                                                     </div>
                                                 </div>
-                                                <!--end::Summary--
+                                                <!--end::Summary-->
                                             </div>
-                                            <!--end::Toggle--
+                                            <!--end::Toggle-->
                                         </div>
                                         <!--end::Header-->
-                                    <!--begin::Body--
-                                        <div id="kt_customer_view_payment_method_1" class="collapse fs-6 ps-10"
+                                        <!--begin::Body-->
+                                        <div id="kt_customer_view_payment_method_1" class="fs-6 ps-10"
                                             data-bs-parent="#kt_customer_view_payment_method">
-                                            <!--begin::Row--
+                                            <!--begin::Row-->
                                             <div class="row py-5">
-                                                <!--begin::Row--
+                                                <!--begin::Row-->
                                                 <div class="col-md">
-                                                    <!--begin::Item--
+                                                    <!--begin::Item-->
                                                     <div class="d-flex">
                                                         <div *ngFor="let image of item?.images"
                                                             style="padding-right:20px;">
@@ -448,17 +446,19 @@
                                                             </button>
                                                             <img src="{{image.file.file}}"
                                                                 style="width:60px;height:40px; padding-right: 10px;">
-                                                        </div> --
+                                                        </div> -->
                                                     </div>
-                                                    <!--end::Item--
+                                                    <!--end::Item-->
                                                 </div>
-                                                <!--end::Row--
+                                                <!--end::Row-->
                                             </div>
-                                            <!--end::Row--
+                                            <!--end::Row-->
                                         </div>
-                                        <!--end::Body--
-                                    </div> -->
+                                        <!--end::Body-->
+                                    </div>
                                     <!--end::Label-->
+                                    <uppy-dashboard [uppy]='uppy'>
+                                    </uppy-dashboard>
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="images" multiple accept="image/*"
                                         (change)="imageChange($event)" /> -->
@@ -468,24 +468,22 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label">Attachments</label>
+                                    <!-- <label class="form-label">Attachments</label> -->
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="attachments" multiple
                                         (change)="fileChange($event)" /> -->
-                                    <uppy-dashboard [uppy]='uppy2'>
-                                    </uppy-dashboard>
-                                    <!-- <div class="py-0" data-kt-customer-payment-method="row">
-                                        <!--begin::Header--
+                                    <div class="py-0" data-kt-customer-payment-method="row">
+                                        <!--begin::Header-->
                                         <div class="py-3 d-flex flex-stack flex-wrap">
-                                            <!--begin::Toggle--
-                                            <div class="d-flex align-items-center collapsible collapsed rotate"
+                                            <!--begin::Toggle-->
+                                            <div class="d-flex align-items-center collapsible rotate"
                                                 data-bs-toggle="collapse" href="#kt_customer_view_payment_method_2"
                                                 role="button" aria-expanded="false"
                                                 aria-controls="kt_customer_view_payment_method_2">
-                                                <!--begin::Arrow--
+                                                <!--begin::Arrow-->
                                                 <div class="me-3 rotate-90">
-                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-right.svg--
+                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-right.svg-->
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -500,29 +498,29 @@
                                                             </g>
                                                         </svg>
                                                     </span>
-                                                    <!--end::Svg Icon--
+                                                    <!--end::Svg Icon-->
                                                 </div>
                                                 <!--end::Arrow-->
-                                    <!--begin::Summary--
+                                                <!--begin::Summary-->
                                                 <div class="me-3">
                                                     <div class="d-flex align-items-center">
                                                         <div class="text-gray-800 fw-bolder">Attachments</div>
                                                     </div>
                                                 </div>
-                                                <!--end::Summary--
+                                                <!--end::Summary-->
                                             </div>
-                                            <!--end::Toggle--
+                                            <!--end::Toggle-->
                                         </div>
                                         <!--end::Header-->
-                                    <!--begin::Body-->
-                                    <!-- to show by default just add the class show after collapse --
-                                        <div id="kt_customer_view_payment_method_2" class="collapse fs-6 ps-10"
+                                        <!--begin::Body-->
+                                        <!-- to show by default just add the class show after collapse -->
+                                        <div id="kt_customer_view_payment_method_2" class="fs-6 ps-10"
                                             data-bs-parent="#kt_customer_view_payment_method">
-                                            <!--begin::Row--
+                                            <!--begin::Row-->
                                             <div class="row py-5">
-                                                <!--begin::Row--
+                                                <!--begin::Row-->
                                                 <div class="col-md">
-                                                    <!--begin::Item--
+                                                    <!--begin::Item-->
                                                     <div class="d-flex mb-3">
                                                         <div *ngFor="let attach of item?.attachments">
                                                             <a href="{{attach.file.file}}" target="_blank"><img
@@ -533,15 +531,17 @@
                                                                 (click)="removeFile(attach)">remove</span>
                                                         </div>
                                                     </div>
-                                                    <!--end::Item--
+                                                    <!--end::Item-->
                                                 </div>
-                                                <!--end::Row--
+                                                <!--end::Row-->
                                             </div>
-                                            <!--end::Row--
+                                            <!--end::Row-->
                                         </div>
-                                        <!--end::Body--
-                                    </div> -->
+                                        <!--end::Body-->
+                                    </div>
                                     <!--begin::Input-->
+                                    <uppy-dashboard [uppy]='uppy2'>
+                                    </uppy-dashboard>
                                     <!-- <input type="file" class="form-control" id="attachments" multiple
                                         (change)="fileChange($event)" /> -->
                                     <!--end::Input-->

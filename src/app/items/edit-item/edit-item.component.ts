@@ -260,34 +260,34 @@ export class EditItemComponent implements OnInit {
             this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
 
             // add files to images dropzone
-            this.item.images.forEach((image) => {
-              let url = image.file.file;
-              var pattern = url.lastIndexOf('/');
-              var file_name = url.substring(pattern + 1);
-              this.http.get(image.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
-                this.uppy.addFile({
-                  id: image.id,
-                  name: file_name,
-                  type: blob.type,
-                  data: blob,
-                });
-              });
-            });
+            // this.item.images.forEach((image) => {
+            //   let url = image.file.file;
+            //   var pattern = url.lastIndexOf('/');
+            //   var file_name = url.substring(pattern + 1);
+            //   this.http.get(image.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+            //     this.uppy.addFile({
+            //       id: image.id,
+            //       name: file_name,
+            //       type: blob.type,
+            //       data: blob,
+            //     });
+            //   });
+            // });
 
             // add files to attachments dropzone
-            this.item.attachments.forEach((attachment) => {
-              let url = attachment.file.file;
-              var pattern = url.lastIndexOf('/');
-              var file_name = url.substring(pattern + 1);
-              this.http.get(attachment.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
-                this.uppy2.addFile({
-                  id: attachment.id,
-                  name: file_name,
-                  type: blob.type,
-                  data: blob,
-                });
-              });
-            });
+            // this.item.attachments.forEach((attachment) => {
+            //   let url = attachment.file.file;
+            //   var pattern = url.lastIndexOf('/');
+            //   var file_name = url.substring(pattern + 1);
+            //   this.http.get(attachment.file.file, { responseType: 'blob', headers: { 'Access-Control-Allow-Origin': '*' } }).subscribe(blob => {
+            //     this.uppy2.addFile({
+            //       id: attachment.id,
+            //       name: file_name,
+            //       type: blob.type,
+            //       data: blob,
+            //     });
+            //   });
+            // });
 
             this.getForm();
           }
