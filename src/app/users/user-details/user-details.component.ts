@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user-details',
@@ -15,6 +16,7 @@ export class UserDetailsComponent implements OnInit {
   bids: any[] = [];
   deposits: any[] = [];
   wallets: any[] = [];
+  payment_transaction_types: any[] = [];
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -23,6 +25,8 @@ export class UserDetailsComponent implements OnInit {
   deposit_id: any;
   block_id: any;
   note: any;
+
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -127,7 +131,7 @@ export class UserDetailsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { });
+    sub.add(() => { this.getTransactionPaymentTypes(); });
   }
 
   requestRefund(id: any) {
@@ -161,5 +165,77 @@ export class UserDetailsComponent implements OnInit {
       async data => { this.successMessage = true; },
       async errr => { console.log(errr); this.errorMessage = true; }
     );
+  }
+
+  getTransactionPaymentTypes() {
+    const sub = this.api.get('payments/payment_type', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.payment_transaction_types = objects['payment_type'];
+      },
+      async error => {
+        console.log(error);
+      }
+    );
+    sub.add(() => { });
+  }
+
+  async offline_deposit(id: any) {
+    let _options = '';
+    this.payment_transaction_types.forEach((item) => {
+      _options += `<option value="${item}">${item}</option>`
+    });
+
+    const { value: formValues } = await Swal.fire({
+      title: 'Please provide deposit details: ',
+      html:
+        '<input id="swal-input1" class="swal2-input" type="text" placeholder="Amount">' +
+        '<input id="swal-input2" class="swal2-input" type="text" placeholder="VAT">' +
+        '<input id="swal-input3" class="swal2-input" type="text" placeholder="Fee">' +
+        '<label for="swal-input4">Choose payment type:</label>' +
+        '<select id="swal-input4" class="swal2-input" name="cars">' +
+        _options +
+        '</select>',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      preConfirm: () => {
+        return [
+          (document.getElementById('swal-input1') as HTMLInputElement).value,
+          (document.getElementById('swal-input2') as HTMLInputElement).value,
+          (document.getElementById('swal-input3') as HTMLInputElement).value,
+          (document.getElementById('swal-input4') as HTMLInputElement).value,
+        ]
+      }
+    });
+
+    let amount = +formValues[0];
+    let vat = formValues[1] ? +formValues[1] : 0;
+    let fee = formValues[2] ? +formValues[2] : 0;
+    let payment_type = formValues[3];
+
+    if (amount && amount > 0) {
+      let body = {
+        amount: amount,
+        user_id: id,
+        vat: vat,
+        payment_type: payment_type,
+        fee: fee
+      }
+
+      this.api.post("deposits/offline_payment", body, this.token).subscribe(
+        async data => {
+          Swal.fire({
+            title: 'تم اضافة مبلغ الايداع',
+            text: 'Amount deposit successfully.'
+          });
+        },
+        async error => {
+          Swal.fire({
+            title: 'Error...',
+            text: 'ERROR: cannot connect!\nPlease try again later.'
+          });
+        }
+      );
+    }
   }
 }

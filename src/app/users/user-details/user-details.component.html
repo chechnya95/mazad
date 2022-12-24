@@ -171,6 +171,8 @@
                                                 class="btn btn-warning">Block User</button>
                                             <button *ngIf="userBlocked" (click)="unblock(block_id)" type="button"
                                                 class="btn btn-danger">Unblock</button>
+                                            <button (click)="offline_deposit(user?.id)" type="button"
+                                                class="btn btn-info">Offline Deposit</button>
                                         </div>
                                     </div>
                                 </div>

@@ -629,7 +629,8 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                <table mat-table matSort (matSortChange)="sortData($event)"
+                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -699,7 +700,57 @@
                             </td>
                             <!--end::Two step=-->
                             <!--begin::Joined-->
-                            <td>{{ user.mobile_confirmed_at | date: "dd MMM yyyy, hh:mm a":"+0000" }}</td>
+                            <td
+                                *ngIf="(user.mobile_confirmed_at && !user.email_confirmed_at) || (user.mobile_confirmed_at && user.email_confirmed_at)">
+                                <span
+                                    class="svg-icon svg-icon-primary svg-icon-xl"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo4/dist/../src/media/svg/icons/Devices/Phone.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M7.13888889,4 L7.13888889,19 L16.8611111,19 L16.8611111,4 L7.13888889,4 Z M7.83333333,1 L16.1666667,1 C17.5729473,1 18.25,1.98121694 18.25,3.5 L18.25,20.5 C18.25,22.0187831 17.5729473,23 16.1666667,23 L7.83333333,23 C6.42705272,23 5.75,22.0187831 5.75,20.5 L5.75,3.5 C5.75,1.98121694 6.42705272,1 7.83333333,1 Z"
+                                                fill="#000000" fill-rule="nonzero" />
+                                            <polygon fill="#000000" opacity="0.3" points="7 4 7 19 17 19 17 4" />
+                                            <circle fill="#000000" cx="12" cy="21" r="1" />
+                                        </g>
+                                    </svg><!--end::Svg Icon--></span>
+                                {{ user.mobile_confirmed_at | date: "dd MMM yyyy, hh:mm a":"+0000" }}
+                            </td>
+                            <td *ngIf="!user.mobile_confirmed_at && user.email_confirmed_at">
+                                <span
+                                    class="svg-icon svg-icon-primary svg-icon-xl"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo4/dist/../src/media/svg/icons/Communication/Readed-mail.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M4.875,20.75 C4.63541667,20.75 4.39583333,20.6541667 4.20416667,20.4625 L2.2875,18.5458333 C1.90416667,18.1625 1.90416667,17.5875 2.2875,17.2041667 C2.67083333,16.8208333 3.29375,16.8208333 3.62916667,17.2041667 L4.875,18.45 L8.0375,15.2875 C8.42083333,14.9041667 8.99583333,14.9041667 9.37916667,15.2875 C9.7625,15.6708333 9.7625,16.2458333 9.37916667,16.6291667 L5.54583333,20.4625 C5.35416667,20.6541667 5.11458333,20.75 4.875,20.75 Z"
+                                                fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                            <path
+                                                d="M12.9835977,18 C12.7263047,14.0909841 9.47412135,11 5.5,11 C4.98630124,11 4.48466491,11.0516454 4,11.1500272 L4,7 C4,5.8954305 4.8954305,5 6,5 L20,5 C21.1045695,5 22,5.8954305 22,7 L22,16 C22,17.1045695 21.1045695,18 20,18 L12.9835977,18 Z M19.1444251,6.83964668 L13,10.1481833 L6.85557487,6.83964668 C6.4908718,6.6432681 6.03602525,6.77972206 5.83964668,7.14442513 C5.6432681,7.5091282 5.77972206,7.96397475 6.14442513,8.16035332 L12.6444251,11.6603533 C12.8664074,11.7798822 13.1335926,11.7798822 13.3555749,11.6603533 L19.8555749,8.16035332 C20.2202779,7.96397475 20.3567319,7.5091282 20.1603533,7.14442513 C19.9639747,6.77972206 19.5091282,6.6432681 19.1444251,6.83964668 Z"
+                                                fill="#000000" />
+                                        </g>
+                                    </svg><!--end::Svg Icon--></span>
+                                {{ user.email_confirmed_at
+                                | date: "dd MMM yyyy, hh:mm a":"+0000" }}
+                            </td>
+                            <td *ngIf="!user.mobile_confirmed_at && !user.email_confirmed_at">
+                                <span
+                                    class="svg-icon svg-icon-primary svg-icon-xl"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo4/dist/../src/media/svg/icons/Code/Warning-2.svg--><svg
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path
+                                                d="M11.1669899,4.49941818 L2.82535718,19.5143571 C2.557144,19.9971408 2.7310878,20.6059441 3.21387153,20.8741573 C3.36242953,20.9566895 3.52957021,21 3.69951446,21 L21.2169432,21 C21.7692279,21 22.2169432,20.5522847 22.2169432,20 C22.2169432,19.8159952 22.1661743,19.6355579 22.070225,19.47855 L12.894429,4.4636111 C12.6064401,3.99235656 11.9909517,3.84379039 11.5196972,4.13177928 C11.3723594,4.22181902 11.2508468,4.34847583 11.1669899,4.49941818 Z"
+                                                fill="#000000" opacity="0.3" />
+                                            <rect fill="#000000" x="11" y="9" width="2" height="7" rx="1" />
+                                            <rect fill="#000000" x="11" y="17" width="2" height="2" rx="1" />
+                                        </g>
+                                    </svg><!--end::Svg Icon--></span>
+                                    not confirmed
+                            </td>
                             <!--end::Joined-->
                             <!--begin::Action=-->
                             <td class="text-end">
@@ -775,13 +826,10 @@
                 <!--end::Table-->
                 <div class="has-text-centered">
                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                    <mat-paginator #paginator showFirstLastButtons
-                                        [length]="filter_config.totalItems"
-                                        [pageSize]="filter_config.itemsPerPage"
-                                        [pageSizeOptions]="filter_config.pageSizeOptions"
-                                        (page)="pageChangeEvent($event)"
-                                    >
-                                    </mat-paginator>
+                    <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
+                        [pageSize]="filter_config.itemsPerPage" [pageSizeOptions]="filter_config.pageSizeOptions"
+                        (page)="pageChangeEvent($event)">
+                    </mat-paginator>
                 </div>
             </div>
             <!--end::Card body-->
