@@ -66,15 +66,13 @@ export class ItemsComponent implements OnInit {
   }
   async getItems() {
     this.utility.loader = true;
-    this.api.get('items/', this.token,this.getHttpParams()).subscribe(
+    const sub = this.api.get('items/', this.token,this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items'];
         this.filter_config.totalItems = objects['filters']['total_results'];
 
         localStorage.setItem('items', JSON.stringify(this.items));
-
-        this.getItemstatus();
       },
       async error => {
         Swal.fire({
@@ -84,6 +82,8 @@ export class ItemsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.getItemstatus(); })
   }
 
   pageChangeEvent(event: PageEvent) {

@@ -147,7 +147,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
       { path: 'login', component: LoginComponent },
       //{ path: '', component: HomeComponent, canActivate: [AuthGuardGuard] },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'users', component: UsersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'user-details', component: UserDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'blacklist', component: BlacklistComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
@@ -186,7 +186,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
       { path: 'children', component: ChildernComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
-      { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'welcome', component: WelcomeComponent },
       { path: '**', component: PageNotFoundComponent }

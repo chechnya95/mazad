@@ -70,12 +70,12 @@
                   <span class="menu-title">{{ 'Dashboard' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item">
+              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
                 <div class="menu-content pt-8 pb-2">
                   <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'UsersRoles' | translate }}</span>
                 </div>
               </div>
-              <div class="menu-item">
+              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['users']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -95,7 +95,7 @@
                   <span class="menu-title">{{ 'UsersManagement' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item">
+              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['owners']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->

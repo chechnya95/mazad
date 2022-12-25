@@ -4,6 +4,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import {Sort} from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-winners',
@@ -25,6 +26,8 @@ export class WinnersComponent implements OnInit {
     status: 'pending',
     message: null
   }
+
+  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -77,7 +80,11 @@ export class WinnersComponent implements OnInit {
         this.filter_config.totalItems = objects['winners']['filters']['total_results'];
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
 
@@ -93,7 +100,11 @@ export class WinnersComponent implements OnInit {
         this.sms.message = this.template.content.ar;
       },
       async error => {
-        alert(error);
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
       }
     );
   }
@@ -129,7 +140,10 @@ export class WinnersComponent implements OnInit {
         alert("Message Sent.. :) ")
       },
       async error => {
-        alert("ERROR: cannot connect!");
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
         console.log(error);
       }
     );

@@ -122,7 +122,7 @@ export class AuctionsComponent implements OnInit {
 
   async getAuctions() {
     this.utility.loader = true;
-    this.api.get('auctions/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('auctions/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
@@ -130,8 +130,6 @@ export class AuctionsComponent implements OnInit {
 
         if (this.auction_id)
           this.auctions = this.auctions.filter(i => i.id === this.auction_id);
-
-        this.getOwners();
       },
       async error => {
         Swal.fire({
@@ -141,10 +139,12 @@ export class AuctionsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.getOwners(); })
   }
 
   async getOwners() {
-    this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
@@ -159,8 +159,6 @@ export class AuctionsComponent implements OnInit {
             owner.contact = owner.email ? owner.email : owner.phone;
           }
         });
-
-        this.getAuctionStatus();
       },
       async error => {
         Swal.fire({
@@ -170,16 +168,15 @@ export class AuctionsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.getAuctionStatus(); })
   }
 
   async getAuctionStatus() {
-    this.api.get('auctions/auction_status', this.token).subscribe(
+    const sub = this.api.get('auctions/auction_status', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
-
-        this.utility.loader = false;
-        this.getGroups();
       },
       async error => {
         Swal.fire({
@@ -189,10 +186,12 @@ export class AuctionsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.getGroups(); })
   }
 
   async getGroups() {
-    this.api.get('groups/', this.token).subscribe(
+    const sub = this.api.get('groups/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.groups = objects['groups'];
@@ -205,6 +204,8 @@ export class AuctionsComponent implements OnInit {
         console.log(error);
       }
     );
+
+    sub.add(() => { this.utility.loader = false; })
   }
 
   async getTemplates() {

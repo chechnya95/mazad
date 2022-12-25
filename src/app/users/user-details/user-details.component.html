@@ -16,8 +16,10 @@
                             <a class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">{{ user?.username |
                                 uppercase}}</a>
                             <!--end::Name-->
-                            <div class="fs-5 fw-bold text-gray-600">{{ user?.details.name_en }} {{ user?.details.name_ar
-                                }} </div>
+                            <div class="fs-5 fw-bold text-gray-600">
+                                <p>{{ user?.details.name_en }}</p>
+                                <p>{{ user?.details.name_ar}}</p>
+                            </div>
                             <!--begin::Position-->
                             <div class="fs-5 fw-bold text-gray-400 mb-6">{{ user?.id | uppercase}}</div>
                             <!--end::Position-->
@@ -25,25 +27,7 @@
                         <!--end::Summary-->
                         <!--begin::Details toggle-->
                         <div class="d-flex flex-stack fs-4 py-3">
-                            <div class="fw-bolder">User Details
-                                <span class="ms-2 rotate-180">
-                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
-                                    <span class="svg-icon svg-icon-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24" />
-                                                <path
-                                                    d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
-                                                    fill="#000000" fill-rule="nonzero"
-                                                    transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)" />
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </span>
-                            </div>
+                            <div class="fw-bolder">User Details</div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit this user">
                                 <a href="users?id={{user.id}}" class="btn btn-sm btn-light-primary">Edit</a>
                             </span>
@@ -84,13 +68,13 @@
                                 <div class="text-gray-600">{{ user?.email_confirmed_at | date:'medium' }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">User Role</div>
-                                <div class="text-gray-600">{{ user?.role }}
+                                <div class="fw-bolder mt-5 mb-3">User Role</div>
+                                <div class="badge badge-light-primary d-inline badge-lg">{{ user?.roles[0] | titlecase }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">User Type</div>
-                                <div class="text-gray-600">{{ user?.user_type }}
+                                <div class="fw-bolder mt-5 mb-3">User Type</div>
+                                <div class="badge badge-light-primary d-inline badge-lg">{{ user?.user_type | titlecase }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
