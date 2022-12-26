@@ -112,8 +112,6 @@ export class GroupsComponent implements OnInit {
 
         if (id)
           this.groups = this.groups.filter(i => i.id === id);
-
-        console.log(this.groups);
       },
       async error => {
         Swal.fire({
@@ -286,6 +284,6 @@ export class GroupsComponent implements OnInit {
   getOwnerName(id?: any) {
     let owner = this.owners.find(i => i.id === id);
 
-    return owner.contact;
+    return owner?.contact;
   }
 }
