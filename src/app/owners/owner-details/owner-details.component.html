@@ -85,10 +85,12 @@
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Details</div>
                                 <div class="text-gray-600">
-                                    {{ owner?.details.name_ar }} <br> 
-                                    {{ owner?.details.name_en }} <br> 
-                                    <span *ngIf="owner?.details.cr_number">CR Number: {{ owner?.details.cr_number }}</span> <br> 
-                                    <span *ngIf="owner?.details.vat_number">VAT Number: {{ owner?.details.vat_number }}</span>
+                                    {{ owner?.details.name_ar }} <br>
+                                    {{ owner?.details.name_en }} <br>
+                                    <span *ngIf="owner?.details.cr_number">CR Number: {{ owner?.details.cr_number
+                                        }}</span> <br>
+                                    <span *ngIf="owner?.details.vat_number">VAT Number: {{ owner?.details.vat_number
+                                        }}</span>
                                 </div>
                                 <!--begin::Details item-->
                             </div>
@@ -515,7 +517,12 @@
                             data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
                             <div class="fv-row mb-10">
                                 <label class="form-label fs-6 fw-bold">User</label>
-                                <select name="owner_id" class="form-select form-select-lg form-select-solid"
+                                <input class="form-control header-color" [(ngModel)]="user_param"
+                                    (keyup)="onChangeUser()" placeholder="type to serach user ...">
+                                <!-- <datalist id="usersList">
+                                    <option *ngFor="let user of users" [value]="user.id">
+                                </datalist> -->
+                                <select name="user_id" class="form-select form-select-lg form-select-solid mt-3"
                                     [(ngModel)]="user_id">
                                     <option *ngFor="let user of users" [ngValue]='user.id'>{{ user.contact }}</option>
                                 </select>

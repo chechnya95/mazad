@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-owner-details',
@@ -17,7 +18,10 @@ export class OwnerDetailsComponent implements OnInit {
   owner_users: any[] = [];
   owner: any;
 
+  filter_config: any;
+
   user_id: any;
+  user_param: any;
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -27,6 +31,14 @@ export class OwnerDetailsComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Owner Details';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
+    };
   }
 
   ngOnInit(): void {
@@ -77,7 +89,7 @@ export class OwnerDetailsComponent implements OnInit {
       async error => { console.log(error); this.errorMessage = true; }
     );
 
-    sub.add(() => { this.utility.loader = false; this.getUsers(); });
+    sub.add(() => { this.utility.loader = false; });
   }
 
   linkUser(id: any) {
@@ -104,5 +116,37 @@ export class OwnerDetailsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onChangeUser() {
+    if (this.user_param.length >= 3) {
+      const sub = this.api.get('users/search/' + this.user_param, this.token, this.getHttpParams()).subscribe(
+        async data => {
+          let objects: any = {
+            users: []
+          }
+          objects = data;
+  
+          this.users = objects.users.users;
+          this.users.forEach((user) => {
+            user.contact = user.email ? user.email : user.phone;
+          });
+        },
+        async error => { console.log(error);}
+      );
+  
+      sub.add(() => { });
+    }
+  }
+
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    return params;
   }
 }
