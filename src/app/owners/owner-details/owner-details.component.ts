@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-owner-details',
@@ -25,6 +26,8 @@ export class OwnerDetailsComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
@@ -107,15 +110,26 @@ export class OwnerDetailsComponent implements OnInit {
   }
 
   deleteOwnerUser(id: any) {
-    this.api.delete("owners/owner_user/" + id, this.token).subscribe(
-      async data => {
-        this.getOwnerUsers();
-      },
-      async error => {
-        this.errorMessage = true;
-        console.log(error);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete user!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete("owners/owner_user/" + id, this.token).subscribe(
+          async data => {
+            this.getOwnerUsers();
+          },
+          async error => {
+            this.errorMessage = true;
+            console.log(error);
+          }
+        );
       }
-    );
+    });
   }
 
   onChangeUser() {
@@ -126,15 +140,15 @@ export class OwnerDetailsComponent implements OnInit {
             users: []
           }
           objects = data;
-  
+
           this.users = objects.users.users;
           this.users.forEach((user) => {
             user.contact = user.email ? user.email : user.phone;
           });
         },
-        async error => { console.log(error);}
+        async error => { console.log(error); }
       );
-  
+
       sub.add(() => { });
     }
   }
