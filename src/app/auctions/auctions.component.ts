@@ -85,6 +85,7 @@ export class AuctionsComponent implements OnInit {
       currentPage: 1,
       totalItems: 0,
       sort: null,
+      queries: null,
       sort_order: 'asc',
       pageSizeOptions: [5, 10, 25, 100]
     };
@@ -106,21 +107,24 @@ export class AuctionsComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getAuctions();
+    this.getAuctions(true);
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getAuctions();
+    this.getAuctions(true);
   }
 
-  async getAuctions() {
+  async getAuctions(search = false) {
     this.utility.loader = true;
     const sub = this.api.get('auctions/', this.token, this.getHttpParams()).subscribe(
       async data => {
@@ -140,7 +144,7 @@ export class AuctionsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.getOwners(); })
+    sub.add(() => { if (!search) this.getOwners(); else this.utility.loader = false; })
   }
 
   async getOwners() {
@@ -247,7 +251,7 @@ export class AuctionsComponent implements OnInit {
 
     this.api.post("auctions/", body, this.token).subscribe(
       async data => {
-        this.getAuctions();
+        this.getAuctions(true);
       },
       async error => {
         Swal.fire({
@@ -322,14 +326,14 @@ export class AuctionsComponent implements OnInit {
       async errr => { console.log(errr); }
     );
 
-    sub.add(() => { this.getAuctions(); });
+    sub.add(() => { this.getAuctions(true); });
   }
 
   deleteAuction(id: number) {
     if (confirm("Delete this auction?")) {
       this.api.delete("auctions/" + id, this.token).subscribe(
         async data => {
-          this.getAuctions();
+          this.getAuctions(true);
         },
         async error => {
           Swal.fire({
@@ -347,15 +351,51 @@ export class AuctionsComponent implements OnInit {
     localStorage.setItem('auction', JSON.stringify(item));
   }
 
-  onChangeOwner(owner_contact?: any) {
-    let owner = this.owners.find(i => i.contact === owner_contact);
-    this.auction.owner_id = owner.id;
-    this.owner_name = this.owners.find(i => i.id === this.auction.owner_id).title.ar;
+  onChangeOwner(owner_contact: any) {
+    if (owner_contact.length >= 3) {
+      let field = 'email,phone';
+      let value = owner_contact;
+      this.filter_config.queries = `${field},like,${value}`;
+
+      const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
+        async data => {
+          let objects: any = {
+            owners: []
+          }
+          objects = data;
+
+          this.owners = objects.owners;
+          this.owners.forEach((owner) => {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          });
+
+          console.log(this.owners)
+        },
+        async error => { console.log(error); }
+      );
+
+      sub.add(() => { this.filter_config.queries = null; });
+    }
   }
 
   onEditChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.edit_auction.owner_id = owner.id;
     this.owner_name = this.owners.find(i => i.id === this.edit_auction.owner_id).title.ar;
+  }
+
+  searchAuction() {
+    if (this.auctionFilter.length >= 3) {
+      let field = 'code';
+      let value = this.auctionFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getAuctions(true);
+    }
+
+    if (this.auctionFilter == '' || this.auctionFilter == null) {
+      this.filter_config.queries = null;
+      this.getAuctions(true);
+    }
   }
 }

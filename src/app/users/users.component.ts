@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
 
   token: any;
   users: any[] = [];
+  users_filter: any[] = [];
   roles: any[] = [];
   filter_config: any;
 
@@ -66,6 +67,7 @@ export class UsersComponent implements OnInit {
       currentPage: 1,
       totalItems: 0,
       sort: null,
+      queries: null,
       sort_order: 'asc',
       pageSizeOptions: [5, 10, 25, 100]
     };
@@ -88,6 +90,9 @@ export class UsersComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
 
@@ -97,13 +102,14 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  async getUsers(id?: any) {
+  async getUsers(id?: any, search = false) {
     this.utility.loader = true;
     const sub = this.api.get('users/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
 
-        this.users = objects.users;
+        this.users_filter = this.users = objects.users;
+
         this.filter_config.totalItems = objects['filters']['total_results'];
         localStorage.setItem('users', JSON.stringify(this.users));
 
@@ -126,7 +132,7 @@ export class UsersComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.utility.loader = false; this.getRoles(); });
+    sub.add(() => { this.utility.loader = false; if (!search) this.getRoles(); });
   }
 
   async getRoles() {
@@ -271,6 +277,21 @@ export class UsersComponent implements OnInit {
           console.log(error);
         }
       );
+    }
+  }
+
+  searchUser() {
+    if (this.userFilter.length >= 3) {
+      let field = 'email,phone';
+      let value = this.userFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getUsers(null, true);
+    }
+
+    if (this.userFilter == '' || this.userFilter == null) {
+      this.filter_config.queries = null;
+      this.getUsers(null, true);
     }
   }
 }

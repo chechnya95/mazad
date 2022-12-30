@@ -65,6 +65,7 @@ export class OwnersComponent implements OnInit {
       currentPage: 1,
       totalItems: 0,
       sort: null,
+      queries: null,
       sort_order: 'asc',
       pageSizeOptions: [5, 10, 25, 100]
     };
@@ -87,6 +88,9 @@ export class OwnersComponent implements OnInit {
     if (this.filter_config.sort) {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
     }
     return params;
   }
@@ -223,5 +227,20 @@ export class OwnersComponent implements OnInit {
     );
 
     sub.add(() => { this.getOwners(); });
+  }
+
+  searchOwner() {
+    if (this.ownerFilter.length >= 3) {
+      let field = 'email,code';
+      let value = this.ownerFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getOwners();
+    }
+
+    if (this.ownerFilter == '' || this.ownerFilter == null) {
+      this.filter_config.queries = null;
+      this.getOwners();
+    }
   }
 }

@@ -27,8 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-owner-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search owner"
-                            [(ngModel)]="ownerFilter" />
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search owner [email] [code]"
+                            [(ngModel)]="ownerFilter" (keyup)="searchOwner()" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -614,7 +614,7 @@
                     <!--begin::Table body-->
                     <tbody class="text-gray-600 fw-bold">
                         <!--begin::Table row-->
-                        <tr *ngFor="let owner of owners | ownerPipe: ownerFilter ">
+                        <tr *ngFor="let owner of owners ">
                             <!--begin::Checkbox-->
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
