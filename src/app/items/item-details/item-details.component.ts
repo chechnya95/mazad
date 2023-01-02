@@ -46,23 +46,37 @@ export class ItemDetailsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
       if (id) {
-        let objects = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : null;
-        if (objects) {
-          this.item = objects.find(i => i.id === id);
-          this.keys = Object.keys(this.item.details);
-
-          document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
-          document.getElementById('terms_en').innerHTML = this.item.terms.en;
-
-          this.getBidds(id);
-        }
+        this.getItemDetails(id);
       }
       else { this.router.navigate(['items']); }
     })
   }
 
-  getBidds(id: any) {
+  getItemDetails(id: any) {
     this.utility.loader = true;
+    const sub = this.api.get(`items/${id}`, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.item = objects['item'];
+
+        this.keys = Object.keys(this.item.details);
+
+        document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
+        document.getElementById('terms_en').innerHTML = this.item.terms.en;
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.getBidds(id); });
+  }
+
+  getBidds(id: any) {
     const sub = this.api.get('bids/item/' + id + '/1', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -143,10 +157,9 @@ export class ItemDetailsComponent implements OnInit {
     const sub = this.api.get('bids/winners/' + this.item.id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.winner = objects['winners'][0];
+        this.winner = objects['winners']['bids'][0];
 
-        if (this.winner)
-          this.winner.details = JSON.parse(this.winner.details)
+        this.winner.details = JSON.parse(JSON.parse(JSON.stringify(this.winner.details)));
       },
       async error => {
         Swal.fire({
@@ -211,7 +224,7 @@ export class ItemDetailsComponent implements OnInit {
       }
     );
     sub.add(() => { this.getTransactionPaymentTypes(); });
-    
+
   }
 
   getTransactionPaymentTypes() {
