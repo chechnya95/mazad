@@ -372,20 +372,20 @@
                                 <div class="row py-5">
                                     <div class="col-md">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button *ngIf="extend_status.includes(item?.item_status)"
+                                            <button *ngIf="extend_status.includes(item?.item_status.toString().toLowerCase())"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
                                                 type="button" class="btn btn-secondary">Extend</button>
-                                            <button *ngIf="item?.item_status=='Approval'" (click)="approve(item?.id)"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'" (click)="approve(item?.id)"
                                                 type="button" class="btn btn-primary">Approve</button>
-                                            <button *ngIf="item?.item_status=='Payment Overdue'"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='payment overdue'"
                                                 (click)="announce(item?.id)" type="button"
                                                 class="btn btn-success">Announce Winner</button>
-                                            <button *ngIf="item?.item_status=='Approval'" (click)="reject(item?.id)"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'" (click)="reject(item?.id)"
                                                 type="button" class="btn btn-warning">Reject</button>
-                                            <button *ngIf="close_status.includes(item?.item_status)"
+                                            <button *ngIf="close_status.includes(item?.item_status.toString().toLowerCase())"
                                                 (click)="close(item?.id)" type="button"
                                                 class="btn btn-danger">Close</button>
-                                            <button data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='payment'" data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
                                                 type="button" class="btn btn-danger">Add
                                                 Payment</button>
                                         </div>
@@ -712,8 +712,8 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>No.</th>
-                                                <th>Amount</th>
+                                                <th>Transaction</th>
+                                                <th>Payment Type</th>
                                                 <th class="min-w-125px">Date</th>
                                             </tr>
                                             <!--end::Table row-->
@@ -725,14 +725,14 @@
                                             <tr *ngFor="let invoice of invoices; let i = index;">
                                                 <!--begin::Invoice=-->
                                                 <td><a [routerLink]="['/invoices']"
-                                                        [queryParams]="{ id: invoice.id }">{{
-                                                        invoice.number | uppercase }}</a></td>
+                                                        [queryParams]="{ id: invoice?.payment_transaction_id }">{{
+                                                        invoice?.payment_transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->
-                                                <td>{{ invoice.total_amount | currency:'OMR'}}</td>
+                                                <td>{{ invoice?.payment_type | uppercase }}</td>
                                                 <!--end::Amount=-->
                                                 <!--begin::Date=-->
-                                                <td>{{invoice.date | date:'medium'}}</td>
+                                                <td>{{invoice?.create_date | date:'medium'}}</td>
                                                 <!--end::Date=-->
                                             </tr>
                                             <!--end::Table row-->

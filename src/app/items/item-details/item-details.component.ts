@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 })
 export class ItemDetailsComponent implements OnInit {
 
-  extend_status: any[] = ['Open', 'Bid', 'Approval', 'Payment', 'Payment Overdue'];
+  extend_status: any[] = ['open', 'bid', 'approval', 'payment', 'payment overdue'];
   close_status: any[] = ['Shipping', 'Transferred'];
 
   token: any;
@@ -174,10 +174,12 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getInvoices() {
-    const sub = this.api.get('invoices/model/item/' + this.item.id, this.token).subscribe(
+    const sub = this.api.get('items/item_payments/item/' + this.item.id, this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.invoices = objects['invoices']['invoices'];
+        this.invoices = objects['item_payments'];
+
+        console.log(this.invoices.length)
       },
       async error => {
         Swal.fire({
