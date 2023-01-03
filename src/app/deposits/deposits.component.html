@@ -96,8 +96,8 @@
                                             <td>{{ deposit.amount | currency:'OMR'}}</td>
                                             <td>{{ deposit.fee | currency:'OMR'}}</td>
                                             <td>
-                                                <div *ngIf="deposit.status == active" class="badge badge-light-success fw-bolder">{{ deposit.status | uppercase }}</div>
-                                                <div *ngIf="!deposit.status == active" class="badge badge-light-info fw-bolder">{{ deposit.status | uppercase }}</div>
+                                                <div *ngIf="deposit.status.toLowerCase() === 'active'" class="badge badge-light-success fw-bolder">{{ deposit.status | uppercase }}</div>
+                                                <div *ngIf="!deposit.status.toLowerCase() === 'active'" class="badge badge-light-info fw-bolder">{{ deposit.status | uppercase }}</div>
                                             </td>
                                             <td [innerHTML]="deposit.note | nl2br"></td>
                                             <td>{{ deposit.create_date | date:"short"}}</td>
