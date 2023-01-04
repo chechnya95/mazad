@@ -408,7 +408,7 @@
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
-                                            <div class="fv-row mb-10">
+                                            <div class="fv-row mb-10" *ngIf="!isOwner">
                                                 <!--begin::Label-->
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
@@ -424,7 +424,7 @@
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
-                                            <div class="fv-row mb-10">
+                                            <div class="fv-row mb-10" *ngIf="!isOwner">
                                                 <!--begin::Label-->
                                                 <label class="form-label">Group</label>
                                                 <!--end::Label-->

@@ -64,13 +64,7 @@ export class ItemDetailsComponent implements OnInit {
         document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
         document.getElementById('terms_en').innerHTML = this.item.terms.en;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getBidds(id); });
@@ -87,13 +81,7 @@ export class ItemDetailsComponent implements OnInit {
         this.total_bids = this.bids.length;
         this.total_bidders = bidders.length;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getOwner(); });
@@ -105,13 +93,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.owner = objects['owners'][0];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getCategory(); });
@@ -123,13 +105,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.category = objects['categories'][0];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getAuction(); });
@@ -161,13 +137,7 @@ export class ItemDetailsComponent implements OnInit {
 
         this.winner.details = JSON.parse(JSON.parse(JSON.stringify(this.winner.details)));
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getInvoices(); });
@@ -181,13 +151,7 @@ export class ItemDetailsComponent implements OnInit {
 
         console.log(this.invoices.length)
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getPaymentTypes(); });
@@ -199,13 +163,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.payfors = objects;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getPendingPayments(); });
@@ -217,13 +175,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.pendings = objects['payments'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
     sub.add(() => { this.getTransactionPaymentTypes(); });
 
@@ -235,13 +187,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.payment_transaction_types = objects['payment_type'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
     sub.add(() => { this.utility.loader = false; });
   }
@@ -311,7 +257,6 @@ export class ItemDetailsComponent implements OnInit {
       payment_transaction_type: this.offline_payment.payment_transaction_type
     }
 
-    console.log(body);
     this.api.post('items/offline_payment/' + id, body, this.token).subscribe(
       async data => {
         this.getPendingPayments();

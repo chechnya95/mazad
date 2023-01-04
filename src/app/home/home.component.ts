@@ -66,13 +66,7 @@ export class HomeComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.total_users = objects['user_statistics']['total'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getTotalOwners(); });
@@ -84,13 +78,7 @@ export class HomeComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.total_owners = objects['owners_statistics']['total_owner'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getTotalIncome(); });
@@ -102,13 +90,7 @@ export class HomeComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.total_income = objects['invoices_count'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getTotalInsurance(); });
@@ -120,13 +102,7 @@ export class HomeComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.total_insurance = objects['deposits_statistics'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getCategories(); });
@@ -142,13 +118,7 @@ export class HomeComponent implements OnInit {
           this.categories_total_items += +item.count;
         })
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getStatus(); });
@@ -160,13 +130,7 @@ export class HomeComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.statuses = objects['items_statistics'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; });

@@ -79,13 +79,7 @@ export class WinnersComponent implements OnInit {
         this.winners = objects['winners']['bids'];
         this.filter_config.totalItems = objects['winners']['filters']['total_results'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getSMSTempalte(); this.utility.loader = false; });
@@ -99,13 +93,7 @@ export class WinnersComponent implements OnInit {
 
         this.sms.message = this.template.content.ar;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
   }
 

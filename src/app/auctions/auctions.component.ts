@@ -73,6 +73,8 @@ export class AuctionsComponent implements OnInit {
   auctionFilter = '';
   owner_name = null;
 
+  isOwner: boolean = false;
+
   Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
@@ -135,13 +137,7 @@ export class AuctionsComponent implements OnInit {
         if (this.auction_id)
           this.auctions = this.auctions.filter(i => i.id === this.auction_id);
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { if (!search) this.getOwners(); else this.utility.loader = false; })
@@ -164,13 +160,7 @@ export class AuctionsComponent implements OnInit {
           }
         });
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { if (error.status == 403) this.isOwner = true; }
     );
 
     sub.add(() => { this.getAuctionStatus(); })
@@ -182,13 +172,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getGroups(); })
@@ -200,13 +184,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.groups = objects['groups'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { if (error.status == 403) this.isOwner = true; }
     );
 
     sub.add(() => { this.utility.loader = false; })
@@ -218,13 +196,7 @@ export class AuctionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
   }
 
@@ -373,7 +345,7 @@ export class AuctionsComponent implements OnInit {
 
           console.log(this.owners)
         },
-        async error => { console.log(error); }
+        async error => { }
       );
 
       sub.add(() => { this.filter_config.queries = null; });

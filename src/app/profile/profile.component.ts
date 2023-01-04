@@ -25,14 +25,14 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser() {
-    this.api.get('users/' + this.id, this.token).subscribe(
+    this.api.get('users/my', this.token).subscribe(
       async data => {
         let objects: any = {
           users: []
         }
         objects = data;
 
-        this.user = objects.users[0];
+        this.user = objects.users;
 
         this.user.user_details = JSON.parse(this.user['user_details']);
         this.user.avatar = this.user.user_details ? this.user.user_details['name_en'].charAt(0) : this.user['username'].charAt(0);
