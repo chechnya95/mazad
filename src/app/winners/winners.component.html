@@ -73,7 +73,7 @@
                                             <th>User</th>
                                             <th>Date</th>
                                             <th>Amount</th>
-                                            <th class="text-end">Actions</th>
+                                            <th *ngIf="this.api.canEnter(['admin'])" class="text-end">Actions</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -93,7 +93,7 @@
                                             <td>{{ winner.create_date | date:"short"}}</td>
                                             <td>{{ winner.amount}} OMR</td>
                                             <!--begin::Action=-->
-                                            <td class="text-end">
+                                            <td *ngIf="this.api.canEnter(['admin'])" class="text-end">
                                                 <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                     (click)="getUser(winner.user_id, winner.phone, winner.amount)"
                                                     data-bs-toggle="modal" data-bs-target="#kt_modal_note_form">

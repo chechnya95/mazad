@@ -29,7 +29,7 @@ export class WinnersComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(private api: ApiService,
+  constructor(public api: ApiService,
     public utility: UtilitiesService) {
     this.utility.show = true;
     this.utility.loader = false;

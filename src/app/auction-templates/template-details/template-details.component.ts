@@ -53,9 +53,7 @@ export class TemplateDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items']['items'];
       },
-      async error => {
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getOwner(); });
@@ -70,9 +68,7 @@ export class TemplateDetailsComponent implements OnInit {
         if (owners.length > 0)
           this.owner = objects['owners'][0];
       },
-      async error => {
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getCategory(); });
@@ -84,9 +80,7 @@ export class TemplateDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.category = objects['categories'][0];
       },
-      async error => {
-        console.log(error);
-      }
+      async error => { }
     );
   }
 

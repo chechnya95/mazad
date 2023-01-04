@@ -88,12 +88,12 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getOwner() {
-    const sub = this.api.get('owners/' + this.item.owner_id, this.token).subscribe(
+    const sub = this.api.get('owners/my', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.owner = objects['owners'][0];
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getCategory(); });
