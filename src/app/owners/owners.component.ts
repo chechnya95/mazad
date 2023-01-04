@@ -75,7 +75,7 @@ export class OwnersComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
       if (id) {
-        this.getOwners(id);
+        this.getOwnersById(id);
       }
       else { this.getOwners(); }
     })
@@ -106,7 +106,7 @@ export class OwnersComponent implements OnInit {
     this.getOwners();
   }
 
-  async getOwners(id?: any) {
+  async getOwners() {
     this.utility.loader = true;
     const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
       async data => {
@@ -118,11 +118,36 @@ export class OwnersComponent implements OnInit {
         this.owners = objects.owners;
         localStorage.setItem('owners', JSON.stringify(this.owners));
 
-        if (id)
-          this.owners = this.owners.filter(i => i.id === id);
-
         this.owners.forEach(function (owner) {
           // owner.owner_details = JSON.parse(owner.owner_details)
+          owner.avatar = owner.title.en ? owner.title.en.charAt(0) : owner['code'].charAt(0);
+        });
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        console.log(error);
+      }
+    );
+
+    sub.add(() => { this.utility.loader = false; });
+  }
+
+  async getOwnersById(id?: any) {
+    this.utility.loader = true;
+    const sub = this.api.get('owners/' + id, this.token, this.getHttpParams()).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+
+        this.owners = objects.owners;
+        //this.filter_config.totalItems = objects['filters']['total_results'];
+
+        this.owners = objects.owners;
+        localStorage.setItem('owners', JSON.stringify(this.owners));
+
+        this.owners.forEach(function (owner) {
           owner.avatar = owner.title.en ? owner.title.en.charAt(0) : owner['code'].charAt(0);
         });
       },

@@ -413,7 +413,8 @@
                                                 <label class="form-label required">Owner</label>
                                                 <!--end::Label-->
                                                 <input class="form-control header-color"
-                                                    (keyup)="onChangeOwner($event.target.value)" placeholder="type to serach owner ...">
+                                                    (keyup)="onChangeOwner($event.target.value)"
+                                                    placeholder="type to serach owner ...">
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid mt-3"
                                                     [(ngModel)]="auction.owner_id">
@@ -696,9 +697,7 @@
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.group_id">
                                                     <option>-- SELECT --</option>
-                                                    <option *ngFor="let group of groups" [ngValue]='group.id'>{{
-                                                        group.name
-                                                        }}</option>
+                                                    <option *ngFor="let group of groups" [ngValue]='group.id'>{{ group.title.en }} - {{ group.title.ar }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>

@@ -298,6 +298,8 @@ export class AuctionsComponent implements OnInit {
 
     this.edit_auction.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end;
     this.owner_name = this.owners.find(i => i.id === item.owner_id).title.ar;
+
+    this.edit_auction.group_id = this.auction.group_id;
   }
 
   OnUpdate(id: any) {

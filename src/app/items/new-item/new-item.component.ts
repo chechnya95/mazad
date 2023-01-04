@@ -53,7 +53,7 @@ export class NewItemComponent implements OnInit {
     extension_period: null,
     payment_period: null,
     collecting_period: null,
-    item_status: 'Draft',
+    item_status: 'draft',
     category_id: null,
     owner_id: null,
     auction_id: null,
@@ -80,6 +80,7 @@ export class NewItemComponent implements OnInit {
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+  isOwner: boolean = false;
 
   Swal = require('sweetalert2')
 
@@ -120,7 +121,7 @@ export class NewItemComponent implements OnInit {
     this.postRenderFunc = this.postRenderFunc.bind(this);
 
     this.uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful) 
+      console.log('Upload complete! We’ve uploaded these files:', result.successful)
       this.images = result.successful;
     })
 
@@ -148,42 +149,31 @@ export class NewItemComponent implements OnInit {
   }
 
   async getItemstatus() {
-    this.api.get('items/item_status', this.token).subscribe(
+    const sub = this.api.get('items/item_status', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.item_status = objects.item_status;
-        this.getAuctions();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getAuctions(); });
   }
 
   async getAuctions() {
-    this.api.get('auctions/active', this.token).subscribe(
+    const sub = this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions'];
-
-        this.getOwners();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getOwners(); });
   }
 
   async getOwners() {
-    this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
@@ -200,53 +190,37 @@ export class NewItemComponent implements OnInit {
         });
 
         if (this.item.owner_id) this.owner_name = this.owners.find(i => i.id === this.item.owner_id).title.ar;
-        
-        this.getCategories();
       },
       async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
+        if (error.status == 403) this.isOwner = true;
       }
     );
+
+    sub.add(() => { this.getCategories(); });
   }
 
   async getCategories() {
-    this.api.get('categories/', this.token).subscribe(
+    const sub = this.api.get('categories/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
-
-        //this.getTemplates();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
   }
 
   async getTemplates() {
-    this.api.get('auction_templates/active', this.token).subscribe(
+    const sub = this.api.get('auction_templates/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
-
-        this.utility.loader = false;
       },
       async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
         console.log(error);
       }
     );
+
+    sub.add(() => { });
   }
 
   imageChange(event) {
@@ -277,13 +251,7 @@ export class NewItemComponent implements OnInit {
             }
           }
         },
-        async error => {
-          Swal.fire({
-            title: 'Oops...',
-            text: 'Something went wrong!'
-          })
-          console.log(error);
-        }
+        async error => { }
       );
     }
   }
@@ -390,7 +358,7 @@ export class NewItemComponent implements OnInit {
     this.item.description_en = template.description['en'];
     this.item.terms_ar = template.terms['ar'];
     this.item.terms_en = template.terms['en'];
-    this.item.item_status = 'Draft';
+    this.item.item_status = 'draft';
 
     // get start date
     var start_date = new Date(template.start_date);
