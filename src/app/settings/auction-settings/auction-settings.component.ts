@@ -91,7 +91,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -103,7 +103,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -152,7 +152,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -164,7 +164,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -193,7 +193,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -205,7 +205,7 @@ export class AuctionSettingsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -234,7 +234,7 @@ export class AuctionSettingsComponent implements OnInit {
 
     const sub = this.api.update('categories/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
 
     sub.add(() => { this.getCategories(); });

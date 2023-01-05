@@ -93,7 +93,7 @@ export class FormFieldsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -134,7 +134,7 @@ export class FormFieldsComponent implements OnInit {
         },
         async error => {
           alert("ERROR");
-          console.log(error);
+          
         }
       );
     }
@@ -145,7 +145,7 @@ export class FormFieldsComponent implements OnInit {
         },
         async error => {
           alert("ERROR: cannot connect!");
-          console.log(error);
+          
         }
       );
     }

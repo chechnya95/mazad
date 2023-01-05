@@ -381,7 +381,7 @@ export class EditItemComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(eror);
+        
       }
     );
   }

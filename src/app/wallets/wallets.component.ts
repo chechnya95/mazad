@@ -105,7 +105,7 @@ export class WalletsComponent implements OnInit {
         });
       },
       async error => {
-        console.log(error);
+        
       }
     );
 
@@ -118,7 +118,7 @@ export class WalletsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions'];
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
   }
 
@@ -138,7 +138,7 @@ export class WalletsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
     sub.add(() => { this.getWallets(); });
   }

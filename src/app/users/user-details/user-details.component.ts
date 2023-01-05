@@ -59,7 +59,7 @@ export class UserDetailsComponent implements OnInit {
 
         if (blocked.length > 0) { this.userBlocked = true; this.block_id = blocked[0].id; }
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
 
     sub.add(() => { this.getUserWiningAuctions(this.user.id); });
@@ -73,7 +73,7 @@ export class UserDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -82,7 +82,7 @@ export class UserDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -95,7 +95,7 @@ export class UserDetailsComponent implements OnInit {
         this.bids = this.bids.filter(i => i.user_id === id);
       },
       err => {
-        console.log(err);
+        
       }
     );
 
@@ -111,7 +111,7 @@ export class UserDetailsComponent implements OnInit {
         this.deposits = this.deposits.filter(i => i.user.id === id);
       },
       err => {
-        console.log(err);
+        
       }
     );
 
@@ -127,7 +127,7 @@ export class UserDetailsComponent implements OnInit {
         this.wallets = this.wallets.filter(i => i.user.id === id);
       },
       err => {
-        console.log(err);
+        
       }
     );
 
@@ -137,21 +137,21 @@ export class UserDetailsComponent implements OnInit {
   requestRefund(id: any) {
     this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
   }
 
   insuranceConfiscation(id: any) {
     const sub = this.api.update('wallets/confiscate/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
   }
 
   withdraw(id: any) {
     const sub = this.api.update('wallets/withdraw/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
   }
 
@@ -163,7 +163,7 @@ export class UserDetailsComponent implements OnInit {
   adddNote(id: any) {
     const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
   }
 
@@ -174,7 +174,7 @@ export class UserDetailsComponent implements OnInit {
         this.payment_transaction_types = objects['payment_type'];
       },
       async error => {
-        console.log(error);
+        
       }
     );
     sub.add(() => { });

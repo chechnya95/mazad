@@ -128,7 +128,7 @@ export class OwnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -156,7 +156,7 @@ export class OwnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -192,7 +192,7 @@ export class OwnersComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong! Please Note: (email) and (phone) cannot be duplicated!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -209,7 +209,7 @@ export class OwnersComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -247,7 +247,7 @@ export class OwnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(errr);
+        
       }
     );
 

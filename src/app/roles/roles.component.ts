@@ -63,7 +63,7 @@ export class RolesComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
   }
@@ -90,7 +90,7 @@ export class RolesComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
   }
@@ -111,7 +111,7 @@ export class RolesComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
   }
@@ -131,7 +131,7 @@ export class RolesComponent implements OnInit {
             this.api.post("users/add-permission", body, this.token).subscribe(
               async data => { },
               async error => {
-                console.log(error);
+                
               }
             );
           }
@@ -142,7 +142,7 @@ export class RolesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -175,7 +175,7 @@ export class RolesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -219,7 +219,7 @@ export class RolesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -231,7 +231,7 @@ export class RolesComponent implements OnInit {
         },
         async error => {
           alert("ERROR: cannot connect!");
-          console.log(error);
+          
         }
       );
     }
@@ -253,7 +253,7 @@ export class RolesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }
@@ -273,7 +273,7 @@ export class RolesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }

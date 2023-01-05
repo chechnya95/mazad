@@ -128,7 +128,7 @@ export class UsersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -149,7 +149,7 @@ export class UsersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);;
+        ;
       }
     );
   }
@@ -225,7 +225,7 @@ export class UsersComponent implements OnInit {
               'Error!',
               'Could not send your request!'
             );
-            console.log(err);
+            
           });
       }
     });
@@ -254,7 +254,7 @@ export class UsersComponent implements OnInit {
 
     const sub = this.api.update('users/admin/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
 
     sub.add(() => { this.getUsers(); });
@@ -274,7 +274,7 @@ export class UsersComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }

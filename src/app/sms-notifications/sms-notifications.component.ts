@@ -67,7 +67,7 @@ export class SmsNotificationsComponent implements OnInit {
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => {
-        console.log(error);
+        
       }
     );
 

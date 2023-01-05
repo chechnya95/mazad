@@ -231,13 +231,13 @@ export class SliderComponent implements OnInit {
 
       sub = this.api.update_form('sliders/' + id, formData, this.token).subscribe(
         async data => { },
-        async errr => { console.log(errr); }
+        async errr => {  }
       );
     }
     else {
       sub = this.api.update('sliders/' + id, body, this.token).subscribe(
         async data => { },
-        async errr => { console.log(errr); }
+        async errr => {  }
       );
     }
 

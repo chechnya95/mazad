@@ -199,7 +199,7 @@ export class ItemDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -208,7 +208,7 @@ export class ItemDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -221,7 +221,7 @@ export class ItemDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -230,7 +230,7 @@ export class ItemDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -256,7 +256,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -266,7 +266,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -276,7 +276,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 }

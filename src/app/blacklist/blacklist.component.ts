@@ -100,7 +100,7 @@ export class BlacklistComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -117,7 +117,7 @@ export class BlacklistComponent implements OnInit {
         this.successMessage = true;
         this.getBlackLists();
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -145,7 +145,7 @@ export class BlacklistComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -176,7 +176,7 @@ export class BlacklistComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -189,7 +189,7 @@ export class BlacklistComponent implements OnInit {
         this.successMessage = true;
         this.getBlackLists(null);
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -226,7 +226,7 @@ export class BlacklistComponent implements OnInit {
 
     const sub = this.api.update('blacklists/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
 
     sub.add(() => { this.getBlackLists(); });

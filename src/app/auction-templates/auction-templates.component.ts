@@ -64,7 +64,7 @@ export class AuctionTemplatesComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
   }
@@ -80,7 +80,7 @@ export class AuctionTemplatesComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }

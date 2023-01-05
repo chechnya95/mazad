@@ -118,7 +118,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -143,7 +143,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -174,7 +174,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -194,7 +194,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -216,7 +216,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         this.getGroups();
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -244,7 +244,7 @@ export class GroupsComponent implements OnInit {
 
     const sub = this.api.update('groups/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
 
     sub.add(() => { this.getGroups(); });
@@ -261,7 +261,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         //this.getGroups(null);
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -271,7 +271,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         this.getGroups();
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 

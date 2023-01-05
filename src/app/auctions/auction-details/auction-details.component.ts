@@ -88,7 +88,7 @@ export class AuctionDetailsComponent implements OnInit {
   approveItem(id: any) {
     this.api.get('items/to_status/payment/' + id, this.token).subscribe(
       async data => { this.getItems(); this.successMessage = true; },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 
@@ -98,7 +98,7 @@ export class AuctionDetailsComponent implements OnInit {
     list.forEach((item) => {
       this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
         async data => { status = true; },
-        async error => { console.log(error); status = true; }
+        async error => {  status = true; }
       );
     });
 

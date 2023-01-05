@@ -102,7 +102,7 @@ export class SettingsComponent implements OnInit {
           this.paymet_types[i].key = this.paymet_types[i].access_key.substr(this.paymet_types[i].access_key.length - 7);
         }
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
 
     sub.add(() => { this.getGateways(); });
@@ -128,7 +128,7 @@ export class SettingsComponent implements OnInit {
         },
         async error => {
           alert("ERROR: cannot connect!");
-          console.log(error);
+          
         }
       );
     }
@@ -156,13 +156,13 @@ export class SettingsComponent implements OnInit {
     if (!this.update_payment_type) {
       this.api.post("payments/payment_config", body, this.token).subscribe(
         async data => { this.getPaymentConfigs(); },
-        async error => { console.log(error); }
+        async error => {  }
       );
     } 
     else {
       this.api.update("payments/payment_config/" + this.update_payment_id, body, this.token).subscribe(
         async data => { this.getPaymentConfigs(); },
-        async error => { console.log(error); }
+        async error => {  }
       );
     }
   }
@@ -193,13 +193,13 @@ export class SettingsComponent implements OnInit {
     if (this.update) {
       this.api.update("settings/" + this.category, body, this.token).subscribe(
         async data => { },
-        async error => { console.log(error); }
+        async error => {  }
       );
     }
     else {
       this.api.post("settings/", body, this.token).subscribe(
         async data => { },
-        async error => { console.log(error); }
+        async error => {  }
       );
     }
   }

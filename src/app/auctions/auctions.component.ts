@@ -230,7 +230,7 @@ export class AuctionsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
   }
@@ -297,7 +297,7 @@ export class AuctionsComponent implements OnInit {
 
     const sub = this.api.update('auctions/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
 
     sub.add(() => { this.getAuctions(true); });
@@ -314,7 +314,7 @@ export class AuctionsComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          console.log(error);
+          
         }
       );
     }

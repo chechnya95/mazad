@@ -90,7 +90,7 @@ export class BidsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -100,7 +100,7 @@ export class BidsComponent implements OnInit {
   disableBid(id: any) {
     this.api.update('bids/disable/' + id, this.token, {}).subscribe(
       async data => { this.successMessage = true; },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 }

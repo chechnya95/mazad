@@ -76,7 +76,7 @@ export class ClassificationComponent implements OnInit {
     if (confirm("Delete this field?")) {
       const sub = this.api.delete("fields/" + id, this.token).subscribe(
         async data => { this.successMessage = true; },
-        async error => { console.log(error); this.errorMessage = true; }
+        async error => {  this.errorMessage = true; }
       );
       sub.add(() => { this.getClassifications(); });
     }
@@ -93,7 +93,7 @@ export class ClassificationComponent implements OnInit {
 
     const sub = this.api.update('classifications/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
 
     sub.add(() => { this.getClassifications(); });
@@ -110,7 +110,7 @@ export class ClassificationComponent implements OnInit {
 
     const sub = this.api.post("classifications/", body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => { this.errorMessage = true; console.log(error); }
+      async error => { this.errorMessage = true;  }
     );
 
     sub.add(() => { this.getClassifications(); });

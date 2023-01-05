@@ -327,7 +327,7 @@ export class NewItemComponent implements OnInit {
         },
         async error => {
           this.errorMessage = true;
-          console.log(error);
+          
         }
       );
     }

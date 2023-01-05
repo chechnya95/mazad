@@ -95,7 +95,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
       async data => {
         this.payment_options = data['owner_payment_options'];
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
 
     sub.add(() => { this.utility.loader = false; this.getOptions(); });
@@ -109,7 +109,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         
         this.options = objects;
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
 
     sub.add(() => { this.getConfigs(); });
@@ -123,7 +123,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         this.configs = objects.payment_config;
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => { console.log(error); }
+      async error => {  }
     );
 
     sub.add(() => { this.getOwners(); });
@@ -172,7 +172,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         this.successMessage = true;
       },
       async error => {
-        console.log(error);
+        
         this.errorMessage = true;
       }
     );
@@ -199,7 +199,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
 
     const sub = this.api.update('owner_payment_options/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
 
     sub.add(() => { this.getPaymentOptions(); });

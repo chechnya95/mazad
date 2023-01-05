@@ -70,7 +70,7 @@ export class MessagesComponent implements OnInit {
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => {
-        console.log(error);
+        
       }
     );
 
@@ -85,7 +85,7 @@ export class MessagesComponent implements OnInit {
         },
         async error => {
           alert("ERROR: cannot connect!");
-          console.log(error);
+          
         }
       );
     }
@@ -100,7 +100,7 @@ export class MessagesComponent implements OnInit {
 
     const sub = this.api.update('contactus/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
 
     sub.add(() => { this.getMessages(); });

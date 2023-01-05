@@ -97,7 +97,7 @@ export class TemplateDetailsComponent implements OnInit {
 
     this.api.update('auction_templates/changetime/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
   }
 }

@@ -91,7 +91,7 @@ export class DepositsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
+        
       }
     );
 
@@ -106,7 +106,7 @@ export class DepositsComponent implements OnInit {
   adddNote(id: any) {
     const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.getDeposits(); },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
   }
 
@@ -128,7 +128,7 @@ export class DepositsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => { console.log(error); this.errorMessage = true; }
+      async error => {  this.errorMessage = true; }
     );
     sub.add(() => { this.getDeposits(); });
   }
@@ -153,7 +153,7 @@ export class DepositsComponent implements OnInit {
         });
       },
       async error => {
-        console.log(error);
+        
       }
     );
   }
@@ -161,7 +161,7 @@ export class DepositsComponent implements OnInit {
   requestRefund(id: any) {
     this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => { console.log(errr); this.errorMessage = true; }
+      async errr => {  this.errorMessage = true; }
     );
   }
 }

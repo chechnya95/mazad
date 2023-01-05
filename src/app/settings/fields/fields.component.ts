@@ -87,7 +87,7 @@ export class FieldsComponent implements OnInit {
       },
       async error => {
         alert("ERROR: cannot connect!");
-        console.log(error);
+        
       }
     );
   }
@@ -100,7 +100,7 @@ export class FieldsComponent implements OnInit {
         },
         async error => {
           alert("ERROR: cannot connect!");
-          console.log(error);
+          
         }
       );
     }
@@ -128,7 +128,7 @@ export class FieldsComponent implements OnInit {
 
     const sub = this.api.update('fields/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => { console.log(errr); }
+      async errr => {  }
     );
 
     sub.add(() => { this.get_fields(); });
