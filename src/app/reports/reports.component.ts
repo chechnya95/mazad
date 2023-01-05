@@ -39,13 +39,7 @@ export class ReportsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
   }
 
@@ -60,8 +54,7 @@ export class ReportsComponent implements OnInit {
         Swal.fire({
           title: 'Oops...',
           text: 'Something went wrong!'
-        })
-        console.log(error);
+        });
       }
     );
 

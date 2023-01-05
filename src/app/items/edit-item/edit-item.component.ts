@@ -89,7 +89,6 @@ export class EditItemComponent implements OnInit {
         if (title) {
           out += ` title="${title}"`;
         }
-        console.log(this);
         // out += (<any>this.options).xhtml ? '/>' : '>';
         return out;
       },
@@ -135,38 +134,27 @@ export class EditItemComponent implements OnInit {
   }
 
   async getItemstatus() {
-    this.api.get('items/item_status', this.token).subscribe(
+    const sub = this.api.get('items/item_status', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.item_status = objects.item_status;
-        this.getAuctions();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getAuctions(); });
   }
 
   async getAuctions() {
-    this.api.get('auctions/', this.token).subscribe(
+    const sub = this.api.get('auctions/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
-
-        this.getOwners();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getOwners(); });
   }
 
   /* async getOwners() {
@@ -184,26 +172,20 @@ export class EditItemComponent implements OnInit {
   } */
 
   async getOwners() {
-    this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
         this.owners = objects.owners;
-
-        this.getCategories();
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getCategories(); });
   }
 
   async getCategories() {
-    this.api.get('categories/', this.token).subscribe(
+    const sub = this.api.get('categories/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
@@ -288,19 +270,13 @@ export class EditItemComponent implements OnInit {
             //     });
             //   });
             // });
-
-            this.getForm();
           }
         }
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getForm(); });
   }
 
   imageChange(event) {
@@ -320,7 +296,7 @@ export class EditItemComponent implements OnInit {
       form_id = this.categories.find(i => i.id === cat_id).form_id;
 
     if (form_id) {
-      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
+      const sub = this.api.get('form_fields/form/' + form_id, this.token).subscribe(
         async data => {
           let objects = JSON.parse(JSON.stringify(data))
           this.fields = objects['form_field'];
@@ -331,14 +307,10 @@ export class EditItemComponent implements OnInit {
             }
           }
         },
-        async error => {
-          Swal.fire({
-            title: 'Oops...',
-            text: 'Something went wrong!'
-          })
-          console.log(error);
-        }
+        async error => { }
       );
+
+      sub.add(() => { });
     }
   }
 

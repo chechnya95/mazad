@@ -117,13 +117,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auction = objects['auctions'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => {  }
     );
 
     sub.add(() => { this.getWinner(); });

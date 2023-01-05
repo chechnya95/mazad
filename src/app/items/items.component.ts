@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2'
 
@@ -66,7 +66,7 @@ export class ItemsComponent implements OnInit {
   }
   async getItems() {
     this.utility.loader = true;
-    const sub = this.api.get('items/', this.token,this.getHttpParams()).subscribe(
+    const sub = this.api.get('items/', this.token, this.getHttpParams()).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items'];
@@ -91,7 +91,7 @@ export class ItemsComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getItems();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -104,13 +104,7 @@ export class ItemsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.item_status = objects.item_status;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; });
@@ -126,8 +120,7 @@ export class ItemsComponent implements OnInit {
           Swal.fire({
             title: 'Oops...',
             text: 'Something went wrong!'
-          })
-          console.log(error);
+          });
         }
       );
     }
@@ -148,7 +141,7 @@ export class ItemsComponent implements OnInit {
       },
       async error => {
         this.errorText = error.status + ': ' + error.error.msg;
-        this.errorMessage = true; 
+        this.errorMessage = true;
       }
     );
   }
@@ -165,7 +158,6 @@ export class ItemsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        console.log(error);
       }
     );
   }

@@ -65,7 +65,7 @@ export class NewTemplateComponent implements OnInit {
   edit_item_id: any;
 
   Swal = require('sweetalert2')
-  
+
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
@@ -82,17 +82,15 @@ export class NewTemplateComponent implements OnInit {
   }
 
   async getAuctions(item_id: any) {
-    this.api.get('auctions/active', this.token).subscribe(
+    const sub = this.api.get('auctions/active', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions'];
-
-        this.getOwners(item_id);
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getOwners(item_id); });
   }
 
   /* async getOwners(item_id: any) {
@@ -110,26 +108,20 @@ export class NewTemplateComponent implements OnInit {
   } */
 
   async getOwners(item_id: any) {
-    this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
         this.owners = objects.owners;
-
-        this.getCategories(item_id);
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getCategories(item_id); });
   }
 
   async getCategories(item_id: any) {
-    this.api.get('categories/', this.token).subscribe(
+    const sub = this.api.get('categories/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
@@ -187,19 +179,13 @@ export class NewTemplateComponent implements OnInit {
               mins_end = '0' + mins_end;
 
             this.auction_template.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
-
-            this.getForm();
           }
         }
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
+
+    sub.add(() => { this.getForm(); });
   }
 
   getForm() {
@@ -210,7 +196,7 @@ export class NewTemplateComponent implements OnInit {
       form_id = this.categories.find(i => i.id === cat_id).form_id;
 
     if (form_id) {
-      this.api.get('form_fields/form/' + form_id, this.token).subscribe(
+      const sub = this.api.get('form_fields/form/' + form_id, this.token).subscribe(
         async data => {
           let objects = JSON.parse(JSON.stringify(data))
           this.fields = objects['form_field'];
@@ -221,9 +207,7 @@ export class NewTemplateComponent implements OnInit {
             }
           }
         },
-        async error => {
-          alert(error);
-        }
+        async error => { }
       );
     }
   }
@@ -283,8 +267,10 @@ export class NewTemplateComponent implements OnInit {
           this.item_details = [];
         },
         async error => {
-          alert("ERROR: cannot connect!");
-          console.log(error);
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
         }
       );
     }

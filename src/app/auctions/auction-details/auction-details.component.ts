@@ -45,13 +45,7 @@ export class AuctionDetailsComponent implements OnInit {
           item.selected = false;
         })
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getTemplates(); });
@@ -63,13 +57,7 @@ export class AuctionDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates']['auction_templates'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        console.log(error);
-      }
+      async error => { }
     );
   }
 

@@ -215,9 +215,7 @@ export class NewItemComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];
       },
-      async error => {
-        console.log(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { });
