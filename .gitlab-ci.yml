@@ -20,7 +20,7 @@ build-image:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
-    ENV_VARIABLE: "production"
+    ENV_VARIABLE: "staging"
   
   rules:
     - if: '$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH'
