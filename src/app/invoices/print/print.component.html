@@ -17,8 +17,8 @@
                                         <!--begin::Wrapper-->
                                         <div class="m-0">
                                             <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-800 mb-8">رقم
-                                                الإيصال {{ this.invoice?.number }}</div>
+                                            <div class="fw-bolder fs-3 text-gray-800 mb-8">
+                                                {{ 'recipt_no' | translate }} {{ this.invoice?.number }}</div>
                                             <!--end::Label-->
                                             <div class="row"
                                                 style="height: 5px; background-color: #51689c; margin-bottom: 15px; margin-top: 10px;">
@@ -29,7 +29,8 @@
                                                 <div class="col-sm-6">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        Issue Date:</div>
+                                                        {{ 'Date_of_issue' | translate }}
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--end::Col-->
                                                     <div class="fw-bolder fs-6 text-gray-800">
@@ -42,7 +43,10 @@
                                                 <div class="col-sm-6">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        Payment Model:</div>
+
+                                                        {{ 'payway' | translate }}
+
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--end::Info-->
                                                     <div class="fw-bolder fs-6 text-gray-800">
@@ -59,7 +63,8 @@
                                                 <div class="col-sm-6" style="margin: 0;">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        Issue For:</div>
+                                                        {{ 'Issue_For' | translate }}
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--end::Text-->
                                                     <div class="fw-bolder fs-6 text-gray-800" *ngIf="this.invoice?.user_details.details.name_en">
@@ -81,14 +86,17 @@
                                                 <div class="col-sm-6" style="margin: 0;">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        Issued By:</div>
+                                                        {{ 'Issued_By' | translate }}   
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--end::Text-->
                                                     <div class="fw-bolder fs-6 text-gray-800">
-                                                        Mazad Oman</div>
+                                                        {{ 'mazad' | translate }}
+                                                    </div>
                                                     <!--end::Text-->
                                                     <!--end::Description-->
-                                                    <div class="fw-bold fs-7 text-gray-600">Digital Leadership LLC
+                                                    <div class="fw-bold fs-7 text-gray-600">
+                                                        {{ 'Digital Leadership LLC' | translate }}
                                                         <!-- <br />Matthews, NC 28104 -->
                                                     </div>
                                                     <!--end::Description-->
@@ -110,11 +118,14 @@
                                                 <thead>
                                                     <tr class="fs-8 fw-bolder text-gray-400">
                                                         <th class="min-w-70px text-end pb-2">
-                                                            Description</th>
+                                                            {{ 'Description' | translate }}
+                                                        </th>
                                                         <th class="min-w-80px text-end pb-2">
-                                                            Fee</th>
+                                                            {{ 'amount' | translate }}
+                                                        </th>
                                                         <th class="min-w-100px text-end pb-2">
-                                                            Amount</th>
+                                                            {{ 'fee' | translate }}
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -140,7 +151,8 @@
                                                 <div class="d-flex flex-stack">
                                                     <!--begin::Code-->
                                                     <div class="fw-bold pe-10 text-gray-600 fs-7">
-                                                        المجموع الكلي</div>
+                                                        {{ 'total' | translate }}
+                                                         </div>
                                                     <!--end::Code-->
                                                     <!--begin::Label-->
                                                     <div class="text-end fw-bolder fs-6 text-gray-800">

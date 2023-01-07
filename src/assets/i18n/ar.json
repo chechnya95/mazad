@@ -32,5 +32,21 @@
     "wallets": "المَحافظ",
     "payment_transactions": "عمليات الدفع",
     "invoices": "الفواتير",
-    "owner_payment_options": "خيارات الدفع للمستخدم"
+    "owner_payment_options": "خيارات الدفع للمستخدم",
+    "recipt_no": "رقم الإيصال",
+    "recipt": "إيصال الدفع",
+    "Issued_By": "صدرت عن",
+    "mazad": "مزاد عمان",
+    "Issue_For": "صدرت لـ",
+    "Date_of_issue": "تاريخ الإصدار",
+    "payway": "طريقة الدفع",
+    "overview": "نظرة عامة على الدفع",
+    "fee": "المبلغ",
+    "amount": "الكمية",
+    "print": "طباعة",
+    "total": "المجموع الاجمالي",
+    "deposit": "الإيداع",
+    "showpage": "عرض صفحة",
+    "Digital Leadership LLC":"الريادة الرقمية ش م م"
+
 }

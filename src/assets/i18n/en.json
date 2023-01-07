@@ -32,5 +32,21 @@
     "wallets": "Wallets",
     "payment_transactions": "Payment Transactions",
     "invoices": "Invoices",
-    "owner_payment_options": "Owner Payment Options"
+    "owner_payment_options": "Owner Payment Options",
+    "recipt_no": "Receipt Number",
+     "recipt": "Payment Receipt",
+     "Issued_By": "Issued by",
+     "mazad": "Oman Auction",
+     "Issue_For": "Issued for",
+     "Date_of_issue": "Issue Date",
+     "payway": "Payment Method",
+     "overview": "Payment Overview",
+     "fee": "amount",
+     "amount": "amount",
+     "print": "print",
+     "total": "total",
+     "deposit": "deposit",
+     "showpage": "show page",
+     "Digital Leadership LLC":"Digital Leadership LLC"
+
 }
