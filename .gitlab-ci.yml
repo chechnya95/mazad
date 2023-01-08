@@ -38,7 +38,7 @@ build-image:
 
   script:
     # Build and tag image for both GCR and Gitlab registries
-    - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest --build-arg CONFIG_ENV=$ENV_VARIABLE .
+    - docker build --tag gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest --tag $CI_PROJECT_NAME:latest --build-arg configuration=$ENV_VARIABLE .
     # Push image to GCR
     - docker push gcr.io/$PROJECT_ID/$CI_PROJECT_NAME:latest
     # Push image to Gitlab registry

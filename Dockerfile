@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN npm install
 #RUN npm install -g @angular/cli
-ARG CONFIG_ENV=production
-RUN npm run build -- --configuration=$CONFIG_ENV
+ARG configuration=production
+RUN npm run build -- --configuration $configuration
 
 # Stage 2
 FROM nginx:1.22-alpine
