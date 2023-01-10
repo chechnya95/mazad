@@ -159,6 +159,7 @@
                                                 <th mat-sort-header="title" class="w-50">Title</th>
                                                 <th mat-sort-header="count_of_bids">Number of Bids</th>
                                                 <th mat-sort-header="count_of_bidders">Number of Bidders</th>
+                                                <th mat-sort-header="price">Price</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -172,6 +173,7 @@
                                                 <td>{{ item.item.title.ar }} {{ item.item.title.en }}</td>
                                                 <td>{{ item.count_of_bids}}</td>
                                                 <td>{{ item.count_of_bidders}}</td>
+                                                <td>{{ item.item.current_price}}</td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
