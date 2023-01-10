@@ -419,6 +419,18 @@
                         <!--end::Wrapper-->
                     </div>
                     <!--end::Notice-->
+                    <!--begin::Input group-->
+                    <div *ngIf="user?.user_id_image" class="row mb-7">
+                        <!--begin::Label-->
+                        <label class="col-lg-4 fw-bold text-muted">Id Copy
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8">
+                            <a class="fw-bolder fs-6 text-dark" [href]="user?.user_id_image">ID Card Link</a>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
                 </div>
                 <!--end::Card body-->
             </div>
