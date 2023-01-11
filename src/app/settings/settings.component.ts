@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-settings',
@@ -49,6 +50,8 @@ export class SettingsComponent implements OnInit {
     currency: 'OMR',
   }
 
+  Swal = require('sweetalert2')
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -69,9 +72,7 @@ export class SettingsComponent implements OnInit {
         if (setting) { this.company = setting; this.update = true; }
         else { this.update = false; }
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getPaymentConfigs(); })
@@ -83,9 +84,7 @@ export class SettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.gateways = objects['gateways'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getOnlineStatus(); });
@@ -102,7 +101,7 @@ export class SettingsComponent implements OnInit {
           this.paymet_types[i].key = this.paymet_types[i].access_key.substr(this.paymet_types[i].access_key.length - 7);
         }
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getGateways(); });
@@ -114,9 +113,7 @@ export class SettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.online_statuses = objects['online_status'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -127,8 +124,10 @@ export class SettingsComponent implements OnInit {
           this.getPaymentConfigs();
         },
         async error => {
-          alert("ERROR: cannot connect!");
-          
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
         }
       );
     }
@@ -156,13 +155,23 @@ export class SettingsComponent implements OnInit {
     if (!this.update_payment_type) {
       this.api.post("payments/payment_config", body, this.token).subscribe(
         async data => { this.getPaymentConfigs(); },
-        async error => {  }
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
       );
-    } 
+    }
     else {
       this.api.update("payments/payment_config/" + this.update_payment_id, body, this.token).subscribe(
         async data => { this.getPaymentConfigs(); },
-        async error => {  }
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
       );
     }
   }
@@ -193,13 +202,23 @@ export class SettingsComponent implements OnInit {
     if (this.update) {
       this.api.update("settings/" + this.category, body, this.token).subscribe(
         async data => { },
-        async error => {  }
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
       );
     }
     else {
       this.api.post("settings/", body, this.token).subscribe(
         async data => { },
-        async error => {  }
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
       );
     }
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form-fields',
@@ -24,6 +25,7 @@ export class FormFieldsComponent implements OnInit {
   }
 
   form_id: any;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -42,9 +44,7 @@ export class FormFieldsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.forms = objects['forms'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.get_fields(); this.utility.loader = false; });
@@ -60,9 +60,7 @@ export class FormFieldsComponent implements OnInit {
           field.checked = false;
         });
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getFormFields(); });
@@ -74,9 +72,7 @@ export class FormFieldsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.form_fields = objects['form_fields'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -92,8 +88,10 @@ export class FormFieldsComponent implements OnInit {
         this.get_forms();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -133,8 +131,10 @@ export class FormFieldsComponent implements OnInit {
           this.getFormFields();
         },
         async error => {
-          alert("ERROR");
-          
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
         }
       );
     }
@@ -144,8 +144,10 @@ export class FormFieldsComponent implements OnInit {
           // ...
         },
         async error => {
-          alert("ERROR: cannot connect!");
-          
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
         }
       );
     }

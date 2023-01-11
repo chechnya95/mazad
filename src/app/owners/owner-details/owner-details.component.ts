@@ -73,9 +73,7 @@ export class OwnerDetailsComponent implements OnInit {
           user.contact = user.email ? user.email : user.phone;
         });
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -89,7 +87,7 @@ export class OwnerDetailsComponent implements OnInit {
         objects = data;
         this.owner_users = objects.owner_user;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.utility.loader = false; });
@@ -105,7 +103,7 @@ export class OwnerDetailsComponent implements OnInit {
         this.successMessage = true;
         this.getOwnerUsers();
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -125,7 +123,7 @@ export class OwnerDetailsComponent implements OnInit {
           },
           async error => {
             this.errorMessage = true;
-            
+
           }
         );
       }
@@ -146,7 +144,7 @@ export class OwnerDetailsComponent implements OnInit {
             user.contact = user.email ? user.email : user.phone;
           });
         },
-        async error => {  }
+        async error => { }
       );
 
       sub.add(() => { });

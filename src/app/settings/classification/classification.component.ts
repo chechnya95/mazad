@@ -55,9 +55,7 @@ export class ClassificationComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.classifications = objects['classifications'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 

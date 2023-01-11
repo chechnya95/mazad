@@ -91,9 +91,7 @@ export class TemplatesComponent implements OnInit {
 
         this.utility.loader = false;
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -110,7 +108,7 @@ export class TemplatesComponent implements OnInit {
 
     const sub = this.api.post("templates_contents/", body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => { this.errorMessage = true;  }
+      async error => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getTemplates(); });
@@ -120,7 +118,7 @@ export class TemplatesComponent implements OnInit {
     if (confirm("Delete this template?")) {
       const sub = this.api.delete("templates_contents/" + id, this.token).subscribe(
         async data => { this.successMessage = true; },
-        async error => { this.errorMessage = true;  }
+        async error => { this.errorMessage = true; }
       );
 
       sub.add(() => { this.getTemplates(); });
@@ -150,7 +148,7 @@ export class TemplatesComponent implements OnInit {
 
     const sub = this.api.update('templates_contents/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getTemplates(); });

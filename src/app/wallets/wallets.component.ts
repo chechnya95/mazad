@@ -77,9 +77,7 @@ export class WalletsComponent implements OnInit {
         this.wallets = objects['wallets'];
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; this.getUsers(); });
@@ -105,7 +103,7 @@ export class WalletsComponent implements OnInit {
         });
       },
       async error => {
-        
+
       }
     );
 
@@ -118,7 +116,7 @@ export class WalletsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions'];
       },
-      async error => {  }
+      async error => { }
     );
   }
 
@@ -138,7 +136,7 @@ export class WalletsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
     sub.add(() => { this.getWallets(); });
   }

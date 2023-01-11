@@ -45,10 +45,7 @@ export class GeneralSettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.settings = objects['settings'];
       },
-      async error => {
-        
-        this.errorMessage = true;
-      }
+      async error => { }
     );
   }
 
@@ -61,7 +58,7 @@ export class GeneralSettingsComponent implements OnInit {
     if (confirm("Delete this field?")) {
       const sub = this.api.delete("settings/" + key, this.token).subscribe(
         async data => { this.successMessage = true; },
-        async error => {  this.errorMessage = true; }
+        async error => { this.errorMessage = true; }
       );
       sub.add(() => { this.getSettings(); });
     }
@@ -77,7 +74,7 @@ export class GeneralSettingsComponent implements OnInit {
 
     const sub = this.api.update('settings/' + category, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getSettings(); });
@@ -94,7 +91,7 @@ export class GeneralSettingsComponent implements OnInit {
 
     const sub = this.api.post("settings/", body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async error => { this.errorMessage = true;  }
+      async error => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getSettings(); });

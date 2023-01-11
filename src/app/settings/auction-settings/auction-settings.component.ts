@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-auction-settings',
@@ -48,6 +49,8 @@ export class AuctionSettingsComponent implements OnInit {
     order: null
   }
 
+  Swal = require('sweetalert2')
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -71,9 +74,7 @@ export class AuctionSettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.auction_status = objects.auction_status;
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.get_forms(); });
@@ -90,8 +91,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getAuctionStatus();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -102,8 +105,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getAuctionStatus();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -114,9 +119,7 @@ export class AuctionSettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.forms = objects['forms'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getCategories(); });
@@ -128,9 +131,7 @@ export class AuctionSettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.categories = objects['categories'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.getItemstatus(); });
@@ -151,8 +152,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getCategories();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -163,8 +166,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getCategories();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -175,9 +180,7 @@ export class AuctionSettingsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data))
         this.item_status = objects.item_status;
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -192,8 +195,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getItemstatus();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -204,8 +209,10 @@ export class AuctionSettingsComponent implements OnInit {
         this.getItemstatus();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -234,7 +241,12 @@ export class AuctionSettingsComponent implements OnInit {
 
     const sub = this.api.update('categories/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => {  }
+      async errr => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+      }
     );
 
     sub.add(() => { this.getCategories(); });

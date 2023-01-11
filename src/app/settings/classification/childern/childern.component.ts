@@ -41,9 +41,7 @@ export class ChildernComponent implements OnInit {
         this.classifications = objects['dependencies'];
         this.parent = objects['classification'][0];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 }

@@ -24,9 +24,7 @@ export class MazadService {
         this.roles = objects.roles;
         localStorage.setItem('roles', JSON.stringify(this.roles));
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 

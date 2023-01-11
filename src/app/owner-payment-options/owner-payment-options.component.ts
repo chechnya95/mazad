@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
 
@@ -82,7 +82,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getConfigs();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -95,7 +95,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
       async data => {
         this.payment_options = data['owner_payment_options'];
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; this.getOptions(); });
@@ -106,10 +106,10 @@ export class OwnerPaymentOptionsComponent implements OnInit {
       async data => {
         let objects: any = { owner_payment_options: [] }
         objects = data;
-        
+
         this.options = objects;
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getConfigs(); });
@@ -123,7 +123,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         this.configs = objects.payment_config;
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getOwners(); });
@@ -148,9 +148,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
           }
         });
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -172,7 +170,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
         this.successMessage = true;
       },
       async error => {
-        
+
         this.errorMessage = true;
       }
     );
@@ -199,7 +197,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
 
     const sub = this.api.update('owner_payment_options/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getPaymentOptions(); });

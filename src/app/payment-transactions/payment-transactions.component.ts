@@ -37,7 +37,7 @@ export class PaymentTransactionsComponent implements OnInit {
   ngOnInit(): void {
     this.getPayments();
   }
-  
+
   getHttpParams() {
     let params = new HttpParams();
     params = params.append('page', this.filter_config.currentPage.toString());
@@ -53,7 +53,7 @@ export class PaymentTransactionsComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getPayments();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -68,9 +68,7 @@ export class PaymentTransactionsComponent implements OnInit {
         this.transactions = objects['payments'];
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; });

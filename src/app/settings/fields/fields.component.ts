@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-fields',
@@ -34,6 +35,8 @@ export class FieldsComponent implements OnInit {
     value_en: null
   }
 
+  Swal = require('sweetalert2')
+
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -54,9 +57,7 @@ export class FieldsComponent implements OnInit {
         this.utility.loader = false;
         this.get_field_types();
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -66,9 +67,7 @@ export class FieldsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.types = objects['field_type'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -86,8 +85,10 @@ export class FieldsComponent implements OnInit {
         this.get_fields();
       },
       async error => {
-        alert("ERROR: cannot connect!");
-        
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
       }
     );
   }
@@ -99,8 +100,10 @@ export class FieldsComponent implements OnInit {
           this.get_fields();
         },
         async error => {
-          alert("ERROR: cannot connect!");
-          
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
         }
       );
     }
@@ -128,7 +131,12 @@ export class FieldsComponent implements OnInit {
 
     const sub = this.api.update('fields/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => {  }
+      async errr => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+      }
     );
 
     sub.add(() => { this.get_fields(); });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
 
@@ -83,7 +83,7 @@ export class SliderComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getSliderImages();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -96,9 +96,7 @@ export class SliderComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.types = objects['types'];
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -111,9 +109,7 @@ export class SliderComponent implements OnInit {
 
         this.getSliderTypes();
       },
-      async error => {
-        alert(error);
-      }
+      async error => { }
     );
   }
 
@@ -231,13 +227,13 @@ export class SliderComponent implements OnInit {
 
       sub = this.api.update_form('sliders/' + id, formData, this.token).subscribe(
         async data => { },
-        async errr => {  }
+        async errr => { }
       );
     }
     else {
       sub = this.api.update('sliders/' + id, body, this.token).subscribe(
         async data => { },
-        async errr => {  }
+        async errr => { }
       );
     }
 
