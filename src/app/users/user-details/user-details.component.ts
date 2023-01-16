@@ -26,6 +26,8 @@ export class UserDetailsComponent implements OnInit {
   block_id: any;
   note: any;
 
+  image: any;
+
   Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
@@ -59,7 +61,7 @@ export class UserDetailsComponent implements OnInit {
 
         if (blocked.length > 0) { this.userBlocked = true; this.block_id = blocked[0].id; }
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getUserWiningAuctions(this.user.id); });
@@ -73,7 +75,7 @@ export class UserDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -82,7 +84,7 @@ export class UserDetailsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -95,7 +97,7 @@ export class UserDetailsComponent implements OnInit {
         this.bids = this.bids.filter(i => i.user_id === id);
       },
       err => {
-        
+
       }
     );
 
@@ -111,7 +113,7 @@ export class UserDetailsComponent implements OnInit {
         this.deposits = this.deposits.filter(i => i.user.id === id);
       },
       err => {
-        
+
       }
     );
 
@@ -127,7 +129,7 @@ export class UserDetailsComponent implements OnInit {
         this.wallets = this.wallets.filter(i => i.user.id === id);
       },
       err => {
-        
+
       }
     );
 
@@ -137,21 +139,21 @@ export class UserDetailsComponent implements OnInit {
   requestRefund(id: any) {
     this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
   }
 
   insuranceConfiscation(id: any) {
     const sub = this.api.update('wallets/confiscate/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
   }
 
   withdraw(id: any) {
     const sub = this.api.update('wallets/withdraw/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
   }
 
@@ -163,7 +165,7 @@ export class UserDetailsComponent implements OnInit {
   adddNote(id: any) {
     const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
   }
 
@@ -174,7 +176,7 @@ export class UserDetailsComponent implements OnInit {
         this.payment_transaction_types = objects['payment_type'];
       },
       async error => {
-        
+
       }
     );
     sub.add(() => { });
@@ -229,6 +231,28 @@ export class UserDetailsComponent implements OnInit {
             text: 'Amount deposit successfully.'
           });
         },
+        async error => {
+          Swal.fire({
+            title: 'Error...',
+            text: 'ERROR: cannot connect!\nPlease try again later.'
+          });
+        }
+      );
+    }
+  }
+
+  imageChange(event: any) {
+    let fileList: FileList = event.target.files;
+    this.image = fileList[0];
+  }
+
+  addIdImage(id: any) {
+    let formData: FormData = new FormData();
+
+    if (this.image) {
+      formData.append('id_card_image', this.image, this.image.name);
+      this.api.post_form(`users/image/${id}`, formData, this.token).subscribe(
+        async data => { },
         async error => {
           Swal.fire({
             title: 'Error...',
