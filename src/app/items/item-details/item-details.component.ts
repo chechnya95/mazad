@@ -204,7 +204,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   approve(id: any) {
-    this.api.get('items/to_status/approval/' + id, this.token).subscribe(
+    this.api.get('items/to_status/payment/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
       },
