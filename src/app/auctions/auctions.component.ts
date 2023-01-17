@@ -230,7 +230,6 @@ export class AuctionsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
       }
     );
   }
@@ -269,7 +268,7 @@ export class AuctionsComponent implements OnInit {
       day_end = '0' + day_end;
 
     this.edit_auction.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end;
-    this.owner_name = this.owners.find(i => i.id === item.owner_id).title.ar;
+    this.owner_name = this.owners.find(i => i.id === item.owner_id)?.title.ar;
 
     this.edit_auction.group_id = this.auction.group_id;
   }
@@ -289,7 +288,7 @@ export class AuctionsComponent implements OnInit {
       template_id: this.edit_auction.template_id,
       owner_id: this.edit_auction.owner_id,
       payment_id: this.edit_auction.payment_id,
-      group_id: this.edit_auction.group_id,
+      group_id: this.edit_auction.group_id == ''? null : this.edit_auction.group_id,
       title: { 'en': this.edit_auction.title_en, 'ar': this.edit_auction.title_ar },
       description: { 'en': this.edit_auction.description_en, 'ar': this.edit_auction.description_en },
       terms: { 'en': this.edit_auction.terms_en, 'ar': this.edit_auction.terms_ar }
@@ -297,7 +296,12 @@ export class AuctionsComponent implements OnInit {
 
     const sub = this.api.update('auctions/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => {  }
+      async errr => { 
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+      }
     );
 
     sub.add(() => { this.getAuctions(true); });
@@ -314,7 +318,6 @@ export class AuctionsComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          
         }
       );
     }
