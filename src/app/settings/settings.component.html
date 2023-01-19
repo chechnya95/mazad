@@ -881,10 +881,9 @@
                                             title="Select the Bank Payment Gateway"></i>
                                     </label>
                                     <!--end::Label-->
-                                    <select name="gateway_name" class="form-select form-select-solid" [(ngModel)]="payment_config.payment_gateway" 
-                                        data-control="select2" data-hide-search="true" data-placeholder="Method">
-                                        <option></option>
-                                        <option *ngFor="let gateway of gateways" (value)="gateway.name">{{ gateway.name }}</option>
+                                    <select name="gateway_name" class="form-select form-select-solid" [(ngModel)]="payment_config.payment_gateway">
+                                        <option value="">-- SELECT --</option>
+                                        <option *ngFor="let gateway of gateways" [value]="gateway.name">{{ gateway.name }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 fv-row">
@@ -894,10 +893,9 @@
                                             title="Select the Transaction Online Status"></i>
                                     </label>
                                     <!--end::Label-->
-                                    <select name="online_status" class="form-select form-select-solid" [(ngModel)]="payment_config.online_status" 
-                                        data-control="select2" data-hide-search="true" data-placeholder="Method">
-                                        <option></option>
-                                        <option *ngFor="let status of online_statuses" (value)="status.name">{{ status.name }}</option>
+                                    <select name="online_status" class="form-select form-select-solid" [(ngModel)]="payment_config.online_status">
+                                        <option value="">-- SELECT --</option>
+                                        <option *ngFor="let status of online_statuses" [value]="status.type">{{ status.name }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -1028,6 +1026,103 @@
                                         <!--begin::Input-->
                                         <input type="text" class="form-control form-control-solid" placeholder=""
                                             name="secret_key" [(ngModel)]="payment_config.secret_key" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input wrapper-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span>Merchant key 1</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input wrapper-->
+                                    <div class="position-relative">
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            name="merchant_key1" [(ngModel)]="payment_config.merchant_key1"  />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input wrapper-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-6 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span>Merchant key 2</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input wrapper-->
+                                    <div class="position-relative">
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            name="merchant_key2" [(ngModel)]="payment_config.merchant_key2" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input wrapper-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span>Merchant key 3</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input wrapper-->
+                                    <div class="position-relative">
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            name="merchant_key3" [(ngModel)]="payment_config.merchant_key3"  />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input wrapper-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-6 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span>Merchant key 4</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input wrapper-->
+                                    <div class="position-relative">
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            name="merchant_key4" [(ngModel)]="payment_config.merchant_key4" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input wrapper-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                        <span>Merchant key 5</span>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input wrapper-->
+                                    <div class="position-relative">
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid"
+                                            name="merchant_key5" [(ngModel)]="payment_config.merchant_key5"  />
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input wrapper-->
