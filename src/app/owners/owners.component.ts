@@ -21,6 +21,8 @@ export class OwnersComponent implements OnInit {
   owners: any[] = [];
   filter_config: any;
 
+  image: any;
+
   owner = {
     email: null,
     phone: null,
@@ -128,7 +130,7 @@ export class OwnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -156,7 +158,7 @@ export class OwnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -183,18 +185,34 @@ export class OwnersComponent implements OnInit {
       alert('email is not correct!');
     }
     else {
-      this.api.post("owners/", body, this.token).subscribe(
-        async data => {
-          this.getOwners();
-        },
-        async error => {
-          Swal.fire({
-            title: 'Oops...',
-            text: 'Something went wrong! Please Note: (email) and (phone) cannot be duplicated!'
-          })
-          
-        }
-      );
+      if (this.image) {
+        let formData: FormData = new FormData();
+        formData.append('logo', this.image, this.image.name);
+        formData.append('form', JSON.stringify(body));
+
+        this.api.post_form("owners/", formData, this.token).subscribe(
+          async data => { this.getOwners(); },
+          async error => {
+            Swal.fire({
+              title: 'Oops...',
+              text: 'Something went wrong! Please Note: (email) and (phone) cannot be duplicated!'
+            })
+          }
+        );
+      }
+      else {
+        this.api.post("owners/", body, this.token).subscribe(
+          async data => {
+            this.getOwners();
+          },
+          async error => {
+            Swal.fire({
+              title: 'Oops...',
+              text: 'Something went wrong! Please Note: (email) and (phone) cannot be duplicated!'
+            })
+          }
+        );
+      }
     }
   }
 
@@ -209,7 +227,6 @@ export class OwnersComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          
         }
       );
     }
@@ -240,18 +257,34 @@ export class OwnersComponent implements OnInit {
       description: { 'en': this.edit_owner.description_en, 'ar': this.edit_owner.description_en }
     }
 
-    const sub = this.api.update('owners/' + id, body, this.token).subscribe(
-      async data => { },
-      async errr => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        
-      }
-    );
+    if (this.image) {
+      let formData: FormData = new FormData();
+      formData.append('logo', this.image, this.image.name);
+      formData.append('form', JSON.stringify(body));
 
-    sub.add(() => { this.getOwners(); });
+      const sub = this.api.update_form('owners/' + id, formData, this.token).subscribe(
+        async data => { },
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
+      );
+      sub.add(() => { this.getOwners(); });
+    }
+    else {
+      const sub = this.api.update('owners/' + id, body, this.token).subscribe(
+        async data => { },
+        async error => {
+          Swal.fire({
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        }
+      );
+      sub.add(() => { this.getOwners(); });
+    }
   }
 
   searchOwner() {
@@ -267,5 +300,10 @@ export class OwnersComponent implements OnInit {
       this.filter_config.queries = null;
       this.getOwners();
     }
+  }
+
+  imageChange(event: any) {
+    let fileList: FileList = event.target.files;
+    this.image = fileList[0];
   }
 }
