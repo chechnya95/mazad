@@ -341,7 +341,6 @@ export class GroupsComponent implements OnInit {
     //return content.replace(/something/g, 'new value');
   }
   postRenderFunc(content: string) {
-    console.log(content)
     return content;
     //return content.replace(/something/g, 'new value');
   }
