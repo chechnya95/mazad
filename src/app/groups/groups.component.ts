@@ -6,6 +6,13 @@ import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
+import { MdEditorOption } from 'ngx-markdown-editor';
+
+interface UploadResult {
+  isImg: boolean
+  name: string
+  url: string
+}
 
 @Component({
   selector: 'app-groups',
@@ -52,6 +59,29 @@ export class GroupsComponent implements OnInit {
   successMessage: boolean = false;
 
   Swal = require('sweetalert2')
+
+  public options: MdEditorOption = {
+    showPreviewPanel: true,
+    enablePreviewContentClick: false,
+    usingFontAwesome5: true,
+    fontAwesomeVersion: '5',
+    resizable: true,
+    customRender: {
+      image: function (href: string, title: string, text: string) {
+        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        if (title) {
+          out += ` title="${title}"`;
+        }
+        console.log(this);
+        // out += (<any>this.options).xhtml ? '/>' : '>';
+        return out;
+      },
+    },
+  };
+  public mode: string = 'editor';
+  public markdownText: any;
+  public content_ar: any;
+  public content_en: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -118,7 +148,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -143,7 +173,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -174,7 +204,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -194,7 +224,7 @@ export class GroupsComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
 
@@ -202,6 +232,9 @@ export class GroupsComponent implements OnInit {
   }
 
   OnSubmit() {
+    this.group.terms_ar = this.content_ar;
+    this.group.terms_en = this.content_en;
+
     let body = {
       group_type: this.group.group_type,
       owner_id: this.group.owner_id,
@@ -216,7 +249,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         this.getGroups();
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -244,7 +277,7 @@ export class GroupsComponent implements OnInit {
 
     const sub = this.api.update('groups/' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getGroups(); });
@@ -261,7 +294,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         //this.getGroups(null);
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -271,7 +304,7 @@ export class GroupsComponent implements OnInit {
         this.successMessage = true;
         this.getGroups();
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -285,5 +318,31 @@ export class GroupsComponent implements OnInit {
     let owner = this.owners.find(i => i.id === id);
 
     return owner?.contact;
+  }
+
+  onEditorLoaded(editor: any) {
+    //console.log(`ACE Editor Ins: `, editor);
+  }
+
+  onPreviewDomChangedar(e: any) {
+    this.content_ar = e.innerHTML;
+  }
+
+  onPreviewDomChangeden(e: any) {
+    this.content_en = e.innerHTML;
+  }
+
+  doUpload(files: Array<File>): Promise<Array<UploadResult>> {
+    // do upload file by yourself
+    return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
+  }
+  preRenderFunc(content: string) {
+    return content;
+    //return content.replace(/something/g, 'new value');
+  }
+  postRenderFunc(content: string) {
+    console.log(content)
+    return content;
+    //return content.replace(/something/g, 'new value');
   }
 }
