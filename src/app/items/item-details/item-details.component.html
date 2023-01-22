@@ -90,13 +90,32 @@
                                 <!-- <div class="badge badge-light-info d-inline">{{ item?.item_status }}</div> -->
                                 <!--begin::Badge-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Start Date</div>
-                                <div class="text-gray-600">{{ item?.start_date | date:'medium'}}</div>
-                                <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">End Date</div>
-                                <div class="text-gray-600">{{ item?.end_date | date:'medium' }}</div>
-                                <!--begin::Details item-->
+                                <div class="row">
+                                    <div class="col"><!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Start Date</div>
+                                        <div class="text-gray-600">{{ item?.start_date | date:'dd/mm/yyyyy'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">End Date</div>
+                                        <div class="text-gray-600">{{ item?.end_date | date:'dd/mm/yyyy' }}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Start Time</div>
+                                        <div class="text-gray-600">{{ item?.start_date | date:'h:mm a'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">End Time</div>
+                                        <div class="text-gray-600">{{ item?.end_date | date:'h:mm a' }}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Location</div>
                                 <div class="text-gray-600">{{ item?.governorate }}, {{ item?.address }}
@@ -105,33 +124,90 @@
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Deposit Amount</div>
-                                <div class="text-gray-600">{{ item?.deposit | currency:'OMR'}}</div>
+                                <div class="row">
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Inspection Start Date</div>
+                                        <div class="text-gray-600">{{ item?.inspections?.inspection_start_date |
+                                            date:'dd/mm/yyyy'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Inspection End Date</div>
+                                        <div class="text-gray-600">{{ item?.inspections?.inspection_end_date |
+                                            date:'dd/mm/yyyy'
+                                            }}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Inspection Start Time</div>
+                                        <div class="text-gray-600">{{ item?.inspections?.inspection_start_time}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Inspection End Time</div>
+                                        <div class="text-gray-600">{{ item?.inspections?.inspection_end_time }}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
+                                
                                 <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Start Price</div>
-                                <div class="text-gray-600">{{ item?.start_price | currency:'OMR'}}</div>
-                                <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Minimum Bid</div>
-                                <div class="text-gray-600">{{ item?.min_bid | currency:'OMR'}}</div>
-                                <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Acceptable Price</div>
-                                <div class="text-gray-600">{{ item?.acceptable_price | currency:'OMR'}}</div>
-                                <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Buy Price</div>
-                                <div class="text-gray-600">{{ item?.buy_price | currency:'OMR'}}</div>
-                                <!--begin::Details item-->
+                                <div class="row">
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Deposit Amount</div>
+                                        <div class="text-gray-600">{{ item?.deposit | currency:'OMR'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Start Price</div>
+                                        <div class="text-gray-600">{{ item?.start_price | currency:'OMR'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Minimum Bid</div>
+                                        <div class="text-gray-600">{{ item?.min_bid | currency:'OMR'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col" *ngIf="item?.acceptable_price">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Acceptable Price</div>
+                                        <div class="text-gray-600">{{ item?.acceptable_price | currency:'OMR'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col" *ngIf="item?.buy_price">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Buy Price</div>
+                                        <div class="text-gray-600">{{ item?.buy_price | currency:'OMR'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
                                 <hr>
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Item Created Date</div>
-                                <div class="text-gray-600">{{ item?.create_date | date:'medium'}}</div>
-                                <!--begin::Details item-->
-                                <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Item Modified Date</div>
-                                <div class="text-gray-600">{{ item?.modified_date | date:'medium' }}</div>
+                                <div class="row">
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Item Created Date</div>
+                                        <div class="text-gray-600">{{ item?.create_date | date:'medium'}}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                    <div class="col">
+                                        <!--begin::Details item-->
+                                        <div class="fw-bolder mt-5">Item Modified Date</div>
+                                        <div class="text-gray-600">{{ item?.modified_date | date:'medium' }}</div>
+                                        <!--begin::Details item-->
+                                    </div>
+                                </div>
                                 <!--begin::Details item-->
                             </div>
                         </div>

@@ -74,6 +74,8 @@ export class NewItemComponent implements OnInit {
     order: null
   }
 
+  inspections: any = {};
+
   attachemetns: any;
   images: any;
   item_details: any = {};
@@ -297,6 +299,7 @@ export class NewItemComponent implements OnInit {
       owner_id: this.item.owner_id,
       auction_id: this.item.auction_id,
       template_id: this.item.template_id,
+      inspections: this.inspections,
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
@@ -403,6 +406,7 @@ export class NewItemComponent implements OnInit {
     this.item.end_date = end_date.getFullYear() + '-' + month_2 + '-' + day_2 + 'T' + hour_2 + ':' + mins_2;
 
     this.item_details = template.details;
+    this.inspections = template.inspections;
 
     if (this.item.category_id)
       this.getForm();
