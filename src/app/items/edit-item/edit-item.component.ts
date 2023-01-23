@@ -247,6 +247,8 @@ export class EditItemComponent implements OnInit {
             this.inspections.inspection_end_date = object?.inspections?.inspection_end_date;
             this.inspections.inspection_end_time = object?.inspections?.inspection_end_time;
 
+            this.item_details = object?.details;
+
             // add files to images dropzone
             // this.item.images.forEach((image) => {
             //   let url = image.file.file;
