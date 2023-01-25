@@ -59,7 +59,7 @@
                 <div class="post d-flex flex-column-fluid" id="kt_post">
                     <!--begin::Container-->
                     <div id="kt_content_container" class="container">
-                        
+
                         <!--begin::Card-->
                         <div class="card">
                             <!--begin::Card body-->
@@ -156,10 +156,16 @@
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th></th>
                                                 <th mat-sort-header="code">Code</th>
-                                                <th mat-sort-header="title" class="w-50">Title</th>
-                                                <th mat-sort-header="count_of_bids">Number of Bids</th>
-                                                <th mat-sort-header="count_of_bidders">Number of Bidders</th>
+                                                <th mat-sort-header="title" class="w-40">Title</th>
+                                                <th mat-sort-header="count_of_bids">Bids</th>
+                                                <th mat-sort-header="count_of_bidders">Bidders</th>
                                                 <th mat-sort-header="price">Price</th>
+                                                <th mat-sort-header="price">VAT</th>
+                                                <th mat-sort-header="price">Total</th>
+                                                <th mat-sort-header="price">Total with VAT</th>
+                                                <th mat-sort-header="price">Name</th>
+                                                <th mat-sort-header="price">ID</th>
+                                                <th mat-sort-header="price">Mobile</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -170,10 +176,16 @@
                                             <tr *ngFor="let item of report?.items; let i = index;">
                                                 <td>{{ (i+1) }} </td>
                                                 <td>{{ item.item.code }}</td>
-                                                <td>{{ item.item.title.ar }} {{ item.item.title.en }}</td>
-                                                <td>{{ item.count_of_bids}}</td>
-                                                <td>{{ item.count_of_bidders}}</td>
-                                                <td>{{ item.item.current_price}}</td>
+                                                <td>{{ item.item.title.ar }}</td>
+                                                <td>{{ item.count_of_bids }}</td>
+                                                <td>{{ item.count_of_bidders }}</td>
+                                                <td>{{ item.amount }}</td>
+                                                <td>{{ item.total_vat }}</td>
+                                                <td>{{ item.total_without_vat }}</td>
+                                                <td>{{ item.total }}</td>
+                                                <td>{{ getDetails(item.details)?.name_ar }}</td>
+                                                <td>{{ getDetails(item.details).id_card_number }}</td>
+                                                <td>{{ item.phone}}</td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>

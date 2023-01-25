@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import Swal from 'sweetalert2'
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-reports',
@@ -61,6 +62,10 @@ export class ReportsComponent implements OnInit {
     sub.add(() => { this.utility.loader = false; });
   }
 
+  getDetails(details: any) {
+    return JSON.parse(JSON.parse(JSON.stringify(details)));
+  }
+
   onChangeAuction(value?: any) {
     let auction = this.auctions.find(i => i.code === value);
     this.auction_id = auction.id;
@@ -76,5 +81,16 @@ export class ReportsComponent implements OnInit {
       this.showList = true
     else
       this.auction_id = this.auctionList[0].id;
+  }
+
+  fileName = 'report.xlsx';
+  exportexcel(): void {
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.report?.items);
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
   }
 }
