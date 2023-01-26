@@ -16,6 +16,7 @@ export class ReportsComponent implements OnInit {
   auctionList: any[] = [];
 
   report: any;
+  format: any;
 
   auction_id: any;
   showList: boolean = false;
@@ -83,14 +84,31 @@ export class ReportsComponent implements OnInit {
       this.auction_id = this.auctionList[0].id;
   }
 
-  fileName = 'report.xlsx';
-  exportexcel(): void {
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.report?.items);
-    /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  exportexcel(fileName: string, sheet: string): void {
+    if (this.format) {
+      if (this.format === 'excel') {
+        let element = document.getElementById('kt_table_report');
+        const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+        /* generate workbook and add the worksheet */
+        const wb: XLSX.WorkBook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, sheet);
 
-    /* save to file */
-    XLSX.writeFile(wb, this.fileName);
+        /* save to file */
+        XLSX.writeFile(wb, `${fileName}.xlsx`);
+      }
+      if (this.format === 'pdf') {
+        // toDO ... export to pdf option 
+        //window.print();
+        Swal.fire({
+          title: 'Coming Soon.'
+        });
+      }
+    }
+    else {
+      Swal.fire({
+        title: 'Hey...',
+        text: 'Please select export format!'
+      });
+    }
   }
 }
