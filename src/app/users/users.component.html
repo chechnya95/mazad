@@ -27,8 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-user-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search user [email] [phone]"
-                            [(ngModel)]="userFilter" (keyup)="searchUser()" />
+                            class="form-control form-control-solid w-250px ps-14"
+                            placeholder="Search user [email] [phone]" [(ngModel)]="userFilter" (keyup)="searchUser()" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -340,9 +340,14 @@
                                                 <label class="required fw-bold fs-6 mb-2">Phone</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="phone" name="phone"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="99898883" [(ngModel)]="user.phone" />
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="code" class="form-control mt-0"
+                                                        placeholder="968" [(ngModel)]="user.code"
+                                                        style="flex: 0 1 100px;" />
+                                                    <input type="phone" name="phone"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="99898883" [(ngModel)]="user.phone" />
+                                                </div>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -749,7 +754,7 @@
                                             <rect fill="#000000" x="11" y="17" width="2" height="2" rx="1" />
                                         </g>
                                     </svg><!--end::Svg Icon--></span>
-                                    not confirmed
+                                not confirmed
                             </td>
                             <!--end::Joined-->
                             <!--begin::Action=-->

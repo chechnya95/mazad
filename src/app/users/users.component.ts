@@ -24,6 +24,7 @@ export class UsersComponent implements OnInit {
     email: null,
     password: null,
     phone: null,
+    code: 968,
     role: null,
     user_type: 'USER',
     status: 0
@@ -77,7 +78,7 @@ export class UsersComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
       if (id) {
-        this.getUsers(id);
+        this.getUserById(id);
       }
       else { this.getUsers(); }
     })
@@ -102,7 +103,7 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  async getUsers(id?: any, search = false) {
+  async getUsers(search = false) {
     this.utility.loader = true;
     const sub = this.api.get('users/', this.token, this.getHttpParams()).subscribe(
       async data => {
@@ -113,9 +114,6 @@ export class UsersComponent implements OnInit {
         this.filter_config.totalItems = objects['filters']['total_results'];
         localStorage.setItem('users', JSON.stringify(this.users));
 
-        if (id)
-          this.users = this.users.filter(i => i.id === id);
-
         this.users.forEach(function (user) {
           let user_details = JSON.parse(user['user_details']);
 
@@ -123,16 +121,29 @@ export class UsersComponent implements OnInit {
           user.name = user_details ? user_details['name_en'] : '';
         });
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; if (!search) this.getRoles(); });
+  }
+
+  async getUserById(id: any) {
+    this.utility.loader = true;
+    const sub = this.api.get(`users/${id}`, this.token).subscribe(
+      async data => {
+        let user = data['users'];
+        
+        let user_details = JSON.parse(user['user_details']);
+
+        user.avatar = user_details ? user_details['name_en'] ? user_details['name_en'].charAt(0) : user['username'].charAt(0) : user['username'].charAt(0);
+        user.name = user_details ? user_details['name_en'] : '';
+
+        this.users.push(user);
+      },
+      async error => { }
+    );
+
+    sub.add(() => { this.utility.loader = false; this.getRoles(); });
   }
 
   async getRoles() {
@@ -144,13 +155,7 @@ export class UsersComponent implements OnInit {
         objects = data;
         this.roles = objects.roles;
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        ;
-      }
+      async error => { }
     );
   }
 
@@ -166,11 +171,11 @@ export class UsersComponent implements OnInit {
       email: this.user.email,
       password: this.user.password,
       username: this.user.phone, //this.user_details.name_en.substr(0, this.user_details.name_en.indexOf(' ')),
-      phone: this.user.phone,
+      phone: `${this.user.code}${this.user.phone}`,
       role: role.name,
       user_type: this.user.user_type,
       user_details: JSON.stringify(this.user_details),
-      status: this.user.status
+      active: this.user.status
     }
 
     const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -225,7 +230,7 @@ export class UsersComponent implements OnInit {
               'Error!',
               'Could not send your request!'
             );
-            
+
           });
       }
     });
@@ -254,7 +259,7 @@ export class UsersComponent implements OnInit {
 
     const sub = this.api.update('users/admin/' + id, body, this.token).subscribe(
       async data => { },
-      async errr => {  }
+      async errr => { }
     );
 
     sub.add(() => { this.getUsers(); });
@@ -274,7 +279,7 @@ export class UsersComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!'
           })
-          
+
         }
       );
     }
@@ -286,12 +291,12 @@ export class UsersComponent implements OnInit {
       let value = this.userFilter;
 
       this.filter_config.queries = `${field},like,${value}`;
-      this.getUsers(null, true);
+      this.getUsers(true);
     }
 
     if (this.userFilter == '' || this.userFilter == null) {
       this.filter_config.queries = null;
-      this.getUsers(null, true);
+      this.getUsers(true);
     }
   }
 }
