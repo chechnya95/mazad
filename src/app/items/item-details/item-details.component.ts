@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 export class ItemDetailsComponent implements OnInit {
 
   extend_status: any[] = ['open', 'bid', 'approval', 'payment', 'payment overdue'];
-  close_status: any[] = ['Shipping', 'Transferred'];
+  close_status: any[] = ['shipping', 'transferred'];
 
   token: any;
   item: any;
