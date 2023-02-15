@@ -262,6 +262,7 @@
                                                 <th mat-sort-header="price">Name</th>
                                                 <th mat-sort-header="price">ID</th>
                                                 <th mat-sort-header="price">Mobile</th>
+                                                <th mat-sort-header="price">Email</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -282,6 +283,7 @@
                                                 <td>{{ getDetails(item.details)?.name_ar }}</td>
                                                 <td>{{ getDetails(item.details).id_card_number }}</td>
                                                 <td>{{ item.phone}}</td>
+                                                <td>{{ item?.email}}</td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
