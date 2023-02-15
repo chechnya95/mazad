@@ -256,13 +256,14 @@
                                                 <th mat-sort-header="count_of_bids">Bids</th>
                                                 <th mat-sort-header="count_of_bidders">Bidders</th>
                                                 <th mat-sort-header="price">Price</th>
-                                                <th mat-sort-header="price">VAT</th>
-                                                <th mat-sort-header="price">Total</th>
-                                                <th mat-sort-header="price">Total with VAT</th>
-                                                <th mat-sort-header="price">Name</th>
-                                                <th mat-sort-header="price">ID</th>
-                                                <th mat-sort-header="price">Mobile</th>
-                                                <th mat-sort-header="price">Email</th>
+                                                <th mat-sort-header="total_vat">VAT</th>
+                                                <th mat-sort-header="total_without_vat">Total</th>
+                                                <th mat-sort-header="total">Total with VAT</th>
+                                                <th mat-sort-header="item_status">Status</th>
+                                                <th mat-sort-header="name_ar">Name</th>
+                                                <th mat-sort-header="id_card_number">ID</th>
+                                                <th mat-sort-header="phone">Mobile</th>
+                                                <th mat-sort-header="email">Email</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -280,6 +281,7 @@
                                                 <td>{{ item.total_vat }}</td>
                                                 <td>{{ item.total_without_vat }}</td>
                                                 <td>{{ item.total }}</td>
+                                                <td>{{ item.item.item_status }}</td>
                                                 <td>{{ getDetails(item.details)?.name_ar }}</td>
                                                 <td>{{ getDetails(item.details).id_card_number }}</td>
                                                 <td>{{ item.phone}}</td>
