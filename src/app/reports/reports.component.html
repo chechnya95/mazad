@@ -257,8 +257,9 @@
                                                 <th mat-sort-header="count_of_bidders">Bidders</th>
                                                 <th mat-sort-header="price">Price</th>
                                                 <th mat-sort-header="total_vat">VAT</th>
-                                                <th mat-sort-header="mazad_vat">Mazad VAT</th>
-                                                <th mat-sort-header="owner_vat">Service VAT</th>
+                                                <th mat-sort-header="mazad_vat">Mazad VAT ({{report?.auction.vat_for_mazad}}%)</th>
+                                                <th mat-sort-header="owner_vat">Owner VAT ({{report?.auction.vat_for_item}}%)</th>
+                                                <th mat-sort-header="mazad">Mazad ({{report?.auction.auction_fee}}%)</th>
                                                 <th mat-sort-header="total_without_vat">Total</th>
                                                 <th mat-sort-header="total">Total with VAT</th>
                                                 <th mat-sort-header="item_status">Status</th>
@@ -283,6 +284,7 @@
                                                 <td>{{ item.total_vat }}</td>
                                                 <td>{{ item.mazad_vat }}</td>
                                                 <td>{{ item.owner_vat }}</td>
+                                                <td>{{ item.mazad }}</td>
                                                 <td>{{ item.total_without_vat }}</td>
                                                 <td>{{ item.total }}</td>
                                                 <td>{{ item.item.item_status }}</td>
