@@ -243,7 +243,7 @@
                                     <div class="col-2">Number of Items:</div>
                                     <div class="col-2 fw-bold">{{ report?.items.length }}</div>
                                 </div>
-                                <div class="row pt-5">
+                                <div class="row pt-5 table-responsive">
                                     <table mat-table matSort (matSortChange)="sortData($event)"
                                         class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_report">
                                         <!--begin::Table head-->
@@ -257,6 +257,8 @@
                                                 <th mat-sort-header="count_of_bidders">Bidders</th>
                                                 <th mat-sort-header="price">Price</th>
                                                 <th mat-sort-header="total_vat">VAT</th>
+                                                <th mat-sort-header="mazad_vat">Mazad VAT</th>
+                                                <th mat-sort-header="owner_vat">Service VAT</th>
                                                 <th mat-sort-header="total_without_vat">Total</th>
                                                 <th mat-sort-header="total">Total with VAT</th>
                                                 <th mat-sort-header="item_status">Status</th>
@@ -279,6 +281,8 @@
                                                 <td>{{ item.count_of_bidders }}</td>
                                                 <td>{{ item.amount }}</td>
                                                 <td>{{ item.total_vat }}</td>
+                                                <td>{{ item.mazad_vat }}</td>
+                                                <td>{{ item.owner_vat }}</td>
                                                 <td>{{ item.total_without_vat }}</td>
                                                 <td>{{ item.total }}</td>
                                                 <td>{{ item.item.item_status }}</td>
