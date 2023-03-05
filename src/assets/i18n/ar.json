@@ -53,7 +53,10 @@
     "export": "تصدير",
     "type": "النوع",
     "active": "مفعل؟",
-    "ConfirmdDate": "تاريخ التأكيد"
+    "ConfirmdDate": "تاريخ التأكيد",
+    "activee": "نشط",
+    "not_active": "غير نشط",
+    "status": "الحالة"
 
 
 }
