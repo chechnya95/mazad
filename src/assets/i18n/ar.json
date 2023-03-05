@@ -47,6 +47,13 @@
     "total": "المجموع الاجمالي",
     "deposit": "الإيداع",
     "showpage": "عرض صفحة",
-    "Digital Leadership LLC":"الريادة الرقمية ش م م"
+    "Digital Leadership LLC":"الريادة الرقمية ش م م",
+    "user": "المستخدم",
+    "adduser": "إضافة مستخدم",
+    "export": "تصدير",
+    "type": "النوع",
+    "active": "مفعل؟",
+    "ConfirmdDate": "تاريخ التأكيد"
+
 
 }
