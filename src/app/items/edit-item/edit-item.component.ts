@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 
 import { Uppy } from '@uppy/core'
 import { MdEditorOption } from 'ngx-markdown-editor';
-import { HttpClient } from '@angular/common/http';
 
 interface UploadResult {
   isImg: boolean
@@ -62,6 +61,8 @@ export class EditItemComponent implements OnInit {
     terms_ar: null
   }
 
+  inspections: any = {};
+
   new_item_status: any;
   new_item_id: any;
 
@@ -100,7 +101,7 @@ export class EditItemComponent implements OnInit {
   uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
   uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private http: HttpClient) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
@@ -237,6 +238,13 @@ export class EditItemComponent implements OnInit {
 
             this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
 
+            this.inspections.inspection_start_date = object?.inspections?.inspection_start_date;
+            this.inspections.inspection_start_time = object?.inspections?.inspection_start_time;
+            this.inspections.inspection_end_date = object?.inspections?.inspection_end_date;
+            this.inspections.inspection_end_time = object?.inspections?.inspection_end_time;
+
+            this.item_details = object?.details;
+
             // add files to images dropzone
             // this.item.images.forEach((image) => {
             //   let url = image.file.file;
@@ -349,6 +357,7 @@ export class EditItemComponent implements OnInit {
       category_id: this.item.category_id,
       owner_id: this.item.owner_id,
       auction_id: this.item.auction_id,
+      inspections: this.inspections,
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
@@ -371,7 +380,7 @@ export class EditItemComponent implements OnInit {
     formData.append('form', body);
 
     this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
-      async data => { localStorage.removeItem('item-edit'); },
+      async data => { localStorage.removeItem('item-edit'); this.router.navigate(['items']); },
       async eror => {
         Swal.fire({
           title: 'Oops...',

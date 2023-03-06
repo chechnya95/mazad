@@ -47,6 +47,57 @@
     "total": "المجموع الاجمالي",
     "deposit": "الإيداع",
     "showpage": "عرض صفحة",
-    "Digital Leadership LLC":"الريادة الرقمية ش م م"
+    "Digital Leadership LLC":"الريادة الرقمية ش م م",
+    "user": "المستخدم",
+    "adduser": "إضافة مستخدم",
+    "updateuser": "تحديث المستخدم",
+    "export": "تصدير",
+    "type": "النوع",
+    "active": "مفعل؟",
+    "ConfirmdDate": "تاريخ التأكيد",
+    "activee": "نشط",
+    "not_active": "غير نشط",
+    "status": "الحالة",
+    "auction": "المزاد",
+
+    "Full Name": "الاسم باللغة الانجليزية",
+    "Full Name Arabic": "الاسم باللغة العربية",
+    "ID Card Number": "رقم البطاقة الشخصية",
+    "Company": "الشركة",
+    "Phone": "رقم الهاتف",
+    "Company Site": "موقع الشركة",
+    "Country": "الدولة",
+    "Communication": "التواصل",
+    "Role": "الصلاحية",
+    "User Type": "نوع المستخدم",
+
+    "Owners Management": "إدارة الملاك",
+    "Title": "العنوان",
+    "addowners": "إضافة الملاك",
+    "Code": " الرمز",
+    "CR Number": "رقم السجل التجاري",
+    "VAT Number": "الرقم الضريبي",
+    "Owner logo": "شعار المالك",
+    "Update Owner": "تحديث المالك",
+
+    "Mazad Oman Statistics": "احصائيات عامة",
+    "Items in Mazad Oman": "عدد السلع بمزاد عمان",
+    "Users Registered": "المستخدمين المسجلين",
+    "Auction Owners": "ملاك المزادات",
+    "OMR total Income": "اجمالي الدخل بالريال",
+    "Financial Numbers": "احصائات مالية",
+    "Total Mazad Incomes": "اجمالي الدخل",
+    "OMR": "ريال عماني",
+    "Total Insurance Amount": "مبالغ التأمين الإجمالية",
+    "All Insurance deposit": "كل التأمين المودع",
+    "Total Insurance Deductedle": "مجموع التأمينات المخصومة",
+    "In all time": "في كل الأوقات",
+    "Categories": "الاصناف",
+    "items": "السلع",
+    "Items Status": "حالات السلع"
+
+
+
+
 
 }

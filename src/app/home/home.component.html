@@ -10,7 +10,9 @@
                 <div class="card card-xxl-stretch">
                     <!--begin::Header-->
                     <div class="card-header border-0 bg-danger py-5">
-                        <h3 class="card-title fw-bolder text-white">Mazad Oman Statistics</h3>
+                        <h3 class="card-title fw-bolder text-white">
+                            {{ "Mazad Oman Statistics" | translate }}
+                        </h3>
                         <div class="card-toolbar">
                         </div>
                     </div>
@@ -43,7 +45,9 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <a class="text-warning fw-bold fs-6">{{ total_items }} Items in Mazad Oman</a>
+                                    <a class="text-warning fw-bold fs-6">{{ total_items }} 
+                                        {{ "Items in Mazad Oman" | translate }}
+                                        </a>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
@@ -61,7 +65,9 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <a class="text-primary fw-bold fs-6">{{ total_users }} Users Registered</a>
+                                    <a class="text-primary fw-bold fs-6">{{ total_users }} 
+                                        {{ "Users Registered" | translate }}
+                                    </a>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -83,7 +89,9 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <a class="text-danger fw-bold fs-6 mt-2">{{ total_owners }} Auction Owners</a>
+                                    <a class="text-danger fw-bold fs-6 mt-2">{{ total_owners }} 
+                                        {{ "Auction Owners" | translate }}
+                                        </a>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
@@ -101,7 +109,9 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <a class="text-success fw-bold fs-6 mt-2">{{ total_income | number }} OMR total Income</a>
+                                    <a class="text-success fw-bold fs-6 mt-2">{{ total_income | number }} 
+                                        {{ "OMR total Income" | translate }}
+                                    </a>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -120,7 +130,9 @@
                 <div class="card card-xl-stretch mb-xl-8">
                     <!--begin::Header-->
                     <div class="card-header border-0">
-                        <h3 class="card-title fw-bolder text-dark">Financial Numbers</h3>
+                        <h3 class="card-title fw-bolder text-dark">
+                            {{ "Financial Numbers" | translate }}
+                        </h3>
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->
@@ -149,12 +161,16 @@
                             <!--end::Icon-->
                             <!--begin::Title-->
                             <div class="flex-grow-1 me-2">
-                                <a class="fw-bolder text-gray-800 text-hover-primary fs-6">Total Mazad Incomes</a>
-                                <span class="text-muted fw-bold d-block">Sales of all items</span>
+                                <a class="fw-bolder text-gray-800 text-hover-primary fs-6">
+                                    {{ "Total Mazad Incomes" | translate }}
+                                </a>
+                                <span class="text-muted fw-bold d-block">
+                                    {{ "Sales of all items" | translate }}
+                                </span>
                             </div>
                             <!--end::Title-->
                             <!--begin::Lable-->
-                            <span class="fw-bolder text-warning py-1">{{ total_income | number }} OMR</span>
+                            <span class="fw-bolder text-warning py-1">{{ total_income | number }} {{ "OMR" | translate }}</span>
                             <!--end::Lable-->
                         </div>
                         <!--end::Item-->
@@ -182,12 +198,16 @@
                             <!--end::Icon-->
                             <!--begin::Title-->
                             <div class="flex-grow-1 me-2">
-                                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">Total Insurance Amount</a>
-                                <span class="text-muted fw-bold d-block">All Insurance deposit</span>
+                                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">
+                                    {{ "Total Insurance Amount" | translate }}
+                                </a>
+                                <span class="text-muted fw-bold d-block">
+                                    {{ "All Insurance deposit" | translate }}
+                                </span>
                             </div>
                             <!--end::Title-->
                             <!--begin::Lable-->
-                            <span class="fw-bolder text-success py-1">{{ total_insurance?.amount | number }} OMR</span>
+                            <span class="fw-bolder text-success py-1">{{ total_insurance?.amount | number }} {{ "OMR" | translate }}</span>
                             <!--end::Lable-->
                         </div>
                         <!--end::Item-->
@@ -215,12 +235,16 @@
                             <!--end::Icon-->
                             <!--begin::Title-->
                             <div class="flex-grow-1 me-2">
-                                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">Total Insurance Deducted</a>
-                                <span class="text-muted fw-bold d-block">in all time</span>
+                                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-6">
+                                    {{ "Total Insurance Deducted" | translate }}
+                                </a>
+                                <span class="text-muted fw-bold d-block">
+                                    {{ "In all time" | translate }}
+                                </span>
                             </div>
                             <!--end::Title-->
                             <!--begin::Lable-->
-                            <span class="fw-bolder text-danger py-1">{{ total_insurance?.amount_refund | number }} OMR</span>
+                            <span class="fw-bolder text-danger py-1">{{ total_insurance?.amount_refund | number }} {{ "OMR" | translate }}</span>
                             <!--end::Lable-->
                         </div>
                         <!--end::Item-->
@@ -237,8 +261,12 @@
                     <!--begin::Header-->
                     <div class="card-header align-items-center border-0 mt-4">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="fw-bolder mb-2 text-dark">Categories</span>
-                            <span class="text-muted fw-bold fs-7">{{ categories_total_items }} items</span>
+                            <span class="fw-bolder mb-2 text-dark">
+                                {{ "Categories" | translate }}
+                            </span>
+                            <span class="text-muted fw-bold fs-7">{{ categories_total_items }} 
+                                {{ "items" | translate }}
+                            </span>
                         </h3>
                     </div>
                     <!--end::Header-->
@@ -275,7 +303,9 @@
                 <div class="card card-xl-stretch mb-xl-8">
                     <!--begin::Header-->
                     <div class="card-header border-0">
-                        <h3 class="card-title fw-bolder text-dark">Items Status</h3>
+                        <h3 class="card-title fw-bolder text-dark">
+                            {{ "Items Status" | translate }}
+                        </h3>
                     </div>
                     <!--end::Header-->
                     <!--begin::Body-->

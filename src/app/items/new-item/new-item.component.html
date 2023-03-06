@@ -478,6 +478,54 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">Inspection Start Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="date" name="inspection_start_date"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="inspections.inspection_start_date" />
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">Inspection End Date</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="date" name="inspection_end_date"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="inspections.inspection_end_date" />
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">Inspection Start Time</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="time" name="inspection_start_time"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="inspections.inspection_start_time" />
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">Inspection End Time</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="time" name="inspection_end_time"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="inspections.inspection_end_time" />
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
                                     <label class="required fw-bold fs-6 mb-2">Extension Period
                                         <small>(Seconds)</small></label>
                                     <!--end::Label-->

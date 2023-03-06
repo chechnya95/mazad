@@ -13,7 +13,7 @@ import { MdEditorOption } from 'ngx-markdown-editor';
 export class ItemDetailsComponent implements OnInit {
 
   extend_status: any[] = ['open', 'bid', 'approval', 'payment', 'payment overdue'];
-  close_status: any[] = ['Shipping', 'Transferred'];
+  close_status: any[] = ['shipping', 'transferred'];
 
   token: any;
   item: any;
@@ -122,7 +122,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.auction = objects['auctions'];
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getWinner(); });
@@ -136,7 +136,7 @@ export class ItemDetailsComponent implements OnInit {
 
         this.winner.details = JSON.parse(JSON.parse(JSON.stringify(this.winner.details)));
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getInvoices(); });
@@ -150,7 +150,7 @@ export class ItemDetailsComponent implements OnInit {
 
         console.log(this.invoices.length)
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getPaymentTypes(); });
@@ -162,7 +162,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.payfors = objects;
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getPendingPayments(); });
@@ -174,7 +174,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.pendings = objects['payments'];
       },
-      async error => {  }
+      async error => { }
     );
     sub.add(() => { this.getTransactionPaymentTypes(); });
 
@@ -186,7 +186,7 @@ export class ItemDetailsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.payment_transaction_types = objects['payment_type'];
       },
-      async error => {  }
+      async error => { }
     );
     sub.add(() => { this.utility.loader = false; });
   }
@@ -203,8 +203,13 @@ export class ItemDetailsComponent implements OnInit {
     this.api.post('items/extendtime/' + id, body, this.token).subscribe(
       async data => {
         this.successMessage = true;
+
+        this.route.queryParams.subscribe(params => {
+          let id = params['id'] != null ? params['id'] : null;
+          if (id) { this.getItemDetails(id); }
+        });
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -212,8 +217,13 @@ export class ItemDetailsComponent implements OnInit {
     this.api.get('items/to_status/payment/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
+
+        this.route.queryParams.subscribe(params => {
+          let id = params['id'] != null ? params['id'] : null;
+          if (id) { this.getItemDetails(id); }
+        });
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -225,8 +235,13 @@ export class ItemDetailsComponent implements OnInit {
     this.api.get('items/to_status/reject/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
+
+        this.route.queryParams.subscribe(params => {
+          let id = params['id'] != null ? params['id'] : null;
+          if (id) { this.getItemDetails(id); }
+        });
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -234,8 +249,13 @@ export class ItemDetailsComponent implements OnInit {
     this.api.get('items/to_status/closed/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
+
+        this.route.queryParams.subscribe(params => {
+          let id = params['id'] != null ? params['id'] : null;
+          if (id) { this.getItemDetails(id); }
+        });
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -261,7 +281,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -271,7 +291,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -281,7 +301,7 @@ export class ItemDetailsComponent implements OnInit {
         this.getPendingPayments();
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 }

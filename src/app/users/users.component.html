@@ -27,8 +27,8 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-user-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search user [email] [phone]"
-                            [(ngModel)]="userFilter" (keyup)="searchUser()" />
+                            class="form-control form-control-solid w-250px ps-14"
+                            placeholder="Search user [email] [phone]" [(ngModel)]="userFilter" (keyup)="searchUser()" />
                     </div>
                     <!--end::Search-->
                 </div>
@@ -143,7 +143,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add User
+                            <!--end::Svg Icon-->{{ "adduser"| translate}}
                         </button>
                         <!--end::Add user-->
                     </div>
@@ -167,7 +167,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export Users</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "export"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -263,7 +265,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_user_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Add User</h2>
+                                    <h2 class="fw-bolder">{{ "adduser"| translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -301,7 +303,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name Arabic"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_ar"
@@ -313,7 +317,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Full Name"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_en"
@@ -325,7 +329,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Email"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -337,19 +343,28 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                 {{ "Phone"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="phone" name="phone"
-                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="99898883" [(ngModel)]="user.phone" />
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="code" class="form-control mt-0"
+                                                        placeholder="968" [(ngModel)]="user.code"
+                                                        style="flex: 0 1 100px;" />
+                                                    <input type="phone" name="phone"
+                                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                                        placeholder="99898883" [(ngModel)]="user.phone" />
+                                                </div>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "ID Card Number"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -361,7 +376,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Role</label>
+                                                <label class="form-label required">
+                                                    {{ "Role"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="role" class="form-select form-select-lg form-select-solid"
@@ -376,7 +393,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">User Tpe</label>
+                                                <label class="form-label required">
+                                                    {{ "User Type"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="user_type"
@@ -394,14 +413,16 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Status</label>
+                                                <label class="form-label required">
+                                                    {{ "status"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.status">
-                                                    <option [value]="1">Active</option>
-                                                    <option [value]="0">Not Active</option>
+                                                    <option [value]="1">{{ "activee"| translate}}</option>
+                                                    <option [value]="0">{{ "not_active"| translate}}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -409,7 +430,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Password</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Password"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="password" name="password"
@@ -452,7 +473,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_user_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update User</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "updateuser"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -490,7 +513,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name AR"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_ar"
@@ -503,7 +528,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_en"
@@ -516,7 +543,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Email"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -528,7 +557,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Phone"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="phone" name="phone"
@@ -540,7 +571,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "ID Card Number"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -553,7 +586,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Role</label>
+                                                <label class="form-label required">
+                                                    {{ "Role"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="role" class="form-select form-select-lg form-select-solid"
@@ -567,7 +602,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">User Tpe</label>
+                                                <label class="form-label required">
+                                                    {{ "User Type"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="user_type"
@@ -585,14 +622,14 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Status</label>
+                                                <label class="form-label required">{{ "status"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_user.status">
-                                                    <option [value]="1">Active</option>
-                                                    <option [value]="0">Not Active</option>
+                                                    <option [value]="1">{{ "activee"| translate}}</option>
+                                                    <option [value]="0">{{ "not_active"| translate}}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -641,11 +678,11 @@
                                         data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th mat-sort-header="phone" class="min-w-125px">User</th>
+                            <th mat-sort-header="phone" class="min-w-125px">{{ "user"| translate}}</th>
                             <!-- <th class="min-w-125px">Role</th> -->
-                            <th mat-sort-header="user_type" class="min-w-125px">Type</th>
-                            <th mat-sort-header="status" class="min-w-125px">Active</th>
-                            <th mat-sort-header="mobile_confirmed_at" class="min-w-125px">Confirmd Date</th>
+                            <th mat-sort-header="user_type" class="min-w-125px">{{ "type"| translate}}</th>
+                            <th mat-sort-header="active" class="min-w-125px">{{ "active"| translate}}</th>
+                            <th mat-sort-header="mobile_confirmed_at" class="min-w-125px">{{ "ConfirmdDate"| translate}}</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->
@@ -694,9 +731,8 @@
                             <!--end::Last login=-->
                             <!--begin::Two step=-->
                             <td>
-                                <div *ngIf="user.is_active==1" class="badge badge-light-success fw-bolder">Active</div>
-                                <div *ngIf="user.is_active==0" class="badge badge-light-danger fw-bolder">Not Active
-                                </div>
+                                <div *ngIf="user.is_active==1" class="badge badge-light-success fw-bolder">{{ "activee"| translate}}</div>
+                                <div *ngIf="user.is_active==0" class="badge badge-light-danger fw-bolder">{{ "not_active"| translate}}</div>
                             </td>
                             <!--end::Two step=-->
                             <!--begin::Joined-->
@@ -749,7 +785,7 @@
                                             <rect fill="#000000" x="11" y="17" width="2" height="2" rx="1" />
                                         </g>
                                     </svg><!--end::Svg Icon--></span>
-                                    not confirmed
+                                not confirmed
                             </td>
                             <!--end::Joined-->
                             <!--begin::Action=-->
