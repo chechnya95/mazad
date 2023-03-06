@@ -94,7 +94,20 @@
     "In all time": "في كل الأوقات",
     "Categories": "الاصناف",
     "items": "السلع",
-    "Items Status": "حالات السلع"
+    "Items Status": "حالات السلع",
+    "Add New Role": "اضافة صلاحية",
+    "Add New Permission": "اضافة تصريح جديد",
+    "Add a Role": "اضف صلاحية",
+    "Role name": "اسم الصلاحية",
+    "Role Permissions": "تصريحات الصلاحية",
+    "Add a Permission": "اضافة تصريح",
+    "Permission name": "اسم التصريح ",
+    "Permissions": "التصريح",
+    "Update Role": "تحديث الصلاحية",
+    "Update Role Name": "تحديث اسم الصلاحية"
+
+    
+    
 
 
 
