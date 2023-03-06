@@ -116,8 +116,39 @@
     "Group": "الفئة",
     "Terms": "الشروط",
     "Update Auction": "تحديث المزاد",
-    "Owner Code": "رقم المالك"
-    
+    "Owner Code": "رقم المالك",
+    "Start Template": "البدأ بالقالب",
+    "Template Description":"وصف القالب",
+    "Template Details":"تفاصيل القالب",
+    "Completed":"مكتمل",
+    "Template Code":"رمز القالب",
+    "Latitude":"خط العرض",
+    "Longtitude":"خط الطول",
+    "Governorate":"محافظة",
+    "Address":"عنوان",
+    "Extension Period":"فترة التمديد",
+    "Seconds":"بالثواني",
+    "Category":"الفئة",
+    "Description":"الوصف",
+    "Time Between Items":"الوقت بين العناصر",
+    "Minutes":"دقائق",
+    "Payment Period":"فترة الدفع",
+    "Days":"بالأيام",
+    "Collecting Period":"فترة التحصيل",
+    "Start Price":"السعر المبدئي",
+    "Minimum Bid":"الحد الأدنى للمزايدة",
+    "Acceptable Price":"سعر القبول",
+    "Buy Price":"سعر الشراء",
+    "Inspection Start Date":"تاريخ بدء الفحص",
+    "Inspection End Date":"تاريخ انتهاء الفحص",
+    "Inspection Start Time":"وقت بدء الفحص",
+    "Inspection End Time":"وقت انتهاء الفحص",
+    "Item Fields Details":"تفاصيل حقول العنصر",
+    "Your Are Done!":"انتهيت!",
+    "To see all templates, please":"لمشاهدة جميع القوالب ، من فضلك",
+    "Click here":"انقر هنا",
+    "Add Auction":"اضافة مزاد"
+
     
 
 
