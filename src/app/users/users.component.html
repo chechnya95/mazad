@@ -167,7 +167,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export Users</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "export"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -263,7 +265,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_user_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Add User</h2>
+                                    <h2 class="fw-bolder">{{ "adduser"| translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -301,7 +303,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name Arabic"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_ar"
@@ -313,7 +317,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Full Name"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_en"
@@ -325,7 +329,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Email"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -337,7 +343,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                 {{ "Phone"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <div class="input-group mb-3">
@@ -354,7 +362,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "ID Card Number"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -366,7 +376,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Role</label>
+                                                <label class="form-label required">
+                                                    {{ "Role"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="role" class="form-select form-select-lg form-select-solid"
@@ -381,7 +393,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">User Tpe</label>
+                                                <label class="form-label required">
+                                                    {{ "User Type"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="user_type"
@@ -399,14 +413,16 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Status</label>
+                                                <label class="form-label required">
+                                                    {{ "status"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.status">
-                                                    <option [value]="1">Active</option>
-                                                    <option [value]="0">Not Active</option>
+                                                    <option [value]="1">{{ "activee"| translate}}</option>
+                                                    <option [value]="0">{{ "not_active"| translate}}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -414,7 +430,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Password</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Password"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="password" name="password"
@@ -457,7 +473,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_user_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update User</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "updateuser"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -495,7 +513,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name AR</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name AR"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_ar"
@@ -508,7 +528,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Full Name EN</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Full Name"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name_en"
@@ -521,7 +543,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Email</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Email"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="email" name="email"
@@ -533,7 +557,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Phone</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Phone"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="phone" name="phone"
@@ -545,7 +571,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">ID Card Number</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "ID Card Number"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="id_card" name="id_card_number"
@@ -558,7 +586,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Role</label>
+                                                <label class="form-label required">
+                                                    {{ "Role"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="role" class="form-select form-select-lg form-select-solid"
@@ -572,7 +602,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">User Tpe</label>
+                                                <label class="form-label required">
+                                                    {{ "User Type"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="user_type"

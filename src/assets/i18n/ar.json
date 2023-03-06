@@ -50,13 +50,26 @@
     "Digital Leadership LLC":"الريادة الرقمية ش م م",
     "user": "المستخدم",
     "adduser": "إضافة مستخدم",
+    "updateuser": "تحديث المستخدم",
     "export": "تصدير",
     "type": "النوع",
     "active": "مفعل؟",
     "ConfirmdDate": "تاريخ التأكيد",
     "activee": "نشط",
     "not_active": "غير نشط",
-    "status": "الحالة"
+    "status": "الحالة",
+    "AUCTION": "المزاد",
+
+    "Full Name": "الاسم باللغة الانجليزية",
+    "Full Name Arabic": "الاسم باللغة العربية",
+    "ID Card Number": "رقم البطاقة الشخصية",
+    "Company": "الشركة",
+    "Phone": "رقم الهاتف",
+    "Company Site": "موقع الشركة",
+    "Country": "الدولة",
+    "Communication": "التواصل",
+    "Role": "الصلاحية",
+    "User Type": "نوع المستخدم"
 
 
 }
