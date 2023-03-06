@@ -286,15 +286,15 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Auction Type</label>
+                                                <label class="form-label required">{{ "type" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_type"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.auction_type" disabled>
                                                     <option>-- SELECT --</option>
-                                                    <option value="private">Private</option>
-                                                    <option value="public">Public</option>
+                                                    <option value="private">{{ "Private" | translate }}</option>
+                                                    <option value="public">{{ "Public" | translate }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -302,15 +302,17 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Auction Method</label>
+                                                <label class="form-label required"> 
+                                                    {{ "Method" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_method"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.auction_method" disabled>
                                                     <option>-- SELECT --</option>
-                                                    <option value="increasing">Increasing</option>
-                                                    <option value="decreasing">Decreasing</option>
+                                                    <option value="increasing">{{ "Increasing" | translate }}</option>
+                                                    <option value="decreasing">{{ "Decreasing" | translate }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -318,7 +320,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Title" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -334,7 +338,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Code</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Code" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="code"
@@ -346,7 +352,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Owner Code</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Owner Code" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="owner_code"
@@ -358,7 +366,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Deposit</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "deposit" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="deposit"
@@ -370,7 +380,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Start Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Start Date" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="date" name="start_date"
@@ -382,7 +394,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">End Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "End Date" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="date" name="end_date"
@@ -394,7 +408,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label">Auction Status</label>
+                                                <label class="form-label">
+                                                    {{ "status" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_status"
@@ -410,7 +426,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10" *ngIf="!isOwner">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Owner</label>
+                                                <label class="form-label required">
+                                                    {{ "Owner" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <input class="form-control header-color"
                                                     (keyup)="onChangeOwner($event.target.value)"
@@ -426,7 +444,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10" *ngIf="!isOwner">
                                                 <!--begin::Label-->
-                                                <label class="form-label">Group</label>
+                                                <label class="form-label">{{ "Group" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_id"
@@ -442,7 +460,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Description" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="description_en"
@@ -460,7 +478,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{ "Terms" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="terms_en"
@@ -509,7 +529,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_auction_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update Auction</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "Update Auction" | translate }}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -547,15 +569,17 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Auction Type</label>
+                                                <label class="form-label required">
+                                                    {{ "type" | translate }}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_type"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.auction_type">
                                                     <option>-- SELECT --</option>
-                                                    <option value="private">Private</option>
-                                                    <option value="public">Public</option>
+                                                    <option value="private">{{ "Private" | translate }}</option>
+                                                    <option value="public">{{ "Public" | translate }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -563,15 +587,15 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Auction Method</label>
+                                                <label class="form-label required">{{ "Method" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_method"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_auction.auction_method">
                                                     <option>-- SELECT --</option>
-                                                    <option value="increasing">Increasing</option>
-                                                    <option value="decreasing">Decreasing</option>
+                                                    <option value="increasing">{{ "Increasing" | translate }}</option>
+                                                    <option value="decreasing">{{ "Decreasing" | translate }}</option>
                                                 </select>
                                                 <!--end::Input-->
                                             </div>
@@ -579,7 +603,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Title" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -595,7 +619,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Code</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Code" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="code"
@@ -607,7 +631,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Owner Code</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Owner Code" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="owner_code"
@@ -619,7 +643,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Deposit</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "deposit" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="deposit"
@@ -631,7 +655,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Start Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Start Date" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="date" name="start_date"
@@ -643,7 +667,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">End Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "End Date" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="date" name="end_date"
@@ -655,7 +679,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Auction Status</label>
+                                                <label class="form-label required">{{ "status" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="auction_status"
@@ -671,7 +695,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Owner</label>
+                                                <label class="form-label required">{{ "Owner" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
@@ -690,7 +714,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label">Group</label>
+                                                <label class="form-label">{{ "Group" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_id"
@@ -706,7 +730,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Description" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="description_en"
@@ -724,7 +748,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Terms" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="terms_en"
@@ -784,12 +808,12 @@
                                         data-kt-check-target="#kt_table_auctions .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">Title</th>
-                            <th mat-sort-header="auction_type" class="min-w-125px">Auction Type</th>
-                            <th mat-sort-header="code" class="min-w-125px">Code</th>
-                            <th mat-sort-header="start_date" class="min-w-125px">Start Date</th>
-                            <th mat-sort-header="end_date" class="min-w-125px">End Date</th>
-                            <th mat-sort-header="auction_status" class="min-w-125px">Status</th>
+                            <th class="min-w-125px">{{ "Title" | translate }}</th>
+                            <th mat-sort-header="auction_type" class="min-w-125px">{{ "type" | translate }}</th>
+                            <th mat-sort-header="code" class="min-w-125px">{{ "Code" | translate }}</th>
+                            <th mat-sort-header="start_date" class="min-w-125px">{{ "Start Date" | translate }}</th>
+                            <th mat-sort-header="end_date" class="min-w-125px">{{ "End Date" | translate }}</th>
+                            <th mat-sort-header="auction_status" class="min-w-125px">{{ "status" | translate }}</th>
                             <th class="text-end min-w-100px">Actions</th>
                         </tr>
                         <!--end::Table row-->

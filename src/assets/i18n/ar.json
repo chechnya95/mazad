@@ -104,8 +104,19 @@
     "Permission name": "اسم التصريح ",
     "Permissions": "التصريح",
     "Update Role": "تحديث الصلاحية",
-    "Update Role Name": "تحديث اسم الصلاحية"
-
+    "Update Role Name": "تحديث اسم الصلاحية",
+    "Private": "خاص",
+    "Public": "عام",
+    "Method": "الطريقة",
+    "Increasing": "بالتزايد",
+    "Decreasing": "بالتناقص",
+    "Start Date": "تاريخ البدأ",
+    "End Date": "تاريخ الانتهاء",
+    "Owner": "المالك",
+    "Group": "الفئة",
+    "Terms": "الشروط",
+    "Update Auction": "تحديث المزاد",
+    "Owner Code": "رقم المالك"
     
     
 
