@@ -351,10 +351,9 @@
                                     <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <md-editor name="terms_ar" id="terms_ar" [preRender]="preRenderFunc"
-                                        [postRender]="postRenderFunc" [(ngModel)]="item.terms_ar" [height]="'300px'"
-                                        [mode]="mode" [options]="options" (onEditorLoaded)="onEditorLoaded($event)"
-                                        (onPreviewDomChanged)="onPreviewDomChangedar($event)" required>
+                                    <md-editor name="terms_ar" id="terms_ar"
+                                        [(ngModel)]="item.terms_ar" [height]="'300px'"
+                                        [mode]="mode" [options]="options" required>
                                         <slot custom-btns></slot>
                                     </md-editor>
                                     <!--begin::Input-->
@@ -365,10 +364,9 @@
                                     <label class="required fw-bold fs-6 mb-2">Terms English</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <md-editor name="terms_en" [preRender]="preRenderFunc" [postRender]="postRenderFunc"
+                                    <md-editor name="terms_en"
                                         [(ngModel)]="item.terms_en" [height]="'300px'" [mode]="mode" [options]="options"
-                                        (onEditorLoaded)="onEditorLoaded($event)"
-                                        (onPreviewDomChanged)="onPreviewDomChangeden($event)" required>
+                                        required>
                                         <slot custom-btns></slot>
                                     </md-editor>
                                     <!-- <textarea cols="20" rows="5" name="terms_ar"

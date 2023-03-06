@@ -241,10 +241,18 @@
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
                                         <div class="fw-bolder mt-5">Terms Arabic</div>
-                                        <div class="text-gray-600" id="terms_ar">
+                                        <!--
+                                        <md-editor class="text-gray-600" [options]="options"
+                                            [(ngModel)]="item.terms.ar"
+                                            mode="preview">
+                                        </md-editor>
+                                        -->
+                                        <div markdown class="text-gray-600" id="terms_ar">
+                                            {{ item?.terms.ar }}
                                         </div>
                                         <div class="fw-bolder mt-5">Terms English</div>
-                                        <div class="text-gray-600" id="terms_en">
+                                        <div markdown class="text-gray-600" id="terms_en">
+                                            {{ item?.terms.en }}
                                         </div>
                                     </div>
                                 </div>

@@ -96,8 +96,6 @@ export class EditItemComponent implements OnInit {
   };
   public mode: string = 'editor';
   public markdownText: any;
-  public content_ar: any;
-  public content_en: any;
 
   uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
   uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
@@ -108,9 +106,7 @@ export class EditItemComponent implements OnInit {
     this.token = localStorage.getItem('access_token');
 
     this.doUpload = this.doUpload.bind(this);
-    this.preRenderFunc = this.preRenderFunc.bind(this);
-    this.postRenderFunc = this.postRenderFunc.bind(this);
-
+    
     this.uppy.on('complete', (result) => {
       console.log('Upload complete! We’ve uploaded these files:', result.successful)
       this.images = result.successful;
@@ -400,28 +396,9 @@ export class EditItemComponent implements OnInit {
     window.location.reload();
   }
 
-  onEditorLoaded(editor: any) {
-    //console.log(`ACE Editor Ins: `, editor);
-  }
-
-  onPreviewDomChangedar(e: any) {
-    this.content_ar = e.innerHTML;
-  }
-
-  onPreviewDomChangeden(e: any) {
-    this.content_en = e.innerHTML;
-  }
 
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
     // do upload file by yourself
     return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
-  }
-  preRenderFunc(content: string) {
-    return content;
-    //return content.replace('', this.item.terms_ar);
-  }
-  postRenderFunc(content: string) {
-    return content;
-    //return content.replace(/something/g, 'new value');
   }
 }

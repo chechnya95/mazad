@@ -68,6 +68,8 @@ import { StylePaginatorDirective } from './common/style-paginator.directive';
 
 import { UppyAngularDashboardModule } from '@uppy/angular';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { SecurityContext } from '@angular/core';
+import { MarkdownModule } from 'ngx-markdown'; 
 
 @NgModule({
   declarations: [
@@ -135,6 +137,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
     MatSortModule,
     MatPaginatorModule,
     FormsModule,
+    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE }),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {

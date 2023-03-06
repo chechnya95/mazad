@@ -31,6 +31,8 @@
     "cors": "^2.8.5",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
+    "marked": "^4.2.12",
+    "ngx-markdown": "^13.1.0",
     "ngx-markdown-editor": "^4.3.0",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~6.6.0",

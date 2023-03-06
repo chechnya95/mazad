@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
+import { MdEditorOption } from 'ngx-markdown-editor';
 
 @Component({
   selector: 'app-item-details',
@@ -35,6 +36,10 @@ export class ItemDetailsComponent implements OnInit {
   successMessage: boolean = false;
   Swal = require('sweetalert2')
 
+  public options: MdEditorOption = {
+    showBorder: false,
+  };
+
   constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.utility.show = true;
     this.utility.loader = false;
@@ -61,8 +66,8 @@ export class ItemDetailsComponent implements OnInit {
 
         this.keys = Object.keys(this.item.details);
 
-        document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
-        document.getElementById('terms_en').innerHTML = this.item.terms.en;
+        //document.getElementById('terms_ar').innerHTML = this.item.terms.ar;
+        //document.getElementById('terms_en').innerHTML = this.item.terms.en;
       },
       async error => { }
     );

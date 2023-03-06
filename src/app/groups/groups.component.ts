@@ -72,7 +72,7 @@ export class GroupsComponent implements OnInit {
         if (title) {
           out += ` title="${title}"`;
         }
-        console.log(this);
+        //console.log(out);
         // out += (<any>this.options).xhtml ? '/>' : '>';
         return out;
       },
@@ -80,8 +80,6 @@ export class GroupsComponent implements OnInit {
   };
   public mode: string = 'editor';
   public markdownText: any;
-  public content_ar: any;
-  public content_en: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
     this.utility.show = true;
@@ -232,9 +230,6 @@ export class GroupsComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.group.terms_ar = this.content_ar;
-    this.group.terms_en = this.content_en;
-
     let body = {
       group_type: this.group.group_type,
       owner_id: this.group.owner_id,
@@ -320,29 +315,8 @@ export class GroupsComponent implements OnInit {
     return owner?.contact;
   }
 
-  onEditorLoaded(editor: any) {
-    //console.log(`ACE Editor Ins: `, editor);
-  }
-
-  onPreviewDomChangedar(e: any) {
-    this.content_ar = e.innerHTML;
-  }
-
-  onPreviewDomChangeden(e: any) {
-    this.content_en = e.innerHTML;
-  }
-
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
     // do upload file by yourself
     return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
-  }
-  preRenderFunc(content: string) {
-    return content;
-    //return content.replace(/something/g, 'new value');
-  }
-  postRenderFunc(content: string) {
-    console.log(content)
-    return content;
-    //return content.replace(/something/g, 'new value');
   }
 }
