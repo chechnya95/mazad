@@ -69,7 +69,18 @@
     "Country": "الدولة",
     "Communication": "التواصل",
     "Role": "الصلاحية",
-    "User Type": "نوع المستخدم"
+    "User Type": "نوع المستخدم",
+
+    "Owners Management": "إدارة الملاك",
+    "Title": "العنوان",
+    "addowners": "إضافة الملاك",
+    "Code": " الرمز",
+    "CR Number": "رقم السجل التجاري",
+    "VAT Number": "الرقم الضريبي",
+    "Owner logo": "شعار المالك",
+    "Update Owner": "تحديث المالك"
+
+
 
 
 }
