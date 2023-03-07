@@ -15,12 +15,13 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
-  get(method: string, token: any, params?: any) {
+  get(method: string, token: any, params?: any, responseType?: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'x-access-tokens': token
       }),
-      params: params ? params : null
+      params: params ? params : null,
+      responseType: responseType ? responseType : null
     };
 
     return this.httpClient.get(this.api + method, httpOptions);

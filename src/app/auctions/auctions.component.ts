@@ -393,16 +393,43 @@ export class AuctionsComponent implements OnInit {
       cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.api.get('auctions/export/' + id, this.token).subscribe(
-          res => { },
-          err => {
-            Swal.fire(
-              'Error!',
-              'Could not send your request!'
-            );
+        this.api.get('auctions/export/' + id, this.token, null, 'blob').subscribe((response: any) => {
+          const filename = 'file.xlsx'//this.getFilenameFromResponse(response);
+          const url = window.URL.createObjectURL(response);
+          const a = document.createElement('a');
+          document.body.appendChild(a);
+          a.setAttribute('style', 'display: none');
+          a.href = url;
+          a.download = filename;
+          a.click();
+          window.URL.revokeObjectURL(url);
+          a.remove(); // remove the element from the DOM
+          Swal.fire({
+            icon: 'success',
+            title: 'Downloaded successfully!',
+            text: `The file ${filename} has been downloaded.`,
+            timer: 3000,
+            timerProgressBar: true,
           });
+        }, error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Failed to download file',
+          });
+        });
       }
     });
+  }
+
+  private getFilenameFromResponse(response): string {
+    const contentDispositionHeader = response.headers.get('Content-Disposition');
+    const matches = contentDispositionHeader.match(/filename\s*=\s*(?<filename>.+)/);
+    if (matches && matches.groups) {
+      return matches.groups.filename;
+    } else {
+      return 'file';
+    }
   }
 
   import(id: any) {
