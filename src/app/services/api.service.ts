@@ -15,16 +15,17 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
-  get(method: string, token: any, params?: any, responseType?: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'x-access-tokens': token
-      }),
-      params: params ? params : null,
-      responseType: responseType ? responseType : null
-    };
+  get(method: string, token: any, options?: {}) {
+    
+    // Add token to exisiting headers 
+    if (options) {
+      options['headers'] = { 'x-access-tokens': token };
+    } else {
+      options = { headers: { 'x-access-tokens': token } };
+    }    
 
-    return this.httpClient.get(this.api + method, httpOptions);
+    //console.log('options', options);
+    return this.httpClient.get(this.api + method, options);
   }
 
   post(method: string, body: any, token: any) {

@@ -80,7 +80,7 @@ export class DepositsComponent implements OnInit {
 
   getDeposits() {
     this.utility.loader = true;
-    const sub = this.api.get('deposits/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('deposits/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.deposits = objects['deposits'];

@@ -110,7 +110,7 @@ export class OwnersComponent implements OnInit {
 
   async getOwners() {
     this.utility.loader = true;
-    const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('owners/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
 
@@ -139,7 +139,7 @@ export class OwnersComponent implements OnInit {
 
   async getOwnersById(id?: any) {
     this.utility.loader = true;
-    const sub = this.api.get('owners/' + id, this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('owners/' + id, this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
 

@@ -132,7 +132,7 @@ export class OwnerDetailsComponent implements OnInit {
 
   onChangeUser() {
     if (this.user_param.length >= 3) {
-      const sub = this.api.get('users/search/' + this.user_param, this.token, this.getHttpParams()).subscribe(
+      const sub = this.api.get('users/search/' + this.user_param, this.token, { params: this.getHttpParams()}).subscribe(
         async data => {
           let objects: any = {
             users: []

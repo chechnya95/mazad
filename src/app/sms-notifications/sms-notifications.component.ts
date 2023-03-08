@@ -60,7 +60,7 @@ export class SmsNotificationsComponent implements OnInit {
 
   getSMSs() {
     this.utility.loader = true;
-    const sub = this.api.get('sms_notifications/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('sms_notifications/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.messages = objects['sms_notifications'];

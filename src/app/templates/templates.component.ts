@@ -83,7 +83,7 @@ export class TemplatesComponent implements OnInit {
 
   async getTemplates() {
     this.utility.loader = true;
-    this.api.get('templates_contents/', this.token, this.getHttpParams()).subscribe(
+    this.api.get('templates_contents/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['templates_contents'];

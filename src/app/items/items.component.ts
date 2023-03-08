@@ -66,7 +66,7 @@ export class ItemsComponent implements OnInit {
   }
   async getItems() {
     this.utility.loader = true;
-    const sub = this.api.get('items/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('items/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items'];

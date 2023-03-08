@@ -116,7 +116,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   }
 
   getConfigs() {
-    const sub = this.api.get('payments/payment_config', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('payments/payment_config', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects: any = { payment_config: [] }
         objects = data;

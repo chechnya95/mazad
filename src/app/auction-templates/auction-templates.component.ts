@@ -51,7 +51,7 @@ export class AuctionTemplatesComponent implements OnInit {
   }
 
   async getTemplates() {
-    this.api.get('auction_templates/', this.token, this.getHttpParams()).subscribe(
+    this.api.get('auction_templates/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['auction_templates'];

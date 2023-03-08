@@ -101,7 +101,7 @@ export class SliderComponent implements OnInit {
   }
 
   getSliderImages() {
-    this.api.get('sliders/', this.token, this.getHttpParams()).subscribe(
+    this.api.get('sliders/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.sliders = objects['sliders'];

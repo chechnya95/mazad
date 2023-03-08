@@ -129,7 +129,7 @@ export class AuctionsComponent implements OnInit {
 
   async getAuctions(search = false) {
     this.utility.loader = true;
-    const sub = this.api.get('auctions/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('auctions/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
@@ -335,7 +335,7 @@ export class AuctionsComponent implements OnInit {
       let value = owner_contact;
       this.filter_config.queries = `${field},like,${value}`;
 
-      const sub = this.api.get('owners/', this.token, this.getHttpParams()).subscribe(
+      const sub = this.api.get('owners/', this.token, { params: this.getHttpParams()}).subscribe(
         async data => {
           let objects: any = {
             owners: []
@@ -393,9 +393,9 @@ export class AuctionsComponent implements OnInit {
       cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.api.get('auctions/export/' + id, this.token, null, 'blob').subscribe((response: any) => {
-          const filename = 'file.xlsx'//this.getFilenameFromResponse(response);
-          const url = window.URL.createObjectURL(response);
+        this.api.get('auctions/export/' + id, this.token, { responseType: 'blob', observe: 'response' }).subscribe((response: any) => {
+          const filename = this.getFilenameFromResponse(response, id+'_auction.xlsx');
+          const url = window.URL.createObjectURL(response.body);
           const a = document.createElement('a');
           document.body.appendChild(a);
           a.setAttribute('style', 'display: none');
@@ -422,13 +422,19 @@ export class AuctionsComponent implements OnInit {
     });
   }
 
-  private getFilenameFromResponse(response): string {
+  private getFilenameFromResponse(response, defaultname='file.xlsx'): string {
+    //console.log(response);
+    console.log(response.headers);
     const contentDispositionHeader = response.headers.get('Content-Disposition');
+    //console.log(contentDispositionHeader);
+    if (!contentDispositionHeader) {
+      return defaultname;
+    }
     const matches = contentDispositionHeader.match(/filename\s*=\s*(?<filename>.+)/);
     if (matches && matches.groups) {
       return matches.groups.filename;
     } else {
-      return 'file';
+      return defaultname;
     }
   }
 

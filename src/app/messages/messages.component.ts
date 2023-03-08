@@ -63,7 +63,7 @@ export class MessagesComponent implements OnInit {
 
   getMessages() {
     this.utility.loader = true;
-    const sub = this.api.get('contactus/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('contactus/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.messages = objects['contactus'];

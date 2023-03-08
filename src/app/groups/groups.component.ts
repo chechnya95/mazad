@@ -130,7 +130,7 @@ export class GroupsComponent implements OnInit {
 
   getGroups(id?: any) {
     this.utility.loader = true;
-    const sub = this.api.get('groups/', this.token, this.getHttpParams()).subscribe(
+    const sub = this.api.get('groups/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.groups = objects['groups'];
