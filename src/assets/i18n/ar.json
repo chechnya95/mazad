@@ -152,13 +152,13 @@
     "Template":"القالب",
     "Item Type":"نوع السلعة",
     "Item Description":"الوصف",
-    "Item Details":"القالب",
-    "Fields Details":"القالب",
-    "If you need more info, please check out":"القالب",
-    "System Administrator":"القالب",
-    "New Item":"القالب",
-    "Create new item from scratch without data":"القالب",
-    "Create item from defined template":"القالب",
+    "Item Details":"التفاصيل",
+    "Fields Details":"تفاصيل الحقول",
+    "If you need more info, please check out":" ان كان هنالك معلومات اضافيةالرجاء التحقق من ",
+    "System Administrator":"مدير النظام",
+    "New Item":"سلعة جديدة",
+    "Create new item from scratch without data":"سلعة جديدة من البداية بدون بيانات",
+    "Create item from defined template":"سلعة من قالب معرف مسبقا",
     "Submit":"إرسال"
 
 
