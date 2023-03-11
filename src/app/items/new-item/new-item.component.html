@@ -12,32 +12,44 @@
                     <div class="stepper-nav mb-5">
                         <!--begin::Step 1-->
                         <div class="stepper-item current" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Type</h3>
+                            <h3 class="stepper-title">
+                                {{ "Item Type" | translate }}
+                                </h3>
                         </div>
                         <!--end::Step 1-->
                         <!--begin::Step 2-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Template</h3>
+                            <h3 class="stepper-title">
+                                {{ "Template" | translate }}
+                            </h3>
                         </div>
                         <!--end::Step 2-->
                         <!--begin::Step 3-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Description</h3>
+                            <h3 class="stepper-title">
+                                {{ "Item Description" | translate }}
+                            </h3>
                         </div>
                         <!--end::Step 3-->
                         <!--begin::Step 3-a-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Item Destails</h3>
+                            <h3 class="stepper-title">
+                                {{ "Item Destails" | translate }}
+                            </h3>
                         </div>
                         <!--end::Step 3-a-->
                         <!--begin::Step 4-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Fields Details</h3>
+                            <h3 class="stepper-title">
+                                {{ "Fields Details" | translate }}
+                            </h3>
                         </div>
                         <!--end::Step 4-->
                         <!--begin::Step 5-->
                         <div class="stepper-item" data-kt-stepper-element="nav">
-                            <h3 class="stepper-title">Completed</h3>
+                            <h3 class="stepper-title">
+                                {{ "Completed" | translate }}
+                            </h3>
                         </div>
                         <!--end::Step 5-->
                     </div>
@@ -52,14 +64,18 @@
                                 <!--begin::Heading-->
                                 <div class="pb-10 pb-lg-15">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder d-flex align-items-center text-dark">Choose Item Type
+                                    <h2 class="fw-bolder d-flex align-items-center text-dark">
+                                        {{ "Choose Item Type" | translate }}
                                         <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                             title="Item is created based on empty item or item from created template."></i>
                                     </h2>
                                     <!--end::Title-->
                                     <!--begin::Notice-->
-                                    <div class="text-gray-400 fw-bold fs-6">If you need more info, please check out
-                                        <a class="link-primary fw-bolder">System Administrator</a>.
+                                    <div class="text-gray-400 fw-bold fs-6">
+                                        {{ "If you need more info, please check out" | translate }}
+                                        <a class="link-primary fw-bolder">
+                                            {{ "System Administrator" | translate }}    
+                                            </a>.
                                     </div>
                                     <!--end::Notice-->
                                 </div>
@@ -91,9 +107,12 @@
                                                 <!--end::Svg Icon-->
                                                 <!--begin::Info-->
                                                 <span class="d-block fw-bold text-start">
-                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">New Item</span>
-                                                    <span class="text-gray-400 fw-bold fs-6">Create new
-                                                        item from scratch without data</span>
+                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">
+                                                        {{ "New Item" | translate }}
+                                                    </span>
+                                                    <span class="text-gray-400 fw-bold fs-6">
+                                                        {{ "Create new item from scratch without data" | translate }}
+                                                        </span>
                                                 </span>
                                                 <!--end::Info-->
                                             </label>
@@ -123,10 +142,12 @@
                                                 <!--end::Svg Icon-->
                                                 <!--begin::Info-->
                                                 <span class="d-block fw-bold text-start">
-                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">Create
-                                                        from Template</span>
-                                                    <span class="text-gray-400 fw-bold fs-6">Create
-                                                        Item form defined template</span>
+                                                    <span class="text-dark fw-bolder d-block fs-4 mb-2">
+                                                        {{ "Create from Template" | translate }}
+                                                        </span>
+                                                    <span class="text-gray-400 fw-bold fs-6">
+                                                        {{ "Create Item form defined template" | translate }}
+                                                        </span>
                                                 </span>
                                                 <!--end::Info-->
                                             </label>
@@ -153,7 +174,9 @@
                                 <!--begin::Heading-->
                                 <div class="pb-10 pb-lg-15">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Choose Item Template</h2>
+                                    <h2 class="fw-bolder text-dark">
+                                        {{ "Choose Item Template" | translate }}
+                                    </h2>
                                     <!--end::Title-->
                                 </div>
                                 <!--end::Heading-->
@@ -223,13 +246,15 @@
                                 <!--begin::Heading-->
                                 <div class="pb-10 pb-lg-12">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Item Details</h2>
+                                    <h2 class="fw-bolder text-dark">
+                                        {{ "Item Details" | translate }}
+                                    </h2>
                                     <!--end::Title-->
                                 </div>
                                 <!--end::Heading-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Title</label>
+                                    <label class="required fw-bold fs-6 mb-2">{{ "Title" | translate }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="title_en"
@@ -245,7 +270,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label required">Item Code</label>
+                                    <label class="form-label required">
+                                        {{ "Item Code" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="code" class="form-control form-control-solid mb-3 mb-lg-0"
@@ -256,7 +283,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label required">Deposit</label>
+                                    <label class="form-label required">
+                                        {{ "Deposit" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="deposit"
@@ -268,7 +297,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">latitude</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Latitude" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="latitude"
@@ -280,7 +311,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">longtitude</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Longtitude" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="longtitude"
@@ -292,7 +325,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Start Date</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Start Date" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="datetime-local" name="start_date"
@@ -304,7 +339,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">End Date</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "End Date" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="datetime-local" name="end_date"
@@ -316,7 +353,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label required">item Status</label>
+                                    <label class="form-label required">
+                                        {{ "status" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select name="item_status" class="form-select form-select-lg form-select-solid"
@@ -330,7 +369,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Governorate</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Governorate" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="governorate"
@@ -342,7 +383,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Address</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Address" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="text" name="address"
@@ -353,7 +396,9 @@
                                 <!--end::Input group-->
                                 <div class="fv-row mb-7" *ngIf="!isOwner">
                                     <!--begin::Label-->
-                                    <label class="fw-bold fs-6 mb-2">Owner</label>
+                                    <label class="fw-bold fs-6 mb-2">
+                                        {{ "Owner" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                         (keyup.enter)="onChangeOwner($event.target.value)"
@@ -383,7 +428,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label required">Auction</label>
+                                    <label class="form-label required">
+                                        {{ "auction" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select name="auction_id" class="form-select form-select-lg form-select-solid"
@@ -398,7 +445,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label required">Category</label>
+                                    <label class="form-label required">
+                                        {{ "Category" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <select name="category_id" class="form-select form-select-lg form-select-solid"
@@ -421,7 +470,9 @@
                                 <!--begin::Heading-->
                                 <div class="pb-10 pb-lg-12">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Item Details</h2>
+                                    <h2 class="fw-bolder text-dark">
+                                        {{ "Item Details" | translate }}
+                                    </h2>
                                     <!--end::Title-->
                                 </div>
                                 <!--end::Heading-->
@@ -430,7 +481,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">start price</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Start Price" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="start_price"
@@ -442,7 +495,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Minimum Bid</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Minimum Bid" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="min_bid"
@@ -454,7 +509,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="fw-bold fs-6 mb-2">Acceptable Price</label>
+                                    <label class="fw-bold fs-6 mb-2">
+                                        {{ "Acceptable Price" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="acceptable_price"
@@ -466,7 +523,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="fw-bold fs-6 mb-2">Buy Price</label>
+                                    <label class="fw-bold fs-6 mb-2">
+                                        {{ "Buy Price" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="buy_price"
@@ -478,7 +537,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Inspection Start Date</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Inspection Start Date" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="date" name="inspection_start_date"
@@ -490,7 +551,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Inspection End Date</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Inspection End Date" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="date" name="inspection_end_date"
@@ -502,7 +565,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Inspection Start Time</label>
+                                    <label class="required fw-bold fs-6 mb-2"> 
+                                        {{ "Inspection Start Time" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="time" name="inspection_start_time"
@@ -514,7 +579,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Inspection End Time</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Inspection End Time" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="time" name="inspection_end_time"
@@ -526,8 +593,10 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Extension Period
-                                        <small>(Seconds)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Extension Period" | translate }}
+                                        
+                                        <small>({{ "Seconds" | translate }})</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="extension_period"
@@ -539,8 +608,10 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Payment Period
-                                        <small>(Days)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Payment Period" | translate }}
+                                         
+                                        <small>({{ "Days" | translate }})</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="payment_period"
@@ -552,8 +623,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Collecting Period
-                                        <small>(Days)</small></label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Collecting Period" | translate }}
+                                        <small>({{ "Days" | translate }})</small></label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" name="collecting_period"
@@ -565,7 +637,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Description</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Description" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <textarea cols="20" rows="5" name="description_en"
@@ -581,7 +655,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Terms Arabic" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <md-editor name="terms_ar"
@@ -591,7 +667,9 @@
                                     </md-editor>
                                     <br>
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Terms English</label>
+                                    <label class="required fw-bold fs-6 mb-2">
+                                        {{ "Terms English" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <md-editor name="terms_en"
@@ -604,7 +682,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label">Images</label>
+                                    <label class="form-label">
+                                        {{ "Images" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="images" multiple accept="image/*"
@@ -619,7 +699,9 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label">Attachments</label>
+                                    <label class="form-label">
+                                        {{ "Attachments" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="attachments" multiple
@@ -640,7 +722,9 @@
                                 <!--begin::Heading-->
                                 <div class="pb-10 pb-lg-15">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Fields Details</h2>
+                                    <h2 class="fw-bolder text-dark">
+                                        {{ "Fields Details" | translate }}
+                                    </h2>
                                     <!--end::Title-->
                                 </div>
                                 <!--end::Heading-->
@@ -728,11 +812,16 @@
                                 <!--begin::Heading-->
                                 <div class="pb-8 pb-lg-10">
                                     <!--begin::Title-->
-                                    <h2 class="fw-bolder text-dark">Your Are Done!</h2>
+                                    <h2 class="fw-bolder text-dark">
+                                        {{ "Your Are Done!" | translate }}
+                                    </h2>
                                     <!--end::Title-->
                                     <!--begin::Notice-->
-                                    <div class="text-gray-400 fw-bold fs-6">To see all items, please
-                                        <a [routerLink]="['/items']" class="link-primary fw-bolder">Click here</a>.
+                                    <div class="text-gray-400 fw-bold fs-6">
+                                        {{ "To see all items, please" | translate }}
+                                        <a [routerLink]="['/items']" class="link-primary fw-bolder">
+                                            {{ "Click here" | translate }}
+                                            </a>.
                                     </div>
                                     <!--end::Notice-->
                                 </div>

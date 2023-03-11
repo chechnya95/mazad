@@ -148,7 +148,19 @@
     "To see all templates, please":"لمشاهدة جميع القوالب ، من فضلك",
     "Click here":"انقر هنا",
     "Add Auction":"اضافة مزاد",
-    "Add Template":"اضافة قالب"
+    "Add Template":"اضافة قالب",
+    "Template":"القالب",
+    "Item Type":"نوع السلعة",
+    "Item Description":"الوصف",
+    "Item Details":"القالب",
+    "Fields Details":"القالب",
+    "If you need more info, please check out":"القالب",
+    "System Administrator":"القالب",
+    "New Item":"القالب",
+    "Create new item from scratch without data":"القالب",
+    "Create item from defined template":"القالب",
+    "Submit":"إرسال"
+
 
     
 
