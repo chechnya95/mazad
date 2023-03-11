@@ -139,6 +139,7 @@
     "Minimum Bid":"الحد الأدنى للمزايدة",
     "Acceptable Price":"سعر القبول",
     "Buy Price":"سعر الشراء",
+    "Current Price":"السعر الحالي",
     "Inspection Start Date":"تاريخ بدء الفحص",
     "Inspection End Date":"تاريخ انتهاء الفحص",
     "Inspection Start Time":"وقت بدء الفحص",
@@ -159,7 +160,12 @@
     "New Item":"سلعة جديدة",
     "Create new item from scratch without data":"سلعة جديدة من البداية بدون بيانات",
     "Create item from defined template":"سلعة من قالب معرف مسبقا",
-    "Submit":"إرسال"
+    "Submit":"إرسال",
+    "id":"م",
+    "Item":"السلعة",
+    "User":"المستخدم",
+    "Date":"التاريخ",
+    "Amount":"السعر"
 
 
     
