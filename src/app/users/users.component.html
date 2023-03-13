@@ -414,6 +414,22 @@
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
                                                 <label class="form-label required">
+                                                    {{ "Credibility"| translate}}
+                                                </label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="credibility" class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="user.credibility">
+                                                    <option *ngFor="let credibility of credibilities" [ngValue]='credibility'>{{ credibility
+                                                        }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
+                                                <label class="form-label required">
                                                     {{ "status"| translate}}
                                                 </label>
                                                 <!--end::Label-->
@@ -622,6 +638,22 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
+                                                <label class="form-label required">
+                                                    {{ "Credibility"| translate}}
+                                                </label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <select name="credibility" class="form-select form-select-lg form-select-solid"
+                                                    [(ngModel)]="edit_user.credibility">
+                                                    <option *ngFor="let credibility of credibilities" [ngValue]='credibility'>{{ credibility
+                                                        }}</option>
+                                                </select>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-10">
+                                                <!--begin::Label-->
                                                 <label class="form-label required">{{ "status"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
@@ -681,6 +713,7 @@
                             <th mat-sort-header="phone" class="min-w-125px">{{ "user"| translate}}</th>
                             <!-- <th class="min-w-125px">Role</th> -->
                             <th mat-sort-header="user_type" class="min-w-125px">{{ "type"| translate}}</th>
+                            <th mat-sort-header="credibility" class="min-w-125px">{{ "credibility"| translate}}</th>
                             <th mat-sort-header="active" class="min-w-125px">{{ "active"| translate}}</th>
                             <th mat-sort-header="mobile_confirmed_at" class="min-w-125px">{{ "ConfirmdDate"| translate}}</th>
                             <th class="text-end min-w-100px">Actions</th>
@@ -727,6 +760,9 @@
                             <!--begin::Last login=-->
                             <td>
                                 <div class="badge badge-light fw-bolder">{{ user.user_type | titlecase }}</div>
+                            </td>
+                            <td>
+                                <div class="badge badge-light fw-bolder">{{ user.credibility | titlecase }}</div>
                             </td>
                             <!--end::Last login=-->
                             <!--begin::Two step=-->
