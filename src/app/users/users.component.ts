@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit {
   users: any[] = [];
   users_filter: any[] = [];
   roles: any[] = [];
+  credibilities : any[] = [];
   filter_config: any;
 
   user = {
@@ -26,6 +27,7 @@ export class UsersComponent implements OnInit {
     phone: null,
     code: 968,
     role: null,
+    credibility: null,
     user_type: 'USER',
     status: 0
   }
@@ -36,6 +38,7 @@ export class UsersComponent implements OnInit {
     password: null,
     phone: null,
     role: null,
+    credibility: null,
     user_type: null,
     role_id: null,
     status: 0
@@ -147,7 +150,7 @@ export class UsersComponent implements OnInit {
   }
 
   async getRoles() {
-    this.api.get('users/roles', this.token).subscribe(
+    const sub = this.api.get('users/roles', this.token).subscribe(
       async data => {
         let objects: any = {
           roles: []
@@ -157,8 +160,22 @@ export class UsersComponent implements OnInit {
       },
       async error => { }
     );
+    sub.add(() => { this.utility.loader = false; this.getCredibility(); });
   }
 
+  async getCredibility() {
+    this.api.get('users/credibility', this.token).subscribe(
+      async data => {
+        let objects: any = {
+          credibility: []
+        }
+        objects = data;
+        this.credibilities = objects;
+      },
+      async error => { }
+    );
+    //console.log(this.credibilities);
+  }
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -174,6 +191,7 @@ export class UsersComponent implements OnInit {
       phone: `${this.user.code}${this.user.phone}`,
       role: role.name,
       user_type: this.user.user_type,
+      credibility: this.user.credibility,
       user_details: JSON.stringify(this.user_details),
       active: this.user.status
     }
@@ -246,6 +264,7 @@ export class UsersComponent implements OnInit {
     this.edit_user.status = user.is_active == true ? 1 : 0;
     this.edit_user.role_id = this.roles.find(i => i.name === user.roles[0]).id;
     this.edit_user.user_type = user.user_type.toUpperCase();
+    this.edit_user.credibility = user.credibility.toUpperCase();
   }
 
   OnUpdate(id: any) {
@@ -254,6 +273,7 @@ export class UsersComponent implements OnInit {
       role: role.name,
       user_details: JSON.stringify(this.edit_user_details),
       user_type: this.edit_user.user_type,
+      credibility:this.edit_user.credibility,
       status: this.edit_user.status
     }
 
