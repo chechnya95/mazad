@@ -46,7 +46,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Deposit
+                            <!--end::Svg Icon-->{{ "Add Deposit" | translate }}
                         </button>
                     </div>
                 </div>
@@ -69,14 +69,18 @@
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th>id</th>
-                                            <th mat-sort-header="user_id">User</th>
-                                            <th mat-sort-header="transaction_id">Transaction</th>
-                                            <th mat-sort-header="amount">Amount</th>
-                                            <th mat-sort-header="fee">Fee</th>
-                                            <th mat-sort-header="deposit_status">Refunded</th>
-                                            <th>Note</th>
-                                            <th mat-sort-header="create_date">Create Date</th>
+                                            <th>{{ "id" | translate }}</th>
+                                            <th mat-sort-header="user_id">{{ "User" | translate }}</th>
+                                            <th mat-sort-header="transaction_id">
+                                                {{ "Transaction" | translate }}
+                                            </th>
+                                            <th mat-sort-header="amount">
+                                                {{ "Amount" | translate }}
+                                            </th>
+                                            <th mat-sort-header="fee"> {{ "Fee" | translate }}</th>
+                                            <th mat-sort-header="deposit_status"> {{ "Refunded" | translate }}</th>
+                                            <th>{{ "Note" | translate }}</th>
+                                            <th mat-sort-header="create_date">{{ "Create Date" | translate }}</th>
                                             <th class="text-end">Actions</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -189,7 +193,7 @@
                                         <!--begin::Modal header-->
                                         <div class="modal-header">
                                             <!--begin::Modal title-->
-                                            <h2 class="fw-bolder">Add Note</h2>
+                                            <h2 class="fw-bolder">{{ "Add Note" | translate }}</h2>
                                             <!--end::Modal title-->
                                             <!--begin::Close-->
                                             <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -226,7 +230,9 @@
                                                 data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">Note Text</span>
+                                                        <span class="required">
+                                                            {{ "Note Text" | translate }}
+                                                        </span>
                                                     </label>
                                                     <textarea cols="20" rows="5" name="note"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
@@ -262,7 +268,9 @@
                                         <!--begin::Modal header-->
                                         <div class="modal-header">
                                             <!--begin::Modal title-->
-                                            <h2 class="fw-bolder">Add Deposit</h2>
+                                            <h2 class="fw-bolder">
+                                                {{ "Add Deposit" | translate }}
+                                            </h2>
                                             <!--end::Modal title-->
                                             <!--begin::Close-->
                                             <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -299,7 +307,9 @@
                                                 data-kt-scroll-offset="300px">
                                                 <div class="fv-row mb-10">
                                                     <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">User</label>
+                                                    <label class="required fw-bold fs-6 mb-2">
+                                                        {{ "User" | translate }}
+                                                    </label>
                                                     <!--end::Label-->
                                                     <input class="form-control header-color" [(ngModel)]="user_contact"
                                                         (keyup.enter)="onChange()" (change)="onChange()"
@@ -311,7 +321,7 @@
                                                 </div>
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span>Transaction ID</span>
+                                                        <span>{{ "Transaction" | translate }}</span>
                                                     </label>
                                                     <input type="text" name="transaction_id"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
@@ -319,7 +329,7 @@
                                                 </div>
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">Amount</span>
+                                                        <span class="required">{{ "Amount" | translate }}</span>
                                                     </label>
                                                     <input type="number" name="amount"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
@@ -327,7 +337,7 @@
                                                 </div>
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">Fee</span>
+                                                        <span class="required">{{ "Fee" | translate }}</span>
                                                     </label>
                                                     <input type="number" name="fee"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
@@ -335,7 +345,7 @@
                                                 </div>
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">Note</span>
+                                                        <span class="required">{{ "Note" | translate }}</span>
                                                     </label>
                                                     <textarea cols="20" rows="5" name="note"
                                                         class="form-control form-control-solid mb-3 mb-lg-0"
