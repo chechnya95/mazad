@@ -170,7 +170,7 @@ export class UsersComponent implements OnInit {
           credibility: []
         }
         objects = data;
-        this.credibilities = objects.credibility;
+        this.credibilities = objects;
       },
       async error => { }
     );
