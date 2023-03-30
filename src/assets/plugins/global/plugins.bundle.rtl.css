@@ -10367,7 +10367,7 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.la-google-wallet:before {
+.la-google-deposit:before {
   content: "";
 }
 
@@ -13479,7 +13479,7 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.la-wallet:before {
+.la-deposit:before {
   content: "";
 }
 
@@ -15496,7 +15496,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-.la.la-google-wallet {
+.la.la-google-deposit {
   font-family: "Line Awesome Brands";
   font-weight: 400;
 }
@@ -21734,15 +21734,15 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.bi-wallet-fill::before {
+.bi-deposit-fill::before {
   content: "";
 }
 
-.bi-wallet::before {
+.bi-deposit::before {
   content: "";
 }
 
-.bi-wallet2::before {
+.bi-deposit2::before {
   content: "";
 }
 
@@ -24364,7 +24364,7 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.fa-google-wallet:before {
+.fa-google-deposit:before {
   content: "";
 }
 
@@ -27672,7 +27672,7 @@ readers do not read off random characters that represent icons */
   content: "";
 }
 
-.fa-wallet:before {
+.fa-deposit:before {
   content: "";
 }
 

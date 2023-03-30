@@ -14,15 +14,15 @@ export class UserDetailsComponent implements OnInit {
   token: any;
   user: any;
   bids: any[] = [];
-  deposits: any[] = [];
   wallets: any[] = [];
+  deposits: any[] = [];
   payment_transaction_types: any[] = [];
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
   userBlocked: boolean = false;
 
-  deposit_id: any;
+  wallet_id: any;
   block_id: any;
   note: any;
 
@@ -101,32 +101,32 @@ export class UserDetailsComponent implements OnInit {
       }
     );
 
-    sub.add(() => { this.getUserDeposit(id); });
+    sub.add(() => { this.getUserWallet(id); });
   }
 
-  getUserDeposit(id: any) {
-    const sub = this.api.get('deposits/', this.token).subscribe(
+  getUserWallet(id: any) {
+    const sub = this.api.get('wallets/', this.token).subscribe(
       res => {
         let object = JSON.parse(JSON.stringify(res));
-        this.deposits = object['deposits'];
+        this.wallets = object['wallets'];
 
-        this.deposits = this.deposits.filter(i => i.user.id === id);
+        this.wallets = this.wallets.filter(i => i.user.id === id);
       },
       err => {
 
       }
     );
 
-    sub.add(() => { this.getUserWallets(id); });
+    sub.add(() => { this.getUserDeposits(id); });
   }
 
-  getUserWallets(id: any) {
-    const sub = this.api.get('wallets/', this.token).subscribe(
+  getUserDeposits(id: any) {
+    const sub = this.api.get('deposits/', this.token).subscribe(
       res => {
         let objects = JSON.parse(JSON.stringify(res));
-        this.wallets = objects['wallets'];
+        this.deposits = objects['deposits'];
 
-        this.wallets = this.wallets.filter(i => i.user.id === id);
+        this.deposits = this.deposits.filter(i => i.user.id === id);
       },
       err => {
 
@@ -137,33 +137,33 @@ export class UserDetailsComponent implements OnInit {
   }
 
   requestRefund(id: any) {
-    this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
+    this.api.post('wallets/' + id + '/refund', {}, this.token).subscribe(
       async data => { this.successMessage = true; },
       async errr => { this.errorMessage = true; }
     );
   }
 
   insuranceConfiscation(id: any) {
-    const sub = this.api.update('wallets/confiscate/' + id, {}, this.token).subscribe(
+    const sub = this.api.update('deposits/confiscate/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
       async errr => { this.errorMessage = true; }
     );
   }
 
   withdraw(id: any) {
-    const sub = this.api.update('wallets/withdraw/' + id, {}, this.token).subscribe(
+    const sub = this.api.update('deposits/withdraw/' + id, {}, this.token).subscribe(
       async data => { this.successMessage = true; },
       async errr => { this.errorMessage = true; }
     );
   }
 
   itemId(id: any, note: any) {
-    this.deposit_id = id;
+    this.wallet_id = id;
     this.note = note;
   }
 
   adddNote(id: any) {
-    const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
+    const sub = this.api.update('wallets/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.successMessage = true; },
       async errr => { this.errorMessage = true; }
     );
@@ -182,14 +182,14 @@ export class UserDetailsComponent implements OnInit {
     sub.add(() => { });
   }
 
-  async offline_deposit(id: any) {
+  async offline_wallet(id: any) {
     let _options = '';
     this.payment_transaction_types.forEach((item) => {
       _options += `<option value="${item}">${item}</option>`
     });
 
     const { value: formValues } = await Swal.fire({
-      title: 'Please provide deposit details: ',
+      title: 'Please provide wallet details: ',
       html:
         '<input id="swal-input1" class="swal2-input" type="text" placeholder="Amount">' +
         '<input id="swal-input2" class="swal2-input" type="text" placeholder="VAT">' +
@@ -224,11 +224,11 @@ export class UserDetailsComponent implements OnInit {
         fee: fee
       }
 
-      this.api.post("deposits/offline_payment", body, this.token).subscribe(
+      this.api.post("wallets/offline_payment", body, this.token).subscribe(
         async data => {
           Swal.fire({
             title: 'تم اضافة مبلغ الايداع',
-            text: 'Amount deposit successfully.'
+            text: 'Amount wallet successfully.'
           });
         },
         async error => {

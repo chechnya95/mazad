@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
-import { HttpParams } from '@angular/common/http';
 import { PageEvent } from '@angular/material/paginator';
-import Swal from 'sweetalert2'
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-deposits',
@@ -16,25 +15,17 @@ export class DepositsComponent implements OnInit {
   token: any;
   deposits: any[] = [];
   users: any[] = [];
+  auctions: any[] = [];
   filter_config: any;
-
-  depositFilter = '';
-
-  note: any;
-  deposit_id: any;
 
   deposit = {
     user_id: null,
-    transaction_id: null,
-    amount: null,
-    fee: null,
-    note: null,
+    auction_id: null,
+    amount: null
   }
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
-
-  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -86,51 +77,10 @@ export class DepositsComponent implements OnInit {
         this.deposits = objects['deposits'];
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; this.getUsers(); });
-  }
-
-  itemId(id: any, note: any) {
-    this.deposit_id = id;
-    this.note = note;
-  }
-
-  adddNote(id: any) {
-    const sub = this.api.update('deposits/' + id + '/note', { note: this.note }, this.token).subscribe(
-      async data => { this.getDeposits(); },
-      async errr => {  }
-    );
-  }
-
-  user_contact: any;
-  onChange() {
-    let user = this.users.find(i => i.contact === this.user_contact);
-    this.deposit.user_id = user.id;
-  }
-
-  onSubmit() {
-    let body = {
-      user_id: this.deposit.user_id,
-      transaction_id: this.deposit.user_id,
-      amount: this.deposit.amount,
-      fee: this.deposit.fee,
-      note: this.deposit.note
-    }
-    const sub = this.api.post('deposits/', body, this.token).subscribe(
-      async data => {
-        this.successMessage = true;
-      },
-      async error => {  this.errorMessage = true; }
-    );
-    sub.add(() => { this.getDeposits(); });
   }
 
   async getUsers() {
@@ -153,15 +103,41 @@ export class DepositsComponent implements OnInit {
         });
       },
       async error => {
-        
+
       }
+    );
+
+    sub.add(() => { this.getAuctions(); });
+  }
+
+  async getAuctions() {
+    this.api.get('auctions/active', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.auctions = objects['auctions'];
+      },
+      async error => { }
     );
   }
 
-  requestRefund(id: any) {
-    this.api.post('deposits/' + id + '/refund', {}, this.token).subscribe(
-      async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+  user_contact: any;
+  onChange() {
+    let user = this.users.find(i => i.contact === this.user_contact);
+    this.deposit.user_id = user.id;
+  }
+
+  onSubmit() {
+    let body = {
+      user_id: this.deposit.user_id,
+      auction_id: this.deposit.auction_id,
+      amount: this.deposit.amount
+    }
+    const sub = this.api.post('deposits/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => { this.errorMessage = true; }
     );
+    sub.add(() => { this.getDeposits(); });
   }
 }

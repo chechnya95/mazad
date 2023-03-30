@@ -97,10 +97,10 @@ export class HomeComponent implements OnInit {
   }
 
   getTotalInsurance() {
-    const sub = this.api.get('dashboards/deposits', this.token).subscribe(
+    const sub = this.api.get('dashboards/wallets', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.total_insurance = objects['deposits_statistics'];
+        this.total_insurance = objects['wallets_statistics'];
       },
       async error => { }
     );

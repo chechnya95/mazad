@@ -276,7 +276,7 @@
                 </div>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['deposits']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['wallets']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
@@ -295,15 +295,15 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'deposits' | translate }}</span>
+                  <span class="menu-title">{{ 'wallets' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
-                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['wallets']">
+                <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['deposits']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
                     <span class="svg-icon svg-icon-2">
-                      <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Wallet.svg--><svg
+                      <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Deposit.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                         height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -321,7 +321,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'wallets' | translate }}</span>
+                  <span class="menu-title">{{ 'deposits' | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">

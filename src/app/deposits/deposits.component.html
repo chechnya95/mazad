@@ -5,30 +5,12 @@
         <!--begin::Basic info-->
         <div class="card mb-5 mb-xl-10">
             <!--begin::Card header-->
-            <div class="card-header border-0 pt-6">
+            <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+                data-bs-target="#kt_account_profile_details" aria-expanded="true"
+                aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
-                <div class="card-title">
-                    <div class="d-flex align-items-center position-relative my-1">
-                        <!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
-                        <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <path
-                                        d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
-                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                    <path
-                                        d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
-                                        fill="#000000" fill-rule="nonzero" />
-                                </g>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                        <input type="text" data-kt-user-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search deposits"
-                            [(ngModel)]="depositFilter" />
-                    </div>
+                <div class="card-title m-0">
+                    <h3 class="fw-bolder m-0">Deposits</h3>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Card Toolbar-->
@@ -46,11 +28,10 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->{{ "Add Deposit" | translate }}
+                            <!--end::Svg Icon-->Add Deposit
                         </button>
                     </div>
                 </div>
-                <!--end::Card Toolbar-->
             </div>
             <!--begin::Card header-->
             <!--begin::Content-->
@@ -63,25 +44,19 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
-                                <table mat-table matSort (matSortChange)="sortData($event)"
-                                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
+                                <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_templates">
                                     <!--begin::Table head-->
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th>{{ "id" | translate }}</th>
-                                            <th mat-sort-header="user_id">{{ "User" | translate }}</th>
-                                            <th mat-sort-header="transaction_id">
-                                                {{ "Transaction" | translate }}
-                                            </th>
-                                            <th mat-sort-header="amount">
-                                                {{ "Amount" | translate }}
-                                            </th>
-                                            <th mat-sort-header="fee"> {{ "Fee" | translate }}</th>
-                                            <th mat-sort-header="deposit_status"> {{ "Refunded" | translate }}</th>
-                                            <th>{{ "Note" | translate }}</th>
-                                            <th mat-sort-header="create_date">{{ "Create Date" | translate }}</th>
-                                            <th class="text-end">Actions</th>
+                                            <th>id</th>
+                                            <th mat-sort-header="user_id">User</th>
+                                            <th mat-sort-header="auction_id">Auction</th>
+                                            <th mat-sort-header="amount">Amount</th>
+                                            <th mat-sort-header="status">Status</th>
+                                            <th mat-sort-header="note">Note</th>
+                                            <th mat-sort-header="create_date">Create Date</th>
+                                            <!-- <th class="text-end">Actions</th> -->
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -89,81 +64,130 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr
-                                            *ngFor="let deposit of deposits | depositPipe: depositFilter  ; let i = index;">
+                                        <tr *ngFor="let deposit of deposits; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: deposit.user.id }">{{
                                                     deposit.user.phone }}</a></td>
-                                            <td><a [routerLink]="['/payment-details']"
-                                                    [queryParams]="{ id: deposit.transaction_id }">{{
-                                                    deposit.transaction_id | uppercase}}</a></td>
+                                            <td><a [routerLink]="['/auctions']"
+                                                    [queryParams]="{ id: deposit.auction.id }">{{ deposit.auction.title.en
+                                                    }}</a></td>
                                             <td>{{ deposit.amount | currency:'OMR'}}</td>
-                                            <td>{{ deposit.fee | currency:'OMR'}}</td>
                                             <td>
-                                                <div *ngIf="deposit.status.toLowerCase() === 'active'" class="badge badge-light-success fw-bolder">{{ deposit.status | uppercase }}</div>
-                                                <div *ngIf="deposit.status.toLowerCase() !== 'active'" class="badge badge-light-info fw-bolder">{{ deposit.status | uppercase }}</div>
+                                                <div class="badge badge-light-success fw-bolder">{{deposit.status |
+                                                    titlecase}}
+                                                </div>
                                             </td>
-                                            <td [innerHTML]="deposit.note | nl2br"></td>
+                                            <td>
+                                                <a data-bs-toggle="modal" data-bs-target="#kt_modal_note_details"
+                                                    class="btn btn-bg-light btn-sm">
+                                                    Details
+                                                </a>
+                                                <div class="modal fade" id="kt_modal_note_details" tabindex="-1" aria-hidden="true">
+                                                    <!--begin::Modal dialog-->
+                                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                        <!--begin::Modal content-->
+                                                        <div class="modal-content">
+                                                            <!--begin::Modal header-->
+                                                            <div class="modal-header" id="kt_modal_note_details_header">
+                                                                <!--begin::Modal title-->
+                                                                <h2 class="fw-bolder">Deposit Note Details</h2>
+                                                                <!--end::Modal title-->
+                                                                <!--begin::Close-->
+                                                                <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                                    data-bs-dismiss="modal">
+                                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                                                    <span class="svg-icon svg-icon-1">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                                            height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                                fill="#000000">
+                                                                                <rect fill="#000000" x="0" y="7" width="16" height="2"
+                                                                                    rx="1" />
+                                                                                <rect fill="#000000" opacity="0.5"
+                                                                                    transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                                                    x="0" y="7" width="16" height="2" rx="1" />
+                                                                            </g>
+                                                                        </svg>
+                                                                    </span>
+                                                                    <!--end::Svg Icon-->
+                                                                </div>
+                                                                <!--end::Close-->
+                                                            </div>
+                                                            <!--end::Modal header-->
+                                                            <!--begin::Modal body-->
+                                                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                                <!--begin::Form-->
+                                                                <form id="kt_modal_add_blacklist_form" class="form" action="#">
+                                                                    <!--begin::Scroll-->
+                                                                    <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                                                        id="kt_modal_add_blacklist_scroll" data-kt-scroll="true"
+                                                                        data-kt-scroll-activate="{default: false, lg: true}"
+                                                                        data-kt-scroll-max-height="auto"
+                                                                        data-kt-scroll-dependencies="#kt_modal_add_blacklist_header"
+                                                                        data-kt-scroll-wrappers="#kt_modal_add_blacklist_scroll"
+                                                                        data-kt-scroll-offset="300px">
+                                                                        <!--begin::Input group-->
+                                                                        <div class="fv-row mb-7">
+                                                                            <span [innerHTML]="deposit.note | nl2br"></span>
+                                                                        </div>
+                                                                        <!--end::Input group-->
+                                                                    </div>
+                                                                    <!--end::Scroll-->
+                                                                    <!--begin::Actions-->
+                                                                    <div class="text-center pt-15">
+                                                                        <button type="reset" class="btn btn-white me-3"
+                                                                            data-bs-dismiss="modal">Discard</button>
+                                                                    </div>
+                                                                    <!--end::Actions-->
+                                                                </form>
+                                                                <!--end::Form-->
+                                                            </div>
+                                                            <!--end::Modal body-->
+                                                        </div>
+                                                        <!--end::Modal content-->
+                                                    </div>
+                                                    <!--end::Modal dialog-->
+                                                </div>
+                                            </td>
                                             <td>{{ deposit.create_date | date:"short"}}</td>
 
                                             <!--begin::Action=-->
-                                            <td class="text-end">
-                                                <a title="Request Refund" (click)="requestRefund(deposit.id)"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
-                                                    <span class="svg-icon svg-icon-3 svg-icon-warning">
+                                            <!-- <td class="text-end">
+                                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                    <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg--
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24"/>
+                                                                <path d="M8,13.1668961 L20.4470385,11.9999863 L8,10.8330764 L8,5.77181995 C8,5.70108058 8.01501031,5.63114635 8.04403925,5.56663761 C8.15735832,5.31481744 8.45336217,5.20254012 8.70518234,5.31585919 L22.545552,11.5440255 C22.6569791,11.5941677 22.7461882,11.6833768 22.7963304,11.794804 C22.9096495,12.0466241 22.7973722,12.342628 22.545552,12.455947 L8.70518234,18.6841134 C8.64067359,18.7131423 8.57073936,18.7281526 8.5,18.7281526 C8.22385763,18.7281526 8,18.504295 8,18.2281526 L8,13.1668961 Z" fill="#000000"/>
+                                                                <path d="M4,16 L5,16 C5.55228475,16 6,16.4477153 6,17 C6,17.5522847 5.55228475,18 5,18 L4,18 C3.44771525,18 3,17.5522847 3,17 C3,16.4477153 3.44771525,16 4,16 Z M1,11 L5,11 C5.55228475,11 6,11.4477153 6,12 C6,12.5522847 5.55228475,13 5,13 L1,13 C0.44771525,13 6.76353751e-17,12.5522847 0,12 C-6.76353751e-17,11.4477153 0.44771525,11 1,11 Z M4,6 L5,6 C5.55228475,6 6,6.44771525 6,7 C6,7.55228475 5.55228475,8 5,8 L4,8 C3.44771525,8 3,7.55228475 3,7 C3,6.44771525 3.44771525,6 4,6 Z" fill="#000000" opacity="0.3"/>
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon--
+                                                </a>
+                                                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg--
+                                                    <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                                                             height="24px" viewBox="0 0 24 24" version="1.1">
                                                             <g stroke="none" stroke-width="1" fill="none"
                                                                 fill-rule="evenodd">
-                                                                <rect x="0" y="0" width="24" height="24" />
+                                                                <rect x="0" y="0" width="24" height="24"></rect>
                                                                 <path
-                                                                    d="M10.9630156,7.5 L11.0475062,7.5 C11.3043819,7.5 11.5194647,7.69464724 11.5450248,7.95024814 L12,12.5 L15.2480695,14.3560397 C15.403857,14.4450611 15.5,14.6107328 15.5,14.7901613 L15.5,15 C15.5,15.2109164 15.3290185,15.3818979 15.1181021,15.3818979 C15.0841582,15.3818979 15.0503659,15.3773725 15.0176181,15.3684413 L10.3986612,14.1087258 C10.1672824,14.0456225 10.0132986,13.8271186 10.0316926,13.5879956 L10.4644883,7.96165175 C10.4845267,7.70115317 10.7017474,7.5 10.9630156,7.5 Z"
-                                                                    fill="#000000" />
+                                                                    d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
+                                                                    fill="#000000" fill-rule="nonzero"></path>
                                                                 <path
-                                                                    d="M7.38979581,2.8349582 C8.65216735,2.29743306 10.0413491,2 11.5,2 C17.2989899,2 22,6.70101013 22,12.5 C22,18.2989899 17.2989899,23 11.5,23 C5.70101013,23 1,18.2989899 1,12.5 C1,11.5151324 1.13559454,10.5619345 1.38913364,9.65805651 L3.31481075,10.1982117 C3.10672013,10.940064 3,11.7119264 3,12.5 C3,17.1944204 6.80557963,21 11.5,21 C16.1944204,21 20,17.1944204 20,12.5 C20,7.80557963 16.1944204,4 11.5,4 C10.54876,4 9.62236069,4.15592757 8.74872191,4.45446326 L9.93948308,5.87355717 C10.0088058,5.95617272 10.0495583,6.05898805 10.05566,6.16666224 C10.0712834,6.4423623 9.86044965,6.67852665 9.5847496,6.69415008 L4.71777931,6.96995273 C4.66931162,6.97269931 4.62070229,6.96837279 4.57348157,6.95710938 C4.30487471,6.89303938 4.13906482,6.62335149 4.20313482,6.35474463 L5.33163823,1.62361064 C5.35654118,1.51920756 5.41437908,1.4255891 5.49660017,1.35659741 C5.7081375,1.17909652 6.0235153,1.2066885 6.2010162,1.41822583 L7.38979581,2.8349582 Z"
-                                                                    fill="#000000" opacity="0.3" />
+                                                                    d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                                                    fill="#000000" opacity="0.3"></path>
                                                             </g>
                                                         </svg>
-                                                        <!--end::Svg Icon-->
                                                     </span>
+                                                    <!--end::Svg Icon--
                                                 </a>
-                                                <a title="Add Note" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    (click)="itemId(deposit.id, deposit.note)" data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_note_form">
-                                                    <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
-                                                    <span class="svg-icon svg-icon-3 svg-icon-success">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                            height="24px" viewBox="0 0 24 24" version="1.1">
-                                                            <g stroke="none" stroke-width="1" fill="none"
-                                                                fill-rule="evenodd">
-                                                                <rect x="0" y="0" width="24" height="24" />
-                                                                <path
-                                                                    d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z"
-                                                                    fill="#000000" opacity="0.3" />
-                                                                <path
-                                                                    d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
-                                                                    fill="#000000" />
-                                                                <rect fill="#000000" opacity="0.3" x="10" y="9"
-                                                                    width="7" height="2" rx="1" />
-                                                                <rect fill="#000000" opacity="0.3" x="7" y="9" width="2"
-                                                                    height="2" rx="1" />
-                                                                <rect fill="#000000" opacity="0.3" x="7" y="13"
-                                                                    width="2" height="2" rx="1" />
-                                                                <rect fill="#000000" opacity="0.3" x="10" y="13"
-                                                                    width="7" height="2" rx="1" />
-                                                                <rect fill="#000000" opacity="0.3" x="7" y="17"
-                                                                    width="2" height="2" rx="1" />
-                                                                <rect fill="#000000" opacity="0.3" x="10" y="17"
-                                                                    width="7" height="2" rx="1" />
-                                                            </g>
-                                                        </svg>
-                                                        <!--end::Svg Icon-->
-                                                    </span>
-                                                </a>
-                                            </td>
+                                            </td> -->
                                             <!--end::Action=-->
                                         </tr>
                                         <!--end::Table row-->
@@ -181,271 +205,178 @@
                                     >
                                     </mat-paginator>
                                 </div>
-                                <!--end::Card body-->
                             </div>
-                            <!--end::Card-->
-                            <!--begin::Modal - Add fields-->
-                            <div class="modal fade" id="kt_modal_note_form" tabindex="-1" aria-hidden="true">
-                                <!--begin::Modal dialog-->
-                                <div class="modal-dialog modal-dialog-centered mw-750px">
-                                    <!--begin::Modal content-->
-                                    <div class="modal-content">
-                                        <!--begin::Modal header-->
-                                        <div class="modal-header">
-                                            <!--begin::Modal title-->
-                                            <h2 class="fw-bolder">{{ "Add Note" | translate }}</h2>
-                                            <!--end::Modal title-->
-                                            <!--begin::Close-->
-                                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                                data-bs-dismiss="modal">
-                                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
-                                                <span class="svg-icon svg-icon-1">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                        height="24px" viewBox="0 0 24 24" version="1.1">
-                                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
-                                                            fill="#000000">
-                                                            <rect fill="#000000" x="0" y="7" width="16" height="2"
-                                                                rx="1" />
-                                                            <rect fill="#000000" opacity="0.5"
-                                                                transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
-                                                                x="0" y="7" width="16" height="2" rx="1" />
-                                                        </g>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </div>
-                                            <!--end::Close-->
-                                        </div>
-                                        <!--end::Modal header-->
-                                        <!--begin::Modal body-->
-                                        <div class="modal-body scroll-y mx-lg-5 my-7">
-                                            <!--begin::Scroll-->
-                                            <div class="d-flex flex-column scroll-y me-n7 pe-7"
-                                                id="kt_modal_add_form_scroll" data-kt-scroll="true"
-                                                data-kt-scroll-activate="{default: false, lg: true}"
-                                                data-kt-scroll-max-height="auto"
-                                                data-kt-scroll-dependencies="#kt_modal_add_form_header"
-                                                data-kt-scroll-wrappers="#kt_modal_add_form_scroll"
-                                                data-kt-scroll-offset="300px">
-                                                <div class="fv-row mb-10">
-                                                    <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">
-                                                            {{ "Note Text" | translate }}
-                                                        </span>
-                                                    </label>
-                                                    <textarea cols="20" rows="5" name="note"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="note"></textarea>
-                                                </div>
-                                            </div>
-                                            <!--end::Scroll-->
-                                            <!--begin::Actions-->
-                                            <div class="text-center pt-15">
-                                                <button type="reset" class="btn btn-white me-3"
-                                                    data-bs-dismiss="modal">Discard</button>
-                                                <button type="submit" class="btn btn-primary"
-                                                    (click)="adddNote(deposit_id)" data-kt-roles-modal-action="submit">
-                                                    <span class="indicator-label">Submit</span>
-                                                    <span class="indicator-progress">Please wait...
-                                                        <span
-                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                                </button>
-                                            </div>
-                                            <!--end::Actions-->
-                                        </div>
-                                        <!--end::Modal body-->
-                                    </div>
-                                    <!--end::Modal content-->
-                                </div>
-                                <!--end::Modal dialog-->
-                            </div>
-                            <div class="modal fade" id="kt_modal_add_deposit" tabindex="-1" aria-hidden="true">
-                                <!--begin::Modal dialog-->
-                                <div class="modal-dialog modal-dialog-centered mw-750px">
-                                    <!--begin::Modal content-->
-                                    <div class="modal-content">
-                                        <!--begin::Modal header-->
-                                        <div class="modal-header">
-                                            <!--begin::Modal title-->
-                                            <h2 class="fw-bolder">
-                                                {{ "Add Deposit" | translate }}
-                                            </h2>
-                                            <!--end::Modal title-->
-                                            <!--begin::Close-->
-                                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                                data-bs-dismiss="modal">
-                                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
-                                                <span class="svg-icon svg-icon-1">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                        height="24px" viewBox="0 0 24 24" version="1.1">
-                                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
-                                                            fill="#000000">
-                                                            <rect fill="#000000" x="0" y="7" width="16" height="2"
-                                                                rx="1" />
-                                                            <rect fill="#000000" opacity="0.5"
-                                                                transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
-                                                                x="0" y="7" width="16" height="2" rx="1" />
-                                                        </g>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </div>
-                                            <!--end::Close-->
-                                        </div>
-                                        <!--end::Modal header-->
-                                        <!--begin::Modal body-->
-                                        <div class="modal-body scroll-y mx-lg-5 my-7">
-                                            <!--begin::Scroll-->
-                                            <div class="d-flex flex-column scroll-y me-n7 pe-7"
-                                                id="kt_modal_add_deposit_scroll" data-kt-scroll="true"
-                                                data-kt-scroll-activate="{default: false, lg: true}"
-                                                data-kt-scroll-max-height="auto"
-                                                data-kt-scroll-dependencies="#kt_modal_add_deposit_header"
-                                                data-kt-scroll-wrappers="#kt_modal_add_deposit_scroll"
-                                                data-kt-scroll-offset="300px">
-                                                <div class="fv-row mb-10">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-bold fs-6 mb-2">
-                                                        {{ "User" | translate }}
-                                                    </label>
-                                                    <!--end::Label-->
-                                                    <input class="form-control header-color" [(ngModel)]="user_contact"
-                                                        (keyup.enter)="onChange()" (change)="onChange()"
-                                                        list="usersList" id="usersList_id"
-                                                        placeholder="type user's contact ..." />
-                                                    <datalist id="usersList">
-                                                        <option *ngFor="let user of users" [value]="user.contact">
-                                                    </datalist>
-                                                </div>
-                                                <div class="fv-row mb-10">
-                                                    <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span>{{ "Transaction" | translate }}</span>
-                                                    </label>
-                                                    <input type="text" name="transaction_id"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="deposit.transaction_id" />
-                                                </div>
-                                                <div class="fv-row mb-10">
-                                                    <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">{{ "Amount" | translate }}</span>
-                                                    </label>
-                                                    <input type="number" name="amount"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="deposit.amount" />
-                                                </div>
-                                                <div class="fv-row mb-10">
-                                                    <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">{{ "Fee" | translate }}</span>
-                                                    </label>
-                                                    <input type="number" name="fee"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="deposit.fee" />
-                                                </div>
-                                                <div class="fv-row mb-10">
-                                                    <label class="fs-5 fw-bolder form-label mb-2">
-                                                        <span class="required">{{ "Note" | translate }}</span>
-                                                    </label>
-                                                    <textarea cols="20" rows="5" name="note"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        [(ngModel)]="deposit.note"></textarea>
-                                                </div>
-                                            </div>
-                                            <!--end::Scroll-->
-                                            <!--begin::Actions-->
-                                            <div class="text-center pt-15">
-                                                <button type="reset" class="btn btn-white me-3"
-                                                    data-bs-dismiss="modal">Discard</button>
-                                                <button type="submit" class="btn btn-primary" (click)="onSubmit()"
-                                                    data-kt-roles-modal-action="submit">
-                                                    <span class="indicator-label">Submit</span>
-                                                    <span class="indicator-progress">Please wait...
-                                                        <span
-                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                                </button>
-                                            </div>
-                                            <!--end::Actions-->
-                                        </div>
-                                        <!--end::Modal body-->
-                                    </div>
-                                    <!--end::Modal content-->
-                                </div>
-                                <!--end::Modal dialog-->
-                            </div>
-                            <!--end::Modal - Add fields-->
-                            <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show"
-                                style="overflow-y: auto;">
-                                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
-                                    class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1"
-                                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
-                                    <div class="swal2-header">
-                                        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
-                                                class="swal2-x-mark">
-                                                <span class="swal2-x-mark-line-left"></span>
-                                                <span class="swal2-x-mark-line-right"></span>
-                                            </span>
-                                        </div><img class="swal2-image" style="display: none;">
-                                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
-                                            type="button" class="swal2-close" aria-label="Close this dialog"
-                                            style="display: none;">×</button>
-                                    </div>
-                                    <div class="swal2-content">
-                                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
-                                            Sorry, looks like there
-                                            are some errors detected, please try again.</div>
-                                    </div>
-                                    <div class="swal2-actions">
-                                        <div class="swal2-loader"></div>
-                                        <button type="button" class="swal2-confirm btn btn-light"
-                                            style="display: inline-block;" (click)="errorMessage=false">Ok, got
-                                            it!</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show"
-                                style="overflow-y: auto;">
-                                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
-                                    class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1"
-                                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
-                                    <div class="swal2-header">
-                                        <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
-                                            <div class="swal2-success-circular-line-left"
-                                                style="background-color: rgb(255, 255, 255);">
-                                            </div>
-                                            <span class="swal2-success-line-tip"></span> <span
-                                                class="swal2-success-line-long"></span>
-                                            <div class="swal2-success-ring"></div>
-                                            <div class="swal2-success-fix"
-                                                style="background-color: rgb(255, 255, 255);"></div>
-                                            <div class="swal2-success-circular-line-right"
-                                                style="background-color: rgb(255, 255, 255);">
-                                            </div>
-                                        </div><img class="swal2-image" style="display: none;">
-                                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
-                                            type="button" class="swal2-close" aria-label="Close this dialog"
-                                            style="display: none;">×</button>
-                                    </div>
-                                    <div class="swal2-content">
-                                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
-                                            Request has been
-                                            successfully submitted!</div>
-                                    </div>
-                                    <div class="swal2-actions">
-                                        <div class="swal2-loader"></div><button type="button"
-                                            class="swal2-confirm btn btn-primary" (click)="successMessage=false"
-                                            style="display: inline-block;">Ok</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--end::Card body-->
                         </div>
+                        <!--end::Card-->
                     </div>
                 </div>
-                <!--end::Content-->
             </div>
-            <!--end::Basic info-->
+            <div class="modal fade" id="kt_modal_add_deposit" tabindex="-1" aria-hidden="true">
+                <!--begin::Modal dialog-->
+                <div class="modal-dialog modal-dialog-centered mw-750px">
+                    <!--begin::Modal content-->
+                    <div class="modal-content">
+                        <!--begin::Modal header-->
+                        <div class="modal-header">
+                            <!--begin::Modal title-->
+                            <h2 class="fw-bolder">Add Deposit</h2>
+                            <!--end::Modal title-->
+                            <!--begin::Close-->
+                            <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                data-bs-dismiss="modal">
+                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                        height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                            fill="#000000">
+                                            <rect fill="#000000" x="0" y="7" width="16" height="2"
+                                                rx="1" />
+                                            <rect fill="#000000" opacity="0.5"
+                                                transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                x="0" y="7" width="16" height="2" rx="1" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Modal header-->
+                        <!--begin::Modal body-->
+                        <div class="modal-body scroll-y mx-lg-5 my-7">
+                            <!--begin::Scroll-->
+                            <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                id="kt_modal_add_deposit_scroll" data-kt-scroll="true"
+                                data-kt-scroll-activate="{default: false, lg: true}"
+                                data-kt-scroll-max-height="auto"
+                                data-kt-scroll-dependencies="#kt_modal_add_deposit_header"
+                                data-kt-scroll-wrappers="#kt_modal_add_deposit_scroll"
+                                data-kt-scroll-offset="300px">
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">User</label>
+                                    <!--end::Label-->
+                                    <input class="form-control header-color" [(ngModel)]="user_contact" (keyup.enter)="onChange()"
+                                        (change)="onChange()" list="usersList" id="usersList_id"
+                                        placeholder="type user's contact ..." />
+                                    <datalist id="usersList">
+                                        <option *ngFor="let user of users" [value]="user.contact">
+                                    </datalist>
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="fs-5 fw-bolder form-label mb-2">
+                                        <span>Auction</span>
+                                    </label>
+                                    <select name="auction_id" class="form-select form-select-lg form-select-solid"
+                                        [(ngModel)]="deposit.auction_id">
+                                        <option *ngFor="let auction of auctions" [ngValue]='auction.id'>
+                                            {{ auction.code
+                                            }}</option>
+                                    </select>
+                                </div>
+                                <div class="fv-row mb-10">
+                                    <label class="fs-5 fw-bolder form-label mb-2">
+                                        <span class="required">Amount</span>
+                                    </label>
+                                    <input type="number" name="amount"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        [(ngModel)]="deposit.amount" />
+                                </div>
+                            </div>
+                            <!--end::Scroll-->
+                            <!--begin::Actions-->
+                            <div class="text-center pt-15">
+                                <button type="reset" class="btn btn-white me-3"
+                                    data-bs-dismiss="modal">Discard</button>
+                                <button type="submit" class="btn btn-primary"
+                                    (click)="onSubmit()" data-kt-roles-modal-action="submit">
+                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span
+                                            class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                </button>
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Modal body-->
+                    </div>
+                    <!--end::Modal content-->
+                </div>
+                <!--end::Modal dialog-->
+            </div>
+            <!--end::Modal - Add fields-->
+            <div *ngIf="errorMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-error swal2-show" tabindex="-1"
+                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-error swal2-icon-show" style="display: flex;"><span
+                                class="swal2-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                            </span>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                            type="button" class="swal2-close" aria-label="Close this dialog"
+                            style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
+                            Sorry, looks like there
+                            are some errors detected, please try again.</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div>
+                        <button type="button" class="swal2-confirm btn btn-light"
+                            style="display: inline-block;" (click)="errorMessage=false">Ok, got
+                            it!</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="successMessage" class="swal2-container swal2-center swal2-backdrop-show"
+                style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-content"
+                    class="swal2-popup swal2-modal swal2-icon-success swal2-show" tabindex="-1"
+                    role="dialog" aria-live="assertive" aria-modal="true" style="display: flex;">
+                    <div class="swal2-header">
+                        <div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;">
+                            <div class="swal2-success-circular-line-left"
+                                style="background-color: rgb(255, 255, 255);">
+                            </div>
+                            <span class="swal2-success-line-tip"></span> <span
+                                class="swal2-success-line-long"></span>
+                            <div class="swal2-success-ring"></div>
+                            <div class="swal2-success-fix"
+                                style="background-color: rgb(255, 255, 255);"></div>
+                            <div class="swal2-success-circular-line-right"
+                                style="background-color: rgb(255, 255, 255);">
+                            </div>
+                        </div><img class="swal2-image" style="display: none;">
+                        <h2 class="swal2-title" id="swal2-title" style="display: none;"></h2><button
+                            type="button" class="swal2-close" aria-label="Close this dialog"
+                            style="display: none;">×</button>
+                    </div>
+                    <div class="swal2-content">
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">
+                            Request has been
+                            successfully submitted!</div>
+                    </div>
+                    <div class="swal2-actions">
+                        <div class="swal2-loader"></div><button type="button"
+                            class="swal2-confirm btn btn-primary" (click)="successMessage=false"
+                            style="display: inline-block;">Ok</button>
+                    </div>
+                </div>
+            </div>
+            <!--end::Content-->
         </div>
-        <!--end::Container-->
+        <!--end::Basic info-->
     </div>
-    <!-- spinnner element is defined with id loading -->
-    <div *ngIf="this.utility.loader" class="loading"></div>
+    <!--end::Container-->
+</div>
+<!-- spinnner element is defined with id loading -->
+<div *ngIf="this.utility.loader" class="loading"></div>

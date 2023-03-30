@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'depositPipe'
+  name: 'walletPipe'
 })
-export class DepositPipePipe implements PipeTransform {
+export class WalletPipePipe implements PipeTransform {
 
   transform(value: any, input: any): any {
     if (input) {

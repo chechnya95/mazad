@@ -91,8 +91,8 @@
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">User Deposit</div>
-                                <div class="text-gray-600">{{ user?.deposit | currency:' OMR' }}
+                                <div class="fw-bolder mt-5">User Wallet</div>
+                                <div class="text-gray-600">{{ user?.wallet | currency:' OMR' }}
                                 </div>
                                 <!--begin::Details item-->
                             </div>
@@ -123,13 +123,13 @@
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_statements">Deposits</a>
+                            href="#kt_customer_view_overview_statements">Wallets</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_wallets">Wallets</a>
+                            href="#kt_customer_view_overview_deposits">Deposits</a>
                     </li>
                     <!--end:::Tab item-->
                 </ul>
@@ -163,8 +163,8 @@
                                                 class="btn btn-warning">Block User</button>
                                             <button *ngIf="userBlocked" (click)="unblock(block_id)" type="button"
                                                 class="btn btn-danger">Unblock</button>
-                                            <button (click)="offline_deposit(user?.id)" type="button"
-                                                class="btn btn-info">Offline Deposit</button>
+                                            <button (click)="offline_wallet(user?.id)" type="button"
+                                                class="btn btn-info">Offline Wallet</button>
                                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_image_form"
                                                 type="button" class="btn btn-secondary">Add ID Copy</button>
                                         </div>
@@ -289,7 +289,7 @@
                             <div class="card-header">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>User's Deposits</h2>
+                                    <h2>User's Wallets</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -306,7 +306,7 @@
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
                                                 <th>Transaction</th>
-                                                <th>Deposit Date</th>
+                                                <th>Wallet Date</th>
                                                 <th>Amount</th>
                                                 <th>Refund Status</th>
                                                 <!-- <th>Note</th> -->
@@ -318,29 +318,29 @@
                                         <!--begin::Table body-->
                                         <tbody class="fs-6 fw-bold text-gray-600">
                                             <!--begin::Table row-->
-                                            <tr *ngFor="let deposit of deposits; let i = index;">
+                                            <tr *ngFor="let wallet of wallets; let i = index;">
                                                 <!--begin::transaction_id=-->
                                                 <td><a [routerLink]="['/payment-details']" class="fs-9"
-                                                        [queryParams]="{ id: deposit.transaction_id }">{{
-                                                        deposit.transaction_id | uppercase }}</a></td>
+                                                        [queryParams]="{ id: wallet.transaction_id }">{{
+                                                        wallet.transaction_id | uppercase }}</a></td>
                                                 <!--end::transaction_id=-->
                                                 <!--begin::create_date=-->
-                                                <td>{{ deposit.create_date | date }}</td>
+                                                <td>{{ wallet.create_date | date }}</td>
                                                 <!--end::create_date=-->
                                                 <!--begin::amount=-->
-                                                <td>{{ deposit.amount | currency:' OMR '}}</td>
+                                                <td>{{ wallet.amount | currency:' OMR '}}</td>
                                                 <!--end::amount=-->
                                                 <td>
-                                                    <div *ngIf="deposit.status.toLowerCase() === 'active'"
-                                                        class="badge badge-light-success fw-bolder">{{ deposit.status |
+                                                    <div *ngIf="wallet.status.toLowerCase() === 'active'"
+                                                        class="badge badge-light-success fw-bolder">{{ wallet.status |
                                                         uppercase }}</div>
-                                                    <div *ngIf="deposit.status.toLowerCase() !== 'active'"
-                                                        class="badge badge-light-info fw-bolder">{{ deposit.status |
+                                                    <div *ngIf="wallet.status.toLowerCase() !== 'active'"
+                                                        class="badge badge-light-info fw-bolder">{{ wallet.status |
                                                         uppercase }}</div>
                                                 </td>
-                                                <!-- <td [innerHTML]="deposit.note | nl2br"></td> -->
+                                                <!-- <td [innerHTML]="wallet.note | nl2br"></td> -->
                                                 <td class="text-end">
-                                                    <a title="Request Refund" (click)="requestRefund(deposit.id)"
+                                                    <a title="Request Refund" (click)="requestRefund(wallet.id)"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                                         <span class="svg-icon svg-icon-3 svg-icon-warning">
@@ -361,7 +361,7 @@
                                                             <!--end::Svg Icon-->
                                                         </span>
                                                     </a>
-                                                    <a title="Add Note" (click)="itemId(deposit.id, deposit.note)"
+                                                    <a title="Add Note" (click)="itemId(wallet.id, wallet.note)"
                                                         data-bs-toggle="modal" data-bs-target="#kt_modal_note_form"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
@@ -412,14 +412,14 @@
                     <!--end:::Tab pane-->
 
                     <!--begin:::Tab pane-->
-                    <div class="tab-pane fade" id="kt_customer_view_overview_wallets" role="tabpanel">
+                    <div class="tab-pane fade" id="kt_customer_view_overview_deposits" role="tabpanel">
                         <!--begin::Statements-->
                         <div class="card mb-6 mb-xl-9">
                             <!--begin::Header-->
                             <div class="card-header">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>User's Wallets</h2>
+                                    <h2>User's Deposits</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -447,24 +447,24 @@
                                         <!--begin::Table body-->
                                         <tbody class="fs-6 fw-bold text-gray-600">
                                             <!--begin::Table row-->
-                                            <tr *ngFor="let wallet of wallets; let i = index;">
+                                            <tr *ngFor="let deposit of deposits; let i = index;">
                                                 <!--begin::status=-->
-                                                <td><a [routerLink]="['/wallets']" [queryParams]="{ id: wallet.id }">{{
-                                                        wallet.status | uppercase }}</a></td>
+                                                <td><a [routerLink]="['/deposits']" [queryParams]="{ id: deposit.id }">{{
+                                                        deposit.status | uppercase }}</a></td>
                                                 <!--end::status=-->
                                                 <!--begin::title=-->
-                                                <td>{{ wallet.auction.title.en }}</td>
+                                                <td>{{ deposit.auction.title.en }}</td>
                                                 <!--end::title=-->
                                                 <!--begin::create_date=-->
-                                                <td>{{ wallet.create_date | date }}</td>
+                                                <td>{{ deposit.create_date | date }}</td>
                                                 <!--end::create_date=-->
                                                 <!--begin::Amount=-->
-                                                <td>{{ wallet.amount | currency:' OMR '}}</td>
+                                                <td>{{ deposit.amount | currency:' OMR '}}</td>
                                                 <!--end::Amount=-->
                                                 <!--begin::Note=-->
                                                 <td class="text-end">
                                                     <a title="Insurance Confiscation"
-                                                        (click)="insuranceConfiscation(wallet.id)"
+                                                        (click)="insuranceConfiscation(deposit.id)"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                                         <span class="svg-icon svg-icon-3 svg-icon-danger">
@@ -485,7 +485,7 @@
                                                             <!--end::Svg Icon-->
                                                         </span>
                                                     </a>
-                                                    <a title="withdraw" (click)="withdraw(wallet.id)"
+                                                    <a title="withdraw" (click)="withdraw(deposit.id)"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                                         <span class="svg-icon svg-icon-3 svg-icon-warning">
@@ -640,7 +640,7 @@
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
                             <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
-                            <button type="submit" class="btn btn-primary" (click)="adddNote(deposit_id)"
+                            <button type="submit" class="btn btn-primary" (click)="adddNote(wallet_id)"
                                 data-kt-roles-modal-action="submit">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...

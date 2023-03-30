@@ -28,8 +28,8 @@
     "Reports": "Reports",
     "CommentsandReviews": "Comments and Reviews",
     "Messages": "Contact Us",
-    "deposits": "Deposits",
     "wallets": "Wallets",
+    "deposits": "Deposits",
     "payment_transactions": "Payment Transactions",
     "invoices": "Invoices",
     "owner_payment_options": "Owner Payment Options",
@@ -45,7 +45,7 @@
      "amount": "amount",
      "print": "print",
      "total": "total",
-     "deposit": "deposit",
+     "wallet": "wallet",
      "showpage": "show page",
      "Digital Leadership LLC":"Digital Leadership LLC"
 

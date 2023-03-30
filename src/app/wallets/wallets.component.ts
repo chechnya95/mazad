@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
-import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
+import { PageEvent } from '@angular/material/paginator';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-wallets',
@@ -15,17 +16,25 @@ export class WalletsComponent implements OnInit {
   token: any;
   wallets: any[] = [];
   users: any[] = [];
-  auctions: any[] = [];
   filter_config: any;
+
+  walletFilter = '';
+
+  note: any;
+  wallet_id: any;
 
   wallet = {
     user_id: null,
-    auction_id: null,
-    amount: null
+    transaction_id: null,
+    amount: null,
+    fee: null,
+    note: null,
   }
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
+
+  Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
     public utility: UtilitiesService) {
@@ -77,10 +86,51 @@ export class WalletsComponent implements OnInit {
         this.wallets = objects['wallets'];
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => { }
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        
+      }
     );
 
     sub.add(() => { this.utility.loader = false; this.getUsers(); });
+  }
+
+  itemId(id: any, note: any) {
+    this.wallet_id = id;
+    this.note = note;
+  }
+
+  adddNote(id: any) {
+    const sub = this.api.update('wallets/' + id + '/note', { note: this.note }, this.token).subscribe(
+      async data => { this.getWallets(); },
+      async errr => {  }
+    );
+  }
+
+  user_contact: any;
+  onChange() {
+    let user = this.users.find(i => i.contact === this.user_contact);
+    this.wallet.user_id = user.id;
+  }
+
+  onSubmit() {
+    let body = {
+      user_id: this.wallet.user_id,
+      transaction_id: this.wallet.user_id,
+      amount: this.wallet.amount,
+      fee: this.wallet.fee,
+      note: this.wallet.note
+    }
+    const sub = this.api.post('wallets/', body, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+      },
+      async error => {  this.errorMessage = true; }
+    );
+    sub.add(() => { this.getWallets(); });
   }
 
   async getUsers() {
@@ -103,41 +153,15 @@ export class WalletsComponent implements OnInit {
         });
       },
       async error => {
-
+        
       }
     );
-
-    sub.add(() => { this.getAuctions(); });
   }
 
-  async getAuctions() {
-    this.api.get('auctions/active', this.token).subscribe(
-      async data => {
-        let objects = JSON.parse(JSON.stringify(data));
-        this.auctions = objects['auctions'];
-      },
-      async error => { }
+  requestRefund(id: any) {
+    this.api.post('wallets/' + id + '/refund', {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => {  this.errorMessage = true; }
     );
-  }
-
-  user_contact: any;
-  onChange() {
-    let user = this.users.find(i => i.contact === this.user_contact);
-    this.wallet.user_id = user.id;
-  }
-
-  onSubmit() {
-    let body = {
-      user_id: this.wallet.user_id,
-      auction_id: this.wallet.auction_id,
-      amount: this.wallet.amount
-    }
-    const sub = this.api.post('wallets/', body, this.token).subscribe(
-      async data => {
-        this.successMessage = true;
-      },
-      async error => { this.errorMessage = true; }
-    );
-    sub.add(() => { this.getWallets(); });
   }
 }

@@ -39,12 +39,12 @@ import { UserPipePipe } from './pipes/user-pipe.pipe';
 import { AuctionPipePipe } from './pipes/auction-pipe.pipe';
 import { ItemPipePipe } from './pipes/item-pipe.pipe';
 import { PaymentTransactionsComponent } from './payment-transactions/payment-transactions.component';
-import { DepositsComponent } from './deposits/deposits.component';
 import { WalletsComponent } from './wallets/wallets.component';
+import { DepositsComponent } from './deposits/deposits.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { OwnerPaymentOptionsComponent } from './owner-payment-options/owner-payment-options.component';
 import { BidsPipePipe } from './pipes/bids-pipe.pipe';
-import { DepositPipePipe } from './pipes/deposit-pipe.pipe';
+import { WalletPipePipe } from './pipes/wallet-pipe.pipe';
 import { OwnersComponent } from './owners/owners.component';
 import { OwnerPipePipe } from './pipes/owner-pipe.pipe';
 import { TransactionsPipePipe } from './pipes/transactions-pipe.pipe';
@@ -103,12 +103,12 @@ import { MarkdownModule } from 'ngx-markdown';
     AuctionPipePipe,
     ItemPipePipe,
     PaymentTransactionsComponent,
-    DepositsComponent,
     WalletsComponent,
+    DepositsComponent,
     InvoicesComponent,
     OwnerPaymentOptionsComponent,
     BidsPipePipe,
-    DepositPipePipe,
+    WalletPipePipe,
     OwnersComponent,
     OwnerPipePipe,
     TransactionsPipePipe,
@@ -175,8 +175,8 @@ import { MarkdownModule } from 'ngx-markdown';
       { path: 'message-details', component: MessageDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-details', component: PaymentDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
-      { path: 'wallets', component: WalletsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'deposits', component: DepositsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'wallets', component: WalletsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'print_invoice', component: PrintComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoice-details', component: InvoiceDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
