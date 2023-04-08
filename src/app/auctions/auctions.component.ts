@@ -362,7 +362,7 @@ export class AuctionsComponent implements OnInit {
 
   searchAuction() {
     if (this.auctionFilter.length >= 3) {
-      let field = 'code';
+      let field = 'code,owner_code,details,title,description';
       let value = this.auctionFilter;
 
       this.filter_config.queries = `${field},like,${value}`;

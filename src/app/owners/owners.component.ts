@@ -289,7 +289,7 @@ export class OwnersComponent implements OnInit {
 
   searchOwner() {
     if (this.ownerFilter.length >= 3) {
-      let field = 'email,code';
+      let field = 'title,description,email,code';
       let value = this.ownerFilter;
 
       this.filter_config.queries = `${field},like,${value}`;
