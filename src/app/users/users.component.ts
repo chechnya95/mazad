@@ -307,7 +307,7 @@ export class UsersComponent implements OnInit {
 
   searchUser() {
     if (this.userFilter.length >= 3) {
-      let field = 'email,phone';
+      let field = 'name,email,phone';
       let value = this.userFilter;
 
       this.filter_config.queries = `${field},like,${value}`;
