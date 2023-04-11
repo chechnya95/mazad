@@ -193,7 +193,7 @@ export class UsersComponent implements OnInit {
       user_type: this.user.user_type,
       credibility: this.user.credibility,
       user_details: JSON.stringify(this.user_details),
-      active: this.user.status
+      is_active: this.user.status
     }
 
     const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -274,7 +274,7 @@ export class UsersComponent implements OnInit {
       user_details: JSON.stringify(this.edit_user_details),
       user_type: this.edit_user.user_type,
       credibility:this.edit_user.credibility,
-      status: this.edit_user.status
+      is_active: this.edit_user.status
     }
 
     const sub = this.api.update('users/admin/' + id, body, this.token).subscribe(
