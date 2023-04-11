@@ -437,7 +437,7 @@
                                                 <select name="status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.status">
-                                                    <option [value]="1">{{ "activee"| translate}}</option>
+                                                    <option [value]="1">{{ "active"| translate}}</option>
                                                     <option [value]="0">{{ "not_active"| translate}}</option>
                                                 </select>
                                                 <!--end::Input-->
@@ -660,7 +660,7 @@
                                                 <select name="status"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_user.status">
-                                                    <option [value]="1">{{ "activee"| translate}}</option>
+                                                    <option [value]="1">{{ "active"| translate}}</option>
                                                     <option [value]="0">{{ "not_active"| translate}}</option>
                                                 </select>
                                                 <!--end::Input-->
@@ -767,7 +767,7 @@
                             <!--end::Last login=-->
                             <!--begin::Two step=-->
                             <td>
-                                <div *ngIf="user.is_active==1" class="badge badge-light-success fw-bolder">{{ "activee"| translate}}</div>
+                                <div *ngIf="user.is_active==1" class="badge badge-light-success fw-bolder">{{ "active"| translate}}</div>
                                 <div *ngIf="user.is_active==0" class="badge badge-light-danger fw-bolder">{{ "not_active"| translate}}</div>
                             </td>
                             <!--end::Two step=-->
