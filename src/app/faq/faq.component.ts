@@ -129,7 +129,7 @@ export class FaqComponent implements OnInit {
   }
 
   async getContent(id: any) {
-    const sub = this.api.get('faqs/topics/' + id, this.token).subscribe(
+    const sub = this.api.get('faqs/topic/' + id, this.token).subscribe(
       async data => {
         let objects: any = {
           faqs: []
