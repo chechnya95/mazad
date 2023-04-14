@@ -135,7 +135,7 @@ export class FaqComponent implements OnInit {
           faqs: []
         }
         objects = data;
-        this.contents = objects.faqs;
+        this.contents = objects.faqs[0].faqs;
       },
       async error => { }
     );
@@ -197,6 +197,16 @@ export class FaqComponent implements OnInit {
       async data => {
         this.successMessage = true;
         this.getTopics();
+      },
+      async error => { this.errorMessage = true; }
+    );
+  }
+  
+  removeContent(topic_id: any, id: any) {
+    this.api.delete('faqs/' + id, this.token).subscribe(
+      async data => {
+        this.successMessage = true;
+        this.getContent(topic_id);
       },
       async error => { this.errorMessage = true; }
     );

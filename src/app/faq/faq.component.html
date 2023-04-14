@@ -256,6 +256,23 @@
                             </td>
                             <!--begin::Action=-->
                             <td class="text-end">
+                                <a data-bs-toggle="modal" data-bs-target="#kt_modal_view_content"
+                                    (click)="getContent(topic.id)"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                    <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
+                                    <span class="svg-icon svg-icon-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                            viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <rect x="0" y="0" width="24" height="24" />
+                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                <rect fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
+                                                <rect fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
+                                            </g>
+                                        </svg><!--end::Svg Icon-->
+                                    </span>
+                                </a>
                                 <a data-bs-toggle="modal" data-bs-target="#kt_modal_add_user_to_group"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
@@ -394,6 +411,122 @@
                                                                 <span
                                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                                         </button>
+                                                    </div>
+                                                    <!--end::Actions-->
+                                                </form>
+                                                <!--end::Form-->
+                                            </div>
+                                            <!--end::Modal body-->
+                                        </div>
+                                        <!--end::Modal content-->
+                                    </div>
+                                    <!--end::Modal dialog-->
+                                </div>
+                                <!--end::Modal - Add task-->
+                                <!--begin::Modal - Add task-->
+                                <div class="modal fade" id="kt_modal_view_content" tabindex="-1" aria-hidden="true">
+                                    <!--begin::Modal dialog-->
+                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                        <!--begin::Modal content-->
+                                        <div class="modal-content">
+                                            <!--begin::Modal header-->
+                                            <div class="modal-header" id="kt_modal_add_user_to_group_header">
+                                                <!--begin::Modal title-->
+                                                <h2 class="fw-bolder">Topic Contents</h2>
+                                                <!--end::Modal title-->
+                                                <!--begin::Close-->
+                                                <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                    data-bs-dismiss="modal">
+                                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                                    <span class="svg-icon svg-icon-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                            height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                                                fill="#000000">
+                                                                <rect fill="#000000" x="0" y="7" width="16" height="2"
+                                                                    rx="1" />
+                                                                <rect fill="#000000" opacity="0.5"
+                                                                    transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                                                    x="0" y="7" width="16" height="2" rx="1" />
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </div>
+                                                <!--end::Close-->
+                                            </div>
+                                            <!--end::Modal header-->
+                                            <!--begin::Modal body-->
+                                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                <!--begin::Form-->
+                                                <form id="kt_modal_add_blacklist_form" class="form" action="#">
+                                                    <!--begin::Scroll-->
+                                                    <div class="d-flex flex-column scroll-y me-n7 pe-7"
+                                                        id="kt_modal_add_blacklist_scroll" data-kt-scroll="true"
+                                                        data-kt-scroll-activate="{default: false, lg: true}"
+                                                        data-kt-scroll-max-height="auto"
+                                                        data-kt-scroll-dependencies="#kt_modal_add_blacklist_header"
+                                                        data-kt-scroll-wrappers="#kt_modal_add_blacklist_scroll"
+                                                        data-kt-scroll-offset="300px">
+                                                        <div class="fv-row mb-7">
+                                                            <!--begin::Label-->
+                                                            <table
+                                                                class="table align-middle table-row-dashed fs-6 gy-5">
+                                                                <thead>
+                                                                    <!--begin::Table row-->
+                                                                    <tr
+                                                                        class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                                        <th class="min-w-125px" colspan="2">Title</th>
+                                                                        <th class="text-end min-w-100px">Actions</th>
+                                                                    </tr>
+                                                                    <!--end::Table row-->
+                                                                </thead>
+                                                                <tbody class="text-gray-600 fw-bold">
+                                                                    <tr *ngFor="let content of contents">
+                                                                        <td>{{content.content.en}}</td>
+                                                                        <td>{{content.content.ar}}</td>
+                                                                        <td>
+                                                                            <a (click)="removeContent(topic.id, content.id)"
+                                                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                                                <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                                                                <span class="svg-icon svg-icon-3">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                        width="24px" height="24px"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        version="1.1">
+                                                                                        <g stroke="none"
+                                                                                            stroke-width="1" fill="none"
+                                                                                            fill-rule="evenodd">
+                                                                                            <rect x="0" y="0" width="24"
+                                                                                                height="24"></rect>
+                                                                                            <path
+                                                                                                d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
+                                                                                                fill="#000000"
+                                                                                                fill-rule="nonzero">
+                                                                                            </path>
+                                                                                            <path
+                                                                                                d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                                                                                fill="#000000"
+                                                                                                opacity="0.3"></path>
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                <!--end::Svg Icon-->
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <!--end::Input-->
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Scroll-->
+                                                    <!--begin::Actions-->
+                                                    <div class="text-center pt-15">
+                                                        <button type="reset" class="btn btn-white me-3"
+                                                            data-bs-dismiss="modal">Discard</button>
                                                     </div>
                                                     <!--end::Actions-->
                                                 </form>
