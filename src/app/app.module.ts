@@ -69,7 +69,8 @@ import { StylePaginatorDirective } from './common/style-paginator.directive';
 import { UppyAngularDashboardModule } from '@uppy/angular';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { SecurityContext } from '@angular/core';
-import { MarkdownModule } from 'ngx-markdown'; 
+import { MarkdownModule } from 'ngx-markdown';
+import { FaqComponent } from './faq/faq.component'; 
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { MarkdownModule } from 'ngx-markdown';
     MessageDetailsComponent,
     GeneralSettingsComponent,
     PrintComponent,
-    StylePaginatorDirective
+    StylePaginatorDirective,
+    FaqComponent
   ],
   imports: [
     UppyAngularDashboardModule,
@@ -189,6 +191,7 @@ import { MarkdownModule } from 'ngx-markdown';
       { path: 'children', component: ChildernComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'winners', component: WinnersComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'faqs', component: FaqComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'welcome', component: WelcomeComponent },
