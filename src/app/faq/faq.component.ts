@@ -17,7 +17,7 @@ export class FaqComponent implements OnInit {
 
   token: any;
   topics: any[] = [];
-  contents: any[] = [];
+  faqs: any[] = [];
 
   filter_config: any;
 
@@ -27,6 +27,17 @@ export class FaqComponent implements OnInit {
   }
   
   faq = {
+    faq_topic_id: '0',
+    question_en: null,
+    question_ar: null,
+    content_en: null,
+    content_ar: null
+  
+  }
+  edit_faq = {
+    faq_topic_id: '0',
+    question_en: null,
+    question_ar: null,
     content_en: null,
     content_ar: null
   }
@@ -37,6 +48,7 @@ export class FaqComponent implements OnInit {
   }
 
   edit_topic_id: any;
+  edit_faq_id: any;
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -75,18 +87,12 @@ export class FaqComponent implements OnInit {
       totalItems: 0,
       sort: null,
       sort_order: 'asc',
-      pageSizeOptions: [5, 10, 25, 100]
+      pageSizeOptions: [5, 10, 25, 10]
     };
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      let id = params['id'] != null ? params['id'] : null;
-      if (id) {
-        this.getTopics(id);
-      }
-      else { this.getTopics(); }
-    })
+    this.getTopics();
   }
 
   getHttpParams() {
@@ -111,36 +117,33 @@ export class FaqComponent implements OnInit {
     this.getTopics();
   }
 
-  getTopics(id?: any) {
+  getTopics() {
     this.utility.loader = true;
-    const sub = this.api.get('faqs/topic/', this.token, { params: this.getHttpParams() }).subscribe(
+    const sub = this.api.get('faqs/topic/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.topics = objects['faq_topics'];
         this.filter_config.totalItems = objects['filters']['total_results'];
-
-        if (id)
-          this.topics = this.topics.filter(i => i.id === id);
       },
       async error => { }
     );
 
-    sub.add(() => { this.utility.loader = false; });
+    sub.add(() => { this.getContent(); });
   }
 
-  async getContent(id: any) {
-    const sub = this.api.get('faqs/topic/' + id, this.token).subscribe(
+  async getContent() {
+    const sub = this.api.get('faqs/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects: any = {
           faqs: []
         }
         objects = data;
-        this.contents = objects.faqs[0].faqs;
+        this.faqs = objects.faqs;
       },
       async error => { }
     );
 
-    sub.add(() => { });
+    sub.add(() => { this.utility.loader = false; });
   }
 
   OnSubmit() {
@@ -165,6 +168,16 @@ export class FaqComponent implements OnInit {
     this.edit_topic.title_en = topic.title.en;
   }
 
+  editFaqClicked(faq: any) {
+    this.edit_faq = faq;
+    this.edit_faq_id = faq.id;
+
+    this.edit_faq.question_ar = faq.question.ar;
+    this.edit_faq.question_en = faq.question.en;
+    this.edit_faq.content_ar = faq.content.ar;
+    this.edit_faq.content_en = faq.content.en;
+  }
+
   OnUpdate(id: any) {
     let body = {
       title: { 'en': this.edit_topic.title_en, 'ar': this.edit_topic.title_ar }
@@ -178,15 +191,17 @@ export class FaqComponent implements OnInit {
     sub.add(() => { this.getTopics(); });
   }
 
-  addContentToTopic(topic_id: any) {
+  addContentToTopic() {
     let body = {
-      faq_topic_id: topic_id,
+      faq_topic_id: this.faq.faq_topic_id,
+      question: { 'en': this.faq.question_en, 'ar': this.faq.question_ar },
       content: { 'en': this.faq.content_en, 'ar': this.faq.content_ar }
     }
 
     this.api.post('faqs/', body, this.token).subscribe(
       async data => {
         this.successMessage = true;
+        this.getTopics();
       },
       async error => { this.errorMessage = true; }
     );
@@ -202,13 +217,28 @@ export class FaqComponent implements OnInit {
     );
   }
   
-  removeContent(topic_id: any, id: any) {
+  removeFaq(id: any) {
     this.api.delete('faqs/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
-        this.getContent(topic_id);
+        this.getContent();
       },
       async error => { this.errorMessage = true; }
     );
+  }
+
+  UpdateFAQ(id: any) {
+    let body = {
+      faq_topic_id: this.edit_faq.faq_topic_id,
+      question: { 'en': this.edit_faq.question_en, 'ar': this.edit_faq.question_ar },
+      content: { 'en': this.edit_faq.content_en, 'ar': this.edit_faq.content_ar }
+    }
+
+    const sub = this.api.update('faqs/' + id, body, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { this.errorMessage = true; }
+    );
+
+    sub.add(() => { this.getTopics(); });
   }
 }
