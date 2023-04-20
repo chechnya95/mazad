@@ -27,7 +27,7 @@ export class ItemsComponent implements OnInit {
     order: null
   }
 
-  itemFilter = 'code,owner_code,title,description';
+  itemFilter = '';
 
   errorText: any;
   errorMessage: boolean = false;

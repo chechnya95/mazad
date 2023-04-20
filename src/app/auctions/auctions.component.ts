@@ -7,6 +7,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
 import { TranslateService } from '@ngx-translate/core';
+import { MdEditorOption } from 'ngx-markdown-editor';
 
 @Component({
   selector: 'app-auctions',
@@ -75,6 +76,27 @@ export class AuctionsComponent implements OnInit {
   owner_name = null;
 
   isOwner: boolean = false;
+
+  public options: MdEditorOption = {
+    showPreviewPanel: true,
+    enablePreviewContentClick: false,
+    usingFontAwesome5: true,
+    fontAwesomeVersion: '5',
+    resizable: true,
+    customRender: {
+      image: function (href: string, title: string, text: string) {
+        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
+        if (title) {
+          out += ` title="${title}"`;
+        }
+        //console.log(this);
+        // out += (<any>this.options).xhtml ? '/>' : '>';
+        return out;
+      },
+    },
+  };
+  public mode: string = 'editor';
+  public markdownText: any;
 
   Swal = require('sweetalert2')
 

@@ -27,7 +27,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-item-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item"
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item[code,owner_code,title,description]"
                             [(ngModel)]="itemFilter" />
                     </div>
                     <!--end::Search-->
@@ -331,6 +331,7 @@
                                         data-kt-check-target="#kt_table_items .form-check-input" value="1" />
                                 </div>
                             </th>
+                            <th mat-sort-header="title" >{{ "Item Name" | translate }}</th>
                             <th mat-sort-header="code" >{{ "Item Code" | translate }}</th>
                             <th mat-sort-header="start_date" >{{ "Start Date" | translate }}</th>
                             <th mat-sort-header="end_date" > {{ "End Date" | translate }}</th>
@@ -355,6 +356,10 @@
                                 </div>
                             </td>
                             <!--end::Checkbox-->
+                            <td>
+                                {{ item.title.en }} <br>
+                                {{ item.title.ar }}
+                            </td>
                             <!--begin::item=-->
                             <td>
                                 <div class="badge badge-light fw-bolder"><a [routerLink]="['/item-details']"
