@@ -48,6 +48,10 @@ export class SliderComponent implements OnInit {
     url: null
   }
 
+  type = {
+    name: null
+  }
+
   image: any;
   edit_image: any;
   Swal = require('sweetalert2')
@@ -139,10 +143,33 @@ export class SliderComponent implements OnInit {
           this.getSliderImages();
         },
         async error => {
-          console.log("POST medias: " + error);
+          Swal.fire({
+            title: 'Error...',
+            text: 'ERROR: cannot connect!'
+          });
         }
       );
     }
+  }
+
+  AddSliderType() {
+    const body = { name: this.type.name }
+
+    this.api.post("sliders/slider_types/", body, this.token).subscribe(
+      async data => {
+        this.getSliderTypes();
+        Swal.fire(
+          'Success!',
+          'Request Sent Successflly!'
+        );
+      },
+      async error => {
+        Swal.fire({
+          title: 'Error...',
+          text: 'ERROR: cannot connect!'
+        });
+      }
+    );
   }
 
   imageChange(event: any) {
@@ -251,12 +278,30 @@ export class SliderComponent implements OnInit {
           'Request Sent Successflly!'
         );
       },
-      async error => { 
+      async error => {
         Swal.fire({
           title: 'Error...',
           text: 'ERROR: cannot connect!'
         });
-       }
+      }
+    );
+  }
+
+  removeType(name: any) {
+    this.api.delete('sliders/slider_types/' + name, this.token).subscribe(
+      async data => {
+        this.getSliderTypes();
+        Swal.fire(
+          'Success!',
+          'Request Sent Successflly!'
+        );
+      },
+      async error => {
+        Swal.fire({
+          title: 'Error...',
+          text: 'ERROR: cannot connect!'
+        });
+      }
     );
   }
 }
