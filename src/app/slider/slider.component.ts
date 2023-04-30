@@ -4,6 +4,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-slider',
@@ -49,6 +50,7 @@ export class SliderComponent implements OnInit {
 
   image: any;
   edit_image: any;
+  Swal = require('sweetalert2')
 
   constructor(public utility: UtilitiesService, public api: ApiService) {
     this.utility.show = true;
@@ -101,7 +103,7 @@ export class SliderComponent implements OnInit {
   }
 
   getSliderImages() {
-    this.api.get('sliders/', this.token, { params: this.getHttpParams()}).subscribe(
+    this.api.get('sliders/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.sliders = objects['sliders'];
@@ -238,5 +240,23 @@ export class SliderComponent implements OnInit {
     }
 
     sub.add(() => { this.getSliderImages(); });
+  }
+
+  deleteItem(id: any) {
+    this.api.delete('sliders/' + id, this.token).subscribe(
+      async data => {
+        this.getSliderImages();
+        Swal.fire(
+          'Success!',
+          'Request Sent Successflly!'
+        );
+      },
+      async error => { 
+        Swal.fire({
+          title: 'Error...',
+          text: 'ERROR: cannot connect!'
+        });
+       }
+    );
   }
 }
