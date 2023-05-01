@@ -208,7 +208,7 @@ export class FaqComponent implements OnInit {
   }
 
   removeTopic(id) {
-    this.api.delete('faqs/topic' + id, this.token).subscribe(
+    this.api.delete('faqs/topic/' + id, this.token).subscribe(
       async data => {
         this.successMessage = true;
         this.getTopics();
