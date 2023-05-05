@@ -452,7 +452,7 @@
                                                 <select name="group_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="auction.group_id">
-                                                    <option>-- SELECT --</option>
+                                                    <option value="">-- SELECT --</option>
                                                     <option *ngFor="let group of groups" [ngValue]='group.id'>{{
                                                         group.title.en }} - {{ group.title.ar }}</option>
                                                 </select>
