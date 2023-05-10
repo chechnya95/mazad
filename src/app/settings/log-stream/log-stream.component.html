@@ -1,0 +1,60 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container">
+        <!--begin::Navbar-->
+        <app-setting-header></app-setting-header>
+        <!--end::Navbar-->
+        <!--begin::Basic info-->
+        <div class="card mb-5 mb-xl-10">
+            <!--begin::Card header-->
+            <div class="card-header border-0 cursor-pointer" role="button" data-bs-target="#kt_account_profile_details"
+                aria-expanded="true" aria-controls="kt_account_profile_details">
+                <!--begin::Card title-->
+                <div class="card-title m-0">
+                    <h3 class="fw-bolder m-0">Logs Stream</h3>
+                </div>
+                <!--end::Card title-->
+            </div>
+            <!--begin::Card header-->
+            <!--begin::Content-->
+            <div id="kt_account_profile_details" class="collapse show">
+                <div class="post d-flex flex-column-fluid" id="kt_post">
+                    <!--begin::Container-->
+                    <div id="kt_content_container" class="container">
+                        <!--begin::Card-->
+                        <div class="card">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0 pt-6">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                </div>
+                                <!--begin::Card title-->
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <!--begin::Toolbar-->
+                                    <div class="d-flex justify-content-end" data-kt-template-table-toolbar="base">
+                                    </div>
+                                    <!--end::Toolbar-->
+                                </div>
+                                <!--end::Card toolbar-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <pre>{{ logs }}</pre>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                </div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Basic info-->
+    </div>
+    <!--end::Container-->
+</div>
+<!-- spinnner element is defined with id loading -->
+<div *ngIf="this.utility.loader" class="loading"></div>

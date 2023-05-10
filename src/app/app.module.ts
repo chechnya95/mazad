@@ -70,7 +70,8 @@ import { UppyAngularDashboardModule } from '@uppy/angular';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { SecurityContext } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
-import { FaqComponent } from './faq/faq.component'; 
+import { FaqComponent } from './faq/faq.component';
+import { LogStreamComponent } from './settings/log-stream/log-stream.component'; 
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { FaqComponent } from './faq/faq.component';
     GeneralSettingsComponent,
     PrintComponent,
     StylePaginatorDirective,
-    FaqComponent
+    FaqComponent,
+    LogStreamComponent
   ],
   imports: [
     UppyAngularDashboardModule,
@@ -173,6 +175,7 @@ import { FaqComponent } from './faq/faq.component';
       { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'general-settings', component: GeneralSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'log-stream' , component: LogStreamComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'message-details', component: MessageDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
