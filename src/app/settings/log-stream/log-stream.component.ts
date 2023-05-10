@@ -21,7 +21,7 @@ export class LogStreamComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.eventSource = new EventSource(environment.API_URL + 'admins/gcp/log_stream');
+    this.eventSource = new EventSource(environment.API_URL + 'admins/gcp/log_stream/');
     this.eventSource.onmessage = (event) => {
       //this.logs += event.data + '\n';
       this.zone.run(() => {
