@@ -11,6 +11,7 @@ export class MonitorsComponent implements OnInit {
 
   token: any;
   jobs: any[] = [];
+  redis: any[] = [];
   
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -30,7 +31,18 @@ export class MonitorsComponent implements OnInit {
       },
       async error => { }
     );
+    sub.add(() => { this.getRedis(); });
+  }
 
+  getRedis() {
+    const sub = this.api.get('admins/redis', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.redis = objects;
+        console.log(objects);
+      },
+      async error => { }
+    );
   }
 
 }
