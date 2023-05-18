@@ -71,7 +71,8 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { SecurityContext } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FaqComponent } from './faq/faq.component';
-import { LogStreamComponent } from './settings/log-stream/log-stream.component'; 
+import { LogStreamComponent } from './settings/log-stream/log-stream.component';
+import { MonitorsComponent } from './settings/monitors/monitors.component'; 
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import { LogStreamComponent } from './settings/log-stream/log-stream.component';
     PrintComponent,
     StylePaginatorDirective,
     FaqComponent,
-    LogStreamComponent
+    LogStreamComponent,
+    MonitorsComponent
   ],
   imports: [
     UppyAngularDashboardModule,
@@ -176,6 +178,7 @@ import { LogStreamComponent } from './settings/log-stream/log-stream.component';
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'general-settings', component: GeneralSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'log-stream' , component: LogStreamComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'monitors' , component: MonitorsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'message-details', component: MessageDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
