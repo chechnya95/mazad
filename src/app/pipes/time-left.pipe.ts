@@ -28,6 +28,7 @@ export class TimeLeftPipe implements PipeTransform {
       if (result || minutes > 0) result += `${minutes} minute(s), `;
       result += `${seconds} second(s) left`;
 
+      //return `${days} day(s), ${hours} hour(s), ${minutes} minute(s), ${seconds} second(s) left`;
       return result;
   }
   return (endTime ?? '').toString();
