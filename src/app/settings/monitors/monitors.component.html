@@ -86,7 +86,7 @@
                                         <tr *ngFor="let job of jobs">
                                             <td>{{ job.id }}</td>
                                             <td>{{ job.name }}</td>
-                                            <td>{{ job.next_run_time }} <br> {{ job.next_run_time | timeDiff }}</td>
+                                            <td>{{ job.next_run_time }} <br> {{ job.next_run_time | timeLeft }}</td>
                                             <td>{{ job.trigger }}</td>
                                         </tr>
                                     </tbody>

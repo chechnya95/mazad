@@ -72,7 +72,8 @@ import { SecurityContext } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FaqComponent } from './faq/faq.component';
 import { LogStreamComponent } from './settings/log-stream/log-stream.component';
-import { MonitorsComponent } from './settings/monitors/monitors.component'; 
+import { MonitorsComponent } from './settings/monitors/monitors.component';
+import { TimeLeftPipe } from './pipes/time-left.pipe';
 
 @NgModule({
   declarations: [
@@ -132,7 +133,8 @@ import { MonitorsComponent } from './settings/monitors/monitors.component';
     StylePaginatorDirective,
     FaqComponent,
     LogStreamComponent,
-    MonitorsComponent
+    MonitorsComponent,
+    TimeLeftPipe
   ],
   imports: [
     UppyAngularDashboardModule,
