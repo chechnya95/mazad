@@ -538,7 +538,7 @@
                                                 <div class="m-0">
                                                     <!--begin::Heading-->
                                                     <div class="d-flex align-items-center collapsible py-3 toggle mb-0"
-                                                        data-bs-toggle="collapse" data-bs-target="#kt_support_1_1"
+                                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#kt_support_' + template.id"
                                                         aria-expanded="false">
                                                         <!--begin::Icon-->
                                                         <div class="ms-n1 me-5">
@@ -602,7 +602,7 @@
                                                     </div>
                                                     <!--end::Heading-->
                                                     <!--begin::Body-->
-                                                    <div id="kt_support_1_1" class="fs-6 ms-10 collapse">
+                                                    <div [id]="'kt_support_' + template.id" class="fs-6 ms-10 collapse">
                                                         <!--begin::Block-->
                                                         <div class="mb-4">
                                                             <!--begin::Text-->
