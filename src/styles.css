@@ -70,3 +70,10 @@
     transform: rotate(1800deg);
   }
 }
+
+@media print {
+  body {
+      -webkit-print-color-adjust: exact; /* Chrome, Safari */
+      color-adjust: exact; /* Firefox */
+  }
+}
