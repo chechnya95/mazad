@@ -3,6 +3,8 @@
 npm install
 
 ng serve --configuration production
+ng serve --configuration staging
+
 # Docker
 ```
 docker build -t mazad-oman-dashboard:latest --build-arg CONFIG_ENV=production .

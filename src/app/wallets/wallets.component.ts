@@ -64,6 +64,9 @@ export class WalletsComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
   pageChangeEvent(event: PageEvent) {
@@ -163,5 +166,20 @@ export class WalletsComponent implements OnInit {
       async data => { this.successMessage = true; },
       async errr => {  this.errorMessage = true; }
     );
+  }
+
+  searchItems() {
+    if (this.walletFilter.length >= 3) {
+      let field = 'user.phone,transaction_id';
+      let value = this.walletFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getWallets();
+    }
+
+    if (this.walletFilter == '' || this.walletFilter == null) {
+      this.filter_config.queries = null;
+      this.getWallets();
+    }
   }
 }

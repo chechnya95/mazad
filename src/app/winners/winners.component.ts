@@ -27,7 +27,8 @@ export class WinnersComponent implements OnInit {
     message: null
   }
 
-  Swal = require('sweetalert2')
+  Swal = require('sweetalert2');
+  itemFilter: any;
 
   constructor(public api: ApiService,
     public utility: UtilitiesService) {
@@ -56,6 +57,9 @@ export class WinnersComponent implements OnInit {
     if (this.filter_config.sort) {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
     }
     return params;
   }
@@ -135,5 +139,20 @@ export class WinnersComponent implements OnInit {
         
       }
     );
+  }
+
+  searchItems() {
+    if (this.itemFilter.length >= 3) {
+      let field = 'title,code,item_status,owner_code';
+      let value = this.itemFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getWinners();
+    }
+
+    if (this.itemFilter == '' || this.itemFilter == null) {
+      this.filter_config.queries = null;
+      this.getWinners();
+    }
   }
 }

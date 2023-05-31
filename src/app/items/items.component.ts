@@ -62,6 +62,9 @@ export class ItemsComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
   async getItems() {
@@ -165,5 +168,20 @@ export class ItemsComponent implements OnInit {
   saveItem(item: any) {
     localStorage.removeItem('item-edit');
     localStorage.setItem('item-edit', JSON.stringify(item));
+  }
+
+  searchItems() {
+    if (this.itemFilter.length >= 3) {
+      let field = 'title,code,item_status,owner_code';
+      let value = this.itemFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getItems();
+    }
+
+    if (this.itemFilter == '' || this.itemFilter == null) {
+      this.filter_config.queries = null;
+      this.getItems();
+    }
   }
 }
