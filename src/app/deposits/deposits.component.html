@@ -28,7 +28,8 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Deposit
+                            <!--end::Svg Icon--> 
+                            {{ "Add Deposit" | translate }}
                         </button>
                     </div>
                 </div>
@@ -50,12 +51,12 @@
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                             <th>id</th>
-                                            <th mat-sort-header="username">User</th>
-                                            <th mat-sort-header="auction_id">Auction</th>
-                                            <th mat-sort-header="amount">Amount</th>
-                                            <th mat-sort-header="status">Status</th>
-                                            <th mat-sort-header="note">Note</th>
-                                            <th mat-sort-header="create_date">Create Date</th>
+                                            <th mat-sort-header="username"> {{ "User" | translate }}</th>
+                                            <th mat-sort-header="auction_id"> {{ "Auction" | translate }}</th>
+                                            <th mat-sort-header="amount"> {{ "Amount" | translate }}</th>
+                                            <th mat-sort-header="status"> {{ "Status" | translate }}</th>
+                                            <th mat-sort-header="note"> {{ "Note" | translate }}</th>
+                                            <th mat-sort-header="create_date"> {{ "Create Date" | translate }}</th>
                                             <!-- <th class="text-end">Actions</th> -->
                                         </tr>
                                         <!--end::Table row-->
@@ -90,7 +91,7 @@
                                                             <!--begin::Modal header-->
                                                             <div class="modal-header" id="kt_modal_note_details_header">
                                                                 <!--begin::Modal title-->
-                                                                <h2 class="fw-bolder">Deposit Note Details</h2>
+                                                                <h2 class="fw-bolder"> {{ "Deposit Note Details" | translate }}</h2>
                                                                 <!--end::Modal title-->
                                                                 <!--begin::Close-->
                                                                 <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -220,7 +221,7 @@
                         <!--begin::Modal header-->
                         <div class="modal-header">
                             <!--begin::Modal title-->
-                            <h2 class="fw-bolder">Add Deposit</h2>
+                            <h2 class="fw-bolder">{{ "Add Deposit" | translate }}</h2>
                             <!--end::Modal title-->
                             <!--begin::Close-->
                             <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -257,7 +258,7 @@
                                 data-kt-scroll-offset="300px">
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">User</label>
+                                    <label class="required fw-bold fs-6 mb-2">{{ "User" | translate }}</label>
                                     <!--end::Label-->
                                     <input class="form-control header-color" [(ngModel)]="user_contact" (keyup.enter)="onChange()"
                                         (change)="onChange()" list="usersList" id="usersList_id"
@@ -279,7 +280,7 @@
                                 </div>
                                 <div class="fv-row mb-10">
                                     <label class="fs-5 fw-bolder form-label mb-2">
-                                        <span class="required">Amount</span>
+                                        <span class="required">{{ "Amount" | translate }}</span>
                                     </label>
                                     <input type="number" name="amount"
                                         class="form-control form-control-solid mb-3 mb-lg-0"
@@ -293,7 +294,7 @@
                                     data-bs-dismiss="modal">Discard</button>
                                 <button type="submit" class="btn btn-primary"
                                     (click)="onSubmit()" data-kt-roles-modal-action="submit">
-                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-label">{{ "Submit" | translate }}</span>
                                     <span class="indicator-progress">Please wait...
                                         <span
                                             class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -368,7 +369,7 @@
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div><button type="button"
                             class="swal2-confirm btn btn-primary" (click)="successMessage=false"
-                            style="display: inline-block;">Ok</button>
+                            style="display: inline-block;">{{ "Ok" | translate }}</button>
                     </div>
                 </div>
             </div>
