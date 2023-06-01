@@ -74,6 +74,7 @@ import { FaqComponent } from './faq/faq.component';
 import { LogStreamComponent } from './settings/log-stream/log-stream.component';
 import { MonitorsComponent } from './settings/monitors/monitors.component';
 import { TimeLeftPipe } from './pipes/time-left.pipe';
+import { SendNotificationsComponent } from './send-notifications/send-notifications.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { TimeLeftPipe } from './pipes/time-left.pipe';
     FaqComponent,
     LogStreamComponent,
     MonitorsComponent,
-    TimeLeftPipe
+    TimeLeftPipe,
+    SendNotificationsComponent
   ],
   imports: [
     UppyAngularDashboardModule,
@@ -190,6 +192,7 @@ import { TimeLeftPipe } from './pipes/time-left.pipe';
       { path: 'invoices', component: InvoicesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'print_invoice', component: PrintComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'invoice-details', component: InvoiceDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'notifications', component: SendNotificationsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'fields', component: FieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'owner-payment-options', component: OwnerPaymentOptionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'form-fields', component: FormFieldsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

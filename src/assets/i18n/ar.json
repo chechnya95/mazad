@@ -191,5 +191,13 @@
     "refund": "مسترجع",
     "Filter": "تصفية",
     "filter_dates": "بحث بالتاريخ",
-    "Clear Filters": "حذف التصفية"
+    "Clear Filters": "حذف التصفية",
+
+    "SendMessages": "إرسال الرسائل",
+    "text_message": "نص الرسالة",
+    "numbers_with_comma": "المتلقي (يفصل بـ;)",
+    "send_sms": "إرسال رسالة نصية",
+    "send_email": "إرسال بريد الكتروني",
+    "language": "لغة الرسالة",
+    "subject": "العنوان"
 }

@@ -71,5 +71,13 @@
 
      "Filter": "Filter",
      "filter_dates": "Filter Dates",
-     "Clear Filters": "Clear Filters"
+     "Clear Filters": "Clear Filters",
+
+     "SendMessages": "Send Notifictions",
+     "text_message": "Message Text",
+     "numbers_with_comma": "Receivers (Separated with ;)",
+     "send_sms": "Send SMS",
+     "send_email": "Send Email",
+     "language": "language",
+     "subject": "Subject"
 }
