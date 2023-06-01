@@ -48,5 +48,28 @@
      "wallet": "wallet",
      "showpage": "show page",
      "Digital Leadership LLC":"Digital Leadership LLC",
-     "faqs": "FAQs"
+     "faqs": "FAQs",
+
+     
+     "deleted": "deleted",
+     "draft": "draft",
+     "publish": "publish",
+     "open": "open",
+     "bid": "bid",
+     "approval": "approval",
+     "reject": "reject",
+     "payment": "payment",
+     "payment_overdue": "payment overdue",
+     "transferred": "transferred",
+     "shipping": "shipping",
+     "dispute": "dispute",
+     "closed": "closed",
+     "sold": "sold",
+     "hold": "Hold",
+     "refund_pending": "Refund Pending",
+     "refund": "Refunded",
+
+     "Filter": "Filter",
+     "filter_dates": "Filter Dates",
+     "Clear Filters": "Clear Filters"
 }

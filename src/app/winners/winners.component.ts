@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import {Sort} from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
@@ -29,6 +29,9 @@ export class WinnersComponent implements OnInit {
 
   Swal = require('sweetalert2');
   itemFilter: any;
+
+  start_date: any;
+  end_date: any;
 
   constructor(public api: ApiService,
     public utility: UtilitiesService) {
@@ -61,6 +64,9 @@ export class WinnersComponent implements OnInit {
     if (this.filter_config.queries) {
       params = params.append('queries', this.filter_config.queries);
     }
+    if (this.filter_config.queries_2) {
+      params = params.append('queries', this.filter_config.queries_2);
+    }
     return params;
   }
   pageChangeEvent(event: PageEvent) {
@@ -68,7 +74,7 @@ export class WinnersComponent implements OnInit {
     this.filter_config.itemsPerPage = event.pageSize;
     this.getWinners();
   }
-  
+
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
@@ -77,13 +83,13 @@ export class WinnersComponent implements OnInit {
 
   getWinners() {
     this.utility.loader = true;
-    const sub = this.api.get('bids/winners', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('bids/winners', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.winners = objects['winners']['bids'];
         this.filter_config.totalItems = objects['winners']['filters']['total_results'];
       },
-      async error => {  }
+      async error => { }
     );
 
     sub.add(() => { this.getSMSTempalte(); this.utility.loader = false; });
@@ -97,7 +103,7 @@ export class WinnersComponent implements OnInit {
 
         this.sms.message = this.template.content.ar;
       },
-      async error => {  }
+      async error => { }
     );
   }
 
@@ -110,7 +116,7 @@ export class WinnersComponent implements OnInit {
 
   getMessage() {
     if (this.sms.local == 'EN') {
-      this.sms.message =this.template.content.en;
+      this.sms.message = this.template.content.en;
     }
     else {
       this.sms.message = this.template.content.ar;
@@ -136,7 +142,7 @@ export class WinnersComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
   }
@@ -154,5 +160,30 @@ export class WinnersComponent implements OnInit {
       this.filter_config.queries = null;
       this.getWinners();
     }
+  }
+
+  filterDates() {
+    if (this.start_date && this.end_date) {
+      let field_e = 'end_date';
+      let value_e = this.end_date;
+
+      let field_s = 'start_date';
+      let value_s = this.start_date;
+
+      this.filter_config.queries = `${field_s},ge,${value_s}`;
+      this.filter_config.queries_2 = `${field_e},le,${value_e}`;
+
+      this.getWinners();
+    }
+    else {
+      this.filter_config.queries = null;
+      this.getWinners();
+    }
+  }
+
+  clear() {
+    this.filter_config.queries = null;
+    this.filter_config.queries_2 = null;
+    this.getWinners();
   }
 }

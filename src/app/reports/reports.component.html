@@ -280,14 +280,14 @@
                                                 <td>{{ item.item.title.ar }}</td>
                                                 <td>{{ item.count_of_bids }}</td>
                                                 <td>{{ item.count_of_bidders }}</td>
-                                                <td>{{ item.amount }}</td>
-                                                <td>{{ item.total_vat }}</td>
-                                                <td>{{ item.mazad_vat }}</td>
-                                                <td>{{ item.owner_vat }}</td>
-                                                <td>{{ item.mazad }}</td>
-                                                <td>{{ item.total_without_vat }}</td>
-                                                <td>{{ item.total }}</td>
-                                                <td>{{ item.item.item_status }}</td>
+                                                <td>{{ item.amount | number:'1.3-3' }}</td>
+                                                <td>{{ item.total_vat | number:'1.3-3' }}</td>
+                                                <td>{{ item.mazad_vat | number:'1.3-3' }}</td>
+                                                <td>{{ item.owner_vat | number:'1.3-3' }}</td>
+                                                <td>{{ item.mazad | number:'1.3-3' }}</td>
+                                                <td>{{ item.total_without_vat | number:'1.3-3' }}</td>
+                                                <td>{{ item.total | number:'1.3-3' }}</td>
+                                                <td>{{ item.item.item_status | translate }}</td>
                                                 <td>{{ getDetails(item.details)?.name_ar }}</td>
                                                 <td>{{ getDetails(item.details).id_card_number }}</td>
                                                 <td>{{ item.phone}}</td>
