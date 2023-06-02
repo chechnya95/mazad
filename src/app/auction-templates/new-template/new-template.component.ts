@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
@@ -68,11 +69,13 @@ export class NewTemplateComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
     this.token = localStorage.getItem('access_token');
 
+    let lang = localStorage.getItem('lang');
+    this.translate.use(lang);
   }
 
   ngOnInit(): void {

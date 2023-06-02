@@ -37,6 +37,9 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.api.isExpiredWorker();
+    
+    let lang = localStorage.getItem('lang');
+    this.translate.use(lang);
   }
 
   switchLang(lang: string) {

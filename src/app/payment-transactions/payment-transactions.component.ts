@@ -46,6 +46,9 @@ export class PaymentTransactionsComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
   pageChangeEvent(event: PageEvent) {
@@ -77,5 +80,20 @@ export class PaymentTransactionsComponent implements OnInit {
   savePayment(payment: any) {
     localStorage.removeItem('payment');
     localStorage.setItem('payment', JSON.stringify(payment));
+  }
+
+  searchItems() {
+    if (this.transFilter.length >= 3) {
+      let field = 'id,reference_id,payment_gateway,payment_type';
+      let value = this.transFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getPayments();
+    }
+
+    if (this.transFilter == '' || this.transFilter == null) {
+      this.filter_config.queries = null;
+      this.getPayments();
+    }
   }
 }

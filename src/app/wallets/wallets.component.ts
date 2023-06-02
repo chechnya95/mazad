@@ -83,19 +83,13 @@ export class WalletsComponent implements OnInit {
 
   getWallets() {
     this.utility.loader = true;
-    const sub = this.api.get('wallets/', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('wallets/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.wallets = objects['wallets'];
         this.filter_config.totalItems = objects['filters']['total_results'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; this.getUsers(); });
@@ -109,7 +103,7 @@ export class WalletsComponent implements OnInit {
   adddNote(id: any) {
     const sub = this.api.update('wallets/' + id + '/note', { note: this.note }, this.token).subscribe(
       async data => { this.getWallets(); },
-      async errr => {  }
+      async errr => { }
     );
   }
 
@@ -131,7 +125,7 @@ export class WalletsComponent implements OnInit {
       async data => {
         this.successMessage = true;
       },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
     sub.add(() => { this.getWallets(); });
   }
@@ -156,7 +150,7 @@ export class WalletsComponent implements OnInit {
         });
       },
       async error => {
-        
+
       }
     );
   }
@@ -164,13 +158,13 @@ export class WalletsComponent implements OnInit {
   requestRefund(id: any) {
     this.api.post('wallets/' + id + '/refund', {}, this.token).subscribe(
       async data => { this.successMessage = true; },
-      async errr => {  this.errorMessage = true; }
+      async errr => { this.errorMessage = true; }
     );
   }
 
   searchItems() {
     if (this.walletFilter.length >= 3) {
-      let field = 'user.phone,transaction_id';
+      let field = 'user.phone';
       let value = this.walletFilter;
 
       this.filter_config.queries = `${field},like,${value}`;

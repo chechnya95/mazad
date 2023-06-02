@@ -26,7 +26,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-user-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search wallets"
+                            class="form-control form-control-solid w-250px ps-14" placeholder="User mobile no."
                             [(ngModel)]="walletFilter" (keyup)="searchItems()"/>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
                                         <tr
-                                            *ngFor="let wallet of wallets | walletPipe: walletFilter  ; let i = index;">
+                                            *ngFor="let wallet of wallets; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: wallet.user.id }">{{
                                                     wallet.user.phone }}</a></td>

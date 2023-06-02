@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 
 import { Uppy } from '@uppy/core'
 import { MdEditorOption } from 'ngx-markdown-editor';
+import { TranslateService } from '@ngx-translate/core';
 
 interface UploadResult {
   isImg: boolean
@@ -110,7 +111,7 @@ export class NewItemComponent implements OnInit {
   public mode: string = 'editor';
   public markdownText: any;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
@@ -127,6 +128,9 @@ export class NewItemComponent implements OnInit {
       console.log('Upload complete! We’ve uploaded these files:', result.successful)
       this.attachemetns = result.successful;
     })
+
+    let lang = localStorage.getItem('lang');
+    this.translate.use(lang);
   }
 
   ngOnInit(): void {

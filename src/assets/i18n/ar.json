@@ -71,7 +71,7 @@
     "User Type": "نوع المستخدم",
     "Owners Management": "إدارة الملاك",
     "Title": "العنوان",
-    "addowners": "إضافة الملاك",
+    "addowners": "إضافة مالك",
     "Code": " الرمز",
     "CR Number": "رقم السجل التجاري",
     "VAT Number": "الرقم الضريبي",
@@ -191,7 +191,7 @@
     "refund": "مسترجع",
     "Filter": "تصفية",
     "filter_dates": "بحث بالتاريخ",
-    "Clear Filters": "حذف التصفية",
+    "Clear_Filters": "حذف التصفية",
 
     "SendMessages": "إرسال الرسائل",
     "text_message": "نص الرسالة",

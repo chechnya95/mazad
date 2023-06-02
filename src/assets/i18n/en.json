@@ -1,4 +1,6 @@
 {
+    "adduser": "Add User",
+    "addowner": "Add Owner",
     "Home": "Home",
     "Dashboard": "Dashboard",
     "Sitetitle": "Welcome to Mazad Oman",
@@ -71,7 +73,7 @@
 
      "Filter": "Filter",
      "filter_dates": "Filter Dates",
-     "Clear Filters": "Clear Filters",
+     "Clear_Filters": "Clear Filters",
 
      "SendMessages": "Send Notifictions",
      "text_message": "Message Text",
