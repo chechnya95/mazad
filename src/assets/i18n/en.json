@@ -79,5 +79,11 @@
      "send_sms": "Send SMS",
      "send_email": "Send Email",
      "language": "language",
-     "subject": "Subject"
+     "subject": "Subject",
+
+     "Auction":"Auction",
+     "Status":"Status",
+     "Ok":"Ok",
+     "Add Deposit":"Add Deposit",
+     "Deposit Note Details":"Deposit Note Details"
 }

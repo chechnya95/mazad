@@ -199,5 +199,12 @@
     "send_sms": "إرسال رسالة نصية",
     "send_email": "إرسال بريد الكتروني",
     "language": "لغة الرسالة",
-    "subject": "العنوان"
+    "subject": "العنوان",
+
+
+    "Auction":"حسنا",
+    "Status":"حسنا",
+    "Ok":"حسنا",
+    "Add Deposit":"اضافة ايداع",
+    "Deposit Note Details":"تفاصيل ملاحظات الايداع"
 }
