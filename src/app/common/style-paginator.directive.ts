@@ -9,8 +9,8 @@ import {
   ViewContainerRef,
   Input
 } from "@angular/core";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatButton } from "@angular/material/button";
+import { MatLegacyPaginator as MatPaginator } from "@angular/material/legacy-paginator";
+import { MatLegacyButton as MatButton } from "@angular/material/legacy-button";
 
 interface PageObject {
   length: number;

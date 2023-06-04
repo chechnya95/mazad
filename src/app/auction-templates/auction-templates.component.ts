@@ -4,7 +4,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import {Sort} from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
-import { PageEvent } from '@angular/material/paginator';
+import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 
 @Component({
   selector: 'app-auction-templates',
