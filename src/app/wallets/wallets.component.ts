@@ -164,7 +164,7 @@ export class WalletsComponent implements OnInit {
 
   searchItems() {
     if (this.walletFilter.length >= 3) {
-      let field = 'user.phone';
+      let field = 'phone,email,user_details';
       let value = this.walletFilter;
 
       this.filter_config.queries = `${field},like,${value}`;
