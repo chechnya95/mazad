@@ -187,5 +187,7 @@
       }
     }
   },
-  "defaultProject": "mazad-oman-dashboard"
+  "cli": {
+    "analytics": false
+  }
 }

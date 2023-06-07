@@ -3,7 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
-import { PageEvent } from '@angular/material/paginator';
+import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -164,7 +164,7 @@ export class WalletsComponent implements OnInit {
 
   searchItems() {
     if (this.walletFilter.length >= 3) {
-      let field = 'user.phone';
+      let field = 'phone,email,user_details';
       let value = this.walletFilter;
 
       this.filter_config.queries = `${field},like,${value}`;

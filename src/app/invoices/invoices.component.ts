@@ -3,7 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
-import { PageEvent } from '@angular/material/paginator';
+import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import Swal from 'sweetalert2'
 
 @Component({
