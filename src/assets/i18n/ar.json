@@ -206,5 +206,6 @@
     "Status":"حسنا",
     "Ok":"حسنا",
     "Add Deposit":"اضافة ايداع",
-    "Deposit Note Details":"تفاصيل ملاحظات الايداع"
+    "Deposit Note Details":"تفاصيل ملاحظات الايداع",
+    "vat_number": "الرقم الضريبي (ان وجد)"
 }

@@ -47,13 +47,15 @@ export class UsersComponent implements OnInit {
   user_details = {
     name_ar: null,
     name_en: null,
-    id_card_number: null
+    id_card_number: null,
+    vat_number: null
   }
 
   edit_user_details = {
     name_ar: null,
     name_en: null,
-    id_card_number: null
+    id_card_number: null,
+    vat_number: null
   }
 
   user_types: any[] = ['ADMIN', 'USER', 'OWNER', 'GOVERNMENT', 'CORPORATE'];
