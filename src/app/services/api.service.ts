@@ -12,6 +12,7 @@ export class ApiService {
 
   server: string = environment.server;
   api: string = environment.API_URL;
+  website: string = environment.website;
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 

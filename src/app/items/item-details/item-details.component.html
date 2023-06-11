@@ -155,7 +155,7 @@
                                         <!--begin::Details item-->
                                     </div>
                                 </div>
-                                
+
                                 <!--begin::Details item-->
                                 <div class="row">
                                     <div class="col">
@@ -456,22 +456,30 @@
                                 <div class="row py-5">
                                     <div class="col-md">
                                         <div class="btn-group" role="group" aria-label="Basic example" dir="auto">
-                                            <button *ngIf="extend_status.includes(item?.item_status.toString().toLowerCase())"
+                                            <button
+                                                *ngIf="extend_status.includes(item?.item_status.toString().toLowerCase())"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
                                                 type="button" class="btn btn-secondary">Extend</button>
-                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'" (click)="approve(item?.id)"
-                                                type="button" class="btn btn-primary">Approve</button>
-                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='payment overdue'"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"
+                                                (click)="approve(item?.id)" type="button"
+                                                class="btn btn-primary">Approve</button>
+                                            <button
+                                                *ngIf="item?.item_status.toString().toLowerCase()=='payment overdue'"
                                                 (click)="announce(item?.id)" type="button"
                                                 class="btn btn-success">Announce Winner</button>
-                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'" (click)="reject(item?.id)"
-                                                type="button" class="btn btn-warning">Reject</button>
-                                            <button *ngIf="close_status.includes(item?.item_status.toString().toLowerCase())"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"
+                                                (click)="reject(item?.id)" type="button"
+                                                class="btn btn-warning">Reject</button>
+                                            <button
+                                                *ngIf="close_status.includes(item?.item_status.toString().toLowerCase())"
                                                 (click)="close(item?.id)" type="button"
                                                 class="btn btn-danger">Close</button>
-                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='payment'" data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
+                                            <button *ngIf="item?.item_status.toString().toLowerCase()=='payment'"
+                                                data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
                                                 type="button" class="btn btn-danger">Add
                                                 Payment</button>
+                                            <a [routerLink]="['/export']" (click)="export(item, bids)" target="_blank"
+                                                class="btn btn-dark">Export</a>
                                         </div>
                                     </div>
                                 </div>
@@ -533,7 +541,8 @@
                                                     <div class="text-gray-400 fw-bold w-125px">ID Card Number</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
-                                                    <div class="text-gray-800 fw-bold">{{ winner?.details?.id_card_number
+                                                    <div class="text-gray-800 fw-bold">{{
+                                                        winner?.details?.id_card_number
                                                         }}</div>
                                                     <!--end::Value-->
                                                 </div>
@@ -742,7 +751,7 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let bid of bids; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user_id }">{{
+                                                <td><a [routerLink]="['/user-details']" [queryParams]="{ id: bid.user.id }">{{
                                                         bid.user.phone }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->

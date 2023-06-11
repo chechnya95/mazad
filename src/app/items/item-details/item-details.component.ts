@@ -147,8 +147,6 @@ export class ItemDetailsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.invoices = objects['item_payments'];
-
-        console.log(this.invoices.length)
       },
       async error => { }
     );
@@ -303,6 +301,11 @@ export class ItemDetailsComponent implements OnInit {
       },
       async error => { this.errorMessage = true; }
     );
+  }
+
+  export(item: any, bids: any) {
+    localStorage.setItem('item_details', JSON.stringify(item));
+    localStorage.setItem('item_bids', JSON.stringify(bids));
   }
 }
 
