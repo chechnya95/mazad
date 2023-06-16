@@ -202,9 +202,9 @@
     "subject": "العنوان",
 
 
-    "Auction":"حسنا",
-    "Status":"حسنا",
-    "Ok":"حسنا",
+    "Auction":"المزاد",
+    "Status":"الحالة",
+    "Ok":"موافق",
     "Add Deposit":"اضافة ايداع",
     "Deposit Note Details":"تفاصيل ملاحظات الايداع",
     "vat_number": "الرقم الضريبي (ان وجد)"

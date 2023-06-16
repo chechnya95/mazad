@@ -76,14 +76,14 @@
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th>id</th>
-                                            <th>Item</th>
-                                            <th>Code</th>
-                                            <th>Status</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th *ngIf="this.api.canEnter(['admin'])" class="text-end">Actions</th>
+                                            <th>{{ "id" | translate }}</th>
+                                            <th>{{ "Item" | translate }}</th>
+                                            <th>{{ "Code" | translate }}</th>
+                                            <th>{{ "Status" | translate }}</th>
+                                            <th>{{ "User" | translate }}</th>
+                                            <th>{{ "Date" | translate }}</th>
+                                            <th>{{ "Amount" | translate }}</th>
+                                            <th *ngIf="this.api.canEnter(['admin'])" class="text-end">{{ "Actions" | translate }}</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
