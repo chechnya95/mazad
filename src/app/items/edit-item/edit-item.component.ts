@@ -107,7 +107,7 @@ export class EditItemComponent implements OnInit {
     this.token = localStorage.getItem('access_token');
 
     this.doUpload = this.doUpload.bind(this);
-    
+
     this.uppy.on('complete', (result) => {
       console.log('Upload complete! We’ve uploaded these files:', result.successful)
       this.images = result.successful;
@@ -332,6 +332,13 @@ export class EditItemComponent implements OnInit {
   }
 
   OnSubmit() {
+
+    let date_s = new Date(this.item.start_date)
+    let start_date = `${date_s.getDate()}-${date_s.getMonth() + 1}-${date_s.getFullYear()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
+    
+    let date_e = new Date(this.item.end_date)
+    let end_date = `${date_e.getDate()}-${date_e.getMonth() + 1}-${date_e.getFullYear()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
+
     const body = JSON.stringify({
       code: this.item.code,
       details: this.item_details,
@@ -339,8 +346,8 @@ export class EditItemComponent implements OnInit {
       owner_code: this.item.owner_code,
       attachments: this.item.attachments,
       deposit: this.item.deposit,
-      start_date: this.item.start_date,
-      end_date: this.item.end_date,
+      start_date: start_date,
+      end_date: end_date,
       latitude: this.item.latitude,
       longtitude: this.item.longtitude,
       current_price: this.item.current_price,
@@ -386,7 +393,7 @@ export class EditItemComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!'
         })
-        
+
       }
     );
   }
