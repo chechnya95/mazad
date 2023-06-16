@@ -89,7 +89,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_item_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Add Image for Slider</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "Add Image for Slider"| translate}}
+                                    </h2>
                                     <h5 class="fw-bolder">Image size should not exceed 200px height.</h5>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
@@ -128,7 +130,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Title"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -144,7 +146,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">URL</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "URL"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="url"
@@ -155,7 +157,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Platform</label>
+                                                <label class="form-label required">{{ "PLATFROM"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="platform"
@@ -172,7 +174,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Type</label>
+                                                <label class="form-label required">{{ "TYPE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="slider_type"
@@ -187,7 +189,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{ "ORDER"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -199,7 +201,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">From Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "FROM DATE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="datetime-local" name="from_date"
@@ -211,7 +213,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">To Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "To Date"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="datetime-local" name="to_date"
@@ -223,7 +225,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Content</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "CONTENT"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="content_en"
@@ -241,7 +243,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label">Image</label>
+                                                <label class="form-label">{{ "IMAGE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="file" class="form-control" id="image" accept="image/*" (change)="imageChange($event)" />
@@ -320,7 +322,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Title"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -336,7 +338,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">URL</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "URL"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="url"
@@ -347,7 +349,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Platform</label>
+                                                <label class="form-label required">{{ "PLATFROM"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="platform"
@@ -364,7 +366,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Type</label>
+                                                <label class="form-label required">{{ "TYPE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="slider_type"
@@ -379,7 +381,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{ "ORDER"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -391,7 +393,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">From Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "FROM DATE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="datetime-local" name="from_date"
@@ -403,7 +405,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">To Date</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "TO DATE"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="datetime-local" name="to_date"
@@ -415,7 +417,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Content</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "CONTENT"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="content_en"
@@ -432,7 +434,7 @@
                                             <!--end::group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
-                                                <label class="form-label">Image</label>
+                                                <label class="form-label">{{ "IMAGE"| translate}}</label>
                                                 <img src="{{edit_slider_image}}" style="width:60px;height:40px;" data-src="" alt="Slide">
                                                 <input type="file" class="form-control" id="edit_image" accept="image/*" (change)="editImageChange($event)" />
                                             </div>
@@ -471,7 +473,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_slider_type_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">New Slider Type</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "Add Slider Type"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -509,7 +513,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Name</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Name"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name"
@@ -552,7 +556,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_view_topics_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Slider Types</h2>
+                                    <h2 class="fw-bolder">
+                                        {{ "Slider Types"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -594,7 +600,7 @@
                                                         <!--begin::Table row-->
                                                         <tr
                                                             class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                            <th class="min-w-125px">Name</th>
+                                                            <th class="min-w-125px">{{ "Name"| translate}}</th>
                                                             <th class="text-end min-w-100px">Actions</th>
                                                         </tr>
                                                         <!--end::Table row-->
@@ -669,14 +675,14 @@
                                         data-kt-check-target="#kt_table_items .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th mat-sort-header="platform" class="min-w-100px">Platfrom</th>
-                            <th mat-sort-header="from_date" class="min-w-100px">From Date</th>
-                            <th mat-sort-header="to_date" class="min-w-100px">To Date</th>
-                            <th mat-sort-header="slider_type" class="min-w-100px">Type</th>
-                            <th mat-sort-header="enable" class="min-w-80px">Enabled?</th>
-                            <th mat-sort-header="order" class="min-w-80px">Order</th>
+                            <th mat-sort-header="platform" class="min-w-100px">{{ "PLATFROM"| translate}}</th>
+                            <th mat-sort-header="from_date" class="min-w-100px">{{ "FROM DATE"| translate}}</th>
+                            <th mat-sort-header="to_date" class="min-w-100px">{{ "TO DATE"| translate}}</th>
+                            <th mat-sort-header="slider_type" class="min-w-100px">{{ "TYPE"| translate}}</th>
+                            <th mat-sort-header="enable" class="min-w-80px">{{ "ENABLED?"| translate}}</th>
+                            <th mat-sort-header="order" class="min-w-80px">{{ "ORDER"| translate}}</th>
                             <th class="min-w-100px">Image</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="text-end min-w-100px">{{ "Actions"| translate}}</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>

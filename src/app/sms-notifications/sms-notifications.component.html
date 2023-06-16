@@ -10,7 +10,9 @@
                 aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">SMS Notifications</h3>
+                    <h3 class="fw-bolder m-0">
+                        {{ "SMS Notifications"| translate}}
+                    </h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -30,13 +32,13 @@
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th>id</th>
-                                            <th mat-sort-header="mobile">Mobile</th>
-                                            <th mat-sort-header="user_id">User Id</th>
-                                            <th mat-sort-header="sid">SID</th>
-                                            <th mat-sort-header="status">Status</th>
-                                            <th mat-sort-header="message">Message</th>
-                                            <th mat-sort-header="timestamp">Timestamp</th>
+                                            <th>{{ "id"| translate}}</th>
+                                            <th mat-sort-header="mobile">{{ "Mobile"| translate}}</th>
+                                            <th mat-sort-header="user_id">{{ "User ID"| translate}}</th>
+                                            <th mat-sort-header="sid">{{ "SID"| translate}}</th>
+                                            <th mat-sort-header="status">{{ "Status"| translate}}</th>
+                                            <th mat-sort-header="message">{{ "Message"| translate}}</th>
+                                            <th mat-sort-header="timestamp">{{ "Timestamp"| translate}}</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>

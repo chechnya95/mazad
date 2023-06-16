@@ -207,5 +207,41 @@
     "Ok":"موافق",
     "Add Deposit":"اضافة ايداع",
     "Deposit Note Details":"تفاصيل ملاحظات الايداع",
-    "vat_number": "الرقم الضريبي (ان وجد)"
+    "vat_number": "الرقم الضريبي (ان وجد)",
+
+    "addowner":"اضافة مالك",
+
+    "PLATFROM":"المنصة",
+    "URL":"الرابط",
+    "FROM DATE":"من",
+    "TO DATE":"الى",
+    "TYPE":"النوع",
+    "ENABLED?":"مفعل؟",
+    "ORDER":"الترتيب",
+    "Add Image for Slider":"اضافة صورة جديدة",
+    "Add Slider Types":"اضافة نوع جديد",
+    "CONTENT":"النص",
+    "IMAGE":"الصورة",
+    "Update Slider Image": "تحديث",
+    "Slider Types": "الانواع",
+
+    "SMS Notifications":"تنبيهات الرسائل القصيرة",
+    "User ID":"رقم المستخدم",
+    "Mobile":"الهاتف",
+    "SID":"ر.م",
+    "Message":"الرسالة",
+    "Timestamp":"الوقت",
+
+    "Get Report":"اصدار التقرير",
+    "Total with VAT":"مجموع الضرائب",
+    "Owner VAT":"ضريبة المالك",
+    "Mazad VAT":"ضريبة مزاد",
+    "VAT":"الضريبة"
+
+
+
+
+
+
+
 }

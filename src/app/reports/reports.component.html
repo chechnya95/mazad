@@ -8,7 +8,7 @@
             <div class="card-header border-0">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Reports </h3>
+                    <h3 class="fw-bolder m-0">{{ "Reports"| translate}}</h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -44,7 +44,10 @@
                                     </div>
                                     <div class="col-3">
                                         <button type="button" class="btn btn-light-primary mx-3"
-                                            (click)="getReport(auction_id)" [disabled]="showList">Get Report</button>
+                                            (click)="getReport(auction_id)" [disabled]="showList">
+                                        
+                                            {{ "Get Report"| translate}}
+                                        </button>
                                     </div>
                                 </div>
                                 <!--end::Table-->
@@ -73,8 +76,8 @@
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th></th>
-                                                <th mat-sort-header="code">Code</th>
-                                                <th mat-sort-header="title">Title</th>
+                                                <th mat-sort-header="code">{{ "Code"| translate}}</th>
+                                                <th mat-sort-header="title">{{ "Title"| translate}}</th>
                                                 <th></th>
                                             </tr>
                                             <!--end::Table row-->
@@ -89,7 +92,7 @@
                                                 <td>{{ item.title.ar }} | {{ item.title.en }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-light-primary mx-3"
-                                                        (click)="getReport(item.id)">Get Report</button>
+                                                        (click)="getReport(item.id)">{{ "Get Report"| translate}}</button>
                                                 </td>
                                             </tr>
                                             <!--end::Table row-->
@@ -142,7 +145,8 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Export
+                            <!--end::Svg Icon-->
+                            {{ "Export"| translate}}
                         </button>
                     </div>
                     <div class="modal fade" id="kt_modal_export_users" tabindex="-1" aria-hidden="true">
@@ -153,7 +157,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export Report</h2>
+                                    <h2 class="fw-bolder"> Report
+                                        {{ "Export"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -228,11 +234,11 @@
                             <div class="card-body pt-0">
                                 <!--begin::Table-->
                                 <div class="row">
-                                    <div class="col-2">Auction:</div>
+                                    <div class="col-2">{{ "Auction"| translate}}</div>
                                     <div class="col-6 fw-bold">
                                         {{ report?.auction.title.ar }}
                                     </div>
-                                    <div class="col-2">Code:</div>
+                                    <div class="col-2">{{ "Code"| translate}}</div>
                                     <div class="col-2 fw-bold">{{ report?.auction.code }}</div>
                                 </div>
                                 <div class="row">
@@ -240,7 +246,7 @@
                                     <div class="col-6 fw-bold">
                                         {{ report?.auction.title.en }}
                                     </div>
-                                    <div class="col-2">Number of Items:</div>
+                                    <div class="col-2">{{ "Number of Items"| translate}}</div>
                                     <div class="col-2 fw-bold">{{ report?.items.length }}</div>
                                 </div>
                                 <div class="row pt-5 table-responsive">
@@ -251,22 +257,22 @@
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                 <th></th>
-                                                <th mat-sort-header="code">Code</th>
-                                                <th mat-sort-header="title" class="w-40">Title</th>
-                                                <th mat-sort-header="count_of_bids">Bids</th>
-                                                <th mat-sort-header="count_of_bidders">Bidders</th>
-                                                <th mat-sort-header="price">Price</th>
-                                                <th mat-sort-header="total_vat">VAT</th>
-                                                <th mat-sort-header="mazad_vat">Mazad VAT ({{report?.auction.vat_for_mazad}}%)</th>
-                                                <th mat-sort-header="owner_vat">Owner VAT ({{report?.auction.vat_for_item}}%)</th>
-                                                <th mat-sort-header="mazad">Mazad ({{report?.auction.auction_fee}}%)</th>
-                                                <th mat-sort-header="total_without_vat">Total</th>
-                                                <th mat-sort-header="total">Total with VAT</th>
-                                                <th mat-sort-header="item_status">Status</th>
-                                                <th mat-sort-header="name_ar">Name</th>
-                                                <th mat-sort-header="id_card_number">ID</th>
-                                                <th mat-sort-header="phone">Mobile</th>
-                                                <th mat-sort-header="email">Email</th>
+                                                <th mat-sort-header="code">{{ "Code"| translate}}</th>
+                                                <th mat-sort-header="title" class="w-40">{{ "Title"| translate}}</th>
+                                                <th mat-sort-header="count_of_bids">{{ "Bids"| translate}}</th>
+                                                <th mat-sort-header="count_of_bidders">{{ "Bidders"| translate}}</th>
+                                                <th mat-sort-header="price">{{ "Price"| translate}}</th>
+                                                <th mat-sort-header="total_vat">{{ "VAT"| translate}}</th>
+                                                <th mat-sort-header="mazad_vat"> {{ "Mazad VAT"| translate}} ({{report?.auction.vat_for_mazad}}%)</th>
+                                                <th mat-sort-header="owner_vat"> {{ "Owner VAT"| translate}} ({{report?.auction.vat_for_item}}%)</th>
+                                                <th mat-sort-header="mazad"> {{ "Mazad"| translate}} ({{report?.auction.auction_fee}}%)</th>
+                                                <th mat-sort-header="total_without_vat">{{ "Total"| translate}}</th>
+                                                <th mat-sort-header="total">{{ "Total with VAT"| translate}}</th>
+                                                <th mat-sort-header="item_status">{{ "Status"| translate}}</th>
+                                                <th mat-sort-header="name_ar">{{ "Name"| translate}}</th>
+                                                <th mat-sort-header="id_card_number">{{ "id"| translate}}</th>
+                                                <th mat-sort-header="phone">{{ "Mobile"| translate}}</th>
+                                                <th mat-sort-header="email">{{ "Email"| translate}}</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>

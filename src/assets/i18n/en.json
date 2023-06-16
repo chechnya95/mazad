@@ -88,5 +88,8 @@
      "Ok":"Ok",
      "Add Deposit":"Add Deposit",
      "Deposit Note Details":"Deposit Note Details",
-     "vat_number": "VAT Number (if any)"
+     "vat_number": "VAT Number (if any)",
+
+     "Add Owner":"Add Owner"
+
 }
