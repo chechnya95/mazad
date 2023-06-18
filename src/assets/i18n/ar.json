@@ -236,9 +236,17 @@
     "Total with VAT":"مجموع الضرائب",
     "Owner VAT":"ضريبة المالك",
     "Mazad VAT":"ضريبة مزاد",
-    "VAT":"الضريبة"
+    "VAT":"الضريبة",
+    "Reviewed?": "مراجع؟",
+    "Sender": "المرسل",
+    "Actions": "الاجراءات",
+    "Discard": "تجاهل",
+    "Review Message": "مراجعة الرسائل",
 
-
+    
+    "Gateway": "بوابة الدفع",
+    "Reference": "رمز مرجعي",
+    "fail": "فشل"
 
 
 

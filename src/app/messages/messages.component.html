@@ -8,7 +8,9 @@
             <div class="card-header border-0 cursor-pointer">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Messages </h3>
+                    <h3 class="fw-bolder m-0">
+                        {{ "Messages"| translate}}
+                    </h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -28,16 +30,18 @@
                                     <thead>
                                         <!--begin::Table row-->
                                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                            <th>id</th>
-                                            <th mat-sort-header="title">Title</th>
+                                            <th>{{ "id"| translate}}</th>
+                                            <th mat-sort-header="title">
+                                                {{ "Title"| translate}}
+                                            </th>
                                             <!-- <th>Message</th> -->
                                             <!-- <th>Notes</th> -->
-                                            <th mat-sort-header="c_type">Type</th>
-                                            <th mat-sort-header="name">Sender</th>
-                                            <th mat-sort-header="create_date">Date</th>
-                                            <th mat-sort-header="reviewed">Reviewed?</th>
+                                            <th mat-sort-header="c_type">{{ "TYPE"| translate}}</th>
+                                            <th mat-sort-header="name">{{ "Sender"| translate}}</th>
+                                            <th mat-sort-header="create_date">{{ "Date"| translate}}</th>
+                                            <th mat-sort-header="reviewed">{{ "Reviewed?"| translate}}</th>
                                             <!-- <th>Reviewed Date</th> -->
-                                            <th class="text-end">Actions</th>
+                                            <th class="text-end">{{ "Actions"| translate}}</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -54,8 +58,8 @@
                                             <td>{{ message.name}}</td>
                                             <td>{{ message.create_date | date:"short"}}</td>
                                             <td>
-                                                <div *ngIf="message.reviewed" class="badge badge-success fw-bolder">Yes</div>
-                                                <div *ngIf="!message.reviewed" class="badge badge-warning fw-bolder">No</div>
+                                                <div *ngIf="message.reviewed" class="badge badge-success fw-bolder">{{ "Yes"| translate}}</div>
+                                                <div *ngIf="!message.reviewed" class="badge badge-warning fw-bolder">{{ "No"| translate}}</div>
                                             </td>
                                             <!-- <td>{{ message.modified_date | date:"short"}}</td> -->
                                             <!--begin::Action=-->
@@ -130,7 +134,10 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Review Message </h2>
+                                        <h2 class="fw-bolder">
+                                            {{ "Review Message"| translate}}
+                                            
+                                        </h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -166,7 +173,9 @@
                                             data-kt-scroll-offset="300px">
                                             <div class="fv-row mb-10">
                                                 <label class="fs-5 fw-bolder form-label mb-2">
-                                                    <span class="required">Note</span>
+                                                    <span class="required">
+                                                        {{ "Note"| translate}}
+                                                    </span>
                                                 </label>
                                                 <textarea cols="20" rows="5" name="note"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
