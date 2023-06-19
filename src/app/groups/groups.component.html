@@ -126,7 +126,8 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Group
+                            <!--end::Svg Icon-->
+                            {{"Add Group"| translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -150,7 +151,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export Groups</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Export Groups"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -246,7 +249,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_group_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">New Group</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"New Group"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -284,7 +289,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Group Type</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Group Type" | translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_type"
@@ -300,7 +307,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <label class="fw-bold fs-6 mb-2">
+                                                    {{"Owner" | translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onChangeOwner($event.target.value)"
@@ -328,7 +337,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Title"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -344,7 +355,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Description"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="description_en"
@@ -362,7 +375,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Terms Arabic"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <md-editor name="terms_ar"
@@ -373,7 +388,9 @@
                                                 </md-editor>
                                                 <br>
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms English</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Terms English"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <md-editor name="terms_en"
@@ -406,7 +423,9 @@
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         [(ngModel)]="group.enable" id="enable">
-                                                    <label class="form-check-label" for="enable">Enable Group</label>
+                                                    <label class="form-check-label" for="enable">
+                                                        {{"Enable Group"| translate}}
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -417,7 +436,9 @@
                                                 data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-groups-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">
+                                                    {{"Submit"| translate}}
+                                                </span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -443,7 +464,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_group_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update Group</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Update Group"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -481,7 +504,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Group Type</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Group Type"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="group_type"
@@ -496,7 +521,9 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <label class="fw-bold fs-6 mb-2">
+                                                    {{"Owner"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onChangeOwner($event.target.value)"
@@ -525,7 +552,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Title"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -541,7 +570,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Description"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="description_en"
@@ -558,7 +589,9 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Terms Arabic"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <md-editor name="terms_ar"
@@ -569,7 +602,9 @@
                                                 </md-editor>
                                                 <br>
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Terms English</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Terms English"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <md-editor name="terms_en"
@@ -584,7 +619,9 @@
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         [(ngModel)]="edit_group.enable" id="enable">
-                                                    <label class="form-check-label" for="enable">Enable Group</label>
+                                                    <label class="form-check-label" for="enable">
+                                                        {{"Enable Group"| translate}}
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -595,7 +632,9 @@
                                                 data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary"
                                                 (click)="OnUpdate(edit_group_id)" data-kt-groups-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">
+                                                    {{"Submit"| translate}}
+                                                </span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -631,11 +670,21 @@
                                         data-kt-check-target="#kt_table_groups .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th mat-sort-header="group_type" class="min-w-125px">Group</th>
-                            <th class="min-w-125px">Owner</th>
-                            <th class="min-w-125px">Title</th>
-                            <th mat-sort-header="enable" class="min-w-125px">Enabled?</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th mat-sort-header="group_type" class="min-w-125px">
+                                {{"Group"| translate}}
+                            </th>
+                            <th class="min-w-125px">
+                                {{"Owner"| translate}}
+                            </th>
+                            <th class="min-w-125px">
+                                {{"Title"| translate}}
+                            </th>
+                            <th mat-sort-header="enable" class="min-w-125px">
+                                {{"Enabled?"| translate}}
+                            </th>
+                            <th class="text-end min-w-100px">
+                                {{"Actions"| translate}}
+                            </th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -739,7 +788,9 @@
                                             <!--begin::Modal header-->
                                             <div class="modal-header" id="kt_modal_add_user_to_group_header">
                                                 <!--begin::Modal title-->
-                                                <h2 class="fw-bolder">Add User To Group</h2>
+                                                <h2 class="fw-bolder">
+                                                    {{"Add User To Group"| translate}}
+                                                </h2>
                                                 <!--end::Modal title-->
                                                 <!--begin::Close-->
                                                 <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -779,13 +830,17 @@
                                                         <!--begin::Input group-->
                                                         <div class="fv-row mb-7">
                                                             <!--begin::Label-->
-                                                            <label class="required fw-bold fs-6 mb-2">User</label>
+                                                            <label class="required fw-bold fs-6 mb-2">
+                                                                {{"User"| translate}}
+                                                            </label>
                                                             <!--end::Label-->
                                                             <!--begin::Input-->
                                                             <select name="user_id"
                                                                 class="form-select form-select-lg form-select-solid"
                                                                 [(ngModel)]="user_id">
-                                                                <option value="0">-- SELECT --</option>
+                                                                <option value="0">
+                                                                    {{"-- SELECT --"| translate}}
+                                                                </option>
                                                                 <option *ngFor="let user of users" [ngValue]='user.id'>
                                                                     {{
                                                                     user.contact }}</option>
@@ -798,11 +853,13 @@
                                                     <!--begin::Actions-->
                                                     <div class="text-center pt-15">
                                                         <button type="reset" class="btn btn-white me-3"
-                                                            data-bs-dismiss="modal">Discard</button>
+                                                            data-bs-dismiss="modal">{{"Discard"| translate}}</button>
                                                         <button type="submit" class="btn btn-primary"
                                                             (click)="addUserToGroup(group.id)"
                                                             data-kt-blacklists-modal-action="submit">
-                                                            <span class="indicator-label">Submit</span>
+                                                            <span class="indicator-label">
+                                                                {{"Submit"| translate}}
+                                                            </span>
                                                             <span class="indicator-progress">Please wait...
                                                                 <span
                                                                     class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -889,7 +946,9 @@
                     </div>
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                            (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                            (click)="successMessage=false" style="display: inline-block;">
+                            {{"Ok"| translate}}
+                        </button>
                     </div>
                 </div>
             </div>

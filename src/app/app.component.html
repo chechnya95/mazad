@@ -550,7 +550,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'groups' | translate }}</span>
+                  <span class="menu-title">{{ "groups" | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -571,7 +571,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'blacklist' | translate }}</span>
+                  <span class="menu-title">{{ "blacklist" | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -592,7 +592,7 @@
                     </span>
                     <!--end::Svg Icon-->
                   </span>
-                  <span class="menu-title">{{ 'faqs' | translate }}</span>
+                  <span class="menu-title">{{ "faqs" | translate }}</span>
                 </a>
               </div>
               <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
@@ -814,14 +814,15 @@
                       <!--end::Menu separator-->
                       <!--begin::Menu item-->
                       <div class="menu-item px-5">
-                        <a [routerLinkActive]="['active']" [routerLink]="['profile']" class="menu-link px-5">My
-                          Profile</a>
+                        <a [routerLinkActive]="['active']" [routerLink]="['profile']" class="menu-link px-5">
+                          {{"My Profile"| translate}}
+                          </a>
                       </div>
                       <!--end::Menu item-->
                       <!--begin::Menu item-->
                       <div class="menu-item px-5">
                         <a [routerLinkActive]="['active']" [routerLink]="['auctions']" class="menu-link px-5">
-                          <span class="menu-text">My Auctions</span>
+                          <span class="menu-text">{{"My Auctions"| translate}}</span>
                           <span class="menu-badge">
                             <span class="badge badge-light-danger badge-circle fw-bolder fs-7">{{ myAuctions }}</span>
                           </span>
@@ -831,7 +832,9 @@
 
                       <!--begin::Menu item-->
                       <div class="menu-item px-5">
-                        <a class="menu-link px-5">My Statements</a>
+                        <a class="menu-link px-5">
+                          {{"My Statements"| translate}}
+                        </a>
                       </div>
                       <!--end::Menu item-->
                       <!--begin::Menu separator-->
@@ -865,7 +868,9 @@
                       <!--end::Menu item-->
                       <!--begin::Menu item-->
                       <div class="menu-item px-5">
-                        <a class="menu-link px-5" (click)="onLogout()">Sign Out</a>
+                        <a class="menu-link px-5" (click)="onLogout()">
+                          {{"Sign Out"| translate}}
+                        </a>
                       </div>
                       <!--end::Menu item-->
                     </div>
@@ -921,7 +926,7 @@
             <!--begin::Copyright-->
             <div class="text-dark order-2 order-md-1">
               <span class="text-muted fw-bold me-1">2023 © </span>
-              <a href="" target="_blank" class="text-gray-800 text-hover-primary"> Mazad Oman </a>
+              <a href="" target="_blank" class="text-gray-800 text-hover-primary">{{"Mazad Oman"| translate}}</a>
             </div>
             <!--end::Copyright-->
             <!--begin::Menu-->

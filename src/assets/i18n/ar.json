@@ -243,10 +243,20 @@
     "Discard": "تجاهل",
     "Review Message": "مراجعة الرسائل",
 
-    
     "Gateway": "بوابة الدفع",
     "Reference": "رمز مرجعي",
-    "fail": "فشل"
+    "fail": "فشل",
+    "Invoices":"الفواتير",
+    "Number":"الرقم",
+    "Total Amount":"المجموع",
+
+    "groups":"المجموعات",
+    "blacklist":"القائمة السوداء",
+    "My Profile":"ملفي الشخصي",
+    "My Auctions":"مزاداتي",
+    "My Statements":"كشف حسابي",
+    "Sign Out":"تسجيل خروج"
+
 
 
 

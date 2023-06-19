@@ -129,7 +129,8 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Owner Payment Option
+                            <!--end::Svg Icon-->
+                            {{"Add Owner Payment Option"| translate}}
                         </button>
                         <!--end::Add payment-options-->
                     </div>
@@ -138,11 +139,11 @@
                     <div class="d-flex justify-content-end align-items-center d-none"
                         data-kt-payment-options-table-toolbar="selected">
                         <div class="fw-bolder me-5">
-                            <span class="me-2" data-kt-payment-options-table-select="selected_count"></span>Selected
+                            <span class="me-2" data-kt-payment-options-table-select="selected_count"></span>{{"Selected"| translate}}
                         </div>
                         <button type="button" class="btn btn-danger"
-                            data-kt-payment-options-table-select="delete_selected">Delete
-                            Selected</button>
+                            data-kt-payment-options-table-select="delete_selected">{{"Delete"| translate}}
+                            {{"Selected"| translate}}</button>
                     </div>
                     <!--end::Group actions-->
                     <!--begin::Modal - Adjust Balance-->
@@ -154,7 +155,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export Blacklists</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Export"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -221,10 +224,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-payment-optionss-modal-action="cancel">Discard</button>
+                                                data-kt-payment-optionss-modal-action="cancel">{{"Discard"| translate}}</button>
                                             <button type="submit" class="btn btn-primary"
                                                 data-kt-payment-optionss-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{"Submit"| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -250,7 +253,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_payment-options_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">New Owner Payment Option</h2>
+                                    <h2 class="fw-bolder">{{"New Owner Payment Option"| translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -288,7 +291,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Option</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Option"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -303,7 +306,7 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <label class="fw-bold fs-6 mb-2">{{"Owner"| translate}}</label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
@@ -332,7 +335,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Configuration</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -373,7 +376,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Mazad Auction Fee</span>
+                                                        <span>{{"Mazad Auction Fee"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -394,7 +397,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Mazad Service Fee</span>
+                                                        <span>{{"Mazad Service Fee"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="Specify the payment limit"></i>
@@ -419,7 +422,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Vat For Item</span>
+                                                        <span>{{"Vat For Item"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee percentage"></i>
@@ -440,7 +443,9 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Vat For Mazad</span>
+                                                        <span>
+                                                            {{"Vat For Mazad"| translate}}
+                                                        </span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -463,10 +468,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{"Discard"| translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-payment-optionss-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{"Submit"| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -492,7 +497,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_payment-options_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Edit Owner Payment Option</h2>
+                                    <h2 class="fw-bolder">{{"Edit Owner Payment Option"| translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -530,7 +535,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Option</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Option"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -545,7 +550,7 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="fw-bold fs-6 mb-2">Owner</label>
+                                                <label class="fw-bold fs-6 mb-2">{{"Owner"| translate}}</label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
@@ -559,7 +564,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Configuration</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -579,7 +584,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Auction Fee</span>
+                                                        <span>{{"Auction Fee"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee percentage"></i>
@@ -600,7 +605,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Mazad Auction Fee</span>
+                                                        <span>{{"Mazad Auction Fee"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -621,7 +626,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Mazad Service Fee</span>
+                                                        <span>{{"Mazad Service Fee"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="Specify the payment limit"></i>
@@ -646,7 +651,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Vat For Item</span>
+                                                        <span>{{"Vat For Item"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee percentage"></i>
@@ -667,7 +672,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Vat For Mazad</span>
+                                                        <span>{{"Vat For Mazad"| translate}}</span>
                                                         <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                             data-bs-toggle="tooltip"
                                                             title="What is the bank fee cap"></i>
@@ -690,10 +695,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{"Discard"| translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_option_id)"
                                                 data-kt-payment-optionss-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{"Submit"| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -728,10 +733,10 @@
                                         data-kt-check-target="#kt_table_payment-optionss .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">Option</th>
-                            <th class="min-w-125px">Owner</th>
-                            <th class="min-w-125px">Configuration</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="min-w-125px">{{"Option"| translate}}</th>
+                            <th class="min-w-125px">{{"Owner"| translate}}</th>
+                            <th class="min-w-125px">{{"Configuration"| translate}}</th>
+                            <th class="text-end min-w-100px">{{"Actions"| translate}}</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -867,7 +872,7 @@
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                        (click)="successMessage=false" style="display: inline-block;">{{"Ok"| translate}}</button>
                 </div>
             </div>
         </div>

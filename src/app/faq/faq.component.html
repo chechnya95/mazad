@@ -27,7 +27,8 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Topic
+                            <!--end::Svg Icon-->
+                            {{"Add Topic"| translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -49,7 +50,8 @@
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            <!--end::Svg Icon-->View Topics
+                            <!--end::Svg Icon-->
+                            {{"View Topics"| translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -69,7 +71,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add FAQ
+                            <!--end::Svg Icon-->{{"Add FAQ"| translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -131,7 +133,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Title"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -149,10 +153,12 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">
+                                                {{"Discard"| translate}}
+                                            </button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-groups-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{"Submit"| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -178,7 +184,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_faq_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Add new FAQ</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Add new FAQ"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -215,7 +223,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Topic Name</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Topic Name"| translate}}
+                                                    </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="faq_topic_id"
@@ -230,7 +240,9 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Question</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Question"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="2" name="question_en"
@@ -246,8 +258,9 @@
                                             </div>
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Question's
-                                                    Answer</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Question's Answer"| translate}}
+                                                    </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="content_en"
@@ -266,10 +279,14 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">
+                                                {{"Discard" | translate}}
+                                            </button>
                                             <button type="submit" class="btn btn-primary" (click)="addContentToTopic()"
                                                 data-kt-blacklists-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">
+                                                    {{"Submit"| translate}}
+                                                </span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -295,7 +312,9 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_view_topics_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Topics</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Topics"| translate}}
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -337,8 +356,12 @@
                                                         <!--begin::Table row-->
                                                         <tr
                                                             class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                            <th class="min-w-125px" colspan="2">Title</th>
-                                                            <th class="text-end min-w-100px">Actions</th>
+                                                            <th class="min-w-125px" colspan="2">
+                                                                {{"Title"| translate}}
+                                                            </th>
+                                                            <th class="text-end min-w-100px">
+                                                                {{"Actions"| translate}}
+                                                            </th>
                                                         </tr>
                                                         <!--end::Table row-->
                                                     </thead>
@@ -404,7 +427,9 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">
+                                                {{"Discard"| translate}}
+                                            </button>
                                         </div>
                                         <!--end::Actions-->
                                     </form>
@@ -426,7 +451,11 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_topic_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update Topic</h2>
+                                    <h2 class="fw-bolder">
+                                        {{"Update Topic"| translate}}
+
+
+                                    </h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -464,7 +493,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Title</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Title"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
@@ -480,11 +509,15 @@
                                             <!--begin::Actions-->
                                             <div class="text-center pt-15">
                                                 <button type="reset" class="btn btn-white me-3"
-                                                    data-bs-dismiss="modal">Discard</button>
+                                                    data-bs-dismiss="modal">
+                                                    {{"Discard"| translate}}
+                                                </button>
                                                 <button type="submit" class="btn btn-primary"
                                                     (click)="OnUpdate(edit_topic_id)"
                                                     data-kt-groups-modal-action="submit">
-                                                    <span class="indicator-label">Submit</span>
+                                                    <span class="indicator-label">
+                                                        {{"Submit"| translate}}
+                                                    </span>
                                                     <span class="indicator-progress">Please wait...
                                                         <span
                                                             class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -511,7 +544,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_edit_faq_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Edit FAQ</h2>
+                                    <h2 class="fw-bolder">{{"Edit FAQ"| translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -548,7 +581,9 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Topic Name</label>
+                                                <label class="required fw-bold fs-6 mb-2"> 
+                                                    {{"Topic Name"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="faq_topic_id"
@@ -563,7 +598,9 @@
                                             <!--end::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Question</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Question"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="2" name="question_en"
@@ -579,8 +616,9 @@
                                             </div>
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">Question's
-                                                    Answer</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"Question's Answer"| translate}}
+                                                    </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="content_en"
@@ -599,10 +637,14 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">
+                                                {{"Discard| translate}}
+                                            </button>
                                             <button type="submit" class="btn btn-primary" (click)="UpdateFAQ(edit_faq_id)"
                                                 data-kt-blacklists-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">
+                                                    {{"Submit"| translate}}
+                                                </span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -632,9 +674,9 @@
                     <thead>
                         <!--begin::Table row-->
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px" colspan="2">Question</th>
-                            <th class="min-w-125px" colspan="2">Answer</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="min-w-125px" colspan="2">{{"Question"| translate}}</th>
+                            <th class="min-w-125px" colspan="2">{{"Answer"| translate}}</th>
+                            <th class="text-end min-w-100px">{{"Actions"| translate}}</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -766,7 +808,7 @@
                     </div>
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                            (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                            (click)="successMessage=false" style="display: inline-block;"> {{"Ok"| translate}}</button>
                     </div>
                 </div>
             </div>
