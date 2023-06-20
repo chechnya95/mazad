@@ -183,7 +183,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
 
     this.edit_payment_options.option = option.option.toString().toUpperCase();
     this.edit_payment_options.owner_name = option.owner?.title?.en;
-    console.log(option)
+    this.edit_payment_options.owner_id = option.owner.id;
   }
 
   OnUpdate(id: any) {
