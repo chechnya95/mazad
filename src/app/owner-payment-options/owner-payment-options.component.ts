@@ -33,6 +33,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   }
 
   edit_payment_options = {
+    owner_name: null,
     option: null,
     owner_id: null,
     config_id: null,
@@ -180,7 +181,9 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     this.edit_payment_options = option;
     this.edit_option_id = option.id;
 
-    this.edit_payment_options.option = option.option;
+    this.edit_payment_options.option = option.option.toString().toUpperCase();
+    this.edit_payment_options.owner_name = option.owner?.title?.en;
+    console.log(option)
   }
 
   OnUpdate(id: any) {
@@ -207,5 +210,6 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.payment_options.owner_id = owner.id;
     this.edit_payment_options.owner_id = owner.id;
+    this.edit_payment_options.owner_name = owner?.contact;
   }
 }
