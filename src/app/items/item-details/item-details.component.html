@@ -820,15 +820,12 @@
                                             <tr *ngFor="let invoice of invoices; let i = index;">
                                                 <!--begin::Invoice=-->
                                                 <td><a [routerLink]="['/invoice-details']"
-                                                        [queryParams]="{ id: invoice?.id }">{{
-                                                        invoice?.number | uppercase }}</a></td>
+                                                        [queryParams]="{ id: invoice?.payment_transaction_id }">{{
+                                                        invoice?.payment_transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Type=-->
                                                 <td>{{ invoice?.payment_type | uppercase }}</td>
                                                 <!--end::Type=-->
-                                                <!--begin::Amount=-->
-                                                <td>{{ invoice?.total_amount | currency:'OMR' }}</td>
-                                                <!--end::Amount=-->
                                                 <!--begin::Date=-->
                                                 <td>{{invoice?.create_date | date:'medium'}}</td>
                                                 <!--end::Date=-->
