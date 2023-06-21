@@ -478,8 +478,10 @@
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
                                                 type="button" class="btn btn-danger">Add
                                                 Payment</button>
-                                            <a [routerLink]="['/export']" (click)="export(item, bids)" target="_blank"
+                                            <a [routerLink]="['/export']" (click)="export(item)" target="_blank"
                                                 class="btn btn-dark">Export</a>
+                                            <a [routerLink]="['/export_owner']" (click)="export_owner(item, bids)" target="_blank"
+                                                class="btn btn-light">Export (Owner)</a>
                                         </div>
                                     </div>
                                 </div>

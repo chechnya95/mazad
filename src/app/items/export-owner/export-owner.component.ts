@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
-import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-export',
-  templateUrl: './export.component.html',
-  styleUrls: ['./export.component.css']
+  selector: 'app-export-owner',
+  templateUrl: './export-owner.component.html',
+  styleUrls: ['./export-owner.component.css']
 })
-export class ExportComponent implements OnInit {
+export class ExportOwnerComponent implements OnInit {
 
   token: any;
 
+  bids: any[] = [];
   item: any;
   keys: any;
   url: any;
@@ -27,6 +27,7 @@ export class ExportComponent implements OnInit {
 
   ngOnInit(): void {
     this.item = JSON.parse(localStorage.getItem('item_details'));
+    this.bids = JSON.parse(localStorage.getItem('item_bids'));
 
     if (this.item) {
       this.keys = Object.keys(this.item.details);

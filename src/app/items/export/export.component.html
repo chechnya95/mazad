@@ -68,66 +68,6 @@
                 </div>
                 <!--end::Card body-->
             </div>
-            <div class="card mb-5 mb-xl-8">
-                <!--begin::Card header-->
-                <div class="card-header border-0">
-                    <div class="card-title">
-                        <h3 class="fw-bolder m-0">Bids</h3>
-                    </div>
-                </div>
-                <!--end::Card header-->
-                <!--begin::Card body-->
-                <div class="card-body pt-2">
-                    <!--begin::Items-->
-                    <div class="py-2">
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table align-middle table-row-dashed gy-5" id="kt_table_customers_payment">
-                                <!--begin::Table head-->
-                                <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
-                                    <!--begin::Table row-->
-                                    <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                        <th>User</th>
-                                        <th>Amount</th>
-                                        <th class="min-w-80px">Date</th>
-                                        <th></th>
-                                    </tr>
-                                    <!--end::Table row-->
-                                </thead>
-                                <!--end::Table head-->
-                                <!--begin::Table body-->
-                                <tbody class="fs-6 fw-bold text-gray-600">
-                                    <!--begin::Table row-->
-                                    <tr *ngFor="let bid of bids; let i = index;">
-                                        <!--begin::Invoice=-->
-                                        <td><a [routerLink]="['/user-details']" [queryParams]="{ id: bid.user.id }">{{
-                                                bid.user.phone }}</a></td>
-                                        <!--end::Invoice=-->
-                                        <!--begin::Amount=-->
-                                        <td>{{ bid.amount | currency:'OMR'}}</td>
-                                        <!--end::Amount=-->
-                                        <!--begin::Date=-->
-                                        <td>{{bid.create_date | date:'medium'}}</td>
-                                        <!--end::Date=-->
-                                        <td>
-                                            <div *ngIf="bid.active==1" class="badge badge-light-success fw-bolder">
-                                                Active</div>
-                                            <div *ngIf="bid.active==0" class="badge badge-light-danger fw-bolder">Not
-                                                Active
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!--end::Table row-->
-                                </tbody>
-                                <!--end::Table body-->
-                            </table>
-                            <!--end::Table-->
-                        </div>
-                    </div>
-                    <!--end::Items-->
-                </div>
-                <!--end::Card body-->
-            </div>
         </div>
     </div>
 </div>
