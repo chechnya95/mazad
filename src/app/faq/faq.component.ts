@@ -108,13 +108,13 @@ export class FaqComponent implements OnInit {
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getTopics();
+    this.getContent();
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getTopics();
+    this.getContent();
   }
 
   getTopics() {
