@@ -123,7 +123,7 @@ export class FaqComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.topics = objects['faq_topics'];
-        this.filter_config.totalItems = objects['filters']['total_results'];
+        //this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => { }
     );
@@ -139,6 +139,7 @@ export class FaqComponent implements OnInit {
         }
         objects = data;
         this.faqs = objects.faqs;
+        this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => { }
     );
