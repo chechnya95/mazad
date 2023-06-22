@@ -823,9 +823,9 @@
                                                         [queryParams]="{ id: invoice?.payment_transaction_id }">{{
                                                         invoice?.payment_transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
-                                                <!--begin::Amount=-->
+                                                <!--begin::Type=-->
                                                 <td>{{ invoice?.payment_type | uppercase }}</td>
-                                                <!--end::Amount=-->
+                                                <!--end::Type=-->
                                                 <!--begin::Date=-->
                                                 <td>{{invoice?.create_date | date:'medium'}}</td>
                                                 <!--end::Date=-->
