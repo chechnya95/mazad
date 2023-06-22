@@ -819,7 +819,7 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let invoice of invoices; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/invoices']"
+                                                <td><a [routerLink]="['/invoice-details']"
                                                         [queryParams]="{ id: invoice?.payment_transaction_id }">{{
                                                         invoice?.payment_transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->

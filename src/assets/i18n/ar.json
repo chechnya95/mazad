@@ -255,11 +255,20 @@
     "My Profile":"ملفي الشخصي",
     "My Auctions":"مزاداتي",
     "My Statements":"كشف حسابي",
-    "Sign Out":"تسجيل خروج"
+    "Sign Out":"تسجيل خروج",
 
-
-
-
-
-
+    "paymentreceipt": "إيصال الدفع",
+    "receiptnumber": "رقم الإيصال",
+    "issuedate": "تاريخ الاصدار",
+    "paymentmodel": "التفاصيل",
+    "viewpage": "عرض مزاداتي الفائزة",
+    "issuefor": "تم اصدارها لـ",
+    "issueby": "تم اصدارها عن طريق",
+    "mazadoman": "مزاد عمان",
+    "paymentoverview": "ملخص الدفع",
+    "success": "تمت العملية بنجاح",
+    "AUCTION": "المزاد",
+    "No_result": "لا توجد نتائج أو لم تقم بالبحث",
+    "onwerby": "البائع",
+    "fees": "الضريبة"
 }

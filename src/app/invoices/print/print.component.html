@@ -16,9 +16,18 @@
                                     <div class="mt-n1">
                                         <!--begin::Wrapper-->
                                         <div class="m-0">
-                                            <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-800 mb-8">
-                                                {{ 'recipt_no' | translate }} {{ this.invoice?.number }}</div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img src="../../../../assets/media/logos/logo.png" alt="mazadoman"
+                                                        width="60" height="60" class="float-end">
+                                                </div>
+                                                <div class="col">
+                                                    <!--begin::Label-->
+                                                    <div class="fw-bolder fs-3 text-gray-800 mb-1">
+                                                        {{ "receiptnumber"| translate}}
+                                                        {{ this.invoice?.number }}</div>
+                                                </div>
+                                            </div>
                                             <!--end::Label-->
                                             <div class="row"
                                                 style="height: 5px; background-color: #51689c; margin-bottom: 15px; margin-top: 10px;">
@@ -29,7 +38,7 @@
                                                 <div class="col-sm-6">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        {{ 'Date_of_issue' | translate }}
+                                                        {{ "issuedate"| translate}}
                                                     </div>
                                                     <!--end::Label-->
                                                     <!--end::Col-->
@@ -43,18 +52,30 @@
                                                 <div class="col-sm-6">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-
-                                                        {{ 'payway' | translate }}
-
+                                                        {{ "issueby"| translate}}
                                                     </div>
                                                     <!--end::Label-->
-                                                    <!--end::Info-->
+                                                    <!--end::Text-->
                                                     <div class="fw-bolder fs-6 text-gray-800">
-                                                        {{this.invoice?.model_type | titlecase }}
+                                                        {{ "mazadoman"| translate}}
                                                     </div>
-                                                    <!--end::Info-->
+                                                    <!--end::Text-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">{{ "Digital Leadership LLC"|
+                                                        translate}}
+                                                        <!-- <br />Matthews, NC 28104 -->
+                                                    </div>
+                                                    <!--end::Description-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">91900950 | 99871109 |
+                                                        90125442
+                                                        <!-- <br />Matthews, NC 28104 -->
+                                                    </div>
+                                                    <div class="fw-bold fs-7 text-gray-600">
+                                                        VAT No. OM1100095995
+                                                    </div>
+                                                    <!--end::Description-->
                                                 </div>
-                                                <!--end::Col-->
                                             </div>
                                             <!--end::Row-->
                                             <!--begin::Row-->
@@ -63,11 +84,39 @@
                                                 <div class="col-sm-6" style="margin: 0;">
                                                     <!--end::Label-->
                                                     <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        {{ 'Issue_For' | translate }}
-                                                    </div>
+                                                        {{ "onwerby"| translate}}</div>
                                                     <!--end::Label-->
                                                     <!--end::Text-->
-                                                    <div class="fw-bolder fs-6 text-gray-800" *ngIf="this.invoice?.user_details.details.name_en">
+                                                    <div class="fw-bolder fs-6 text-gray-800"
+                                                        *ngIf="this.invoice?.owner_details?.name_en">
+                                                        {{this.invoice?.owner_details?.name_en}}</div>
+                                                    <!--end::Text-->
+                                                    <!--end::Text-->
+                                                    <div class="fw-bolder fs-7 text-gray-600">
+                                                        {{this.invoice?.owner_details?.email}}
+                                                    </div>
+                                                    <!--end::Text-->
+                                                    <!--end::Description-->
+                                                    <div class="fw-bold fs-7 text-gray-600">
+                                                        {{this.invoice?.owner_details?.phone}}
+                                                        <!-- <br />Livonia, MI 48150 -->
+                                                    </div>
+                                                    <div class="fw-bold fs-7 text-gray-600">
+                                                        VAT No. {{this.invoice?.owner_details?.vat_number}}
+                                                        <!-- <br />Livonia, MI 48150 -->
+                                                    </div>
+                                                    <!--end::Description-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--end::Col-->
+                                                <div class="col-sm-6" style="margin: 0;">
+                                                    <!--end::Label-->
+                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
+                                                        {{ "issuefor"| translate}}</div>
+                                                    <!--end::Label-->
+                                                    <!--end::Text-->
+                                                    <div class="fw-bolder fs-6 text-gray-800"
+                                                        *ngIf="this.invoice?.user_details.details.name_en">
                                                         {{this.invoice?.user_details.details.name_en}}</div>
                                                     <!--end::Text-->
                                                     <!--end::Text-->
@@ -79,30 +128,9 @@
                                                         {{this.invoice?.user_details.phone}}
                                                         <!-- <br />Livonia, MI 48150 -->
                                                     </div>
-                                                    <!--end::Description-->
-                                                </div>
-                                                <!--end::Col-->
-                                                <!--end::Col-->
-                                                <div class="col-sm-6" style="margin: 0;">
-                                                    <!--end::Label-->
-                                                    <div class="fw-bold fs-7 text-gray-600 mb-1">
-                                                        {{ 'Issued_By' | translate }}   
-                                                    </div>
-                                                    <!--end::Label-->
-                                                    <!--end::Text-->
-                                                    <div class="fw-bolder fs-6 text-gray-800">
-                                                        {{ 'mazad' | translate }}
-                                                    </div>
-                                                    <!--end::Text-->
-                                                    <!--end::Description-->
                                                     <div class="fw-bold fs-7 text-gray-600">
-                                                        {{ 'Digital Leadership LLC' | translate }}
-                                                        <!-- <br />Matthews, NC 28104 -->
-                                                    </div>
-                                                    <!--end::Description-->
-                                                    <!--end::Description-->
-                                                    <div class="fw-bold fs-7 text-gray-600">91900950 | 99871109 | 90125442
-                                                        <!-- <br />Matthews, NC 28104 -->
+                                                        VAT No. {{this.invoice?.user_details?.vat_number}}
+                                                        <!-- <br />Livonia, MI 48150 -->
                                                     </div>
                                                     <!--end::Description-->
                                                 </div>
@@ -112,27 +140,32 @@
                                         </div>
                                         <!--end::Wrapper-->
                                         <!--begin::Table-->
-                                        <hr style="margin-top: 15px; height:2px;border:none;color:#51689c;background-color:#51689c;">
+                                        <hr
+                                            style="margin-top: 15px; height:2px;border:none;color:#51689c;background-color:#51689c;">
                                         <div class="table-responsive">
                                             <table class="table mb-0">
                                                 <thead>
                                                     <tr class="fs-8 fw-bolder text-gray-400">
-                                                        <th class="min-w-70px text-end pb-2">
-                                                            {{ 'Description' | translate }}
-                                                        </th>
+                                                        <th colspan="2" class="min-w-70px text-end pb-2">
+                                                            {{ "Description"| translate}}</th>
                                                         <th class="min-w-80px text-end pb-2">
-                                                            {{ 'auction' | translate }}
+                                                            {{ "fees"| translate}}
                                                         </th>
                                                         <th class="min-w-100px text-end pb-2">
-                                                            {{ 'total' | translate }}
-                                                        </th>
+                                                            {{ "total"| translate}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr class="fw-bolder text-gray-700 fs-8 text-end">
-                                                        <td>{{this.invoice?.details.description}}
+                                                        <td>
+                                                            {{this.invoice?.details.code}}
                                                         </td>
-                                                        <td>{{this.invoice?.details.fee}}
+                                                        <td>
+                                                            <p>{{this.invoice?.details.title.ar}}</p>
+                                                            <p>{{this.invoice?.details.title.en}}</p>
+                                                        </td>
+                                                        <td>{{this.invoice?.details.fee |
+                                                            currency:' OMR '}}
                                                         </td>
                                                         <td class="text-dark fw-boldest">
                                                             {{this.invoice?.details.amount |
@@ -142,27 +175,30 @@
                                             </table>
                                         </div>
                                         <!--end::Table-->
-                                        <div class="row" style="height: 5px; background-color: #51689c; margin-bottom: 5px;"></div>
+                                        <div class="row"
+                                            style="height: 5px; background-color: #51689c; margin-bottom: 5px;"></div>
                                         <!--begin::Container-->
-                                        <div class="d-flex justify-content-end">
-                                            <!--begin::Section-->
-                                            <div class="mw-300px">
-                                                <!--begin::Item-->
-                                                <div class="d-flex flex-stack">
-                                                    <!--begin::Code-->
-                                                    <div class="fw-bold pe-10 text-gray-600 fs-7">
-                                                        {{ 'total' | translate }}
-                                                         </div>
-                                                    <!--end::Code-->
-                                                    <!--begin::Label-->
-                                                    <div class="text-end fw-bolder fs-6 text-gray-800">
-                                                        {{this.invoice?.total_amount |
-                                                        currency:' OMR ' }}</div>
-                                                    <!--end::Label-->
+                                        <div class="row">
+                                            <div class="col d-flex justify-content-end">
+                                                <!--begin::Section-->
+                                                <div class="mw-300px">
+                                                    <!--begin::Item-->
+                                                    <div class="d-flex flex-stack">
+                                                        <!--begin::Code-->
+                                                        <div class="fw-bold pe-10 text-gray-600 fs-7 mx-1">
+                                                            {{ "total"| translate}}
+                                                        </div>
+                                                        <!--end::Code-->
+                                                        <!--begin::Label-->
+                                                        <div class="text-end fw-bolder fs-6 text-gray-800 mx-1">
+                                                            {{this.invoice?.total_amount |
+                                                            currency:' OMR ' }}</div>
+                                                        <!--end::Label-->
+                                                    </div>
+                                                    <!--end::Item-->
                                                 </div>
-                                                <!--end::Item-->
+                                                <!--end::Section-->
                                             </div>
-                                            <!--end::Section-->
                                         </div>
                                         <!--end::Container-->
                                     </div>
