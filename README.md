@@ -1,5 +1,7 @@
 # Mazad Oman dashboard
 
+ng update
+
 npm install
 
 ng serve --configuration production
