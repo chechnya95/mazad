@@ -89,7 +89,7 @@ export class AuctionDetailsComponent implements OnInit {
   approveItem(id: any) {
     this.api.get('items/to_status/payment/' + id, this.token).subscribe(
       async data => { this.getItems(); this.successMessage = true; },
-      async error => {  this.errorMessage = true; }
+      async error => { this.errorMessage = true; }
     );
   }
 
@@ -99,7 +99,7 @@ export class AuctionDetailsComponent implements OnInit {
     list.forEach((item) => {
       this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
         async data => { status = true; },
-        async error => {  status = true; }
+        async error => { status = true; }
       );
     });
 
@@ -131,8 +131,18 @@ export class AuctionDetailsComponent implements OnInit {
       cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.api.get('auctions/export/' + id, this.token).subscribe(
-          res => { },
+        this.api.get('auctions/export/' + id, this.token, { responseType: 'blob' }).subscribe(
+          (response: any) => {
+            let blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            let url = window.URL.createObjectURL(blob);
+            let pwa = window.open(url);
+            if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+              Swal.fire(
+                'Warning!',
+                'Please disable your Pop-up blocker and try again.'
+              );
+            }
+          },
           err => {
             Swal.fire(
               'Error!',
