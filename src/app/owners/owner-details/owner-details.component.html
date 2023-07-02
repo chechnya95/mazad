@@ -119,10 +119,10 @@
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
                             href="#kt_customer_view_overview_statements">Statistics</a>
-                    </li>
+                    </li> -->
                     <!--end:::Tab item-->
                 </ul>
                 <!--end:::Tabs-->
@@ -221,7 +221,7 @@
                                 <div class="table-responsive">
                                     <!--begin::Table-->
                                     <table class="table align-middle table-row-dashed gy-5"
-                                        id="kt_table_customers_payment" style="display: none">
+                                        id="kt_table_customers_payment">
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
@@ -236,6 +236,11 @@
                                         <!--begin::Table body-->
                                         <tbody class="fs-6 fw-bold text-gray-600">
                                             <!--begin::Table row-->
+                                            <tr *ngIf="auctions.length==0">
+                                                <td colspan="3">
+                                                    {{'no_data' | translate}}
+                                                </td>
+                                            </tr>
                                             <tr *ngFor="let auction of auctions; let i = index;">
                                                 <!--begin::Invoice=-->
                                                 <td><a [routerLink]="['/users']"
