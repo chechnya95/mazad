@@ -30,6 +30,7 @@
     "Messages": "الرسائل الواردة",
     "wallets": "المَحافظ",
     "deposits": "الإيداعات",
+    "deposit": "الإيداع",
     "payment_transactions": "عمليات الدفع",
     "invoices": "الفواتير",
     "owner_payment_options": "خيارات الدفع للمستخدم",
@@ -250,12 +251,20 @@
     "Number":"الرقم",
     "Total Amount":"المجموع",
 
+    "Language":"اللغة",
+    "save":"حفظ",
+    "Edit":"تعديل",
+    "Delete":"حذف",
+    "Add":"اضافة",
+    "Save":"حفظ",
     "groups":"المجموعات",
     "blacklist":"القائمة السوداء",
     "My Profile":"ملفي الشخصي",
     "My Auctions":"مزاداتي",
     "My Statements":"كشف حسابي",
-    "Sign Out":"تسجيل خروج"
+    "Sign Out":"تسجيل خروج",
+    "CREDIBILITY":"التصديق",
+    "ACTIONS":"الخيارات"
 
 
 
