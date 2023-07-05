@@ -108,13 +108,13 @@ export class FaqComponent implements OnInit {
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getTopics();
+    this.getContent();
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getTopics();
+    this.getContent();
   }
 
   getTopics() {
@@ -123,7 +123,7 @@ export class FaqComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.topics = objects['faq_topics'];
-        this.filter_config.totalItems = objects['filters']['total_results'];
+        //this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => { }
     );
@@ -139,6 +139,7 @@ export class FaqComponent implements OnInit {
         }
         objects = data;
         this.faqs = objects.faqs;
+        this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => { }
     );

@@ -80,8 +80,9 @@
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.details.id | uppercase }}
                                             <br> {{ invoice?.details.description }} <br> Amount: {{
-                                            invoice?.details.amount | currency:'OMR'}}, Fee: {{ invoice?.details.fee |
-                                            currency:'OMR'}} </div>
+                                            invoice?.details.amount | currency:' OMR '}}, Fee: {{ invoice?.details.fee |
+                                            currency:' OMR '}}
+                                        </div>
                                         <!--end::Text-->
                                     </div>
                                     <!--end::Col-->
@@ -100,7 +101,8 @@
                                 <!--end::Row-->
                                 <div class="row g-5 mb-12">
                                     <div class="col-sm-6">
-                                        <a class="btn btn-info align-self-center" (click)="printInv()" [routerLink]="['/print_invoice']" target="_blank">Print Invoice</a>
+                                        <a class="btn btn-info align-self-center" (click)="printInv()"
+                                            [routerLink]="['/print_invoice']" target="_blank">Print Invoice</a>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +122,7 @@
                             <!--begin::Item-->
                             <div class="mb-6">
                                 <div class="fw-bold text-gray-600 fs-7">Invoice Total Amount</div>
-                                <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.total_amount | currency:'OMR' }}
+                                <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.total_amount | currency:' OMR ' }}
                                 </div>
                             </div>
                             <div class="mb-6">

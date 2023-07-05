@@ -33,6 +33,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   }
 
   edit_payment_options = {
+    owner_name: null,
     option: null,
     owner_id: null,
     config_id: null,
@@ -80,20 +81,21 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getConfigs();
+    this.getPaymentOptions();
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getConfigs();
+    this.getPaymentOptions();
   }
 
   getPaymentOptions() {
     this.utility.loader = true;
-    const sub = this.api.get('owner_payment_options/', this.token).subscribe(
+    const sub = this.api.get('owner_payment_options/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         this.payment_options = data['owner_payment_options'];
+        this.filter_config.totalItems = data['filters']['total_results'];
       },
       async error => { }
     );
@@ -116,12 +118,12 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   }
 
   getConfigs() {
-    const sub = this.api.get('payments/payment_config', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('payments/payment_config', this.token).subscribe(
       async data => {
         let objects: any = { payment_config: [] }
         objects = data;
         this.configs = objects.payment_config;
-        this.filter_config.totalItems = objects['filters']['total_results'];
+        //this.filter_config.totalItems = objects['filters']['total_results'];
       },
       async error => { }
     );
@@ -180,7 +182,9 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     this.edit_payment_options = option;
     this.edit_option_id = option.id;
 
-    this.edit_payment_options.option = option.option;
+    this.edit_payment_options.option = option.option.toString().toUpperCase();
+    this.edit_payment_options.owner_name = option.owner?.title?.en;
+    this.edit_payment_options.owner_id = option.owner.id;
   }
 
   OnUpdate(id: any) {
@@ -207,5 +211,6 @@ export class OwnerPaymentOptionsComponent implements OnInit {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.payment_options.owner_id = owner.id;
     this.edit_payment_options.owner_id = owner.id;
+    this.edit_payment_options.owner_name = owner?.contact;
   }
 }

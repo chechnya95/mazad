@@ -361,6 +361,9 @@ export class NewItemComponent implements OnInit {
     this.item.terms_ar = template.terms['ar'];
     this.item.terms_en = template.terms['en'];
     this.item.item_status = 'draft';
+    
+    let owner = this.owners.find(i => i.id === this.item.owner_id);
+    this.owner_name = owner.title.en;
 
     // get start date
     var start_date = new Date(template.start_date);
@@ -421,7 +424,7 @@ export class NewItemComponent implements OnInit {
   onChangeOwner(owner_contact?: any) {
     let owner = this.owners.find(i => i.contact === owner_contact);
     this.item.owner_id = owner.id;
-    this.owner_name = owner.title.ar;
+    this.owner_name = owner.title.en;
   }
 
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {

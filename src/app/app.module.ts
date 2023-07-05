@@ -77,6 +77,7 @@ import { TimeLeftPipe } from './pipes/time-left.pipe';
 import { SendNotificationsComponent } from './send-notifications/send-notifications.component';
 import { ExportComponent } from './items/export/export.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ExportOwnerComponent } from './items/export-owner/export-owner.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     MonitorsComponent,
     TimeLeftPipe,
     SendNotificationsComponent,
-    ExportComponent
+    ExportComponent,
+    ExportOwnerComponent
   ],
   imports: [
     QRCodeModule,
@@ -182,6 +184,7 @@ import { QRCodeModule } from 'angularx-qrcode';
       { path: 'new-item', component: NewItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'edit-item', component: EditItemComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'export', component: ExportComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
+      { path: 'export_owner', component: ExportOwnerComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'auction_templates', component: AuctionTemplatesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'new-template', component: NewTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },

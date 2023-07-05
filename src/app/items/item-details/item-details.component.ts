@@ -303,7 +303,11 @@ export class ItemDetailsComponent implements OnInit {
     );
   }
 
-  export(item: any, bids: any) {
+  export(item: any) {
+    localStorage.setItem('item_details', JSON.stringify(item));
+  }
+  
+  export_owner(item: any, bids: any) {
     localStorage.setItem('item_details', JSON.stringify(item));
     localStorage.setItem('item_bids', JSON.stringify(bids));
   }

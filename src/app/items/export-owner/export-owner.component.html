@@ -1,0 +1,128 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img alt="Logo" src="../../../assets/media/logos/logo.png" class="h-75px logo" />
+        </div>
+    </div>
+    <div class="row">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <qrcode [qrdata]="url" [width]="156" [errorCorrectionLevel]="'M'"></qrcode>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-xl-row">
+        <div class="col">
+            <div class="card mb-5 mb-xl-8">
+                <!--begin::Card header-->
+                <div class="card-header border-0">
+                    <div class="card-title">
+                        <h3 class="fw-bolder m-0">Item Description</h3>
+                    </div>
+                </div>
+                <!--end::Card header-->
+                <!--begin::Card body-->
+                <div class="card-body pt-2">
+                    <!--begin::Items-->
+                    <div class="py-2">
+                        <!--begin::Item-->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="fw-bolder mt-5">ID</div>
+                                <div class="fs-5 fw-bold text-gray-400 mb-6">{{ item?.id | uppercase}}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="fw-bolder mt-5">Code</div>
+                                <div class="text-gray-600">{{ item?.code | uppercase }} </div>
+                            </div>
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="fw-bolder mt-5">Title</div>
+                                <div class="text-gray-600">{{ item?.title.en }}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="fw-bolder mt-5">Description</div>
+                                <div class="text-gray-600">{{ item?.description.en }} <br> {{
+                                    item?.description.ar }} </div>
+                            </div>
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="d-flex flex-stack" *ngFor="let key of keys">
+                            <div class="d-flex">
+                                <div class="d-flex flex-column">
+                                    <div class="fw-bolder mt-5">{{ key }}</div>
+                                    <div class="text-gray-600">{{ item?.details[key] }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Items-->
+                </div>
+                <!--end::Card body-->
+            </div>
+            <div class="card mb-5 mb-xl-8">
+                <!--begin::Card header-->
+                <div class="card-header border-0">
+                    <div class="card-title">
+                        <h3 class="fw-bolder m-0">Bids</h3>
+                    </div>
+                </div>
+                <!--end::Card header-->
+                <!--begin::Card body-->
+                <div class="card-body pt-2">
+                    <!--begin::Items-->
+                    <div class="py-2">
+                        <div class="table-responsive">
+                            <!--begin::Table-->
+                            <table class="table align-middle table-row-dashed gy-5" id="kt_table_customers_payment">
+                                <!--begin::Table head-->
+                                <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                    <!--begin::Table row-->
+                                    <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                        <th>User</th>
+                                        <th>Amount</th>
+                                        <th class="min-w-80px">Date</th>
+                                        <th></th>
+                                    </tr>
+                                    <!--end::Table row-->
+                                </thead>
+                                <!--end::Table head-->
+                                <!--begin::Table body-->
+                                <tbody class="fs-6 fw-bold text-gray-600">
+                                    <!--begin::Table row-->
+                                    <tr *ngFor="let bid of bids; let i = index;">
+                                        <!--begin::Invoice=-->
+                                        <td><a [routerLink]="['/user-details']" [queryParams]="{ id: bid.user.id }">{{
+                                                bid.user.phone }}</a></td>
+                                        <!--end::Invoice=-->
+                                        <!--begin::Amount=-->
+                                        <td>{{ bid.amount | currency:'OMR'}}</td>
+                                        <!--end::Amount=-->
+                                        <!--begin::Date=-->
+                                        <td>{{bid.create_date | date:'medium'}}</td>
+                                        <!--end::Date=-->
+                                        <td>
+                                            <div *ngIf="bid.active==1" class="badge badge-light-success fw-bolder">
+                                                Active</div>
+                                            <div *ngIf="bid.active==0" class="badge badge-light-danger fw-bolder">Not
+                                                Active
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--end::Table row-->
+                                </tbody>
+                                <!--end::Table body-->
+                            </table>
+                            <!--end::Table-->
+                        </div>
+                    </div>
+                    <!--end::Items-->
+                </div>
+                <!--end::Card body-->
+            </div>
+        </div>
+    </div>
+</div>

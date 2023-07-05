@@ -478,8 +478,10 @@
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
                                                 type="button" class="btn btn-danger">Add
                                                 Payment</button>
-                                            <a [routerLink]="['/export']" (click)="export(item, bids)" target="_blank"
+                                            <a [routerLink]="['/export']" (click)="export(item)" target="_blank"
                                                 class="btn btn-dark">Export</a>
+                                            <a [routerLink]="['/export_owner']" (click)="export_owner(item, bids)" target="_blank"
+                                                class="btn btn-light">Export (Owner)</a>
                                         </div>
                                     </div>
                                 </div>
@@ -817,13 +819,13 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let invoice of invoices; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/invoices']"
+                                                <td><a [routerLink]="['/invoice-details']"
                                                         [queryParams]="{ id: invoice?.payment_transaction_id }">{{
                                                         invoice?.payment_transaction_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
-                                                <!--begin::Amount=-->
+                                                <!--begin::Type=-->
                                                 <td>{{ invoice?.payment_type | uppercase }}</td>
-                                                <!--end::Amount=-->
+                                                <!--end::Type=-->
                                                 <!--begin::Date=-->
                                                 <td>{{invoice?.create_date | date:'medium'}}</td>
                                                 <!--end::Date=-->

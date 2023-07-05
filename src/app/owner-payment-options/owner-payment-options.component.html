@@ -139,7 +139,8 @@
                     <div class="d-flex justify-content-end align-items-center d-none"
                         data-kt-payment-options-table-toolbar="selected">
                         <div class="fw-bolder me-5">
-                            <span class="me-2" data-kt-payment-options-table-select="selected_count"></span>{{"Selected"| translate}}
+                            <span class="me-2"
+                                data-kt-payment-options-table-select="selected_count"></span>{{"Selected"| translate}}
                         </div>
                         <button type="button" class="btn btn-danger"
                             data-kt-payment-options-table-select="delete_selected">{{"Delete"| translate}}
@@ -224,7 +225,8 @@
                                         <!--begin::Actions-->
                                         <div class="text-center">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-payment-optionss-modal-action="cancel">{{"Discard"| translate}}</button>
+                                                data-kt-payment-optionss-modal-action="cancel">{{"Discard"|
+                                                translate}}</button>
                                             <button type="submit" class="btn btn-primary"
                                                 data-kt-payment-optionss-modal-action="submit">
                                                 <span class="indicator-label">{{"Submit"| translate}}</span>
@@ -291,14 +293,15 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{"Option"| translate}}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Option"|
+                                                    translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.option">
-                                                    <option value="0">-- SELECT --</option>
-                                                    <option *ngFor="let option of options" [ngValue]='option'>{{
+                                                    <option>-- SELECT --</option>
+                                                    <option *ngFor="let option of options" [value]='option'>{{
                                                         option }}</option>
                                                 </select>
                                                 <!--end::Input-->
@@ -309,9 +312,9 @@
                                                 <label class="fw-bold fs-6 mb-2">{{"Owner"| translate}}</label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
-                                                    list="ownersList" id="ownersList_id"
-                                                    placeholder="type owner's contact ...">
+                                                    (keyup.enter)="onChangeOwner($event.target.value)"
+                                                    (change)="onChangeOwner($event.target.value)" list="ownersList"
+                                                    id="ownersList_id" placeholder="type owner's contact ...">
                                                 <datalist id="ownersList">
                                                     <option *ngFor="let owner of owners" [value]="owner.contact">
                                                 </datalist>
@@ -321,7 +324,7 @@
                                                 <!--begin::Label--
                                                 <label class="required fw-bold fs-6 mb-2">Owner</label>
                                                 <!--end::Label-->
-                                                <!--begin::Input--
+                                            <!--begin::Input--
                                                 <select name="owner_id"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="payment_options.owner_id">
@@ -335,7 +338,8 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"| translate}}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"|
+                                                    translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -364,7 +368,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="payment_options.auction_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.auction_fee" type="number"
+                                                            class="form-control form-control-solid"
                                                             name="auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -385,7 +390,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="payment_options.mazad_auction_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.mazad_auction_fee"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="mazad_auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -406,7 +412,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="payment_options.mazad_service_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.mazad_service_fee"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="mazad_service_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -431,7 +438,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="payment_options.vat_for_item" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.vat_for_item" type="number"
+                                                            class="form-control form-control-solid"
                                                             name="vat_for_item" />
                                                         <!--end::Input-->
                                                     </div>
@@ -454,7 +462,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="payment_options.vat_for_mazad" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="payment_options.vat_for_mazad" type="number"
+                                                            class="form-control form-control-solid"
                                                             name="vat_for_mazad" />
                                                         <!--end::Input-->
                                                     </div>
@@ -535,13 +544,14 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{"Option"| translate}}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Option"|
+                                                    translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="owner_id"
+                                                <select name="option"
                                                     class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="edit_payment_options.option">
-                                                    <option value="0">-- SELECT --</option>
+                                                    <option>-- SELECT --</option>
                                                     <option *ngFor="let option of options" [ngValue]='option'>{{
                                                         option }}</option>
                                                 </select>
@@ -553,18 +563,22 @@
                                                 <label class="fw-bold fs-6 mb-2">{{"Owner"| translate}}</label>
                                                 <!--end::Label-->
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    (keyup.enter)="onChangeOwner($event.target.value)" (change)="onChangeOwner($event.target.value)"
-                                                    list="ownersList" id="ownersList_id"
-                                                    placeholder="type owner's contact ...">
+                                                    (keyup.enter)="onChangeOwner($event.target.value)"
+                                                    (change)="onChangeOwner($event.target.value)" list="ownersList"
+                                                    id="ownersList_id" placeholder="type owner's contact ...">
                                                 <datalist id="ownersList">
                                                     <option *ngFor="let owner of owners" [value]="owner.contact">
                                                 </datalist>
+
+                                                <input [(ngModel)]="edit_payment_options.owner_name" type="text" disabled
+                                                    class="form-control form-control-solid mt-2" name="owner_name" />
                                             </div>
                                             <!--begin::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"| translate}}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{"Configuration"|
+                                                    translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="owner_id"
@@ -593,7 +607,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="edit_payment_options.auction_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="edit_payment_options.auction_fee"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -614,7 +629,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="edit_payment_options.mazad_auction_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="edit_payment_options.mazad_auction_fee"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="mazad_auction_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -635,7 +651,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="edit_payment_options.mazad_service_fee" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="edit_payment_options.mazad_service_fee"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="mazad_service_fee" />
                                                         <!--end::Input-->
                                                     </div>
@@ -660,7 +677,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="edit_payment_options.vat_for_item" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="edit_payment_options.vat_for_item"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="vat_for_item" />
                                                         <!--end::Input-->
                                                     </div>
@@ -681,7 +699,8 @@
                                                     <!--begin::Input wrapper-->
                                                     <div class="position-relative">
                                                         <!--begin::Input-->
-                                                        <input [(ngModel)]="edit_payment_options.vat_for_mazad" type="number" class="form-control form-control-solid"
+                                                        <input [(ngModel)]="edit_payment_options.vat_for_mazad"
+                                                            type="number" class="form-control form-control-solid"
                                                             name="vat_for_mazad" />
                                                         <!--end::Input-->
                                                     </div>
@@ -696,7 +715,8 @@
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
                                                 data-bs-dismiss="modal">{{"Discard"| translate}}</button>
-                                            <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_option_id)"
+                                            <button type="submit" class="btn btn-primary"
+                                                (click)="OnUpdate(edit_option_id)"
                                                 data-kt-payment-optionss-modal-action="submit">
                                                 <span class="indicator-label">{{"Submit"| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
@@ -722,7 +742,8 @@
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <!--begin::Table-->
-                <table mat-table matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_payment-optionss">
+                <table mat-table matSort (matSortChange)="sortData($event)"
+                    class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_payment-optionss">
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
@@ -757,7 +778,8 @@
                             </td>
                             <!--begin::Owner=-->
                             <td>
-                                <a [routerLink]="['/owners']" [queryParams]="{ id: option?.owner.id }">{{ option?.owner.title.en | uppercase
+                                <a [routerLink]="['/owners']" [queryParams]="{ id: option?.owner.id }">{{
+                                    option?.owner.title.en | uppercase
                                     }}</a>
                             </td>
                             <!--end::Owner=-->
@@ -766,8 +788,8 @@
                             </td>
                             <!--begin::Action=-->
                             <td class="text-end">
-                                <a (click)="editOptionClicked(option)"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_edit_payment-options"
+                                <a (click)="editOptionClicked(option)" data-bs-toggle="modal"
+                                    data-bs-target="#kt_modal_edit_payment-options"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -813,12 +835,9 @@
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
-                <mat-paginator #paginator showFirstLastButtons
-                    [length]="filter_config.totalItems"
-                    [pageSize]="filter_config.itemsPerPage"
-                    [pageSizeOptions]="filter_config.pageSizeOptions"
-                    (page)="pageChangeEvent($event)"
-                >
+                <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
+                    [pageSize]="filter_config.itemsPerPage" [pageSizeOptions]="filter_config.pageSizeOptions"
+                    (page)="pageChangeEvent($event)">
                 </mat-paginator>
             </div>
             <!--end::Card body-->
