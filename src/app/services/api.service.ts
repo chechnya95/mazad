@@ -17,13 +17,13 @@ export class ApiService {
   constructor(private httpClient: HttpClient, public router: Router) { }
 
   get(method: string, token: any, options?: {}) {
-    
+
     // Add token to exisiting headers 
     if (options) {
       options['headers'] = { 'x-access-tokens': token };
     } else {
       options = { headers: { 'x-access-tokens': token } };
-    }    
+    }
 
     //console.log('options', options);
     return this.httpClient.get(this.api + method, options);
@@ -109,6 +109,9 @@ export class ApiService {
     localStorage.setItem("name", user_details ? user_details.name_en : data['email'].substr(0, data['email'].indexOf('@')));
     localStorage.setItem("email", data['email']);
 
+    const date = new Date();
+    localStorage.setItem("time_accessed", date.toString());
+
     this.router.navigate(['login']);
   }
 
@@ -159,6 +162,17 @@ export class ApiService {
     return false;
   }
 
+  isAllowedUser() {
+    let token = localStorage.getItem("access_token");
+    let valid = localStorage.getItem("is_valid");
+
+    if (token && valid)
+      if (valid == 'true')
+        return true;
+
+    return false;
+  }
+
   canEnter(roles: any) {
     let user_key = localStorage.getItem("user_key");
     let role = null;
@@ -170,5 +184,15 @@ export class ApiService {
       return true;
 
     return false;
+  }
+
+  isAccessTimeValid() {
+    let time_accessed = new Date(localStorage.getItem('time_accessed'));
+    let time_now = new Date();
+
+    let time_alive = +time_now - +time_accessed;
+
+    if (time_alive > 1800000)
+      localStorage.clear();
   }
 }

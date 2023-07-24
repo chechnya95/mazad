@@ -14,6 +14,7 @@ export class TemplatesComponent implements OnInit {
 
   token: any;
   templates: any[] = [];
+  media_type: any[] = [];
   filter_config: any;
 
   errorMessage: boolean = false;
@@ -83,16 +84,28 @@ export class TemplatesComponent implements OnInit {
 
   async getTemplates() {
     this.utility.loader = true;
-    this.api.get('templates_contents/', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('templates_contents/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['templates_contents'];
         this.filter_config.totalItems = objects['filters']['total_results'];
-
-        this.utility.loader = false;
       },
       async error => { }
     );
+
+    sub.add(() => { this.getMediaTypes(); });
+  }
+
+  getMediaTypes() {
+    const sub = this.api.get('templates_contents/media_type', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.media_type = objects['templates_contents'];
+      },
+      async error => { }
+    );
+
+    sub.add(() => { this.utility.loader = false; });
   }
 
   OnSubmit() {

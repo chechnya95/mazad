@@ -79,6 +79,8 @@ import { ExportComponent } from './items/export/export.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ExportOwnerComponent } from './items/export-owner/export-owner.component';
 
+import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -217,7 +219,7 @@ import { ExportOwnerComponent } from './items/export-owner/export-owner.componen
       { path: '**', component: PageNotFoundComponent }
     ], { scrollPositionRestoration: 'enabled' })
   ],
-  providers: [],
+  providers: [BnNgIdleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

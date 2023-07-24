@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from './services/api.service';
 import { MazadService } from './services/mazad.service';
 import { UtilitiesService } from './services/utilities.service';
+import { BnNgIdleService } from 'bn-ng-idle'; // import it to your component
 
 @Component({
   selector: 'app-root',
@@ -23,21 +24,30 @@ export class AppComponent {
     private router: Router,
     public translate: TranslateService,
     private mazad: MazadService,
-    private api: ApiService) {
-    this.email = localStorage.getItem('email');
-    this.name = localStorage.getItem('name');
-    
-    this.myAuctions = localStorage.getItem('myAuctions')
-    if (!this.myAuctions)
-      this.mazad.getAuctions();
+    private api: ApiService,
+    private bnIdle: BnNgIdleService) {
+    this.api.isAccessTimeValid();
+    this.bnIdle.startWatching(1800).subscribe((res) => {
+      if (res && this.api.isAllowedUser()) {
+        this.onLogout();
+      }
+      else {
+        this.email = localStorage.getItem('email');
+        this.name = localStorage.getItem('name');
 
-    if (this.name)
-      this.avatar = this.name.charAt(0);
+        this.myAuctions = localStorage.getItem('myAuctions')
+        if (!this.myAuctions)
+          this.mazad.getAuctions();
+
+        if (this.name)
+          this.avatar = this.name.charAt(0);
+      }
+    });
   }
 
   ngOnInit(): void {
     this.api.isExpiredWorker();
-    
+
     let lang = localStorage.getItem('lang');
     this.translate.use(lang);
   }
