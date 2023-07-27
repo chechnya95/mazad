@@ -298,11 +298,14 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">User</label>
+                                                <label class="required fw-bold fs-6 mb-2">
+                                                    {{"User"| translate}}
+                                                </label>
                                                 <!--end::Label-->
                                                 <input class="form-control header-color" [(ngModel)]="user_contact" (keyup.enter)="onChange()"
                                                     (change)="onChange()" list="usersList" id="usersList_id"
-                                                    placeholder="type user's contact ...">
+                                                    placeholder='
+                                                    {{"type user contact ..."| translate}}'>
                                                 <datalist id="usersList">
                                                     <option *ngFor="let user of users" [value]="user.contact">
                                                 </datalist>
