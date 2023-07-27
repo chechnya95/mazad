@@ -70,7 +70,8 @@
                                         data-placeholder="Select option" data-allow-clear="true"
                                         data-kt-group-table-filter="two-step" data-hide-search="true">
                                         <option></option>
-                                        <option value="Enabled">Enabled</option>
+                                        <option value="Enabled">{{"Enabled"| translate}}
+                                        </option>
                                     </select>
                                 </div>
                                 <!--end::Input group-->
@@ -433,7 +434,8 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">
+                                                {{"Discard"| translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-groups-modal-action="submit">
                                                 <span class="indicator-label">

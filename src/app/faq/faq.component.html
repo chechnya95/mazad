@@ -140,11 +140,11 @@
                                                 <!--begin::Input-->
                                                 <input type="text" name="title_en"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="English" [(ngModel)]="topic.title_en" />
+                                                    placeholder='{{"English"| translate}}' [(ngModel)]="topic.title_en" />
                                                 <br>
                                                 <input type="text" name="title_ar"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Arabic" [(ngModel)]="topic.title_ar" />
+                                                    placeholder='{{"Arabic"| translate}}' [(ngModel)]="topic.title_ar" />
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -247,30 +247,30 @@
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="2" name="question_en"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Question in English"
+                                                    placeholder='{{"Question in English"| translate}}'
                                                     [(ngModel)]="faq.question_en"></textarea>
                                                 <br>
                                                 <textarea cols="20" rows="2" name="question_ar"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Question in Arabic"
+                                                    placeholder='{{"Question in Arabic"| translate}}'
                                                     [(ngModel)]="faq.question_ar"></textarea>
                                                 <!--end::Input-->
                                             </div>
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
                                                 <label class="required fw-bold fs-6 mb-2">
-                                                    {{"Question's Answer"| translate}}
+                                                    {{"Questions Answer"| translate}}
                                                     </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="content_en"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Content in English"
+                                                    placeholder='{{"Content in English"| translate}}'
                                                     [(ngModel)]="faq.content_en"></textarea>
                                                 <br>
                                                 <textarea cols="20" rows="5" name="content_ar"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
-                                                    placeholder="Content in Arabic"
+                                                    placeholder='{{"Content in Arabic"| translate}}'
                                                     [(ngModel)]="faq.content_ar"></textarea>
                                                 <!--end::Input-->
                                             </div>
