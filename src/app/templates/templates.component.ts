@@ -23,6 +23,7 @@ export class TemplatesComponent implements OnInit {
   template = {
     key: null,
     model_type: null,
+    media_type: 'SMS',
     model_op: null,
     subject_en: null,
     subject_ar: null,
@@ -33,6 +34,7 @@ export class TemplatesComponent implements OnInit {
   edit_template = {
     key: null,
     model_type: null,
+    media_type: 'SMS',
     model_op: null,
     subject_en: null,
     subject_ar: null,
@@ -100,7 +102,9 @@ export class TemplatesComponent implements OnInit {
     const sub = this.api.get('templates_contents/media_type', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
-        this.media_type = objects['templates_contents'];
+        this.media_type = objects['media_type'];
+
+        console.log(this.media_type)
       },
       async error => { }
     );
@@ -112,6 +116,7 @@ export class TemplatesComponent implements OnInit {
     let body = {
       key: this.template.key,
       model_type: this.template.model_type,
+      media_type: this.template.media_type.toLowerCase(),
       model_op: this.template.model_op,
       //owner_id: null,
       //model_id: null,
@@ -142,6 +147,8 @@ export class TemplatesComponent implements OnInit {
     this.edit_template = template;
     this.edit_template_id = template.id;
 
+    this.edit_template.media_type = template.media_type.toUpperCase();
+
     this.edit_template.subject_ar = template.subject['ar'];
     this.edit_template.subject_en = template.subject['en'];
     this.edit_template.content_ar = template.content['ar'];
@@ -152,6 +159,7 @@ export class TemplatesComponent implements OnInit {
     let body = {
       key: this.edit_template.key,
       model_type: this.edit_template.model_type,
+      media_type: this.edit_template.media_type.toLowerCase(),
       model_op: this.edit_template.model_op,
       owner_id: null,
       model_id: null,

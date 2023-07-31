@@ -210,6 +210,21 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
+                                                                <label class="form-label required">Media Type</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <select name="online_status"
+                                                                    class="form-select form-select-solid"
+                                                                    [(ngModel)]="template.media_type">
+                                                                    <option *ngFor="let type of media_type"
+                                                                        [value]="type">{{ type }}</option>
+                                                                </select>
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
                                                                 <label class="form-label required">Model Type</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
@@ -359,6 +374,21 @@
                                                                 <!--end::Input-->
                                                             </div>
                                                             <!--end::Input group-->
+                                                             <!--begin::Input group-->
+                                                             <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label required">Media Type</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <select name="online_status"
+                                                                    class="form-select form-select-solid"
+                                                                    [(ngModel)]="edit_template.media_type">
+                                                                    <option *ngFor="let type of media_type"
+                                                                        [value]="type">{{ type }}</option>
+                                                                </select>
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
@@ -472,8 +502,9 @@
                                                 </div>
                                             </th>
                                             <th mat-sort-header="key" class="min-w-125px">Key</th>
-                                            <th mat-sort-header="model_type" class="min-w-125px">Model Type</th>
-                                            <th mat-sort-header="model_op" class="min-w-125px">Model OP</th>
+                                            <th mat-sort-header="media_type">Media</th>
+                                            <th mat-sort-header="model_type">Model Type</th>
+                                            <th mat-sort-header="model_op">Model OP</th>
                                             <th class="min-w-125px">Subject</th>
                                             <th class="min-w-125px">Content</th>
                                             <th class="text-end min-w-100px">Actions</th>
@@ -522,6 +553,9 @@
                                             </td>
                                             <!--end::template=-->
                                             <!--begin::code=-->
+                                            <td>{{ template.media_type }}</td>
+                                            <!--end::code=-->
+                                            <!--begin::code=-->
                                             <td>{{ template.model_type }}</td>
                                             <!--end::code=-->
                                             <!--begin::code=-->
@@ -538,7 +572,8 @@
                                                 <div class="m-0">
                                                     <!--begin::Heading-->
                                                     <div class="d-flex align-items-center collapsible py-3 toggle mb-0"
-                                                        data-bs-toggle="collapse" [attr.data-bs-target]="'#kt_support_' + template.id"
+                                                        data-bs-toggle="collapse"
+                                                        [attr.data-bs-target]="'#kt_support_' + template.id"
                                                         aria-expanded="false">
                                                         <!--begin::Icon-->
                                                         <div class="ms-n1 me-5">
@@ -673,12 +708,10 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <mat-paginator #paginator showFirstLastButtons
-                                        [length]="filter_config.totalItems"
+                                    <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
                                         [pageSize]="filter_config.itemsPerPage"
                                         [pageSizeOptions]="filter_config.pageSizeOptions"
-                                        (page)="pageChangeEvent($event)"
-                                    >
+                                        (page)="pageChangeEvent($event)">
                                     </mat-paginator>
                                 </div>
                             </div>
