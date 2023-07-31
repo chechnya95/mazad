@@ -109,9 +109,24 @@ export class WalletsComponent implements OnInit {
 
   user_contact: any;
   onChange() {
-    let user = this.users.find(i => i.contact === this.user_contact);
-    this.wallet.user_id = user.id;
+    if (this.user_contact.length >= 3) {
+      let field = 'user_details,email,phone';
+      let value = this.user_contact;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getUsers();
+    }
+
+    if (this.user_contact == '' || this.user_contact == null) {
+      this.filter_config.queries = null;
+      this.getUsers();
+    }
   }
+
+  // onChange() {
+  //   let user = this.users.find(i => i.contact === this.user_contact);
+  //   this.wallet.user_id = user.id;
+  // }
 
   onSubmit() {
     let body = {
@@ -131,7 +146,7 @@ export class WalletsComponent implements OnInit {
   }
 
   async getUsers() {
-    const sub = this.api.get('users/', this.token).subscribe(
+    const sub = this.api.get('users/', this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -149,9 +164,7 @@ export class WalletsComponent implements OnInit {
           }
         });
       },
-      async error => {
-
-      }
+      async error => { }
     );
   }
 

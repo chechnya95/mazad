@@ -46,6 +46,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    this.getInfo();
     this.api.isExpiredWorker();
 
     let lang = localStorage.getItem('lang');
@@ -60,5 +61,17 @@ export class AppComponent {
   onLogout() {
     localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  getInfo() {
+    this.email = localStorage.getItem('email');
+    this.name = localStorage.getItem('name');
+
+    this.myAuctions = localStorage.getItem('myAuctions')
+    if (!this.myAuctions)
+      this.mazad.getAuctions();
+
+    if (this.name)
+      this.avatar = this.name.charAt(0);
   }
 }
