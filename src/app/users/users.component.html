@@ -435,7 +435,7 @@
                                                 <select name="credibility" class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.credibility">
                                                     <option *ngFor="let credibility of credibilities" [ngValue]='credibility'>
-                                                        {{ "CREDIBILITY"| translate}}
+                                                        {{ user.credibility | titlecase }}
                                                     </option>
                                                 </select>
                                                 <!--end::Input-->

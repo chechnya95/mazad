@@ -56,7 +56,7 @@
                                             <th>{{ "Date" | translate }}</th>
                                             <th>{{ "Amount" | translate }}</th>
                                             <th>{{ "active" | translate }}</th>
-                                            <th>Actions</th>
+                                            <th>{{ "Actions" | translate }}</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -74,7 +74,7 @@
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user.id }">{{
                                                     bid.user.phone }}</a></td>
                                             <td>{{ bid.create_date | date:"short"}}</td>
-                                            <td>{{ bid.amount }} OMR</td>
+                                            <td>{{ bid.amount }} {{ "OMR" | translate }}</td>
                                             <td>
                                                 <div *ngIf="bid.active==1" class="badge badge-light-success fw-bolder">
                                                     Active</div>

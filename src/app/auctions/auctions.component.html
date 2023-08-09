@@ -219,10 +219,12 @@
                                         <!--begin::Actions-->
                                         <div class="text-center">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-kt-auctions-modal-action="cancel">Discard</button>
+                                                data-kt-auctions-modal-action="cancel">{{ "Discard" | translate }}</button>
                                             <button type="submit" class="btn btn-primary"
                                                 data-kt-auctions-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">
+                                                    {{ "Submit" | translate }}
+                                                </span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -507,7 +509,7 @@
                                                 data-bs-dismiss="modal">Discard</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnSubmit()"
                                                 data-kt-auctions-modal-action="submit" data-bs-dismiss="modal">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{ "Submit" | translate }}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -778,7 +780,7 @@
                                             <button type="submit" class="btn btn-primary"
                                                 (click)="OnUpdate(edit_auction_id)"
                                                 data-kt-auctions-modal-action="submit" data-bs-dismiss="modal">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{ "Submit" | translate }}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

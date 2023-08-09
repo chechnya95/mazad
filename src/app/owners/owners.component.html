@@ -699,9 +699,8 @@
                             </td>
                             <!--begin::Two step=-->
                             <td>
-                                <div *ngIf="owner.active==1" class="badge badge-light-success fw-bolder">Active</div>
-                                <div *ngIf="owner.active==0" class="badge badge-light-danger fw-bolder">Not Active
-                                </div>
+                                <div *ngIf="owner.active==1" class="badge badge-light-success fw-bolder">{{ 'active' | translate }}</div>
+                                <div *ngIf="owner.active==0" class="badge badge-light-danger fw-bolder">{{ 'not_active' | translate }}</div>
                             </td>
                             <!--end::Two step=-->
                             <!--begin::Action=-->
