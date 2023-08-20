@@ -27,7 +27,7 @@ export class AppComponent {
     private api: ApiService,
     private bnIdle: BnNgIdleService) {
     this.api.isAccessTimeValid();
-    this.bnIdle.startWatching(1800).subscribe((res) => {
+    this.bnIdle.startWatching(1800000).subscribe((res) => {
       if (res && this.api.isAllowedUser()) {
         this.onLogout();
       }
