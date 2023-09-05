@@ -16,7 +16,11 @@ interface UploadResult {
 @Component({
   selector: 'app-edit-item',
   templateUrl: './edit-item.component.html',
-  styleUrls: ['./edit-item.component.css']
+  styleUrls: [
+    './edit-item.component.css',
+    '../node_modules/@uppy/core/dist/style.css',
+    '../node_modules/@uppy/dashboard/dist/style.css',
+  ]
 })
 export class EditItemComponent implements OnInit {
 
