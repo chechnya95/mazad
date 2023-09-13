@@ -26,6 +26,8 @@ export class AppComponent {
     private mazad: MazadService,
     private api: ApiService,
     private bnIdle: BnNgIdleService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
     this.api.isAccessTimeValid();
     this.bnIdle.startWatching(1800000).subscribe((res) => {
       if (res && this.api.isAllowedUser()) {
@@ -50,6 +52,8 @@ export class AppComponent {
     this.api.isExpiredWorker();
 
     let lang = localStorage.getItem('lang');
+    if (!lang)
+      lang = 'en';
     this.translate.use(lang);
   }
 

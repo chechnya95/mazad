@@ -19,8 +19,8 @@ interface UploadResult {
   templateUrl: './new-item.component.html',
   styleUrls: [
     './new-item.component.css',
-    '../../../../node_modules/@uppy/core/dist/style.css',
-    '../../../../node_modules/@uppy/dashboard/dist/style.css',
+    //'../../../../node_modules/@uppy/core/dist/style.css',
+    //'../../../../node_modules/@uppy/dashboard/dist/style.css',
   ]
 })
 export class NewItemComponent implements OnInit {

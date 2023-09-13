@@ -1,3 +1,5 @@
+@import "../../../../node_modules/@uppy/core/dist/style.min.css";
+@import "../../../../node_modules/@uppy/dashboard/dist/style.min.css";
 .icon-button {
     /* position: relative;
     display: flex;
