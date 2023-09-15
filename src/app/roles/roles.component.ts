@@ -47,6 +47,8 @@ export class RolesComponent implements OnInit {
     }
 
     let lang = localStorage.getItem('lang');
+    if (!lang)
+      lang = 'en';
     this.translate.use(lang);
   }
 

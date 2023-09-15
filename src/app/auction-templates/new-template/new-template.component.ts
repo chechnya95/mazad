@@ -75,6 +75,8 @@ export class NewTemplateComponent implements OnInit {
     this.token = localStorage.getItem('access_token');
 
     let lang = localStorage.getItem('lang');
+    if (!lang)
+      lang = 'en';
     this.translate.use(lang);
   }
 
