@@ -27,7 +27,7 @@
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-user-table-filter="search"
                             class="form-control form-control-solid w-250px ps-14" placeholder="User mobile no."
-                            [(ngModel)]="walletFilter" (keyup)="searchItems()"/>
+                            [(ngModel)]="walletFilter" (keyup)="searchItems()" />
                     </div>
                 </div>
                 <!--end::Card title-->
@@ -89,8 +89,7 @@
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-600 fw-bold">
                                         <!--begin::Table row-->
-                                        <tr
-                                            *ngFor="let wallet of wallets; let i = index;">
+                                        <tr *ngFor="let wallet of wallets; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: wallet.user.id }">{{
                                                     wallet.user.phone }}</a></td>
@@ -100,8 +99,12 @@
                                             <td>{{ wallet.amount | currency:'OMR'}}</td>
                                             <td>{{ wallet.fee | currency:'OMR'}}</td>
                                             <td>
-                                                <div *ngIf="wallet.status.toLowerCase() === 'active'" class="badge badge-light-success fw-bolder">{{ wallet.status | uppercase }}</div>
-                                                <div *ngIf="wallet.status.toLowerCase() !== 'active'" class="badge badge-light-info fw-bolder">{{ wallet.status | uppercase }}</div>
+                                                <div *ngIf="wallet.status.toLowerCase() === 'active'"
+                                                    class="badge badge-light-success fw-bolder">{{ wallet.status |
+                                                    uppercase }}</div>
+                                                <div *ngIf="wallet.status.toLowerCase() !== 'active'"
+                                                    class="badge badge-light-info fw-bolder">{{ wallet.status |
+                                                    uppercase }}</div>
                                             </td>
                                             <td [innerHTML]="wallet.note | nl2br"></td>
                                             <td>{{ wallet.create_date | date:"short"}}</td>
@@ -129,7 +132,8 @@
                                                         <!--end::Svg Icon-->
                                                     </span>
                                                 </a>
-                                                <a title="Add Note" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                <a title="Add Note"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                     (click)="itemId(wallet.id, wallet.note)" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_note_form">
                                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
@@ -173,12 +177,10 @@
                                 <!--end::Table-->
                                 <div class="has-text-centered">
                                     <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
-                                    <mat-paginator #paginator showFirstLastButtons
-                                        [length]="filter_config.totalItems"
+                                    <mat-paginator #paginator showFirstLastButtons [length]="filter_config.totalItems"
                                         [pageSize]="filter_config.itemsPerPage"
                                         [pageSizeOptions]="filter_config.pageSizeOptions"
-                                        (page)="pageChangeEvent($event)"
-                                    >
+                                        (page)="pageChangeEvent($event)">
                                     </mat-paginator>
                                 </div>
                                 <!--end::Card body-->
@@ -311,13 +313,15 @@
                                                         {{ "User" | translate }}
                                                     </label>
                                                     <!--end::Label-->
-                                                    <input class="form-control header-color" [(ngModel)]="user_contact"
-                                                        (keyup)="onChange()" (change)="onChange()"
-                                                        list="usersList" id="usersList_id"
-                                                        placeholder="type user's contact ..." />
-                                                    <datalist id="usersList">
-                                                        <option *ngFor="let user of users" [value]="user.contact">
-                                                    </datalist>
+                                                    <input class="form-control header-color" [(ngModel)]="user_param"
+                                                        (keyup)="onChangeUser()" placeholder="type to serach user ...">
+                                                    <select name="user_id"
+                                                        class="form-select form-select-lg form-select-solid mt-3"
+                                                        [(ngModel)]="wallet.user_id">
+                                                        <option *ngFor="let user of users" [ngValue]='user.id'>{{
+                                                            user.contact }}
+                                                        </option>
+                                                    </select>
                                                 </div>
                                                 <div class="fv-row mb-10">
                                                     <label class="fs-5 fw-bolder form-label mb-2">

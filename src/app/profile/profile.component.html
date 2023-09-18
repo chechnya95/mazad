@@ -53,7 +53,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <!--end::Svg Icon-->{{ user?.role }}
+                                    <!--end::Svg Icon-->{{ user?.roles[0] }}
                                 </a>
                                 <a href="#"
                                     class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
@@ -70,7 +70,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <!--end::Svg Icon-->{{ user?.user_details?.address }}
+                                    <!--end::Svg Icon-->{{ user?.username }}
                                 </a>
                                 <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Mail-at.svg-->
@@ -428,18 +428,89 @@
                     <div *ngIf="user?.user_id_image" class="row mb-7">
                         <!--begin::Label-->
                         <label class="col-lg-4 fw-bold text-muted">Id Copy</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8">
-                                <a class="fw-bolder fs-6 text-dark" [href]="user?.user_id_image">ID Card Link</a>
-                            </div>
-                            <!--end::Col-->
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8">
+                            <a class="fw-bolder fs-6 text-dark" [href]="user?.user_id_image">ID Card Link</a>
+                        </div>
+                        <!--end::Col-->
                     </div>
                     <!--end::Input group-->
+                    <button data-bs-toggle="modal" data-bs-target="#kt_modal_reset_password_form" type="button"
+                        class="btn btn-sm btn-dark">Reset Password</button>
                 </div>
                 <!--end::Card body-->
             </div>
             <!--end::details View-->
+        </div>
+        <div class="modal fade" id="kt_modal_reset_password_form" tabindex="-1" aria-hidden="true">
+            <!--begin::Modal dialog-->
+            <div class="modal-dialog modal-dialog-centered mw-750px">
+                <!--begin::Modal content-->
+                <div class="modal-content">
+                    <!--begin::Modal header-->
+                    <div class="modal-header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bolder">Reset Password</h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                            <span class="svg-icon svg-icon-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)"
+                                        fill="#000000">
+                                        <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1" />
+                                        <rect fill="#000000" opacity="0.5"
+                                            transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)"
+                                            x="0" y="7" width="16" height="2" rx="1" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body scroll-y mx-lg-5 my-7">
+                        <!--begin::Scroll-->
+                        <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_form_scroll"
+                            data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                            data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="fw-bold fs-6 mb-2">{{ "Password" | translate }}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="password" name="password"
+                                    class="form-control form-control-lg form-control-solid" placeholder="************"
+                                    [(ngModel)]="new_password" />
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Scroll-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="submit" class="btn btn-primary" (click)="updatePassword()"
+                                data-bs-dismiss="modal">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <!--end::Modal body-->
+                </div>
+                <!--end::Modal content-->
+            </div>
+            <!--end::Modal dialog-->
         </div>
         <div class="modal fade" id="kt_modal_image_form" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->

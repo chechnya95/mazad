@@ -71,7 +71,7 @@ export class DepositsComponent implements OnInit {
 
   getDeposits() {
     this.utility.loader = true;
-    const sub = this.api.get('deposits/', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('deposits/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.deposits = objects['deposits'];
@@ -139,5 +139,32 @@ export class DepositsComponent implements OnInit {
       async error => { this.errorMessage = true; }
     );
     sub.add(() => { this.getDeposits(); });
+  }
+
+
+  user_id: any;
+  user_param: any;
+
+  onChangeUser() {
+    if (this.user_param.length >= 3) {
+      const sub = this.api.get('users/search/' + this.user_param, this.token, { }).subscribe(
+        async data => {
+          let objects: any = {
+            users: []
+          }
+          objects = data;
+
+          this.users = objects.users.users;
+          this.users.forEach((user) => {
+            user.contact = user.email ? user.email : user.phone;
+          });
+
+          this.deposit.user_id = this.users[0].id;
+        },
+        async error => { }
+      );
+
+      sub.add(() => { });
+    }
   }
 }

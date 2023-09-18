@@ -67,4 +67,29 @@ export class ProfileComponent implements OnInit {
       );
     }
   }
+
+  success: boolean = false;
+  new_password
+
+  updatePassword() {
+    let body = {
+      password: this.new_password
+    }
+
+    this.api.post(`login/resetpassword`, body, false).subscribe(
+      async date => {
+        Swal.fire(
+          'Success',
+          'Password changed successfully!',
+          'success'
+        )
+      },
+      error => {
+        Swal.fire({
+          title: 'حدث خطأ اثناء الارسال',
+          text: `${error.status}: Could not send your request!`
+        });
+      }
+    );
+  }
 }

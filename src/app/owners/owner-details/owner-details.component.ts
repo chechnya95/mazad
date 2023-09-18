@@ -143,6 +143,8 @@ export class OwnerDetailsComponent implements OnInit {
           this.users.forEach((user) => {
             user.contact = user.email ? user.email : user.phone;
           });
+
+          this.user_id = this.users[0].id;
         },
         async error => { }
       );

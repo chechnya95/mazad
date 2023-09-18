@@ -149,7 +149,7 @@ export class WinnersComponent implements OnInit {
 
   searchItems() {
     if (this.itemFilter.length >= 3) {
-      let field = 'title,code,item_status,owner_code';
+      let field = 'title,code,item_status,owner_code,phone,email';
       let value = this.itemFilter;
 
       this.filter_config.queries = `${field},like,${value}`;

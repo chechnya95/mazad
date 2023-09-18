@@ -27,6 +27,7 @@ export class UserDetailsComponent implements OnInit {
   note: any;
 
   image: any;
+  new_password: any;
 
   Swal = require('sweetalert2')
 
@@ -261,5 +262,9 @@ export class UserDetailsComponent implements OnInit {
         }
       );
     }
+  }
+
+  updatePassword(user_id: any) {
+
   }
 }

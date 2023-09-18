@@ -123,11 +123,6 @@ export class WalletsComponent implements OnInit {
     }
   }
 
-  // onChange() {
-  //   let user = this.users.find(i => i.contact === this.user_contact);
-  //   this.wallet.user_id = user.id;
-  // }
-
   onSubmit() {
     let body = {
       user_id: this.wallet.user_id,
@@ -187,6 +182,32 @@ export class WalletsComponent implements OnInit {
     if (this.walletFilter == '' || this.walletFilter == null) {
       this.filter_config.queries = null;
       this.getWallets();
+    }
+  }
+
+  user_id: any;
+  user_param: any;
+
+  onChangeUser() {
+    if (this.user_param.length >= 3) {
+      const sub = this.api.get('users/search/' + this.user_param, this.token, { }).subscribe(
+        async data => {
+          let objects: any = {
+            users: []
+          }
+          objects = data;
+
+          this.users = objects.users.users;
+          this.users.forEach((user) => {
+            user.contact = user.email ? user.email : user.phone;
+          });
+
+          this.wallet.user_id = this.users[0].id;
+        },
+        async error => { }
+      );
+
+      sub.add(() => { });
     }
   }
 }
