@@ -337,10 +337,11 @@ export class EditItemComponent implements OnInit {
   }
 
   OnSubmit() {
+    this.utility.loader = true;
 
     let date_s = new Date(this.item.start_date)
     let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
-    
+
     let date_e = new Date(this.item.end_date)
     let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
@@ -391,7 +392,7 @@ export class EditItemComponent implements OnInit {
 
     formData.append('form', body);
 
-    this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
+    const sub = this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
       async data => { localStorage.removeItem('item-edit'); this.router.navigate(['items']); },
       async eror => {
         Swal.fire({
@@ -401,6 +402,8 @@ export class EditItemComponent implements OnInit {
 
       }
     );
+
+    sub.add(() => { this.utility.loader = false; });
   }
 
   removeImage(image: any) {
