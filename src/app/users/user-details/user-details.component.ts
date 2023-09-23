@@ -106,7 +106,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserWallet(id: any) {
-    const sub = this.api.get('wallets/', this.token).subscribe(
+    const sub = this.api.get('wallets/' + id, this.token).subscribe(
       res => {
         let object = JSON.parse(JSON.stringify(res));
         this.wallets = object['wallets'];
@@ -122,7 +122,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserDeposits(id: any) {
-    const sub = this.api.get('deposits/', this.token).subscribe(
+    const sub = this.api.get('deposits/' + id, this.token).subscribe(
       res => {
         let objects = JSON.parse(JSON.stringify(res));
         this.deposits = objects['deposits'];
