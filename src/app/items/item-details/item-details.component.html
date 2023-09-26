@@ -30,7 +30,7 @@
                                     <div class="fs-4 fw-bolder text-gray-700">
                                         <span class="w-75px">{{ total_bidders }}</span>
                                     </div>
-                                    <div class="fw-bold text-gray-400">Bidders</div>
+                                    <div class="fw-bold text-gray-400">{{'Bidders' | translate }}</div>
                                 </div>
                                 <!--end::Stats-->
                                 <!--begin::Stats-->
@@ -38,7 +38,7 @@
                                     <div class="fs-4 fw-bolder text-gray-700">
                                         <span class="w-50px">{{ total_bids }}</span>
                                     </div>
-                                    <div class="fw-bold text-gray-400">Bids</div>
+                                    <div class="fw-bold text-gray-400">{{'Bids' | translate }}</div>
                                 </div>
                                 <!--end::Stats-->
                                 <!--begin::Stats-->
@@ -46,7 +46,7 @@
                                     <div class="fs-4 fw-bolder text-gray-700">
                                         <span class="w-50px">{{ item?.current_price | currency:'OMR' }}</span>
                                     </div>
-                                    <div class="fw-bold text-gray-400">Current Price</div>
+                                    <div class="fw-bold text-gray-400">{{'Current Price' | translate}}</div>
                                 </div>
                                 <!--end::Stats-->
                             </div>
@@ -57,7 +57,7 @@
                         <div class="d-flex flex-stack fs-4 py-3">
                             <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_customer_view_details" role="button" aria-expanded="false"
-                                aria-controls="kt_customer_view_details">Details
+                                aria-controls="kt_customer_view_details">{{'Details' | translate}}
                                 <span class="ms-2 rotate-180">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -78,7 +78,7 @@
                             </div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit item details">
                                 <a (click)="saveItem(item)" href="edit-item?id={{item.id}}"
-                                    class="btn btn-sm btn-light-primary">Edit</a>
+                                    class="btn btn-sm btn-light-primary">{{'Edit' | translate}}</a>
                             </span>
                         </div>
                         <!--end::Details toggle-->
@@ -92,32 +92,32 @@
                                 <!--begin::Details item-->
                                 <div class="row">
                                     <div class="col"><!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Start Date</div>
+                                        <div class="fw-bolder mt-5">{{'Start Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.start_date | date:'dd/MM/yyyy'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">End Date</div>
+                                        <div class="fw-bolder mt-5">{{'End Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.end_date | date:'dd/MM/yyyy' }}</div>
                                         <!--begin::Details item-->
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col"><!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Start Time</div>
+                                        <div class="fw-bolder mt-5">{{'Start Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.start_date | date:'h:mm a'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">End Time</div>
+                                        <div class="fw-bolder mt-5">{{'End Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.end_date | date:'h:mm a' }}</div>
                                         <!--begin::Details item-->
                                     </div>
                                 </div>
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Location</div>
+                                <div class="fw-bolder mt-5">{{'Location' | translate}}</div>
                                 <div class="text-gray-600">{{ item?.governorate }}, {{ item?.address }}
                                     <br />{{ item?.latitude }}
                                     <br />{{ item?.longtitude }}
@@ -127,14 +127,14 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection Start Date</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection Start Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_start_date |
                                             date:'dd/MM/yyyy'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection End Date</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection End Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_end_date |
                                             date:'dd/MM/yyyy'
                                             }}</div>
@@ -144,13 +144,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection Start Time</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection Start Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_start_time}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection End Time</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection End Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_end_time }}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -160,13 +160,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Deposit Amount</div>
+                                        <div class="fw-bolder mt-5">{{'Deposit Amount' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.deposit | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Start Price</div>
+                                        <div class="fw-bolder mt-5">{{'Start Price' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.start_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -174,13 +174,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Minimum Bid</div>
+                                        <div class="fw-bolder mt-5">{{'Minimum Bid' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.min_bid | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col" *ngIf="item?.acceptable_price">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Acceptable Price</div>
+                                        <div class="fw-bolder mt-5">{{'Acceptable Price' | translate }}</div>
                                         <div class="text-gray-600">{{ item?.acceptable_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -188,7 +188,7 @@
                                 <div class="row">
                                     <div class="col" *ngIf="item?.buy_price">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Buy Price</div>
+                                        <div class="fw-bolder mt-5">{{'Buy Price' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.buy_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -197,13 +197,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Item Created Date</div>
+                                        <div class="fw-bolder mt-5">{{'Item Created Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.create_date | date:'medium'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Item Modified Date</div>
+                                        <div class="fw-bolder mt-5">{{'Item Modified Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.modified_date | date:'medium' }}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -216,7 +216,7 @@
                         <div class="d-flex flex-stack fs-4 py-3">
                             <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_item_view_details" role="button" aria-expanded="false"
-                                aria-controls="kt_item_view_details">Other Related Details
+                                aria-controls="kt_item_view_details">{{'Other Related Details' | translate}}
                                 <span class="ms-2 rotate-180">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -242,33 +242,33 @@
                         <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">Owner</div>
+                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">{{'Owner' | translate}}</div>
                                 <div class="text-gray-600" *ngIf="this.api.canEnter(['admin'])"><a
                                         [routerLink]="['/owners']" [queryParams]="{ id: item?.owner_id }">{{
                                         owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Category</div>
+                                <div class="fw-bolder mt-5">{{'Category' | translate}}</div>
                                 <div class="text-gray-600">{{ category?.name.en }} - {{ category?.name.ar }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Auction</div>
+                                <div class="fw-bolder mt-5">{{'Auction' | translate}}</div>
                                 <div class="text-gray-600"><a [routerLink]="['/auctions']"
                                         [queryParams]="{ id: item?.auction_id }">{{ auction?.code | uppercase }}</a>
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Higher Bidder</div>
+                                <div class="fw-bolder mt-5">{{'Higher Bidder' | translate}}</div>
                                 <div class="text-gray-600"><a [routerLink]="['/users']"
                                         [queryParams]="{ id: item?.higher_bidder }">{{ item?.higher_bidder | uppercase
                                         }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Payer</div>
+                                <div class="fw-bolder mt-5">{{'Payer' | translate}}</div>
                                 <div class="text-gray-600">{{ item?.payer_id | uppercase}}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Payment Refernce</div>
+                                <div class="fw-bolder mt-5">{{'Payment Refernce' | translate}}</div>
                                 <div class="text-gray-600">{{ item?.payment_id | uppercase }}</div>
                                 <!--begin::Details item-->
                             </div>
@@ -283,7 +283,7 @@
                     <!--begin::Card header-->
                     <div class="card-header border-0">
                         <div class="card-title">
-                            <h3 class="fw-bolder m-0">Item Description</h3>
+                            <h3 class="fw-bolder m-0">{{'Item Description' | translate}}</h3>
                         </div>
                     </div>
                     <!--end::Card header-->
@@ -295,7 +295,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Title</div>
+                                        <div class="fw-bolder mt-5">{{'Title' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.title.en }} <br> {{ item?.title.ar }} </div>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Description</div>
+                                        <div class="fw-bolder mt-5">{{'Description' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.description.en }} <br> {{
                                             item?.description.ar }} </div>
                                     </div>
@@ -316,7 +316,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Terms Arabic</div>
+                                        <div class="fw-bolder mt-5">{{'Terms Arabic' | translate}}</div>
                                         <!--
                                         <md-editor class="text-gray-600" [options]="options"
                                             [(ngModel)]="item.terms.ar"
@@ -326,7 +326,7 @@
                                         <div markdown class="text-gray-600" id="terms_ar">
                                             {{ item?.terms.ar }}
                                         </div>
-                                        <div class="fw-bolder mt-5">Terms English</div>
+                                        <div class="fw-bolder mt-5">{{'Terms English' | translate}}</div>
                                         <div markdown class="text-gray-600" id="terms_en">
                                             {{ item?.terms.en }}
                                         </div>
@@ -360,25 +360,25 @@
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_tab">Overview</a>
+                            href="#kt_customer_view_overview_tab">{{'Overview' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_events_and_logs_tab">Biddings</a>
+                            href="#kt_customer_view_overview_events_and_logs_tab">{{'Biddings' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_statements">Billing</a>
+                            href="#kt_customer_view_overview_statements">{{'Billing' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_pendings">Pending Payments</a>
+                            href="#kt_customer_view_overview_pendings">{{'Pending Payments' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                 </ul>
@@ -393,7 +393,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Auction Processes</h2>
+                                    <h2>{{'Auction Processes' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -407,7 +407,7 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">Estimated Price</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Estimated Price' | translate}}</div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">OMR</div>
@@ -417,7 +417,7 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">Start Price</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Start Price' | translate}}</div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">{{ item?.start_price | currency:'OMR'}}
@@ -442,7 +442,7 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">Current Price</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Current Price' | translate}}</div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">{{ item?.current_price | currency:'OMR'}}
@@ -455,33 +455,32 @@
                                 </div>
                                 <div class="row py-5">
                                     <div class="col-md">
-                                        <div class="btn-group" role="group" aria-label="Basic example" dir="auto">
+                                        <div class="btn-group" role="group" aria-label="Basic example" dir="ltr">
                                             <button
                                                 *ngIf="extend_status.includes(item?.item_status.toString().toLowerCase())"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
-                                                type="button" class="btn btn-secondary">Extend</button>
+                                                type="button" class="btn btn-secondary">{{'Extend' | translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"
                                                 (click)="approve(item?.id)" type="button"
-                                                class="btn btn-primary">Approve</button>
+                                                class="btn btn-primary">{{'Approve' | translate}}</button>
                                             <button
                                                 *ngIf="item?.item_status.toString().toLowerCase()=='payment overdue'"
                                                 (click)="announce(item?.id)" type="button"
-                                                class="btn btn-success">Announce Winner</button>
+                                                class="btn btn-success">{{'Announce Winner' | translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"
                                                 (click)="reject(item?.id)" type="button"
-                                                class="btn btn-warning">Reject</button>
+                                                class="btn btn-warning">{{'Reject' | translate}}</button>
                                             <button
                                                 *ngIf="close_status.includes(item?.item_status.toString().toLowerCase())"
                                                 (click)="close(item?.id)" type="button"
-                                                class="btn btn-danger">Close</button>
+                                                class="btn btn-danger">{{'Close' | translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='payment'"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
-                                                type="button" class="btn btn-danger">Add
-                                                Payment</button>
+                                                type="button" class="btn btn-danger">{{'Add Payment' | translate}}</button>
                                             <a [routerLink]="['/export']" (click)="export(item)" target="_blank"
-                                                class="btn btn-dark">Export</a>
+                                                class="btn btn-dark">{{'Export' | translate}}</a>
                                             <a [routerLink]="['/export_owner']" (click)="export_owner(item, bids)" target="_blank"
-                                                class="btn btn-light">Export (Owner)</a>
+                                                class="btn btn-light">{{'Export (Owner)' | translate}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -496,7 +495,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2 class="fw-bolder mb-0">Winner Details</h2>
+                                    <h2 class="fw-bolder mb-0">{{'Winner Details' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -515,7 +514,7 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Name</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Name' | translate}}</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{ winner?.details?.name_en |
@@ -526,7 +525,7 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Phone</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Phone' | translate}}</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{ winner?.phone }}</div>
@@ -540,7 +539,7 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">ID Card Number</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'ID Card Number' | translate}}</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{
@@ -552,7 +551,7 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">Email</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Email' | translate}}</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">
@@ -579,7 +578,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2 class="fw-bolder mb-0">Images & Attachments</h2>
+                                    <h2 class="fw-bolder mb-0">{{'Images & Attachments' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -618,7 +617,7 @@
                                             <!--begin::Summary-->
                                             <div class="me-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="text-gray-800 fw-bolder">Images</div>
+                                                    <div class="text-gray-800 fw-bolder">{{'Images' | translate}}</div>
                                                 </div>
                                             </div>
                                             <!--end::Summary-->
@@ -678,7 +677,7 @@
                                             <!--begin::Summary-->
                                             <div class="me-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="text-gray-800 fw-bolder">Attachments</div>
+                                                    <div class="text-gray-800 fw-bolder">{{'Attachments' | translate}}</div>
                                                 </div>
                                             </div>
                                             <!--end::Summary-->
@@ -724,7 +723,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Biddings Logs</h2>
+                                    <h2>{{'Biddings Logs' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -740,9 +739,9 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>User</th>
-                                                <th>Amount</th>
-                                                <th class="min-w-80px">Date</th>
+                                                <th>{{'User' | translate}}</th>
+                                                <th>{{'Amount' | translate}}</th>
+                                                <th class="min-w-80px">{{'Date' | translate}}</th>
                                                 <th></th>
                                             </tr>
                                             <!--end::Table row-->
@@ -791,7 +790,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>Statement</h2>
+                                    <h2>{{'Statement' | translate}}</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -807,9 +806,9 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Transaction</th>
-                                                <th>Payment Type</th>
-                                                <th class="min-w-125px">Date</th>
+                                                <th>{{'Transaction' | translate}}</th>
+                                                <th>{{'Payment Type' | translate}}</th>
+                                                <th class="min-w-125px">{{'Date' | translate }}</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -852,7 +851,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>Pending Payments</h2>
+                                    <h2>{{'Pending Payments' | translate}}</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -868,9 +867,9 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>No.</th>
-                                                <th>Amount</th>
-                                                <th>Date</th>
+                                                <th>{{'No.' | translate}}</th>
+                                                <th>{{'Amount' | translate}}</th>
+                                                <th>{{'Date' | translate}}</th>
                                                 <th class="min-w-50px"></th>
                                             </tr>
                                             <!--end::Table row-->
@@ -937,7 +936,7 @@
                                                 </td>
                                             </tr>
                                             <tr *ngIf="pendings.length==0">
-                                                <td colspan="4">No Pending Payments.</td>
+                                                <td colspan="4">{{'No Pending Payments.' | translate}}</td>
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
@@ -968,7 +967,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Add a Payment Record</h2>
+                        <h2 class="fw-bolder">{{'Add a Payment Record' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div id="kt_modal_add_payment_close" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -998,7 +997,7 @@
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="fs-6 fw-bold form-label mb-2">
-                                    <span class="required">Invoice Number</span>
+                                    <span class="required">{{'Invoice Number' | translate}}</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                         title="The invoice number must be unique."></i>
                                 </label>
@@ -1011,7 +1010,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fs-6 fw-bold form-label mb-2">Status</label>
+                                <label class="required fs-6 fw-bold form-label mb-2">{{'Status' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select class="form-select form-select-solid fw-bolder" name="status"
@@ -1029,7 +1028,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fs-6 fw-bold form-label mb-2">Invoice Amount</label>
+                                <label class="required fs-6 fw-bold form-label mb-2">{{'Invoice Amount' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control form-control-solid" name="amount" value="" />
@@ -1040,7 +1039,7 @@
                             <div class="fv-row mb-15">
                                 <!--begin::Label-->
                                 <label class="fs-6 fw-bold form-label mb-2">
-                                    <span class="required">Additional Information</span>
+                                    <span class="required">{{'Additional Information' | translate}}</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                         title="Information such as description of invoice or product purchased."></i>
                                 </label>
@@ -1054,9 +1053,9 @@
                             <!--begin::Actions-->
                             <div class="text-center">
                                 <button type="reset" id="kt_modal_add_payment_cancel"
-                                    class="btn btn-white me-3">Discard</button>
+                                    class="btn btn-white me-3">{{'Discard' | translate}}</button>
                                 <button type="submit" id="kt_modal_add_payment_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-label">{{'Submit' | translate }}</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 </button>
@@ -1080,7 +1079,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Extend Auction </h2>
+                        <h2 class="fw-bolder">{{'Extend Auction' | translate}} </h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -1110,7 +1109,7 @@
                             data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
                             data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
                             <div class="fv-row mb-10">
-                                <label class="form-label fs-6 fw-bold">Date</label>
+                                <label class="form-label fs-6 fw-bold">{{'Date' | translate}}</label>
                                 <input type="datetime-local" name="extend_date"
                                     class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="extend_date" />
                             </div>
@@ -1118,10 +1117,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="extend(item?.id)"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -1194,7 +1193,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Add Offline Payment </h2>
+                        <h2 class="fw-bolder">{{'Add Offline Payment' | translate}} </h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -1226,7 +1225,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="fw-bold fs-6 mb-2">Name</label>
+                                <label class="fw-bold fs-6 mb-2">{{'Name' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0"
@@ -1237,7 +1236,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Payfor</label>
+                                <label class="required fw-bold fs-6 mb-2">{{'Payfor' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select name="payfor" class="form-select form-select-lg form-select-solid"
@@ -1252,7 +1251,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Payment Type</label>
+                                <label class="required fw-bold fs-6 mb-2">{{'Payment Type' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select name="payment_transaction_type"
@@ -1269,7 +1268,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Note</label>
+                                <label class="required fw-bold fs-6 mb-2">{{'Note' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <textarea cols="20" rows="3" name="note"
@@ -1281,7 +1280,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">Description</label>
+                                <label class="required fw-bold fs-6 mb-2">{{'Description' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <textarea cols="20" rows="5" name="description"
@@ -1294,10 +1293,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="addPayment(item?.id)"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>

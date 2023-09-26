@@ -89,7 +89,22 @@ export class ItemDetailsComponent implements OnInit {
       async error => { }
     );
 
-    sub.add(() => { this.getOwner(); });
+    sub.add(() => { this.getBiddingDetails(id); });
+  }
+
+  getBiddingDetails(id: any) {
+    const sub = this.api.get('bids/item/' + id, this.token).subscribe(
+      res => {
+        let objects = JSON.parse(JSON.stringify(res));
+
+        this.total_bids = objects.bids;
+        this.total_bidders = objects.bidders;
+      },
+      err => { });
+
+    sub.add(() => {
+      this.getOwner();
+    });
   }
 
   getOwner() {
@@ -306,7 +321,7 @@ export class ItemDetailsComponent implements OnInit {
   export(item: any) {
     localStorage.setItem('item_details', JSON.stringify(item));
   }
-  
+
   export_owner(item: any, bids: any) {
     localStorage.setItem('item_details', JSON.stringify(item));
     localStorage.setItem('item_bids', JSON.stringify(bids));
