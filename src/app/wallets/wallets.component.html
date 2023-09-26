@@ -92,7 +92,7 @@
                                         <tr *ngFor="let wallet of wallets; let i = index;">
                                             <td> {{ (i+1) }} </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: wallet.user.id }">{{
-                                                    wallet.user.phone }}</a></td>
+                                                    wallet.user | userName }}</a></td>
                                             <td><a [routerLink]="['/payment-details']"
                                                     [queryParams]="{ id: wallet.transaction_id }">{{
                                                     wallet.transaction_id | uppercase}}</a></td>

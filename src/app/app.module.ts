@@ -79,7 +79,9 @@ import { ExportComponent } from './items/export/export.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ExportOwnerComponent } from './items/export-owner/export-owner.component';
 
-import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
+import { BnNgIdleService } from 'bn-ng-idle';
+import { UserNamePipe } from './pipes/user-name.pipe';
+import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe'; // import bn-ng-idle service
 
 @NgModule({
   declarations: [
@@ -143,7 +145,9 @@ import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
     TimeLeftPipe,
     SendNotificationsComponent,
     ExportComponent,
-    ExportOwnerComponent
+    ExportOwnerComponent,
+    UserNamePipe,
+    UserNameByLangPipe
   ],
   imports: [
     QRCodeModule,

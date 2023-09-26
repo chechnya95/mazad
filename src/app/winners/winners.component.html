@@ -98,8 +98,10 @@
                                                     uppercase}}</a></td>
                                             <td>{{ winner.item.code | uppercase}}</td>
                                             <td>{{ winner.item.item_status | uppercase}}</td>
-                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: winner.user_id }">{{
-                                                    winner.phone}} <br> {{ winner.email}}</a></td>
+                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: winner.user_id }">
+                                                {{ winner.details | userNameByLang}}<br>
+                                                {{winner.phone}} <br> 
+                                                {{ winner.email}}</a></td>
                                             <td>{{ winner.create_date | date:"short"}}</td>
                                             <td>{{ winner.amount}} OMR</td>
                                             <!--begin::Action=-->

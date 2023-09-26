@@ -777,7 +777,7 @@
                                 <!--begin::User details-->
                                 <div class="d-flex flex-column">
                                     <a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }"
-                                        class="text-gray-800 text-hover-primary mb-1">{{ user.name }}</a>
+                                        class="text-gray-800 text-hover-primary mb-1">{{ user | userName }}</a>
                                     <span><a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }"
                                             class="text-gray-800 text-hover-primary mb-1">{{ user.email }}</a></span>
                                     <span><a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }"
