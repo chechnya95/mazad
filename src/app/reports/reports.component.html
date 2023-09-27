@@ -259,15 +259,15 @@
                                                 <th></th>
                                                 <th mat-sort-header="code">{{ "Code"| translate}}</th>
                                                 <th mat-sort-header="title" class="w-40">{{ "Title"| translate}}</th>
-                                                <th mat-sort-header="count_of_bids">{{ "Bids"| translate}}</th>
                                                 <th mat-sort-header="count_of_bidders">{{ "Bidders"| translate}}</th>
+                                                <th mat-sort-header="count_of_bids">{{ "Bids"| translate}}</th>
                                                 <th mat-sort-header="price">{{ "Price"| translate}}</th>
-                                                <th mat-sort-header="total_vat">{{ "VAT"| translate}}</th>
-                                                <th mat-sort-header="mazad_vat"> {{ "Mazad VAT"| translate}} ({{report?.auction.vat_for_mazad}}%)</th>
                                                 <th mat-sort-header="owner_vat"> {{ "Owner VAT"| translate}} ({{report?.auction.vat_for_item}}%)</th>
                                                 <th mat-sort-header="mazad"> {{ "Mazad"| translate}} ({{report?.auction.auction_fee}}%)</th>
-                                                <th mat-sort-header="total_without_vat">{{ "Total"| translate}}</th>
+                                                <th mat-sort-header="mazad_vat"> {{ "Mazad VAT"| translate}} ({{report?.auction.vat_for_mazad}}%)</th>
                                                 <th mat-sort-header="total">{{ "Total with VAT"| translate}}</th>
+                                                <!-- <th mat-sort-header="total_vat">{{ "VAT"| translate}}</th> -->
+                                                <!-- <th mat-sort-header="total_without_vat">{{ "Total"| translate}}</th> -->
                                                 <th mat-sort-header="item_status">{{ "Status"| translate}}</th>
                                                 <th mat-sort-header="name_ar">{{ "Name"| translate}}</th>
                                                 <th mat-sort-header="id_card_number">{{ "id"| translate}}</th>
@@ -284,15 +284,15 @@
                                                 <td>{{ (i+1) }} </td>
                                                 <td>{{ item.item.code }}</td>
                                                 <td>{{ item.item.title.ar }}</td>
-                                                <td>{{ item.count_of_bids }}</td>
                                                 <td>{{ item.count_of_bidders }}</td>
+                                                <td>{{ item.count_of_bids }}</td>
                                                 <td>{{ item.amount | number:'1.3-3' }}</td>
-                                                <td>{{ item.total_vat | number:'1.3-3' }}</td>
-                                                <td>{{ item.mazad_vat | number:'1.3-3' }}</td>
                                                 <td>{{ item.owner_vat | number:'1.3-3' }}</td>
                                                 <td>{{ item.mazad | number:'1.3-3' }}</td>
-                                                <td>{{ item.total_without_vat | number:'1.3-3' }}</td>
+                                                <td>{{ item.mazad_vat | number:'1.3-3' }}</td>
                                                 <td>{{ item.total | number:'1.3-3' }}</td>
+                                                <!-- <td>{{ item.total_vat | number:'1.3-3' }}</td> -->
+                                                <!-- <td>{{ item.total_without_vat | number:'1.3-3' }}</td> -->
                                                 <td>{{ item.item.item_status | translate }}</td>
                                                 <td>{{ item.details | userNameByLang }}</td>
                                                 <td>{{ getDetails(item.details).id_card_number }}</td>
