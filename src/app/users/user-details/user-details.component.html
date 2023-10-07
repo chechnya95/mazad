@@ -27,7 +27,7 @@
                         <!--end::Summary-->
                         <!--begin::Details toggle-->
                         <div class="d-flex flex-stack fs-4 py-3">
-                            <div class="fw-bolder">User Details</div>
+                            <div class="fw-bolder">{{'User Details' | translate}}</div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit this user">
                                 <a href="users?id={{user.id}}" class="btn btn-sm btn-light-primary">Edit</a>
                             </span>
@@ -41,22 +41,22 @@
                                 <!-- <div class="badge badge-light-info d-inline">{{ user?.item_status }}</div> -->
                                 <!--begin::Badge-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Status</div>
+                                <div class="fw-bolder mt-5">{{'Status'| translate}}</div>
                                 <div class="badge badge-light-info d-inline"><span
                                         *ngIf="user?.is_active">Active</span><span *ngIf="!user?.is_active">Not
                                         Active</span></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Phone</div>
+                                <div class="fw-bolder mt-5">{{'Phone'| translate}}</div>
                                 <div class="text-gray-600">{{ user?.phone }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Email</div>
+                                <div class="fw-bolder mt-5">{{'Email' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.email }}</div>
                                 <div class="text-gray-600" *ngIf=" !user?.email">Not Set</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Id Number</div>
+                                <div class="fw-bolder mt-5">{{'ID Card Number' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.details.id_card_number }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
@@ -64,39 +64,39 @@
                                 <div class="text-gray-600">{{ user?.details?.vat_number }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Mobile Confirmation Date</div>
+                                <div class="fw-bolder mt-5">{{'Mobile Confirmation Date' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.mobile_confirmed_at | date:'medium' }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Email Confirmation Date</div>
+                                <div class="fw-bolder mt-5">{{'Email Confirmation Date' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.email_confirmed_at | date:'medium' }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5 mb-3">User Role</div>
+                                <div class="fw-bolder mt-5 mb-3">{{'User Role' | translate}}</div>
                                 <div class="badge badge-light-primary d-inline badge-lg">{{ user?.roles[0] | titlecase
                                     }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5 mb-3">User Type</div>
+                                <div class="fw-bolder mt-5 mb-3">{{'User Type' | translate}}</div>
                                 <div class="badge badge-light-primary d-inline badge-lg">{{ user?.user_type | titlecase
                                     }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5 mb-3">Credibility</div>
+                                <div class="fw-bolder mt-5 mb-3">{{'Credibility' | translate}}</div>
                                 <div class="badge badge-light-primary d-inline badge-lg">{{ user?.credibility |
                                     titlecase
                                     }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Language</div>
+                                <div class="fw-bolder mt-5">{{'Language' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.language }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">User Wallet</div>
+                                <div class="fw-bolder mt-5">{{'User Wallet' | translate}}</div>
                                 <div class="text-gray-600">{{ user?.wallet | currency:' OMR' }}
                                 </div>
                                 <!--begin::Details item-->
@@ -110,31 +110,31 @@
             </div>
             <!--end::Sidebar-->
             <!--begin::Content-->
-            <div class="flex-lg-row-fluid ms-lg-15">
+            <div class="flex-lg-row-fluid me-lg-7 ms-lg-7">
                 <!--begin:::Tabs-->
                 <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_tab">Overview</a>
+                            href="#kt_customer_view_overview_tab">{{'Overview' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_events_and_logs_tab">Auctions</a>
+                            href="#kt_customer_view_overview_events_and_logs_tab">{{'Auctions' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_statements">Wallets</a>
+                            href="#kt_customer_view_overview_statements">{{'Wallets' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_deposits">Deposits</a>
+                            href="#kt_customer_view_overview_deposits">{{'Deposits' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                 </ul>
@@ -149,7 +149,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>User Actions</h2>
+                                    <h2>{{'User Actions' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -162,19 +162,19 @@
                                         <div *ngIf="userBlocked" class="alert alert-warning" role="alert">
                                             This user has been added to blacklist!
                                         </div>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <div class="btn-group" role="group" aria-label="Basic example" dir="ltr">
                                             <!-- <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form" type="button" class="btn btn-secondary" disabled>Block User</button> -->
                                             <button *ngIf="!userBlocked" (click)="blockUser(user?.id)" type="button"
-                                                class="btn btn-warning">Block User</button>
+                                                class="btn btn-warning">{{'Block User' | translate}}</button>
                                             <button *ngIf="userBlocked" (click)="unblock(block_id)" type="button"
-                                                class="btn btn-danger">Unblock</button>
+                                                class="btn btn-danger">{{'Unblock' | translate}}</button>
                                             <button (click)="offline_wallet(user?.id)" type="button"
-                                                class="btn btn-info">Offline Wallet</button>
+                                                class="btn btn-info">{{'Offline Wallet' | translate}}</button>
                                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_image_form"
-                                                type="button" class="btn btn-secondary">Add ID Copy</button>
+                                                type="button" class="btn btn-secondary">{{'Add ID Copy' | translate}}</button>
                                             <button data-bs-toggle="modal" hidden
                                                 data-bs-target="#kt_modal_reset_password_form" type="button"
-                                                class="btn btn-dark">Reset Password</button>
+                                                class="btn btn-dark">{{'Reset Password' | translate}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -193,12 +193,12 @@
                         </div>
                         <!--end::Card-->
                         <!--begin::Card-->
-                        <div class="card pt-4 mb-6 mb-xl-9">
+                        <div *ngIf="user?.user_id_image" class="card pt-4 mb-6 mb-xl-9">
                             <!--begin::Card header-->
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>User ID Card Copy</h2>
+                                    <h2>{{'User ID Card Copy' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -239,7 +239,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>User's Wining Auctions</h2>
+                                    <h2>{{'User Wining Auctions'  | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -254,10 +254,10 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Status</th>
-                                                <th>Title</th>
-                                                <th class="min-w-125px">Amount</th>
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'Status' | translate}}</th>
+                                                <th>{{'Title' | translate}}</th>
+                                                <th class="min-w-125px">{{'Amount' | translate}}</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -299,7 +299,7 @@
                             <div class="card-header">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>User's Wallets</h2>
+                                    <h2>{{'User Wallets' | translate}}</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -314,11 +314,11 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Transaction</th>
-                                                <th>Wallet Date</th>
-                                                <th>Amount</th>
-                                                <th>Refund Status</th>
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'Transaction' | translate}}</th>
+                                                <th>{{'Wallet Date' | translate}}</th>
+                                                <th>{{'Amount' | translate}}</th>
+                                                <th>{{'Refund Status' | translate}}</th>
                                                 <!-- <th>Note</th> -->
                                                 <th></th>
                                             </tr>
@@ -330,7 +330,7 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let wallet of wallets; let i = index;">
                                                 <!--begin::transaction_id=-->
-                                                <td><a [routerLink]="['/payment-details']" class="fs-9"
+                                                <td><a [routerLink]="['/payment-details']" class="fs-7"
                                                         [queryParams]="{ id: wallet.transaction_id }">{{
                                                         wallet.transaction_id | uppercase }}</a></td>
                                                 <!--end::transaction_id=-->
@@ -429,7 +429,7 @@
                             <div class="card-header">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>User's Deposits</h2>
+                                    <h2>{{'User Deposits' | translate}}</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -444,11 +444,11 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Status</th>
-                                                <th>Auction</th>
-                                                <th>Date</th>
-                                                <th class="min-w-125px">Amount</th>
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'Status' | translate}}</th>
+                                                <th>{{'Auction' | translate}}</th>
+                                                <th>{{'Date' | translate}}</th>
+                                                <th class="min-w-125px">{{'Amount' | translate}}</th>
                                                 <th></th>
                                             </tr>
                                             <!--end::Table row-->
@@ -548,7 +548,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Link User</h2>
+                        <h2 class="fw-bolder">{{'Link User' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -587,9 +587,9 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -610,7 +610,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Add Note</h2>
+                        <h2 class="fw-bolder">{{'Add Note' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -641,7 +641,7 @@
                             data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
                             <div class="fv-row mb-10">
                                 <label class="fs-5 fw-bolder form-label mb-2">
-                                    <span class="required">Note Text</span>
+                                    <span class="required">{{'Note Text' | translate}}</span>
                                 </label>
                                 <textarea cols="20" rows="5" name="note"
                                     class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="note"></textarea>
@@ -650,10 +650,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="adddNote(wallet_id)"
                                 data-kt-roles-modal-action="submit">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -674,7 +674,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Add User ID </h2>
+                        <h2 class="fw-bolder">{{'Add User ID' | translate}} </h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -706,7 +706,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="fw-bold fs-6 mb-2">Add Image</label>
+                                <label class="fw-bold fs-6 mb-2">{{'Add Image' | translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="file" class="form-control form-control-solid mb-3 mb-lg-0" id="image"
@@ -718,10 +718,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="addIdImage(user?.id)"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -742,7 +742,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Reset Password</h2>
+                        <h2 class="fw-bolder">{{'Reset Password' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -787,10 +787,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="updatePassword(user?.id)"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -818,13 +818,12 @@
                         class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                 </div>
                 <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
-                        are some errors detected, please try again.</div>
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div>
                     <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                        (click)="errorMessage=false">Ok, got it!</button>
+                        (click)="errorMessage=false">{{'Ok, got it!'| translate}}</button>
                 </div>
             </div>
         </div>
@@ -846,12 +845,11 @@
                         class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                 </div>
                 <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                        successfully submitted!</div>
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}</div>
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                        (click)="successMessage=false" style="display: inline-block;">{{'Ok' | translate}}</button>
                 </div>
             </div>
         </div>

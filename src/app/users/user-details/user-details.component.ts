@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-details',
@@ -28,10 +29,13 @@ export class UserDetailsComponent implements OnInit {
 
   image: any;
   new_password: any;
+  currentLanguage: any;
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router,
+    public translate: TranslateService) {
+    this.currentLanguage = this.translate.currentLang;
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'User Details';
@@ -109,7 +113,7 @@ export class UserDetailsComponent implements OnInit {
     const sub = this.api.get('wallets/user/' + id, this.token).subscribe(
       res => {
         let object = JSON.parse(JSON.stringify(res));
-        this.wallets = object['wallets'];
+        this.wallets = object['wallets']['wallets'];
 
         this.wallets = this.wallets.filter(i => i.user.id === id);
       },
@@ -125,7 +129,7 @@ export class UserDetailsComponent implements OnInit {
     const sub = this.api.get('deposits/user/' + id, this.token).subscribe(
       res => {
         let objects = JSON.parse(JSON.stringify(res));
-        this.deposits = objects['deposits'];
+        this.deposits = objects['deposits']['deposits'];
 
         this.deposits = this.deposits.filter(i => i.user.id === id);
       },
