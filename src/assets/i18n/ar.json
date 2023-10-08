@@ -94,7 +94,7 @@
     "OMR": "ريال عماني",
     "Total Insurance Amount": "مبالغ التأمين الإجمالية",
     "All Insurance wallet": "كل التأمين المودع",
-    "Total Insurance Deductedle": "مجموع التأمينات المخصومة",
+    "Total Insurance Deducted": "مجموع التأمينات المخصومة",
     "In all time": "في كل الأوقات",
     "Categories": "الاصناف",
     "items": "السلع",
@@ -199,7 +199,7 @@
     "refund_pending": "الطلب في الانتظار",
     "refund": "مسترجع",
     "Filter": "تصفية",
-    "filter_dates": "بحث بالتاريخ",
+    "filter_dates": "خيارات البحث",
     "Clear_Filters": "حذف التصفية",
 
     "SendMessages": "إرسال الرسائل",
@@ -389,5 +389,9 @@
     "Sorry, looks like there are some errors detected, please try again.": "عذرا، يوجد خطأ في الارسال، الرجاء المعاودة مرة أخرى.",
     "Ok, got it!": "حسنا.",
     "Request has been successfully submitted!": "تم ارسال الطلب بنجاح!",
-    "User Wallets": "محافظ المستخدم"
+    "User Wallets": "محافظ المستخدم",
+    "Auction Code": "رمز المزاد",
+    "Item Status": "حالة الغرض",
+    "Winner ID": "الرقم الشخصي للفائز",
+    "Winner Mobile": "رقم هاتف الفائز"
 }
