@@ -103,19 +103,19 @@
             </div>
             <!--end::Sidebar-->
             <!--begin::Content-->
-            <div class="flex-lg-row-fluid ms-lg-15">
+            <div class="flex-lg-row-fluid ms-lg-7 me-lg-7">
                 <!--begin:::Tabs-->
                 <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
                     <!--begin:::Tab item-->
                     <li class="nav-item">
-                        <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_tab">Overview</a>
+                        <a class="nav-link text-active-primary pb-4 mx-2 active" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_tab">{{'Overview' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
-                        <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_events_and_logs_tab">Auctions</a>
+                        <a class="nav-link text-active-primary pb-4 mx-2" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_events_and_logs_tab">{{'Auctions' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
@@ -161,7 +161,7 @@
                                             <!--begin::Table head-->
                                             <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                                 <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                                <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
                                                     <th class="min-w-80px">User</th>
                                                     <th class="min-w-80px">Role</th>
                                                     <th class="min-w-80px">Status</th>
@@ -225,7 +225,7 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
                                                 <th>User</th>
                                                 <th>Amount</th>
                                                 <th class="min-w-125px">Date</th>

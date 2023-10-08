@@ -393,5 +393,7 @@
     "Auction Code": "رمز المزاد",
     "Item Status": "حالة الغرض",
     "Winner ID": "الرقم الشخصي للفائز",
-    "Winner Mobile": "رقم هاتف الفائز"
+    "Winner Mobile": "رقم هاتف الفائز",
+    "Sales of all items": "مبيعات كل السلع",
+    "items_": "سلعة"
 }
