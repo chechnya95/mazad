@@ -28,7 +28,17 @@ export class WinnersComponent implements OnInit {
   }
 
   Swal = require('sweetalert2');
-  itemFilter: any;
+
+  itemFilter = {
+    start_date: null,
+    end_date: null,
+    auction_code: null,
+    item_code: null,
+    item_status: null,
+    item_name: null,
+    winner_id: null,
+    winner_mobie: null,
+  }
 
   start_date: any;
   end_date: any;
@@ -66,6 +76,21 @@ export class WinnersComponent implements OnInit {
     }
     if (this.filter_config.queries_2) {
       params = params.append('queries', this.filter_config.queries_2);
+    }
+    if (this.filter_config.queries_3) {
+      params = params.append('queries', this.filter_config.queries_3);
+    }
+    if (this.filter_config.queries_4) {
+      params = params.append('queries', this.filter_config.queries_4);
+    }
+    if (this.filter_config.queries_5) {
+      params = params.append('queries', this.filter_config.queries_5);
+    }
+    if (this.filter_config.queries_6) {
+      params = params.append('queries', this.filter_config.queries_6);
+    }
+    if (this.filter_config.queries_7) {
+      params = params.append('queries', this.filter_config.queries_7);
     }
     return params;
   }
@@ -148,18 +173,70 @@ export class WinnersComponent implements OnInit {
   }
 
   searchItems() {
-    if (this.itemFilter.length >= 3) {
-      let field = 'title,code,item_status,owner_code,phone,email';
-      let value = this.itemFilter;
+    if (this.itemFilter.winner_id) {
+      let field = 'user_details';
+      let value = this.itemFilter.winner_id;
 
       this.filter_config.queries = `${field},like,${value}`;
-      this.getWinners();
     }
+    else
+      this.filter_config.queries = null
 
-    if (this.itemFilter == '' || this.itemFilter == null) {
-      this.filter_config.queries = null;
-      this.getWinners();
+    if (this.itemFilter.winner_mobie) {
+      let field = 'phone';
+      let value = this.itemFilter.winner_mobie;
+
+      this.filter_config.queries_2 = `${field},like,${value}`;
     }
+    else
+      this.filter_config.queries_2 = null
+
+    if (this.itemFilter.item_code) {
+      let field = 'code';
+      let value = this.itemFilter.item_code;
+
+      this.filter_config.queries_3 = `${field},like,${value}`;
+    }
+    else
+      this.filter_config.queries_3 = null
+
+    if (this.itemFilter.item_name) {
+      let field = 'title';
+      let value = this.itemFilter.item_name;
+
+      this.filter_config.queries_4 = `${field},like,${value}`;
+    }
+    else
+      this.filter_config.queries_4 = null
+
+    if (this.itemFilter.item_status) {
+      let field = 'item_status';
+      let value = this.itemFilter.item_status;
+
+      this.filter_config.queries_5 = `${field},like,${value}`;
+    }
+    else
+      this.filter_config.queries_5 = null
+
+    if (this.itemFilter.start_date) {
+      let field = 'start_date';
+      let value = this.itemFilter.start_date;
+
+      this.filter_config.queries_6 = `${field},ge,${value}`;
+    }
+    else
+      this.filter_config.queries_6 = null
+
+    if (this.itemFilter.end_date) {
+      let field = 'end_date';
+      let value = this.itemFilter.end_date;
+
+      this.filter_config.queries_7 = `${field},le,${value}`;
+    }
+    else
+      this.filter_config.queries_7 = null
+
+    this.getWinners();
   }
 
   filterDates() {
@@ -184,6 +261,11 @@ export class WinnersComponent implements OnInit {
   clear() {
     this.filter_config.queries = null;
     this.filter_config.queries_2 = null;
+    this.filter_config.queries_3 = null;
+    this.filter_config.queries_4 = null;
+    this.filter_config.queries_5 = null;
+    this.filter_config.queries_6 = null;
+    this.filter_config.queries_7 = null;
     this.getWinners();
   }
 }
