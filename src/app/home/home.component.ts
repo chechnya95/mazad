@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.title = 'Dashboard';
     this.token = localStorage.getItem('access_token');

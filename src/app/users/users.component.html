@@ -9,7 +9,7 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <div class="d-flex align-items-center position-relative my-1">
+                    <div class="d-flex align-items-center position-relative my-1" dir="ltr">
                         <!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -107,7 +107,7 @@
                         <!--end::Filter-->
                         <!--begin::Export-->
                         <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_export_users">
+                            data-bs-target="#kt_modal_export_users" hidden>
                             <!--begin::Svg Icon | path: icons/duotone/Files/Export.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -435,7 +435,7 @@
                                                 <select name="credibility" class="form-select form-select-lg form-select-solid"
                                                     [(ngModel)]="user.credibility">
                                                     <option *ngFor="let credibility of credibilities" [ngValue]='credibility'>
-                                                        {{ user.credibility | titlecase }}
+                                                        {{ credibility | titlecase }}
                                                     </option>
                                                 </select>
                                                 <!--end::Input-->
@@ -767,7 +767,7 @@
                             <!--begin::User=-->
                             <td class="d-flex align-items-center">
                                 <!--begin:: Avatar -->
-                                <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+                                <div class="symbol symbol-circle symbol-50px overflow-hidden mx-3">
                                     <a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }">
                                         <div class="symbol-label fs-3 bg-light-danger text-danger">{{ user.avatar }}
                                         </div>
@@ -901,7 +901,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <a (click)="deleteUser(user.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

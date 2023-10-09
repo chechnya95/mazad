@@ -5,6 +5,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-items',
@@ -35,7 +36,7 @@ export class ItemsComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Auctions Items';

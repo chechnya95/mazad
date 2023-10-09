@@ -69,7 +69,7 @@
                                             <td><a [routerLink]="['/item-details']"
                                                     [queryParams]="{ id: bid.item.id }">{{ bid.item.title.en }}</a></td>
                                             <td>
-                                                <div class="badge badge-info">{{ bid.item.item_status }}</div>
+                                                <div class="badge badge-info">{{ bid.item.item_status | translate }}</div>
                                             </td>
                                             <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user.id }">{{
                                                     bid.user.phone }}</a></td>

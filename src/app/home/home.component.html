@@ -285,7 +285,10 @@
                                 </div>
                                 <!--end::Badge-->
                                 <!--begin::Text-->
-                                <div class="fw-bolder text-gray-800 px-3">{{ cat.category_name.name.en }}</div>
+                                <div class="fw-bolder text-gray-800 px-3">
+                                    <span *ngIf="translate.currentLang=='en' || !translate.currentLang">{{ cat.category_name.name.en }}</span>
+                                    <span *ngIf="translate.currentLang=='ar'">{{ cat.category_name.name.ar }}</span>
+                                </div>
                                 <!--end::Text-->
                             </div>
                             <!--end::Item-->
@@ -334,7 +337,7 @@
                             <!--end::Icon-->
                             <!--begin::Title-->
                             <div class="flex-grow-1 me-2">
-                                <a class="fw-bolder text-gray-800 text-hover-primary fs-6">{{ status.item_status | titlecase }}</a>
+                                <a class="fw-bolder text-gray-800 text-hover-primary fs-6">{{ status.item_status | translate }}</a>
                             </div>
                             <!--end::Title-->
                             <!--begin::Lable-->

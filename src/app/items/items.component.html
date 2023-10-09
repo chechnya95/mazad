@@ -9,7 +9,7 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <div class="d-flex align-items-center position-relative my-1">
+                    <div class="d-flex align-items-center position-relative my-1" dir="ltr">
                         <!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -27,7 +27,7 @@
                         </span>
                         <!--end::Svg Icon-->
                         <input type="text" data-kt-item-table-filter="search"
-                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item[code,owner_code,title,description]"
+                            class="form-control form-control-solid w-250px ps-14" placeholder="Search item [code, owner_code, title, description]"
                             [(ngModel)]="itemFilter" (keyup)="searchItems()" />
                     </div>
                     <!--end::Search-->
@@ -91,7 +91,7 @@
                         <!--end::Filter-->
                         <!--begin::Export-->
                         <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_export_items">
+                            data-bs-target="#kt_modal_export_items" hidden>
                             <!--begin::Svg Icon | path: icons/duotone/Files/Export.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -324,7 +324,7 @@
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
-                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                        <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
                             <th class="w-10px pe-2">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                     <input class="form-check-input" type="checkbox" data-kt-check="true"
@@ -340,7 +340,7 @@
                             <th>{{ "Minimum Bid" | translate }}</th>
                             <th> {{ "Acceptable Price" | translate }}</th>
                             <th>{{ "Current Price" | translate }}</th>
-                            <th class="text-end">Actions</th>
+                            <th class="text-end">{{'Actions' | translate}}</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -374,7 +374,7 @@
                             <!--begin::item_status=-->
                             <td>
                                 <div class="badge badge-light-success fw-bolder">
-                                    {{ item.item_status }}
+                                    {{ item.item_status | translate }}
                                 </div>
                             </td>
                             <!--end::item_status=-->
@@ -456,7 +456,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <a (click)="deleteItem(item.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 my-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

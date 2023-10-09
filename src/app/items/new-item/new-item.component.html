@@ -167,7 +167,7 @@
                             <!--begin::Wrapper-->
                             <div class="w-100" *ngIf="type=='empty'">
                                 <!--begin::Title-->
-                                <h2 class="fw-bolder text-dark">Click Continue to Fill item details..</h2>
+                                <h2 class="fw-bolder text-dark">{{'Click Continue to Fill item details..' | translate}}</h2>
                                 <!--end::Title-->
                             </div>
                             <div class="w-100" *ngIf="type=='template'">
@@ -829,9 +829,7 @@
                                 <!--begin::Body-->
                                 <div class="mb-0">
                                     <!--begin::Text-->
-                                    <div class="fs-6 text-gray-600 mb-5">After submiting the form the item will be
-                                        created and found in items lists, if there is an issue you will be informed on
-                                        same page.</div>
+                                    <div class="fs-6 text-gray-600 mb-5">{{'After submiting the form the item will be created and found in items lists, if there is an issue you will be informed on same page.' | translate}}</div>
                                     <!--end::Text-->
                                     <!--begin::Alert-->
                                     <!--begin::Notice-->
@@ -896,7 +894,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <!--end::Svg Icon-->Back
+                                    <!--end::Svg Icon-->{{'Back' | translate}}
                                 </button>
                             </div>
                             <!--end::Wrapper-->

@@ -34,6 +34,7 @@
     "deposits": "الإيداعات",
     "Deposits": "الإيداعات",
     "deposit": "الإيداع",
+    "Deposit": "الإيداع",
     "payment_transactions": "عمليات الدفع",
     "invoices": "الفواتير",
     "owner_payment_options": "خيارات الدفع للمستخدم",
@@ -395,5 +396,14 @@
     "Winner ID": "الرقم الشخصي للفائز",
     "Winner Mobile": "رقم هاتف الفائز",
     "Sales of all items": "مبيعات كل السلع",
-    "items_": "سلعة"
+    "items_": "سلعة",
+    "Add Item": "إضافة سلعة",
+    "Item Destails": "تفاصيل السلعة",
+    "Click Continue to Fill item details..": "اضغط على استمرار لتكملة التفاصيل",
+    "Back": "عودة",
+    "To see all items, please": "لعرض جميع السلع، ",
+    "After submiting the form the item will be created and found in items lists, if there is an issue you will be informed on same page.": "بعد اكمال الاستمارة والضغط على اسستمرار، تفاصيل السلعة ستكون في قائمة السلع. اذا يوجد خطأ في الارسال سيتم اضهار تنبيه على ذلك.",
+
+    "finished": "انتهى",
+    "payment_settlement": "تسوية المدفوعات"
 }

@@ -822,7 +822,7 @@
                             <th mat-sort-header="start_date" class="min-w-125px">{{ "Start Date" | translate }}</th>
                             <th mat-sort-header="end_date" class="min-w-125px">{{ "End Date" | translate }}</th>
                             <th mat-sort-header="auction_status" class="min-w-125px">{{ "status" | translate }}</th>
-                            <th class="text-end min-w-100px">Actions</th>
+                            <th class="text-end min-w-100px">{{'Actions' | translate}}</th>
                         </tr>
                         <!--end::Table row-->
                     </thead>
@@ -857,7 +857,7 @@
                             <!--begin::auction_status=-->
                             <td>
                                 <div class="badge badge-light-success fw-bolder">
-                                    {{ auction.auction_status }}
+                                    {{ auction.auction_status | translate }}
                                 </div>
                             </td>
                             <!--end::auction_status=-->
@@ -954,7 +954,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <a (click)="deleteAuction(auction.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 my-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

@@ -6,6 +6,7 @@ import { Sort } from '@angular/material/sort';
 import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-owners',
@@ -57,7 +58,7 @@ export class OwnersComponent implements OnInit {
 
   ownerFilter = '';
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Owners';
