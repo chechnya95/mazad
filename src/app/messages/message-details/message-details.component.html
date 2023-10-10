@@ -14,7 +14,7 @@
                             <!--begin::Wrapper-->
                             <div class="m-0">
                                 <!--begin::Label-->
-                                <div class="fw-bold fs-7 text-gray-600 mb-1">Message</div>
+                                <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Message' | translate}}</div>
                                 <div class="fw-bold fs-7 text-gray-600 mb-1">{{ message?.id | uppercase}}</div>
                                 <div class="fw-bolder fs-3 text-gray-800 mb-8">({{ message?.c_type }}) {{ message?.title }}</div>
                                 <!--end::Label-->
@@ -23,7 +23,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Sent Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Sent Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ message?.create_date | date }}
@@ -34,7 +34,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6" *ngIf="message?.reviewed">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Reviewed Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Reviewed Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -50,7 +50,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-12">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Message Text:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Message Text' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ message?.message }}
@@ -65,7 +65,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-12">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Admin Notes:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Admin Notes' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ message?.note }}
@@ -80,7 +80,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-12">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Sender Details:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Sender Details' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ message?.name }}</div>

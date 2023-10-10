@@ -14,7 +14,7 @@
                             <!--begin::Wrapper-->
                             <div class="m-0">
                                 <!--begin::Label-->
-                                <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Id</div>
+                                <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Payment Id' | translate}}</div>
                                 <div class="fw-bolder fs-3 text-gray-800 mb-8">{{ payment?.id | uppercase}}</div>
                                 <!--end::Label-->
                                 <!--begin::Row-->
@@ -22,7 +22,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Create Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Create Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.create_date | date }}
@@ -33,7 +33,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Modified Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Modified Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -49,7 +49,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-12">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Reference ID:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Reference ID' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.reference_id | uppercase
@@ -65,7 +65,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-12">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Requester:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Requester' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800"><a [routerLink]="['/users']"
@@ -82,20 +82,19 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Gateway:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Payment Gateway' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_gateway }}</div>
                                         <!--end::Text-->
                                         <!--end::Description-->
-                                        <div class="fw-bold fs-7 text-gray-600" *ngIf="payment?.gateway_status">Gateway
-                                            Status:
+                                        <div class="fw-bold fs-7 text-gray-600" *ngIf="payment?.gateway_status">{{'Gateway Status' | translate}}:
                                             <b><span class="badge badge-light-info me-2">{{
                                                     payment?.gateway_status
                                                     }}</span></b>
                                         </div>
                                         <div class="fw-bold fs-7 text-gray-600" *ngIf="payment?.gateway_transaction_id">
-                                            Gateway Id:
+                                            {{'Gateway Id' | translate}}:
                                             <b>{{ payment?.gateway_transaction_id }}</b>
                                         </div>
                                         <!--end::Description-->
@@ -104,13 +103,13 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Payment Type:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Payment Type' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.payment_type }}</div>
                                         <!--end::Text-->
                                         <!--end::Description-->
-                                        <div class="fw-bold fs-7 text-gray-600">Payment Status:
+                                        <div class="fw-bold fs-7 text-gray-600">{{'Payment Status' | translate}}:
                                             <b><span class="badge badge-light-info me-2">{{
                                                     payment?.payment_status | titlecase
                                                     }}</span></b>
@@ -125,7 +124,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6" *ngIf="payment?.note">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Note:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Note' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.note }}</div>
@@ -135,7 +134,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Retries:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Retries' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -151,7 +150,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6" *ngIf="payment?.custom_properties">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Custom Properties:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Custom Properties' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ payment?.custom_properties }}</div>
@@ -161,7 +160,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Configuration Id:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Configuration Id' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -176,7 +175,7 @@
                                 <div class="row g-5 mb-11">
                                     <div class="col" *ngIf="payment?.dump_response">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Dump Response:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Dump Response' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-4 text-gray-800 d-flex align-items-center flex-wrap  overflow-auto">
@@ -200,32 +199,32 @@
                             class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
                             <!--begin::Labels-->
                             <div class="mb-8">
-                                <span class="badge badge-light-success me-2" *ngIf="payment?.active">Active</span>
-                                <span class="badge badge-light-warning" *ngIf="!payment?.active">Not Active</span>
+                                <span class="badge badge-light-success me-2" *ngIf="payment?.active">{{'Active' | translate}}</span>
+                                <span class="badge badge-light-warning" *ngIf="!payment?.active">{{'Not Active' | translate}}</span>
                             </div>
                             <!--end::Labels-->
                             <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">PAYMENT OVERVIEW</h6>
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">{{'PAYMENT OVERVIEW' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Amount</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Amount' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.amount | currency:' OMR ' }}</div>
                             </div>
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">VAT</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'VAT' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.vat | currency:' OMR '}} </div>
                             </div>
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Card Number</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Card Number' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_number }} </div>
                             </div>
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Card Name</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Card Name' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_name }} </div>
                             </div>
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Card Expiry</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Card Expiry' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.card_expiry_date | date }} </div>
                             </div>
                             <!--end::Item-->
@@ -236,39 +235,39 @@
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">TYPE</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'TYPE' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_type }}</div>
                             </div>
                             <div class="mb-3">
-                                <div class="fw-bold text-gray-600 fs-7">Action</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Action' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_action }} </div>
                             </div>
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">ID</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'ID' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ payment?.model_id | uppercase }} </div>
                             </div>
                             <!--begin::Title-->
                             <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary"
-                                *ngIf="payment?.response_code || payment?.response_decision">PAYMENT RESPONSE</h6>
+                                *ngIf="payment?.response_code || payment?.response_decision">{{'PAYMENT RESPONSE' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-3" *ngIf="payment?.response_code">
-                                <div class="fw-bold text-gray-600 fs-7">Response Code:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Response Code' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_code }}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-3" *ngIf="payment?.response_decision">
-                                <div class="fw-bold text-gray-600 fs-7">Response Decision:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Response Decision' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ payment?.response_decision }}</div>
                             </div>
                             <!--end::Item-->
                             <div class="mb-3"
                                 *ngIf="payment?.payment_status=='pending' && payment?.payment_type=='Online'">
                                 <div class="fw-bolder text-gray-800 fs-6">
-                                    <span class="badge badge-light-info me-2">This Payment is Pending </span>
+                                    <span class="badge badge-light-info me-2">{{'This Payment is Pending' | translate}} </span>
                                     <button type="button" class="btn btn-danger"
-                                        (click)="retry(payment?.reference_id)">Retry</button>
+                                        (click)="retry(payment?.reference_id)">{{'Retry' | translate}}</button>
                                 </div>
                             </div>
                         </div>
@@ -299,13 +298,12 @@
                 class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
         </div>
         <div class="swal2-content">
-            <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
-                are some errors detected, please try again.</div>
+            <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
         </div>
         <div class="swal2-actions">
             <div class="swal2-loader"></div>
             <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                (click)="errorMessage=false">Ok, got it!</button>
+                (click)="errorMessage=false">{{'Ok, got it!' | translate}}</button>
         </div>
     </div>
 </div>
@@ -327,14 +325,13 @@
                 class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
         </div>
         <div class="swal2-content">
-            <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                successfully submitted!
+            <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}
                 <h4>{{ response }}</h4>
             </div>
         </div>
         <div class="swal2-actions">
             <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                (click)="successMessage=false" style="display: inline-block;">{{'Ok' | translate}}</button>
         </div>
     </div>
 </div>

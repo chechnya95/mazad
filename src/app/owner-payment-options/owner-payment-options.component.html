@@ -9,7 +9,7 @@
                 <!--begin::Card title-->
                 <div class="card-title">
                     <!--begin::Search-->
-                    <div class="d-flex align-items-center position-relative my-1">
+                    <div class="d-flex align-items-center position-relative my-1" dir="ltr">
                         <!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -93,7 +93,7 @@
                         <!--end::Filter-->
                         <!--begin::Export-->
                         <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_export_payment-optionss">
+                            data-bs-target="#kt_modal_export_payment-optionss" hidden>
                             <!--begin::Svg Icon | path: icons/duotone/Files/Export.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -359,10 +359,7 @@
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                        <span>Auction Fee</span>
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                            data-bs-toggle="tooltip"
-                                                            title="What is the bank fee percentage"></i>
+                                                        <span>{{'Auction Fee' | translate}}</span>
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input wrapper-->
@@ -382,9 +379,6 @@
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                         <span>{{"Mazad Auction Fee"| translate}}</span>
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                            data-bs-toggle="tooltip"
-                                                            title="What is the bank fee cap"></i>
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input wrapper-->
@@ -404,9 +398,6 @@
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                         <span>{{"Mazad Service Fee"| translate}}</span>
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                            data-bs-toggle="tooltip"
-                                                            title="Specify the payment limit"></i>
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input wrapper-->
@@ -425,14 +416,11 @@
                                             <!--begin::Input group-->
                                             <div class="row mb-10">
                                                 <!--begin::Col-->
-                                                <div class="col-md-4 fv-row">
+                                                <div class="col-md-6 fv-row">
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                         <span>{{"Vat For Item"| translate}}</span>
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                            data-bs-toggle="tooltip"
-                                                            title="What is the bank fee percentage"></i>
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input wrapper-->
@@ -447,16 +435,13 @@
                                                 </div>
                                                 <!--end::Col-->
                                                 <!--begin::Col-->
-                                                <div class="col-md-4 fv-row">
+                                                <div class="col-md-6 fv-row">
                                                     <!--begin::Label-->
                                                     <label
                                                         class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                         <span>
                                                             {{"Vat For Mazad"| translate}}
                                                         </span>
-                                                        <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                            data-bs-toggle="tooltip"
-                                                            title="What is the bank fee cap"></i>
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input wrapper-->
@@ -747,7 +732,7 @@
                     <!--begin::Table head-->
                     <thead>
                         <!--begin::Table row-->
-                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                        <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
                             <th class="w-10px pe-2">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                     <input class="form-check-input" type="checkbox" data-kt-check="true"
@@ -808,7 +793,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <a (click)="removeBlock(option.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

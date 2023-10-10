@@ -23,7 +23,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Image for Slider
+                            <!--end::Svg Icon-->{{'Add Image for Slider' | translate}}
                         </button>
                         <!--end::Add item-->
                     </div>
@@ -45,7 +45,7 @@
                                     </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                            <!--end::Svg Icon-->View Topics
+                            <!--end::Svg Icon-->{{'View Topics' | translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -65,7 +65,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Slider Type
+                            <!--end::Svg Icon-->{{'Add Slider Type' | translate}}
                         </button>
                         <!--end::Add group-->
                     </div>
@@ -243,7 +243,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label">{{ "IMAGE"| translate}}</label>
+                                                <label class="form-label">{{ "Image"| translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="file" class="form-control" id="image" accept="image/*" (change)="imageChange($event)" />
@@ -284,7 +284,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_item_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Update Slider Image</h2>
+                                    <h2 class="fw-bolder">{{'Update Slider Image' | translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -444,10 +444,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="OnUpdate(edit_slider_id)"
                                                 data-kt-items-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit'| translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -527,10 +527,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="AddSliderType()"
                                                 data-kt-groups-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -644,7 +644,7 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                         </div>
                                         <!--end::Actions-->
                                     </form>
@@ -681,7 +681,7 @@
                             <th mat-sort-header="slider_type" class="min-w-100px">{{ "TYPE"| translate}}</th>
                             <th mat-sort-header="enable" class="min-w-80px">{{ "ENABLED?"| translate}}</th>
                             <th mat-sort-header="order" class="min-w-80px">{{ "ORDER"| translate}}</th>
-                            <th class="min-w-100px">Image</th>
+                            <th class="min-w-100px">{{'Image' | translate}}</th>
                             <th class="text-end min-w-100px">{{ "Actions"| translate}}</th>
                         </tr>
                         <!--end::Table row-->
@@ -746,7 +746,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                                 <a (click)="deleteItem(item.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg"

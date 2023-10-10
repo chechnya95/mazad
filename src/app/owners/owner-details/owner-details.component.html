@@ -24,7 +24,7 @@
                         <!--end::Summary-->
                         <!--begin::Details toggle-->
                         <div class="d-flex flex-stack fs-4 py-3">
-                            <div class="fw-bolder">Owner Details
+                            <div class="fw-bolder">{{'Owner Details' | translate}}
                                 <span class="ms-2 rotate-180">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -44,7 +44,8 @@
                                 </span>
                             </div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit this owner">
-                                <a href="owners?id={{owner.id}}" class="btn btn-sm btn-light-primary">Edit</a>
+                                <a href="owners?id={{owner.id}}" class="btn btn-sm btn-light-primary">{{'Edit' |
+                                    translate}}</a>
                             </span>
                         </div>
                         <!--end::Details toggle-->
@@ -56,40 +57,43 @@
                                 <!-- <div class="badge badge-light-info d-inline">{{ owner?.item_status }}</div> -->
                                 <!--begin::Badge-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Status</div>
-                                <div class="badge badge-light-info d-inline"><span
-                                        *ngIf="owner?.active">Active</span><span *ngIf="!owner?.active">Not
-                                        Active</span></div>
+                                <div class="fw-bolder mt-5">{{'Status' | translate}}</div>
+                                <div class="badge badge-light-info d-inline"><span *ngIf="owner?.active">{{'Active' |
+                                        translate}}</span><span *ngIf="!owner?.active">{{'Not Active' |
+                                        translate}}</span></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Phone</div>
+                                <div class="fw-bolder mt-5">{{'Phone' | translate}}</div>
                                 <div class="text-gray-600">{{ owner?.phone }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Email</div>
+                                <div class="fw-bolder mt-5">{{'Email' | translate}}</div>
                                 <div class="text-gray-600">{{ owner?.email }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Create Date</div>
+                                <div class="fw-bolder mt-5">{{'Create Date' | translate}}</div>
                                 <div class="text-gray-600">{{ owner?.create_date | date:'medium' }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Modified Date</div>
+                                <div class="fw-bolder mt-5">{{'Modified Date' | translate}}</div>
                                 <div class="text-gray-600">{{ owner?.modified_date | date:'medium' }}</div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Description</div>
-                                <div class="text-gray-600">{{ owner?.description.en }} - {{ owner?.description.ar }}
+                                <div class="fw-bolder mt-5">{{'Description' | translate}}</div>
+                                <div class="text-gray-600">
+                                    {{ owner?.description.en }} <br> {{ owner?.description.ar }}
                                 </div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Details</div>
+                                <div class="fw-bolder mt-5">{{'Details' | translate}}</div>
                                 <div class="text-gray-600">
                                     {{ owner?.details.name_ar }} <br>
                                     {{ owner?.details.name_en }} <br>
-                                    <span *ngIf="owner?.details.cr_number">CR Number: {{ owner?.details.cr_number
+                                    <span *ngIf="owner?.details.cr_number">{{'CR Number' | translate}}: {{
+                                        owner?.details.cr_number
                                         }}</span> <br>
-                                    <span *ngIf="owner?.details.vat_number">VAT Number: {{ owner?.details.vat_number
+                                    <span *ngIf="owner?.details.vat_number">{{'VAT Number' | translate}}: {{
+                                        owner?.details.vat_number
                                         }}</span>
                                 </div>
                                 <!--begin::Details item-->
@@ -113,7 +117,7 @@
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
-                    <li class="nav-item">
+                    <li class="nav-item" hidden>
                         <a class="nav-link text-active-primary pb-4 mx-2" data-bs-toggle="tab"
                             href="#kt_customer_view_overview_events_and_logs_tab">{{'Auctions' | translate}}</a>
                     </li>
@@ -136,7 +140,6 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Owner Actions</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -148,7 +151,8 @@
                                     <div class="col-md">
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
-                                                type="button" class="btn btn-secondary">Link User</button>
+                                                type="button" class="btn btn-secondary">{{'Link User' |
+                                                translate}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -161,10 +165,11 @@
                                             <!--begin::Table head-->
                                             <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                                 <!--begin::Table row-->
-                                                <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
-                                                    <th class="min-w-80px">User</th>
-                                                    <th class="min-w-80px">Role</th>
-                                                    <th class="min-w-80px">Status</th>
+                                                <tr class="text-gray-400 text-uppercase gs-0"
+                                                    [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                    <th class="min-w-80px">{{'User' | translate}}</th>
+                                                    <th class="min-w-80px">{{'Role' | translate}}</th>
+                                                    <th class="min-w-80px">{{'Status' | translate}}</th>
                                                     <th></th>
                                                 </tr>
                                                 <!--end::Table row-->
@@ -182,10 +187,16 @@
                                                     <td>{{ user.role }}</td>
                                                     <!--end::Amount=-->
                                                     <!--begin::Date=-->
-                                                    <td>{{user.status }}</td>
+                                                    <td>
+                                                        <span *ngIf="user.status">{{'Active' |
+                                                            translate}}</span>
+                                                        <span *ngIf="!user.status">{{'Not Active' |
+                                                            translate}}</span>
+                                                    </td>
                                                     <!--end::Date=-->
                                                     <td><button type="button" (click)="deleteOwnerUser(user.id)"
-                                                            class="btn btn-sm btn-light-danger">delete</button></td>
+                                                            class="btn btn-sm btn-light-danger">{{'delete' |
+                                                            translate}}</button></td>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </tbody>
@@ -210,7 +221,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Owner's Auctions</h2>
+                                    <h2>{{'Owner Auctions' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -225,10 +236,11 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
-                                                <th>User</th>
-                                                <th>Amount</th>
-                                                <th class="min-w-125px">Date</th>
+                                            <tr class="text-gray-400 text-uppercase gs-0"
+                                                [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'User' | translate}}</th>
+                                                <th>{{'Amount' | translate}}</th>
+                                                <th class="min-w-125px">{{'Date' | translate}}</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -275,7 +287,7 @@
                             <div class="card-header">
                                 <!--begin::Title-->
                                 <div class="card-title">
-                                    <h2>Statistics</h2>
+                                    <h2>{{'Statistics' | translate}}</h2>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -294,11 +306,11 @@
                                             <thead class="border-bottom border-gray-200">
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
+                                                    <th class="w-125px">{{'Date' | translate}}</th>
+                                                    <th class="w-100px">{{'Order ID' | translate}}</th>
                                                     <!-- <th class="w-300px">Details</th> -->
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                    <th class="w-100px">{{'Amount' | translate}}</th>
+                                                    <th class="w-100px text-end pe-7">{{'Invoice' | translate}}</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -332,11 +344,11 @@
                                             <thead class="border-bottom border-gray-200">
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
-                                                    <th class="w-100px">Order ID</th>
-                                                    <th class="w-300px">Details</th>
-                                                    <th class="w-100px">Amount</th>
-                                                    <th class="w-100px text-end pe-7">Invoice</th>
+                                                    <th class="w-125px">{{'Date' | translate}}</th>
+                                                    <th class="w-100px">{{'Order ID' | translate}}</th>
+                                                    <th class="w-300px">{{'Details' | translate}}</th>
+                                                    <th class="w-100px">{{'Amount' | translate}}</th>
+                                                    <th class="w-100px text-end pe-7">{{'Invoice' | translate}}</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -397,7 +409,7 @@
                                             <thead class="border-bottom border-gray-200">
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Date</th>
+                                                    <th class="w-125px">{{'Date' | translate}}</th>
                                                     <th class="w-100px">Order ID</th>
                                                     <th class="w-300px">Details</th>
                                                     <th class="w-100px">Amount</th>
@@ -491,7 +503,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Link User</h2>
+                        <h2 class="fw-bolder">{{'Link User' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -521,7 +533,7 @@
                             data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
                             data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
                             <div class="fv-row mb-10">
-                                <label class="form-label fs-6 fw-bold">User</label>
+                                <label class="form-label fs-6 fw-bold">{{'User' | translate}}</label>
                                 <input class="form-control header-color" [(ngModel)]="user_param"
                                     (keyup)="onChangeUser()" placeholder="type to serach user ...">
                                 <!-- <datalist id="usersList">
@@ -536,10 +548,11 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' |
+                                translate}}</button>
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
                                 (click)="linkUser(owner?.id)">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -567,13 +580,12 @@
                         class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                 </div>
                 <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like there
-                        are some errors detected, please try again.</div>
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div>
                     <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                        (click)="errorMessage=false">Ok, got it!</button>
+                        (click)="errorMessage=false">{{'Ok, got it!' | translate}}</button>
                 </div>
             </div>
         </div>
@@ -595,12 +607,11 @@
                         class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                 </div>
                 <div class="swal2-content">
-                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                        successfully submitted!</div>
+                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}</div>
                 </div>
                 <div class="swal2-actions">
                     <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                        (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                        (click)="successMessage=false" style="display: inline-block;">{{'Ok' | translate}}</button>
                 </div>
             </div>
         </div>

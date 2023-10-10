@@ -29,7 +29,7 @@
                                         x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Item
+                            <!--end::Svg Icon-->{{'Add Item' | translate}}
                         </a>
                         <!--end::Add item-->
                         <!--begin::Add item-->
@@ -52,7 +52,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Export Auction
+                            <!--end::Svg Icon-->{{'Export Auction' | translate}}
                         </a>
                         <!--end::Add item-->
                         <!--begin::Add item-->
@@ -76,7 +76,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Import Auction
+                            <!--end::Svg Icon-->{{'Import Auction' | translate}}
                         </a>
                         <!--end::Add item-->
                     </div>
@@ -100,7 +100,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">Export items</h2>
+                                    <h2 class="fw-bolder">{{'Export items' | translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -152,7 +152,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Start Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Start Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ auction?.start_date | date }}</div>
@@ -162,7 +162,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">End Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'End Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -178,11 +178,11 @@
                                 <div class="row g-5 mb-6" *ngIf="items && items.length > 0">
                                     <!--begin::Table-->
                                     <div class="table-responsive border-bottom mb-3">
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Items</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Auction Items' | translate}}</div>
                                         <table class="table mb-3" id="kt_table_items">
                                             <thead class="border-bottom border-gray-200">
                                                 <!--begin::Table row-->
-                                                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
                                                     <th class="w-10px pe-2">
                                                         <div
                                                             class="form-check form-check-sm form-check-custom form-check-solid me-3">
@@ -192,11 +192,11 @@
                                                                 value="1" />
                                                         </div>
                                                     </th>
-                                                    <th class="w-100px">Code</th>
-                                                    <th>Title</th>
-                                                    <th>Current Price</th>
-                                                    <th>Buy Price</th>
-                                                    <th>Status</th>
+                                                    <th class="w-100px">{{'Code' | translate}}</th>
+                                                    <th>{{'Title' | translate}}</th>
+                                                    <th>{{'Current Price' | translate}}</th>
+                                                    <th>{{'Buy Price' | translate}}</th>
+                                                    <th>{{'Status' | translate}}</th>
                                                     <th></th>
                                                 </tr>
                                                 <!--end::Table row-->
@@ -231,7 +231,7 @@
                                                     <!--begin::Amount=-->
                                                     <td>
                                                         <div class="badge badge-light-info fw-bolder">{{
-                                                            item.item_status }}</div>
+                                                            item.item_status | translate}}</div>
                                                     </td>
                                                     <!--end::Amount=-->
                                                     <td>
@@ -270,21 +270,21 @@
                                     </div>
                                     <div class="col">
                                         <button *ngIf="approvalBtn" (click)="approvalModal=true;" type="button"
-                                            class="btn btn-primary">Approve Selected</button>
+                                            class="btn btn-primary">{{'Approve Selected' | translate}}</button>
                                     </div>
                                     <!--end::Table-->
                                 </div>
                                 <div class="row g-5 mb-6" *ngIf="templates && templates.length > 0">
                                     <!--begin::Table-->
                                     <div class="table-responsive border-bottom mb-9">
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Templates</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Auction Templates' | translate}}</div>
                                         <table class="table mb-3">
                                             <thead class="border-bottom border-gray-200">
                                                 <!--begin::Table row-->
                                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                                    <th class="w-125px">Code</th>
-                                                    <th class="w-100px">Status</th>
-                                                    <th class="w-300px">Create Date</th>
+                                                    <th class="w-125px">{{'Code' | translate}}</th>
+                                                    <th class="w-100px">{{'Status' | translate}}</th>
+                                                    <th class="w-300px">{{'Create Date' | translate}}</th>
                                                 </tr>
                                                 <!--end::Table row-->
                                             </thead>
@@ -300,7 +300,7 @@
                                                     <!--begin::Amount=-->
                                                     <td>
                                                         <div class="badge badge-light-info fw-bolder">{{
-                                                            item.item_status }}</div>
+                                                            item.item_status  | translate }}</div>
                                                     </td>
                                                     <!--end::Amount=-->
                                                     <td>{{item.create_date | date:'medium'}}</td>
@@ -315,7 +315,7 @@
                                 <div class="row g-5 mb-5" *ngIf="auction?.terms.en || auction?.terms.ar">
                                     <div class="col">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Terms:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Auction Terms' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">
@@ -333,7 +333,7 @@
                                     <!--end::Col-->
                                     <div class="col">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Description:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Description' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">
@@ -359,26 +359,26 @@
                             class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
                             <!--begin::Labels-->
                             <div class="mb-8">
-                                <span class="badge badge-light-success me-2">{{ auction?.auction_status }}</span>
+                                <span class="badge badge-light-success me-2">{{ auction?.auction_status | translate }}</span>
                                 <!-- <span class="badge badge-light-warning">Pending Payment</span> -->
                             </div>
                             <!--end::Labels-->
                             <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">AUCTION OVERVIEW</h6>
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">{{'AUCTION OVERVIEW' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Auction Title</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Auction Title' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ auction?.title.en }} - {{ auction?.title.ar
                                     }}
                                 </div>
                             </div>
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Split Payment:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Split Payment' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">
-                                    <span *ngIf="auction?.split_payment" class="badge badge-primary me-2">Ture</span>
-                                    <span *ngIf="!auction?.split_payment" class="badge badge-info me-2">False</span>
+                                    <span *ngIf="auction?.split_payment" class="badge badge-primary me-2">{{'True' | translate}}</span>
+                                    <span *ngIf="!auction?.split_payment" class="badge badge-info me-2">{{'False' | translate}}</span>
                                 </div>
                             </div>
                             <!--end::Item-->
@@ -387,10 +387,10 @@
                                 <!--end::Col-->
                                 <div class="col-sm-6">
                                     <!--end::Label-->
-                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Type:</div>
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Auction Type' | translate}}:</div>
                                     <!--end::Label-->
                                     <!--end::Col-->
-                                    <div class="fw-bolder fs-6 text-gray-800">{{ auction?.auction_type | titlecase }}
+                                    <div class="fw-bolder fs-6 text-gray-800">{{ auction?.auction_type | translate }}
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -398,7 +398,7 @@
                                 <!--end::Col-->
                                 <div class="col-sm-6">
                                     <!--end::Label-->
-                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Deposit:</div>
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Deposit' | translate}}:</div>
                                     <!--end::Label-->
                                     <!--end::Info-->
                                     <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -413,7 +413,7 @@
                                 <!--end::Col-->
                                 <div class="col-sm-6">
                                     <!--end::Label-->
-                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Auction Method:</div>
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Auction Method' | translate}}:</div>
                                     <!--end::Label-->
                                     <!--end::Col-->
                                     <div class="fw-bolder fs-6 text-gray-800">{{ auction?.auction_method | titlecase }}
@@ -424,7 +424,7 @@
                                 <!--end::Col-->
                                 <div class="col-sm-6">
                                     <!--end::Label-->
-                                    <div class="fw-bold fs-7 text-gray-600 mb-1">Owner Code:</div>
+                                    <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Owner Code' | translate}}:</div>
                                     <!--end::Label-->
                                     <!--end::Info-->
                                     <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -436,30 +436,30 @@
                             </div>
                             <!--end::Col-->
                             <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">GENERAL REFRENCES</h6>
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">{{'GENERAL REFRENCES' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Owner:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Owner' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ auction?.owner_id | uppercase}}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6" *ngIf="auction?.payment_id">
-                                <div class="fw-bold text-gray-600 fs-7">Payment ID:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Payment ID' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ auction?.payment_id | uppercase }}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6" *ngIf="auction?.template_id">
-                                <div class="fw-bold text-gray-600 fs-7">Template ID:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Template ID' | translate}}:</div>
                                 <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center">{{
                                     auction?.template_id | uppercase }}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6" *ngIf="auction?.group_id">
-                                <div class="fw-bold text-gray-600 fs-7">Group ID:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Group ID' | translate}}:</div>
                                 <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center">{{ auction?.group_id
                                     | uppercase }}</div>
                             </div>
@@ -488,14 +488,12 @@
                             class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                     </div>
                     <div class="swal2-content">
-                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry, looks like
-                            there
-                            are some errors detected, please try again.</div>
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
                     </div>
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div>
                         <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                            (click)="errorMessage=false">Ok, got it!</button>
+                            (click)="errorMessage=false">{{'Ok, got it!' | translate}}</button>
                     </div>
                 </div>
             </div>
@@ -519,12 +517,11 @@
                             class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                     </div>
                     <div class="swal2-content">
-                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has been
-                            successfully submitted!</div>
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}</div>
                     </div>
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div><button type="button" class="swal2-confirm btn btn-primary"
-                            (click)="successMessage=false" style="display: inline-block;">Ok</button>
+                            (click)="successMessage=false" style="display: inline-block;">{{'Ok' | translate}}</button>
                     </div>
                 </div>
             </div>
@@ -542,8 +539,7 @@
                             class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                     </div>
                     <div class="swal2-content">
-                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Approve selected
-                            items?
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Approve selected items?' | translate}}
                         </div>
                     </div>
                     <div class="swal2-actions">
@@ -569,14 +565,13 @@
                             class="swal2-close" aria-label="Close this dialog" style="display: none;">×</button>
                     </div>
                     <div class="swal2-content">
-                        <div id="swal2-content" class="swal2-html-container" style="display: block;">Everything looks
-                            fine, no item to approve.
+                        <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Everything looks fine, no item to approve.' | translate}}
                         </div>
                     </div>
                     <div class="swal2-actions">
                         <div class="swal2-loader"></div>
                         <button type="reset" class="btn btn-white me-3" (click)="emptyModal=false"
-                            style="display: inline-block;">Ok!</button>
+                            style="display: inline-block;">{{'Ok!' | translate}}</button>
                     </div>
                 </div>
             </div>

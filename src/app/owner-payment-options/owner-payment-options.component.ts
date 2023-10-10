@@ -5,6 +5,7 @@ import { UtilitiesService } from '../services/utilities.service';
 import { Sort } from '@angular/material/sort';
 import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import { HttpParams } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-owner-payment-options',
@@ -49,7 +50,7 @@ export class OwnerPaymentOptionsComponent implements OnInit {
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Owner Payment Options';

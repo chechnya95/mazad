@@ -22,7 +22,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice ID:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Invoice ID' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.id | uppercase}}</div>
@@ -32,7 +32,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6" *ngIf="invoice?.vat_number">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">VAT Number:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'VAT Number' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -48,7 +48,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Transaction ID:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Transaction ID' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.transaction_id |
@@ -59,7 +59,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice Number:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Invoice Number' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Info-->
                                         <div class="fw-bolder fs-6 text-gray-800 d-flex align-items-center flex-wrap">
@@ -75,7 +75,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice Details:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Invoice Details' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.details.id | uppercase }}
@@ -89,7 +89,7 @@
                                     <!--end::Col-->
                                     <div class="col-sm-6">
                                         <!--end::Label-->
-                                        <div class="fw-bold fs-7 text-gray-600 mb-1">Invoice Date:</div>
+                                        <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Invoice Date' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.date | date:'medium' }}
@@ -102,7 +102,7 @@
                                 <div class="row g-5 mb-12">
                                     <div class="col-sm-6">
                                         <a class="btn btn-info align-self-center" (click)="printInv()"
-                                            [routerLink]="['/print_invoice']" target="_blank">Print Invoice</a>
+                                            [routerLink]="['/print_invoice']" target="_blank">{{'Print Invoice' | translate}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -117,48 +117,48 @@
                         <div
                             class="d-print-none border border-dashed border-gray-300 card-rounded h-lg-100 min-w-md-350px p-9 bg-lighten">
                             <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">AUCTION OVERVIEW</h6>
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">{{'INVOICE OVERVIEW' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Invoice Total Amount</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Invoice Total Amount' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.total_amount | currency:' OMR ' }}
                                 </div>
                             </div>
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">Model</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Model' | translate}}</div>
                                 <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.model_type }}
                                     <br> {{ invoice?.model_id | uppercase }}
                                 </div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Title-->
-                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">GENERAL REFRENCES</h6>
+                            <h6 class="mb-8 fw-boldest text-gray-600 text-hover-primary">{{'GENERAL REFRENCES' | translate}}</h6>
                             <!--end::Title-->
                             <!--begin::Item-->
                             <div class="mb-6" *ngIf="invoice?.owner_id">
-                                <div class="fw-bold text-gray-600 fs-7">Owner:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Owner' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.owner_id | uppercase}}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6" *ngIf="invoice?.owner_id">
-                                <div class="fw-bold text-gray-600 fs-7">Owner Details:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'Owner Details' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.owner_details }}</div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">User:</div>
+                                <div class="fw-bold text-gray-600 fs-7">{{'User' | translate}}:</div>
                                 <div class="fw-bolder text-gray-800 fs-6"><a [routerLink]="['/users']"
-                                        [queryParams]="{ id: invoice?.user_id }">{{ invoice?.user_details.email }} | {{
+                                        [queryParams]="{ id: invoice?.user_id }">{{ invoice?.user_details.email }} <br> {{
                                         invoice?.user_details.phone }}</a></div>
                             </div>
                             <!--end::Item-->
                             <!--begin::Item-->
                             <div class="mb-6">
-                                <div class="fw-bold text-gray-600 fs-7">User Details:</div>
-                                <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.user_details.details.name_en }} -
+                                <div class="fw-bold text-gray-600 fs-7">{{'User Details' | translate}}:</div>
+                                <div class="fw-bolder text-gray-800 fs-6">{{ invoice?.user_details.details.name_en }} <br>
                                     {{ invoice?.user_details.details.name_ar }} <br> {{
                                     invoice?.user_details.details.id_card_number }}</div>
                             </div>
