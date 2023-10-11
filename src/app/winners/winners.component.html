@@ -322,7 +322,7 @@
                                         <div class="col-md-6 fv-row">
                                             <!--begin::Label-->
                                             <label class="fs-6 fw-bold form-label mb-2">{{ "Auction Code" | translate
-                                            }} / {{ "Item Code" | translate
+                                                }} / {{ "Item Code" | translate
                                                 }}</label>
                                             <!--end::Label-->
                                             <input type="text" data-kt-user-table-filter="search"
@@ -334,9 +334,16 @@
                                             <label class="fs-6 fw-bold form-label mb-2"> {{ "Item Status" | translate
                                                 }}</label>
                                             <!--end::Label-->
-                                            <input type="text" data-kt-user-table-filter="search"
+                                            <!-- <input type="text" data-kt-user-table-filter="search"
                                                 class="form-control form-control-solid mb-3 mb-lg-0"
-                                                placeholder="item status" [(ngModel)]="itemFilter.item_status" />
+                                                placeholder="item status" [(ngModel)]="itemFilter.item_status" /> -->
+                                            <select name="item_status"
+                                                class="form-select form-select-lg form-select-solid"
+                                                [(ngModel)]="itemFilter.item_status">
+                                                <option value="0">-- --</option>
+                                                <option *ngFor="let item of item_status" [value]='item.name'>{{
+                                                    item.name }}</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row mb-10">

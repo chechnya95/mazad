@@ -26,11 +26,11 @@
                                 <a href="#">
                                 </a>
                                 <a *ngIf="user?.is_active"
-                                    class="btn btn-sm btn-light-success fw-bolder ms-2 fs-8 py-1 px-3"
-                                    data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Active</a>
+                                    class="btn btn-sm btn-light-success fw-bolder me-2 fs-8 py-1 px-3"
+                                    data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">{{'Active' | translate}}</a>
                                 <a *ngIf="!user?.is_active"
-                                    class="btn btn-sm btn-light-danger fw-bolder ms-2 fs-8 py-1 px-3"
-                                    data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Not Active</a>
+                                    class="btn btn-sm btn-light-danger fw-bolder ms-2 me-2 fs-8 py-1 px-3"
+                                    data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">{{'Not Active' | translate}}</a>
                             </div>
                             <!--end::Name-->
                             <!--begin::Info-->
@@ -314,7 +314,7 @@
                 <div class="card-header cursor-pointer">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
-                        <h3 class="fw-bolder m-0">Profile Details</h3>
+                        <h3 class="fw-bolder m-0">{{'Profile Details' | translate}}</h3>
                     </div>
                     <!--end::Card title-->
                     <!--begin::Action-->
@@ -331,7 +331,7 @@
                     <!--begin::Row-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Full Name</label>
+                        <label class="col-lg-4 fw-bold text-muted">{{'Full Name' | translate}}</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -343,7 +343,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Company</label>
+                        <label class="col-lg-4 fw-bold text-muted">{{'Company' | translate}}</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row">
@@ -355,15 +355,15 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Contact Phone
+                        <label class="col-lg-4 fw-bold text-muted">{{'Contact Phone' | translate}}
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Phone number must be active"></i></label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 d-flex align-items-center">
                             <span class="fw-bolder fs-6 me-2">{{ user?.phone }}</span>
-                            <span *ngIf="user?.mobile_confirmed_at" class="badge badge-success">Verified</span>
-                            <span *ngIf="!user?.mobile_confirmed_at" class="badge badge-warning">Not Verified</span>
+                            <span *ngIf="user?.mobile_confirmed_at" class="badge badge-success me-2">{{'Verified' | translate}}</span>
+                            <span *ngIf="!user?.mobile_confirmed_at" class="badge badge-warning me-2">{{'Not Verified' | translate}}</span>
                         </div>
                         <!--end::Col-->
                     </div>
@@ -371,7 +371,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Company Site</label>
+                        <label class="col-lg-4 fw-bold text-muted">{{'Company Site' | translate}}</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -384,7 +384,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Country
+                        <label class="col-lg-4 fw-bold text-muted">{{'Country' | translate}}
                             <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                 title="Country of origination"></i></label>
                         <!--end::Label-->
@@ -437,7 +437,7 @@
                     </div>
                     <!--end::Input group-->
                     <button data-bs-toggle="modal" data-bs-target="#kt_modal_reset_password_form" type="button"
-                        class="btn btn-sm btn-dark">Reset Password</button>
+                        class="btn btn-sm btn-dark">{{'Reset Password' | translate}}</button>
                 </div>
                 <!--end::Card body-->
             </div>
@@ -451,7 +451,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Reset Password</h2>
+                        <h2 class="fw-bolder">{{'Reset Password' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -496,10 +496,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="updatePassword()"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>

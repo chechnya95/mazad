@@ -15,6 +15,7 @@ export class WinnersComponent implements OnInit {
 
   token: any;
   winners: any[] = [];
+  item_status: any[] = [];
 
   template: any;
   filter_config: any;
@@ -94,6 +95,7 @@ export class WinnersComponent implements OnInit {
     }
     return params;
   }
+
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
@@ -121,7 +123,7 @@ export class WinnersComponent implements OnInit {
   }
 
   getSMSTempalte() {
-    this.api.get('templates_contents/key/auction_win', this.token).subscribe(
+    const sub = this.api.get('templates_contents/key/auction_win', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.template = objects['templates_contents'][0];
@@ -130,6 +132,8 @@ export class WinnersComponent implements OnInit {
       },
       async error => { }
     );
+
+    sub.add(() => { this.getItemstatus(); });
   }
 
   getUser(user_id: any, mobile: any, amount: any) {
@@ -172,6 +176,16 @@ export class WinnersComponent implements OnInit {
     );
   }
 
+  async getItemstatus() {
+    this.api.get('items/item_status', this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data))
+        this.item_status = objects.item_status;
+      },
+      async error => { }
+    );
+  }
+
   searchItems() {
     if (this.itemFilter.winner_id) {
       let field = 'user_details';
@@ -208,6 +222,11 @@ export class WinnersComponent implements OnInit {
     }
     else
       this.filter_config.queries_4 = null
+
+    if (this.itemFilter.item_status === '0') {
+      this.filter_config.queries_5 = null
+      this.itemFilter.item_status = null
+    }
 
     if (this.itemFilter.item_status) {
       let field = 'item_status';

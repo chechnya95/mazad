@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-template-details',
@@ -24,7 +25,7 @@ export class TemplateDetailsComponent implements OnInit {
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Template Details';

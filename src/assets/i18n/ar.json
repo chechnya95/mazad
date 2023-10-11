@@ -45,7 +45,7 @@
     "Issue_For": "صدرت لـ",
     "Date_of_issue": "تاريخ الإصدار",
     "payway": "طريقة الدفع",
-    "overview": "نظرة عامة على الدفع",
+    "overview": "نظرة عامة",
     "fee": "المبلغ",
     "amount": "الكمية",
     "print": "طباعة",
@@ -345,6 +345,7 @@
     "Payment Refernce": "الرقم المرجعي للدفع",
     "Location": "الموقع",
     "Overview": "نظرة عامة",
+    "Template Overview": "نظرة عامة",
     "Biddings": "المزايدات",
     "Billing": "الفواتير",
     "Pending Payments": "دفوعات في الانتظار",
@@ -471,5 +472,13 @@
     "Mazad Auction Fee": "رسوم مزاد عمان",
     "Mazad Service Fee": "رسوم الخدمة مزاد عمان",
     "Vat For Item": "القيمة المضافة للسلعة",
-    "Vat For Mazad": "القيمة المضافة لمزاد عمان"
+    "Vat For Mazad": "القيمة المضافة لمزاد عمان",
+    "Update Start/End Date": "تعديل تاريخ البدء والانتهاء",
+    "Update Start and End Dates": "تعديل تاريخ البدء والانتهاء",
+    "Items List": "قائمة السلع",
+    "Items Used by Template": "سلع مستخدمة بهذا القالب",
+    "Profile Details": "تفاصيل الملف الشخصي",
+    "Contact Phone": "رقم التواصل",
+    "Verified": "تم التحقق",
+    "Not Verified": "لم يتم التحقق"
 }

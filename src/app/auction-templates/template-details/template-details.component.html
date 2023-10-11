@@ -25,7 +25,7 @@
                         <div class="d-flex flex-stack fs-4 py-3">
                             <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_customer_view_details" role="button" aria-expanded="false"
-                                aria-controls="kt_customer_view_details">Details
+                                aria-controls="kt_customer_view_details">{{'Details' | translate}}
                                 <span class="ms-2 rotate-180">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -46,7 +46,7 @@
                             </div>
                             <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit Template details">
                                 <a (click)="saveTemplate(item)" href="new-template?id={{item.id}}"
-                                    class="btn btn-sm btn-light-primary">Edit</a>
+                                    class="btn btn-sm btn-light-primary">{{'Edit' | translate}}</a>
                             </span>
                         </div>
                         <!--end::Details toggle-->
@@ -59,19 +59,19 @@
                                 <!--begin::Badge-->
                                 <div class="row">
                                     <div class="col"><!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Start Date</div>
+                                        <div class="fw-bolder mt-5">{{'Start Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.start_date | date:'medium'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">End Date</div>
+                                        <div class="fw-bolder mt-5">{{'End Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.end_date | date:'medium' }}</div>
                                         <!--begin::Details item-->
                                     </div>
                                 </div>
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Location</div>
+                                <div class="fw-bolder mt-5">{{'Location' | translate}}</div>
                                 <div class="text-gray-600">{{ item?.governorate }}, {{ item?.address }}
                                     <br />{{ item?.latitude }}
                                     <br />{{ item?.longtitude }}
@@ -80,14 +80,14 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection Start Date</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection Start Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_start_date |
                                             date:'dd/mm/yyyy'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection End Date</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection End Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_end_date |
                                             date:'dd/mm/yyyy'
                                             }}</div>
@@ -97,13 +97,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection Start Time</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection Start Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_start_time}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Inspection End Time</div>
+                                        <div class="fw-bolder mt-5">{{'Inspection End Time' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.inspections?.inspection_end_time }}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -112,13 +112,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Deposit Amount</div>
+                                        <div class="fw-bolder mt-5">{{'Deposit Amount' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.deposit | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Start Price</div>
+                                        <div class="fw-bolder mt-5">{{'Start Price' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.start_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -126,13 +126,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Minimum Bid</div>
+                                        <div class="fw-bolder mt-5">{{'Minimum Bid' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.min_bid | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col" *ngIf="item?.acceptable_price">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Acceptable Price</div>
+                                        <div class="fw-bolder mt-5">{{'Acceptable Price' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.acceptable_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -140,7 +140,7 @@
                                 <div class="row">
                                     <div class="col" *ngIf="item?.buy_price">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Buy Price</div>
+                                        <div class="fw-bolder mt-5">{{'Buy Price' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.buy_price | currency:'OMR'}}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -149,13 +149,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Item Created Date</div>
+                                        <div class="fw-bolder mt-5">{{'Item Created Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.create_date | date:'medium'}}</div>
                                         <!--begin::Details item-->
                                     </div>
                                     <div class="col">
                                         <!--begin::Details item-->
-                                        <div class="fw-bolder mt-5">Item Modified Date</div>
+                                        <div class="fw-bolder mt-5">{{'Item Modified Date' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.modified_date | date:'medium' }}</div>
                                         <!--begin::Details item-->
                                     </div>
@@ -167,7 +167,7 @@
                         <div class="d-flex flex-stack fs-4 py-3">
                             <div class="fw-bolder rotate collapsible collapsed" data-bs-toggle="collapse"
                                 href="#kt_item_view_details" role="button" aria-expanded="false"
-                                aria-controls="kt_item_view_details">Other Related Details
+                                aria-controls="kt_item_view_details">{{'Other Related Details' | translate}}
                                 <span class="ms-2 rotate-180">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -193,12 +193,12 @@
                         <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Owner</div>
+                                <div class="fw-bolder mt-5">{{'Owner' | translate}}</div>
                                 <div class="text-gray-600"><a [routerLink]="['/owners']"
                                         [queryParams]="{ id: item?.owner_id }">{{ owner?.email }}</a></div>
                                 <!--begin::Details item-->
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5">Category</div>
+                                <div class="fw-bolder mt-5">{{'Category' | translate}}</div>
                                 <div class="text-gray-600">{{ category?.name.en }} - {{ category?.name.ar }}</div>
                                 <!--begin::Details item-->
                             </div>
@@ -213,7 +213,7 @@
                     <!--begin::Card header-->
                     <div class="card-header border-0">
                         <div class="card-title">
-                            <h3 class="fw-bolder m-0">Template Description</h3>
+                            <h3 class="fw-bolder m-0">{{'Template Description' | translate}}</h3>
                         </div>
                     </div>
                     <!--end::Card header-->
@@ -225,7 +225,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Title</div>
+                                        <div class="fw-bolder mt-5">{{'Title' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.title.en }} <br> {{ item?.title.ar }} </div>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Description</div>
+                                        <div class="fw-bolder mt-5">{{'Description' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.description.en }} <br> {{
                                             item?.description.ar }} </div>
                                     </div>
@@ -246,7 +246,7 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">Terms</div>
+                                        <div class="fw-bolder mt-5">{{'Terms' | translate}}</div>
                                         <div class="text-gray-600">{{ item?.terms.en }} <br> {{ item?.terms.ar }} </div>
                                     </div>
                                 </div>
@@ -278,13 +278,13 @@
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_tab">Overview</a>
+                            href="#kt_customer_view_overview_tab">{{'Overview' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4 px-4" data-bs-toggle="tab"
-                            href="#kt_customer_view_overview_events_and_logs_tab">Items List</a>
+                            href="#kt_customer_view_overview_events_and_logs_tab">{{'Items List' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
                     <!--begin:::Tab item-->
@@ -304,7 +304,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Template Overview</h2>
+                                    <h2>{{'Template Overview' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -313,7 +313,7 @@
                             <div class="card-body pt-0 pb-5">
                                 <div class="row py-5">
                                     <div class="col-md">
-                                        <div class="btn-group" role="group" aria-label="Basic example" dir="auto">
+                                        <div class="btn-group" role="group" aria-label="Basic example" dir="ltr">
                                             <!--begin::Add item-->
                                             <a type="button" class="btn btn-primary" href="new-item">
                                                 <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
@@ -328,11 +328,11 @@
                                                             x="4" y="11" width="16" height="2" rx="1" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->Add Item
+                                                <!--end::Svg Icon-->{{'Add Item' | translate}}
                                             </a>
                                             <!--end::Add item-->
                                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
-                                                type="button" class="btn btn-info">Update Start/End Date</button>
+                                                type="button" class="btn btn-info">{{'Update Start/End Date' | translate}}</button>
                                         </div>
                                     </div>
                                     <!--end::Table wrapper-->
@@ -351,7 +351,7 @@
                             <div class="card-header border-0">
                                 <!--begin::Card title-->
                                 <div class="card-title">
-                                    <h2>Items Used by Template</h2>
+                                    <h2>{{'Items Used by Template' | translate}}</h2>
                                 </div>
                                 <!--end::Card title-->
                             </div>
@@ -366,10 +366,10 @@
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
-                                            <tr class="text-start text-gray-400 text-uppercase gs-0">
-                                                <th>Code</th>
-                                                <th>Status</th>
-                                                <th class="min-w-125px">Create Date</th>
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'Code' | translate}}</th>
+                                                <th>{{'Status' | translate}}</th>
+                                                <th class="min-w-125px">{{'Create Date' | translate}}</th>
                                             </tr>
                                             <!--end::Table row-->
                                         </thead>
@@ -384,7 +384,7 @@
                                                         item.code | uppercase }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->
-                                                <td>{{ item.item_status }}</td>
+                                                <td>{{ item.item_status  | translate }}</td>
                                                 <!--end::Amount=-->
                                                 <!--begin::Date=-->
                                                 <td>{{item.create_date | date:'medium'}}</td>
@@ -417,7 +417,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Update Start and End Dates</h2>
+                        <h2 class="fw-bolder">{{'Update Start and End Dates' | translate}}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -447,12 +447,12 @@
                             data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_form_header"
                             data-kt-scroll-wrappers="#kt_modal_add_form_scroll" data-kt-scroll-offset="300px">
                             <div class="fv-row mb-10">
-                                <label class="form-label fs-6 fw-bold">Start Date</label>
+                                <label class="form-label fs-6 fw-bold">{{'Start Date' | translate}}</label>
                                 <input type="datetime-local" name="start_date"
                                     class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="start_date" />
                             </div>
                             <div class="fv-row mb-10">
-                                <label class="form-label fs-6 fw-bold">End Date</label>
+                                <label class="form-label fs-6 fw-bold">{{'End Date' | translate}}</label>
                                 <input type="datetime-local" name="end_date"
                                     class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="end_date" />
                             </div>
@@ -460,10 +460,10 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">Discard</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="update_dates(item?.id)"
                                 data-bs-dismiss="modal">
-                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
@@ -487,14 +487,12 @@
                                     style="display: none;">×</button>
                             </div>
                             <div class="swal2-content">
-                                <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry,
-                                    looks like there
-                                    are some errors detected, please try again.</div>
+                                <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
                             </div>
                             <div class="swal2-actions">
                                 <div class="swal2-loader"></div>
                                 <button type="button" class="swal2-confirm btn btn-light" style="display: inline-block;"
-                                    (click)="errorMessage=false">Ok, got it!</button>
+                                    (click)="errorMessage=false">{{'Ok, got it!' | translate}}</button>
                             </div>
                         </div>
                     </div>
@@ -521,14 +519,12 @@
                                     style="display: none;">×</button>
                             </div>
                             <div class="swal2-content">
-                                <div id="swal2-content" class="swal2-html-container" style="display: block;">Request has
-                                    been
-                                    successfully submitted!</div>
+                                <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}</div>
                             </div>
                             <div class="swal2-actions">
                                 <div class="swal2-loader"></div><button type="button"
                                     class="swal2-confirm btn btn-primary" (click)="successMessage=false"
-                                    style="display: inline-block;">Ok</button>
+                                    style="display: inline-block;">{{'Ok' | translate}}</button>
                             </div>
                         </div>
                     </div>
