@@ -57,7 +57,7 @@
                     </div>
                     <!--end::Toolbar-->
                     <!--begin::Toolbar-->
-                    <div class="d-flex justify-content-end" data-kt-group-table-toolbar="base">
+                    <div class="d-flex justify-content-end me-3" data-kt-group-table-toolbar="base">
                         <!--begin::Add group-->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#kt_modal_add_faq">
@@ -95,7 +95,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header" id="kt_modal_add_topic_header">
                                     <!--begin::Modal title-->
-                                    <h2 class="fw-bolder">New Topic</h2>
+                                    <h2 class="fw-bolder">{{'New Topic' | translate}}</h2>
                                     <!--end::Modal title-->
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -355,7 +355,7 @@
                                                     <thead>
                                                         <!--begin::Table row-->
                                                         <tr
-                                                            class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                                            class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                             <th class="min-w-125px" colspan="2">
                                                                 {{"Title"| translate}}
                                                             </th>
@@ -393,7 +393,7 @@
                                                                     <!--end::Svg Icon-->
                                                                 </a>
                                                                 <a (click)="removeTopic(topic.id)"
-                                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                                                     <span class="svg-icon svg-icon-3">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"

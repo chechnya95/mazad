@@ -13,7 +13,7 @@
                 aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">SMS Notification Templates</h3>
+                    <h3 class="fw-bolder m-0">{{'SMS Notification Templates' | translate}}</h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -30,7 +30,7 @@
                                 <!--begin::Card title-->
                                 <div class="card-title">
                                     <!--begin::Search-->
-                                    <div class="d-flex align-items-center position-relative my-1">
+                                    <div class="d-flex align-items-center position-relative my-1" dir="ltr">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Search.svg-->
                                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@
                                                         x="4" y="11" width="16" height="2" rx="1" />
                                                 </svg>
                                             </span>
-                                            <!--end::Svg Icon-->Add Template
+                                            <!--end::Svg Icon-->{{'Add Template' | translate}}
                                         </button>
                                         <!--end::Add template-->
                                     </div>
@@ -157,7 +157,7 @@
                                                 <!--begin::Modal header-->
                                                 <div class="modal-header" id="kt_modal_add_template_header">
                                                     <!--begin::Modal title-->
-                                                    <h2 class="fw-bolder">Add Template</h2>
+                                                    <h2 class="fw-bolder">{{'Add Template' | translate}}</h2>
                                                     <!--end::Modal title-->
                                                     <!--begin::Close-->
                                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -197,7 +197,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Template Key</label>
+                                                                <label class="form-label required">{{'Template Key' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="key"
@@ -210,7 +210,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Media Type</label>
+                                                                <label class="form-label required">{{'Media Type' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <select name="online_status"
@@ -225,7 +225,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Model Type</label>
+                                                                <label class="form-label required">{{'Model Type' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="model_type"
@@ -238,8 +238,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-bold fs-6 mb-2">Model
-                                                                    OP</label>
+                                                                <label class="required fw-bold fs-6 mb-2">{{'Model OP' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="model_op"
@@ -253,7 +252,7 @@
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
                                                                 <label
-                                                                    class="required fw-bold fs-6 mb-2">Subject</label>
+                                                                    class="required fw-bold fs-6 mb-2">{{'Subject' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="subject_en"
@@ -272,7 +271,7 @@
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
                                                                 <label
-                                                                    class="required fw-bold fs-6 mb-2">Content</label>
+                                                                    class="required fw-bold fs-6 mb-2">{{'Content' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <textarea name="content_en" cols="20" rows="5"
@@ -292,11 +291,11 @@
                                                         <!--begin::Actions-->
                                                         <div class="text-center pt-15">
                                                             <button type="reset" class="btn btn-white me-3"
-                                                                data-bs-dismiss="modal">Discard</button>
+                                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                                             <button type="submit" class="btn btn-primary"
                                                                 (click)="OnSubmit()"
                                                                 data-kt-templates-modal-action="submit">
-                                                                <span class="indicator-label">Submit</span>
+                                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                                 <span class="indicator-progress">Please wait...
                                                                     <span
                                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -324,7 +323,7 @@
                                                 <!--begin::Modal header-->
                                                 <div class="modal-header" id="kt_modal_edit_template_header">
                                                     <!--begin::Modal title-->
-                                                    <h2 class="fw-bolder">Update Template</h2>
+                                                    <h2 class="fw-bolder">{{'Update Template' | translate}}</h2>
                                                     <!--end::Modal title-->
                                                     <!--begin::Close-->
                                                     <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -364,7 +363,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Template Key</label>
+                                                                <label class="form-label required">{{'Template Key' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="key"
@@ -377,7 +376,7 @@
                                                              <!--begin::Input group-->
                                                              <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Media Type</label>
+                                                                <label class="form-label required">{{'Media Type' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <select name="online_status"
@@ -392,7 +391,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
-                                                                <label class="form-label required">Model Type</label>
+                                                                <label class="form-label required">{{'Model Type' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="model_type"
@@ -405,8 +404,7 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
-                                                                <label class="required fw-bold fs-6 mb-2">Model
-                                                                    OP</label>
+                                                                <label class="required fw-bold fs-6 mb-2">{{'Model OP' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="model_op"
@@ -420,7 +418,7 @@
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
                                                                 <label
-                                                                    class="required fw-bold fs-6 mb-2">Subject</label>
+                                                                    class="required fw-bold fs-6 mb-2">{{'Subject' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <input type="text" name="subject_en"
@@ -439,7 +437,7 @@
                                                             <div class="fv-row mb-7">
                                                                 <!--begin::Label-->
                                                                 <label
-                                                                    class="required fw-bold fs-6 mb-2">Content</label>
+                                                                    class="required fw-bold fs-6 mb-2">{{'Content' | translate}}</label>
                                                                 <!--end::Label-->
                                                                 <!--begin::Input-->
                                                                 <textarea name="content_en" cols="20" rows="5"
@@ -459,11 +457,11 @@
                                                         <!--begin::Actions-->
                                                         <div class="text-center pt-15">
                                                             <button type="reset" class="btn btn-white me-3"
-                                                                data-bs-dismiss="modal">Discard</button>
+                                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                                             <button type="submit" class="btn btn-primary"
                                                                 (click)="OnUpdate(edit_template_id)"
                                                                 data-kt-templates-modal-action="submit">
-                                                                <span class="indicator-label">Submit</span>
+                                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                                 <span class="indicator-progress">Please wait...
                                                                     <span
                                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -501,13 +499,13 @@
                                                         value="1" />
                                                 </div>
                                             </th>
-                                            <th mat-sort-header="key" class="min-w-125px">Key</th>
-                                            <th mat-sort-header="media_type">Media</th>
-                                            <th mat-sort-header="model_type">Model Type</th>
-                                            <th mat-sort-header="model_op">Model OP</th>
-                                            <th class="min-w-125px">Subject</th>
-                                            <th class="min-w-125px">Content</th>
-                                            <th class="text-end min-w-100px">Actions</th>
+                                            <th mat-sort-header="key" class="min-w-125px">{{'Key' | translate}}</th>
+                                            <th mat-sort-header="media_type">{{'Media' | translate}}</th>
+                                            <th mat-sort-header="model_type">{{'Model Type' | translate}}</th>
+                                            <th mat-sort-header="model_op">{{'Model OP' | translate}}</th>
+                                            <th class="min-w-125px">{{'Subject' | translate}}</th>
+                                            <th class="min-w-125px">{{'Content' | translate}}</th>
+                                            <th class="text-end min-w-100px">{{'Actions' | translate}}</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -630,7 +628,7 @@
                                                         <div class="d-flex align-items-center flex-wrap">
                                                             <!--begin::Title-->
                                                             <h5 class="text-gray-800 fw-bold cursor-pointer me-3 mb-0">
-                                                                Content Text</h5>
+                                                                {{'Content Text' | translate}}</h5>
                                                             <!--end::Title-->
                                                         </div>
                                                         <!--end::Section-->
@@ -678,7 +676,7 @@
                                                     <!--end::Svg Icon-->
                                                 </a>
                                                 <a (click)="deleteTemplate(template.id)"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -736,14 +734,12 @@
                                         style="display: none;">×</button>
                                 </div>
                                 <div class="swal2-content">
-                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Sorry,
-                                        looks like there
-                                        are some errors detected, please try again.</div>
+                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Sorry, looks like there are some errors detected, please try again.' | translate}}</div>
                                 </div>
                                 <div class="swal2-actions">
                                     <div class="swal2-loader"></div>
                                     <button type="button" class="swal2-confirm btn btn-light"
-                                        style="display: inline-block;" (click)="errorMessage=false">Ok, got it!</button>
+                                        style="display: inline-block;" (click)="errorMessage=false">{{'Ok, got it!' | translate}}</button>
                                 </div>
                             </div>
                         </div>
@@ -771,14 +767,12 @@
                                         style="display: none;">×</button>
                                 </div>
                                 <div class="swal2-content">
-                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">Request
-                                        has been
-                                        successfully submitted!</div>
+                                    <div id="swal2-content" class="swal2-html-container" style="display: block;">{{'Request has been successfully submitted!' | translate}}</div>
                                 </div>
                                 <div class="swal2-actions">
                                     <div class="swal2-loader"></div><button type="button"
                                         class="swal2-confirm btn btn-primary" (click)="successMessage=false"
-                                        style="display: inline-block;">Ok</button>
+                                        style="display: inline-block;">{{'Ok' | translate}}</button>
                                 </div>
                             </div>
                         </div>

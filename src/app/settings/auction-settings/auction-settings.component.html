@@ -13,7 +13,7 @@
                 aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Auction & Items Settings</h3>
+                    <h3 class="fw-bolder m-0">{{'Auction & Items Settings' | translate}}</h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -38,7 +38,7 @@
                                                 class="mw-100 mh-150px mb-7" />
                                             <!--end::Illustration-->
                                             <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">Auction Status
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{'Auction Status' | translate}}
                                             </div>
                                             <!--end::Label-->
                                         </button>
@@ -63,7 +63,7 @@
                                                 class="mw-100 mh-150px mb-7" />
                                             <!--end::Illustration-->
                                             <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">Item Status
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{'Item Status' | translate}}
                                             </div>
                                             <!--end::Label-->
                                         </button>
@@ -88,8 +88,7 @@
                                                 class="mw-100 mh-150px mb-7" />
                                             <!--end::Illustration-->
                                             <!--begin::Label-->
-                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">Add Item
-                                                Category
+                                            <div class="fw-bolder fs-3 text-gray-600 text-hover-primary">{{'Add Item Category' | translate}}
                                             </div>
                                             <!--end::Label-->
                                         </button>
@@ -110,7 +109,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_auction_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Add Auction Status</h2>
+                                        <h2 class="fw-bolder">{{'Add Auction Status' | translate}}</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -147,7 +146,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Name</label>
+                                                <label class="form-label required">{{'Name' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name"
@@ -159,7 +158,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{'Order' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -172,8 +171,8 @@
                                                 <table class="table align-middle table-row-dashed fs-6 gy-5">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Order</th>
+                                                            <th>{{'Name' | translate}}</th>
+                                                            <th>{{'Order' | translate}}</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -215,10 +214,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="addAuctionStatus()"
                                                 data-kt-auctions-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -242,7 +241,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_item_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Add Item Status</h2>
+                                        <h2 class="fw-bolder">{{'Add Item Status' | translate}}</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -279,7 +278,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Name</label>
+                                                <label class="form-label required">{{'Name' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name"
@@ -291,7 +290,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{'Order' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -304,8 +303,8 @@
                                                 <table class="table align-middle table-row-dashed fs-6 gy-5">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Order</th>
+                                                            <th>{{'Name' | translate}}</th>
+                                                            <th>{{'Order' | translate}}</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
@@ -347,10 +346,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="addItemStatus()"
                                                 data-kt-items-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -374,7 +373,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_item_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Add Category</h2>
+                                        <h2 class="fw-bolder">{{'Add Category' | translate}}</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -411,7 +410,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Name</label>
+                                                <label class="form-label required">{{'Name' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name"
@@ -427,7 +426,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Content</label>
+                                                <label class="form-label required">{{'Content' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="content"
@@ -443,7 +442,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Form</label>
+                                                <label class="form-label required">{{'Form' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="form_id"
@@ -458,7 +457,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{'Order' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -470,7 +469,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Enabled</label>
+                                                <label class="form-label required">{{'Enabled' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input class="form-check-input" type="checkbox"
@@ -496,10 +495,10 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary" (click)="addCategory()"
                                                 data-kt-items-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -528,7 +527,7 @@
                 aria-controls="kt_item_categories_details">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Item Categories</h3>
+                    <h3 class="fw-bolder m-0">{{'Item Categories' | translate}}</h3>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -546,11 +545,11 @@
                                 <table class="table align-middle table-row-dashed fs-6 gy-5">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Content</th>
-                                            <th>Order</th>
-                                            <th>Enabled</th>
-                                            <th>Form</th>
+                                            <th>{{'Name' | translate}}</th>
+                                            <th>{{'Content' | translate}}</th>
+                                            <th>{{'Order' | translate}}</th>
+                                            <th>{{'Enabled' | translate}}</th>
+                                            <th>{{'Form' | translate}}</th>
                                             <th>CSS Class</th>
                                             <th></th>
                                         </tr>
@@ -625,7 +624,7 @@
                                     <!--begin::Modal header-->
                                     <div class="modal-header" id="kt_modal_add_item_header">
                                         <!--begin::Modal title-->
-                                        <h2 class="fw-bolder">Update Category</h2>
+                                        <h2 class="fw-bolder">{{'Update Category' | translate}}</h2>
                                         <!--end::Modal title-->
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-icon-primary"
@@ -662,7 +661,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Name</label>
+                                                <label class="form-label required">{{'Name' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="name"
@@ -678,7 +677,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Content</label>
+                                                <label class="form-label required">{{'Content' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="text" name="content"
@@ -696,7 +695,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Form</label>
+                                                <label class="form-label required">{{'Form' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <select name="form_id"
@@ -711,7 +710,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Order</label>
+                                                <label class="form-label required">{{'Order' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input type="number" name="order"
@@ -723,7 +722,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Enabled</label>
+                                                <label class="form-label required">{{'Enabled' | translate}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <input class="form-check-input" type="checkbox"
@@ -749,11 +748,11 @@
                                         <!--begin::Actions-->
                                         <div class="text-center pt-15">
                                             <button type="reset" class="btn btn-white me-3"
-                                                data-bs-dismiss="modal">Discard</button>
+                                                data-bs-dismiss="modal">{{'Discard' | translate}}</button>
                                             <button type="submit" class="btn btn-primary"
                                                 (click)="updateCategory(edit_category_id)"
                                                 data-kt-items-modal-action="submit">
-                                                <span class="indicator-label">Submit</span>
+                                                <span class="indicator-label">{{'Submit' | translate}}</span>
                                                 <span class="indicator-progress">Please wait...
                                                     <span
                                                         class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-classification',
@@ -39,7 +40,7 @@ export class ClassificationComponent implements OnInit {
   errorMessage: boolean = false;
   successMessage: boolean = false;
 
-  constructor(public utility: UtilitiesService, private api: ApiService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.token = localStorage.getItem('access_token');
