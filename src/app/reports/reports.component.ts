@@ -47,7 +47,7 @@ export class ReportsComponent implements OnInit {
 
   async getReport(id: any) {
     this.utility.loader = true;
-    const sub = this.api.get(`auctions/report/${id}`, this.token).subscribe(
+    const sub = this.api.get(`auctions/report/${id}`, this.token, { params: this.getHttpParams()}).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.report = objects['auction_report'];
@@ -110,5 +110,31 @@ export class ReportsComponent implements OnInit {
         text: 'Please select export format!'
       });
     }
+  }
+
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
+    return params;
+  }
+  
+  pageChangeEvent(event: PageEvent) {
+    this.filter_config.currentPage = event.pageIndex + 1;
+    this.filter_config.itemsPerPage = event.pageSize;
+    this.getReport();
+  }
+
+  sortData(sort: Sort) {
+    this.filter_config.sort = sort.active;
+    this.filter_config.sort_order = sort.direction;
+    this.getReport();
   }
 }
