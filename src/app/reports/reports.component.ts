@@ -3,6 +3,9 @@ import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
 import Swal from 'sweetalert2'
 import * as XLSX from 'xlsx';
+import { Sort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-reports',
@@ -14,6 +17,7 @@ export class ReportsComponent implements OnInit {
   token: any;
   auctions: any[] = [];
   auctionList: any[] = [];
+  filter_config: any;
 
   report: any;
   format: any;
@@ -129,12 +133,12 @@ export class ReportsComponent implements OnInit {
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getReport();
+    this.getReport(0); //TODO: need to change
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getReport();
+    this.getReport(0); //TODO: need to change
   }
 }
