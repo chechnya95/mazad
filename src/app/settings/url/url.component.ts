@@ -22,9 +22,10 @@ export class UrlComponent {
     this.getUrl();
   }
   getUrl() {
-    const sub = this.api.get('admins/url', this.token).subscribe(
-      async data => {
-        this.response = data.toString();
+    this.api.get('admins/url', this.token).subscribe(
+      async (data: any) => {
+        //console.log(data);
+        this.response = JSON.stringify(data);
       },
       async error => { }
     );
