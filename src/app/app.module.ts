@@ -81,7 +81,8 @@ import { ExportOwnerComponent } from './items/export-owner/export-owner.componen
 
 import { BnNgIdleService } from 'bn-ng-idle';
 import { UserNamePipe } from './pipes/user-name.pipe';
-import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe'; // import bn-ng-idle service
+import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe';
+import { UrlComponent } from './settings/url/url.component'; // import bn-ng-idle service
 
 @NgModule({
   declarations: [
@@ -147,7 +148,8 @@ import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe'; // import b
     ExportComponent,
     ExportOwnerComponent,
     UserNamePipe,
-    UserNameByLangPipe
+    UserNameByLangPipe,
+    UrlComponent
   ],
   imports: [
     QRCodeModule,
@@ -197,6 +199,7 @@ import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe'; // import b
       { path: 'general-settings', component: GeneralSettingsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'log-stream' , component: LogStreamComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'monitors' , component: MonitorsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
+      { path: 'url' , component: UrlComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'messages', component: MessagesComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'message-details', component: MessageDetailsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'payment-transactions', component: PaymentTransactionsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
