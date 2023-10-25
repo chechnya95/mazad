@@ -133,12 +133,12 @@ export class ReportsComponent implements OnInit {
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
-    this.getReport(0); //TODO: need to change
+    this.getReport(this.auction_id); //TODO: need to change
   }
 
   sortData(sort: Sort) {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
-    this.getReport(0); //TODO: need to change
+    this.getReport(this.auction_id); //TODO: need to change
   }
 }
