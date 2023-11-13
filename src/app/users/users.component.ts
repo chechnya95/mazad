@@ -120,7 +120,7 @@ export class UsersComponent implements OnInit {
         localStorage.setItem('users', JSON.stringify(this.users));
 
         this.users.forEach(function (user) {
-          let user_details = JSON.parse(user['user_details']);
+          let user_details = UtilitiesService.parseIfNotJsonObject(user['user_details']);
 
           user.avatar = user_details ? user_details['name_en'] ? user_details['name_en'].charAt(0) : user['username'].charAt(0) : user['username'].charAt(0);
           user.name = user_details ? user_details['name_en'] : '';
@@ -138,7 +138,7 @@ export class UsersComponent implements OnInit {
       async data => {
         let user = data['users'];
         
-        let user_details = JSON.parse(user['user_details']);
+        let user_details = UtilitiesService.parseIfNotJsonObject(user['user_details']);
 
         user.avatar = user_details ? user_details['name_en'] ? user_details['name_en'].charAt(0) : user['username'].charAt(0) : user['username'].charAt(0);
         user.name = user_details ? user_details['name_en'] : '';
@@ -261,7 +261,7 @@ export class UsersComponent implements OnInit {
     this.edit_user_id = user.id;
 
     if (this.edit_user['user_details'])
-      this.edit_user_details = JSON.parse(this.edit_user['user_details']);
+      this.edit_user_details = UtilitiesService.parseIfNotJsonObject(this.edit_user['user_details']);
 
     this.edit_user.status = user.is_active == true ? 1 : 0;
     this.edit_user.role_id = this.roles.find(i => i.name === user.roles[0]).id;

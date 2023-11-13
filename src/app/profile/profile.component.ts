@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
         this.user = objects.users;
 
-        this.user.user_details = JSON.parse(this.user['user_details']);
+        this.user.user_details = UtilitiesService.parseIfNotJsonObject(this.user['user_details']);
         this.user.avatar = this.user.user_details ? this.user.user_details['name_en'].charAt(0) : this.user['username'].charAt(0);
         this.user.name = this.user.user_details ? this.user.user_details['name_en'] : '';
       },

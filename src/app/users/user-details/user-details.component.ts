@@ -51,7 +51,7 @@ export class UserDetailsComponent implements OnInit {
         let objects = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : null;
         if (objects) {
           this.user = objects.find(i => i.id === id);
-          this.user.details = this.user.user_details ? JSON.parse(this.user.user_details) : '';
+          this.user.details = this.user.user_details ? UtilitiesService.parseIfNotJsonObject(this.user.user_details) : '';
         }
       }
       else { this.router.navigate(['users']); }

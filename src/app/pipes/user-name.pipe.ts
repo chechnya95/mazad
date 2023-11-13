@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { UtilitiesService } from '../services/utilities.service';
 
 @Pipe({
   name: 'userName'
@@ -24,7 +25,7 @@ export class UserNamePipe implements PipeTransform {
     }
 
     // Parse the user details JSON string to an object
-    const userDetails = JSON.parse(user.user_details);
+    const userDetails = UtilitiesService.parseIfNotJsonObject(user.user_details);
 
     // Check if the name for the specified language exists
     const name = userDetails[`name_${lang}`];

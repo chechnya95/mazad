@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import { environment } from '../../environments/environment';
 import { HttpParams } from '@angular/common/http';
+import { UtilitiesService } from '../services/utilities.service';
 
 @Injectable({
   providedIn: 'root'
@@ -96,7 +97,7 @@ export class ApiService {
   }
 
   setToken(data: any) {
-    let user_details = JSON.parse(data['user_details']);
+    let user_details = UtilitiesService.parseIfNotJsonObject(data['user_details']);
 
     /* encrpt the role */
     let role = 'bd55474ed5d44d1e81268b5be089b51sq17f' + data['role'].toLowerCase() + 'u0pgbd55474ed5d44d1e81268b5be089b51';

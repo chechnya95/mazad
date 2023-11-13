@@ -11,4 +11,20 @@ export class UtilitiesService {
   public title: string = 'Dashboard';
   
   constructor() { }
+
+  static parseIfNotJsonObject(input: any): any {
+    // First check if 'input' is already an object and not null
+    if (typeof input === 'object' && input !== null) {
+      return input;
+    }
+  
+    try {
+      // Attempt to parse it as JSON
+      return JSON.parse(input);
+    } catch (error) {
+      // If an error is thrown, it's not valid JSON, handle it or return the original input
+      console.error("Input is not valid JSON:", error);
+      return input; // or handle it accordingly
+    }
+  }
 }

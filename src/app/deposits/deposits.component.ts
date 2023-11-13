@@ -94,7 +94,7 @@ export class DepositsComponent implements OnInit {
         this.users = objects.users;
         this.users.forEach(function (user) {
           if (user.user_details) {
-            let user_details = JSON.parse(user.user_details);
+            let user_details = UtilitiesService.parseIfNotJsonObject(user.user_details);
             user.contact = user_details.name_en ? user_details.name_en : user_details.name_ar ? user_details.name_ar : user.phone;
           }
           else {
