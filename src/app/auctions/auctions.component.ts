@@ -14,6 +14,7 @@ import { MdEditorOption } from 'ngx-markdown-editor';
   templateUrl: './auctions.component.html',
   styleUrls: ['./auctions.component.css']
 })
+
 export class AuctionsComponent implements OnInit {
 
   token: any;
