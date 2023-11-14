@@ -33,6 +33,15 @@ export class ReportsComponent implements OnInit {
     this.utility.loader = false;
     this.utility.title = 'Reports';
     this.token = localStorage.getItem('access_token');
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      queries: null,
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
+    };
   }
 
   ngOnInit(): void {
