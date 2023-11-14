@@ -17,7 +17,6 @@ export class UserNamePipe implements PipeTransform {
     }
     // Fetch the language from localStorage or use the default locale
     const lang = localStorage.getItem('lang') || this.locale || 'en';
-     // Check if the user object is null or undefined
     
     // Check if user_details is null or undefined
     if (!user.user_details) {
@@ -29,6 +28,7 @@ export class UserNamePipe implements PipeTransform {
 
     // Check if the name for the specified language exists
     const name = userDetails[`name_${lang}`];
+
 
     // Check if name is not null or undefined, and also not an empty string
     if (name !== null && name !== undefined && name !== '') {

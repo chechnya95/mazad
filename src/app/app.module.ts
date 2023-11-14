@@ -82,7 +82,8 @@ import { ExportOwnerComponent } from './items/export-owner/export-owner.componen
 import { BnNgIdleService } from 'bn-ng-idle';
 import { UserNamePipe } from './pipes/user-name.pipe';
 import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe';
-import { UrlComponent } from './settings/url/url.component'; // import bn-ng-idle service
+import { UrlComponent } from './settings/url/url.component';
+import { LocalNamePipe } from './pipes/local-name.pipe'; // import bn-ng-idle service
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { UrlComponent } from './settings/url/url.component'; // import bn-ng-idl
     ExportOwnerComponent,
     UserNamePipe,
     UserNameByLangPipe,
-    UrlComponent
+    UrlComponent,
+    LocalNamePipe
   ],
   imports: [
     QRCodeModule,
