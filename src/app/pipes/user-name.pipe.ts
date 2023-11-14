@@ -17,6 +17,8 @@ export class UserNamePipe implements PipeTransform {
     }
     // Fetch the language from localStorage or use the default locale
     const lang = localStorage.getItem('lang') || this.locale || 'en';
+    // Define the fallback language based on the primary language
+    const fallbackLang = lang === 'en' ? 'ar' : 'en';
     
     // Check if user_details is null or undefined
     if (!user.user_details) {
@@ -27,16 +29,21 @@ export class UserNamePipe implements PipeTransform {
     const userDetails = UtilitiesService.parseIfNotJsonObject(user.user_details);
 
     // Check if the name for the specified language exists
-    const name = userDetails[`name_${lang}`];
+    let name = userDetails[`name_${lang}`];
 
 
     // Check if name is not null or undefined, and also not an empty string
-    if (name !== null && name !== undefined && name !== '') {
-      return name; // Return the name in the specified language
+    if (name === null || name === undefined || name === '') {
+      // If the primary language name is not valid, try the fallback language
+      name = userDetails[`name_${fallbackLang}`];
     }
 
-    // If a name doesn't exist for the specified language, return the username
-    return user.username;
+    // Check again if name is not null or undefined, and also not an empty string
+    if (name !== null && name !== undefined && name !== '') {
+      return name; // Return the name in the specified language or the fallback language
+    } else {
+      return user.username; // Return a default name if neither name is available
+    }
   }
 
 }
