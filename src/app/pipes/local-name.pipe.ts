@@ -16,7 +16,8 @@ export class LocalNamePipe implements PipeTransform {
       return ''; // Return an empty string or some default value if user is not defined
     }
      // Fetch the language from localStorage or use the default locale
-    const lang = localStorage.getItem('lang') || this.locale || 'en';
+    let lang = localStorage.getItem('lang') || this.locale || 'en';
+    lang = lang.split('-')[0];
     // Parse the user details JSON string to an object
     const obj = UtilitiesService.parseIfNotJsonObject(value);
 
