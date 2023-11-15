@@ -17,6 +17,9 @@ export class UserNamePipe implements PipeTransform {
     }
     // Fetch the language from localStorage or use the default locale
     const lang = localStorage.getItem('lang') || this.locale || 'en';
+    console.log('---inside user name pipe---')
+    console.log(this.locale)
+    console.log(lang);
     // Define the fallback language based on the primary language
     const fallbackLang = lang === 'en' ? 'ar' : 'en';
     
