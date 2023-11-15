@@ -89,7 +89,7 @@
                                             <tr *ngFor="let item of auctionList; let i = index;">
                                                 <td>{{ (i+1) }} </td>
                                                 <td>{{ item.code }}</td>
-                                                <td>{{ item.title.ar }} | {{ item.title.en }}</td>
+                                                <td>{{ item.title | localName }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-light-primary mx-3"
                                                         (click)="getReport(item.id)">{{ "Get Report"| translate}}</button>
