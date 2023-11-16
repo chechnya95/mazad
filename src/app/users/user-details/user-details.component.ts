@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 import { TranslateService } from '@ngx-translate/core';
+import * as e from 'cors';
 
 @Component({
   selector: 'app-user-details',
@@ -45,17 +46,37 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       let id = params['id'] != null ? params['id'] : null;
+      let isUserExsist = false;
       if (id) {
-        this.checkUserBlock(id);
-
         let objects = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : null;
         if (objects) {
           this.user = objects.find(i => i.id === id);
-          this.user.details = this.user.user_details ? UtilitiesService.parseIfNotJsonObject(this.user.user_details) : '';
+          if (this.user) {
+            this.user.details = this.user.user_details ? UtilitiesService.parseIfNotJsonObject(this.user.user_details) : '';
+            isUserExsist = true;
+          }
+        }
+        if (!isUserExsist){
+          this.getUser(id);
+          console.log(this.user);
+        } else {
+          this.checkUserBlock(id);
         }
       }
       else { this.router.navigate(['users']); }
+      
     })
+  }
+  getUser(id: any) {
+    const sub = this.api.get('users/' + id, this.token).subscribe(
+      async data => {
+        let object = JSON.parse(JSON.stringify(data));
+        this.user = object['users'];
+        this.user.details = this.user.user_details ? UtilitiesService.parseIfNotJsonObject(this.user.user_details) : '';
+      },
+      async error => { }
+    );
+    sub.add(() => { this.checkUserBlock(id); });
   }
 
   checkUserBlock(id) {
@@ -69,7 +90,7 @@ export class UserDetailsComponent implements OnInit {
       async error => { }
     );
 
-    sub.add(() => { this.getUserWiningAuctions(this.user.id); });
+    sub.add(() => { this.getUserWiningAuctions(id); });
   }
 
   blockUser(id: any) {

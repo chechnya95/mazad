@@ -12,7 +12,8 @@ export class UserNameByLangPipe implements PipeTransform {
 
   transform(details: string): string {
     // Fetch the language from localStorage or use the default locale
-    const lang = localStorage.getItem('lang') || this.locale || 'en';
+    let lang = localStorage.getItem('lang') || this.locale || 'en';
+    lang = lang.split('-')[0];
 
     // Parse the details JSON string to an object
     const userDetails = JSON.parse(details);

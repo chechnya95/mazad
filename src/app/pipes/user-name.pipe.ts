@@ -8,7 +8,7 @@ import { UtilitiesService } from '../services/utilities.service';
 export class UserNamePipe implements PipeTransform {
   constructor(
     private translate: TranslateService,
-    @Inject(LOCALE_ID) private locale: string
+    @Inject(LOCALE_ID) private locale: string,
   ) {}
 
   transform(user: any): string {
@@ -16,7 +16,9 @@ export class UserNamePipe implements PipeTransform {
       return ''; // Return an empty string or some default value if user is not defined
     }
     // Fetch the language from localStorage or use the default locale
-    const lang = localStorage.getItem('lang') || this.locale || 'en';
+    let lang = localStorage.getItem('lang') || this.locale || 'en';
+    lang = lang.split('-')[0];
+
     // Define the fallback language based on the primary language
     const fallbackLang = lang === 'en' ? 'ar' : 'en';
     

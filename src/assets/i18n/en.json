@@ -97,5 +97,7 @@
     "paymentoverview": "Payment Overview",
     "onwerby": "Owner",
     "fees": "Fees",
-    "no_data": "No data found."
+    "no_data": "No data found.",
+    "Refund Transaction": "Refund Transaction",
+    "No Refund Transaction": "Not Requested"
 }

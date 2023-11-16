@@ -550,5 +550,7 @@
     "Form Fields": "حقول النموذج",
     "Parent": "الأبوين",
     "Add Classification": "إصافة صنف",
-    "Items Classifications": "تصنيفات العناصر"
+    "Items Classifications": "تصنيفات العناصر",
+    "Refund Transaction": "معاملة الإسترداد",
+    "No Refund Transaction": "لم يتم الطلب"
 }

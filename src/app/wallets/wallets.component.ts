@@ -27,9 +27,12 @@ export class WalletsComponent implements OnInit {
   wallet = {
     user_id: null,
     transaction_id: null,
+    refund_transaction_id: null,
     amount: null,
     fee: null,
     note: null,
+    create_date: null,
+    modified_date: null,
   }
 
   errorMessage: boolean = false;
