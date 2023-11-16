@@ -271,7 +271,12 @@ export class NewTemplateComponent implements OnInit {
     if (this.update) {
       this.api.update("auction_templates/" + this.edit_item_id, body, this.token).subscribe(
         async data => { localStorage.removeItem('item-template'); },
-        async eror => { alert("ERROR: cannot connect!"); }
+        async eror => { 
+          Swal.fire(
+            'Error!',
+            'Could not send your request!'
+          );
+         }
       );
     }
     else {

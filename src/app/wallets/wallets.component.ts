@@ -5,6 +5,7 @@ import { Sort } from '@angular/material/sort';
 import { HttpParams } from '@angular/common/http';
 import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wallets',
@@ -37,7 +38,7 @@ export class WalletsComponent implements OnInit {
   Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
-    public utility: UtilitiesService) {
+    public utility: UtilitiesService, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Wallets Page';
@@ -141,7 +142,7 @@ export class WalletsComponent implements OnInit {
   }
 
   async getUsers() {
-    const sub = this.api.get('users/', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('users/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects: any = {
           users: []
@@ -190,7 +191,7 @@ export class WalletsComponent implements OnInit {
 
   onChangeUser() {
     if (this.user_param.length >= 3) {
-      const sub = this.api.get('users/search/' + this.user_param, this.token, { }).subscribe(
+      const sub = this.api.get('users/search/' + this.user_param, this.token, {}).subscribe(
         async data => {
           let objects: any = {
             users: []
@@ -209,5 +210,34 @@ export class WalletsComponent implements OnInit {
 
       sub.add(() => { });
     }
+  }
+
+  changeToRefunded(id: any) {
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
+
+    Swal.fire({
+      title: lang == 'en' ? 'Are you sure to change the status to Refund?' : 'هل تريد تغيير الحالة الى تم الاسترجاع؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.update('wallets/status/refund/' + id, {}, this.token).subscribe(
+          async data => { 
+            Swal.fire({
+              title: 'Success',
+              text: 'Updates Successfully!'
+            })
+           },
+          async eror => { 
+            Swal.fire(
+              'Error!',
+              'Could not send your request!'
+            );
+           });
+      }
+    });
   }
 }
