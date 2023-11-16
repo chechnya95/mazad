@@ -78,6 +78,7 @@
                                                 {{ "Amount" | translate }}
                                             </th>
                                             <th mat-sort-header="fee"> {{ "Fee" | translate }}</th>
+                                            <th mat-sort-header="refund_transaction_id">{{ "Refund Transaction" | translate }}</th>
                                             <th mat-sort-header="wallet_status"> {{ "Refunded" | translate }}</th>
                                             <th>{{ "Note" | translate }}</th>
                                             <th mat-sort-header="create_date">{{ "Create Date" | translate }}</th>
@@ -91,13 +92,23 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let wallet of wallets; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: wallet.user.id }">{{
+                                            <td><a [routerLink]="['/user-details']" [queryParams]="{ id: wallet.user.id }">{{
                                                     wallet.user | userName }}</a></td>
                                             <td><a [routerLink]="['/payment-details']"
                                                     [queryParams]="{ id: wallet.transaction_id }">{{
                                                     wallet.transaction_id | uppercase}}</a></td>
-                                            <td>{{ wallet.amount | currency:'OMR'}}</td>
-                                            <td>{{ wallet.fee | currency:'OMR'}}</td>
+                                            <td>{{ wallet.amount | currency:' OMR '}}</td>
+                                            <td>{{ wallet.fee | currency:' OMR '}}</td>
+                                            <td>
+                                                <ng-container *ngIf="wallet.refund_transaction_id; else notRefunded">
+                                                    <a [routerLink]="['/payment-details']"
+                                                       [queryParams]="{ id: wallet.refund_transaction_id }">
+                                                      {{ wallet.refund_transaction_id | uppercase }}
+                                                    </a>
+                                                  </ng-container>
+                                                  <ng-template #notRefunded>
+                                                    {{ "Not Refunded Yet" | translate }}
+                                                  </ng-template>
                                             <td>
                                                 <div *ngIf="wallet.status.toLowerCase() === 'active'"
                                                     class="badge badge-light-success fw-bolder">{{ wallet.status |
