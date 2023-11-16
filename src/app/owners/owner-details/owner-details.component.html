@@ -180,7 +180,7 @@
                                                 <!--begin::Table row-->
                                                 <tr *ngFor="let user of owner_users; let i = index;">
                                                     <!--begin::Invoice=-->
-                                                    <td><a [routerLink]="['/users']" [queryParams]="{ id: user.id }">{{
+                                                    <td><a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }">{{
                                                             user.phone }}</a></td>
                                                     <!--end::Invoice=-->
                                                     <!--begin::Amount=-->
@@ -255,7 +255,7 @@
                                             </tr>
                                             <tr *ngFor="let auction of auctions; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/users']"
+                                                <td><a [routerLink]="['/user-details']"
                                                         [queryParams]="{ id: auction.user_id }">{{
                                                         auction.user_id | uppercase }}</a></td>
                                                 <!--end::Invoice=-->

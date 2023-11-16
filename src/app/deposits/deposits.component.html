@@ -68,7 +68,7 @@
                                         <!--begin::Table row-->
                                         <tr *ngFor="let deposit of deposits; let i = index;">
                                             <td> {{ (i+1) }} </td>
-                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: deposit.user.id }">{{
+                                            <td><a [routerLink]="['/user-details']" [queryParams]="{ id: deposit.user.id }">{{
                                                     deposit.user | userName }}</a></td>
                                             <td><a [routerLink]="['/auctions']"
                                                     [queryParams]="{ id: deposit.auction.id }">{{

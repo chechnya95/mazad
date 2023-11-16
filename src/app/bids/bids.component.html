@@ -71,7 +71,7 @@
                                             <td>
                                                 <div class="badge badge-info">{{ bid.item.item_status | translate }}</div>
                                             </td>
-                                            <td><a [routerLink]="['/users']" [queryParams]="{ id: bid.user.id }">{{
+                                            <td><a [routerLink]="['/user-details']" [queryParams]="{ id: bid.user.id }">{{
                                                     bid.user.phone }}</a></td>
                                             <td>{{ bid.create_date | date:"short"}}</td>
                                             <td>{{ bid.amount }} {{ "OMR" | translate }}</td>
