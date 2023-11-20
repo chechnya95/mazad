@@ -31,7 +31,7 @@ export class AppComponent {
     this.api.isAccessTimeValid();
     this.bnIdle.startWatching(1800000).subscribe((res) => {
       if (res && this.api.isAllowedUser()) {
-        this.onLogout();
+        //this.onLogout();
       }
       else {
         this.email = localStorage.getItem('email');
