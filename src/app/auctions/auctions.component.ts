@@ -354,7 +354,7 @@ export class AuctionsComponent implements OnInit {
 
   onChangeOwner(owner_contact: any) {
     if (owner_contact.length >= 3) {
-      let field = 'email,phone,title';
+      let field = 'email,phone,title,code';
       let value = owner_contact;
       this.filter_config.queries = `${field},like,${value}`;
 
