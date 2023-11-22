@@ -104,7 +104,10 @@
                                                     {{ winner.details | userNameByLang}}<br>
                                                     {{winner.phone}} <br>
                                                     {{ winner.email}}</a></td>
-                                            <td>{{ winner.create_date | date:"short"}}</td>
+                                            <td>
+                                                {{ winner.create_date | date:"dd/MM/yyyy"}} <br>
+                                                {{ winner.create_date | date:"hh:mm a"}}
+                                            </td>
                                             <td>{{ winner.amount}} OMR</td>
                                             <!--begin::Action=-->
                                             <td *ngIf="this.api.canEnter(['admin'])" class="text-end">

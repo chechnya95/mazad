@@ -97,6 +97,7 @@ export class SliderComponent implements OnInit {
   }
 
   getSliderTypes() {
+    this.utility.loader = true;
     this.api.get('sliders/slider_types/', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -104,6 +105,8 @@ export class SliderComponent implements OnInit {
       },
       async error => { }
     );
+
+    this.utility.loader = false;
   }
 
   getSliderImages() {
