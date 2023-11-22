@@ -99,5 +99,6 @@
     "fees": "Fees",
     "no_data": "No data found.",
     "Refund Transaction": "Refund Transaction",
-    "No Refund Transaction": "Not Requested"
+    "No Refund Transaction": "Not Requested",
+    "Bidders": "Biddings"
 }
