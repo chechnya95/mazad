@@ -100,5 +100,7 @@
     "no_data": "No data found.",
     "Refund Transaction": "Refund Transaction",
     "No Refund Transaction": "Not Requested",
-    "Bidders": "Biddings"
+    "Bidders": "Biddings",
+    "Description-ar": "Description Arabic",
+    "Description-en": "Description English"
 }

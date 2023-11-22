@@ -193,7 +193,7 @@
                                                 <!--begin:Label-->
                                                 <span class="d-flex align-items-center me-2">
                                                     <!--begin::Icon-->
-                                                    <span class="symbol symbol-50px me-6">
+                                                    <span class="symbol symbol-50px mx-6">
                                                         <span class="symbol-label">
                                                             <!--begin::Svg Icon | path: icons/duotone/Interface/Bank.svg-->
                                                             <span class="svg-icon svg-icon-1 svg-icon-gray-600">
@@ -900,7 +900,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Wrapper-->
                             <div>
-                                <button type="button" class="btn btn-lg btn-primary mx-3" (click)="OnSubmit()">
+                                <button [disabled]="btn_disabled" type="button" class="btn btn-lg btn-primary mx-3" (click)="OnSubmit()">
                                     <span class="indicator-label">
                                         {{ "Submit" | translate }}
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->

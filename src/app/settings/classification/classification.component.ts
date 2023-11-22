@@ -73,7 +73,7 @@ export class ClassificationComponent implements OnInit {
 
   on_delete(id: any) {
     if (confirm("Delete this field?")) {
-      const sub = this.api.delete("fields/" + id, this.token).subscribe(
+      const sub = this.api.delete("classifications/" + id, this.token).subscribe(
         async data => { this.successMessage = true; },
         async error => {  this.errorMessage = true; }
       );

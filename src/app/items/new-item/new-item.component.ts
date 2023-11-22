@@ -275,10 +275,15 @@ export class NewItemComponent implements OnInit {
     }
   }
 
+  btn_disabled: boolean = false;
+
   OnSubmit() {
+    this.utility.loader = true;
+    this.btn_disabled = true;
+
     let date_s = new Date(this.item.start_date)
     let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
-    
+
     let date_e = new Date(this.item.end_date)
     let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
@@ -330,7 +335,7 @@ export class NewItemComponent implements OnInit {
     formData.append('form', body);
 
     if (this.item.item_status && this.item.auction_id && this.item.owner_id) {
-      this.api.post_form("items/", formData, this.token).subscribe(
+      const sub = this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
           this.item_details = [];
           this.successMessage = true;
@@ -340,8 +345,13 @@ export class NewItemComponent implements OnInit {
           this.errorMessage = true;
         }
       );
+
+      sub.add(() => { this.btn_disabled = false; this.utility.loader = false; });
     }
     else {
+      this.btn_disabled = false;
+      this.utility.loader = false;
+
       Swal.fire({
         title: 'Info...',
         text: 'Please check all fields!'
@@ -357,19 +367,21 @@ export class NewItemComponent implements OnInit {
   }
 
   teplateChecked(template: any) {
-    this.item = template;
-
-    this.item.template_id = template.id;
-    this.item.title_ar = template.title['ar'];
-    this.item.title_en = template.title['en'];
-    this.item.description_ar = template.description['ar'];
-    this.item.description_en = template.description['en'];
-    this.item.terms_ar = template.terms['ar'];
-    this.item.terms_en = template.terms['en'];
-    this.item.item_status = 'draft';
+    console.log(template);
     
+    this.item = template;
+    console.log(this.item)
+    this.item.template_id = template.id;
+    this.item.title_ar = template?.title['ar'];
+    this.item.title_en = template?.title['en'];
+    this.item.description_ar = template?.description['ar'];
+    this.item.description_en = template?.description['en'];
+    this.item.terms_ar = template?.terms['ar'];
+    this.item.terms_en = template?.terms['en'];
+    this.item.item_status = 'draft';
+
     let owner = this.owners.find(i => i.id === this.item.owner_id);
-    this.owner_name = owner.title.en;
+    this.owner_name = owner?.title?.en;
 
     // get start date
     var start_date = new Date(template.start_date);

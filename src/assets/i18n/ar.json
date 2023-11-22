@@ -84,7 +84,7 @@
     "Update Owner": "تحديث المالك",
     "Choose Item Type": "اختر نوع السلعة",
     "Create from Template": "البدأ من القالب",
-    "Create Item form defined template": "من قالب جاهز مسبقا",
+    "Create Item form defined template": "إضافة سلعة من قالب جاهز مسبقا",
     "Mazad Oman Statistics": "احصائيات عامة",
     "Items in Mazad Oman": "عدد السلع بمزاد عمان",
     "Users Registered": "المستخدمين المسجلين",
@@ -141,6 +141,8 @@
     "Seconds": "بالثواني",
     "Category": "الفئة",
     "Description": "الوصف",
+    "Description-ar": "الوصف بالعربية",
+    "Description-en": "الوصف بالانجليزية",
     "Time Between Items": "الوقت بين السلع",
     "Minutes": "دقائق",
     "Payment Period": "فترة الدفع",
@@ -552,5 +554,6 @@
     "Add Classification": "إصافة صنف",
     "Items Classifications": "تصنيفات العناصر",
     "Refund Transaction": "معاملة الإسترداد",
-    "No Refund Transaction": "لم يتم الطلب"
+    "No Refund Transaction": "لم يتم الطلب",
+    "Choose Item Template": "اختر القالب للسلعة"
 }
