@@ -18,6 +18,7 @@ export class UserDetailsComponent implements OnInit {
   bids: any[] = [];
   wallets: any[] = [];
   deposits: any[] = [];
+  invoices: any[] = [];
   payment_transaction_types: any[] = [];
 
   errorMessage: boolean = false;
@@ -56,7 +57,7 @@ export class UserDetailsComponent implements OnInit {
             isUserExsist = true;
           }
         }
-        if (!isUserExsist){
+        if (!isUserExsist) {
           this.getUser(id);
           console.log(this.user);
         } else {
@@ -64,7 +65,7 @@ export class UserDetailsComponent implements OnInit {
         }
       }
       else { this.router.navigate(['users']); }
-      
+
     })
   }
   getUser(id: any) {
@@ -138,9 +139,7 @@ export class UserDetailsComponent implements OnInit {
 
         this.wallets = this.wallets.filter(i => i.user.id === id);
       },
-      err => {
-
-      }
+      err => { }
     );
 
     sub.add(() => { this.getUserDeposits(id); });
@@ -154,12 +153,10 @@ export class UserDetailsComponent implements OnInit {
 
         this.deposits = this.deposits.filter(i => i.user.id === id);
       },
-      err => {
-
-      }
+      err => { }
     );
 
-    sub.add(() => { this.getTransactionPaymentTypes(); });
+    sub.add(() => { this.getTransactionPaymentTypes(id); });
   }
 
   requestRefund(id: any) {
@@ -195,7 +192,7 @@ export class UserDetailsComponent implements OnInit {
     );
   }
 
-  getTransactionPaymentTypes() {
+  getTransactionPaymentTypes(id: any) {
     const sub = this.api.get('payments/payment_type', this.token).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
@@ -205,6 +202,18 @@ export class UserDetailsComponent implements OnInit {
 
       }
     );
+    sub.add(() => { this.getInvoices(id); });
+  }
+
+  getInvoices(id: any) {
+    const sub = this.api.get('invoices/user/' + id, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.invoices = objects['invoices']['invoices'];
+      },
+      async error => { }
+    );
+
     sub.add(() => { });
   }
 
@@ -290,6 +299,30 @@ export class UserDetailsComponent implements OnInit {
   }
 
   updatePassword(user_id: any) {
+    let body = {
+      password: this.new_password
+    }
 
+    this.api.post(`users/${user_id}/password`, body, this.token).subscribe(
+      async date => {
+        Swal.fire(
+          'Success',
+          'Password changed successfully!',
+          'success'
+        )
+      },
+      error => {
+        console.log(error)
+        Swal.fire({
+          title: 'حدث خطأ اثناء الارسال',
+          text: `${error.status}: Could not send your request!`
+        });
+      }
+    );
+  }
+
+  saveInvoice(invoice: any) {
+    localStorage.removeItem('invoice');
+    localStorage.setItem('invoice', JSON.stringify(invoice));
   }
 }

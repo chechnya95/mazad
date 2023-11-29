@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit {
       password: this.new_password
     }
 
-    this.api.post(`login/resetpassword`, body, false).subscribe(
+    this.api.post(`login/resetpassword`, body, this.token).subscribe(
       async date => {
         Swal.fire(
           'Success',

@@ -123,12 +123,19 @@ export class SliderComponent implements OnInit {
   }
 
   async OnSubmit() {
+    let date_s = new Date(this.slider.from_date)
+    let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
+
+    let date_e = new Date(this.slider.to_date)
+    let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
+
+
     const body = JSON.stringify({
       platform: this.slider.platform,
       slider_type: this.slider.slider_type,
       order: this.slider.order,
-      from_date: this.slider.from_date,
-      to_date: this.slider.to_date,
+      from_date: start_date,
+      to_date: end_date,
       title: { 'en': this.slider.title_en, 'ar': this.slider.title_ar },
       content: { 'en': this.slider.content_en, 'ar': this.slider.content_ar },
       enable: true,

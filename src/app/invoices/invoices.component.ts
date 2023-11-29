@@ -17,6 +17,7 @@ export class InvoicesComponent implements OnInit {
   invoices: any[] = [];
   filter_config: any;
 
+  transFilter = '';
   Swal = require('sweetalert2')
 
   constructor(private api: ApiService,
@@ -47,6 +48,9 @@ export class InvoicesComponent implements OnInit {
       params = params.append('sort', this.filter_config.sort);
       params = params.append('sort_order', this.filter_config.sort_order);
     }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
     return params;
   }
   pageChangeEvent(event: PageEvent) {
@@ -63,19 +67,13 @@ export class InvoicesComponent implements OnInit {
 
   getInvoices() {
     this.utility.loader = true;
-    const sub = this.api.get('invoices/', this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get('invoices/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.invoices = objects['invoices']['invoices'];
         this.filter_config.totalItems = objects['invoices']['filters']['total_results'];
       },
-      async error => {
-        Swal.fire({
-          title: 'Oops...',
-          text: 'Something went wrong!'
-        })
-        
-      }
+      async error => { }
     );
 
     sub.add(() => { this.utility.loader = false; });
@@ -84,5 +82,20 @@ export class InvoicesComponent implements OnInit {
   saveInvoice(invoice: any) {
     localStorage.removeItem('invoice');
     localStorage.setItem('invoice', JSON.stringify(invoice));
+  }
+
+  searchItems() {
+    if (this.transFilter.length >= 3) {
+      let field = 'number,transaction_id';
+      let value = this.transFilter;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getInvoices();
+    }
+
+    if (this.transFilter == '' || this.transFilter == null) {
+      this.filter_config.queries = null;
+      this.getInvoices();
+    }
   }
 }

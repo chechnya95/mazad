@@ -137,6 +137,12 @@
                             href="#kt_customer_view_overview_deposits">{{'Deposits' | translate}}</a>
                     </li>
                     <!--end:::Tab item-->
+                    <!--begin:::Tab item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab"
+                            href="#kt_customer_view_overview_invocies">{{'Invoices' | translate}}</a>
+                    </li>
+                    <!--end:::Tab item-->
                 </ul>
                 <!--end:::Tabs-->
                 <!--begin:::Tab content-->
@@ -172,7 +178,7 @@
                                                 class="btn btn-info">{{'Offline Wallet' | translate}}</button>
                                             <button data-bs-toggle="modal" data-bs-target="#kt_modal_image_form"
                                                 type="button" class="btn btn-secondary">{{'Add ID Copy' | translate}}</button>
-                                            <button data-bs-toggle="modal" hidden
+                                            <button data-bs-toggle="modal"
                                                 data-bs-target="#kt_modal_reset_password_form" type="button"
                                                 class="btn btn-dark">{{'Reset Password' | translate}}</button>
                                         </div>
@@ -519,6 +525,70 @@
                                                     </a>
                                                 </td>
                                                 <!--end::Note=-->
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </tbody>
+                                        <!--end::Table body-->
+                                    </table>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Table wrapper-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <!--end::Statements-->
+                    </div>
+                    <!--end:::Tab pane-->
+                    
+                    <!--begin:::Tab pane-->
+                    <div class="tab-pane fade" id="kt_customer_view_overview_invocies" role="tabpanel">
+                        <!--begin::Statements-->
+                        <div class="card mb-6 mb-xl-9">
+                            <!--begin::Header-->
+                            <div class="card-header">
+                                <!--begin::Title-->
+                                <div class="card-title">
+                                    <h2>{{'Invoices' | translate}}</h2>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Header-->
+                            <!--begin::Card body-->
+                            <div class="card-body py-0">
+                                <!--begin::Table wrapper-->
+                                <div class="table-responsive">
+                                    <!--begin::Table-->
+                                    <table class="table align-middle table-row-dashed gy-5"
+                                        id="kt_table_customers_payment">
+                                        <!--begin::Table head-->
+                                        <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                            <!--begin::Table row-->
+                                            <tr class="text-gray-400 text-uppercase gs-0" [class]="translate.currentLang=='en' || !translate.currentLang? 'text-start' : 'text-end'">
+                                                <th>{{'Transaction' | translate}}</th>
+                                                <th>{{'Number' | translate}}</th>
+                                                <th>{{'Date' | translate}}</th>
+                                                <th class="min-w-125px">{{'Amount' | translate}}</th>
+                                            </tr>
+                                            <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fs-6 fw-bold text-gray-600">
+                                            <!--begin::Table row-->
+                                            <tr *ngFor="let invoice of invoices; let i = index;">
+                                                <!--begin::status=-->
+                                                <td><a (click)="saveInvoice(invoice)" [routerLink]="['/invoice-details']">{{
+                                                    invoice.transaction_id | uppercase}}</a></td>
+                                                <!--end::status=-->
+                                                <!--begin::title=-->
+                                                <td>{{ invoice.number }}</td>
+                                                <!--end::title=-->
+                                                <!--begin::create_date=-->
+                                                <td>{{ invoice.date | date }}</td>
+                                                <!--end::create_date=-->
+                                                <!--begin::Amount=-->
+                                                <td>{{ invoice.total_amount | currency:' OMR '}}</td>
+                                                <!--end::Amount=-->
                                             </tr>
                                             <!--end::Table row-->
                                         </tbody>
