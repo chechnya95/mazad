@@ -20,7 +20,7 @@ build-image:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay
-    ENV_VARIABLE: "staging"
+    ENV_VARIABLE: "production"
   
   rules:
     - if: '$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH'
@@ -28,7 +28,7 @@ build-image:
         ENV_VARIABLE: "staging"
     - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH'
       variables:
-        ENV_VARIABLE: "staging"
+        ENV_VARIABLE: "production"
   
   before_script:
     # Login to Google Container Registry
