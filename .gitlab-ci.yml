@@ -78,7 +78,7 @@ deploy:
     - master
   environment:
     name: production
-    url: https://mazad-dashboard.smartlaboman.com
+    url: https://dashboard.mazad.om
   script:
   - current_dir=$(pwd)
   - rsync -rav --rsh='ssh -v -p7822' $current_dir/dist/mazad-oman-dashboard/ $A2_SSH_USERNAME@$A2_HOST_NAME:$PROJECT_PATH
