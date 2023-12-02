@@ -748,6 +748,7 @@
                             <th mat-sort-header="credibility" class="min-w-125px">{{ "CREDIBILITY"| translate}}</th>
                             <th mat-sort-header="active" class="min-w-125px">{{ "active"| translate}}</th>
                             <th mat-sort-header="mobile_confirmed_at" class="min-w-125px">{{ "ConfirmdDate"| translate}}</th>
+                            <th mat-sort-header="create_date" class="min-w-125px">{{"Create Date"| translate}}</th>
                             <th class="text-end min-w-100px">{{ "Actions"| translate}}</th>
                         </tr>
                         <!--end::Table row-->
@@ -855,6 +856,7 @@
                                     </svg><!--end::Svg Icon--></span>
                                 not confirmed
                             </td>
+                            <td>{{ user.create_date | date:"short"}}</td>
                             <!--end::Joined-->
                             <!--begin::Action=-->
                             <td class="text-end">
