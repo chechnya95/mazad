@@ -1,21 +1,20 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 import { ApiService } from '../services/api.service';
 import { UtilitiesService } from '../services/utilities.service';
-import { Sort } from '@angular/material/sort';
-import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
-  selector: 'app-templates',
-  templateUrl: './templates.component.html',
-  styleUrls: ['./templates.component.css']
+  selector: 'app-owner-sms-template',
+  templateUrl: './owner-sms-template.component.html',
+  styleUrls: ['./owner-sms-template.component.css']
 })
-export class TemplatesComponent implements OnInit {
+export class OwnerSmsTemplateComponent implements OnInit {
 
   token: any;
   templates: any[] = [];
   media_type: any[] = [];
-  owners: any[] = [];
   filter_config: any;
 
   errorMessage: boolean = false;
@@ -42,21 +41,8 @@ export class TemplatesComponent implements OnInit {
     content_en: null,
     content_ar: null
   }
-  
-  copy_template = {
-    key: null,
-    model_type: null,
-    media_type: 'SMS',
-    model_op: null,
-    subject_en: null,
-    subject_ar: null,
-    content_en: null,
-    content_ar: null,
-    owner_id:  null
-  }
 
   edit_template_id: any;
-  copy_template_id: any;
 
   constructor(public utility: UtilitiesService, private api: ApiService) {
     this.utility.show = true;
@@ -100,7 +86,7 @@ export class TemplatesComponent implements OnInit {
 
   async getTemplates() {
     this.utility.loader = true;
-    const sub = this.api.get('templates_contents/', this.token, { params: this.getHttpParams() }).subscribe(
+    const sub = this.api.get('templates_contents/owner', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.templates = objects['templates_contents'];
@@ -123,37 +109,7 @@ export class TemplatesComponent implements OnInit {
       async error => { }
     );
 
-    sub.add(() => { this.getOwners() });
-  }
-
-  async getOwners() {
-    const sub = this.api.get('owners/', this.token).subscribe(
-      async data => {
-        let objects: any = { owners: [] }
-        objects = data;
-        this.owners = objects.owners;
-
-        this.owners.forEach(function (owner) {
-          if (owner.title) {
-            let title = owner.title;
-            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
-          }
-          else {
-            owner.contact = owner.email ? owner.email : owner.phone;
-          }
-        });
-      },
-      async error => { }
-    );
-
-    sub.add(() => { this.utility.loader = false; })
-  }
-
-  owner_name: any;
-  onEditChangeOwner(owner_contact?: any) {
-    let owner = this.owners.find(i => i.contact === owner_contact);
-    this.copy_template.owner_id = owner.id;
-    this.owner_name = this.owners.find(i => i.id === this.copy_template.owner_id).title.ar;
+    sub.add(() => { this.utility.loader = false; });
   }
 
   OnSubmit() {
@@ -168,23 +124,12 @@ export class TemplatesComponent implements OnInit {
       content: { 'en': this.template.content_en, 'ar': this.template.content_ar }
     }
 
-    const sub = this.api.post("templates_contents/", body, this.token).subscribe(
+    const sub = this.api.post("templates_contents/owner", body, this.token).subscribe(
       async data => { this.successMessage = true; },
       async error => { this.errorMessage = true; }
     );
 
     sub.add(() => { this.getTemplates(); });
-  }
-
-  deleteTemplate(id: number) {
-    if (confirm("Delete this template?")) {
-      const sub = this.api.delete("templates_contents/" + id, this.token).subscribe(
-        async data => { this.successMessage = true; },
-        async error => { this.errorMessage = true; }
-      );
-
-      sub.add(() => { this.getTemplates(); });
-    }
   }
 
   editTemplateClicked(template: any) {
@@ -197,18 +142,6 @@ export class TemplatesComponent implements OnInit {
     this.edit_template.subject_en = template.subject['en'];
     this.edit_template.content_ar = template.content['ar'];
     this.edit_template.content_en = template.content['en'];
-  }
-  
-  copyTemplateClicked(template: any) {
-    this.copy_template = template;
-    this.copy_template_id = template.id;
-
-    this.copy_template.media_type = template.media_type.toUpperCase();
-
-    this.copy_template.subject_ar = template.subject['ar'];
-    this.copy_template.subject_en = template.subject['en'];
-    this.copy_template.content_ar = template.content['ar'];
-    this.copy_template.content_en = template.content['en'];
   }
 
   OnUpdate(id: any) {
@@ -223,26 +156,7 @@ export class TemplatesComponent implements OnInit {
       content: { 'en': this.edit_template.content_en, 'ar': this.edit_template.content_ar }
     }
 
-    const sub = this.api.update('templates_contents/' + id, body, this.token).subscribe(
-      async data => { this.successMessage = true; },
-      async errr => { this.errorMessage = true; }
-    );
-
-    sub.add(() => { this.getTemplates(); });
-  }
-  
-  OnCloneTemplate() {
-    let body = {
-      key: this.copy_template.key,
-      model_type: this.copy_template.model_type,
-      media_type: this.copy_template.media_type.toLowerCase(),
-      model_op: this.copy_template.model_op,
-      owner_id: this.copy_template.owner_id,
-      subject: { 'en': this.copy_template.subject_en, 'ar': this.copy_template.subject_ar },
-      content: { 'en': this.copy_template.content_en, 'ar': this.copy_template.content_ar }
-    }
-
-    const sub = this.api.post('templates_contents/', body, this.token).subscribe(
+    const sub = this.api.update('templates_contents/owner' + id, body, this.token).subscribe(
       async data => { this.successMessage = true; },
       async errr => { this.errorMessage = true; }
     );

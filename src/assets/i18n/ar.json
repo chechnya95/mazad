@@ -556,5 +556,7 @@
     "Items Classifications": "تصنيفات العناصر",
     "Refund Transaction": "معاملة الإسترداد",
     "No Refund Transaction": "لم يتم الطلب",
-    "Choose Item Template": "اختر القالب للسلعة"
+    "Choose Item Template": "اختر القالب للسلعة",
+    "Owner SMS Templates": "قوالب الرسائل للمالك",
+    "Make this template for Owner": "انشاء قالب للمالك"
 }

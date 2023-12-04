@@ -83,7 +83,8 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import { UserNamePipe } from './pipes/user-name.pipe';
 import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe';
 import { UrlComponent } from './settings/url/url.component';
-import { LocalNamePipe } from './pipes/local-name.pipe'; // import bn-ng-idle service
+import { LocalNamePipe } from './pipes/local-name.pipe';
+import { OwnerSmsTemplateComponent } from './owner-sms-template/owner-sms-template.component'; // import bn-ng-idle service
 
 @NgModule({
   declarations: [
@@ -151,7 +152,8 @@ import { LocalNamePipe } from './pipes/local-name.pipe'; // import bn-ng-idle se
     UserNamePipe,
     UserNameByLangPipe,
     UrlComponent,
-    LocalNamePipe
+    LocalNamePipe,
+    OwnerSmsTemplateComponent
   ],
   imports: [
     QRCodeModule,
@@ -223,6 +225,7 @@ import { LocalNamePipe } from './pipes/local-name.pipe'; // import bn-ng-idle se
       { path: 'bids', component: BidsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'faqs', component: FaqComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin'] } },
       { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
+      { path: 'owner-sms-template', component: OwnerSmsTemplateComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner'] } },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardGuard], data: { roles: ['admin', 'owner', 'corporate'] } },
       { path: 'welcome', component: WelcomeComponent },
       { path: '**', component: PageNotFoundComponent }
