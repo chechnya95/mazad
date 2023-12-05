@@ -77,7 +77,7 @@ export class ReportsComponent implements OnInit {
   }
 
   getDetails(details: any) {
-    return JSON.parse(JSON.parse(JSON.stringify(details)));
+    return UtilitiesService.parseIfNotJsonObject(details);
   }
 
   onChangeAuction(value?: any) {

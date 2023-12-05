@@ -18,16 +18,25 @@ export class LocalNamePipe implements PipeTransform {
      // Fetch the language from localStorage or use the default locale
     let lang = localStorage.getItem('lang') || this.locale || 'en';
     lang = lang.split('-')[0];
+    // Define the fallback language based on the primary language
+    const fallbackLang = lang === 'en' ? 'ar' : 'en';
+
     // Parse the user details JSON string to an object
     const obj = UtilitiesService.parseIfNotJsonObject(value);
 
-    const local_value = obj[lang];
+    let local_value = obj[lang];
     // Check if name is not null or undefined, and also not an empty string
-    if (local_value !== null && local_value !== undefined && local_value !== '') {
-      return local_value; // Return the name in the specified language
+    if (local_value === null || local_value === undefined || local_value === '') {
+      // If the primary language local_value is not valid, try the fallback language
+      local_value = obj[fallbackLang];
     }
-    
-    return '';
+
+    // Check again if local_value is not null or undefined, and also not an empty string
+    if (local_value !== null && local_value !== undefined && local_value !== '') {
+      return local_value; // Return the name in the specified language or the fallback language
+    } else {
+      return ''; // Return a default name if neither name is available
+    }
   }
 
 }

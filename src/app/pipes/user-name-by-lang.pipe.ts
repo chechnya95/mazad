@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { UtilitiesService } from '../services/utilities.service';
 
 @Pipe({
   name: 'userNameByLang'
@@ -15,14 +16,29 @@ export class UserNameByLangPipe implements PipeTransform {
     let lang = localStorage.getItem('lang') || this.locale || 'en';
     lang = lang.split('-')[0];
 
+    const fallbackLang = lang === 'en' ? 'ar' : 'en';
+
     // Parse the details JSON string to an object
-    const userDetails = JSON.parse(details);
+    const obj = UtilitiesService.parseIfNotJsonObject(details);
+
+    //const userDetails = obj[lang];
+    //const userDetails = JSON.parse(details);
 
     // Check if the name for the specified language exists
-    const name = userDetails[`name_${lang}`];
+    let name = obj[`name_${lang}`];
 
-    // If a name exists for the specified language, return it; otherwise, return an empty string
-    return name ? name : '';
+    // Check if name is not null or undefined, and also not an empty string
+    if (name === null || name === undefined || name === '') {
+      // If the primary language name is not valid, try the fallback language
+      name = obj[`name_${fallbackLang}`];
+    }
+
+    // Check again if name is not null or undefined, and also not an empty string
+    if (name !== null && name !== undefined && name !== '') {
+      return name; // Return the name in the specified language or the fallback language
+    } else {
+      return ''; // Return a default name if neither name is available
+    }
   }
 
 }
