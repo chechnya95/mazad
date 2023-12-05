@@ -25,6 +25,7 @@ export class UsersComponent implements OnInit {
     email: null,
     password: null,
     phone: null,
+    username: null,
     code: 968,
     role: null,
     credibility: null,
@@ -37,6 +38,7 @@ export class UsersComponent implements OnInit {
     email: null,
     password: null,
     phone: null,
+    username: null,
     role: null,
     credibility: null,
     user_type: null,
@@ -267,6 +269,9 @@ export class UsersComponent implements OnInit {
     this.edit_user.role_id = this.roles.find(i => i.name === user.roles[0]).id;
     this.edit_user.user_type = user.user_type.toUpperCase();
     this.edit_user.credibility = user.credibility.toUpperCase();
+    this.edit_user.phone = user.phone;
+    this.edit_user.email = user.email;
+    this.edit_user.username = user.username;
   }
 
   OnUpdate(id: any) {
@@ -276,7 +281,10 @@ export class UsersComponent implements OnInit {
       user_details: JSON.stringify(this.edit_user_details),
       user_type: this.edit_user.user_type,
       credibility:this.edit_user.credibility,
-      is_active: this.edit_user.status
+      is_active: this.edit_user.status,
+      email: this.edit_user.email,
+      phone: this.edit_user.phone,
+      username: this.edit_user.username
     }
 
     const sub = this.api.update('users/admin/' + id, body, this.token).subscribe(
