@@ -320,7 +320,7 @@ export class NewItemComponent implements OnInit {
 
     let formData: FormData = new FormData();
 
-    if (this.images && this.images.length > 0) {
+    /*if (this.images && this.images.length > 0) {
       for (let file of this.images) {
         formData.append('images', file.data, file.data.name);
       }
@@ -330,23 +330,39 @@ export class NewItemComponent implements OnInit {
       for (let file of this.attachemetns) {
         formData.append('attachments', file.data, file.data.name);
       }
-    }
+    }*/
 
     formData.append('form', body);
 
     if (this.item.item_status && this.item.auction_id && this.item.owner_id) {
       const sub = this.api.post_form("items/", formData, this.token).subscribe(
         async data => {
+          let item_id = data['item_id'];
+
+          this.upload_files(this.images, item_id, 'image');
+          this.upload_files(this.attachemetns, item_id, 'attachment');
+
           this.item_details = [];
           this.successMessage = true;
-          this.router.navigate(['items']);
         },
         async error => {
           this.errorMessage = true;
         }
       );
 
-      sub.add(() => { this.btn_disabled = false; this.utility.loader = false; });
+      sub.add(() => {
+        this.btn_disabled = false;
+        this.utility.loader = false;
+
+        if (this.successMessage) {
+          Swal.fire(
+            'تمت إضافة السلعة بنجاح.',
+            'Item added successfully.',
+            'success'
+          );
+          this.router.navigate(['items']);
+        }
+      });
     }
     else {
       this.btn_disabled = false;
@@ -359,6 +375,20 @@ export class NewItemComponent implements OnInit {
     }
   }
 
+  upload_files(files: any[], item_id: any, type: any) {
+    if (files) {
+      files.forEach((file) => {
+        let formData: FormData = new FormData();
+        formData.append('file', file.data, file.data.name);
+
+        this.api.post_form(`items/upload/${type}/${item_id}/1`, formData, this.token).subscribe(
+          data => { },
+          error => { }
+        );
+      });
+    }
+  }
+
   continue(type: string) {
     this.type = type;
 
@@ -368,9 +398,8 @@ export class NewItemComponent implements OnInit {
 
   teplateChecked(template: any) {
     console.log(template);
-    
+
     this.item = template;
-    console.log(this.item)
     this.item.template_id = template.id;
     this.item.title_ar = template?.title['ar'];
     this.item.title_en = template?.title['en'];
