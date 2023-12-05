@@ -17,9 +17,11 @@ export class RolesComponent implements OnInit {
 
   permission_name: string = '';
   role_name: string = '';
+  description: string = '';
 
   edit_role_id: string = '';
   edit_role_name: string = '';
+  edit_description: string = '';
 
   permissions_checked: any[] = [];
   role_permissons: any[] = [];
@@ -125,6 +127,7 @@ export class RolesComponent implements OnInit {
   addRole() {
     let body = {
       name: this.role_name,
+      description: this.description
     }
 
     if (this.role_name != '') {
@@ -195,6 +198,7 @@ export class RolesComponent implements OnInit {
 
   editRoleClicked(id: string, name: string) {
     this.edit_role_name = name;
+    this.edit_description = '';
     this.edit_role_id = id;
 
     this.permissions.forEach(function (permission) {
