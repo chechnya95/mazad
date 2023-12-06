@@ -52,6 +52,7 @@
                                             <th>{{"id"| translate}}</th>
                                             <th mat-sort-header="reference_id">{{ "Reference"| translate}}</th>
                                             <th mat-sort-header="payment_status">{{"Status"| translate}}</th>
+                                            <th mat-sort-header="user" colspan="2">{{"User"| translate}}</th>
                                             <th mat-sort-header="amount">{{"Amount"| translate}}</th>
                                             <th mat-sort-header="vat">{{"VAT"| translate}}</th>
                                             <th mat-sort-header="create_date">{{"Create Date"| translate}}</th>
@@ -75,6 +76,8 @@
                                                     class="badge badge-light-info fw-bolder">{{
                                                     transaction.payment_status}}</span>
                                             </td>
+                                            <td>{{ transaction?.requester?.phone}}</td>
+                                            <td>{{ transaction?.requester?.user_details?.name_ar}}</td>
                                             <td>{{ transaction.amount}} OMR</td>
                                             <td>{{ transaction.vat}} OMR</td>
                                             <td>{{ transaction.create_date | date:"short"}}</td>

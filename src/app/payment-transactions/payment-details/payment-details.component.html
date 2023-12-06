@@ -69,10 +69,13 @@
                                         <!--end::Label-->
                                         <!--end::Col-->
                                         <div class="fw-bolder fs-6 text-gray-800"><a [routerLink]="['/user-details']"
-                                                [queryParams]="{ id: payment?.requester }">{{ payment?.requester |
-                                                uppercase }}</a>
+                                                [queryParams]="{ id: payment?.requester.id }">{{ payment?.requester.phone }}</a>
                                         </div>
                                         <!--end::Col-->
+                                        <!--end::Text-->
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.requester?.user_details?.name_ar }}</div>
+                                        <div class="fw-bolder fs-6 text-gray-800">{{ payment?.requester?.user_details?.name_en }}</div>
+                                        <!--end::Text-->
                                     </div>
                                     <!--end::Col-->
                                 </div>

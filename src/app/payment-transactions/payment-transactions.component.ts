@@ -70,6 +70,10 @@ export class PaymentTransactionsComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.transactions = objects['payments'];
         this.filter_config.totalItems = objects['filters']['total_results'];
+
+        this.transactions.forEach((item) => {
+          item.requester.user_details = JSON.parse(item.requester.user_details);
+        });
       },
       async error => { }
     );
@@ -84,7 +88,7 @@ export class PaymentTransactionsComponent implements OnInit {
 
   searchItems() {
     if (this.transFilter.length >= 3) {
-      let field = 'reference_id,gateway_transaction_id,model_type,payment_gateway,payment_type,payment_status,phone';
+      let field = 'reference_id,gateway_transaction_id,model_type,payment_gateway,payment_type,payment_status,phone,email,name';
       let value = this.transFilter;
 
       this.filter_config.queries = `${field},like,${value}`;

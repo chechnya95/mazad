@@ -39,6 +39,7 @@ export class PaymentDetailsComponent implements OnInit {
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.payment = objects['payments'][0];
+        this.payment.requester.user_details = JSON.parse(this.payment?.requester.user_details);
       },
       async error => { }
     );
