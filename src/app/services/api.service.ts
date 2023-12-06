@@ -6,6 +6,13 @@ import { environment } from '../../environments/environment';
 import { HttpParams } from '@angular/common/http';
 import { UtilitiesService } from '../services/utilities.service';
 
+
+
+export interface RoleAccess {
+  allowAll?: boolean;
+  allow?: string[];
+  exclude?: string[];
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -151,17 +158,7 @@ export class ApiService {
     return !!localStorage.getItem("access_token");
   }
 
-  isAllowed(roles: any) {
-    let token = localStorage.getItem("access_token");
-    let valid = localStorage.getItem("is_valid");
 
-    if (token && valid)
-      if (valid == 'true')
-        if (this.canEnter(roles))
-          return true;
-
-    return false;
-  }
 
   isAllowedUser() {
     let token = localStorage.getItem("access_token");
@@ -174,16 +171,43 @@ export class ApiService {
     return false;
   }
 
-  canEnter(roles: any) {
+  isAllowed(accessRules: RoleAccess) {
+    let token = localStorage.getItem("access_token");
+    let valid = localStorage.getItem("is_valid");
+
+    if (token && valid && valid === 'true')
+      if (this.canEnter(accessRules)){
+        return true;
+      }
+    return false;
+  }
+
+  canEnter(accessRules: RoleAccess): boolean {
     let user_key = localStorage.getItem("user_key");
-    let role = null;
+    let role = user_key ? user_key.split('f').pop().split('u')[0] : null;
 
-    if (user_key)
-      role = user_key.split('f').pop().split('u')[0];
+    // Check if role is valid
+    if (!role) return false;
+    role = role.toLowerCase();
+    // If allowAll is true, grant access
+    if (accessRules.allowAll) return true;
 
-    if (role && roles.includes(role.toLowerCase()))
+    // Handle the exclude logic
+    if (Array.isArray(accessRules.exclude) && accessRules.exclude.includes(role)) {
+      return false; // If role is in the exclude list, deny access
+    }
+
+    // If there's an allow list, and the role is in it, grant access
+    if (Array.isArray(accessRules.allow) && accessRules.allow.includes(role)) {
       return true;
+    }
 
+    // If there's no allow list, and the role is not in the exclude list, grant access
+    if (!Array.isArray(accessRules.allow)) {
+      return true;
+    }
+
+    // Default to deny access
     return false;
   }
 

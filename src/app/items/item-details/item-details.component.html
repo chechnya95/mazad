@@ -242,8 +242,8 @@
                         <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter(['admin'])">{{'Owner' | translate}}</div>
-                                <div class="text-gray-600" *ngIf="this.api.canEnter(['admin'])"><a
+                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter({ exclude: ['owner'] });">{{'Owner' | translate}}</div>
+                                <div class="text-gray-600" *ngIf="this.api.canEnter({ exclude: ['owner'] });"><a
                                         [routerLink]="['/owners']" [queryParams]="{ id: item?.owner_id }">{{
                                         owner?.email }}</a></div>
                                 <!--begin::Details item-->

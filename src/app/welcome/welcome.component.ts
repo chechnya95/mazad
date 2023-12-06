@@ -13,7 +13,7 @@ export class WelcomeComponent implements OnInit {
   constructor(public utility: UtilitiesService, private router: Router, private api: ApiService,) {
     this.utility.show = false;
     
-    if (!this.api.isAllowed(['admin', 'omner', 'corporate']))
+    if (!this.api.isAllowed({ allowAll: true }))
       this.router.navigateByUrl('/login');
   }
 

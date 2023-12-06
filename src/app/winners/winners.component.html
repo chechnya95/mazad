@@ -84,7 +84,7 @@
                                             <th>{{ "User" | translate }}</th>
                                             <th>{{ "Date" | translate }}</th>
                                             <th>{{ "Amount" | translate }}</th>
-                                            <th *ngIf="this.api.canEnter(['admin'])" class="text-end">{{ "Actions" |
+                                            <th *ngIf="this.api.canEnter({ allowAll: true });" class="text-end">{{ "Actions" |
                                                 translate }}</th>
                                         </tr>
                                         <!--end::Table row-->
@@ -110,7 +110,7 @@
                                             </td>
                                             <td>{{ winner.amount}} OMR</td>
                                             <!--begin::Action=-->
-                                            <td *ngIf="this.api.canEnter(['admin'])" class="text-end">
+                                            <td *ngIf="this.api.canEnter({ allowAll: true });" class="text-end">
                                                 <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                     (click)="getUser(winner.user_id, winner.phone, winner.amount)"
                                                     data-bs-toggle="modal" data-bs-target="#kt_modal_note_form">

@@ -70,12 +70,12 @@
                   <span class="menu-title">{{ 'Dashboard' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <div class="menu-content pt-8 pb-2">
                   <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'UsersRoles' | translate }}</span>
                 </div>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['users']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -95,7 +95,7 @@
                   <span class="menu-title">{{ 'UsersManagement' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['owners']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -115,7 +115,7 @@
                   <span class="menu-title">{{ 'Owners Management' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allow: ['admin'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['roles']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -143,7 +143,7 @@
                   <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'AUCTIONS' | translate }}</span>
                 </div>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allowAll: true })">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['auctions']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -162,7 +162,7 @@
                   <span class="menu-title">{{ 'AuctionsManagement' | translate }}</span>
                 </a>
               </div>
-              <!-- <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
+              <!-- <div class="menu-item" *ngIf="this.api.canEnter({ allowAll: true })">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['auction_templates']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg--
@@ -188,7 +188,7 @@
                 </a>
               </div> -->
               <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
-                *ngIf="this.api.canEnter(['admin', 'owner'])">
+                *ngIf="this.api.canEnter({ allowAll: true })">
                 <span class="menu-link">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Communication/Group.svg-->
@@ -228,7 +228,7 @@
                 </div>
               </div>
               <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
-                *ngIf="this.api.canEnter(['admin', 'owner'])">
+                *ngIf="this.api.canEnter({ allowAll: true })">
                 <span class="menu-link">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Communication/Group.svg-->
@@ -265,7 +265,7 @@
                       <span class="menu-title">{{ 'ItemsList' | translate }}</span>
                     </a>
                   </div>
-                  <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+                  <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                     <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['bids']">
                       <span class="menu-bullet">
                         <span class="bullet bullet-dot"></span>
@@ -275,7 +275,7 @@
                   </div>
                 </div>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['wallets']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -298,7 +298,7 @@
                   <span class="menu-title">{{ 'wallets' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['deposits']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -324,7 +324,7 @@
                   <span class="menu-title">{{ 'deposits' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allowAll: true })">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['winners']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -344,13 +344,13 @@
                   <span class="menu-title">{{ 'Winners' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <div class="menu-content pt-8 pb-0">
                   <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ 'AdminSettings' | translate
                     }}</span>
                 </div>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['slider']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -376,7 +376,7 @@
                   <span class="menu-title">{{ 'SliderManagement' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['sms-notification']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -396,7 +396,7 @@
                   <span class="menu-title">{{ 'SMSNotifications' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['notifications']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -416,7 +416,7 @@
                   <span class="menu-title">{{ 'SendMessages' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allowAll: true })">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['reports']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -437,7 +437,7 @@
                   <span class="menu-title">{{ 'Reports' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin', 'owner'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allowAll: true })">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['owner-sms-template']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -457,7 +457,7 @@
                   <span class="menu-title">{{ 'Owner SMS Templates' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])" hidden>
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });" hidden>
                 <a class="menu-link">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -477,7 +477,7 @@
                   <span class="menu-title">{{ 'CommentsandReviews' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['messages']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -499,7 +499,7 @@
                   <span class="menu-title">{{ 'Messages' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['payment-transactions']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -532,7 +532,7 @@
                   <span class="menu-title">{{ 'payment_transactions' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['invoices']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Shopping/Credit-card.svg-->
@@ -552,7 +552,7 @@
                   <span class="menu-title">{{ 'invoices' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['groups']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -573,7 +573,7 @@
                   <span class="menu-title">{{ "groups" | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['blacklist']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -594,7 +594,7 @@
                   <span class="menu-title">{{ "blacklist" | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['faqs']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -615,7 +615,7 @@
                   <span class="menu-title">{{ "faqs" | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['owner-payment-options']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -637,12 +637,12 @@
                   <span class="menu-title">{{ 'owner_payment_options' | translate }}</span>
                 </a>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ exclude: ['owner'] });">
                 <div class="menu-content">
                   <div class="separator mx-1 my-4"></div>
                 </div>
               </div>
-              <div class="menu-item" *ngIf="this.api.canEnter(['admin'])">
+              <div class="menu-item" *ngIf="this.api.canEnter({ allow: ['admin'] });">
                 <a class="menu-link" [routerLinkActive]="['active']" [routerLink]="['settings']">
                   <span class="menu-icon">
                     <!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
@@ -882,7 +882,7 @@
                       </div>
                       <!--end::Menu item-->
                       <!--begin::Menu item-->
-                      <div class="menu-item px-5 my-1" *ngIf="this.api.canEnter(['admin'])">
+                      <div class="menu-item px-5 my-1" *ngIf="this.api.canEnter({ allow: ['admin'] });">
                         <a [routerLinkActive]="['active']" [routerLink]="['settings']" class="menu-link px-5">
                           {{'Settings' | translate }}</a>
                       </div>
