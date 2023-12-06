@@ -115,6 +115,7 @@ export class AuctionDetailsComponent implements OnInit {
 
   excel: any;
   imageChange(event: any) {
+    console.log('image change')
     let fileList: FileList = event.target.files;
     this.excel = fileList[0];
   }
@@ -153,39 +154,70 @@ export class AuctionDetailsComponent implements OnInit {
     });
   }
 
-  import(id: any) {
+  async import(id: any) {
     let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
 
-    Swal.fire({
+    const { value: file } = await Swal.fire({
       title: lang == 'en' ? 'Select file' : 'اختر ملف',
-      html:
-        '<input type="file" class="form-control form-control-solid mb-3 mb-lg-0" id="image" accept="xlsx,xls" (change)="imageChange($event)"  />',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
-      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        let formData: FormData = new FormData();
-
-        if (this.excel) {
-          formData.append('file', this.excel, this.excel.name);
-          this.api.post('auctions/import/' + id, null, this.token).subscribe(
-            res => {
-              Swal.fire({
-                title: 'Success',
-                text: 'Done!'
-              })
-            },
-            err => {
-              Swal.fire(
-                'Error!',
-                'Could not send your request!'
-              );
-            });
-        }
+      input: "file",
+      inputAttributes: {
+        "accept": "xlsx,xls",
+        "aria-label": "Upload your excel file here"
       }
     });
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let formData: FormData = new FormData();
+        formData.append('file', file, file.name);
+
+        this.api.post('auctions/import/' + id, formData, this.token).subscribe(
+          res => {
+            Swal.fire({
+              title: 'Success',
+              text: 'Done!'
+            })
+          },
+          err => {
+            Swal.fire(
+              'Error!',
+              'Could not send your request!'
+            );
+          }
+        );
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Swal.fire({
+    //   title: lang == 'en' ? 'Select file' : 'اختر ملف',
+    //   html:
+    //     '<input type="file" class="form-control form-control-solid mb-3 mb-lg-0" id="image" accept="xlsx,xls" (change)="imageChange($event)"  />',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+    //   cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     let formData: FormData = new FormData();
+    //     if (this.excel) {
+    //       formData.append('file', this.excel, this.excel.name);
+    //       this.api.post('auctions/import/' + id, null, this.token).subscribe(
+    //         res => {
+    //           Swal.fire({
+    //             title: 'Success',
+    //             text: 'Done!'
+    //           })
+    //         },
+    //         err => {
+    //           Swal.fire(
+    //             'Error!',
+    //             'Could not send your request!'
+    //           );
+    //         });
+    //     }
+    //   }
+    // });
   }
 }
