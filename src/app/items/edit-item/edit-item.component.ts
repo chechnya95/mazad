@@ -407,11 +407,13 @@ export class EditItemComponent implements OnInit {
   }
 
   removeImage(image: any) {
-    let index = this.item.images.indexOf(image, 0);
+    this.deleteUploadedFile(image.id);
+    let index = this.item.images.indexOf(image, 0);;
     this.item.images.splice(index, 1);
   }
 
   removeFile(file: any) {
+    this.deleteUploadedFile(file.id);
     let index = this.item.attachments.indexOf(file, 0);
     this.item.attachments.splice(index, 1);
   }
@@ -424,5 +426,23 @@ export class EditItemComponent implements OnInit {
   doUpload(files: Array<File>): Promise<Array<UploadResult>> {
     // do upload file by yourself
     return Promise.resolve([{ name: 'xxx', url: 'xxx.png', isImg: true }]);
+  }
+
+  deleteUploadedFile(id: any) {
+    this.api.delete("items/upload/" + id, this.token).subscribe(
+      async data => {
+        Swal.fire(
+          'Success!',
+          'Deleted Successflly!'
+        );
+      },
+      async error => {
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Something went wrong!'
+        })
+        
+      }
+    );
   }
 }
