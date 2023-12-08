@@ -88,7 +88,7 @@ export class PaymentTransactionsComponent implements OnInit {
 
   searchItems() {
     if (this.transFilter.length >= 3) {
-      let field = 'reference_id,gateway_transaction_id,model_type,payment_gateway,payment_type,payment_status,phone,email,name';
+      let field = 'reference_id,gateway_transaction_id,model_type,payment_gateway,payment_type,payment_status,phone,email,username';
       let value = this.transFilter;
 
       this.filter_config.queries = `${field},like,${value}`;
