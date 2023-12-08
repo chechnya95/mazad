@@ -85,11 +85,21 @@ export class LoginComponent implements OnInit {
           }
         },
         async error => {
-          Swal.fire({
-            title: 'Oops...',
-            text: 'Something went wrong!'
-          })
-          
+          if (error.status === 401) {
+            // Handle 401 Unauthorized
+            Swal.fire({
+              title: 'Login Failed',
+              text: 'Username or password not match!',
+              icon: 'error'
+            });
+          } else {
+            // Handle other errors
+            Swal.fire({
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              icon: 'error'
+            });
+          }
         }
       );
 
