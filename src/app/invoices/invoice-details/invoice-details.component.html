@@ -51,8 +51,9 @@
                                         <div class="fw-bold fs-7 text-gray-600 mb-1">{{'Transaction ID' | translate}}:</div>
                                         <!--end::Label-->
                                         <!--end::Col-->
-                                        <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.transaction_id |
-                                            uppercase}}</div>
+                                        <div class="fw-bolder fs-6 text-gray-800"><a [routerLink]="['/payment-details']"
+                                            [queryParams]="{ id: invoice?.transaction_id }">{{ invoice?.transaction_id |
+                                            uppercase}}</a></div>
                                         <!--end::Col-->
                                     </div>
                                     <!--end::Col-->
@@ -79,7 +80,7 @@
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">{{ invoice?.details.id | uppercase }}
-                                            <br> {{ invoice?.details.description }} <br> Amount: {{
+                                            <br> {{ invoice?.details.description | localName}} <br> Amount: {{
                                             invoice?.details.amount | currency:' OMR '}}, Fee: {{ invoice?.details.fee |
                                             currency:' OMR '}}
                                         </div>
