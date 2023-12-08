@@ -128,6 +128,7 @@ export class UserDetailsComponent implements OnInit {
       async error => { }
     );
   }
+  
   redirectToPublicInterface(data: string) {
     // Redirect to the public interface with the token
     window.location.href = `https://mazad.om/login?token=${data}`;
