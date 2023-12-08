@@ -115,6 +115,24 @@ export class UserDetailsComponent implements OnInit {
     );
   }
 
+  loginas(id: any) {
+    this.api.post('users/admin/loginas/' + id, {} ,this.token).subscribe(
+      async data => {
+        //let object = JSON.parse(JSON.stringify(data));
+        this.redirectToPublicInterface(JSON.stringify(data));
+        //this.api.setToken(object);
+        //let token = object['token'];
+        //localStorage.setItem('access_token', token);
+        //this.router.navigate(['dashboard']);
+      },
+      async error => { }
+    );
+  }
+  redirectToPublicInterface(data: string) {
+    // Redirect to the public interface with the token
+    window.location.href = `https://mazad.om/login?token=${data}`;
+  }
+
   getUserWiningAuctions(id: any) {
     const sub = this.api.get('bids/winners/user/' + id, this.token).subscribe(
       res => {
