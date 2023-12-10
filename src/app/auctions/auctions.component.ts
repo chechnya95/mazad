@@ -327,7 +327,12 @@ export class AuctionsComponent implements OnInit {
       group_id: this.edit_auction.group_id == '' ? null : this.edit_auction.group_id,
       title: { 'en': this.edit_auction.title_en, 'ar': this.edit_auction.title_ar },
       description: { 'en': this.edit_auction.description_en, 'ar': this.edit_auction.description_en },
-      terms: { 'en': this.edit_auction.terms_en, 'ar': this.edit_auction.terms_ar }
+      terms: { 'en': this.edit_auction.terms_en, 'ar': this.edit_auction.terms_ar },
+      auction_fee: this.edit_auction.auction_fee,
+      mazad_auction_fee: this.edit_auction.mazad_auction_fee,
+      mazad_service_fee: this.edit_auction.mazad_service_fee,
+      vat_for_item: this.edit_auction.vat_for_item,
+      vat_for_mazad: this.edit_auction.vat_for_mazad
     }
 
     const sub = this.api.update('auctions/' + id, body, this.token).subscribe(
