@@ -306,8 +306,7 @@
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
                                         <div class="fw-bolder mt-5">{{'Description' | translate}}</div>
-                                        <div class="text-gray-600">{{ item?.description.en }} <br> {{
-                                            item?.description.ar }} </div>
+                                        <div class="text-gray-600">{{ item?.description | localName}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -316,20 +315,16 @@
                             <div class="d-flex flex-stack">
                                 <div class="d-flex">
                                     <div class="d-flex flex-column">
-                                        <div class="fw-bolder mt-5">{{'Terms Arabic' | translate}}</div>
-                                        <!--
-                                        <md-editor class="text-gray-600" [options]="options"
-                                            [(ngModel)]="item.terms.ar"
-                                            mode="preview">
-                                        </md-editor>
-                                        -->
+                                        <div class="fw-bolder mt-5">{{'Terms' | translate}}</div>
                                         <div markdown class="text-gray-600" id="terms_ar">
-                                            {{ item?.terms.ar }}
+                                            {{ item?.terms | localName }}
                                         </div>
+                                        <!--
                                         <div class="fw-bolder mt-5">{{'Terms English' | translate}}</div>
                                         <div markdown class="text-gray-600" id="terms_en">
                                             {{ item?.terms.en }}
                                         </div>
+                                        `-->
                                     </div>
                                 </div>
                             </div>

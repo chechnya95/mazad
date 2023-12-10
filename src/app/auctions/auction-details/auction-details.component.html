@@ -319,9 +319,7 @@
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">
-                                            <p class="text-justify" markdown >{{ auction?.terms.en }}
-                                            </p>
-                                            <p class="text-justify" markdown >{{ auction?.terms.ar }}
+                                            <p class="text-justify" markdown >{{ auction?.terms | localName }}
                                             </p>
                                         </div>
                                         <!--end::Text-->
@@ -329,7 +327,7 @@
                                     </div>
                                     <!--end::Col-->
                                 </div>
-                                <div class="row g-5 mb-5" *ngIf="auction?.description.en || auction?.description.ar">
+                                <div class="row g-5 mb-5">
                                     <!--end::Col-->
                                     <div class="col">
                                         <!--end::Label-->
@@ -337,8 +335,8 @@
                                         <!--end::Label-->
                                         <!--end::Text-->
                                         <div class="fw-bolder fs-6 text-gray-800">
-                                            <p class="text-justify">{{ auction?.description.en }}
-                                                <br> {{ auction?.description.ar }}
+                                            <p class="text-justify">
+                                                {{ auction?.description | localName }}
                                             </p>
                                         </div>
                                         <!--end::Text-->
