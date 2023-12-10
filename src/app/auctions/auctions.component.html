@@ -784,6 +784,113 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
+                                             <!--begin::Input group-->
+                                            <div *ngIf="this.api.canEnter({ allow: ['admin'] });">
+                                                <div class="row mb-10">
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-4 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label
+                                                            class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span>{{'Auction Fee' | translate}}</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Input wrapper-->
+                                                        <div class="position-relative">
+                                                            <!--begin::Input-->
+                                                            <input [(ngModel)]="edit_auction.auction_fee" type="number"
+                                                                class="form-control form-control-solid"
+                                                                name="auction_fee" />
+                                                            <!--end::Input-->
+                                                        </div>
+                                                        <!--end::Input wrapper-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-4 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label
+                                                            class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span>{{"Mazad Auction Fee"| translate}}</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Input wrapper-->
+                                                        <div class="position-relative">
+                                                            <!--begin::Input-->
+                                                            <input [(ngModel)]="edit_auction.mazad_auction_fee"
+                                                                type="number" class="form-control form-control-solid"
+                                                                name="mazad_auction_fee" />
+                                                            <!--end::Input-->
+                                                        </div>
+                                                        <!--end::Input wrapper-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-4 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label
+                                                            class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span>{{"Mazad Service Fee"| translate}}</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Input wrapper-->
+                                                        <div class="position-relative">
+                                                            <!--begin::Input-->
+                                                            <input [(ngModel)]="edit_auction.mazad_service_fee"
+                                                                type="number" class="form-control form-control-solid"
+                                                                name="mazad_service_fee" />
+                                                            <!--end::Input-->
+                                                        </div>
+                                                        <!--end::Input wrapper-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="row mb-10">
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-6 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label
+                                                            class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span>{{"Vat For Item"| translate}}</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Input wrapper-->
+                                                        <div class="position-relative">
+                                                            <!--begin::Input-->
+                                                            <input [(ngModel)]="edit_auction.vat_for_item" type="number"
+                                                                class="form-control form-control-solid"
+                                                                name="vat_for_item" />
+                                                            <!--end::Input-->
+                                                        </div>
+                                                        <!--end::Input wrapper-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-6 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label
+                                                            class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span>
+                                                                {{"Vat For Mazad"| translate}}
+                                                            </span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!--begin::Input wrapper-->
+                                                        <div class="position-relative">
+                                                            <!--begin::Input-->
+                                                            <input [(ngModel)]="edit_auction.vat_for_mazad" type="number"
+                                                                class="form-control form-control-solid"
+                                                                name="vat_for_mazad" />
+                                                            <!--end::Input-->
+                                                        </div>
+                                                        <!--end::Input wrapper-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                </div>
+                                                <!--end::Input group-->
+                                            </div>
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->

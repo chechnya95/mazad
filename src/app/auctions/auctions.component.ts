@@ -69,7 +69,12 @@ export class AuctionsComponent implements OnInit {
     description_en: null,
     description_ar: null,
     terms_en: null,
-    terms_ar: null
+    terms_ar: null,
+    auction_fee: null,
+    mazad_auction_fee: null,
+    mazad_service_fee: null,
+    vat_for_item: null,
+    vat_for_mazad: null,
   }
 
   auction_id: any;
@@ -101,7 +106,7 @@ export class AuctionsComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
+  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Auctions';
@@ -268,6 +273,13 @@ export class AuctionsComponent implements OnInit {
     this.edit_auction.terms_en = item.terms['en'];
     this.edit_auction.description_ar = item.description['ar'];
     this.edit_auction.description_en = item.description['en'];
+    this.edit_auction.auction_fee = item.auction_fee;
+    this.edit_auction.mazad_auction_fee = item.mazad_auction_fee;
+    this.edit_auction.mazad_service_fee = item.mazad_service_fee;
+    this.edit_auction.vat_for_item = item.vat_for_item;
+    this.edit_auction.vat_for_mazad = item.vat_for_mazad;
+
+
 
     var date_start = new Date(item.start_date);
     var month_start = (date_start.getMonth() + 1).toString();
