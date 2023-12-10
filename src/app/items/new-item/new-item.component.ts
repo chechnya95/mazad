@@ -3,11 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
-
-import { Uppy } from '@uppy/core'
+import { v4 as uuidv4 } from 'uuid';
 import { MdEditorOption } from 'ngx-markdown-editor';
 import { TranslateService } from '@ngx-translate/core';
-
+import { UppyService } from 'src/app/services/uppy.service';
 interface UploadResult {
   isImg: boolean
   name: string
@@ -91,8 +90,7 @@ export class NewItemComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
-  uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
+  media_id: any;
 
   public options: MdEditorOption = {
     showPreviewPanel: true,
@@ -115,23 +113,13 @@ export class NewItemComponent implements OnInit {
   public mode: string = 'editor';
   public markdownText: any;
 
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router, public translate: TranslateService) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router, public translate: TranslateService,private uppyService: UppyService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
-
-    this.doUpload = this.doUpload.bind(this);
-
-    this.uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.images = result.successful;
-    })
-
-    this.uppy2.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.attachemetns = result.successful;
-    })
+    this.media_id = uuidv4();
+    
 
     let lang = localStorage.getItem('lang');
     if (!lang)
@@ -153,7 +141,9 @@ export class NewItemComponent implements OnInit {
       }
 
       this.getItemstatus();
-    })
+    });
+    const imageUppy = this.uppyService.initializeUppy('image', this.media_id, this.token, '#image-uploader');
+    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.media_id, this.token, '#attachment-uploader');
   }
 
   async getItemstatus() {
@@ -289,6 +279,7 @@ export class NewItemComponent implements OnInit {
 
     const body = JSON.stringify({
       code: this.item.code,
+      media_id: this.media_id,
       details: this.item_details,
       images: this.item.images,
       owner_code: this.item.owner_code,

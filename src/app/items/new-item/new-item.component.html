@@ -692,8 +692,12 @@
                                     <!--end::Input-->
 
                                     <!-- Try dropzone -->
-                                    <uppy-dashboard [uppy]='uppy'>
-                                    </uppy-dashboard>
+                                    <div class="uploader">
+                                        <div id="image-uploader"></div>
+                                        <div id="image-uploader-progress"></div>
+                                        <button id="image-uploader-trigger">Select Images</button>
+                                    </div>
+
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
@@ -706,8 +710,11 @@
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="attachments" multiple
                                         (change)="fileChange($event)" /> -->
-                                    <uppy-dashboard [uppy]='uppy2'>
-                                    </uppy-dashboard>
+                                    <div class="uploader">
+                                        <div id="attachment-uploader"></div>
+                                        <div id="attachment-uploader-progress"></div>
+                                        <button id="attachment-uploader-trigger">Select Attachments</button>
+                                    </div>
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->

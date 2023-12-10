@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
-
-import { Uppy } from '@uppy/core'
+import { UppyService } from 'src/app/services/uppy.service';
 import { MdEditorOption } from 'ngx-markdown-editor';
 
 interface UploadResult {
@@ -103,25 +102,12 @@ export class EditItemComponent implements OnInit {
   public mode: string = 'editor';
   public markdownText: any;
 
-  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
-  uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
-
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router,private uppyService: UppyService) {
     this.utility.show = true;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
 
     this.doUpload = this.doUpload.bind(this);
-
-    this.uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.images = result.successful;
-    })
-
-    this.uppy2.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.attachemetns = result.successful;
-    })
   }
 
   ngOnInit(): void {
@@ -133,6 +119,8 @@ export class EditItemComponent implements OnInit {
 
       this.getItemstatus();
     })
+    const imageUppy = this.uppyService.initializeUppy('image', this.edit_item_id, this.token, '#image-uploader');
+    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.edit_item_id, this.token, '#attachment-uploader');
   }
 
   async getItemstatus() {
