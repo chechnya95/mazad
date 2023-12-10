@@ -226,7 +226,7 @@ export class AuctionSettingsComponent implements OnInit {
     this.edit_category.name_ar = item.name.ar;
     this.edit_category.name_en = item.name.en;
     this.edit_category.content_ar = item.content.ar;
-    this.edit_category.content_en = item.content.ar;
+    this.edit_category.content_en = item.content.en;
   }
 
   updateCategory(id: any) {
