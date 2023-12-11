@@ -123,6 +123,12 @@ export class ApiService {
     this.router.navigate(['login']);
   }
 
+  get_token_header(token?: any) {
+    if (token)
+      return { headers: { 'x-access-tokens': token } };
+    else
+      return { headers: { 'x-access-tokens': localStorage.getItem("access_token") } };
+  }
   isTokenExpired() {
     let token = localStorage.getItem("access_token");
     let decoded = null;
@@ -219,5 +225,9 @@ export class ApiService {
 
     if (time_alive > 1800000)
       localStorage.clear();
+  }
+
+  getItemUploadUrl(type: string, id: string, order: number = 1) {
+    return this.api + 'items/upload/' + type + '/' + id + '/' + order;
   }
 }

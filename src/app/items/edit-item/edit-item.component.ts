@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
-
-import { Uppy } from '@uppy/core'
+import { UppyService } from 'src/app/services/uppy.service';
 import { MdEditorOption } from 'ngx-markdown-editor';
 
 interface UploadResult {
@@ -82,6 +81,7 @@ export class EditItemComponent implements OnInit {
 
   edit_item_id: any;
   Swal = require('sweetalert2')
+  isUploading: boolean = false;
 
   public options: MdEditorOption = {
     showPreviewPanel: true,
@@ -103,25 +103,12 @@ export class EditItemComponent implements OnInit {
   public mode: string = 'editor';
   public markdownText: any;
 
-  uppy: Uppy = new Uppy({ debug: true, autoProceed: true })
-  uppy2: Uppy = new Uppy({ debug: true, autoProceed: true })
-
-  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, private router: Router,private uppyService: UppyService) {
     this.utility.show = true;
     this.utility.title = 'New Item';
     this.token = localStorage.getItem('access_token');
 
     this.doUpload = this.doUpload.bind(this);
-
-    this.uppy.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.images = result.successful;
-    })
-
-    this.uppy2.on('complete', (result) => {
-      console.log('Upload complete! We’ve uploaded these files:', result.successful)
-      this.attachemetns = result.successful;
-    })
   }
 
   ngOnInit(): void {
@@ -132,7 +119,12 @@ export class EditItemComponent implements OnInit {
         this.edit_item_id = id;
 
       this.getItemstatus();
-    })
+    });
+    const imageUppy = this.uppyService.initializeUppy('image', this.edit_item_id, this.token, '#image-uploader', false);
+    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.edit_item_id, this.token, '#attachment-uploader',false);
+    this.uppyService.isUploading.subscribe(uploading => {
+      this.isUploading = uploading;
+    });
   }
 
   async getItemstatus() {
@@ -378,6 +370,7 @@ export class EditItemComponent implements OnInit {
 
     let formData: FormData = new FormData();
 
+    /*
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
         formData.append('images', file.data, file.data.name);
@@ -389,7 +382,7 @@ export class EditItemComponent implements OnInit {
         formData.append('attachments', file.data, file.data.name);
       }
     }
-
+    */
     formData.append('form', body);
 
     const sub = this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(
