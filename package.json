@@ -26,6 +26,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@uppy/angular": "^0.5.2",
     "@uppy/dashboard": "^3.7.1",
+    "@uppy/locales": "^3.5.0",
     "@uppy/progress-bar": "^3.0.4",
     "@uppy/url": "^3.3.3",
     "@uppy/xhr-upload": "^3.5.0",

@@ -91,6 +91,7 @@ export class NewItemComponent implements OnInit {
   Swal = require('sweetalert2')
 
   media_id: any;
+  isUploading: boolean = false;
 
   public options: MdEditorOption = {
     showPreviewPanel: true,
@@ -144,6 +145,9 @@ export class NewItemComponent implements OnInit {
     });
     const imageUppy = this.uppyService.initializeUppy('image', this.media_id, this.token, '#image-uploader', true);
     const attachmentUppy = this.uppyService.initializeUppy('attachment', this.media_id, this.token, '#attachment-uploader',true);
+    this.uppyService.isUploading.subscribe(uploading => {
+      this.isUploading = uploading;
+    });
   }
 
   async getItemstatus() {
@@ -309,8 +313,11 @@ export class NewItemComponent implements OnInit {
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }
     })
 
+    
     let formData: FormData = new FormData();
 
+    
+    /*
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
         formData.append('images', file.data, file.data.name);
@@ -321,7 +328,7 @@ export class NewItemComponent implements OnInit {
       for (let file of this.attachemetns) {
         formData.append('attachments', file.data, file.data.name);
       }
-    }
+    }*/
 
     formData.append('form', body);
 

@@ -81,6 +81,7 @@ export class EditItemComponent implements OnInit {
 
   edit_item_id: any;
   Swal = require('sweetalert2')
+  isUploading: boolean = false;
 
   public options: MdEditorOption = {
     showPreviewPanel: true,
@@ -118,9 +119,12 @@ export class EditItemComponent implements OnInit {
         this.edit_item_id = id;
 
       this.getItemstatus();
-    })
+    });
     const imageUppy = this.uppyService.initializeUppy('image', this.edit_item_id, this.token, '#image-uploader', false);
     const attachmentUppy = this.uppyService.initializeUppy('attachment', this.edit_item_id, this.token, '#attachment-uploader',false);
+    this.uppyService.isUploading.subscribe(uploading => {
+      this.isUploading = uploading;
+    });
   }
 
   async getItemstatus() {
@@ -366,6 +370,7 @@ export class EditItemComponent implements OnInit {
 
     let formData: FormData = new FormData();
 
+    /*
     if (this.images && this.images.length > 0) {
       for (let file of this.images) {
         formData.append('images', file.data, file.data.name);
@@ -377,7 +382,7 @@ export class EditItemComponent implements OnInit {
         formData.append('attachments', file.data, file.data.name);
       }
     }
-
+    */
     formData.append('form', body);
 
     const sub = this.api.update_form("items/" + this.edit_item_id, formData, this.token).subscribe(

@@ -879,7 +879,7 @@
                             <!--begin::Wrapper-->
                             <div class="mr-2">
                                 <button type="button" class="btn btn-lg btn-light-primary me-3"
-                                    data-kt-stepper-action="previous">
+                                    data-kt-stepper-action="previous" [disabled]="isUploading">
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Left-2.svg-->
                                     <span class="svg-icon svg-icon-4 me-1">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -903,7 +903,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Wrapper-->
                             <div>
-                                <button [disabled]="btn_disabled" type="button" class="btn btn-lg btn-primary mx-3" (click)="OnSubmit()">
+                                <button [disabled]="btn_disabled" type="button" class="btn btn-lg btn-primary mx-3" [disabled]="isUploading" (click)="OnSubmit()">
                                     <span class="indicator-label">
                                         {{ "Submit" | translate }}
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
@@ -928,7 +928,7 @@
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 </button>
-                                <button type="button" class="btn btn-lg btn-primary"
+                                <button type="button" class="btn btn-lg btn-primary" [disabled]="isUploading"
                                     data-kt-stepper-action="next">{{ "Continue" | translate }}
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
                                     <span class="svg-icon svg-icon-4 ms-1 me-0">

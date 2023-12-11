@@ -505,8 +505,6 @@
                                     <!--end::Label-->
                                     <div class="uploader">
                                         <div id="image-uploader"></div>
-                                        <div id="image-uploader-progress"></div>
-                                        <button id="image-uploader-trigger">Select Images</button>
                                     </div>
                                     <!--begin::Input-->
                                     <!-- <input type="file" class="form-control" id="images" multiple accept="image/*"
@@ -591,8 +589,6 @@
                                     <!--begin::Input-->
                                     <div class="uploader">
                                         <div id="attachment-uploader"></div>
-                                        <div id="attachment-uploader-progress"></div>
-                                        <button id="attachment-uploader-trigger">Select Attachments</button>
                                     </div>
                                     <!-- <input type="file" class="form-control" id="attachments" multiple
                                         (change)="fileChange($event)" /> -->
@@ -758,7 +754,7 @@
                             <!--begin::Wrapper-->
                             <div class="mr-2">
                                 <button type="button" class="btn btn-lg btn-light-primary me-3"
-                                    data-kt-stepper-action="previous">
+                                    data-kt-stepper-action="previous" [disabled]="isUploading" >
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Left-2.svg-->
                                     <span class="svg-icon svg-icon-4 me-1">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -782,7 +778,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Wrapper-->
                             <div>
-                                <button type="button" class="btn btn-lg btn-primary me-3" (click)="OnSubmit()">
+                                <button type="button" class="btn btn-lg btn-primary me-3" [disabled]="isUploading" (click)="OnSubmit()">
                                     <span class="indicator-label">Submit
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
                                         <span class="svg-icon svg-icon-3 ms-2 me-0">
@@ -807,7 +803,7 @@
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 </button>
                                 <button type="button" class="btn btn-lg btn-primary"
-                                    data-kt-stepper-action="next">Continue
+                                    data-kt-stepper-action="next" [disabled]="isUploading">Continue
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
                                     <span class="svg-icon svg-icon-4 ms-1 me-0">
                                         <svg xmlns="http://www.w3.org/2000/svg"
