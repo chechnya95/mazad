@@ -142,8 +142,8 @@ export class NewItemComponent implements OnInit {
 
       this.getItemstatus();
     });
-    const imageUppy = this.uppyService.initializeUppy('image', this.media_id, this.token, '#image-uploader');
-    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.media_id, this.token, '#attachment-uploader');
+    const imageUppy = this.uppyService.initializeUppy('image', this.media_id, this.token, '#image-uploader', true);
+    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.media_id, this.token, '#attachment-uploader',true);
   }
 
   async getItemstatus() {

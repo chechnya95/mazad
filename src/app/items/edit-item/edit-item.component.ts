@@ -119,8 +119,8 @@ export class EditItemComponent implements OnInit {
 
       this.getItemstatus();
     })
-    const imageUppy = this.uppyService.initializeUppy('image', this.edit_item_id, this.token, '#image-uploader');
-    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.edit_item_id, this.token, '#attachment-uploader');
+    const imageUppy = this.uppyService.initializeUppy('image', this.edit_item_id, this.token, '#image-uploader', false);
+    const attachmentUppy = this.uppyService.initializeUppy('attachment', this.edit_item_id, this.token, '#attachment-uploader',false);
   }
 
   async getItemstatus() {
