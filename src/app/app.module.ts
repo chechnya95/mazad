@@ -79,12 +79,12 @@ import { ExportComponent } from './items/export/export.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ExportOwnerComponent } from './items/export-owner/export-owner.component';
 
-import { BnNgIdleService } from 'bn-ng-idle';
 import { UserNamePipe } from './pipes/user-name.pipe';
 import { UserNameByLangPipe } from './pipes/user-name-by-lang.pipe';
 import { UrlComponent } from './settings/url/url.component';
 import { LocalNamePipe } from './pipes/local-name.pipe';
-import { OwnerSmsTemplateComponent } from './owner-sms-template/owner-sms-template.component'; // import bn-ng-idle service
+import { OwnerSmsTemplateComponent } from './owner-sms-template/owner-sms-template.component';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 @NgModule({
   declarations: [
@@ -165,6 +165,7 @@ import { OwnerSmsTemplateComponent } from './owner-sms-template/owner-sms-templa
     MatSortModule,
     MatPaginatorModule,
     FormsModule,
+    NgIdleKeepaliveModule.forRoot(),
     MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE }),
     TranslateModule.forRoot({
       defaultLanguage: 'en',
@@ -231,7 +232,7 @@ import { OwnerSmsTemplateComponent } from './owner-sms-template/owner-sms-templa
       { path: '**', component: PageNotFoundComponent }
     ], { scrollPositionRestoration: 'enabled' })
   ],
-  providers: [BnNgIdleService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
