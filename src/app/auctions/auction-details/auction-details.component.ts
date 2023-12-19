@@ -87,30 +87,55 @@ export class AuctionDetailsComponent implements OnInit {
   }
 
   approveItem(id: any) {
-    this.api.get('items/to_status/payment/' + id, this.token).subscribe(
-      async data => { this.getItems(); this.successMessage = true; },
-      async error => { this.errorMessage = true; }
-    );
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
+
+    Swal.fire({
+      title: lang == 'en' ? 'Are you sure to approve the selected?' : 'الموافقة على السلعة، هل انت متأكد؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.get('items/to_status/payment/' + id, this.token).subscribe(
+          async data => { this.getItems(); this.successMessage = true; },
+          async error => { this.errorMessage = true; }
+        );
+      }
+    });
   }
 
   approveMultipleItems(list: any[]) {
     let status = false;
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
 
-    list.forEach((item) => {
-      this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
-        async data => { status = true; },
-        async error => { status = true; }
-      );
+    Swal.fire({
+      title: lang == 'en' ? 'Are you sure to approve the selected items?' : 'الموافقة على السلع المحددة، هل انت متأكد؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        list.forEach((item) => {
+          this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
+            async data => { status = true; },
+            async error => { status = true; }
+          );
+        });
+
+        if (list.length == 0)
+          this.emptyModal = true;
+        else {
+          if (status)
+            this.successMessage = true;
+          else
+            this.errorMessage = true;
+        }
+      }
     });
-
-    if (list.length == 0)
-      this.emptyModal = true;
-    else {
-      if (status)
-        this.successMessage = true;
-      else
-        this.errorMessage = true;
-    }
   }
 
   excel: any;

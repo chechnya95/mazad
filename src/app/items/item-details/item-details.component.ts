@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 import { MdEditorOption } from 'ngx-markdown-editor';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-details',
@@ -40,7 +41,7 @@ export class ItemDetailsComponent implements OnInit {
     showBorder: false,
   };
 
-  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(public utility: UtilitiesService, public api: ApiService, private route: ActivatedRoute, private router: Router, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.loader = false;
     this.utility.title = 'Item Details';
@@ -227,17 +228,30 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   approve(id: any) {
-    this.api.get('items/to_status/payment/' + id, this.token).subscribe(
-      async data => {
-        this.successMessage = true;
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
 
-        this.route.queryParams.subscribe(params => {
-          let id = params['id'] != null ? params['id'] : null;
-          if (id) { this.getItemDetails(id); }
-        });
-      },
-      async error => { this.errorMessage = true; }
-    );
+    Swal.fire({
+      title: lang == 'en' ? 'Are you sure to approve the selected?' : 'الموافقة على السلعة، هل انت متأكد؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.get('items/to_status/payment/' + id, this.token).subscribe(
+          async data => {
+            this.successMessage = true;
+
+            this.route.queryParams.subscribe(params => {
+              let id = params['id'] != null ? params['id'] : null;
+              if (id) { this.getItemDetails(id); }
+            });
+          },
+          async error => { this.errorMessage = true; }
+        );
+      }
+    });
   }
 
   announce(id: any) {
@@ -245,17 +259,30 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   reject(id: any) {
-    this.api.get('items/to_status/reject/' + id, this.token).subscribe(
-      async data => {
-        this.successMessage = true;
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
 
-        this.route.queryParams.subscribe(params => {
-          let id = params['id'] != null ? params['id'] : null;
-          if (id) { this.getItemDetails(id); }
-        });
-      },
-      async error => { this.errorMessage = true; }
-    );
+    Swal.fire({
+      title: lang == 'en' ? 'Are you sure to Reject the selected?' : 'رفض السلعة، هل انت متأكد؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.get('items/to_status/reject/' + id, this.token).subscribe(
+          async data => {
+            this.successMessage = true;
+    
+            this.route.queryParams.subscribe(params => {
+              let id = params['id'] != null ? params['id'] : null;
+              if (id) { this.getItemDetails(id); }
+            });
+          },
+          async error => { this.errorMessage = true; }
+        );
+      }
+    });
   }
 
   close(id: any) {
