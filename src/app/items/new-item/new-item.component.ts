@@ -99,17 +99,7 @@ export class NewItemComponent implements OnInit {
     usingFontAwesome5: true,
     fontAwesomeVersion: '5',
     resizable: true,
-    customRender: {
-      image: function (href: string, title: string, text: string) {
-        let out = `<img style="max-width: 100%; border: 20px solid red;" src="${href}" alt="${text}"`;
-        if (title) {
-          out += ` title="${title}"`;
-        }
-        //console.log(this);
-        // out += (<any>this.options).xhtml ? '/>' : '>';
-        return out;
-      },
-    },
+    hideIcons: ['Image'],
   };
   public mode: string = 'editor';
   public markdownText: any;

@@ -380,42 +380,43 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Description</label>
+                                    <label class="fw-bold fs-6 mb-2">
+                                        {{ "Description English" | translate }}
+                                    </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <textarea cols="20" rows="5" name="description_en"
-                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                        placeholder="Description English" [(ngModel)]="item.description_en"></textarea>
+                                    <md-editor name="description_en" id="description_en"
+                                        [(ngModel)]="item.description_en" [height]="'300px'" [mode]="mode" [options]="options">
+                                    </md-editor>
                                     <br>
-                                    <textarea cols="20" rows="5" name="description_ar"
-                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                        placeholder="Description Arabic" [(ngModel)]="item.description_ar"></textarea>
+                                    <label class="fw-bold fs-6 mb-2">
+                                        {{ "Description Arabic" | translate }}
+                                    </label>
+                                    <md-editor name="description_ar" id="description_ar"
+                                        [(ngModel)]="item.description_ar" [height]="'300px'" [mode]="mode" [options]="options">
+                                    </md-editor>
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">Terms Arabic</label>
+                                    <label class="fw-bold fs-6 mb-2">{{ "Terms Arabic" | translate }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <md-editor name="terms_ar" id="terms_ar"
-                                        [(ngModel)]="item.terms_ar" [height]="'300px'"
-                                        [mode]="mode" [options]="options" required>
-                                        <slot custom-btns></slot>
+                                        [(ngModel)]="item.terms_ar" [height]="'300px'" [mode]="mode" [options]="options">
                                     </md-editor>
                                     <!--begin::Input-->
                                     <!-- <textarea cols="20" rows="5" name="terms_en"
                                         class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Terms English"
                                         [(ngModel)]="item.terms_en"></textarea> -->
                                     <br>
-                                    <label class="required fw-bold fs-6 mb-2">Terms English</label>
+                                    <label class="fw-bold fs-6 mb-2">{{ "Terms English" | translate }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <md-editor name="terms_en"
-                                        [(ngModel)]="item.terms_en" [height]="'300px'" [mode]="mode" [options]="options"
-                                        required>
-                                        <slot custom-btns></slot>
+                                        [(ngModel)]="item.terms_en" [height]="'300px'" [mode]="mode" [options]="options">
                                     </md-editor>
                                     <!-- <textarea cols="20" rows="5" name="terms_ar"
                                         class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Terms Arabic"
@@ -778,8 +779,8 @@
                             <!--end::Wrapper-->
                             <!--begin::Wrapper-->
                             <div>
-                                <button type="button" class="btn btn-lg btn-primary me-3" [disabled]="isUploading" (click)="OnSubmit()">
-                                    <span class="indicator-label">Submit
+                                <button type="button" class="btn btn-lg btn-warning me-3" [disabled]="isUploading" (click)="OnSubmit()">
+                                    <span class="indicator-label">{{ "Submit" | translate }}
                                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
                                         <span class="svg-icon svg-icon-3 ms-2 me-0">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -803,7 +804,7 @@
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 </button>
                                 <button type="button" class="btn btn-lg btn-primary"
-                                    data-kt-stepper-action="next" [disabled]="isUploading">Continue
+                                    data-kt-stepper-action="next" [disabled]="isUploading">{{ "Continue" | translate }}
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Right-2.svg-->
                                     <span class="svg-icon svg-icon-4 ms-1 me-0">
                                         <svg xmlns="http://www.w3.org/2000/svg"
