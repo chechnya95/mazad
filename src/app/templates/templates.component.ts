@@ -26,10 +26,13 @@ export class TemplatesComponent implements OnInit {
     model_type: null,
     media_type: 'SMS',
     model_op: null,
+    customized: false,
+    is_custoizable: false,
     subject_en: null,
     subject_ar: null,
     content_en: null,
-    content_ar: null
+    content_ar: null,
+    owner_id:  null
   }
 
   edit_template = {
@@ -37,10 +40,13 @@ export class TemplatesComponent implements OnInit {
     model_type: null,
     media_type: 'SMS',
     model_op: null,
+    customized: false,
+    is_custoizable: false,
     subject_en: null,
     subject_ar: null,
     content_en: null,
-    content_ar: null
+    content_ar: null,
+    owner_id:  null
   }
   
   copy_template = {
@@ -48,6 +54,8 @@ export class TemplatesComponent implements OnInit {
     model_type: null,
     media_type: 'SMS',
     model_op: null,
+    customized: false,
+    is_custoizable: false,
     subject_en: null,
     subject_ar: null,
     content_en: null,
@@ -118,7 +126,7 @@ export class TemplatesComponent implements OnInit {
         let objects = JSON.parse(JSON.stringify(data));
         this.media_type = objects['media_type'];
 
-        console.log(this.media_type)
+        //console.log(this.media_type)
       },
       async error => { }
     );
@@ -162,6 +170,9 @@ export class TemplatesComponent implements OnInit {
       model_type: this.template.model_type,
       media_type: this.template.media_type.toLowerCase(),
       model_op: this.template.model_op,
+      customized: this.template.customized,
+      is_custoizable: this.template.is_custoizable,
+      owner_id: this.template.owner_id,
       //owner_id: null,
       //model_id: null,
       subject: { 'en': this.template.subject_en, 'ar': this.template.subject_ar },
@@ -190,8 +201,11 @@ export class TemplatesComponent implements OnInit {
   editTemplateClicked(template: any) {
     this.edit_template = template;
     this.edit_template_id = template.id;
+    this.edit_template.owner_id = template.owner_id;
 
     this.edit_template.media_type = template.media_type.toUpperCase();
+    this.edit_template.customized = template.customized;
+    this.edit_template.is_custoizable = template.is_custoizable;
 
     this.edit_template.subject_ar = template.subject['ar'];
     this.edit_template.subject_en = template.subject['en'];
@@ -204,6 +218,8 @@ export class TemplatesComponent implements OnInit {
     this.copy_template_id = template.id;
 
     this.copy_template.media_type = template.media_type.toUpperCase();
+    this.copy_template.customized = true;
+    this.copy_template.is_custoizable = template.is_custoizable;
 
     this.copy_template.subject_ar = template.subject['ar'];
     this.copy_template.subject_en = template.subject['en'];
@@ -217,8 +233,10 @@ export class TemplatesComponent implements OnInit {
       model_type: this.edit_template.model_type,
       media_type: this.edit_template.media_type.toLowerCase(),
       model_op: this.edit_template.model_op,
-      owner_id: null,
+      owner_id: this.edit_template.owner_id,
       model_id: null,
+      customized : this.edit_template.customized,
+      is_custoizable: this.edit_template.is_custoizable,
       subject: { 'en': this.edit_template.subject_en, 'ar': this.edit_template.subject_ar },
       content: { 'en': this.edit_template.content_en, 'ar': this.edit_template.content_ar }
     }
@@ -238,6 +256,8 @@ export class TemplatesComponent implements OnInit {
       media_type: this.copy_template.media_type.toLowerCase(),
       model_op: this.copy_template.model_op,
       owner_id: this.copy_template.owner_id,
+      customized : this.copy_template.customized,
+      is_custoizable: this.copy_template.is_custoizable,
       subject: { 'en': this.copy_template.subject_en, 'ar': this.copy_template.subject_ar },
       content: { 'en': this.copy_template.content_en, 'ar': this.copy_template.content_ar }
     }

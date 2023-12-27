@@ -211,6 +211,32 @@
                                                             <!--begin::Input group-->
                                                             <div class="fv-row mb-10">
                                                                 <!--begin::Label-->
+                                                                <label class="form-label"
+                                                                    style="padding-right: 10px;">{{'Customized' | translate}}? </label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="customized" value="{{template.customized}}"
+                                                                    [(ngModel)]="template.customized" id="customized" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label"
+                                                                    style="padding-right: 10px;">{{'Is Custoizable' | translate}}? </label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="is_custoizable" value="{{template.is_custoizable}}"
+                                                                    [(ngModel)]="template.is_custoizable" id="is_custoizable" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
                                                                 <label class="form-label required">{{'Media Type' |
                                                                     translate}}</label>
                                                                 <!--end::Label-->
@@ -377,6 +403,32 @@
                                                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                                                     placeholder="Unique Key"
                                                                     [(ngModel)]="edit_template.key" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label"
+                                                                    style="padding-right: 10px;">{{'Customized' | translate}}? </label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="customized" value="{{edit_template.customized}}"
+                                                                    [(ngModel)]="edit_template.customized" id="customized" />
+                                                                <!--end::Input-->
+                                                            </div>
+                                                            <!--end::Input group-->
+                                                            <!--begin::Input group-->
+                                                            <div class="fv-row mb-10">
+                                                                <!--begin::Label-->
+                                                                <label class="form-label"
+                                                                    style="padding-right: 10px;">{{'Is Custoizable' | translate}}? </label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Input-->
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    name="is_custoizable" value="{{edit_template.is_custoizable}}"
+                                                                    [(ngModel)]="edit_template.is_custoizable" id="is_custoizable" />
                                                                 <!--end::Input-->
                                                             </div>
                                                             <!--end::Input group-->
@@ -603,6 +655,9 @@
                                             <th mat-sort-header="media_type">{{'Media' | translate}}</th>
                                             <th mat-sort-header="model_type">{{'Model Type' | translate}}</th>
                                             <th mat-sort-header="model_op">{{'Model OP' | translate}}</th>
+                                            <th class="min-w-125px">{{'Customized' | translate}}</th>
+                                            <th class="min-w-125px">{{'Is Custoizable' | translate}}</th>
+                                            <th class="min-w-125px">{{'Owner' | translate}}</th>
                                             <th class="min-w-125px">{{'Subject' | translate}}</th>
                                             <th class="min-w-125px">{{'Content' | translate}}</th>
                                             <th class="text-end min-w-100px">{{'Actions' | translate}}</th>
@@ -658,6 +713,18 @@
                                             <!--end::code=-->
                                             <!--begin::code=-->
                                             <td>{{ template.model_op }}</td>
+                                            <!--end::code=-->
+                                            <!--begin::code=-->
+                                            <td>{{ template.customized }}</td>
+                                            <!--end::code=-->
+                                            <!--begin::code=-->
+                                            <td>{{ template.is_custoizable }}</td>
+                                            <!--end::code=-->
+                                            <!--begin::code=-->
+                                            <td>
+                                                <span *ngIf="template.owner">{{ template.owner.title | localName }}</span>
+                                                <span *ngIf="template.owner_id">{{ template.owner_id }}</span>
+                                            </td>
                                             <!--end::code=-->
                                             <!--begin::start_date-->
                                             <td class="d-flex flex-column">
@@ -796,7 +863,7 @@
                                                     </span>
                                                     <!--end::Svg Icon-->
                                                 </a>
-                                                <a (click)="copyTemplateClicked(template)" data-bs-toggle="modal"
+                                                <a *ngIf="template.is_custoizable" (click)="copyTemplateClicked(template)" data-bs-toggle="modal"
                                                     data-bs-target="#kt_modal_copy_template" alt="copy template"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 mt-1">
                                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
