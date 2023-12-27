@@ -201,7 +201,10 @@ export class TemplatesComponent implements OnInit {
   editTemplateClicked(template: any) {
     this.edit_template = template;
     this.edit_template_id = template.id;
-    this.edit_template.owner_id = template.owner_id;
+    if (template.owner)
+      this.edit_template.owner_id = template.owner.id;
+    else
+      this.edit_template.owner_id = template.owner_id;
 
     this.edit_template.media_type = template.media_type.toUpperCase();
     this.edit_template.customized = template.customized;
