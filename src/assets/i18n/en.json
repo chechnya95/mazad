@@ -102,5 +102,6 @@
     "No Refund Transaction": "Not Requested",
     "Bidders": "Biddings",
     "Description-ar": "Description Arabic",
-    "Description-en": "Description English"
+    "Description-en": "Description English",
+    "contact_with_comma": "Contacts, to add more seprate with ;"
 }

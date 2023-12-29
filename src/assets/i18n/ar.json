@@ -560,5 +560,6 @@
     "No Refund Transaction": "لم يتم الطلب",
     "Choose Item Template": "اختر القالب للسلعة",
     "Owner SMS Templates": "قوالب الرسائل للمالك",
-    "Make this template for Owner": "انشاء قالب للمالك"
+    "Make this template for Owner": "انشاء قالب للمالك",
+    "contact_with_comma": "ارقام التواصل، لأكثر من رقم افصل بـ ;"
 }
