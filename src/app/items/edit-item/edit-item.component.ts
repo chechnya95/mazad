@@ -329,7 +329,11 @@ export class EditItemComponent implements OnInit {
     let date_e = new Date(this.item.end_date)
     let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
-    let contacts = this.item.contacts.split(";");
+    // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
+    let contacts = [];
+    if (this.item.contacts) {
+      contacts = this.item.contacts.split(';');
+    }
 
     const body = JSON.stringify({
       code: this.item.code,
