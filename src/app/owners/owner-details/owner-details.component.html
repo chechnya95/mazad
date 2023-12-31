@@ -180,7 +180,7 @@
                                                 <!--begin::Table row-->
                                                 <tr *ngFor="let user of owner_users; let i = index;">
                                                     <!--begin::Invoice=-->
-                                                    <td><a [routerLink]="['/user-details']" [queryParams]="{ id: user.id }">{{
+                                                    <td><a [routerLink]="['/user-details']" [queryParams]="{ id: user.user_id }">{{
                                                             user.phone }}</a></td>
                                                     <!--end::Invoice=-->
                                                     <!--begin::Amount=-->
@@ -194,7 +194,7 @@
                                                             translate}}</span>
                                                     </td>
                                                     <!--end::Date=-->
-                                                    <td><button type="button" (click)="deleteOwnerUser(user.id)"
+                                                    <td><button type="button" (click)="deleteOwnerUser(user.user_id)"
                                                             class="btn btn-sm btn-light-danger">{{'delete' |
                                                             translate}}</button></td>
                                                 </tr>
