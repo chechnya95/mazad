@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,9 @@ export class UtilitiesService {
       return input; // or handle it accordingly
     }
   }
+
+  convertDateForInput(dateStr: string): string {
+    const date = new Date(dateStr);
+    return formatDate(date, 'yyyy-MM-ddTHH:mm', 'en-US');
+}
 }

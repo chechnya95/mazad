@@ -266,11 +266,11 @@ export class NewItemComponent implements OnInit {
     this.utility.loader = true;
     this.btn_disabled = true;
 
-    let date_s = new Date(this.item.start_date)
-    let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
+    let start_date = new Date(this.item.start_date)
+    //let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
 
-    let date_e = new Date(this.item.end_date)
-    let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
+    let end_date = new Date(this.item.end_date)
+    //let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
     // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
     let contacts = [];
@@ -286,8 +286,8 @@ export class NewItemComponent implements OnInit {
       owner_code: this.item.owner_code,
       attachments: this.item.attachments,
       deposit: this.item.deposit,
-      start_date: start_date,
-      end_date: end_date,
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString(),
       latitude: this.item.latitude,
       longtitude: this.item.longtitude,
       min_bid: this.item.min_bid,
@@ -409,50 +409,17 @@ export class NewItemComponent implements OnInit {
     this.owner_name = owner?.title?.en;
 
     // get start date
-    var start_date = new Date(template.start_date);
+    let start_date = new Date(template.start_date);
     if (template.next_start_date) {
       start_date = new Date(template.start_date);
     }
-    var month_1 = (start_date.getMonth() + 1).toString();
-    var day_1 = (start_date.getDate()).toString();
-    var hour_1 = (start_date.getHours()).toString();
-    var mins_1 = (start_date.getMinutes()).toString();
 
-    if (+month_1 < 10)
-      month_1 = '0' + month_1;
-
-    if (+day_1 < 10)
-      day_1 = '0' + day_1;
-
-    if (+hour_1 < 10)
-      hour_1 = '0' + hour_1;
-
-    if (+mins_1 < 10)
-      mins_1 = '0' + mins_1;
-
-    this.item.start_date = start_date.getFullYear() + '-' + month_1 + '-' + day_1 + 'T' + hour_1 + ':' + mins_1;
+    this.item.start_date = this.utility.convertDateForInput(start_date.toString());
 
     // get end date
-    var end_date = new Date(template.end_date);
-    var month_2 = (end_date.getMonth() + 1).toString();
-    var day_2 = (end_date.getDate()).toString();
-    var hour_2 = (end_date.getHours()).toString();
-    var mins_2 = (end_date.getMinutes()).toString();
-
-    if (+month_2 < 10)
-      month_2 = '0' + month_2;
-
-    if (+day_2 < 10)
-      day_2 = '0' + day_2;
-
-    if (+hour_2 < 10)
-      hour_2 = '0' + hour_2;
-
-    if (+mins_2 < 10)
-      mins_2 = '0' + mins_2;
-
-    this.item.end_date = end_date.getFullYear() + '-' + month_2 + '-' + day_2 + 'T' + hour_2 + ':' + mins_2;
-
+    const end_date = new Date(template.end_date);
+    this.item.end_date = this.utility.convertDateForInput(end_date.toString());
+    
     this.item_details = template.details;
     this.inspections = template.inspections;
 

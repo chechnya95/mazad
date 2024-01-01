@@ -188,44 +188,11 @@ export class EditItemComponent implements OnInit {
             this.item.description_ar = object.description['ar'];
             this.item.description_en = object.description['en'];
 
-            var date_start = new Date(object.start_date);
-            var month_start = (date_start.getMonth() + 1).toString();
-            var day_start = (date_start.getDate()).toString();
-            var hour_start = (date_start.getHours()).toString();
-            var mins_start = (date_start.getMinutes()).toString();
+            let start_date = new Date(object.start_date);
+            this.item.start_date = this.utility.convertDateForInput(start_date.toString());
 
-            if (+month_start < 10)
-              month_start = '0' + month_start;
-
-            if (+day_start < 10)
-              day_start = '0' + day_start;
-
-            if (+hour_start < 10)
-              hour_start = '0' + hour_start;
-
-            if (+mins_start < 10)
-              mins_start = '0' + mins_start;
-
-            this.item.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start + 'T' + hour_start + ':' + mins_start;
-
-            var end_date = new Date(object.end_date);
-            var month_end = (end_date.getMonth() + 1).toString();
-            var day_end = (end_date.getDate()).toString();
-            var hour_end = (end_date.getHours()).toString();
-            var mins_end = (end_date.getMinutes()).toString();
-
-            if (+month_end < 10)
-              month_end = '0' + month_end;
-
-            if (+day_end < 10)
-              day_end = '0' + day_end;
-            if (+hour_end < 10)
-              hour_end = '0' + hour_end;
-
-            if (+mins_end < 10)
-              mins_end = '0' + mins_end;
-
-            this.item.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
+            let end_date = new Date(object.end_date);
+            this.item.end_date = this.utility.convertDateForInput(end_date.toString());
 
             this.inspections.inspection_start_date = object?.inspections?.inspection_start_date;
             this.inspections.inspection_start_time = object?.inspections?.inspection_start_time;
@@ -323,11 +290,11 @@ export class EditItemComponent implements OnInit {
   OnSubmit() {
     this.utility.loader = true;
 
-    let date_s = new Date(this.item.start_date)
-    let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
+    let start_date = new Date(this.item.start_date)
+    //let start_date = `${date_s.getFullYear()}-${date_s.getMonth() + 1}-${date_s.getDate()} ${date_s.getHours()}:${date_s.getMinutes()}+0400`;
 
-    let date_e = new Date(this.item.end_date)
-    let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
+    let end_date = new Date(this.item.end_date)
+    //let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
     // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
     let contacts = [];
@@ -342,8 +309,8 @@ export class EditItemComponent implements OnInit {
       owner_code: this.item.owner_code,
       attachments: this.item.attachments,
       deposit: this.item.deposit,
-      start_date: start_date,
-      end_date: end_date,
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString(),
       latitude: this.item.latitude,
       longtitude: this.item.longtitude,
       current_price: this.item.current_price,
