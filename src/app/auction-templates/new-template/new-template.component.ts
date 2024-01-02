@@ -148,44 +148,13 @@ export class NewTemplateComponent implements OnInit {
             this.auction_template.description_ar = object.description['ar'];
             this.auction_template.description_en = object.description['en'];
 
-            var date_start = new Date(object.start_date);
-            var month_start = (date_start.getMonth() + 1).toString();
-            var day_start = (date_start.getDate()).toString();
-            var hour_start = (date_start.getHours()).toString();
-            var mins_start = (date_start.getMinutes()).toString();
+            let date_start = new Date(object.start_date);
 
-            if (+month_start < 10)
-              month_start = '0' + month_start;
+            this.auction_template.start_date = this.utility.convertDateForInput(date_start.toString());
 
-            if (+day_start < 10)
-              day_start = '0' + day_start;
+            let end_date = new Date(object.end_date);
 
-            if (+hour_start < 10)
-              hour_start = '0' + hour_start;
-
-            if (+mins_start < 10)
-              mins_start = '0' + mins_start;
-
-            this.auction_template.start_date = date_start.getFullYear() + '-' + month_start + '-' + day_start + 'T' + hour_start + ':' + mins_start;
-
-            var end_date = new Date(object.end_date);
-            var month_end = (end_date.getMonth() + 1).toString();
-            var day_end = (end_date.getDate()).toString();
-            var hour_end = (end_date.getHours()).toString();
-            var mins_end = (end_date.getMinutes()).toString();
-
-            if (+month_end < 10)
-              month_end = '0' + month_end;
-
-            if (+day_end < 10)
-              day_end = '0' + day_end;
-            if (+hour_end < 10)
-              hour_end = '0' + hour_end;
-
-            if (+mins_end < 10)
-              mins_end = '0' + mins_end;
-
-            this.auction_template.end_date = end_date.getFullYear() + '-' + month_end + '-' + day_end + 'T' + hour_end + ':' + mins_end;
+            this.auction_template.end_date = this.utility.convertDateForInput(end_date.toString());
 
             this.inspections.inspection_start_date = object?.inspections?.inspection_start_date;
             this.inspections.inspection_start_time = object?.inspections?.inspection_start_time;
@@ -238,6 +207,8 @@ export class NewTemplateComponent implements OnInit {
   }
 
   OnSubmit() {
+    let start_date = new Date(this.auction_template.start_date)
+    let end_date = new Date(this.auction_template.end_date)
     let body = {
       code: this.auction_template.code,
       details: this.item_details,
@@ -245,8 +216,8 @@ export class NewTemplateComponent implements OnInit {
       owner_code: this.auction_template.owner_code,
       attachments: this.auction_template.attachments,
       deposit: this.auction_template.deposit,
-      start_date: this.auction_template.start_date,
-      end_date: this.auction_template.end_date,
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString(),
       latitude: this.auction_template.latitude,
       longtitude: this.auction_template.longtitude,
       time_between_items: this.auction_template.time_between_items,

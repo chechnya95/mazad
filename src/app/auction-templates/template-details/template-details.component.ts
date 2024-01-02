@@ -91,9 +91,11 @@ export class TemplateDetailsComponent implements OnInit {
   }
 
   update_dates(id: any) {
+    let start_date = new Date(this.start_date)
+    let end_date = new Date(this.end_date)
     let body = {
-      start_date: this.start_date,
-      end_date: this.end_date
+      start_date: start_date.toISOString(),
+      end_date: end_date.toISOString()
     }
 
     this.api.update('auction_templates/changetime/' + id, body, this.token).subscribe(
