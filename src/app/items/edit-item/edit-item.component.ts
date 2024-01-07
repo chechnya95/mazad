@@ -311,7 +311,6 @@ export class EditItemComponent implements OnInit {
 
     // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
     //let contacts = [];
-    console.log(this.item.contacts);
 
     const body = JSON.stringify({
       code: this.item.code,

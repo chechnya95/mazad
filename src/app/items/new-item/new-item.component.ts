@@ -389,7 +389,7 @@ export class NewItemComponent implements OnInit {
   }
 
   teplateChecked(template: any) {
-    console.log(template);
+    //console.log(template);
 
     this.item = template;
     this.item.template_id = template.id;
