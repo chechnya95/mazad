@@ -32,5 +32,25 @@ export class UtilitiesService {
   convertDateForInput(dateStr: string): string {
     const date = new Date(dateStr);
     return formatDate(date, 'yyyy-MM-ddTHH:mm', 'en-US');
-}
+  }
+
+  isValidJson(input: any): boolean {
+    if (typeof input === "string") {
+        try {
+            const json = JSON.parse(input);
+            return (typeof json === 'object' && json !== null);
+        } catch (e) {
+            return false;
+        }
+    } else if (typeof input === "object" && input !== null) {
+        try {
+            JSON.parse(JSON.stringify(input));
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    return false;
+  }
 }

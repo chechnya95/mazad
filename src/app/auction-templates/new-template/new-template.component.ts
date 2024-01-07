@@ -48,7 +48,8 @@ export class NewTemplateComponent implements OnInit {
     description_en: null,
     description_ar: null,
     terms_en: null,
-    terms_ar: null
+    terms_ar: null,
+    contacts: { email: '', mobile: '' },
   }
 
   category = {
@@ -160,6 +161,17 @@ export class NewTemplateComponent implements OnInit {
             this.inspections.inspection_start_time = object?.inspections?.inspection_start_time;
             this.inspections.inspection_end_date = object?.inspections?.inspection_end_date;
             this.inspections.inspection_end_time = object?.inspections?.inspection_end_time;
+            
+            if (this.utility.isValidJson(this.auction_template.contacts)) {
+              const obj = UtilitiesService.parseIfNotJsonObject(this.auction_template.contacts);
+              if (Object.keys(obj).length === 2 && typeof obj.email === "string" && typeof obj.mobile === "string") {
+                ;
+              } else {
+                this.auction_template.contacts = { email: '', mobile: '' };
+              }
+            } else {
+              this.auction_template.contacts = { email: '', mobile: '' };
+            }
           }
         }
       },
@@ -236,7 +248,8 @@ export class NewTemplateComponent implements OnInit {
       inspections: this.inspections,
       title: { 'en': this.auction_template.title_en, 'ar': this.auction_template.title_ar },
       description: { 'en': this.auction_template.description_en, 'ar': this.auction_template.description_ar },
-      terms: { 'en': this.auction_template.terms_en, 'ar': this.auction_template.terms_ar }
+      terms: { 'en': this.auction_template.terms_en, 'ar': this.auction_template.terms_ar },
+      contacts: this.auction_template.contacts,
     }
 
     if (this.update) {

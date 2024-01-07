@@ -68,7 +68,7 @@ export class NewItemComponent implements OnInit {
     description_ar: null,
     terms_en: null,
     terms_ar: null,
-    contacts: null
+    contacts: { email: '', mobile: '' }
   }
 
   new_item_status: any;
@@ -273,10 +273,6 @@ export class NewItemComponent implements OnInit {
     //let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
     // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
-    let contacts = [];
-    if (this.item.contacts) {
-      contacts = this.item.contacts.split(';');
-    }
 
     const body = JSON.stringify({
       code: this.item.code,
@@ -305,7 +301,7 @@ export class NewItemComponent implements OnInit {
       auction_id: this.item.auction_id,
       template_id: this.item.template_id,
       inspections: this.inspections,
-      contacts: JSON.stringify(contacts),
+      contacts: this.item.contacts,
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }

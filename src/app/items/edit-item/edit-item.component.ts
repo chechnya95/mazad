@@ -5,6 +5,7 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
 import { UppyService } from 'src/app/services/uppy.service';
 import { MdEditorOption } from 'ngx-markdown-editor';
+import * as e from 'cors';
 
 interface UploadResult {
   isImg: boolean
@@ -63,7 +64,7 @@ export class EditItemComponent implements OnInit {
     description_ar: null,
     terms_en: null,
     terms_ar: null,
-    contacts: null
+    contacts: { email: '', mobile: '' },
   }
 
   inspections: any = {};
@@ -200,6 +201,18 @@ export class EditItemComponent implements OnInit {
             this.inspections.inspection_end_time = object?.inspections?.inspection_end_time;
 
             this.item_details = object?.details;
+            
+
+            if (this.utility.isValidJson(this.item.contacts)) {
+              const obj = UtilitiesService.parseIfNotJsonObject(this.item.contacts);
+              if (Object.keys(obj).length === 2 && typeof obj.email === "string" && typeof obj.mobile === "string") {
+                ;
+              } else {
+                this.item.contacts = { email: '', mobile: '' };
+              }
+            } else {
+              this.item.contacts = { email: '', mobile: '' };
+            }
 
             // add files to images dropzone
             // this.item.images.forEach((image) => {
@@ -297,10 +310,8 @@ export class EditItemComponent implements OnInit {
     //let end_date = `${date_e.getFullYear()}-${date_e.getMonth() + 1}-${date_e.getDate()} ${date_e.getHours()}:${date_e.getMinutes()}+0400`;
 
     // if this.item.contacts is not null or empty, split it by ; and save it in contacts array
-    let contacts = [];
-    if (this.item.contacts) {
-      contacts = this.item.contacts.split(';');
-    }
+    //let contacts = [];
+    console.log(this.item.contacts);
 
     const body = JSON.stringify({
       code: this.item.code,
@@ -328,7 +339,7 @@ export class EditItemComponent implements OnInit {
       owner_id: this.item.owner_id,
       auction_id: this.item.auction_id,
       inspections: this.inspections,
-      contacts: JSON.stringify(contacts),
+      contacts: this.item.contacts,
       title: { 'en': this.item.title_en, 'ar': this.item.title_ar },
       description: { 'en': this.item.description_en, 'ar': this.item.description_ar },
       terms: { 'en': this.item.terms_en, 'ar': this.item.terms_ar }

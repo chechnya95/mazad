@@ -341,18 +341,23 @@
                                 <!--begin::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">
-                                        {{ "Contacts, to add more seprate with ;" | translate }}
-                                    </label>
+                                    <label class="fw-bold fs-6 mb-2">Email</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" name="contacts"
-                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                        [(ngModel)]="item.contacts" />
+                                    <textarea cols="20" rows="2" name="email" class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="item.contacts.email" ></textarea>
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
+                                <div class="fv-row mb-10">
+                                    <!--begin::Label-->
+                                    <label class="fw-bold fs-6 mb-2">Mobile</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <textarea cols="20" rows="2" name="mobile" class="form-control form-control-solid mb-3 mb-lg-0" [(ngModel)]="item.contacts.mobile"></textarea>
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
                                 <div class="fv-row mb-10">
                                     <!--begin::Label-->
                                     <label class="required fw-bold fs-6 mb-2">Extension Period
