@@ -1,0 +1,15 @@
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: #7f807f;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #7f807f;
+}
+
+::ng-deep .mat-paginator .mat-icon-button {
+    background-color: unset;
+}
+
+::ng-deep .mat-select-panel .mat-option {
+    background: #f3f4f3;
+}

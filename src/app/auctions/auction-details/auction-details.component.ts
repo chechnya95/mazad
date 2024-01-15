@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from 'src/app/services/api.service';
 import Swal from 'sweetalert2'
+import { LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
+import { HttpParams } from '@angular/common/http';
+import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
   selector: 'app-auction-details',
@@ -16,6 +19,8 @@ export class AuctionDetailsComponent implements OnInit {
   items: any[] = [];
   templates: any[] = [];
 
+  filter_config: any;
+
   errorMessage: boolean = false;
   successMessage: boolean = false;
   approvalModal: boolean = false;
@@ -25,26 +30,64 @@ export class AuctionDetailsComponent implements OnInit {
 
   Swal = require('sweetalert2')
 
-  constructor(private router: Router, private api: ApiService, public translate: TranslateService) {
+  constructor(public utility: UtilitiesService, private router: Router, private api: ApiService, public translate: TranslateService) {
     this.token = localStorage.getItem('access_token');
+    this.utility.show = true;
+    this.utility.loader = false;
+
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      queries: null,
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
+    };
   }
 
   ngOnInit(): void {
     this.auction = localStorage.getItem('auction') ? JSON.parse(localStorage.getItem('auction')) : null;
 
-    if (this.auction) { this.getItems(); }
+    if (this.auction) {
+      //this.utility.title = this.translate.currentLang == 'en' ? this.auction?.title.en : this.auction?.title.ar;
+      this.getItems();
+    }
     else { this.router.navigate(['auctions']); }
   }
 
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
+    return params;
+  }
+
+  pageChangeEvent(event: PageEvent) {
+    this.filter_config.currentPage = event.pageIndex + 1;
+    this.filter_config.itemsPerPage = event.pageSize;
+    this.getItems();
+  }
+
   async getItems() {
-    const sub = this.api.get('items/auction/' + this.auction.id, this.token).subscribe(
+    const sub = this.api.get('items/auction/' + this.auction.id, this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.items = objects['items']['items'];
+        this.filter_config.totalItems = objects['items']['filters']['total_results'];
 
         this.items.forEach((item) => {
           item.selected = false;
         })
+
+        if (this.filter_config.totalItems > 100) this.filter_config.pageSizeOptions.push(this.filter_config.totalItems);
       },
       async error => { }
     );
