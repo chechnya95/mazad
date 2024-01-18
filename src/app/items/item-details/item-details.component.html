@@ -242,7 +242,8 @@
                         <div id="kt_item_view_details" class="collapse">
                             <div class="py-5 fs-6">
                                 <!--begin::Details item-->
-                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter({ exclude: ['owner'] });">{{'Owner' | translate}}</div>
+                                <div class="fw-bolder mt-5" *ngIf="this.api.canEnter({ exclude: ['owner'] });">{{'Owner'
+                                    | translate}}</div>
                                 <div class="text-gray-600" *ngIf="this.api.canEnter({ exclude: ['owner'] });"><a
                                         [routerLink]="['/owners']" [queryParams]="{ id: item?.owner_id }">{{
                                         owner?.email }}</a></div>
@@ -402,7 +403,8 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">{{'Estimated Price' | translate}}</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Estimated Price' | translate}}
+                                            </div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">OMR</div>
@@ -412,7 +414,8 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">{{'Start Price' | translate}}</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Start Price' | translate}}
+                                            </div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">{{ item?.start_price | currency:'OMR'}}
@@ -437,7 +440,8 @@
                                         <!--begin::Item-->
                                         <div class="d-flex mb-3">
                                             <!--begin::Label-->
-                                            <div class="text-gray-400 fw-bold w-125px">{{'Current Price' | translate}}</div>
+                                            <div class="text-gray-400 fw-bold w-125px">{{'Current Price' | translate}}
+                                            </div>
                                             <!--end::Label-->
                                             <!--begin::Value-->
                                             <div class="text-gray-800 fw-bold">{{ item?.current_price | currency:'OMR'}}
@@ -454,7 +458,8 @@
                                             <button
                                                 *ngIf="extend_status.includes(item?.item_status.toString().toLowerCase())"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_extend_form"
-                                                type="button" class="btn btn-secondary">{{'Extend' | translate}}</button>
+                                                type="button" class="btn btn-secondary">{{'Extend' |
+                                                translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"
                                                 (click)="approve(item?.id)" type="button"
                                                 class="btn btn-primary">{{'Approve' | translate}}</button>
@@ -467,15 +472,17 @@
                                                 class="btn btn-warning">{{'Reject' | translate}}</button>
                                             <button
                                                 *ngIf="close_status.includes(item?.item_status.toString().toLowerCase())"
-                                                (click)="close(item?.id)" type="button"
-                                                class="btn btn-danger">{{'Close' | translate}}</button>
+                                                (click)="close(item?.id)" type="button" class="btn btn-danger">{{'Close'
+                                                | translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='payment'"
                                                 data-bs-toggle="modal" data-bs-target="#kt_modal_offline_form"
-                                                type="button" class="btn btn-danger">{{'Add Payment' | translate}}</button>
+                                                type="button" class="btn btn-danger">{{'Add Payment' |
+                                                translate}}</button>
                                             <a [routerLink]="['/export']" (click)="export(item)" target="_blank"
                                                 class="btn btn-dark">{{'Export' | translate}}</a>
-                                            <a [routerLink]="['/export_owner']" (click)="export_owner(item, bids)" target="_blank"
-                                                class="btn btn-light">{{'Export (Owner)' | translate}}</a>
+                                            <a [routerLink]="['/export_owner']" (click)="export_owner(item, bids)"
+                                                target="_blank" class="btn btn-light">{{'Export (Owner)' |
+                                                translate}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -509,7 +516,8 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">{{'Name' | translate}}</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Name' | translate}}
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{ winner?.details?.name_en |
@@ -520,7 +528,8 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">{{'Phone' | translate}}</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Phone' | translate}}
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{ winner?.phone }}</div>
@@ -534,7 +543,8 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">{{'ID Card Number' | translate}}</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'ID Card Number' |
+                                                        translate}}</div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">{{
@@ -546,7 +556,8 @@
                                                 <!--begin::Item-->
                                                 <div class="d-flex mb-3">
                                                     <!--begin::Label-->
-                                                    <div class="text-gray-400 fw-bold w-125px">{{'Email' | translate}}</div>
+                                                    <div class="text-gray-400 fw-bold w-125px">{{'Email' | translate}}
+                                                    </div>
                                                     <!--end::Label-->
                                                     <!--begin::Value-->
                                                     <div class="text-gray-800 fw-bold">
@@ -672,7 +683,8 @@
                                             <!--begin::Summary-->
                                             <div class="me-3">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="text-gray-800 fw-bolder">{{'Attachments' | translate}}</div>
+                                                    <div class="text-gray-800 fw-bolder">{{'Attachments' | translate}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--end::Summary-->
@@ -720,6 +732,10 @@
                                 <div class="card-title">
                                     <h2>{{'Biddings Logs' | translate}}</h2>
                                 </div>
+                                <div class="card-toolbar">
+                                    <button type="button" class="btn btn-warning" (click)="disableBids(item.id)">{{'Disable Bids' |
+                                        translate}}</button>
+                                </div>
                                 <!--end::Card title-->
                             </div>
                             <!--end::Card header-->
@@ -747,7 +763,8 @@
                                             <!--begin::Table row-->
                                             <tr *ngFor="let bid of bids; let i = index;">
                                                 <!--begin::Invoice=-->
-                                                <td><a [routerLink]="['/user-details']" [queryParams]="{ id: bid.user.id }">{{
+                                                <td><a [routerLink]="['/user-details']"
+                                                        [queryParams]="{ id: bid.user.id }">{{
                                                         bid.user.phone }}</a></td>
                                                 <!--end::Invoice=-->
                                                 <!--begin::Amount=-->
@@ -1023,7 +1040,8 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fs-6 fw-bold form-label mb-2">{{'Invoice Amount' | translate}}</label>
+                                <label class="required fs-6 fw-bold form-label mb-2">{{'Invoice Amount' |
+                                    translate}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control form-control-solid" name="amount" value="" />
@@ -1112,7 +1130,8 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' |
+                                translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="extend(item?.id)"
                                 data-bs-dismiss="modal">
                                 <span class="indicator-label">{{'Submit' | translate}}</span>
@@ -1288,7 +1307,8 @@
                         <!--end::Scroll-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' | translate}}</button>
+                            <button type="reset" class="btn btn-white me-3" data-bs-dismiss="modal">{{'Discard' |
+                                translate}}</button>
                             <button type="submit" class="btn btn-primary" (click)="addPayment(item?.id)"
                                 data-bs-dismiss="modal">
                                 <span class="indicator-label">{{'Submit' | translate}}</span>

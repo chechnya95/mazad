@@ -273,7 +273,7 @@ export class ItemDetailsComponent implements OnInit {
         this.api.get('items/to_status/reject/' + id, this.token).subscribe(
           async data => {
             this.successMessage = true;
-    
+
             this.route.queryParams.subscribe(params => {
               let id = params['id'] != null ? params['id'] : null;
               if (id) { this.getItemDetails(id); }
@@ -353,5 +353,26 @@ export class ItemDetailsComponent implements OnInit {
     localStorage.setItem('item_details', JSON.stringify(item));
     localStorage.setItem('item_bids', JSON.stringify(bids));
   }
-}
 
+  disableBids(id: any) {
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
+
+    Swal.fire({
+      title: lang == 'en' ? 'Disable all the bids?' : 'تعطيل جميع المزايدات؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.update('bids/disable/item/' + id, {}, this.token).subscribe(
+          async data => {
+            this.successMessage = true;
+          },
+          async error => { this.errorMessage = true; }
+        );
+      }
+    });
+  }
+}

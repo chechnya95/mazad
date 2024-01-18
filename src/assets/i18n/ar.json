@@ -561,5 +561,6 @@
     "Choose Item Template": "اختر القالب للسلعة",
     "Owner SMS Templates": "قوالب الرسائل للمالك",
     "Make this template for Owner": "انشاء قالب للمالك",
-    "contact_with_comma": "ارقام التواصل، لأكثر من رقم افصل بـ ;"
+    "contact_with_comma": "ارقام التواصل، لأكثر من رقم افصل بـ ;",
+    "Disable Bids": "تعطيل المزايدة"
 }
