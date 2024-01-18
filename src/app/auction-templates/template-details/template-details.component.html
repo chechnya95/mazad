@@ -361,7 +361,7 @@
                                 <!--begin::Table wrapper-->
                                 <div class="table-responsive">
                                     <!--begin::Table-->
-                                    <table class="table align-middle table-row-dashed gy-5"
+                                    <table mat-table  matSort (matSortChange)="sortData($event)" class="table align-middle table-row-dashed gy-5"
                                         id="kt_table_customers_payment">
                                         <!--begin::Table head-->
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
@@ -395,6 +395,16 @@
                                         <!--end::Table body-->
                                     </table>
                                     <!--end::Table-->
+                                    <div class="has-text-centered">
+                                        <div class="spinner" [ngClass]="{ 'hidden': !utility.loader }"></div>
+                                        <mat-paginator #paginator showFirstLastButtons
+                                            [length]="filter_config.totalItems"
+                                            [pageSize]="filter_config.itemsPerPage"
+                                            [pageSizeOptions]="filter_config.pageSizeOptions"
+                                            (page)="pageChangeEvent($event)"
+                                            >
+                                        </mat-paginator>
+                                    </div>
                                 </div>
                                 <!--end::Table wrapper-->
                             </div>
