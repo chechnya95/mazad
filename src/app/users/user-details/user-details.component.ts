@@ -344,4 +344,11 @@ export class UserDetailsComponent implements OnInit {
     localStorage.removeItem('invoice');
     localStorage.setItem('invoice', JSON.stringify(invoice));
   }
+
+  update_wallet(id: any) {
+    this.api.update_form('users/' + id + '/update_wallet', {}, this.token).subscribe(
+      async data => { this.successMessage = true; },
+      async errr => { this.errorMessage = true; }
+    );
+  }
 }
