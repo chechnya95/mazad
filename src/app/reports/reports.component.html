@@ -25,14 +25,15 @@
                                 <!--begin::Table-->
                                 <div class="row mb-0">
                                     <div class="col-4">
-                                        <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
-                                            (keyup.enter)="onChangeAuction($event.target.value)"
-                                            (change)="onChangeAuction($event.target.value)" list="auctionList"
-                                            id="auctionsList_id" placeholder="type auction's code ...">
+                                        <input class="form-control header-color" [(ngModel)]="auction_search"
+                                            (keyup)="onChangeAuctionName()" (change)="onChangeAuctionName()"
+                                            list="auctionList" id="auctionsList_id"
+                                            placeholder='{{"Auction Code"| translate}}'>
                                         <datalist id="auctionList">
                                             <option *ngFor="let auction of auctions" [value]="auction?.code">
                                         </datalist>
                                     </div>
+
                                     <div class="col-4">
                                         <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                             (keyup.enter)="onChangeOwner($event.target.value)"
@@ -45,7 +46,7 @@
                                     <div class="col-3">
                                         <button type="button" class="btn btn-light-primary mx-3"
                                             (click)="getReport(auction_id)" [disabled]="showList">
-                                        
+
                                             {{ "Get Report"| translate}}
                                         </button>
                                     </div>
@@ -92,7 +93,8 @@
                                                 <td>{{ item.title | localName }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-light-primary mx-3"
-                                                        (click)="getReport(item.id)">{{ "Get Report"| translate}}</button>
+                                                        (click)="getReport(item.id)">{{ "Get Report"|
+                                                        translate}}</button>
                                                 </td>
                                             </tr>
                                             <!--end::Table row-->
@@ -206,7 +208,8 @@
                                         <!--begin::Actions-->
                                         <div class="text-center">
                                             <button type="reset" class="btn btn-white me-3">Discard</button>
-                                            <button type="submit" class="btn btn-primary" (click)="exportexcel(report?.auction.title.ar, report?.auction.code)">
+                                            <button type="submit" class="btn btn-primary"
+                                                (click)="exportexcel(report?.auction.title.ar, report?.auction.code)">
                                                 <span class="indicator-label">Submit</span>
                                             </button>
                                         </div>
@@ -262,9 +265,12 @@
                                                 <th mat-sort-header="count_of_bidders">{{ "Bidders"| translate}}</th>
                                                 <th mat-sort-header="count_of_bids">{{ "Bids"| translate}}</th>
                                                 <th mat-sort-header="price">{{ "Price"| translate}}</th>
-                                                <th mat-sort-header="owner_vat"> {{ "Owner VAT"| translate}} ({{report?.auction.vat_for_item}}%)</th>
-                                                <th mat-sort-header="mazad"> {{ "Mazad"| translate}} ({{report?.auction.auction_fee}}%)</th>
-                                                <th mat-sort-header="mazad_vat"> {{ "Mazad VAT"| translate}} ({{report?.auction.vat_for_mazad}}%)</th>
+                                                <th mat-sort-header="owner_vat"> {{ "Owner VAT"| translate}}
+                                                    ({{report?.auction.vat_for_item}}%)</th>
+                                                <th mat-sort-header="mazad"> {{ "Mazad"| translate}}
+                                                    ({{report?.auction.auction_fee}}%)</th>
+                                                <th mat-sort-header="mazad_vat"> {{ "Mazad VAT"| translate}}
+                                                    ({{report?.auction.vat_for_mazad}}%)</th>
                                                 <th mat-sort-header="total">{{ "Total with VAT"| translate}}</th>
                                                 <!-- <th mat-sort-header="total_vat">{{ "VAT"| translate}}</th> -->
                                                 <!-- <th mat-sort-header="total_without_vat">{{ "Total"| translate}}</th> -->

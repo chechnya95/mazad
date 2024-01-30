@@ -44,12 +44,10 @@ export class ReportsComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    this.getAuctions();
-  }
+  ngOnInit(): void { }
 
   async getAuctions() {
-    this.api.get('auctions/', this.token).subscribe(
+    this.api.get('auctions/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.auctions = objects['auctions']['auctions'];
@@ -59,8 +57,18 @@ export class ReportsComponent implements OnInit {
   }
 
   async getReport(id: any) {
+    this.filter_config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      queries: null,
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
+    };
+
     this.utility.loader = true;
-    const sub = this.api.get(`auctions/report/${id}`, this.token, { params: this.getHttpParams()}).subscribe(
+    const sub = this.api.get(`auctions/report/${id}`, this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects = JSON.parse(JSON.stringify(data));
         this.report = objects['auction_report'];
@@ -138,7 +146,7 @@ export class ReportsComponent implements OnInit {
     }
     return params;
   }
-  
+
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
@@ -149,5 +157,22 @@ export class ReportsComponent implements OnInit {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
     this.getReport(this.auction_id); //TODO: need to change
+  }
+
+  auction_search: any;
+  onChangeAuctionName() {
+    console.log(this.auction_search)
+    if (this.auction_search.length >= 3) {
+      let field = 'code,owner_code,title';
+      let value = this.auction_search;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getAuctions();
+    }
+
+    if (this.auction_search == '' || this.auction_search == null) {
+      this.filter_config.queries = null;
+      this.getAuctions();
+    }
   }
 }
