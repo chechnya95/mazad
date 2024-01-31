@@ -24,6 +24,7 @@ export class ReportsComponent implements OnInit {
 
   auction_id: any;
   showList: boolean = false;
+  disabled: boolean = true;
 
   Swal = require('sweetalert2')
 
@@ -88,6 +89,25 @@ export class ReportsComponent implements OnInit {
     return UtilitiesService.parseIfNotJsonObject(details);
   }
 
+
+  auction_search: any;
+  onChangeAuctionName() {
+    this.showList = false
+
+    if (this.auction_search.length >= 3) {
+      let field = 'code,owner_code,title';
+      let value = this.auction_search;
+
+      this.filter_config.queries = `${field},like,${value}`;
+      this.getAuctions();
+    }
+
+    if (this.auction_search == '' || this.auction_search == null) {
+      this.filter_config.queries = null;
+      this.getAuctions();
+    }
+  }
+
   onChangeAuction(value?: any) {
     let auction = this.auctions.find(i => i.code === value);
     this.auction_id = auction.id;
@@ -101,8 +121,10 @@ export class ReportsComponent implements OnInit {
     this.auctionList = auction;
     if (this.auctionList.length > 1)
       this.showList = true
-    else
+    else {
+      this.disabled = false
       this.auction_id = this.auctionList[0].id;
+    }
   }
 
   exportexcel(fileName: string, sheet: string): void {
@@ -157,22 +179,5 @@ export class ReportsComponent implements OnInit {
     this.filter_config.sort = sort.active;
     this.filter_config.sort_order = sort.direction;
     this.getReport(this.auction_id); //TODO: need to change
-  }
-
-  auction_search: any;
-  onChangeAuctionName() {
-    console.log(this.auction_search)
-    if (this.auction_search.length >= 3) {
-      let field = 'code,owner_code,title';
-      let value = this.auction_search;
-
-      this.filter_config.queries = `${field},like,${value}`;
-      this.getAuctions();
-    }
-
-    if (this.auction_search == '' || this.auction_search == null) {
-      this.filter_config.queries = null;
-      this.getAuctions();
-    }
   }
 }

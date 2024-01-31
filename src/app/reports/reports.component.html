@@ -35,17 +35,17 @@
                                     </div>
 
                                     <div class="col-4">
-                                        <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        <input class="form-control header-color"
                                             (keyup.enter)="onChangeOwner($event.target.value)"
                                             (change)="onChangeOwner($event.target.value)" list="auctionList2"
-                                            id="auctionsList_id2" placeholder="type auction's owner code ...">
+                                            id="auctionsList_id2" placeholder="Owner code ...">
                                         <datalist id="auctionList2">
                                             <option *ngFor="let auction of auctions" [value]="auction?.owner_code">
                                         </datalist>
                                     </div>
                                     <div class="col-3">
                                         <button type="button" class="btn btn-light-primary mx-3"
-                                            (click)="getReport(auction_id)" [disabled]="showList">
+                                            (click)="getReport(auction_id)" [disabled]="disabled">
 
                                             {{ "Get Report"| translate}}
                                         </button>
