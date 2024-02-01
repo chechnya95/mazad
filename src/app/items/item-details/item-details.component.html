@@ -464,7 +464,7 @@
                                                 (click)="approve(item?.id)" type="button"
                                                 class="btn btn-primary">{{'Approve' | translate}}</button>
                                             <button
-                                                *ngIf="item?.item_status.toString().toLowerCase()=='payment overdue'"
+                                                *ngIf="item?.item_status.toString().toLowerCase()=='payment_overdue'"
                                                 (click)="announce(item?.id)" type="button"
                                                 class="btn btn-success">{{'Announce Winner' | translate}}</button>
                                             <button *ngIf="item?.item_status.toString().toLowerCase()=='approval'"

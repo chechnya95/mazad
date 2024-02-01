@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ItemDetailsComponent implements OnInit {
 
-  extend_status: any[] = ['open', 'bid', 'approval', 'payment', 'payment overdue'];
+  extend_status: any[] = ['open', 'bid', 'approval', 'payment', 'payment_overdue'];
   close_status: any[] = ['shipping', 'transferred'];
 
   token: any;
