@@ -750,6 +750,7 @@
                                         <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
                                             <!--begin::Table row-->
                                             <tr class="text-start text-gray-400 text-uppercase gs-0">
+                                                <th>{{'Phone' | translate}}</th>
                                                 <th>{{'User' | translate}}</th>
                                                 <th>{{'Amount' | translate}}</th>
                                                 <th class="min-w-80px">{{'Date' | translate}}</th>
@@ -767,6 +768,7 @@
                                                         [queryParams]="{ id: bid.user.id }">{{
                                                         bid.user.phone }}</a></td>
                                                 <!--end::Invoice=-->
+                                                <td> {{ bid.user.user_details | userNameByLang }}</td>
                                                 <!--begin::Amount=-->
                                                 <td>{{ bid.amount | currency:'OMR'}}</td>
                                                 <!--end::Amount=-->
