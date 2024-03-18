@@ -161,15 +161,20 @@
                                                             {{this.invoice?.details.code}}
                                                         </td>
                                                         <td>
-                                                            <p>{{this.invoice?.details.title.ar}}</p>
-                                                            <p>{{this.invoice?.details.title.en}}</p>
+                                                            <p>
+                                                                {{this.invoice?.details.auction.title.ar}}
+                                                                {{this.invoice?.details.item.title.ar}}
+                                                            <br>
+                                                                {{this.invoice?.details.auction.title.en}}
+                                                                {{this.invoice?.details.item.title.en}}
+                                                            </p>
                                                         </td>
                                                         <td>{{this.invoice?.details.fee |
-                                                            currency:' OMR '}}
+                                                            currency:' OMR ' : 'symbol' : '1.3-3'}}
                                                         </td>
                                                         <td class="text-dark fw-boldest">
                                                             {{this.invoice?.details.amount |
-                                                            currency:' OMR '}}</td>
+                                                            currency:' OMR ' : 'symbol' : '1.3-3'}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -192,7 +197,7 @@
                                                         <!--begin::Label-->
                                                         <div class="text-end fw-bolder fs-6 text-gray-800 mx-1">
                                                             {{this.invoice?.total_amount |
-                                                            currency:' OMR ' }}</div>
+                                                            currency:' OMR ' : 'symbol' : '1.3-3' }}</div>
                                                         <!--end::Label-->
                                                     </div>
                                                     <!--end::Item-->

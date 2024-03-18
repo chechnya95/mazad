@@ -492,15 +492,15 @@
                                                 <label class="required fw-bold fs-6 mb-2">
                                                     {{ "Terms Arabic" | translate }}
                                                 </label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <md-editor name="terms_en" [(ngModel)]="auction.terms_en"
+                                                <md-editor name="terms_ar" [(ngModel)]="auction.terms_ar"
                                                     [height]="'300px'" [mode]="mode" [options]="options" required>
                                                 </md-editor>
                                                 <label class="required fw-bold fs-6 mb-2">
                                                     {{ "Terms English" | translate }}
                                                 </label>
-                                                <md-editor name="terms_ar" [(ngModel)]="auction.terms_ar"
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <md-editor name="terms_en" [(ngModel)]="auction.terms_en"
                                                     [height]="'300px'" [mode]="mode" [options]="options" required>
                                                 </md-editor>
                                                 <!--end::Input-->
