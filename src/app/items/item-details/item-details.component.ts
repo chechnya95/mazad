@@ -254,8 +254,47 @@ export class ItemDetailsComponent implements OnInit {
     });
   }
 
+  potential_winners: any[] = [];
+  announceWinnerModal: Boolean = false;
   announce(id: any) {
+    this.api.get('bids/potential_winners/item/' + id, this.token).subscribe(
+      async data => {
+        let objects = JSON.parse(JSON.stringify(data));
+        this.potential_winners = objects.winners.bids;
 
+        this.announceWinnerModal = true;
+
+      },
+      async error => { this.errorMessage = true; }
+    );
+  }
+
+  announce_winner(item_id: any, bid_id: any) {
+    console.log(item_id, bid_id)
+    let lang = this.translate.currentLang == 'en' || this.translate.currentLang == null ? 'en' : 'ar';
+
+    Swal.fire({
+      title: lang == 'en' ? 'Select the winner, are you sure?' : 'اختيار الفائز، هل انت متأكد؟',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: lang == 'en' ? 'Yes' : 'نعم',
+      cancelButtonText: lang == 'en' ? 'Cancel' : 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.update(`items/potential_winner/${item_id}/${bid_id}`, {}, this.token).subscribe(
+          async data => {
+            this.successMessage = true;
+
+            this.route.queryParams.subscribe(params => {
+              let id = params['id'] != null ? params['id'] : null;
+              if (id) { this.getItemDetails(id); }
+            });
+          },
+          async error => { this.errorMessage = true; }
+        );
+      }
+    });
   }
 
   reject(id: any) {
