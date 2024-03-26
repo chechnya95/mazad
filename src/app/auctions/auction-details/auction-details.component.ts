@@ -165,7 +165,7 @@ export class AuctionDetailsComponent implements OnInit {
         list.forEach((item) => {
           this.api.get('items/to_status/payment/' + item.id, this.token).subscribe(
             async data => { status = true; },
-            async error => { status = true; }
+            async error => { status = false; }
           );
         });
 
@@ -183,7 +183,6 @@ export class AuctionDetailsComponent implements OnInit {
 
   excel: any;
   imageChange(event: any) {
-    console.log('image change')
     let fileList: FileList = event.target.files;
     this.excel = fileList[0];
   }
