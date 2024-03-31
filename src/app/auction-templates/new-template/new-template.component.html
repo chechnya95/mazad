@@ -189,13 +189,23 @@
                                     <label class="form-label required">{{ "Owner" | translate }}</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select name="owner_id"
+                                    <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
+                                        (keyup.enter)="onChangeOwner($event.target.value)"
+                                        (change)="onChangeOwner($event.target.value)" list="ownersList"
+                                        id="ownersList_id" placeholder="type owner's contact ...">
+                                    <datalist id="ownersList">
+                                        <option *ngFor="let owner of owners" [value]="owner.contact">
+                                    </datalist>
+                                    <input type="text" class="form-control form-control-solid mb-3 mt-3 mb-lg-3"
+                                        [(ngModel)]="owner_name" disabled>
+
+                                    <!-- <select name="owner_id"
                                         class="form-select form-select-lg form-select-solid"
                                         [(ngModel)]="auction_template.owner_id">
                                         <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
                                             owner.code +': '+ owner.title.en +' - '+ owner.title.ar
                                             }}</option>
-                                    </select>
+                                    </select> -->
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->

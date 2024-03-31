@@ -17,6 +17,7 @@ export class TemplatesComponent implements OnInit {
   media_type: any[] = [];
   owners: any[] = [];
   filter_config: any;
+  filter_config2: any;
 
   errorMessage: boolean = false;
   successMessage: boolean = false;
@@ -78,6 +79,11 @@ export class TemplatesComponent implements OnInit {
       sort_order: 'asc',
       pageSizeOptions: [5, 10, 25, 100]
     };
+    this.filter_config2 = {
+      itemsPerPage: 100,
+      currentPage: 1,
+      totalItems: 0
+    };
   }
 
   ngOnInit(): void {
@@ -94,6 +100,14 @@ export class TemplatesComponent implements OnInit {
     }
     return params;
   }
+
+  getHttpParams2() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config2.currentPage.toString());
+    params = params.append('per_page', this.filter_config2.itemsPerPage.toString());
+    return params;
+  }
+
   pageChangeEvent(event: PageEvent) {
     this.filter_config.currentPage = event.pageIndex + 1;
     this.filter_config.itemsPerPage = event.pageSize;
@@ -135,7 +149,7 @@ export class TemplatesComponent implements OnInit {
   }
 
   async getOwners() {
-    const sub = this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token, { params: this.getHttpParams2() }).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;

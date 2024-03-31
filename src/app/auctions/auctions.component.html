@@ -715,6 +715,16 @@
                                                 <label class="form-label required">{{ "Owner" | translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
+                                                <input class="form-control header-color"
+                                                    (keyup)="onChangeOwner($event.target.value)"
+                                                    placeholder="type to serach owner ...">
+                                                <select name="owner_id"
+                                                    class="form-select form-select-lg form-select-solid mt-3"
+                                                    [(ngModel)]="edit_auction.owner_id">
+                                                    <option *ngFor="let owner of owners" [ngValue]='owner.id'>{{
+                                                        owner.contact }}</option>
+                                                </select>
+<!-- 
                                                 <input type="text" class="form-control form-control-solid mb-3 mb-lg-0"
                                                     (keyup.enter)="onEditChangeOwner($event.target.value)"
                                                     (change)="onEditChangeOwner($event.target.value)" list="ownersList"
@@ -724,7 +734,7 @@
                                                 </datalist>
                                                 <input type="text"
                                                     class="form-control form-control-solid mb-3 mt-3 mb-lg-3"
-                                                    [(ngModel)]="owner_name" disabled>
+                                                    [(ngModel)]="owner_name" disabled> -->
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -747,16 +757,18 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{ "Description-en" | translate }}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Description-en" |
+                                                    translate }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <textarea cols="20" rows="5" name="description_en"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
                                                     placeholder="Description English"
                                                     [(ngModel)]="edit_auction.description_en"></textarea>
-                                                
+
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{ "Description-ar" | translate }}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Description-ar" |
+                                                    translate }}</label>
                                                 <!--end::Label-->
                                                 <textarea cols="20" rows="5" name="description_ar"
                                                     class="form-control form-control-solid mb-3 mb-lg-0"
@@ -768,15 +780,17 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-7">
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{ "Terms English" | translate }}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Terms English" | translate
+                                                    }}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <md-editor name="terms_en" [(ngModel)]="edit_auction.terms_en"
                                                     [height]="'300px'" [mode]="mode" [options]="options" required>
                                                 </md-editor>
-                                                
+
                                                 <!--begin::Label-->
-                                                <label class="required fw-bold fs-6 mb-2">{{ "Terms Arabic" | translate }}</label>
+                                                <label class="required fw-bold fs-6 mb-2">{{ "Terms Arabic" | translate
+                                                    }}</label>
                                                 <!--end::Label-->
                                                 <md-editor name="terms_ar" [(ngModel)]="edit_auction.terms_ar"
                                                     [height]="'300px'" [mode]="mode" [options]="options" required>
@@ -784,7 +798,7 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
-                                             <!--begin::Input group-->
+                                            <!--begin::Input group-->
                                             <div *ngIf="this.api.canEnter({ allow: ['admin'] });">
                                                 <div class="row mb-10">
                                                     <!--begin::Col-->
@@ -880,8 +894,8 @@
                                                         <!--begin::Input wrapper-->
                                                         <div class="position-relative">
                                                             <!--begin::Input-->
-                                                            <input [(ngModel)]="edit_auction.vat_for_mazad" type="number"
-                                                                class="form-control form-control-solid"
+                                                            <input [(ngModel)]="edit_auction.vat_for_mazad"
+                                                                type="number" class="form-control form-control-solid"
                                                                 name="vat_for_mazad" />
                                                             <!--end::Input-->
                                                         </div>

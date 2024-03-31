@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import Swal from 'sweetalert2'
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-new-template',
@@ -18,6 +19,8 @@ export class NewTemplateComponent implements OnInit {
   categories: any[] = [];
   owners: any[] = [];
   fields: any[] = [];
+
+  filter_config: any;
 
   auction_template = {
     code: null,
@@ -69,12 +72,21 @@ export class NewTemplateComponent implements OnInit {
   edit_item_id: any;
 
   Swal = require('sweetalert2')
+  owner_name: string = null;
 
   constructor(public utility: UtilitiesService, private api: ApiService, private route: ActivatedRoute, public translate: TranslateService) {
     this.utility.show = true;
     this.utility.title = 'Auction Templates';
     this.token = localStorage.getItem('access_token');
-
+    this.filter_config = {
+      itemsPerPage: 100,
+      currentPage: 1,
+      totalItems: 0,
+      sort: null,
+      queries: null,
+      sort_order: 'asc',
+      pageSizeOptions: [5, 10, 25, 100]
+    };
     let lang = localStorage.getItem('lang');
     if (!lang)
       lang = 'en';
@@ -116,16 +128,40 @@ export class NewTemplateComponent implements OnInit {
   } */
 
   async getOwners(item_id: any) {
-    const sub = this.api.get('owners/', this.token).subscribe(
+    const sub = this.api.get('owners/', this.token, { params: this.getHttpParams() }).subscribe(
       async data => {
         let objects: any = { owners: [] }
         objects = data;
         this.owners = objects.owners;
+
+        this.owners.forEach(function (owner) {
+          if (owner.title) {
+            let title = owner.title;
+            owner.contact = title.en ? title.en : title.ar ? title.ar : owner.phone;
+          }
+          else {
+            owner.contact = owner.email ? owner.email : owner.phone;
+          }
+        });
       },
       async error => { }
     );
 
     sub.add(() => { this.getCategories(item_id); });
+  }
+
+  getHttpParams() {
+    let params = new HttpParams();
+    params = params.append('page', this.filter_config.currentPage.toString());
+    params = params.append('per_page', this.filter_config.itemsPerPage.toString());
+    if (this.filter_config.sort) {
+      params = params.append('sort', this.filter_config.sort);
+      params = params.append('sort_order', this.filter_config.sort_order);
+    }
+    if (this.filter_config.queries) {
+      params = params.append('queries', this.filter_config.queries);
+    }
+    return params;
   }
 
   async getCategories(item_id: any) {
@@ -161,7 +197,7 @@ export class NewTemplateComponent implements OnInit {
             this.inspections.inspection_start_time = object?.inspections?.inspection_start_time;
             this.inspections.inspection_end_date = object?.inspections?.inspection_end_date;
             this.inspections.inspection_end_time = object?.inspections?.inspection_end_time;
-            
+
             if (this.utility.isValidJson(this.auction_template.contacts)) {
               const obj = UtilitiesService.parseIfNotJsonObject(this.auction_template.contacts);
               if (Object.keys(obj).length === 2 && typeof obj.email === "string" && typeof obj.mobile === "string") {
@@ -255,12 +291,12 @@ export class NewTemplateComponent implements OnInit {
     if (this.update) {
       this.api.update("auction_templates/" + this.edit_item_id, body, this.token).subscribe(
         async data => { localStorage.removeItem('item-template'); },
-        async eror => { 
+        async eror => {
           Swal.fire(
             'Error!',
             'Could not send your request!'
           );
-         }
+        }
       );
     }
     else {
@@ -280,5 +316,11 @@ export class NewTemplateComponent implements OnInit {
 
   reload() {
     window.location.reload();
+  }
+
+  onChangeOwner(owner_contact?: any) {
+    let owner = this.owners.find(i => i.contact === owner_contact);
+    this.auction_template.owner_id = owner.id;
+    this.owner_name = owner.title.en;
   }
 }
